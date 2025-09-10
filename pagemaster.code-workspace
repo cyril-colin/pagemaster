@@ -1,0 +1,54 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../pagemaster-back"
+    },
+    {
+      "path": "../pagemaster-front"
+    },
+    {
+      "path": "../pagemaster-schemas"
+    }
+  ],
+  "settings": {
+    "files.autoSave": "off",
+    "git.enableSmartCommit": true,
+    "editor.renderControlCharacters": true,
+    "editor.minimap.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.suggestSelection": "first",
+    "eslint.run": "onType",
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/*/**": true,
+      "dist/**/*": true,
+    },
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint": "explicit",
+      "source.fixAll": "explicit"
+    },
+    "scss.format.spaceAroundSelectorSeparator": true,
+    "editor.detectIndentation": false,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "eslint.validate": [
+      "javascript",
+      "typescript",
+      "html"
+    ],
+    "eslint.useFlatConfig": true,
+    "eslint.format.enable": true,
+    "eslint.useESLintClass": true,
+    "eslint.workingDirectories": [
+      {
+        "mode": "location"
+      }
+    ],
+  }
+}
