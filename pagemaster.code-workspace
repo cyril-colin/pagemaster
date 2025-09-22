@@ -7,13 +7,7 @@
       "path": "../pagemaster-back"
     },
     {
-      "path": "../pagemaster-front"
-    },
-    {
       "path": "../pagemaster-front-games"
-    },
-    {
-      "path": "../pagemaster-schemas"
     }
   ],
   "settings": {
