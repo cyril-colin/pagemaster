@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
-import { Character } from '../../../../pagemaster-schemas/src/pagemaster.types';
+import { Character } from '@pagemaster/common/pagemaster.types';
 import { CurrentSessionState } from '../../current-session.state';
 import { ModalService } from '../../modal';
 import { Inventory } from './inventories-control.component';

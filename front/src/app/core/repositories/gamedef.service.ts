@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GameDef } from '../../../pagemaster-schemas/src/pagemaster.types';
+import { GameDef } from '@pagemaster/common/pagemaster.types';
 
 
 @Injectable({providedIn: 'root'})

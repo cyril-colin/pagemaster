@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
-import { GameDef } from '../../../../pagemaster-schemas/src/pagemaster.types';
+import { GameDef } from '@pagemaster/common/pagemaster.types';
 import { GameDefSelectorComponent } from '../../../core/game/game-def-selector.component';
 import { PageMasterRoutes } from '../../../core/pagemaster.router';
 import { GameDefService } from '../../../core/repositories/gamedef.service';

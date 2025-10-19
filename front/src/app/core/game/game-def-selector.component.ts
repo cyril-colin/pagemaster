@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { GameDef } from '../../../pagemaster-schemas/src/pagemaster.types';
+import { GameDef } from '@pagemaster/common/pagemaster.types';
 
 @Component({
   selector: 'app-game-def-selector',

@@ -1,6 +1,6 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { HEADER_CURRENT_PARTICIPANT } from '../../../pagemaster-schemas/src/constants';
+import { HEADER_CURRENT_PARTICIPANT } from '@pagemaster/common/constants';
 import { CurrentSessionState } from '../current-session.state';
 
 export const currentParticipantInterceptor: HttpInterceptorFn = (req, next) => {

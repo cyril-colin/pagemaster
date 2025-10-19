@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Attributes } from '../../../../pagemaster-schemas/src/attributes.types';
-import { ItemInstance } from '../../../../pagemaster-schemas/src/items.types';
-import { Character } from '../../../../pagemaster-schemas/src/pagemaster.types';
+import { Attributes } from '@pagemaster/common/attributes.types';
+import { ItemInstance } from '@pagemaster/common/items.types';
+import { Character } from '@pagemaster/common/pagemaster.types';
 import { ModalService } from '../../modal';
 import { InventoryListViewComponent } from './inventory-list-view.component';
 

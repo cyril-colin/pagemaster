@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AttributeBar, Attributes } from '../../../../pagemaster-schemas/src/attributes.types';
+import { AttributeBar, Attributes } from '@pagemaster/common/attributes.types';
 import { BarListViewComponent } from './bar-list-view.component';
 
 

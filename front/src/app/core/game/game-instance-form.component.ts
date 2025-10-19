@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, OnInit, output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { Character, GameDef, GameInstance } from '@pagemaster/common/pagemaster.types';
 import { map, Observable } from 'rxjs';
-import { Character, GameDef, GameInstance } from '../../../pagemaster-schemas/src/pagemaster.types';
 
 
 interface PlayerItem {
@@ -128,6 +128,7 @@ export class GameInstanceFormComponent implements OnInit  {
       const gameInstance: GameInstance = {
         id: `${selectedGameDef.id}-${gameInstanceForm.masterName}-${Date.now()}`,
         masterName: gameInstanceForm.masterName.replaceAll(' ', '-'),
+        version: 0,
         gameDefId: selectedGameDef.id,
         gameDef: selectedGameDef,
         participants: gameInstanceForm.players.map((player, index) => ({

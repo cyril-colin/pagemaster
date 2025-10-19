@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Item } from '../../../pagemaster-schemas/src/items.types';
-import { GameInstance, Participant } from '../../../pagemaster-schemas/src/pagemaster.types';
+import { Item } from '@pagemaster/common/items.types';
+import { GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
 
 
 @Injectable({providedIn: 'root'})

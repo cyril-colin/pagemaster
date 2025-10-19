@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Observable, of, tap } from 'rxjs';
-import { GameInstance } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameInstance } from '@pagemaster/common/pagemaster.types';
 import { CURRENT_GAME_INSTANCE_CACHE_KEY, LocalStorageService } from './local-storage.service';
 import { GameInstanceService } from './repositories/game-instance.service';
 

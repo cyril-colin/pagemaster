@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Attributes } from '../../../pagemaster-schemas/src/attributes.types';
-import { Character, GameDef } from '../../../pagemaster-schemas/src/pagemaster.types';
-import { SkillInstance } from '../../../pagemaster-schemas/src/skills.types';
+import { Attributes } from '@pagemaster/common/attributes.types';
+import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
+import { SkillInstance } from '@pagemaster/common/skills.types';
 import { ITEM_ICONS } from '../gallery/item-icons.const';
 import { PictureControlComponent } from './avatar/picture-control.component';
 import { Bar, BarsControlComponent } from './bars/bars-control.component';

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap, tap } from 'rxjs';
-import { GameInstance, Participant } from '../../../pagemaster-schemas/src/pagemaster.types';
+import { GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
 import { CurrentGameInstanceState } from '../../core/current-game-instance.state';
 import { CurrentParticipantState } from '../../core/current-participant.state';
 import { PageMasterRoutes } from '../../core/pagemaster.router';

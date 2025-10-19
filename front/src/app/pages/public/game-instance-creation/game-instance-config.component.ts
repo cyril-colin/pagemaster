@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { switchMap, tap } from 'rxjs';
-import { GameInstance } from '../../../../pagemaster-schemas/src/pagemaster.types';
+import { GameInstance } from '@pagemaster/common/pagemaster.types';
 import { GameInstanceFormComponent } from '../../../core/game/game-instance-form.component';
 import { PageMasterRoutes } from '../../../core/pagemaster.router';
 import { GameInstanceService } from '../../../core/repositories/game-instance.service';

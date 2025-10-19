@@ -1,7 +1,7 @@
 import { computed, inject, Injectable, InputSignal } from '@angular/core';
 import { map, tap } from 'rxjs';
-import { Character } from '../../pagemaster-schemas/src/pagemaster.types';
-import { PageMasterSocketEvents } from '../../pagemaster-schemas/src/socket-events.types';
+import { Character } from '@pagemaster/common/pagemaster.types';
+import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
 import { CurrentGameInstanceState } from './current-game-instance.state';
 import { CurrentParticipantState } from './current-participant.state';
 import { SocketService } from './socket.service';

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Character, GameDef } from '../../../pagemaster-schemas/src/pagemaster.types';
+import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { Bar } from './bars/bars-control.component';
 import { Inventory } from './inventories/inventories-control.component';
 import { Skill } from './skills/skills-control.component';

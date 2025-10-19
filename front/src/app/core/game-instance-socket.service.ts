@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { switchMap, tap } from 'rxjs';
-import { PageMasterSocketEvents } from '../../pagemaster-schemas/src/socket-events.types';
+import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
 import { CurrentGameInstanceState } from './current-game-instance.state';
 import { CurrentSessionState } from './current-session.state';
 import { EventsCenterStateService } from './events-center/events-center.state';

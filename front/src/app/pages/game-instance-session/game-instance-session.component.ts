@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Player } from '../../../pagemaster-schemas/src/pagemaster.types';
+import { Player } from '@pagemaster/common/pagemaster.types';
 import { CurrentSessionState } from '../../core/current-session.state';
 import { GameInstanceService } from '../../core/repositories/game-instance.service';
 import { GameMasterViewComponent } from './master-view/game-master-view.component';

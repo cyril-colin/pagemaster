@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
-import { Character, GameDef } from '../../../pagemaster-schemas/src/pagemaster.types';
+import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { AvatarViewComponent } from './avatar/avatar-view.component';
 import { BarListViewComponent } from './bars/bar-list-view.component';
 import { CharacterAttributesService } from './character-attributes.service';

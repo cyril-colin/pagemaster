@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameInstance, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
 import { CURRENT_PARTICIPANT_CACHE_KEY, CURRENT_PARTICIPANT_TTL, LocalStorageService } from './local-storage.service';
 import { PageMasterRoutes } from './pagemaster.router';
 

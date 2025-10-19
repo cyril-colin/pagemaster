@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output, signal } from '@angular/core';
-import { Character, GameInstance, Player } from '../../../../pagemaster-schemas/src/pagemaster.types';
+import { Character, GameInstance, Player } from '@pagemaster/common/pagemaster.types';
 import { CharacterFormComponent } from '../../../core/character/character-form.component';
 import { CharacterQuickViewComponent } from '../../../core/character/character-quick-view.component';
 

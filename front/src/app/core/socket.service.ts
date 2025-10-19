@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { fromEvent, Observable } from 'rxjs';
 import { io } from 'socket.io-client';
-import { PageMasterSocketEvents, PageMasterSocketEventsPayloads } from '../../pagemaster-schemas/src/socket-events.types';
+import { PageMasterSocketEvents, PageMasterSocketEventsPayloads } from '@pagemaster/common/socket-events.types';
 
 @Injectable({
   providedIn: 'root',

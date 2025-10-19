@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
-import { Item } from '../../../../pagemaster-schemas/src/items.types';
-import { Character, GameInstance, GameMaster, Player } from '../../../../pagemaster-schemas/src/pagemaster.types';
+import { Item } from '@pagemaster/common/items.types';
+import { Character, GameInstance, GameMaster, Player } from '@pagemaster/common/pagemaster.types';
 import { CharacterFormComponent } from '../../../core/character/character-form.component';
 import { ItemFormComponent } from '../../../core/items/item-form.component';
 

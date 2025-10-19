@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router } from '@angular/router';
-import { GameInstance, Participant } from '../../../pagemaster-schemas/src/pagemaster.types';
-import { PageMasterSocketEvents } from '../../../pagemaster-schemas/src/socket-events.types';
+import { GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
+import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
 import { CurrentSessionState } from '../../core/current-session.state';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
 import { SocketService } from '../../core/socket.service';

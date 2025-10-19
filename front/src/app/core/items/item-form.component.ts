@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { Item } from '../../../pagemaster-schemas/src/items.types';
+import { Item } from '@pagemaster/common/items.types';
 
 export type ItemFormControls = {
   id: FormControl<string>,

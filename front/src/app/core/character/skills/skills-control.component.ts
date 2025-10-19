@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Skill as SkillDef, SkillInstance } from '../../../../pagemaster-schemas/src/skills.types';
+import { Skill as SkillDef, SkillInstance } from '@pagemaster/common/skills.types';
 import { SkillListViewComponent } from './skill-list-view.component';
 
 type SkillForm = FormGroup<{

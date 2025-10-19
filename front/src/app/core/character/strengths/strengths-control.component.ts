@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { Attributes } from '../../../../pagemaster-schemas/src/attributes.types';
+import { Attributes } from '@pagemaster/common/attributes.types';
 import { StrengthListViewComponent } from './strength-list-view.component';
 
 export type Strength = {
