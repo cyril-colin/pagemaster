@@ -1,7 +1,7 @@
 import { JSONSchema } from 'json-schema-to-ts';
 
 export enum ENV_VARS {
-  MONGO_URI = "MONGO_PASS",
+  MONGO_URI = "MONGO_URI",
   STATIC_FILES_PATH = "STATIC_FILES_PATH",
   MONGO_DB = "MONGO_DB"
 }
@@ -40,15 +40,6 @@ export type Configuration = {
     level: LogLevel,
     transports: LogTransports,
   }
-  security: {
-    admin: {
-      username: string,
-      password: string,
-    },
-    jwt: {
-      secret: string,
-    }
-  },
 }
 
 export const ConfigurationSchema = {
@@ -129,32 +120,8 @@ export const ConfigurationSchema = {
       },
       "required": ["level", "transports"],
       "additionalProperties": false
-    },
-    "security": {
-      "type": "object",
-      "properties": {
-        "admin": {
-          "type": "object",
-          "properties": {
-            "username": { "type": "string" },
-            "password": { "type": "string" }
-          },
-          "required": ["username", "password"],
-          "additionalProperties": false
-        },
-        "jwt": {
-          "type": "object",
-          "properties": {
-            "secret": { "type": "string" }
-          },
-          "required": ["secret"],
-          "additionalProperties": false
-        }
-      },
-      "required": ["admin", "jwt"],
-      "additionalProperties": false
     }
   },
-  "required": ["port", "host", "apiPrefix", "staticFilesPath", "cors", "database", "logger", "security"],
+  "required": ["port", "host", "apiPrefix", "staticFilesPath", "cors", "database", "logger"],
   "additionalProperties": false
 } as const satisfies JSONSchema;

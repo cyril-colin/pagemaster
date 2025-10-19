@@ -4,19 +4,19 @@ services:
     ports:
       - "27017:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-pagemaster}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS:-pagemaster123}
-      MONGO_INITDB_DATABASE: ${MONGO_DB:-pagemaster}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+      MONGO_INITDB_DATABASE: ${MONGO_DB}
     volumes:
       - mongodb_data:/data/db
-      - ./mongo-init:/docker-entrypoint-initdb.d
+      - ./back/mongo-init:/docker-entrypoint-initdb.d
   pagemaster:
-    image: pagemaster-rpg:latest
+    image: pagemaster:latest
     ports:
       - "3000:8080"
     environment:
-      MONGO_URI: mongodb://${MONGO_USER:-pagemaster}:${MONGO_PASS:-pagemaster123}@mongodb:27017/${MONGO_DB:-pagemaster}
-      MONGO_DB: ${MONGO_DB:-pagemaster}
+      MONGO_URI: mongodb://${MONGO_USER}:${MONGO_PASS}@mongodb:27017/${MONGO_DB}
+      MONGO_DB: ${MONGO_DB}
     depends_on:
       - mongodb
 

@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "docker compose up -d && tsc-watch --onSuccess \"node -r source-map-support/register dist/index.js\"",
-    "build": "tsc --project ./tsconfig.json && docker build . -t registry.gitlab.com/cadual/pagemaster/pagemaster-back:$(node -p \"require('./package.json').version\") -t registry.gitlab.com/cadual/pagemaster/pagemaster-back:latest",
-    "docker:start": "docker run -it -v $(pwd)/configuration.json:/app/configuration.json registry.gitlab.com/cadual/pagemaster/pagemaster-back:latest",
-    "docker:publish": "docker push registry.gitlab.com/cadual/pagemaster/pagemaster-back:$(node -p \"require('./package.json').version\") && docker push registry.gitlab.com/cadual/pagemaster/pagemaster-back:latest",
+    "build": "tsc --project ./tsconfig.json",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
@@ -32,10 +30,7 @@
     "@types/node": "^22.15.29",
     "ajv": "^8.17.1",
     "date-fns": "^4.1.0",
-    "discord-api-types": "^0.38.13",
-    "discord-interactions": "^4.3.0",
     "express": "^5.1.0",
-    "express-jwt": "^8.5.1",
     "json-schema-to-ts": "^3.1.1",
     "mongodb": "^6.19.0",
     "socket.io": "^4.8.1",

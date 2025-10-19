@@ -1,5 +1,5 @@
 {
-  "port": 3000,
+  "port": 8080,
   "host": "localhost",
   "apiPrefix": "/api",
   "staticFilesPath": "../front/dist/pagemaster-front/browser",
@@ -17,44 +17,6 @@
       "dbName": "pagemaster"
     }
   },
-  "downloadPaths": {
-    "films": "/data/films",
-    "series": "/data/series"
-  },
-  "bots": {
-    "discord": {
-      "http": {
-        "baseUrl": "https://discord.com/api/v10",
-        "appId": "changeme",
-        "token": "changeme"
-      },
-      "bot": {
-        "publicKey": "changeme"
-      }
-    }
-  },
-  "trackers": {
-    "sharewood": {
-      "tracker": {
-        "categoriesMapper": {
-          "films": [9, 11, 13],
-          "series": [10, 12, 14]
-        },
-        "torrentPageBaseUrl": "https://www.sharewood.tv/torrents/"
-      },
-      "http": {
-        "baseUrl": "https://sharewood.tv/api",
-        "token": "changeme"
-      },
-      "downloadPath": "./downloads/"
-    }
-  },
-  "torrentClient": {
-    "deluge": {
-      "baseUrl": "https://changeme/json",
-      "password": "changeme"
-    }
-  },
   "logger": {
     "level": "debug",
     "transports": [
@@ -67,14 +29,5 @@
         "logLevel": "error"
       }
     ]
-  },
-  "security": {
-    "admin": {
-      "username": "admin",
-      "password": "admin"
-    },
-    "jwt": {
-      "secret": "changeme"
-    }
   }
 }

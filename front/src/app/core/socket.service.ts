@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
+import { PageMasterSocketEvents, PageMasterSocketEventsPayloads } from '@pagemaster/common/socket-events.types';
 import { fromEvent, Observable } from 'rxjs';
 import { io } from 'socket.io-client';
-import { PageMasterSocketEvents, PageMasterSocketEventsPayloads } from '@pagemaster/common/socket-events.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SocketService {
-  private socket = io('http://localhost:8080', {autoConnect: false});
+  private socket = io('/', {autoConnect: false});
   
 
   connect(): void {

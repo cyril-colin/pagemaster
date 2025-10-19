@@ -1,7 +1,6 @@
 
 import Ajv from "ajv";
 import { ConfigurationService } from './config/configuration.service';
-import { AuthService } from './core/auth.service';
 import { LoggerService } from './core/logger.service';
 import { PageMasterMongoClient } from './core/pagemaster-mongo-client';
 import { Router } from './core/router/route-registry';
@@ -11,8 +10,7 @@ const ajv = new Ajv({ allErrors: true });
 const configuration = new ConfigurationService(ajv);
 configuration.init();
 const logger = new LoggerService(configuration);
-const authService = new AuthService(configuration);
-const mongoClient = new PageMasterMongoClient(logger, configuration, true);
+const mongoClient = new PageMasterMongoClient(logger, configuration, false);
 
 export const router = new Router(logger, ajv);
 
@@ -21,7 +19,6 @@ export const serviceContainer = {
   logger,
   configuration,
   router,
-  authService,
   socketServerService,
   mongoClient,
   jsonSchemaValidator: ajv,
