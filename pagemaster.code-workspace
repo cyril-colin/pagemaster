@@ -4,13 +4,19 @@
       "path": "."
     },
     {
-      "path": "../pagemaster-back"
+      "path": "./back",
+      "name": "back"
     },
     {
-      "path": "../pagemaster-front-games"
-    }
+      "path": "./front",
+      "name": "front"
+    },
   ],
   "settings": {
+    "files.exclude": {
+      "back": true,
+      "front": true
+    },
     "files.autoSave": "off",
     "git.enableSmartCommit": true,
     "editor.renderControlCharacters": true,

@@ -1,0 +1,44 @@
+{
+  "name": "pagemaster-back",
+  "version": "1.0.0-dev.0",
+  "description": "A proxy server between a front end and any torrent server like deluge",
+  "main": "index.js",
+  "scripts": {
+    "start": "docker compose up -d && tsc-watch --onSuccess \"node -r source-map-support/register dist/index.js\"",
+    "build": "tsc --project ./tsconfig.json && docker build . -t registry.gitlab.com/cadual/pagemaster/pagemaster-back:$(node -p \"require('./package.json').version\") -t registry.gitlab.com/cadual/pagemaster/pagemaster-back:latest",
+    "docker:start": "docker run -it -v $(pwd)/configuration.json:/app/configuration.json registry.gitlab.com/cadual/pagemaster/pagemaster-back:latest",
+    "docker:publish": "docker push registry.gitlab.com/cadual/pagemaster/pagemaster-back:$(node -p \"require('./package.json').version\") && docker push registry.gitlab.com/cadual/pagemaster/pagemaster-back:latest",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "@types/express": "^5.0.2",
+    "@types/jest": "^30.0.0",
+    "@types/source-map-support": "^0.5.10",
+    "eslint": "^9.28.0",
+    "jest": "^30.0.5",
+    "source-map-support": "^0.5.21",
+    "ts-jest": "^29.4.0",
+    "tsc-watch": "^7.1.1",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.1"
+  },
+  "dependencies": {
+    "@types/mongodb": "^4.0.6",
+    "@types/node": "^22.15.29",
+    "ajv": "^8.17.1",
+    "date-fns": "^4.1.0",
+    "discord-api-types": "^0.38.13",
+    "discord-interactions": "^4.3.0",
+    "express": "^5.1.0",
+    "express-jwt": "^8.5.1",
+    "json-schema-to-ts": "^3.1.1",
+    "mongodb": "^6.19.0",
+    "socket.io": "^4.8.1",
+    "winston": "^3.17.0"
+  }
+}

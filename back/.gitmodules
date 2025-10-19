@@ -1,0 +1,3 @@
+[submodule "src/pagemaster-schemas"]
+	path = src/pagemaster-schemas
+	url = git@github.com:cyril-colin/pagemaster-common.git

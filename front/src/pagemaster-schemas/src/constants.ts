@@ -1,0 +1,1 @@
+export const HEADER_CURRENT_PARTICIPANT = 'current-participant-id';
