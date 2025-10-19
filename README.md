@@ -3,7 +3,12 @@
 PageMaster is a tool for improvised tabletop role-playing games. Connected players can see in real-time their HP,
 inventories, statuses (and much more!) updated by the dungeon master.
 
-## Getting Started
+## Give it a try
+
+You can test this application by running the [docker image (with a mongodb)](https://hub.docker.com/r/cyrilbr/pagemaster)
+
+
+## Getting Started (Dev)
 
 ```bash
 git clone git@github.com:cyril-colin/pagemaster.git
@@ -11,6 +16,10 @@ cd pagemaster
 npm i --prefix ./back
 npm i --prefix ./front
 code pagemaster.code-workspace
+
+# run both commands in dedicated terminal
+cd ./back && npm start
+cd ./front && npm start 
 ```
 
 ## Why Monorepo?

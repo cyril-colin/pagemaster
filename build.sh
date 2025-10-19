@@ -8,4 +8,4 @@ npm --prefix ./front install
 npm --prefix ./front run build
 
 VERSION=$(node -p -e "require('./back/package.json').version")
-docker build -t pagemaster:$VERSION -t pagemaster:latest .
+docker build -t cyrilbr/pagemaster:$VERSION -t cyrilbr/pagemaster:latest .
