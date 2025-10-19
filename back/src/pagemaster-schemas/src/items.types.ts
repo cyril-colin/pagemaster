@@ -6,4 +6,3 @@ export type Item = {
   weight: number,
 }
 
-export type ItemInstance = {id: Item['id']};

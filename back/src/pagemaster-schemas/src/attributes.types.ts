@@ -1,4 +1,5 @@
-import { ItemInstance } from './items.types';
+import { Item } from './items.types';
+
 export type AbstractAttribute = {
   id: string,
   type: unknown,
@@ -39,7 +40,7 @@ export type AttributeInventory = AbstractAttribute &  {
 export type Attributes = {
   bar: {definition: AttributeBar, instance: { id: AttributeBar['id'], current: number}},
   status: {definition: AttributeStatus, instance: { id: AttributeStatus['id'], current: string}},
-  inventory: {definition: AttributeInventory, instance: { id: AttributeInventory['id'], current: ItemInstance[]}},
+  inventory: {definition: AttributeInventory, instance: { id: AttributeInventory['id'], current: Item[]}},
   strength: {definition: AttributeStrength, instance: { id: AttributeStrength['id']}},
   weakness: {definition: AttributeWeakness, instance: { id: AttributeWeakness['id']}},
 }

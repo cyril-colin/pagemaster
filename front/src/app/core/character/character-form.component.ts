@@ -48,7 +48,12 @@ type CharacterFormType = {
       <app-bars-control [bars]="playerBars()" (newBars)="setNewBars($event)"/>
       <app-status-control [statuses]="playerStatuses()" (newStatuses)="setNewStatuses($event)"/>
 
-      <app-inventory-list-view [inventories]="playerInventories()" [character]="existingCharacter()" />
+      <app-inventory-list-view
+        [inventories]="playerInventories()"
+        [character]="existingCharacter()"
+        (updatedInventory)="setNewInventory($event)"
+        (deleteInventory)="deleteInventory($event)"
+      />
 
       <app-strengths-control [strengths]="playerStrengths()" (newStrengths)="setNewStrengths($event)"/>
       <app-weaknesses-control [weaknesses]="playerWeaknesses()" (newWeaknesses)="setNewWeaknesses($event)"/>
@@ -186,6 +191,27 @@ export class CharacterFormComponent  {
   protected setNewInventories(inventories: Inventory[]): void {
     const selectedInventories = inventories.filter(i => i.selected).map(i => i.instance);
     this.form().controls.attributes.controls.inventory.setValue(selectedInventories);
+    this.submit();
+  }
+
+  protected setNewInventory(inventory: Inventory): void {
+    const currentInventories = this.form().controls.attributes.controls.inventory.value;
+    const inventoryToEditIndex = currentInventories.findIndex(inv => inv.id === inventory.instance.id);
+    if (inventoryToEditIndex === -1) {
+      currentInventories.push(inventory.instance);
+    } else {
+      currentInventories[inventoryToEditIndex] = inventory.instance;
+    }
+
+
+    this.form().controls.attributes.controls.inventory.setValue(currentInventories);
+    this.submit();
+  }
+
+  protected deleteInventory(inventory: Inventory): void {
+    const currentInventories = this.form().controls.attributes.controls.inventory.value;
+    const updatedInventories = currentInventories.filter(inv => inv.id !== inventory.instance.id);
+    this.form().controls.attributes.controls.inventory.setValue(updatedInventories);
     this.submit();
   }
 

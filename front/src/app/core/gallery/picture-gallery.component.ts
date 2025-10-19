@@ -33,7 +33,7 @@ export type PictureItem = { name: string, path: string };
         [disabled]="currentPage() === 1"
         (click)="goToPage(1)"
       >
-        First
+        <<
       </button>
       <button 
         type="button" 
@@ -41,10 +41,10 @@ export type PictureItem = { name: string, path: string };
         [disabled]="currentPage() === 1"
         (click)="previousPage()"
       >
-        Previous
+        <
       </button>
       <span class="pagination-info">
-        Page {{ currentPage() }} of {{ totalPages() }} ({{ filteredItems().length }} items)
+        {{ currentPage() }} / {{ totalPages() }} ({{ filteredItems().length }} items)
       </span>
       <button 
         type="button" 
@@ -52,7 +52,7 @@ export type PictureItem = { name: string, path: string };
         [disabled]="currentPage() === totalPages()"
         (click)="nextPage()"
       >
-        Next
+        >
       </button>
       <button 
         type="button" 
@@ -60,7 +60,7 @@ export type PictureItem = { name: string, path: string };
         [disabled]="currentPage() === totalPages()"
         (click)="goToPage(totalPages())"
       >
-        Last
+        >>
       </button>
     </div>
   `,

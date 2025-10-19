@@ -10,7 +10,12 @@ import { InventoryViewComponent } from './inventory-view.component';
   selector: 'app-inventory-list-view',
   template: `
     @for(inventory of allowedInventories(); track inventory.instance.id) {
-      <app-inventory-view [inventory]="inventory" (click)="onInventoryClick(inventory)"></app-inventory-view>
+      <app-inventory-view [inventory]="inventory"></app-inventory-view>
+      <app-inventory-view-details
+        [inventory]="inventory"
+        [character]="character()"
+        (newInventory)="updatedInventory.emit($event)"
+      />
       @if(isManager()) {
         <button (click)="deleteInventory.emit(inventory)">🗑️</button>
       }
@@ -31,12 +36,16 @@ import { InventoryViewComponent } from './inventory-view.component';
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [InventoryViewComponent],
+  imports: [
+    InventoryViewComponent,
+    InventoryViewDetailsComponent,
+  ],
 })
 export class InventoryListViewComponent {
   private currentSessionState = inject(CurrentSessionState);
   public character = input.required<Character>();
   public inventories = input.required<Inventory[]>();
+  public updatedInventory = output<Inventory>();
   public deleteInventory = output<Inventory>();
   protected modalService = inject(ModalService);
   protected allowedInventories = computed(() => {
@@ -50,9 +59,4 @@ export class InventoryListViewComponent {
 
   protected isManager = this.currentSessionState.allowedToEditCharacter(this.character);
 
-  protected onInventoryClick(inventory: Inventory) {
-    this.modalService.open(InventoryViewDetailsComponent, { 
-      character: this.character(),
-      inventory });
-  }
 }

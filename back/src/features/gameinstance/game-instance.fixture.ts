@@ -206,19 +206,11 @@ const defaultGameInstance: GameInstance = {
           "inventory": [
             {
               "id": "backpack",
-              "current": [
-                {
-                  "id": "Armue orc"
-                }
-              ]
+              "current": []
             },
             {
               "id": "secret-pouch",
-              "current": [
-                {
-                  "id": "knife"
-                }
-              ]
+              "current": []
             }
           ],
           "strength": [
