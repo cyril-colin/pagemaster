@@ -2,7 +2,6 @@ import express from 'express';
 import { Server } from 'socket.io';
 import { spaFallbackMiddleware } from './core/spa-fallback.middleware';
 import { serviceContainer } from './dependency-container';
-import { PublicController } from './features/access/public.controller';
 import { GameDefController } from './features/gamedef/gamedef.controller';
 import { GameInstanceController } from './features/gameinstance/game-instance.controller';
 
@@ -16,7 +15,6 @@ if (staticPath) {
 }
 
 const controllers = [
-  new PublicController(serviceContainer.configuration),
   new GameDefController(serviceContainer.mongoClient),
   new GameInstanceController(serviceContainer.mongoClient, serviceContainer.socketServerService),
 ];
