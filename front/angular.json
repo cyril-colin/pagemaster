@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pagemaster-front-games": {
+    "pagemaster-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -59,10 +59,10 @@
           "options": {},
           "configurations": {
             "production": {
-              "buildTarget": "pagemaster-front-games:build:production"
+              "buildTarget": "pagemaster-front:build:production"
             },
             "development": {
-              "buildTarget": "pagemaster-front-games:build:development"
+              "buildTarget": "pagemaster-front:build:development"
             }
           },
           "defaultConfiguration": "development"

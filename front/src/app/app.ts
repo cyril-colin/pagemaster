@@ -39,7 +39,7 @@ import { PageMasterRoutes } from './core/pagemaster.router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  protected title = 'pagemaster-front-games';
+  protected title = 'pagemaster-front';
   protected currentSession = inject(CurrentSessionState);
   protected routes = PageMasterRoutes();
 

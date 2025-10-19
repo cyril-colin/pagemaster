@@ -1,6 +1,6 @@
 import Ajv from 'ajv';
 import * as fs from 'fs';
-import { Configuration, ConfigurationSchema } from './configuration.types';
+import { Configuration, ConfigurationSchema, ENV_VARS } from './configuration.types';
 
 export class ConfigurationServiceError extends Error {};
 
@@ -14,6 +14,15 @@ export class ConfigurationService {
   constructor(
     private schemaValidator: Ajv,
   ) {}
+
+  private getEnvVars(): Record<ENV_VARS, string> {
+    const envVars: Record<ENV_VARS, string> = {
+      [ENV_VARS.MONGO_URI]: process.env[ENV_VARS.MONGO_URI] || '',
+      [ENV_VARS.MONGO_DB]: process.env[ENV_VARS.MONGO_DB] || '',
+      [ENV_VARS.STATIC_FILES_PATH]: process.env[ENV_VARS.STATIC_FILES_PATH] || '',
+    };
+    return envVars;
+  }
 
   public init() {
     if (!fs.existsSync(ConfigurationService.DIR_CONFIG)) {
@@ -32,6 +41,14 @@ export class ConfigurationService {
     if (!this.config) {
       throw new ConfigurationServiceError('Configuration not initialized. Call init() first.');
     }
-    return this.config;
+    return this.applyEnvVarsToConfig(this.config, this.getEnvVars());
+  }
+
+  private applyEnvVarsToConfig(config: Configuration, envVars: Record<ENV_VARS, string>): Configuration {
+    const updatedConfig = structuredClone(config);
+    updatedConfig.database.mongodb.url = envVars[ENV_VARS.MONGO_URI] || updatedConfig.database.mongodb.url;
+    updatedConfig.database.mongodb.dbName = envVars[ENV_VARS.MONGO_DB] || updatedConfig.database.mongodb.dbName;
+    updatedConfig.staticFilesPath = envVars[ENV_VARS.STATIC_FILES_PATH] || updatedConfig.staticFilesPath;
+    return updatedConfig;
   }
 }

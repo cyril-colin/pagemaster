@@ -1,10 +1,8 @@
-import { Request, Response } from 'express';
 import { FromSchema, JSONSchema } from 'json-schema-to-ts';
 import jwt from 'jsonwebtoken';
 import { ConfigurationService } from '../../config/configuration.service';
-import { Get, Post } from '../../core/router/controller.decorators';
+import { Post } from '../../core/router/controller.decorators';
 import { HttpUnauthorizedError } from '../../core/router/http-errors';
-import { ROOT_HTML } from './index.html';
 
 const RequestLoginBodySchema = {
   "type": "object",
@@ -24,13 +22,6 @@ export class PublicController {
     private configuration: ConfigurationService,
   ) {
 
-  }
-
-  @Get('/', { withoutApiPrefix: true, skipAutomaticResponse: true })
-  public home(body: unknown, params: unknown, query: unknown, req: Request, res: Response): void {
-    res.setHeader('Content-Type', 'text/html')
-      .status(200)
-      .send(ROOT_HTML);
   }
 
   @Post('/login', { jsonSchemaValidation: {

@@ -1,4 +1,11 @@
 import { JSONSchema } from 'json-schema-to-ts';
+
+export enum ENV_VARS {
+  MONGO_URI = "MONGO_PASS",
+  STATIC_FILES_PATH = "STATIC_FILES_PATH",
+  MONGO_DB = "MONGO_DB"
+}
+
 export type LogLevel = "error" | "warn" | "info" | "debug" | "verbose" | "silly";
 
 export type LogTransport =
@@ -15,6 +22,7 @@ export type Configuration = {
   port: number,
   host: string,
   apiPrefix: string,
+  staticFilesPath: string,
   cors: {
     allowedOrigins: string[],
     allowedMethods: string[],
@@ -51,6 +59,7 @@ export const ConfigurationSchema = {
     "port": { "type": "integer" },
     "host": { "type": "string" },
     "apiPrefix": { "type": "string" },
+    "staticFilesPath": { "type": "string" },
     "cors": {
       "type": "object",
       "properties": {
@@ -146,6 +155,6 @@ export const ConfigurationSchema = {
       "additionalProperties": false
     }
   },
-  "required": ["port", "host", "apiPrefix", "cors", "database", "logger", "security"],
+  "required": ["port", "host", "apiPrefix", "staticFilesPath", "cors", "database", "logger", "security"],
   "additionalProperties": false
 } as const satisfies JSONSchema;

@@ -43,9 +43,11 @@ app.use((req: express.Request, res: express.Response, next: express.NextFunction
 });
 
 app.use(express.json());
-// app.use(...serviceContainer.authService.getJWTMiddlware());
-// app.use(serviceContainer.authService.getUnauthorizedHandler());
-
+const staticPath = serviceContainer.configuration.getConfig().staticFilesPath;
+if (staticPath) {
+  app.use('/', express.static(staticPath));
+  serviceContainer.logger.info('Static files served from', {path: staticPath });
+}
 
 const controllers = [
   new PublicController(serviceContainer.configuration),
