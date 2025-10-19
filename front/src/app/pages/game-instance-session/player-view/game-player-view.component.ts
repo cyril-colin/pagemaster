@@ -8,7 +8,6 @@ import { CharacterQuickViewComponent } from '../../../core/character/character-q
   template: `
     @let player = currentPlayer();
     @let game = currentGame();
-    <h2>Game player view for {{ player.name }} - {{ game.gameDef.name }}</h2>
     <button (click)="mode.set('list')">Players</button>
     <button (click)="mode.set('state')">My Status</button>
     

@@ -10,8 +10,6 @@ import { ItemFormComponent } from '../../../core/items/item-form.component';
 
     @let players = currentPlayers();
     @let game = currentGame();
-    <h2>Game master view for {{ gameMaster().name }} - {{ game.gameDef.name }}</h2>
-
     <div>
       <button (click)="switchCreateItemMode()">Create item</button>
       @if (createItemMode()) {

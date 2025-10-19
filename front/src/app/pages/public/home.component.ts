@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
+import { MainTitleService } from 'src/app/core/main-bar/main-title.service';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
 import { GameInstanceService } from '../../core/repositories/game-instance.service';
 
@@ -47,4 +48,8 @@ export class HomeComponent {
   protected routes = PageMasterRoutes();
   protected gameInstanceService = inject(GameInstanceService);
   protected instanceList = toSignal(this.gameInstanceService.getAllGameInstances(), { initialValue: [] });
+
+  constructor() {
+    inject(MainTitleService).setTitle('');
+  }
 }
