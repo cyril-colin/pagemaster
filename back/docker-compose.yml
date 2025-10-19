@@ -9,7 +9,6 @@ services:
       MONGO_INITDB_DATABASE: pagemaster
     volumes:
       - mongodb_data:/data/db
-      - ./mongo-init:/docker-entrypoint-initdb.d
 
 volumes:
   mongodb_data:

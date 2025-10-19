@@ -1,46 +1,12 @@
 import express from 'express';
 import { Server } from 'socket.io';
+import { spaFallbackMiddleware } from './core/spa-fallback.middleware';
 import { serviceContainer } from './dependency-container';
 import { PublicController } from './features/access/public.controller';
 import { GameDefController } from './features/gamedef/gamedef.controller';
 import { GameInstanceController } from './features/gameinstance/game-instance.controller';
 
 const app = express();
-
-// Custom CORS middleware - handles both simple and preflight requests
-app.use((req: express.Request, res: express.Response, next: express.NextFunction): void => {
-  const config = serviceContainer.configuration.getConfig();
-  
-  // Set CORS headers
-  res.appendHeader('source', 'Pagemaster API');
-  
-  const allowedOrigins = config.cors.allowedOrigins.join(', ');
-  const allowedMethods = config.cors.allowedMethods.join(', ');
-  const isWildcardOrigin = config.cors.allowedOrigins.includes('*');
-  const isWildcardMethods = config.cors.allowedMethods.includes('*');
-  
-    res.header('Access-Control-Allow-Origin', allowedOrigins);
-    res.header('Access-Control-Allow-Methods', allowedMethods);
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, current-participant-id');
-  
-  // Only set credentials to true if we're not using wildcards
-  // Browsers reject wildcard + credentials combination for security
-  if (!isWildcardOrigin && !isWildcardMethods) {
-    res.header('Access-Control-Allow-Credentials', 'true');
-  }
-  
-  res.header('Access-Control-Max-Age', '86400'); // Cache preflight for 24 hours
-  
-  // Handle preflight OPTIONS requests
-  if (req.method === 'OPTIONS') {
-    serviceContainer.logger.debug('access CORS preflight', { url: req.url, from: req.ip });
-    res.status(200).end();
-    return;
-  }
-  
-  serviceContainer.logger.debug('access', { method: req.method.padEnd(6), url: req.url, from: req.ip });
-  next();
-});
 
 app.use(express.json());
 const staticPath = serviceContainer.configuration.getConfig().staticFilesPath;
@@ -57,7 +23,12 @@ const controllers = [
 controllers.forEach(controller => serviceContainer.router.registerRoutes(controller, app));
 serviceContainer.logger.debug('Registered controllers', {routes: serviceContainer.router.debugRoutes()});
 
-// Handle 404 - Unknown routes
+// SPA fallback - serve index.html for all non-API routes
+// This allows Angular router to handle client-side routing
+const apiPrefix = serviceContainer.configuration.getConfig().apiPrefix;
+app.use(spaFallbackMiddleware(staticPath, apiPrefix, serviceContainer.logger));
+
+// Handle 404 - Unknown routes (primarily for API routes that don't exist)
 app.use((req: express.Request, res: express.Response) => {
   serviceContainer.logger.warn('Route not found', { method: req.method, url: req.url, from: req.ip });
   res.status(404).json({
@@ -95,6 +66,8 @@ const server = app.listen(serviceContainer.configuration.getConfig().port, async
     await serviceContainer.mongoClient.connect();
     await serviceContainer.mongoClient.initializeDatabase();
     serviceContainer.logger.info('MongoDB connection established and database initialized');
+    await serviceContainer.gameDefFixture.initFirstGameDef();
+    await serviceContainer.gameInstanceFixture.initFirstGameInstance();
   } catch (error) {
     serviceContainer.logger.error('Failed to connect to MongoDB', { 
       error: error instanceof Error ? error.message : String(error) 
@@ -103,14 +76,7 @@ const server = app.listen(serviceContainer.configuration.getConfig().port, async
   }
 })
 
-const config = serviceContainer.configuration.getConfig();
-const io = new Server(server, {
-  cors: {
-    origin: config.cors.allowedOrigins.includes('*') ? true : config.cors.allowedOrigins,
-    methods: config.cors.allowedMethods.includes('*') ? ["GET", "POST"] : config.cors.allowedMethods,
-    credentials: !config.cors.allowedOrigins.includes('*') && !config.cors.allowedMethods.includes('*')
-  }
-});
+const io = new Server(server);
 serviceContainer.socketServerService.init(io);
 
 

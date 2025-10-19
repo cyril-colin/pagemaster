@@ -1,0 +1,15 @@
+module.exports = {
+  '/api': {
+    target: 'http://localhost:8080',
+    secure: false,
+    logLevel: 'debug',
+    changeOrigin: true
+  },
+  '/socket.io': {
+    target: 'http://localhost:8080',
+    secure: false,
+    logLevel: 'debug',
+    changeOrigin: true,
+    ws: true
+  }
+};

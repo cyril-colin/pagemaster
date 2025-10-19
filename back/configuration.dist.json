@@ -3,17 +3,9 @@
   "host": "localhost",
   "apiPrefix": "/api",
   "staticFilesPath": "../front/dist/pagemaster-front/browser",
-  "cors": {
-    "allowedOrigins": [
-      "*"
-    ],
-    "allowedMethods": [
-      "*"
-    ]
-  },
   "database": {
     "mongodb": {
-      "url": "mongodb://pagemaster-app:pagemaster-app-password@localhost:27017/pagemaster",
+      "url": "mongodb://pagemaster:pagemaster123@localhost:27017/pagemaster?authSource=admin",
       "dbName": "pagemaster"
     }
   },
@@ -22,11 +14,6 @@
     "transports": [
       {
         "type": "console"
-      },
-      {
-        "type": "file",
-        "filename": "logger.log",
-        "logLevel": "error"
       }
     ]
   }

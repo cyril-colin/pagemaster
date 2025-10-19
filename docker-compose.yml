@@ -9,13 +9,12 @@ services:
       MONGO_INITDB_DATABASE: ${MONGO_DB}
     volumes:
       - mongodb_data:/data/db
-      - ./back/mongo-init:/docker-entrypoint-initdb.d
   pagemaster:
     image: pagemaster:latest
     ports:
       - "3000:8080"
     environment:
-      MONGO_URI: mongodb://${MONGO_USER}:${MONGO_PASS}@mongodb:27017/${MONGO_DB}
+      MONGO_URI: mongodb://${MONGO_USER}:${MONGO_PASS}@mongodb:27017/${MONGO_DB}?authSource=admin
       MONGO_DB: ${MONGO_DB}
     depends_on:
       - mongodb

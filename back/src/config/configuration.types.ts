@@ -23,10 +23,6 @@ export type Configuration = {
   host: string,
   apiPrefix: string,
   staticFilesPath: string,
-  cors: {
-    allowedOrigins: string[],
-    allowedMethods: string[],
-  },
   database: {
     mongodb: {
       url: string,
@@ -51,21 +47,6 @@ export const ConfigurationSchema = {
     "host": { "type": "string" },
     "apiPrefix": { "type": "string" },
     "staticFilesPath": { "type": "string" },
-    "cors": {
-      "type": "object",
-      "properties": {
-        "allowedOrigins": {
-          "type": "array",
-          "items": { "type": "string" }
-        },
-        "allowedMethods": {
-          "type": "array",
-          "items": { "type": "string" }
-        }
-      },
-      "required": ["allowedOrigins", "allowedMethods"],
-      "additionalProperties": false
-    },
     "database": {
       "type": "object",
       "properties": {
@@ -122,6 +103,6 @@ export const ConfigurationSchema = {
       "additionalProperties": false
     }
   },
-  "required": ["port", "host", "apiPrefix", "staticFilesPath", "cors", "database", "logger"],
+  "required": ["port", "host", "apiPrefix", "staticFilesPath", "database", "logger"],
   "additionalProperties": false
 } as const satisfies JSONSchema;

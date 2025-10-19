@@ -2,8 +2,8 @@
 FROM node:22-alpine
 # Set working directory
 WORKDIR /app
-COPY configuration.dist.json ./configuration.json
-
+COPY back/configuration.dist.json ./configuration.json
+RUN node -e "const fs=require('fs');const p='configuration.json';const c=JSON.parse(fs.readFileSync(p,'utf8'));c.staticFilesPath='./front';fs.writeFileSync(p,JSON.stringify(c,null,2));"
 COPY back/dist ./back
 COPY back/package-lock.json ./back/package-lock.json
 COPY back/package.json ./back/package.json
