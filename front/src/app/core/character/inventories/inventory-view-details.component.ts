@@ -1,40 +1,73 @@
 import { ChangeDetectionStrategy, Component, inject, input, linkedSignal, output } from '@angular/core';
-import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
 import { CurrentSessionState } from '../../current-session.state';
-import { ITEM_ICONS } from '../../gallery/item-icons.const';
-import { PictureGalleryComponent, PictureItem } from '../../gallery/picture-gallery.component';
-import { ModalService } from '../../modal';
-import { Inventory } from './inventories-control.component';
+import { Inventory } from './inventory.types';
 
 @Component({
   selector: 'app-inventory-view-details',
   template: `
     @let inv = inventory();
     
-    <ul>
+    <div class="items">
       @for(item of inv.instance.current; track item.id) {
-        <img [src]="item.picture" [alt]="item.name" width="32" height="32"/>
-        @if(isManager()) {
-          <button (click)="deleteItem(item)">🗑️</button>
-        }
+        <div class="item">
+          <img [src]="item.picture" [alt]="item.name" width="32" height="32"/>
+          @if(isManager()) {
+            <span class="delete" (click)="deleteItem(item)" title="Remove">×</span>
+          }
+        </div>
       }
-    </ul>
-
-    @if(isManager()) {
-      <button (click)="addItem()">➕</button>
-    }
+    </div>
   `,
   styles: [`
     :host {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
       gap: var(--gap-medium);
       width: 100%;
+      padding-top: var(--gap-small);
+    }
+
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--gap-small);
+    }
+
+    .item {
+      position: relative;
+      height: var(--icon-button-size);
+    }
+
+    .delete {
+      position: absolute;
+      top: -6px;
+      right: -6px;
+      width: var(--delete-button-size);
+      height: var(--delete-button-size);
+      display: grid;
+      place-items: center;
+      background: var(--color-danger);
+      color: white;
+      border-radius: 50%;
+      font-size: var(--text-size-small);
+      line-height: 0;
+      cursor: pointer;
+      opacity: 0.5;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .delete:hover {
+      opacity: 1;
+      background: var(--color-danger-hover);
+      transform: scale(1.1);
+    }
+
+    .delete:active {
+      transform: scale(0.95);
     }
   `],
+  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InventoryViewDetailsComponent {
@@ -42,7 +75,6 @@ export class InventoryViewDetailsComponent {
   public inventory = input.required<Inventory>();
   protected inventoryState = linkedSignal(this.inventory);
   public newInventory = output<Inventory>();
-  protected modalService = inject(ModalService);
 
   private currentSessionState = inject(CurrentSessionState);
   protected isManager = this.currentSessionState.allowedToEditCharacter(this.character);
@@ -53,26 +85,4 @@ export class InventoryViewDetailsComponent {
     this.inventoryState.set(state);
     this.newInventory.emit(state);
   }
-
-  protected addItem() {
-    const ref = this.modalService.open(PictureGalleryComponent, {
-      items: ITEM_ICONS,
-    });
-    ref.componentRef.instance.itemSelected.subscribe((picture: PictureItem) => {
-      const newItem: Item = {
-        id: picture.name,
-        name: picture.name,
-        description: '',
-        weight: 0,
-        picture: picture.path,
-      };
-      const state = this.inventoryState();
-
-      state.instance.current.push(newItem);
-      this.inventoryState.set(state);
-      this.newInventory.emit(state);
-      ref.close();
-    });
-    
-  } 
 }

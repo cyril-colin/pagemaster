@@ -1,31 +1,41 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, linkedSignal, output } from '@angular/core';
+import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
 import { CurrentSessionState } from '../../current-session.state';
 import { ModalService } from '../../modal';
-import { Inventory } from './inventories-control.component';
+import { AddItemButtonComponent } from './add-item-button.component';
 import { InventoryViewDetailsComponent } from './inventory-view-details.component';
 import { InventoryViewComponent } from './inventory-view.component';
+import { Inventory } from './inventory.types';
 
 @Component({
   selector: 'app-inventory-list-view',
   template: `
     @for(inventory of allowedInventories(); track inventory.instance.id) {
-      <app-inventory-view [inventory]="inventory"></app-inventory-view>
-      <app-inventory-view-details
-        [inventory]="inventory"
-        [character]="character()"
-        (newInventory)="updatedInventory.emit($event)"
-      />
-      @if(isManager()) {
-        <button (click)="deleteInventory.emit(inventory)">🗑️</button>
-      }
+      <section class="inventory-item">
+        <div class="inventory-header">
+          <app-inventory-view [inventory]="inventory"></app-inventory-view>
+          @if(isManager()) {
+            <button (click)="deleteInventory.emit(inventory)">🗑️</button>
+            <app-add-item-button (itemAdded)="onItemAdded($event, inventory)" />
+          }
+        </div>
+        
+        <app-inventory-view-details
+          [inventory]="inventory"
+          [character]="character()"
+          (newInventory)="updatedInventory.emit($event)"
+        />
+        
+      </section>
+      
     }
   `,
   styles: [`
     :host {
       display: flex;
-      flex-direction: row;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       justify-content: flex-start;
       gap: var(--gap-medium);
       width: 100%;
@@ -33,12 +43,21 @@ import { InventoryViewComponent } from './inventory-view.component';
       button {
         border: none;
       }
+
+      .inventory-header {
+        display: flex;
+        align-items: center;
+        gap: var(--gap-small);
+        width: 100%;
+        justify-content: space-between;
+      }
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     InventoryViewComponent,
     InventoryViewDetailsComponent,
+    AddItemButtonComponent,
   ],
 })
 export class InventoryListViewComponent {
@@ -48,15 +67,39 @@ export class InventoryListViewComponent {
   public updatedInventory = output<Inventory>();
   public deleteInventory = output<Inventory>();
   protected modalService = inject(ModalService);
+
+  protected inventoriesState = linkedSignal(this.inventories);
   protected allowedInventories = computed(() => {
     // @todo : this is a security issue, should be handled server side.
     if (this.isManager()) {
-      return this.inventories();
+      return this.inventoriesState();
     }
 
-    return this.inventories().filter(inv => !inv.def.isSecret);
+    return this.inventoriesState().filter(inv => !inv.def.isSecret);
   });
 
   protected isManager = this.currentSessionState.allowedToEditCharacter(this.character);
+
+  protected onItemAdded(newItem: Item, inventory: Inventory) {
+
+
+    const inventories = this.inventoriesState();
+    let inventoryToUpdate = inventories.find(inv => inv.instance.id === inventory.instance.id);
+    if (inventoryToUpdate) {
+      inventoryToUpdate.instance.current.push(newItem);
+    } else {
+      inventoryToUpdate = {
+        def: inventory.def,
+        instance: {
+          id: inventory.instance.id,
+          current: [newItem],
+        },
+        selected: true,
+      };
+      inventories.push(inventoryToUpdate);
+    }
+    this.inventoriesState.set(inventories);
+    this.updatedInventory.emit(inventoryToUpdate);
+  }
 
 }

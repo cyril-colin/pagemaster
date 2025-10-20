@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { Bar } from './bars/bars-control.component';
-import { Inventory } from './inventories/inventories-control.component';
+import { Inventory } from './inventories/inventory.types';
 import { Skill } from './skills/skills-control.component';
 import { Status } from './statuses/status-control.component';
 import { Strength } from './strengths/strengths-control.component';
