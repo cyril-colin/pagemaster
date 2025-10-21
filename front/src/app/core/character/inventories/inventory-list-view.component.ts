@@ -11,7 +11,7 @@ import { Inventory } from './inventory.types';
 @Component({
   selector: 'app-inventory-list-view',
   template: `
-    @for(inventory of allowedInventories(); track inventory.instance.id) {
+    @for(inventory of selectedInventories(); track inventory.instance.id) {
       <section class="inventory-item">
         <div class="inventory-header">
           <app-inventory-view [inventory]="inventory"></app-inventory-view>
@@ -28,8 +28,19 @@ import { Inventory } from './inventory.types';
         />
         
       </section>
-      
     }
+
+    @if(isManager()) {
+      @for(inventory of availableInventories(); track inventory.instance.id) {
+        <section class="inventory-item">
+          <div class="inventory-header">
+            <app-inventory-view [inventory]="inventory"></app-inventory-view>
+            <button (click)="onItemAdded(null, inventory)">Add it to {{ character().name }}</button>
+          </div>
+        </section>
+      }
+    }
+    
   `,
   styles: [`
     :host {
@@ -69,7 +80,7 @@ export class InventoryListViewComponent {
   protected modalService = inject(ModalService);
 
   protected inventoriesState = linkedSignal(this.inventories);
-  protected allowedInventories = computed(() => {
+  private allowedInventories = computed(() => {
     // @todo : this is a security issue, should be handled server side.
     if (this.isManager()) {
       return this.inventoriesState();
@@ -78,21 +89,29 @@ export class InventoryListViewComponent {
     return this.inventoriesState().filter(inv => !inv.def.isSecret);
   });
 
+  protected selectedInventories = computed(() => {
+    return this.allowedInventories().filter(inv => inv.selected);
+  });
+
+  protected availableInventories = computed(() => {
+    return this.allowedInventories().filter(inv => !inv.selected);
+  });
+
   protected isManager = this.currentSessionState.allowedToEditCharacter(this.character);
 
-  protected onItemAdded(newItem: Item, inventory: Inventory) {
+  protected onItemAdded(newItem: Item | null, inventory: Inventory) {
 
 
     const inventories = this.inventoriesState();
     let inventoryToUpdate = inventories.find(inv => inv.instance.id === inventory.instance.id);
-    if (inventoryToUpdate) {
+    if (newItem && inventoryToUpdate) {
       inventoryToUpdate.instance.current.push(newItem);
     } else {
       inventoryToUpdate = {
         def: inventory.def,
         instance: {
           id: inventory.instance.id,
-          current: [newItem],
+          current: newItem ? [newItem] : [],
         },
         selected: true,
       };
