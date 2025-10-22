@@ -1,7 +1,6 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from '@angular/router';
 import { AuthGuard } from '../pages/game-instance-session/auth.guard';
-import { GameInstanceSessionComponent } from '../pages/game-instance-session/game-instance-session.component';
 import { GameInstancePageComponent } from '../pages/game-instance-session/game-instance.page.component';
 import { PlayerPageComponent } from '../pages/game-instance-session/player.page.component';
 import { GameDefNewComponent } from '../pages/public/game-def-new.component';
@@ -47,15 +46,6 @@ export function PageMasterRoutes() {
         { path: '', redirectTo: 'events', pathMatch: 'full' },
         { path: 'events', component: EventsCenterComponent },
       ],
-    }))(),
-    GameInstanceSessionTest: ((params= ['instanceId'] as const, path = `game-instance-tests/sessions/:${params[0]}`) => ({
-      path,
-      params,
-      interpolated: (id: string) => path.replace(`:${params[0]}`, id),
-      component: GameInstanceSessionComponent,
-      canActivate: [((route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-        return inject(AuthGuard).canActivate(route, state);
-      })] satisfies CanActivateFn[],
     }))(),
     GameInstanceSessionChooseParticipant: ((
       params= ['instanceId'] as const,
