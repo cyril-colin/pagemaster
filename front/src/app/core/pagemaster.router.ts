@@ -24,29 +24,27 @@ export function PageMasterRoutes() {
     }))(),
     GameInstanceJoin: { path: 'game-instance/join', component: GameInstanceJoinComponent },
     GameInstanceLoad: { path: 'game-instance/load', component: GameInstanceLoadComponent },
-    GameInstanceSessionPlayer: ((params= ['instanceId', 'playerId'] as const,
-      path = `game-instance/sessions/:${params[0]}/player/:${params[1]}`) => ({
-      path,
-      params,
-      interpolated: (id: string, playerId: string) => path.replace(`:${params[0]}`, id).replace(`:${params[1]}`, playerId),
-      component: PlayerPageComponent,
-      canActivate: [((route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-        return inject(AuthGuard).canActivate(route, state);
-      })] satisfies CanActivateFn[],
-    }))(),
-    GameInstanceSession: ((params= ['instanceId'] as const, path = `game-instance/sessions/:${params[0]}`) => ({
-      path,
-      params,
-      interpolated: (id: string) => path.replace(`:${params[0]}`, id),
-      component: GameInstancePageComponent,
-      canActivate: [((route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-        return inject(AuthGuard).canActivate(route, state);
-      })] satisfies CanActivateFn[],
-      children: [
-        { path: '', redirectTo: 'events', pathMatch: 'full' },
-        { path: 'events', component: EventsCenterComponent },
-      ],
-    }))(),
+    GameInstanceSession: ((params= ['instanceId', 'playerId'] as const, path = `game-instance/sessions/:${params[0]}`) => {
+      
+      return ({
+        path,
+        params,
+        interpolated: (id: string) => path.replace(`:${params[0]}`, id),
+        component: GameInstancePageComponent,
+        canActivate: [((route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+          return inject(AuthGuard).canActivate(route, state);
+        })] satisfies CanActivateFn[],
+        children: [
+          { path: '', redirectTo: 'events', pathMatch: 'full' },
+          { path: 'events', component: EventsCenterComponent },
+          {
+            path: `player/:${params[1]}`,
+            interpolated: (playerId: string) => `player/:${params[1]}`.replace(`:${params[1]}`, playerId),
+            component: PlayerPageComponent,
+          },
+        ] as const,
+      });
+    })(),
     GameInstanceSessionChooseParticipant: ((
       params= ['instanceId'] as const,
       path = `game-instance/sessions/:${params[0]}/choose-participant`,

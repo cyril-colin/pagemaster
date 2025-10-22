@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { AvatarViewComponent } from './avatar/avatar-view.component';
-import { BarListViewComponent } from './bars/bar-list-view.component';
 import { CharacterAttributesService } from './character-attributes.service';
 import { NameViewComponent } from './names/name-view.component';
 
@@ -14,7 +13,9 @@ import { NameViewComponent } from './names/name-view.component';
       <app-avatar-view [source]="char.picture"/>
       <div class="info">
         <app-name-view [name]="char.name" />
-        <app-bar-list-view [bars]="playerBars()" />
+        @for(bar of playerBars(); track bar.instance.id) {
+          <div>{{ bar.def.name }}: {{ bar.instance.current }} / {{ bar.def.max }}</div>
+        }
       </div>
     </div>
   `,
@@ -53,7 +54,6 @@ import { NameViewComponent } from './names/name-view.component';
   imports: [
     AvatarViewComponent,
     NameViewComponent,
-    BarListViewComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -67,6 +67,6 @@ export class CharacterSmallComponent {
     return this.characterAttributesService.mapPlayerBars(
       this.character(),
       this.gameDef(),
-    );
+    ).filter(bar => bar.selected);
   });
 }

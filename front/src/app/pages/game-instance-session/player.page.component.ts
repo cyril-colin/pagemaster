@@ -36,7 +36,7 @@ export class PlayerPageComponent {
   protected routeParams = toSignal(this.route.paramMap);
 
   protected viewedPlayer = computed(() => {
-    const paramName = PageMasterRoutes().GameInstanceSessionPlayer.params[1];
+    const paramName = PageMasterRoutes().GameInstanceSession.params[1];
     const playerId = this.routeParams()?.get(paramName);
     if (!playerId) {
       throw new Error('Player ID parameter is missing in the route.');
