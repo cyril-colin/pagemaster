@@ -1,0 +1,578 @@
+[
+  {
+    "theme": "fantasy",
+    "path": "ArmorT1.png",
+    "name": "Armor T1",
+    "description": "Basic leather armor providing light protection for adventurers",
+    "weight": 8,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "ArmorT2.png",
+    "name": "Armor T2",
+    "description": "Heavy plate armor offering superior defense against attacks",
+    "weight": 15,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "AxeDoubleT1.png",
+    "name": "Double Axe T1",
+    "description": "A basic double-bladed axe for powerful cleaving strikes",
+    "weight": 4.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "AxeDoubleT2.png",
+    "name": "Double Axe T2",
+    "description": "An enhanced double-bladed axe with superior craftsmanship",
+    "weight": 5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "AxeT1.png",
+    "name": "Axe T1",
+    "description": "A simple battle axe for chopping wood or enemies",
+    "weight": 3,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "AxeT2.png",
+    "name": "Axe T2",
+    "description": "An improved battle axe with a reinforced blade",
+    "weight": 3.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "Backpack.png",
+    "name": "Backpack",
+    "description": "A sturdy adventurer's backpack for carrying supplies and loot",
+    "weight": 1,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "BowT1.png",
+    "name": "Bow T1",
+    "description": "A basic wooden bow for ranged combat",
+    "weight": 1.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "BowT2.png",
+    "name": "Bow T2",
+    "description": "A finely crafted composite bow with greater range and power",
+    "weight": 2,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "Coin.png",
+    "name": "Coin",
+    "description": "A gold coin used as currency throughout the realm",
+    "weight": 0.01,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "DaggerT1.png",
+    "name": "Dagger T1",
+    "description": "A simple iron dagger for close-quarters combat",
+    "weight": 0.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "DaggerT2.png",
+    "name": "Dagger T2",
+    "description": "A sharp steel dagger with an ornate hilt",
+    "weight": 0.6,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "FrameRound.png",
+    "name": "Frame Round",
+    "description": "A decorative round frame for displaying items",
+    "weight": 0.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "FrameSquare.png",
+    "name": "Frame Square",
+    "description": "A decorative square frame for displaying items",
+    "weight": 0.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "GemBlue.png",
+    "name": "Blue Gem",
+    "description": "A precious blue sapphire gemstone",
+    "weight": 0.1,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "GemGreen.png",
+    "name": "Green Gem",
+    "description": "A precious green emerald gemstone",
+    "weight": 0.1,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "GemRed.png",
+    "name": "Red Gem",
+    "description": "A precious red ruby gemstone",
+    "weight": 0.1,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "GemYellow.png",
+    "name": "Yellow Gem",
+    "description": "A precious yellow topaz gemstone",
+    "weight": 0.1,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "HammerT1.png",
+    "name": "Hammer T1",
+    "description": "A basic war hammer for crushing blows",
+    "weight": 4,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "HammerT2.png",
+    "name": "Hammer T2",
+    "description": "A reinforced war hammer with devastating impact",
+    "weight": 4.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "HeartEmpty.png",
+    "name": "Heart Empty",
+    "description": "An empty heart container representing depleted health",
+    "weight": 0.01,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "HeartFull.png",
+    "name": "Heart Full",
+    "description": "A full heart container representing maximum health",
+    "weight": 0.01,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "HeartHalf.png",
+    "name": "Heart Half",
+    "description": "A half heart container representing partial health",
+    "weight": 0.01,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "HelmetT1.png",
+    "name": "Helmet T1",
+    "description": "A basic iron helmet for head protection",
+    "weight": 2,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "HelmetT2.png",
+    "name": "Helmet T2",
+    "description": "A fortified steel helmet with enhanced protection",
+    "weight": 2.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "Letter.png",
+    "name": "Letter",
+    "description": "A sealed letter containing important information",
+    "weight": 0.02,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "Map.png",
+    "name": "Map",
+    "description": "A worn parchment map showing unexplored territories",
+    "weight": 0.1,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "PotionBlue.png",
+    "name": "Blue Potion",
+    "description": "A magical blue potion that restores mana",
+    "weight": 0.3,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "PotionGreen.png",
+    "name": "Green Potion",
+    "description": "A mystical green potion that cures poison",
+    "weight": 0.3,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "PotionRed.png",
+    "name": "Red Potion",
+    "description": "A healing red potion that restores health",
+    "weight": 0.3,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "PotionYellow.png",
+    "name": "Yellow Potion",
+    "description": "A glowing yellow potion that boosts stamina",
+    "weight": 0.3,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "Scroll.png",
+    "name": "Scroll",
+    "description": "An ancient scroll containing magical spells or knowledge",
+    "weight": 0.1,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "ShieldLargeT1.png",
+    "name": "Large Shield T1",
+    "description": "A basic large shield offering substantial defense",
+    "weight": 6,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "ShieldLargeT2.png",
+    "name": "Large Shield T2",
+    "description": "An improved large shield with reinforced construction",
+    "weight": 7,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "ShieldSmallT1.png",
+    "name": "Small Shield T1",
+    "description": "A basic small shield for quick defense",
+    "weight": 3,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "ShieldSmallT2.png",
+    "name": "Small Shield T2",
+    "description": "An improved small shield with better protection",
+    "weight": 3.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "SpearT1.png",
+    "name": "Spear T1",
+    "description": "A basic wooden spear for thrusting attacks",
+    "weight": 2.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "SpearT2.png",
+    "name": "Spear T2",
+    "description": "An enhanced spear with a sharp metal tip",
+    "weight": 3,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "SwordT1.png",
+    "name": "Sword T1",
+    "description": "A basic iron sword for adventurers",
+    "weight": 2.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "SwordT2.png",
+    "name": "Sword T2",
+    "description": "A finely crafted steel sword with excellent balance",
+    "weight": 3,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "SwordWood.png",
+    "name": "Wooden Sword",
+    "description": "A practice wooden sword for training",
+    "weight": 1,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "TomeBlue.png",
+    "name": "Blue Tome",
+    "description": "A mystical blue tome containing water and ice spells",
+    "weight": 1.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "TomeGreen.png",
+    "name": "Green Tome",
+    "description": "A mystical green tome containing nature and healing spells",
+    "weight": 1.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "TomeRed.png",
+    "name": "Red Tome",
+    "description": "A mystical red tome containing fire and destruction spells",
+    "weight": 1.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "TomeYellow.png",
+    "name": "Yellow Tome",
+    "description": "A mystical yellow tome containing lightning and energy spells",
+    "weight": 1.5,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "WandT1.png",
+    "name": "Wand T1",
+    "description": "A basic magical wand for casting simple spells",
+    "weight": 0.3,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "WandT2.png",
+    "name": "Wand T2",
+    "description": "An enchanted wand with enhanced magical properties",
+    "weight": 0.4,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "theme": "fantasy",
+    "path": "X.png",
+    "name": "X Mark",
+    "description": "A mysterious X marking a special location or item",
+    "weight": 0.01,
+    "origin": "https://ravenmore.itch.io/fantasy-icon-pack",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  }
+]

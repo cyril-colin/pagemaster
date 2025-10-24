@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { Inventory } from './inventories-control.component';
+import { Inventory } from './inventory.types';
 
 @Component({
   selector: 'app-inventory-view',

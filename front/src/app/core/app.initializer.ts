@@ -1,6 +1,7 @@
 import { inject } from '@angular/core';
-import { catchError, EMPTY, Observable, tap } from 'rxjs';
 import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
+import { catchError, EMPTY, Observable, switchMap, tap } from 'rxjs';
+import { ItemsDataState } from './character/inventories/items/items-data.state';
 import { CurrentSessionState } from './current-session.state';
 import { GameInstanceSocketService } from './game-instance-socket.service';
 import { SocketService } from './socket.service';
@@ -11,7 +12,7 @@ export const appInitializer: () => Observable<unknown> = () => {
   const gameInstanceSocket = inject(GameInstanceSocketService);
   gameInstanceSocket.init();
   const currentSession = inject(CurrentSessionState);
-  return currentSession.init().pipe(
+  const currentSessionInit = currentSession.init().pipe(
     tap(session => {
       socketService.emit(PageMasterSocketEvents.JOIN_GAME_INSTANCE, { 
         gameInstanceId: session.gameInstance.id,
@@ -21,5 +22,9 @@ export const appInitializer: () => Observable<unknown> = () => {
     catchError(() => {
       return EMPTY;
     }),
+  );
+
+  return inject(ItemsDataState).init().pipe(
+    switchMap(() => currentSessionInit),
   );
 };

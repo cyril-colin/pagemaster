@@ -19,6 +19,7 @@ export class EventsCenterStateService {
   public readonly events = this.eventsSignal.asReadonly();
 
   public addEvent(event: EventMessage): void {
+    event.ttl = 0; // tmp disable ttl
     this.eventsSignal.update((events) => [...events, event]);
     if (event.ttl > 0) {
       this.listenTTL(event);

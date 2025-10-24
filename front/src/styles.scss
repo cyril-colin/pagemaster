@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
   --color-modal-background: #202b38;
+  --color-background-main: #202b38;
+  --color-danger: #f44;
+  --color-danger-hover: #f00;
+  
   --view-height-medium: 24px;
   --view-border: 1px solid #ccc;
   --view-border-radius: 4px;
@@ -23,4 +27,5 @@
   --padding-large: 24px;
 
   --icon-button-size: 32px;
+  --delete-button-size: 18px;
 }
