@@ -12,7 +12,7 @@ import { ModalItemFormComponent } from './items/modal-item-form.component';
     <div class="items">
       @for(item of sortedItems(); track item.id) {
         <div class="item" (click)="openItemGallery(item)">
-          <img [src]="item.picture" [alt]="item.name" width="32" height="32"/>
+          <img [src]="item.picture" [alt]="item.name"/>
           <div>{{ item.name }}</div>
           <div> weight : {{ item.weight  }}</div>
         </div>
@@ -40,8 +40,17 @@ import { ModalItemFormComponent } from './items/modal-item-form.component';
       align-items: center;
       justify-content: center;
       gap: 4px;
-      height: var(--icon-button-size);
+      --item-size: 130px;
+      --img-size: 64px;
+      height: var(--item-size);
+      width: var(--item-size);
+      img {
+        width: var(--img-size);
+        height: var(--img-size);
+      }
     }
+
+    
 
     .delete {
       position: absolute;
@@ -98,6 +107,7 @@ export class InventoryViewDetailsComponent {
   protected openItemGallery(item: Item) {
     const ref = this.modalService.open(ModalItemFormComponent, {
       existingItem: item,
+      isManager: this.isManager(),
     });
     ref.componentRef.instance.itemSubmitted.subscribe((newItem: Item) => {
       this.inventoryState().instance.current = this.inventoryState().instance.current.map(i => i.id === newItem.id ? newItem : i);

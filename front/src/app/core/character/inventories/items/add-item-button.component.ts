@@ -34,7 +34,7 @@ export class AddItemButtonComponent {
   private modalService = inject(ModalService);
 
   protected openItemGallery() {
-    const ref = this.modalService.open(ModalItemFormComponent);
+    const ref = this.modalService.open(ModalItemFormComponent, {isManager: true});
     ref.componentRef.instance.itemSubmitted.subscribe((newItem: Item) => {
       this.itemAdded.emit(newItem);
       ref.close();

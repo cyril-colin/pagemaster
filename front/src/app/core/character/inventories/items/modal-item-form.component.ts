@@ -6,8 +6,8 @@ import { ItemFormComponent } from './item-form.component';
   selector: 'app-modal-item-form',
   template: `
   @let item = existingItem();
-    <app-item-form [existingItem]="item" (itemSubmitted)="itemSubmitted.emit($event)"/>
-    @if (item) {
+    <app-item-form [existingItem]="item" (itemSubmitted)="itemSubmitted.emit($event)" [isManager]="isManager()"/>
+    @if (item && isManager()) {
       <button type="button" (click)="deleteAction.emit(item)">Remove Item</button>
     }
   `,
@@ -17,6 +17,7 @@ import { ItemFormComponent } from './item-form.component';
 })
 export class ModalItemFormComponent {
   public existingItem = input<Item | null>(null);
+  public isManager = input.required<boolean>();
   public itemSubmitted = output<Item>();
   public deleteAction = output<Item | null>();
 }

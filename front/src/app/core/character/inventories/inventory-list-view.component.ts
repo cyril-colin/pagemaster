@@ -50,6 +50,7 @@ import { AddItemButtonComponent } from './items/add-item-button.component';
       justify-content: flex-start;
       gap: var(--gap-medium);
       width: 100%;
+      
 
       button {
         border: none;
@@ -60,6 +61,7 @@ import { AddItemButtonComponent } from './items/add-item-button.component';
         align-items: center;
         gap: var(--gap-small);
         width: 100%;
+        height: 120px;
         justify-content: space-between;
       }
     }

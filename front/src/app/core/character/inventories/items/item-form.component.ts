@@ -16,27 +16,27 @@ type ItemFormControl = {
   selector: 'app-item-form',
   template: `
     @let itemForm = form();
-    @if(pictureMode() === 'edit') {
-        <div class="form-field">
-          <label for="picture">Picture:</label>
-          <app-picture-gallery [items]="pictures()" (itemSelected)="pictureMode.set('view'); selectPicture($event)"/>
-        </div>
-      }
+    @if(pictureMode() === 'edit' && isManager()) {
+      <app-picture-gallery [items]="pictures()" (itemSelected)="pictureMode.set('view'); selectPicture($event)"/>
+      <button (click)="pictureMode.set('view')">Cancel</button>
+    }
     @if(pictureMode() === 'view') {
     <div class="item-form">
       
       
         <div class="form-field">
-          <label for="picture-preview">Picture Preview:</label>
           <img [src]="itemForm.controls.picture.value" alt="Selected Picture" width="64" height="64"/>
-          <button (click)="pictureMode.set('edit')">Change Picture</button>
+          @if(isManager()) {
+            <button (click)="pictureMode.set('edit')">Change Picture</button>
+          }
         </div>
       
       <div class="form-field">
         <label for="name">Name:</label>
         <input 
           id="name" 
-          type="text" 
+          type="text"
+
           [formControl]="itemForm.controls.name"
           placeholder="Enter item name">
       </div>
@@ -44,7 +44,7 @@ type ItemFormControl = {
       <div class="form-field">
         <label for="description">Description:</label>
         <textarea 
-          id="description" 
+          id="description"
           [formControl]="itemForm.controls.description"
           placeholder="Enter item description"
           rows="3">
@@ -55,7 +55,7 @@ type ItemFormControl = {
         <label for="weight">Weight:</label>
         <input 
           id="weight" 
-          type="number" 
+          type="number"
           [formControl]="itemForm.controls.weight"
           placeholder="Enter item weight"
           min="0"
@@ -63,12 +63,14 @@ type ItemFormControl = {
       </div>
 
       
-
-      <div class="form-actions">
-        <button type="button" (click)="submit()">
-          Submit
-        </button>
-      </div>
+      @if(isManager()) {
+        <div class="form-actions">
+          <button type="button" (click)="submit()">
+            Submit
+          </button>
+        </div>
+      }
+      
     </div>
     }
   `,
@@ -83,6 +85,7 @@ type ItemFormControl = {
     .form-field {
       display: flex;
       flex-direction: column;
+      align-items: center;
       gap: 8px;
     }
     
@@ -124,6 +127,7 @@ type ItemFormControl = {
 })
 export class ItemFormComponent {
   public existingItem = input<Item | null>(null);
+  public isManager = input.required<boolean>();
   public itemSubmitted = output<Item>();
   protected itemModels = inject(ItemsDataState);
   protected pictureMode = linkedSignal<'view' | 'edit'>(() => {
@@ -139,10 +143,10 @@ export class ItemFormComponent {
   protected form = computed(() => {
     const existingCharacter = this.existingItem();
     return this.fb.group<ItemFormControl>({
-      name: this.fb.control(existingCharacter?.name ?? '', { nonNullable: true }),
-      description: this.fb.control(existingCharacter?.description ?? '', { nonNullable: true }),
-      weight: this.fb.control(existingCharacter?.weight ?? 0, { nonNullable: true }),
-      picture: this.fb.control(existingCharacter?.picture ?? '', { nonNullable: true }),
+      name: this.fb.control({value: existingCharacter?.name ?? '', disabled: !this.isManager()}, { nonNullable: true }),
+      description: this.fb.control({value: existingCharacter?.description ?? '', disabled: !this.isManager()}, { nonNullable: true }),
+      weight: this.fb.control({value: existingCharacter?.weight ?? 0, disabled: !this.isManager()}, { nonNullable: true }),
+      picture: this.fb.control({value: existingCharacter?.picture ?? '', disabled: !this.isManager()}, { nonNullable: true }),
     });
   });
 
@@ -159,17 +163,10 @@ export class ItemFormComponent {
       return;
     }
 
-
-    if (!this.form().controls.name.value) {
-      this.form().controls.name.setValue(matchingItemModel.name);
-    }
-    if (!this.form().controls.description.value) {
-      this.form().controls.description.setValue(matchingItemModel.description);
-    }
-    if (this.form().controls.weight.value === 0) {
-      const weightNumber = parseFloat(matchingItemModel.weight);
-      this.form().controls.weight.setValue(isNaN(weightNumber) ? 0 : weightNumber);
-    }
+    this.form().controls.name.setValue(matchingItemModel.name);
+    this.form().controls.description.setValue(matchingItemModel.description);
+    const weightNumber = parseFloat(matchingItemModel.weight);
+    this.form().controls.weight.setValue(isNaN(weightNumber) ? 0 : weightNumber);
   }
   
   protected submit() {
