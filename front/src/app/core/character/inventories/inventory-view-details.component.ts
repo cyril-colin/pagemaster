@@ -1,20 +1,20 @@
-import { ChangeDetectionStrategy, Component, inject, input, linkedSignal, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, linkedSignal, output } from '@angular/core';
+import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
 import { CurrentSessionState } from '../../current-session.state';
+import { ModalService } from '../../modal';
 import { Inventory } from './inventory.types';
+import { ModalItemFormComponent } from './items/modal-item-form.component';
 
 @Component({
   selector: 'app-inventory-view-details',
-  template: `
-    @let inv = inventory();
-    
+  template: `  
     <div class="items">
-      @for(item of inv.instance.current; track item.id) {
-        <div class="item">
+      @for(item of sortedItems(); track item.id) {
+        <div class="item" (click)="openItemGallery(item)">
           <img [src]="item.picture" [alt]="item.name" width="32" height="32"/>
-          @if(isManager()) {
-            <span class="delete" (click)="deleteItem(item)" title="Remove">×</span>
-          }
+          <div>{{ item.name }}</div>
+          <div> weight : {{ item.weight  }}</div>
         </div>
       }
     </div>
@@ -35,7 +35,11 @@ import { Inventory } from './inventory.types';
     }
 
     .item {
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
       height: var(--icon-button-size);
     }
 
@@ -75,6 +79,11 @@ export class InventoryViewDetailsComponent {
   public inventory = input.required<Inventory>();
   protected inventoryState = linkedSignal(this.inventory);
   public newInventory = output<Inventory>();
+  protected modalService = inject(ModalService);
+
+  protected sortedItems = computed(() => {
+    return this.inventoryState().instance.current.sort((a, b) => b.weight - a.weight);
+  });
 
   private currentSessionState = inject(CurrentSessionState);
   protected isManager = this.currentSessionState.allowedToEditCharacter(this.character);
@@ -84,5 +93,22 @@ export class InventoryViewDetailsComponent {
     state.instance.current = state.instance.current.filter(i => i.id !== item.id);
     this.inventoryState.set(state);
     this.newInventory.emit(state);
+  }
+
+  protected openItemGallery(item: Item) {
+    const ref = this.modalService.open(ModalItemFormComponent, {
+      existingItem: item,
+    });
+    ref.componentRef.instance.itemSubmitted.subscribe((newItem: Item) => {
+      this.inventoryState().instance.current = this.inventoryState().instance.current.map(i => i.id === newItem.id ? newItem : i);
+      this.inventoryState.set(this.inventoryState());
+      this.newInventory.emit(this.inventoryState());
+      ref.close();
+    });
+
+    ref.componentRef.instance.deleteAction.subscribe(() => {
+      this.deleteItem(item);
+      ref.close();
+    });
   }
 }

@@ -3,10 +3,10 @@ import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
 import { CurrentSessionState } from '../../current-session.state';
 import { ModalService } from '../../modal';
-import { AddItemButtonComponent } from './add-item-button.component';
 import { InventoryViewDetailsComponent } from './inventory-view-details.component';
 import { InventoryViewComponent } from './inventory-view.component';
 import { Inventory } from './inventory.types';
+import { AddItemButtonComponent } from './items/add-item-button.component';
 
 @Component({
   selector: 'app-inventory-list-view',

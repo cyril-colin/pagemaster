@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
-import { ITEM_ICONS } from '../../gallery/item-icons.const';
-import { PictureGalleryComponent, PictureItem } from '../../gallery/picture-gallery.component';
-import { ModalService } from '../../modal';
+import { ModalService } from '../../../modal';
+import { ModalItemFormComponent } from './modal-item-form.component';
 
 @Component({
   selector: 'app-add-item-button',
@@ -35,19 +34,8 @@ export class AddItemButtonComponent {
   private modalService = inject(ModalService);
 
   protected openItemGallery() {
-    const ref = this.modalService.open(PictureGalleryComponent, {
-      items: ITEM_ICONS,
-    });
-    
-    ref.componentRef.instance.itemSelected.subscribe((picture: PictureItem) => {
-      const newItem: Item = {
-        id: `${picture.name}-${Date.now()}`,
-        name: picture.name,
-        description: '',
-        weight: 0,
-        picture: picture.path,
-      };
-      
+    const ref = this.modalService.open(ModalItemFormComponent);
+    ref.componentRef.instance.itemSubmitted.subscribe((newItem: Item) => {
       this.itemAdded.emit(newItem);
       ref.close();
     });
