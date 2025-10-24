@@ -1,0 +1,10 @@
+[
+  {
+    "theme": "Post Apocaliptic",
+    "path": "/post-apo/post-apo.models.json"
+  },
+  {
+    "theme": "Fantasy",
+    "path": "/fantasy/fantasy.models.json"
+  }
+]

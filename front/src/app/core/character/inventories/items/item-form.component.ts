@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, linkedSignal, output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Item } from '@pagemaster/common/items.types';
-import { ITEM_ICONS } from 'src/app/core/gallery/item-icons.const';
 import { PictureGalleryComponent } from 'src/app/core/gallery/picture-gallery.component';
+import { ItemsDataState } from './items-data.state';
 
 type ItemFormControl = {
   name: FormControl<string>,
@@ -16,20 +16,22 @@ type ItemFormControl = {
   selector: 'app-item-form',
   template: `
     @let itemForm = form();
-    <div class="item-form">
-      @if(pictureMode() === 'edit') {
+    @if(pictureMode() === 'edit') {
         <div class="form-field">
           <label for="picture">Picture:</label>
-          <app-picture-gallery [items]="pictures" (itemSelected)="pictureMode.set('view'); selectPicture($event)"/>
+          <app-picture-gallery [items]="pictures()" (itemSelected)="pictureMode.set('view'); selectPicture($event)"/>
         </div>
       }
-      @if(pictureMode() === 'view') {
+    @if(pictureMode() === 'view') {
+    <div class="item-form">
+      
+      
         <div class="form-field">
           <label for="picture-preview">Picture Preview:</label>
           <img [src]="itemForm.controls.picture.value" alt="Selected Picture" width="64" height="64"/>
           <button (click)="pictureMode.set('edit')">Change Picture</button>
         </div>
-      }
+      
       <div class="form-field">
         <label for="name">Name:</label>
         <input 
@@ -68,6 +70,7 @@ type ItemFormControl = {
         </button>
       </div>
     </div>
+    }
   `,
   styles: [`
     .item-form {
@@ -122,10 +125,15 @@ type ItemFormControl = {
 export class ItemFormComponent {
   public existingItem = input<Item | null>(null);
   public itemSubmitted = output<Item>();
+  protected itemModels = inject(ItemsDataState);
   protected pictureMode = linkedSignal<'view' | 'edit'>(() => {
     return this.existingItem() ? 'view' : 'edit';
   });
-  protected pictures = ITEM_ICONS;
+  protected pictures = computed(() => {
+    const modelStore = this.itemModels.itemsFile();
+    const data =  modelStore.flatMap(theme => theme.models.map(model => ({ name: model.name, path: `${model.path}` })));
+    return data;
+  });
   protected fb = inject(FormBuilder);
   
   protected form = computed(() => {
@@ -139,16 +147,28 @@ export class ItemFormComponent {
   });
 
   protected selectPicture(picture: { name: string, path: string }) {
+
+    const matchingItemModel = this.itemModels.itemsFile().flatMap(theme => theme.models).find(model => model.path === picture.path);
+    if (!matchingItemModel) {
+      console.warn(`Selected picture ${picture.path} does not match any item model.`);
+      return;
+    }
     
-    this.form().controls.picture.setValue(picture.path);
+    this.form().controls.picture.setValue(matchingItemModel.path);
     if (this.existingItem()) {
       return;
     }
+
+
     if (!this.form().controls.name.value) {
-      this.form().controls.name.setValue(picture.name);
+      this.form().controls.name.setValue(matchingItemModel.name);
     }
     if (!this.form().controls.description.value) {
-      this.form().controls.description.setValue(picture.name);
+      this.form().controls.description.setValue(matchingItemModel.description);
+    }
+    if (this.form().controls.weight.value === 0) {
+      const weightNumber = parseFloat(matchingItemModel.weight);
+      this.form().controls.weight.setValue(isNaN(weightNumber) ? 0 : weightNumber);
     }
   }
   

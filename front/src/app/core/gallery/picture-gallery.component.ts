@@ -2,7 +2,6 @@ import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
 
 export type PictureItem = { name: string, path: string };
-
 @Component({
   selector: 'app-picture-gallery',
   template: `

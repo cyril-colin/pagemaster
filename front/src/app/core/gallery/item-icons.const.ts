@@ -144,3 +144,7 @@ export const AVATAR_ICONS = [
   { name: 'avatar11', path: 'avatars/avatar11.png' },
   { name: 'avatar12', path: 'avatars/avatar12.png' },
 ];
+
+
+// https://ravenmore.itch.io/fantasy-icon-pack
+// https://itch.io/game-assets/free/genre-rpg/tag-icons 
