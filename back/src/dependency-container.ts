@@ -33,7 +33,7 @@ const gameSessionMongoClient = new GameSessionMongoClient(logger, mongoConnectio
 
 export const router = new Router(logger, ajv);
 
-const socketServerService = new SocketServerService(logger);
+const socketServerService = new SocketServerService(logger, gameEventMongoClient);
 
 const gameDefFixture = new GameDefFixture(logger, gameDefMongoClient);
 const gameInstanceFixture = new GameInstanceFixture(logger, gameInstanceMongoClient);

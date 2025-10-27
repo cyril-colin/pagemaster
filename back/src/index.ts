@@ -17,7 +17,7 @@ if (staticPath) {
 
 const controllers = [
   new GameDefController(serviceContainer.gameDefMongoClient),
-  new GameInstanceController(serviceContainer.gameInstanceMongoClient, serviceContainer.socketServerService),
+  new GameInstanceController(serviceContainer.gameInstanceMongoClient, serviceContainer.socketServerService, serviceContainer.logger),
   new GameEventController(serviceContainer.gameEventMongoClient, serviceContainer.gameInstanceMongoClient),
 ];
 controllers.forEach(controller => serviceContainer.router.registerRoutes(controller, app));

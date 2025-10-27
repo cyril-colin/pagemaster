@@ -1,6 +1,7 @@
 import { Request } from 'express';
 import { SocketServerService } from 'src/core/socket.service';
 import { Item } from 'src/pagemaster-schemas/src/items.types';
+import { LoggerService } from '../../core/logger.service';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
 import { HttpBadRequestError, HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
@@ -11,6 +12,7 @@ export class GameInstanceController {
   constructor(
     private mongoClient: GameInstanceMongoClient,
     private socketServerService: SocketServerService,
+    private logger: LoggerService,
   ) {}
 
   @Get('/game-instances')
@@ -50,6 +52,7 @@ export class GameInstanceController {
     const doc = await this.mongoClient.createGameInstance(gameInstance);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { _id, ...createdGameInstance } = doc;
+    
     return createdGameInstance as GameInstance;
   }
 
@@ -65,11 +68,23 @@ export class GameInstanceController {
     gameInstance.gameDef.possibleItems = gameInstance.gameDef.possibleItems || [];
     gameInstance.gameDef.possibleItems = [...gameInstance.gameDef.possibleItems, item];
     const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
     const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
-    this.socketServerService.notifyGameInstanceUpdate(gameInstanceCleaned, updatedParticipant);
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'item-created',
+        title: 'New item added',
+        description: `${currentParticipant.name} added a new item: ${item.name}`,
+        metadata: { itemId: item.id, itemName: item.name, itemWeight: item.weight }
+      }
+    });
+    
     return gameInstanceCleaned;
   }
 
@@ -82,11 +97,23 @@ export class GameInstanceController {
   ): Promise<GameInstance> {
     const { currentParticipant } = await this.validateContext(params.id, req, 'player');
     const gameInstanceCleaned = await this.commitGameInstance(newGameInstance);
+
     const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
-    this.socketServerService.notifyGameInstanceUpdate(gameInstanceCleaned, updatedParticipant);
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'game-instance-updated',
+        title: 'Game instance updated',
+        description: `${currentParticipant.name} updated the game instance`,
+        metadata: { version: gameInstanceCleaned.version }
+      }
+    });
+    
     return gameInstanceCleaned;
   }
 
@@ -107,14 +134,32 @@ export class GameInstanceController {
       throw new HttpBadRequestError('Participant not found in the specified game instance');
     }
 
+    const oldParticipant = gameInstance.participants[participantIndex];
     gameInstance.participants[participantIndex] = participant;
 
     const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
     const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
-    this.socketServerService.notifyGameInstanceUpdate(gameInstanceCleaned, updatedParticipant);
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'participant-updated',
+        title: 'Participant updated',
+        description: `${currentParticipant.name} updated participant: ${participant.name}`,
+        metadata: { 
+          updatedParticipantId: participant.id,
+          updatedParticipantName: participant.name,
+          updatedByGameMaster: currentParticipant.type === 'gameMaster' && currentParticipant.id !== participant.id,
+          oldName: oldParticipant.name
+        }
+      }
+    });
+    
     return gameInstanceCleaned;
   }
 
