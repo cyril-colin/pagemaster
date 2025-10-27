@@ -1,15 +1,15 @@
 import { Request } from 'express';
 import { SocketServerService } from 'src/core/socket.service';
 import { Item } from 'src/pagemaster-schemas/src/items.types';
-import { PageMasterMongoClient } from '../../core/pagemaster-mongo-client';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
 import { HttpBadRequestError, HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
 import { GameInstance, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameInstanceMongoClient } from './game-instance.mongo-client';
 
 export class GameInstanceController {
   constructor(
-    private mongoClient: PageMasterMongoClient,
+    private mongoClient: GameInstanceMongoClient,
     private socketServerService: SocketServerService,
   ) {}
 

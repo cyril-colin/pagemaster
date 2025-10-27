@@ -1,10 +1,10 @@
-import { PageMasterMongoClient } from '../../core/pagemaster-mongo-client';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
 import { GameDef } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameDefMongoClient } from './gamedef.mongo-client';
 
 export class GameDefController {
   constructor(
-    private mongoClient: PageMasterMongoClient,
+    private mongoClient: GameDefMongoClient,
   ) {}
 
   @Get('/gamedefs')

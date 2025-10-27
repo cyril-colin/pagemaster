@@ -1,6 +1,6 @@
 import { LoggerService } from '../../core/logger.service';
-import { PageMasterMongoClient } from '../../core/pagemaster-mongo-client';
 import { GameDef } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameDefMongoClient } from './gamedef.mongo-client';
 
 const defaultGameDef: GameDef = {
   id: "medieval-fantasy-v1",
@@ -153,7 +153,7 @@ const defaultGameDef: GameDef = {
 export class GameDefFixture {
   constructor(
     private logger: LoggerService,
-    private mongoClient: PageMasterMongoClient,
+    private mongoClient: GameDefMongoClient,
   ) {}
 
   public async initFirstGameDef(): Promise<void> {
