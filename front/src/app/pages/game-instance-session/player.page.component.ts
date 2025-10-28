@@ -5,7 +5,7 @@ import { Character, Player } from '@pagemaster/common/pagemaster.types';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
 import { CurrentSessionState } from 'src/app/core/current-session.state';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
-import { GameInstanceService } from 'src/app/core/repositories/game-instance.service';
+import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.repository';
 
 @Component({
   selector: 'app-game-player-view',
@@ -30,7 +30,7 @@ import { GameInstanceService } from 'src/app/core/repositories/game-instance.ser
 })
 export class PlayerPageComponent {
   protected currentSession = inject(CurrentSessionState);
-  protected gameInstanceService = inject(GameInstanceService);
+  protected gameInstanceService = inject(GameInstanceRepository);
   protected route = inject(ActivatedRoute);
 
   protected routeParams = toSignal(this.route.paramMap);

@@ -1,14 +1,14 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { GameEvent } from '@pagemaster/common/pagemaster.types';
 import { map, Observable, tap } from 'rxjs';
-import { GameEventService } from '../repositories/game-event.service';
+import { GameEventRepository } from '../repositories/game-event.repository';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventsCenterStateService {
-  private gameEventService = inject(GameEventService);
+  private gameEventService = inject(GameEventRepository);
   private eventsSignal = signal<GameEvent[]>([]);
 
   public readonly events = computed(() => {

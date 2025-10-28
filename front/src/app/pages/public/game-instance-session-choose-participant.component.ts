@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap, tap } from 'rxjs';
 import { GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
+import { switchMap, tap } from 'rxjs';
 import { CurrentGameInstanceState } from '../../core/current-game-instance.state';
 import { CurrentParticipantState } from '../../core/current-participant.state';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
-import { GameInstanceService } from '../../core/repositories/game-instance.service';
+import { GameInstanceRepository } from '../../core/repositories/game-instance.repository';
 
 @Component({
   selector: 'app-game-instance-session-choose-participant',
@@ -33,7 +33,7 @@ import { GameInstanceService } from '../../core/repositories/game-instance.servi
 export class GameInstanceSessionChooseParticipantComponent {
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
-  protected gameInstanceService = inject(GameInstanceService);
+  protected gameInstanceService = inject(GameInstanceRepository);
   protected currentParticipantService = inject(CurrentParticipantState);
   protected currentGameInstanceService = inject(CurrentGameInstanceState);
   protected selectedGameInstance = toSignal(this.route.paramMap.pipe(

@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 
 @Injectable({providedIn: 'root'})
-export class GameDefService {
+export class GameDefRepository {
   public randomId = Math.random().toString(36).substring(2, 15);
   private readonly baseUrl = '/api';
   private http = inject(HttpClient);

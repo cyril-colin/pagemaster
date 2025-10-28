@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 
 @Injectable({providedIn: 'root'})
-export class GameEventService {
+export class GameEventRepository {
   private readonly baseUrl = '/api';
   private http = inject(HttpClient);
 
