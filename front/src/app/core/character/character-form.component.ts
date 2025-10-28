@@ -57,7 +57,7 @@ type CharacterFormType = {
 
       <app-strengths-control [strengths]="playerStrengths()" (newStrengths)="strengthsEvent.emit($event)"/>
       <app-weaknesses-control [weaknesses]="playerWeaknesses()" (newWeaknesses)="weaknessesEvent.emit($event)"/>
-      <app-skills-control [skills]="playerSkills()" (newSkills)="setNewSkills($event)"/>
+      <app-skills-control [skills]="playerSkills()" (newSkills)="skillsEvent.emit($event)"/>
     </form>
   `,
   styles: [`
@@ -108,6 +108,7 @@ export class CharacterFormComponent  {
   public statusesEvent = output<Status[]>();
   public strengthsEvent = output<Strength[]>();
   public weaknessesEvent = output<Weakness[]>();
+  public skillsEvent = output<Skill[]>();
 
   protected playerBars = computed(() => {
     return this.characterAttributesService.mapPlayerBars(
@@ -180,12 +181,6 @@ export class CharacterFormComponent  {
     const currentInventories = this.form().controls.attributes.controls.inventory.value;
     const updatedInventories = currentInventories.filter(inv => inv.id !== inventory.instance.id);
     this.form().controls.attributes.controls.inventory.setValue(updatedInventories);
-    this.submit();
-  }
-
-  protected setNewSkills(skills: Skill[]): void {
-    const selectedSkills = skills.filter(s => s.selected).map(s => s.instance);
-    this.form().controls.skills.setValue(selectedSkills);
     this.submit();
   }
 

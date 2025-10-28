@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Character, Player } from '@pagemaster/common/pagemaster.types';
 import { Bar } from 'src/app/core/character/bars/bars-control.component';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
+import { Skill } from 'src/app/core/character/skills/skills-control.component';
 import { Status } from 'src/app/core/character/statuses/status-control.component';
 import { Strength } from 'src/app/core/character/strengths/strengths-control.component';
 import { Weakness } from 'src/app/core/character/weaknesses/weaknesses-control.component';
@@ -26,6 +27,7 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       (statusesEvent)="updateStatuses($event, viewedPlayer())"
       (strengthsEvent)="updateStrengths($event, viewedPlayer())"
       (weaknessesEvent)="updateWeaknesses($event, viewedPlayer())"
+      (skillsEvent)="updateSkills($event, viewedPlayer())"
     />
   `,
   styles: [`
@@ -114,5 +116,12 @@ export class PlayerPageComponent {
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     const selectedWeaknesses = weaknesses.filter(w => w.selected).map(w => w.instance);
     this.gameInstanceService.updateCharacterWeaknesses(gameInstanceId, participantId, { weakness: selectedWeaknesses }).subscribe();
+  }
+
+  protected updateSkills(skills: Skill[], player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    const selectedSkills = skills.filter(s => s.selected).map(s => s.instance);
+    this.gameInstanceService.updateCharacterSkills(gameInstanceId, participantId, { skills: selectedSkills }).subscribe();
   }
 }
