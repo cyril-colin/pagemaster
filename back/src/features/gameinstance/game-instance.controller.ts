@@ -509,6 +509,49 @@ export class GameInstanceController {
     return gameInstanceCleaned;
   }
 
+  @Patch('/game-instances/:gameInstanceId/participants/:participantId/inventories')
+  public async updateParticipantInventories(
+    attributes: Pick<Character['attributes'], 'inventory'>,
+    params: {gameInstanceId: string, participantId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.validateContext(params.gameInstanceId, req, 'player');
+    if ((currentParticipant.id !== params.participantId && currentParticipant.type !== 'gameMaster')) {
+      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
+    }
+
+    const participantIndex = gameInstance.participants.findIndex(p => p.id === params.participantId);
+    if (participantIndex === -1) {
+      throw new HttpBadRequestError('Participant not found in the specified game instance');
+    }
+
+    const player = gameInstance.participants[participantIndex];
+    if (player.type !== 'player') {
+      throw new HttpForbiddenError('Forbidden: Only players can have their inventories updated');
+    }
+    player.character.attributes.inventory = attributes.inventory;
+
+    const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'participant-inventories-update',
+        title: 'Inventories Updated',
+        description: `${currentParticipant.name} updated inventories of ${player.character.name}`,
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
   @Delete('/game-instances/:id')
   public async deleteGameInstance(body: unknown, params: {id: string}): Promise<boolean> {
     return await this.mongoClient.deleteGameInstance(params.id);

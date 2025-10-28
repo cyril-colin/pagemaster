@@ -109,6 +109,7 @@ export class CharacterFormComponent  {
   public strengthsEvent = output<Strength[]>();
   public weaknessesEvent = output<Weakness[]>();
   public skillsEvent = output<Skill[]>();
+  public inventoriesEvent = output<Attributes['inventory']['instance'][]>();
 
   protected playerBars = computed(() => {
     return this.characterAttributesService.mapPlayerBars(
@@ -172,16 +173,13 @@ export class CharacterFormComponent  {
       currentInventories[inventoryToEditIndex] = inventory.instance;
     }
 
-
-    this.form().controls.attributes.controls.inventory.setValue(currentInventories);
-    this.submit();
+    this.inventoriesEvent.emit(currentInventories);
   }
 
   protected deleteInventory(inventory: Inventory): void {
     const currentInventories = this.form().controls.attributes.controls.inventory.value;
     const updatedInventories = currentInventories.filter(inv => inv.id !== inventory.instance.id);
-    this.form().controls.attributes.controls.inventory.setValue(updatedInventories);
-    this.submit();
+    this.inventoriesEvent.emit(updatedInventories);
   }
 
   private defaultFormValue(character: Character): CharacterFormType {

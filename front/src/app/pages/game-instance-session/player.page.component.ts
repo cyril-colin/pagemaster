@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
+import { Attributes } from '@pagemaster/common/attributes.types';
 import { Character, Player } from '@pagemaster/common/pagemaster.types';
 import { Bar } from 'src/app/core/character/bars/bars-control.component';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
@@ -28,6 +29,7 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       (strengthsEvent)="updateStrengths($event, viewedPlayer())"
       (weaknessesEvent)="updateWeaknesses($event, viewedPlayer())"
       (skillsEvent)="updateSkills($event, viewedPlayer())"
+      (inventoriesEvent)="updateInventories($event, viewedPlayer())"
     />
   `,
   styles: [`
@@ -123,5 +125,11 @@ export class PlayerPageComponent {
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     const selectedSkills = skills.filter(s => s.selected).map(s => s.instance);
     this.gameInstanceService.updateCharacterSkills(gameInstanceId, participantId, { skills: selectedSkills }).subscribe();
+  }
+
+  protected updateInventories(inventories: Attributes['inventory']['instance'][], player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.updateCharacterInventories(gameInstanceId, participantId, { inventory: inventories }).subscribe();
   }
 }
