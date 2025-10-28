@@ -38,7 +38,7 @@ export class SocketServerService {
     });
   }
 
-  notifyGameInstanceUpdate(params: {
+  async notifyGameInstanceUpdate(params: {
     gameInstance: GameInstance,
     by: Participant,
     event: {
@@ -53,7 +53,7 @@ export class SocketServerService {
     }
     
     // Create game event
-    this.createGameEvent(
+    const gameEvent = await this.createGameEvent(
       params.gameInstance,
       params.by,
       params.event.type,
@@ -62,9 +62,13 @@ export class SocketServerService {
       params.event.metadata
     );
     
-    // Notify via socket
+    // Notify via socket with the same event structure
     const roomName = RoomId(params.gameInstance.id);
-    this.io.to(roomName).emit(PageMasterSocketEvents.GAME_INSTANCE_UPDATED, { gameInstance: params.gameInstance, by: params.by });
+    this.io.to(roomName).emit(PageMasterSocketEvents.GAME_INSTANCE_UPDATED, { 
+      gameInstance: params.gameInstance, 
+      by: params.by,
+      event: gameEvent 
+    });
     this.logger.info(`Notified room ${roomName} of game instance update`);
   }
 
@@ -75,7 +79,7 @@ export class SocketServerService {
     title: string,
     description: string,
     metadata?: Record<string, unknown>
-  ): Promise<void> {
+  ): Promise<GameEvent> {
     const event: GameEvent = {
       id: `${Date.now()}-${Math.random().toString(36).substring(7)}`,
       gameInstanceId: gameInstance.id,
@@ -98,5 +102,7 @@ export class SocketServerService {
         gameInstanceId: gameInstance.id
       });
     }
+    
+    return event;
   }
 }

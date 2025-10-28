@@ -18,30 +18,10 @@ export class GameInstanceSocketService {
   protected eventsCenterState = inject(EventsCenterStateService);
   public init() {
     toSignal(this.socketService.listen(PageMasterSocketEvents.GAME_INSTANCE_UPDATED).pipe(
-      tap(({gameInstance, by}) => {
-        
-        const itsMe = this.currentSessionState.currentSession().participant.id === by.id;
-        let message = '';
-        if (itsMe) {
-          message = `You updated game instance: ${gameInstance.id}`;
-        } else {
-          message = `${by.type === 'gameMaster' ? 'Game Master' : by.character.name} updated game instance: ${gameInstance.id}`;
-        }
-        
-        const gameEvent: GameEvent = {
-          id: `${Date.now()}-${by.id}`,
-          gameInstanceId: gameInstance.id,
-          type: 'game-instance-update',
-          participantId: by.id,
-          participantName: by.type === 'gameMaster' ? by.name : by.character.name,
-          title: 'Game Instance Updated',
-          description: message,
-          timestamp: Date.now(),
-        };
-        
-        this.eventsCenterState.addEvent(gameEvent);
+      tap((payload) => {
+        this.eventsCenterState.addEvent(payload.event as GameEvent);
       }),
-      switchMap(({gameInstance}) => this.currentGameState.setCurrentGameInstance(gameInstance, 'fast')),
+      switchMap((payload) => this.currentGameState.setCurrentGameInstance(payload.gameInstance, 'fast')),
     ));
   }
 }
