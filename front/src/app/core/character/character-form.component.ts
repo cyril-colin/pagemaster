@@ -46,7 +46,7 @@ type CharacterFormType = {
       </section>
       
       <app-bars-control [bars]="playerBars()" (newBars)="barsEvent.emit($event)"/>
-      <app-status-control [statuses]="playerStatuses()" (newStatuses)="setNewStatuses($event)"/>
+      <app-status-control [statuses]="playerStatuses()" (newStatuses)="statusesEvent.emit($event)"/>
 
       <app-inventory-list-view
         [inventories]="playerInventories()"
@@ -55,8 +55,8 @@ type CharacterFormType = {
         (deleteInventory)="deleteInventory($event)"
       />
 
-      <app-strengths-control [strengths]="playerStrengths()" (newStrengths)="setNewStrengths($event)"/>
-      <app-weaknesses-control [weaknesses]="playerWeaknesses()" (newWeaknesses)="setNewWeaknesses($event)"/>
+      <app-strengths-control [strengths]="playerStrengths()" (newStrengths)="strengthsEvent.emit($event)"/>
+      <app-weaknesses-control [weaknesses]="playerWeaknesses()" (newWeaknesses)="weaknessesEvent.emit($event)"/>
       <app-skills-control [skills]="playerSkills()" (newSkills)="setNewSkills($event)"/>
     </form>
   `,
@@ -105,6 +105,9 @@ export class CharacterFormComponent  {
   public avatarEvent = output<{value: string}>();
   public descriptionEvent = output<{value: string}>();
   public barsEvent = output<Bar[]>();
+  public statusesEvent = output<Status[]>();
+  public strengthsEvent = output<Strength[]>();
+  public weaknessesEvent = output<Weakness[]>();
 
   protected playerBars = computed(() => {
     return this.characterAttributesService.mapPlayerBars(
@@ -152,24 +155,6 @@ export class CharacterFormComponent  {
     const existingValue = this.existingCharacter();
     return this.fb.group<CharacterFormType>(this.defaultFormValue(existingValue));
   });
-
-  protected setNewStrengths(strengths: Strength[]): void {
-    const selectedStrengths = strengths.filter(s => s.selected).map(s => s.instance);
-    this.form().controls.attributes.controls.strength.setValue(selectedStrengths);
-    this.submit();
-  }
-
-  protected setNewWeaknesses(weaknesses: Weakness[]): void {
-    const selectedWeaknesses = weaknesses.filter(w => w.selected).map(w => w.instance);
-    this.form().controls.attributes.controls.weakness.setValue(selectedWeaknesses);
-    this.submit();
-  }
-
-  protected setNewStatuses(statuses: Status[]): void {
-    const selectedStatuses = statuses.filter(s => s.selected).map(s => s.instance);
-    this.form().controls.attributes.controls.status.setValue(selectedStatuses);
-    this.submit();
-  }
 
   protected setNewInventories(inventories: Inventory[]): void {
     const selectedInventories = inventories.filter(i => i.selected).map(i => i.instance);

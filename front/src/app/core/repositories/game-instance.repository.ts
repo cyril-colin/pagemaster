@@ -54,6 +54,27 @@ export class GameInstanceRepository {
       `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/bars`, attributes);
   }
 
+  updateCharacterStatuses(
+    gameInstanceId: string, participantId: string, attributes: Pick<Character['attributes'], 'status'>,
+  ): Observable<Participant> {
+    return this.http.patch<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/statuses`, attributes);
+  }
+
+  updateCharacterStrengths(
+    gameInstanceId: string, participantId: string, attributes: Pick<Character['attributes'], 'strength'>,
+  ): Observable<Participant> {
+    return this.http.patch<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/strengths`, attributes);
+  }
+
+  updateCharacterWeaknesses(
+    gameInstanceId: string, participantId: string, attributes: Pick<Character['attributes'], 'weakness'>,
+  ): Observable<Participant> {
+    return this.http.patch<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/weaknesses`, attributes);
+  }
+
   addItem(gameInstanceId: string, item: Item): Observable<GameInstance> {
     return this.http.post<GameInstance>(`${this.baseUrl}/game-instances/${gameInstanceId}/items`, item);
   }

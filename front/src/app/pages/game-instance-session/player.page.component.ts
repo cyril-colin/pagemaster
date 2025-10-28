@@ -4,6 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Character, Player } from '@pagemaster/common/pagemaster.types';
 import { Bar } from 'src/app/core/character/bars/bars-control.component';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
+import { Status } from 'src/app/core/character/statuses/status-control.component';
+import { Strength } from 'src/app/core/character/strengths/strengths-control.component';
+import { Weakness } from 'src/app/core/character/weaknesses/weaknesses-control.component';
 import { CurrentSessionState } from 'src/app/core/current-session.state';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.repository';
@@ -20,6 +23,9 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       (avatarEvent)="updateAvatar($event.value, viewedPlayer())"
       (descriptionEvent)="updateDescription($event.value, viewedPlayer())"
       (barsEvent)="updateBars($event, viewedPlayer())"
+      (statusesEvent)="updateStatuses($event, viewedPlayer())"
+      (strengthsEvent)="updateStrengths($event, viewedPlayer())"
+      (weaknessesEvent)="updateWeaknesses($event, viewedPlayer())"
     />
   `,
   styles: [`
@@ -87,5 +93,26 @@ export class PlayerPageComponent {
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     const selectedBars = bars.filter(b => b.selected).map(b => b.instance);
     this.gameInstanceService.updateCharacterBars(gameInstanceId, participantId, { bar: selectedBars }).subscribe();
+  }
+
+  protected updateStatuses(statuses: Status[], player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    const selectedStatuses = statuses.filter(s => s.selected).map(s => s.instance);
+    this.gameInstanceService.updateCharacterStatuses(gameInstanceId, participantId, { status: selectedStatuses }).subscribe();
+  }
+
+  protected updateStrengths(strengths: Strength[], player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    const selectedStrengths = strengths.filter(s => s.selected).map(s => s.instance);
+    this.gameInstanceService.updateCharacterStrengths(gameInstanceId, participantId, { strength: selectedStrengths }).subscribe();
+  }
+
+  protected updateWeaknesses(weaknesses: Weakness[], player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    const selectedWeaknesses = weaknesses.filter(w => w.selected).map(w => w.instance);
+    this.gameInstanceService.updateCharacterWeaknesses(gameInstanceId, participantId, { weakness: selectedWeaknesses }).subscribe();
   }
 }

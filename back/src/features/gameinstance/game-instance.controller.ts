@@ -337,6 +337,135 @@ export class GameInstanceController {
     return gameInstanceCleaned;
   }
 
+  @Patch('/game-instances/:gameInstanceId/participants/:participantId/statuses')
+  public async updateParticipantStatuses(
+    attributes: Pick<Character['attributes'], 'status'>,
+    params: {gameInstanceId: string, participantId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.validateContext(params.gameInstanceId, req, 'player');
+    if ((currentParticipant.id !== params.participantId && currentParticipant.type !== 'gameMaster')) {
+      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
+    }
+
+    const participantIndex = gameInstance.participants.findIndex(p => p.id === params.participantId);
+    if (participantIndex === -1) {
+      throw new HttpBadRequestError('Participant not found in the specified game instance');
+    }
+
+    const player = gameInstance.participants[participantIndex];
+    if (player.type !== 'player') {
+      throw new HttpForbiddenError('Forbidden: Only players can have their statuses updated');
+    }
+    player.character.attributes.status = attributes.status;
+
+    const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'participant-statuses-update',
+        title: 'Statuses Updated',
+        description: `${currentParticipant.name} updated statuses of ${player.character.name}`,
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
+  @Patch('/game-instances/:gameInstanceId/participants/:participantId/strengths')
+  public async updateParticipantStrengths(
+    attributes: Pick<Character['attributes'], 'strength'>,
+    params: {gameInstanceId: string, participantId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.validateContext(params.gameInstanceId, req, 'player');
+    if ((currentParticipant.id !== params.participantId && currentParticipant.type !== 'gameMaster')) {
+      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
+    }
+
+    const participantIndex = gameInstance.participants.findIndex(p => p.id === params.participantId);
+    if (participantIndex === -1) {
+      throw new HttpBadRequestError('Participant not found in the specified game instance');
+    }
+
+    const player = gameInstance.participants[participantIndex];
+    if (player.type !== 'player') {
+      throw new HttpForbiddenError('Forbidden: Only players can have their strengths updated');
+    }
+    player.character.attributes.strength = attributes.strength;
+
+    const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'participant-strengths-update',
+        title: 'Strengths Updated',
+        description: `${currentParticipant.name} updated strengths of ${player.character.name}`,
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
+  @Patch('/game-instances/:gameInstanceId/participants/:participantId/weaknesses')
+  public async updateParticipantWeaknesses(
+    attributes: Pick<Character['attributes'], 'weakness'>,
+    params: {gameInstanceId: string, participantId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.validateContext(params.gameInstanceId, req, 'player');
+    if ((currentParticipant.id !== params.participantId && currentParticipant.type !== 'gameMaster')) {
+      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
+    }
+
+    const participantIndex = gameInstance.participants.findIndex(p => p.id === params.participantId);
+    if (participantIndex === -1) {
+      throw new HttpBadRequestError('Participant not found in the specified game instance');
+    }
+
+    const player = gameInstance.participants[participantIndex];
+    if (player.type !== 'player') {
+      throw new HttpForbiddenError('Forbidden: Only players can have their weaknesses updated');
+    }
+    player.character.attributes.weakness = attributes.weakness;
+
+    const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'participant-weaknesses-update',
+        title: 'Weaknesses Updated',
+        description: `${currentParticipant.name} updated weaknesses of ${player.character.name}`,
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
   @Delete('/game-instances/:id')
   public async deleteGameInstance(body: unknown, params: {id: string}): Promise<boolean> {
     return await this.mongoClient.deleteGameInstance(params.id);
