@@ -1,6 +1,6 @@
 {
   "name": "pagemaster-back",
-  "version": "1.0.0-dev.6",
+  "version": "1.0.0-dev.7",
   "description": "A proxy server between a front end and any torrent server like deluge",
   "main": "index.js",
   "scripts": {
