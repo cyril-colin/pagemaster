@@ -30,13 +30,4 @@ export class EventsCenterStateService {
       map(() => void 0),
     );
   }
-
-  public clearEvents(): void {
-    this.eventsSignal.set([]);
-  }
-  
-  public removeEvent(event: GameEvent): void {
-    this.eventsSignal.update(events => events.filter(e => e.id !== event.id));
-  }
-
 }
