@@ -45,7 +45,7 @@ type CharacterFormType = {
         </div>
       </section>
       
-      <app-bars-control [bars]="playerBars()" (newBars)="setNewBars($event)"/>
+      <app-bars-control [bars]="playerBars()" (newBars)="barsEvent.emit($event)"/>
       <app-status-control [statuses]="playerStatuses()" (newStatuses)="setNewStatuses($event)"/>
 
       <app-inventory-list-view
@@ -104,6 +104,7 @@ export class CharacterFormComponent  {
   public renameEvent = output<{value: string}>();
   public avatarEvent = output<{value: string}>();
   public descriptionEvent = output<{value: string}>();
+  public barsEvent = output<Bar[]>();
 
   protected playerBars = computed(() => {
     return this.characterAttributesService.mapPlayerBars(
@@ -161,12 +162,6 @@ export class CharacterFormComponent  {
   protected setNewWeaknesses(weaknesses: Weakness[]): void {
     const selectedWeaknesses = weaknesses.filter(w => w.selected).map(w => w.instance);
     this.form().controls.attributes.controls.weakness.setValue(selectedWeaknesses);
-    this.submit();
-  } 
-
-  protected setNewBars(bars: Bar[]): void {
-    const selectedBars = bars.filter(b => b.selected).map(b => b.instance);
-    this.form().controls.attributes.controls.bar.setValue(selectedBars);
     this.submit();
   }
 
