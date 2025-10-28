@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { switchMap, tap } from 'rxjs';
+import { GameEvent } from '@pagemaster/common/pagemaster.types';
 import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
+import { switchMap, tap } from 'rxjs';
 import { CurrentGameInstanceState } from './current-game-instance.state';
 import { CurrentSessionState } from './current-session.state';
 import { EventsCenterStateService } from './events-center/events-center.state';
@@ -26,12 +27,19 @@ export class GameInstanceSocketService {
         } else {
           message = `${by.type === 'gameMaster' ? 'Game Master' : by.character.name} updated game instance: ${gameInstance.id}`;
         }
-        this.eventsCenterState.addEvent({
-          type: 'info',
-          ttl: 5,
-          message: message,
-          timestamp: new Date(),
-        });
+        
+        const gameEvent: GameEvent = {
+          id: `${Date.now()}-${by.id}`,
+          gameInstanceId: gameInstance.id,
+          type: 'game-instance-update',
+          participantId: by.id,
+          participantName: by.type === 'gameMaster' ? by.name : by.character.name,
+          title: 'Game Instance Updated',
+          description: message,
+          timestamp: Date.now(),
+        };
+        
+        this.eventsCenterState.addEvent(gameEvent);
       }),
       switchMap(({gameInstance}) => this.currentGameState.setCurrentGameInstance(gameInstance, 'fast')),
     ));
