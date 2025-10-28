@@ -38,10 +38,10 @@ type CharacterFormType = {
   template: `
     <form [formGroup]="form()">
       <section class="identity">
-        <app-picture-control [picture]="form().controls.picture.value" (newPicture)="setNewPicture($event)"/>
+        <app-picture-control [picture]="form().controls.picture.value" (newPicture)="avatarEvent.emit($event)"/>
         <div class="identity-data">
-          <app-name-control [name]="form().controls.name.value" (newName)="setNewName($event)"/>
-          <app-description-control [description]="form().controls.description.value" (newDescription)="setNewDescription($event)"/>
+          <app-name-control [name]="form().controls.name.value" (newName)="renameEvent.emit($event)"/>
+          <app-description-control [description]="form().controls.description.value" (newDescription)="descriptionEvent.emit($event)"/>
         </div>
       </section>
       
@@ -101,6 +101,9 @@ export class CharacterFormComponent  {
   public newCharacter = output<Character>();
   public fb = inject(FormBuilder);
   private characterAttributesService = inject(CharacterAttributesService);
+  public renameEvent = output<{value: string}>();
+  public avatarEvent = output<{value: string}>();
+  public descriptionEvent = output<{value: string}>();
 
   protected playerBars = computed(() => {
     return this.characterAttributesService.mapPlayerBars(
@@ -148,21 +151,6 @@ export class CharacterFormComponent  {
     const existingValue = this.existingCharacter();
     return this.fb.group<CharacterFormType>(this.defaultFormValue(existingValue));
   });
-
-  protected setNewName(name: {value: string}): void {
-    this.form().controls.name.setValue(name.value);
-    this.submit();
-  }
-
-  protected setNewDescription(description: {value: string}): void {
-    this.form().controls.description.setValue(description.value);
-    this.submit();
-  }
-
-  protected setNewPicture(picture: {value: string}): void {
-    this.form().controls.picture.setValue(picture.value);
-    this.submit();
-  }
 
   protected setNewStrengths(strengths: Strength[]): void {
     const selectedStrengths = strengths.filter(s => s.selected).map(s => s.instance);

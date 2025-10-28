@@ -15,6 +15,9 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       [existingCharacter]="viewedPlayer().character"
       [gameDef]="game.gameDef"
       (newCharacter)="saveCharacter($event, viewedPlayer())"
+      (renameEvent)="renameParticipant($event.value, viewedPlayer())"
+      (avatarEvent)="updateAvatar($event.value, viewedPlayer())"
+      (descriptionEvent)="updateDescription($event.value, viewedPlayer())"
     />
   `,
   styles: [`
@@ -57,5 +60,23 @@ export class PlayerPageComponent {
       character,
     };
     this.gameInstanceService.updateParticipant(this.currentSession.currentSession().gameInstance.id, updatedPlayer).subscribe();
+  }
+
+  protected renameParticipant(newName: string, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.renameCharacter(gameInstanceId, participantId, { name: newName }).subscribe();
+  }
+
+  protected updateAvatar(newAvatar: string, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.updateCharacterAvatar(gameInstanceId, participantId, { picture: newAvatar }).subscribe();
+  }
+
+  protected updateDescription(newDescription: string, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.updateCharacterDescription(gameInstanceId, participantId, { description: newDescription }).subscribe();
   }
 }

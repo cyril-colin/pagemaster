@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
-import { GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
+import { Character, GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
 import { Observable } from 'rxjs';
 
 
@@ -28,6 +28,23 @@ export class GameInstanceRepository {
 
   updateParticipant(gameInstanceId: string, participant: Participant): Observable<Participant> {
     return this.http.put<Participant>(`${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participant.id}`, participant);
+  }
+
+  renameCharacter(gameInstanceId: string, participantId: string, character: Pick<Character, 'name'>): Observable<Participant> {
+    return this.http.patch<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/rename`, character);
+  }
+
+  updateCharacterAvatar(gameInstanceId: string, participantId: string, character: Pick<Character, 'picture'>): Observable<Participant> {
+    return this.http.patch<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/avatar`, character);
+  }
+
+  updateCharacterDescription(
+    gameInstanceId: string, participantId: string, character: Pick<Character, 'description'>,
+  ): Observable<Participant> {
+    return this.http.patch<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/description`, character);
   }
 
   addItem(gameInstanceId: string, item: Item): Observable<GameInstance> {
