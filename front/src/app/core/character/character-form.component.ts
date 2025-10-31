@@ -9,7 +9,7 @@ import { PictureControlComponent } from './avatar/picture-control.component';
 import { Bar, BarsControlComponent } from './bars/bars-control.component';
 import { CharacterAttributesService } from './character-attributes.service';
 import { DescriptionControlComponent } from './descriptions/description-control.component';
-import { InventoryListViewComponent } from './inventories/inventory-list-view.component';
+import { InventoryItemEvent, InventoryListComponent } from './inventories/inventory-list.component';
 import { Inventory } from './inventories/inventory.types';
 import { NameControlComponent } from './names/name-control.component';
 import { Skill, SkillsControlComponent } from './skills/skills-control.component';
@@ -48,11 +48,12 @@ type CharacterFormType = {
       <app-bars-control [bars]="playerBars()" (newBars)="barsEvent.emit($event)"/>
       <app-status-control [statuses]="playerStatuses()" (newStatuses)="statusesEvent.emit($event)"/>
 
-      <app-inventory-list-view
+      <app-inventory-list
         [inventories]="playerInventories()"
         [character]="existingCharacter()"
-        (updatedInventory)="setNewInventory($event)"
-        (deleteInventory)="deleteInventory($event)"
+        (addItem)="addItem.emit($event)"
+        (deleteItem)="deleteItem.emit($event)"
+        (editItem)="editItem.emit($event)"
       />
 
       <app-strengths-control [strengths]="playerStrengths()" (newStrengths)="strengthsEvent.emit($event)"/>
@@ -90,7 +91,7 @@ type CharacterFormType = {
     StrengthsControlComponent,
     WeaknessesControlComponent,
     SkillsControlComponent,
-    InventoryListViewComponent,
+    InventoryListComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -109,7 +110,9 @@ export class CharacterFormComponent  {
   public strengthsEvent = output<Strength[]>();
   public weaknessesEvent = output<Weakness[]>();
   public skillsEvent = output<Skill[]>();
-  public inventoriesEvent = output<Attributes['inventory']['instance'][]>();
+  public deleteItem = output<InventoryItemEvent>();
+  public editItem = output<InventoryItemEvent>();
+  public addItem = output<InventoryItemEvent>();
 
   protected playerBars = computed(() => {
     return this.characterAttributesService.mapPlayerBars(
@@ -158,30 +161,6 @@ export class CharacterFormComponent  {
     return this.fb.group<CharacterFormType>(this.defaultFormValue(existingValue));
   });
 
-  protected setNewInventories(inventories: Inventory[]): void {
-    const selectedInventories = inventories.filter(i => i.selected).map(i => i.instance);
-    this.form().controls.attributes.controls.inventory.setValue(selectedInventories);
-    this.submit();
-  }
-
-  protected setNewInventory(inventory: Inventory): void {
-    const currentInventories = this.form().controls.attributes.controls.inventory.value;
-    const inventoryToEditIndex = currentInventories.findIndex(inv => inv.id === inventory.instance.id);
-    if (inventoryToEditIndex === -1) {
-      currentInventories.push(inventory.instance);
-    } else {
-      currentInventories[inventoryToEditIndex] = inventory.instance;
-    }
-
-    this.inventoriesEvent.emit(currentInventories);
-  }
-
-  protected deleteInventory(inventory: Inventory): void {
-    const currentInventories = this.form().controls.attributes.controls.inventory.value;
-    const updatedInventories = currentInventories.filter(inv => inv.id !== inventory.instance.id);
-    this.inventoriesEvent.emit(updatedInventories);
-  }
-
   private defaultFormValue(character: Character): CharacterFormType {
     return {
       name: this.fb.control(character.name, { nonNullable: true, validators: [Validators.required] }),
@@ -196,11 +175,5 @@ export class CharacterFormComponent  {
       }),
       skills: this.fb.control(character.skills, { nonNullable: true }),
     };
-  }
-
-  protected submit() {
-    const formData = this.form().getRawValue();
-    const character: Character = {id: `${formData.name}-${Date.now()}`, ...formData };
-    this.newCharacter.emit(character);
   }
 }

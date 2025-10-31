@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Inventory } from './inventory.types';
 
 @Component({
-  selector: 'app-inventory-view',
+  selector: 'app-inventory',
   template: `
     @let inv = inventory();
     <div class="inventory-container">
@@ -56,6 +56,6 @@ import { Inventory } from './inventory.types';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InventoryViewComponent {
+export class InventoryComponent {
   public inventory = input.required<Inventory>();
 }

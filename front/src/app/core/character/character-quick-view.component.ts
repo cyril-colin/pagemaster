@@ -3,7 +3,7 @@ import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { AvatarViewComponent } from './avatar/avatar-view.component';
 import { BarListViewComponent } from './bars/bar-list-view.component';
 import { CharacterAttributesService } from './character-attributes.service';
-import { InventoryListViewComponent } from './inventories/inventory-list-view.component';
+import { InventoryListComponent } from './inventories/inventory-list.component';
 import { NameViewComponent } from './names/name-view.component';
 import { StatusListViewComponent } from './statuses/status-list-view.component';
 
@@ -23,7 +23,7 @@ import { StatusListViewComponent } from './statuses/status-list-view.component';
       </div>
     </div>
     <div class="inventories">
-      <app-inventory-list-view [inventories]="playerInventories()" [character]="char"/>
+      <app-inventory-list [inventories]="playerInventories()" [character]="char"/>
     </div>
     
     
@@ -66,7 +66,7 @@ import { StatusListViewComponent } from './statuses/status-list-view.component';
     NameViewComponent,
     BarListViewComponent,
     StatusListViewComponent,
-    InventoryListViewComponent,
+    InventoryListComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

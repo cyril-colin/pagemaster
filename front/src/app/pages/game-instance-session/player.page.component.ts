@@ -3,8 +3,10 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { Attributes } from '@pagemaster/common/attributes.types';
 import { Character, Player } from '@pagemaster/common/pagemaster.types';
+import { tap } from 'rxjs';
 import { Bar } from 'src/app/core/character/bars/bars-control.component';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
+import { InventoryItemEvent } from 'src/app/core/character/inventories/inventory-list.component';
 import { Skill } from 'src/app/core/character/skills/skills-control.component';
 import { Status } from 'src/app/core/character/statuses/status-control.component';
 import { Strength } from 'src/app/core/character/strengths/strengths-control.component';
@@ -29,7 +31,9 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       (strengthsEvent)="updateStrengths($event, viewedPlayer())"
       (weaknessesEvent)="updateWeaknesses($event, viewedPlayer())"
       (skillsEvent)="updateSkills($event, viewedPlayer())"
-      (inventoriesEvent)="updateInventories($event, viewedPlayer())"
+      (addItem)="addItemToInventory($event, viewedPlayer())"
+      (editItem)="editItemToInventory($event, viewedPlayer())"
+      (deleteItem)="deleteItemToInventory($event, viewedPlayer())"
     />
   `,
   styles: [`
@@ -131,5 +135,31 @@ export class PlayerPageComponent {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     this.gameInstanceService.updateCharacterInventories(gameInstanceId, participantId, { inventory: inventories }).subscribe();
+  }
+
+  protected addItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.addItemToInventory(gameInstanceId, participantId, itemEvent.inventory.instance.id, itemEvent.item).pipe(
+      tap(() => itemEvent.modalRef.close()),
+    ).subscribe();
+  }
+
+  protected editItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.editItemInInventory(
+      gameInstanceId, participantId, itemEvent.inventory.instance.id, itemEvent.item).pipe(
+      tap(() => itemEvent.modalRef.close()),
+    ).subscribe();
+  }
+
+  protected deleteItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.deleteItemFromInventory(
+      gameInstanceId, participantId, itemEvent.inventory.instance.id, itemEvent.item.id).pipe(
+      tap(() => itemEvent.modalRef.close()),
+    ).subscribe();
   }
 }

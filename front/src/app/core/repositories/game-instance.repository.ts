@@ -93,4 +93,39 @@ export class GameInstanceRepository {
     return this.http.post<GameInstance>(`${this.baseUrl}/game-instances/${gameInstanceId}/items`, item);
   }
 
+  addItemToInventory(
+    gameInstanceId: string,
+    participantId: string,
+    inventoryId: string,
+    item: Item,
+  ): Observable<Participant> {
+    return this.http.post<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/items`,
+      item,
+    );
+  }
+
+  editItemInInventory(
+    gameInstanceId: string,
+    participantId: string,
+    inventoryId: string,
+    item: Item,
+  ): Observable<Participant> {
+    return this.http.put<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/items/${item.id}`,
+      item,
+    );
+  }
+
+  deleteItemFromInventory(
+    gameInstanceId: string,
+    participantId: string,
+    inventoryId: string,
+    itemId: string,
+  ): Observable<Participant> {
+    return this.http.delete<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/items/${itemId}`,
+    );
+  }
+
 }

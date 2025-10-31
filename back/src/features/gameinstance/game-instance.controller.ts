@@ -552,6 +552,167 @@ export class GameInstanceController {
     return gameInstanceCleaned;
   }
 
+  @Post('/game-instances/:gameInstanceId/participants/:participantId/inventories/:inventoryId/items')
+  public async addItemToInventory(
+    item: Item,
+    params: {gameInstanceId: string, participantId: string, inventoryId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.validateContext(params.gameInstanceId, req, 'player');
+    if ((currentParticipant.id !== params.participantId && currentParticipant.type !== 'gameMaster')) {
+      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
+    }
+
+    const participantIndex = gameInstance.participants.findIndex(p => p.id === params.participantId);
+    if (participantIndex === -1) {
+      throw new HttpBadRequestError('Participant not found in the specified game instance');
+    }
+
+    const player = gameInstance.participants[participantIndex];
+    if (player.type !== 'player') {
+      throw new HttpForbiddenError('Forbidden: Only players can have items added to their inventory');
+    }
+
+    const inventoryIndex = player.character.attributes.inventory.findIndex(inv => inv.id === params.inventoryId);
+    if (inventoryIndex === -1) {
+      throw new HttpBadRequestError('Inventory not found for the specified participant');
+    }
+
+    player.character.attributes.inventory[inventoryIndex].current.push(item);
+
+    const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'item-added-to-inventory',
+        title: 'Item Added',
+        description: `${currentParticipant.name} added item ${item.name} to ${player.character.name}'s inventory`,
+        metadata: { itemId: item.id, itemName: item.name, inventoryId: params.inventoryId }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
+  @Put('/game-instances/:gameInstanceId/participants/:participantId/inventories/:inventoryId/items/:itemId')
+  public async editItemInInventory(
+    item: Item,
+    params: {gameInstanceId: string, participantId: string, inventoryId: string, itemId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.validateContext(params.gameInstanceId, req, 'player');
+    if ((currentParticipant.id !== params.participantId && currentParticipant.type !== 'gameMaster')) {
+      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
+    }
+
+    const participantIndex = gameInstance.participants.findIndex(p => p.id === params.participantId);
+    if (participantIndex === -1) {
+      throw new HttpBadRequestError('Participant not found in the specified game instance');
+    }
+
+    const player = gameInstance.participants[participantIndex];
+    if (player.type !== 'player') {
+      throw new HttpForbiddenError('Forbidden: Only players can have items edited in their inventory');
+    }
+
+    const inventoryIndex = player.character.attributes.inventory.findIndex(inv => inv.id === params.inventoryId);
+    if (inventoryIndex === -1) {
+      throw new HttpBadRequestError('Inventory not found for the specified participant');
+    }
+
+    const itemIndex = player.character.attributes.inventory[inventoryIndex].current.findIndex(i => i.id === params.itemId);
+    if (itemIndex === -1) {
+      throw new HttpBadRequestError('Item not found in the specified inventory');
+    }
+
+    player.character.attributes.inventory[inventoryIndex].current[itemIndex] = item;
+
+    const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'item-edited-in-inventory',
+        title: 'Item Edited',
+        description: `${currentParticipant.name} edited item ${item.name} in ${player.character.name}'s inventory`,
+        metadata: { itemId: item.id, itemName: item.name, inventoryId: params.inventoryId }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
+  @Delete('/game-instances/:gameInstanceId/participants/:participantId/inventories/:inventoryId/items/:itemId')
+  public async deleteItemFromInventory(
+    body: unknown,
+    params: {gameInstanceId: string, participantId: string, inventoryId: string, itemId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.validateContext(params.gameInstanceId, req, 'player');
+    if ((currentParticipant.id !== params.participantId && currentParticipant.type !== 'gameMaster')) {
+      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
+    }
+
+    const participantIndex = gameInstance.participants.findIndex(p => p.id === params.participantId);
+    if (participantIndex === -1) {
+      throw new HttpBadRequestError('Participant not found in the specified game instance');
+    }
+
+    const player = gameInstance.participants[participantIndex];
+    if (player.type !== 'player') {
+      throw new HttpForbiddenError('Forbidden: Only players can have items deleted from their inventory');
+    }
+
+    const inventoryIndex = player.character.attributes.inventory.findIndex(inv => inv.id === params.inventoryId);
+    if (inventoryIndex === -1) {
+      throw new HttpBadRequestError('Inventory not found for the specified participant');
+    }
+
+    const itemIndex = player.character.attributes.inventory[inventoryIndex].current.findIndex(i => i.id === params.itemId);
+    if (itemIndex === -1) {
+      throw new HttpBadRequestError('Item not found in the specified inventory');
+    }
+
+    const deletedItem = player.character.attributes.inventory[inventoryIndex].current[itemIndex];
+    player.character.attributes.inventory[inventoryIndex].current.splice(itemIndex, 1);
+
+    const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'item-deleted-from-inventory',
+        title: 'Item Deleted',
+        description: `${currentParticipant.name} deleted item ${deletedItem.name} from ${player.character.name}'s inventory`,
+        metadata: { itemId: params.itemId, itemName: deletedItem.name, inventoryId: params.inventoryId }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
   @Delete('/game-instances/:id')
   public async deleteGameInstance(body: unknown, params: {id: string}): Promise<boolean> {
     return await this.mongoClient.deleteGameInstance(params.id);
