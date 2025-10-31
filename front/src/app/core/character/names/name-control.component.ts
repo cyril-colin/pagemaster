@@ -10,7 +10,13 @@ import { NameViewComponent } from './name-view.component';
         <app-name-view [name]="nameForm().controls.name.value"></app-name-view>
       </div>
     } @else {
-      <input #input type="text" [formControl]="nameForm().controls.name" (blur)="submit()" (keyup.enter)="submit()" />
+      <input 
+        #input
+        type="text"
+        [formControl]="nameForm().controls.name"
+        (blur)="submit()"
+        (keydown.enter)="$event.preventDefault(); submit()"
+      />
     }
   `,
   styles: [`
