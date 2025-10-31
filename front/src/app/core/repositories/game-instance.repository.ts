@@ -128,4 +128,27 @@ export class GameInstanceRepository {
     );
   }
 
+
+  selectInventoryForCharacter(
+    gameInstanceId: string,
+    participantId: string,
+    inventoryId: string,
+  ): Observable<Participant> {
+    return this.http.post<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/select`,
+      {},
+    );
+  }
+
+  unselectInventoryForCharacter(
+    gameInstanceId: string,
+    participantId: string,
+    inventoryId: string,
+  ): Observable<Participant> {
+    return this.http.post<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/unselect`,
+      {},
+    );
+  }
+
 }

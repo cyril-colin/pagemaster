@@ -713,6 +713,130 @@ export class GameInstanceController {
     return gameInstanceCleaned;
   }
 
+  @Post('/game-instances/:gameInstanceId/participants/:participantId/inventories/:inventoryId/select')
+  public async selectInventoryForCharacter(
+    body: unknown,
+    params: {gameInstanceId: string, participantId: string, inventoryId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.validateContext(params.gameInstanceId, req, 'player');
+    if ((currentParticipant.id !== params.participantId && currentParticipant.type !== 'gameMaster')) {
+      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
+    }
+
+    const participantIndex = gameInstance.participants.findIndex(p => p.id === params.participantId);
+    if (participantIndex === -1) {
+      throw new HttpBadRequestError('Participant not found in the specified game instance');
+    }
+
+    const player = gameInstance.participants[participantIndex];
+    if (player.type !== 'player') {
+      throw new HttpForbiddenError('Forbidden: Only players can have their inventory selected');
+    }
+
+    // Find the inventory definition in the game definition
+    const inventoryDef = gameInstance.gameDef.possibleAttributes.inventory.find(
+      inv => inv.id === params.inventoryId
+    );
+    
+    if (!inventoryDef) {
+      throw new HttpBadRequestError('Inventory definition not found in game definition');
+    }
+
+    // Check if the inventory is already selected (already in the array)
+    const inventoryIndex = player.character.attributes.inventory.findIndex(inv => inv.id === params.inventoryId);
+    if (inventoryIndex !== -1) {
+      // Already selected, just return the current state without changes
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { _id, ...gameInstanceCleaned } = gameInstance as GameInstance & {_id?: unknown};
+      return gameInstanceCleaned;
+    }
+
+    // Add the inventory instance to the character's inventory array
+    player.character.attributes.inventory.push({
+      id: params.inventoryId,
+      current: []
+    });
+
+    const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'inventory-selected',
+        title: 'Inventory Selected',
+        description: `${currentParticipant.name} selected inventory ${inventoryDef.name} for ${player.character.name}`,
+        metadata: { inventoryId: params.inventoryId, inventoryName: inventoryDef.name }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
+  @Post('/game-instances/:gameInstanceId/participants/:participantId/inventories/:inventoryId/unselect')
+  public async unselectInventoryForCharacter(
+    body: unknown,
+    params: {gameInstanceId: string, participantId: string, inventoryId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.validateContext(params.gameInstanceId, req, 'player');
+    if ((currentParticipant.id !== params.participantId && currentParticipant.type !== 'gameMaster')) {
+      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
+    }
+
+    const participantIndex = gameInstance.participants.findIndex(p => p.id === params.participantId);
+    if (participantIndex === -1) {
+      throw new HttpBadRequestError('Participant not found in the specified game instance');
+    }
+
+    const player = gameInstance.participants[participantIndex];
+    if (player.type !== 'player') {
+      throw new HttpForbiddenError('Forbidden: Only players can have their inventory unselected');
+    }
+
+    // Find the inventory in the character's inventory array
+    const inventoryIndex = player.character.attributes.inventory.findIndex(inv => inv.id === params.inventoryId);
+    if (inventoryIndex === -1) {
+      throw new HttpBadRequestError('Inventory not found for the specified participant');
+    }
+
+    // Find the inventory definition to get its name for the event description
+    const inventoryDef = gameInstance.gameDef.possibleAttributes.inventory.find(
+      inv => inv.id === params.inventoryId
+    );
+
+    // Remove the inventory from the character's inventory array
+    player.character.attributes.inventory.splice(inventoryIndex, 1);
+
+    const gameInstanceCleaned = await this.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.socketServerService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'inventory-unselected',
+        title: 'Inventory Unselected',
+        description: `${currentParticipant.name} unselected inventory ${inventoryDef?.name || params.inventoryId} for ${player.character.name}`,
+        metadata: { inventoryId: params.inventoryId, inventoryName: inventoryDef?.name }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
   @Delete('/game-instances/:id')
   public async deleteGameInstance(body: unknown, params: {id: string}): Promise<boolean> {
     return await this.mongoClient.deleteGameInstance(params.id);

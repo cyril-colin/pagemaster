@@ -9,7 +9,7 @@ import { PictureControlComponent } from './avatar/picture-control.component';
 import { Bar, BarsControlComponent } from './bars/bars-control.component';
 import { CharacterAttributesService } from './character-attributes.service';
 import { DescriptionControlComponent } from './descriptions/description-control.component';
-import { InventoryItemEvent, InventoryListComponent } from './inventories/inventory-list.component';
+import { InventoryItemEvent, InventoryListComponent, InventorySelectionEvent } from './inventories/inventory-list.component';
 import { Inventory } from './inventories/inventory.types';
 import { NameControlComponent } from './names/name-control.component';
 import { Skill, SkillsControlComponent } from './skills/skills-control.component';
@@ -54,6 +54,8 @@ type CharacterFormType = {
         (addItem)="addItem.emit($event)"
         (deleteItem)="deleteItem.emit($event)"
         (editItem)="editItem.emit($event)"
+        (select)="select.emit($event)"
+        (unselect)="unselect.emit($event)"
       />
 
       <app-strengths-control [strengths]="playerStrengths()" (newStrengths)="strengthsEvent.emit($event)"/>
@@ -113,6 +115,8 @@ export class CharacterFormComponent  {
   public deleteItem = output<InventoryItemEvent>();
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();
+  public select = output<InventorySelectionEvent>();
+  public unselect = output<InventorySelectionEvent>();
 
   protected playerBars = computed(() => {
     return this.characterAttributesService.mapPlayerBars(

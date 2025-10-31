@@ -3,6 +3,7 @@ import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
 import { CurrentSessionState } from '../../current-session.state';
 import { ModalRef, ModalService } from '../../modal';
+import { InventorySelectorButtonComponent, InventorySelectorComponent } from './inventory-selector.component';
 import { InventoryComponent } from './inventory.component';
 import { Inventory } from './inventory.types';
 import { ItemListComponent } from './item-list.component';
@@ -13,6 +14,12 @@ export type InventoryItemEvent = {
   item: Item,
   inventory: Inventory,
   modalRef: ModalRef<ItemModalComponent>,
+};
+
+export type InventorySelectionEvent = {
+  type: 'select' | 'unselect',
+  inventory: Inventory,
+  modalRef: ModalRef<InventorySelectorComponent>,
 };
 
 
@@ -36,6 +43,10 @@ export type InventoryItemEvent = {
         />
         
       </section>
+    }
+
+    @if(isManager()) {
+      <app-inventory-selector-button [inventories]="inventories()" (select)="select.emit($event)" (unselect)="unselect.emit($event)" />
     }
     
   `,
@@ -68,6 +79,7 @@ export type InventoryItemEvent = {
     InventoryComponent,
     ItemListComponent,
     AddItemComponent,
+    InventorySelectorButtonComponent,
   ],
 })
 export class InventoryListComponent {
@@ -77,6 +89,8 @@ export class InventoryListComponent {
   public deleteItem = output<InventoryItemEvent>();
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();
+  public select = output<InventorySelectionEvent>();
+  public unselect = output<InventorySelectionEvent>();
 
   public deleteInventory = output<Inventory>();
   protected modalService = inject(ModalService);
