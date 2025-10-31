@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { Attributes } from '@pagemaster/common/attributes.types';
-import { Character, Player } from '@pagemaster/common/pagemaster.types';
+import { Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
 import { Bar } from 'src/app/core/character/bars/bars-control.component';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
@@ -22,7 +22,6 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
     <app-character-form
       [existingCharacter]="viewedPlayer().character"
       [gameDef]="game.gameDef"
-      (newCharacter)="saveCharacter($event, viewedPlayer())"
       (renameEvent)="renameParticipant($event.value, viewedPlayer())"
       (avatarEvent)="updateAvatar($event.value, viewedPlayer())"
       (descriptionEvent)="updateDescription($event.value, viewedPlayer())"
@@ -71,14 +70,6 @@ export class PlayerPageComponent {
     }
     return participant;
   });
-
-  protected saveCharacter(character: Character, player: Player): void {
-    const updatedPlayer: Player = {
-      ...player,
-      character,
-    };
-    this.gameInstanceService.updateParticipant(this.currentSession.currentSession().gameInstance.id, updatedPlayer).subscribe();
-  }
 
   protected renameParticipant(newName: string, player: Player): void {
     const participantId = player.id;

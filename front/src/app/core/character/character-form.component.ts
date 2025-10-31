@@ -1,9 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Attributes } from '@pagemaster/common/attributes.types';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
-import { SkillInstance } from '@pagemaster/common/skills.types';
 import { ITEM_ICONS } from '../gallery/item-icons.const';
 import { PictureControlComponent } from './avatar/picture-control.component';
 import { Bar, BarsControlComponent } from './bars/bars-control.component';
@@ -17,31 +15,17 @@ import { Status, StatusControlComponent } from './statuses/status-control.compon
 import { Strength, StrengthsControlComponent } from './strengths/strengths-control.component';
 import { Weakness, WeaknessesControlComponent } from './weaknesses/weaknesses-control.component';
 
-type AttributeType = {
-    bar: FormControl<Attributes['bar']['instance'][]>,
-    status: FormControl<Attributes['status']['instance'][]>,
-    inventory: FormControl<Attributes['inventory']['instance'][]>,
-    strength: FormControl<Attributes['strength']['instance'][]>,
-    weakness: FormControl<Attributes['weakness']['instance'][]>,
-  }
 
-type CharacterFormType = {
-  name: FormControl<string>,
-  description: FormControl<string>,
-  picture: FormControl<string>,
-  attributes: FormGroup<AttributeType>,
-  skills: FormControl<SkillInstance[]>,
-}
 
 @Component({
   selector: 'app-character-form',
   template: `
-    <form [formGroup]="form()">
+    <form>
       <section class="identity">
-        <app-picture-control [picture]="form().controls.picture.value" (newPicture)="avatarEvent.emit($event)"/>
+        <app-picture-control [picture]="existingCharacter().picture" (newPicture)="avatarEvent.emit($event)"/>
         <div class="identity-data">
-          <app-name-control [name]="form().controls.name.value" (newName)="renameEvent.emit($event)"/>
-          <app-description-control [description]="form().controls.description.value" (newDescription)="descriptionEvent.emit($event)"/>
+          <app-name-control [name]="existingCharacter().name" (newName)="renameEvent.emit($event)"/>
+          <app-description-control [description]="existingCharacter().description" (newDescription)="descriptionEvent.emit($event)"/>
         </div>
       </section>
       
@@ -159,25 +143,4 @@ export class CharacterFormComponent  {
       this.gameDef(),
     );
   });
-  
-  protected form = computed(() => {
-    const existingValue = this.existingCharacter();
-    return this.fb.group<CharacterFormType>(this.defaultFormValue(existingValue));
-  });
-
-  private defaultFormValue(character: Character): CharacterFormType {
-    return {
-      name: this.fb.control(character.name, { nonNullable: true, validators: [Validators.required] }),
-      description: this.fb.control(character.description, { nonNullable: true }),
-      picture: this.fb.control(character.picture, { nonNullable: true }),
-      attributes: this.fb.group<AttributeType>({
-        bar: this.fb.control(character.attributes.bar, { nonNullable: true }),
-        status: this.fb.control(character.attributes.status, { nonNullable: true }),
-        inventory: this.fb.control(character.attributes.inventory, { nonNullable: true }),
-        strength: this.fb.control(character.attributes.strength, { nonNullable: true }),
-        weakness: this.fb.control(character.attributes.weakness, { nonNullable: true }),
-      }),
-      skills: this.fb.control(character.skills, { nonNullable: true }),
-    };
-  }
 }
