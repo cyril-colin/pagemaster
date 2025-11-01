@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
+import { CardComponent } from '../../design-system/card.component';
 import { ModalService } from '../../modal';
 import { InventoryItemEvent } from './inventory-list.component';
 import { Inventory } from './inventory.types';
@@ -17,15 +18,17 @@ export type ItemListPermissions = {
 
 @Component({
   selector: 'app-item-list',
-  template: `  
-    <div class="items">
-      @for(item of sortedItems(); track item.id) {
-        <app-item [item]="item" (itemClicked)="openItemGallery($event)" />
+  template: `
+    <ds-card> 
+      <div class="items">
+        @for(item of sortedItems(); track item.id) {
+          <app-item [item]="item" (itemClicked)="openItemGallery($event)" />
+        }
+      </div>
+      @if(permissions().add) {
+        <app-add-item [permissions]="permissions()" (itemAdded)="addItem.emit({ item: $event.item, modalRef: $event.modalRef })" />
       }
-    </div>
-    @if(permissions().add) {
-      <app-add-item [permissions]="permissions()" (itemAdded)="addItem.emit({ item: $event.item, modalRef: $event.modalRef })" />
-    }
+    </ds-card>
   `,
   styles: [`
     :host {
@@ -34,6 +37,10 @@ export type ItemListPermissions = {
       gap: var(--gap-medium);
       width: 100%;
       padding-top: var(--gap-small);
+    }
+
+    ds-card {
+      width: 100%;
     }
 
     .items {
@@ -88,7 +95,7 @@ export type ItemListPermissions = {
       transform: scale(0.95);
     }
   `],
-  imports: [ItemComponent, AddItemComponent],
+  imports: [ItemComponent, AddItemComponent, CardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemListComponent {

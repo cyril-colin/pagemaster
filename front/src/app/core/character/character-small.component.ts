@@ -23,32 +23,37 @@ import { NameViewComponent } from './names/name-view.component';
     .character-small {
       display: flex;
       flex-direction: row;
-      gap: var(--gap-small);
+      gap: var(--gap-medium);
       align-items: center;
       cursor: pointer;
-      padding: var(--gap-small);
-      border-radius: var(--border-radius);
-      transition: background-color 0.2s ease;
+      padding: var(--padding-medium);
+      border-radius: var(--view-border-radius);
+      background-color: var(--color-background-tertiary);
+      border: 1px solid var(--color-border-heavy);
     }
 
     .character-small:hover {
-      background-color: var(--hover-bg, rgba(0, 0, 0, 0.05));
+      background-color: var(--hover-bg);
+      border-color: var(--color-border);
     }
 
     app-avatar-view {
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       overflow: hidden;
       flex-shrink: 0;
+      border: 2px solid var(--color-border);
     }
 
     .info {
       display: flex;
       flex-direction: column;
-      gap: var(--gap-tiny, 4px);
+      gap: var(--gap-small);
       flex: 1;
       min-width: 0;
+      color: var(--text-secondary);
+      font-size: var(--text-size-small);
     }
   `],
   imports: [

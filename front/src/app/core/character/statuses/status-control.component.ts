@@ -26,14 +26,14 @@ type StatusForm = FormGroup<{
       <div (click)="setMode('edit')" [class.statuses-view]="permissions().edit" [class.statuses-readonly]="!permissions().edit">
         @let selection = selectedStatuses();
         @if (selection.length === 0) {
-          <span>No statuses selected. Click to edit.</span>
+          <span class="empty-message">No statuses selected. Click to edit.</span>
         } @else {
           <app-status-list-view [statuses]="selection"></app-status-list-view>
         }
       </div>
     } @else {
       @for(status of statuses(); track status.instance; let i = $index) {
-        <div>
+        <div class="status-edit-item">
           <input type="checkbox" [formControl]="form.controls.statusForms.controls[i].controls.selected" />
           <label>{{ status.definition.name }}</label>
           <input
@@ -46,11 +46,89 @@ type StatusForm = FormGroup<{
   `,
   styles: [
     `
+    :host {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
+    }
+
     .statuses-view {
       cursor: pointer;
+      padding: var(--card-padding);
+      background-color: var(--color-background-secondary);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .statuses-view:hover {
+      background-color: var(--hover-bg);
+      border-color: var(--color-border-light);
     }
 
     .statuses-readonly {
+      padding: var(--card-padding);
+      background-color: var(--color-background-secondary);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .empty-message {
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+
+    .status-edit-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--gap-medium);
+      padding: var(--gap-small);
+      background-color: var(--color-background-tertiary);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+      margin-bottom: var(--gap-small);
+    }
+
+    .status-edit-item label {
+      flex: 1;
+      color: var(--text-primary);
+      font-weight: var(--text-weight-medium);
+    }
+
+    .status-edit-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .status-edit-item input[type="text"] {
+      flex: 1;
+      max-width: 200px;
+      padding: var(--gap-small);
+      background-color: var(--color-background-main);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+      color: var(--text-primary);
+    }
+
+    button {
+      padding: var(--gap-small) var(--padding-medium);
+      background-color: var(--color-primary);
+      color: var(--text-on-primary);
+      border: none;
+      border-radius: var(--view-border-radius);
+      cursor: pointer;
+      font-weight: var(--text-weight-medium);
+    }
+
+    button:hover {
+      background-color: var(--color-primary-hover);
     }
     `,
   ],

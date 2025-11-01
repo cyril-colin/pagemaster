@@ -1,31 +1,252 @@
 /* You can add global styles to this file, and also import other style files */
 :root {
-  --color-modal-background: #202b38;
-  --color-background-main: #202b38;
-  --color-danger: #f44;
-  --color-danger-hover: #f00;
+  /* === POST-APOCALYPSE THEME COLORS === */
   
-  --view-height-medium: 24px;
-  --view-border: 1px solid #ccc;
+  /* Background Colors - Dark, gritty, weathered tones */
+  --color-background-main: #1a1f25;        /* Deep charcoal - main canvas */
+  --color-background-secondary: #252d35;   /* Slightly lighter - panels, cards */
+  --color-background-tertiary: #2f3840;    /* Elevated elements */
+  --color-modal-background: #1a1f25;       /* Modal backdrop */
+  --color-surface-elevated: #333c45;       /* Hover states, elevated surfaces */
+  
+  /* Primary Colors - Rust, decay, survival */
+  --color-primary: #d4804f;                /* Rust orange - primary actions */
+  --color-primary-hover: #e69563;          /* Lighter rust - hover state */
+  --color-primary-active: #b86a3f;         /* Darker rust - active state */
+  --color-primary-muted: #8f5a3a;          /* Muted rust - disabled state */
+  
+  /* Secondary Colors - Weathered steel, survival gear */
+  --color-secondary: #6b8088;              /* Weathered steel blue */
+  --color-secondary-hover: #7d95a0;        /* Lighter steel */
+  --color-secondary-active: #5a6d75;       /* Darker steel */
+  
+  /* Accent Colors - Scavenged resources, radiation glow */
+  --color-accent-green: #7c9a6f;           /* Dull moss green - health, nature */
+  --color-accent-yellow: #c9a055;          /* Dusty yellow - warnings, radiation */
+  --color-accent-blue: #5a8099;            /* Faded denim - info, water */
+  --color-accent-purple: #8b7a99;          /* Dusty purple - mystery, rare items */
+  
+  /* Status Colors */
+  --color-success: #6b8f5f;                /* Survival green - success states */
+  --color-success-hover: #7ea670;          /* Lighter success */
+  --color-warning: #c9a055;                /* Dusty yellow - warnings */
+  --color-warning-hover: #d4b26a;          /* Lighter warning */
+  --color-danger: #b8594f;                 /* Blood rust - danger, damage */
+  --color-danger-hover: #cc6d62;           /* Lighter danger */
+  --color-info: #5a8099;                   /* Steel blue - info */
+  --color-info-hover: #6d94ad;             /* Lighter info */
+  
+  /* Text Colors */
+  --text-primary: #d4d7d9;                 /* Light gray - main text */
+  --text-secondary: #9ba3a8;               /* Mid gray - secondary text */
+  --text-tertiary: #707880;                /* Darker gray - muted text */
+  --text-primary-inverted: #1a1f25;        /* Dark text on light backgrounds */
+  --text-on-primary: #f5f5f5;              /* Text on primary color */
+  --text-disabled: #505860;                /* Disabled text */
+  
+  /* Border Colors */
+  --color-border: #3d4750;                 /* Standard border */
+  --color-border-light: #4a5560;           /* Lighter border */
+  --color-border-heavy: #2f3840;           /* Heavy/dark border */
+  --view-border: 1px solid var(--color-border);
   --view-border-radius: 4px;
-
-  --text-primary: #ccc;
-  --text-primary-inverted: #333;
   
+  /* Special Effects - Post-apocalyptic atmosphere */
+  --color-glow-radiation: rgba(201, 160, 85, 0.3);   /* Radiation glow */
+  --color-glow-danger: rgba(184, 89, 79, 0.3);       /* Danger glow */
+  --color-shadow-heavy: rgba(0, 0, 0, 0.5);          /* Heavy shadows */
+  --color-overlay: rgba(26, 31, 37, 0.85);           /* Overlay backdrop */
+  
+  /* === FUTURE THEMES (for easy switching) === */
+  /* Uncomment and switch root variables to enable different themes */
+  
+  /* FANTASY THEME - Warm, mystical, earthy
+  --color-primary: #8b6f47;                 Medieval brown/gold
+  --color-secondary: #5a7d5a;               Forest green
+  --color-accent-yellow: #d4a942;           Gold
+  --color-accent-purple: #9b6b9e;           Mystical purple
+  --color-background-main: #1c1410;         Dark parchment
+  */
+  
+  /* CYBERPUNK THEME - Neon, high contrast, electric
+  --color-primary: #ff2a6d;                 Hot pink/magenta
+  --color-secondary: #05d9e8;               Cyan
+  --color-accent-yellow: #f7ff58;           Electric yellow
+  --color-accent-purple: #a537fd;           Neon purple
+  --color-background-main: #0a0e27;         Deep space blue
+  */
+  
+  /* === SIZING === */
+  --view-height-medium: 24px;
+  
+  /* === TYPOGRAPHY === */
   --text-size-small: 12px;
   --text-size-medium: 14px;
   --text-size-large: 16px;
+  --text-size-xlarge: 20px;
   
   --text-weight-normal: 400;
   --text-weight-medium: 500;
   --text-weight-bold: 600;
   
+  /* === SPACING === */
   --gap-small: 6px;
   --gap-medium: 12px;
   --gap-large: 24px;
+  --padding-small: 8px;
   --padding-medium: 12px;
   --padding-large: 24px;
 
+  /* === COMPONENTS === */
   --icon-button-size: 32px;
   --delete-button-size: 18px;
+  
+  /* === LAYOUT === */
+  --content-max-width: 1200px;
+  --sidebar-width: 280px;
+  --header-height: 140px;
+  --footer-height: 100px;
+  --card-padding: var(--padding-medium);
+  
+  /* === INTERACTIVE === */
+  --transition-speed: 0.15s;
+  --hover-bg: var(--color-surface-elevated);
+
+
+
+  --ds-card-gap: var(--gap-small);
+  --ds-card-border: var(--view-border);
+  --ds-card-border-radius: var(--view-border-radius);
+  --ds-card-padding: var(--padding-medium);
+  --ds-card-background: var(--color-background-secondary);
+}
+
+/* === GLOBAL STYLES === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: var(--text-size-medium);
+  color: var(--text-primary);
+  background-color: var(--color-background-main);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--text-weight-bold);
+  color: var(--text-primary);
+  margin-bottom: var(--gap-medium);
+}
+
+h1 { font-size: 24px; }
+h2 { font-size: 20px; }
+h3 { font-size: 18px; }
+h4 { font-size: 16px; }
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+  
+  &:hover {
+    color: var(--color-primary-hover);
+  }
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+
+
+/* === UTILITY CLASSES === */
+.card {
+  background-color: var(--color-background-secondary);
+  border: var(--view-border);
+  border-radius: var(--view-border-radius);
+  padding: var(--card-padding);
+}
+
+.panel {
+  background-color: var(--color-background-tertiary);
+  border: var(--view-border);
+  border-radius: var(--view-border-radius);
+  padding: var(--padding-medium);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gap-small) var(--padding-medium);
+  border: none;
+  border-radius: var(--view-border-radius);
+  cursor: pointer;
+  font-weight: var(--text-weight-medium);
+  transition: background-color var(--transition-speed);
+  
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--text-on-primary);
+  
+  &:hover:not(:disabled) {
+    background-color: var(--color-primary-hover);
+  }
+  
+  &:active:not(:disabled) {
+    background-color: var(--color-primary-active);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--text-on-primary);
+  
+  &:hover:not(:disabled) {
+    background-color: var(--color-secondary-hover);
+  }
+}
+
+.btn-danger {
+  background-color: var(--color-danger);
+  color: var(--text-on-primary);
+  
+  &:hover:not(:disabled) {
+    background-color: var(--color-danger-hover);
+  }
+}
+
+.input {
+  padding: var(--gap-small) var(--padding-small);
+  background-color: var(--color-background-tertiary);
+  border: var(--view-border);
+  border-radius: var(--view-border-radius);
+  color: var(--text-primary);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }

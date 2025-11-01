@@ -10,12 +10,15 @@ import { ChangeDetectionStrategy, Component, ComponentRef, viewChild, ViewContai
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 350px;
+      width: 100%;
+      max-width: 500px;
       min-height: 200px;
-      background: var(--color-modal-background);
+      background-color: var(--color-background-secondary);
+      border: 2px solid var(--color-border);
       border-radius: var(--view-border-radius);
       padding: var(--padding-large);
-      overflow: scroll;
+      overflow-y: auto;
+      box-shadow: 0 4px 24px var(--color-shadow-heavy);
     }
 
     .modal-content {

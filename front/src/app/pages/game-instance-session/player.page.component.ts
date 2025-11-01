@@ -42,6 +42,12 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
     :host {
       display: flex;
       width: 100%;
+      justify-content: center;
+    }
+
+    app-character-form {
+      width: 100%;
+      max-width: 800px;
     }
   `],
   imports: [

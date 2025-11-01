@@ -99,23 +99,30 @@ export type CharacterPermissions = {
   `,
   styles: [`
     form {
-
-      .identity {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-
-        .identity-data {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-      }
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: var(--gap-large);
+      width: 100%;
     }
-    `],
+
+    .identity {
+      display: flex;
+      flex-direction: row;
+      gap: var(--gap-medium);
+      padding: var(--card-padding);
+      background-color: var(--color-background-secondary);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+      align-items: flex-start;
+    }
+
+    .identity-data {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
+      flex: 1;
+    }
+  `],
   imports: [
     CommonModule,
     ReactiveFormsModule,

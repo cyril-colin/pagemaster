@@ -18,22 +18,32 @@ import { NameViewComponent } from './names/name-view.component';
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--gap-tiny, 4px);
+      gap: var(--gap-small);
       cursor: pointer;
-      padding: var(--gap-small);
-      border-radius: var(--border-radius);
-      transition: background-color 0.2s ease;
+      padding: var(--gap-medium);
+      border-radius: var(--view-border-radius);
+      background-color: var(--color-background-tertiary);
+      border: 1px solid var(--color-border-heavy);
+      min-width: 80px;
     }
 
     .character-button:hover {
-      background-color: var(--hover-bg, rgba(0, 0, 0, 0.05));
+      background-color: var(--hover-bg);
+      border-color: var(--color-primary);
     }
 
     app-avatar-view {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       overflow: hidden;
+      border: 2px solid var(--color-border);
+    }
+
+    app-name-view {
+      font-size: var(--text-size-small);
+      text-align: center;
+      color: var(--text-secondary);
     }
   `],
   imports: [

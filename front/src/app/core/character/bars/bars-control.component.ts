@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, input, output, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AttributeBar, Attributes } from '@pagemaster/common/attributes.types';
-import { BarListViewComponent } from './bar-list-view.component';
+import { BarComponent } from '../../design-system/bar.component';
 
 
 type BarForm = FormGroup<{
@@ -19,40 +19,97 @@ export type BarsPermissions = {
 @Component({
   selector: 'app-bars-control',
   template: `
-
-    @if (mode() === 'view') {
-      <div (click)="setMode('edit')" [class.bars-view]="permissions().edit" [class.bars-readonly]="!permissions().edit">
-        <app-bar-list-view [bars]="selectedBars()" />
-      </div>
-    } @else {
-      @for(bar of bars(); track bar.instance; let i = $index) {
-        <div>
-          <input type="checkbox" [formControl]="form.controls.barForms.controls[i].controls.selected" />
-          <label>{{ bar.def.name }}</label>
-          <input
-            type="number"
-            [min]="bar.def.min"
-            [max]="bar.def.max"
-            [formControl]="form.controls.barForms.controls[i].controls.current" />
-        </div>
-      }
-      <button (click)="$event.preventDefault(); submit()">Save</button>
+    @for(bar of selectedBars(); track bar.instance.id) {
+        <ds-bar 
+          [value]="bar.instance.current" 
+          [color]="bar.def.color" 
+          [editable]="permissions().edit"
+          [min]="bar.def.min"
+          [max]="bar.def.max"
+          (newValue)="updateBarValue(bar, $event)"
+        />
     }
-    
   `,
   styles: [
     `
+    :host {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
+    }
+
     .bars-view {
       cursor: pointer;
+      padding: var(--card-padding);
+      background-color: var(--color-background-secondary);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+    }
+
+    .bars-view:hover {
+      background-color: var(--hover-bg);
+      border-color: var(--color-border-light);
     }
 
     .bars-readonly {
+      padding: var(--card-padding);
+      background-color: var(--color-background-secondary);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+    }
+
+    .bar-edit-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--gap-medium);
+      padding: var(--gap-small);
+      background-color: var(--color-background-tertiary);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+      margin-bottom: var(--gap-small);
+    }
+
+    .bar-edit-item label {
+      flex: 1;
+      color: var(--text-primary);
+      font-weight: var(--text-weight-medium);
+    }
+
+    .bar-edit-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .bar-edit-item input[type="number"] {
+      width: 80px;
+      padding: var(--gap-small);
+      background-color: var(--color-background-main);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+      color: var(--text-primary);
+      text-align: center;
+    }
+
+    button {
+      padding: var(--gap-small) var(--padding-medium);
+      background-color: var(--color-primary);
+      color: var(--text-on-primary);
+      border: none;
+      border-radius: var(--view-border-radius);
+      cursor: pointer;
+      font-weight: var(--text-weight-medium);
+    }
+
+    button:hover {
+      background-color: var(--color-primary-hover);
     }
     `,
   ],
   imports: [
     ReactiveFormsModule,
-    BarListViewComponent,
+    BarComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -94,30 +151,18 @@ export class BarsControlComponent {
     this.mode.set(newMode);
   }
 
-  protected matchingBar(id: string): {def: AttributeBar, instance: Attributes['bar']['instance'], selected: boolean} |null {
-    return this.bars().find(b => b.instance.id === id) || null;
+  protected matchingBar(id: string, bars: Bar[]): Bar |null {
+    return bars.find(b => b.instance.id === id) || null;
   }
 
-  protected submit(): void {
-    this.setMode('view');
+  protected updateBarValue(bar: Bar, newValue: number): void {
+    const bars = this.bars();
+    const matching = this.matchingBar(bar.instance.id, bars);
 
-    const data = this.form.getRawValue().barForms;
-    const result = data.reduce<Bar[]>((acc, barForm) => {
-      const matching = this.matchingBar(barForm.id);
-      if (matching) {
-        acc.push({
-          def: matching.def,
-          instance: {
-            id: barForm.id,
-            current: barForm.current,
-          },
-          selected: barForm.selected,
-        });
-      }
-      return acc;
-    }, []);
-
-    this.newBars.emit(result);
+    if (matching) {
+      matching.instance.current = newValue;
+      this.newBars.emit(bars);
+    }
   }
   
 }

@@ -36,7 +36,54 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      padding: var(--padding-large);
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: var(--color-primary);
+      margin-bottom: var(--gap-large);
+      font-size: 32px;
+    }
+
+    h2 {
+      color: var(--text-primary);
+      margin-top: var(--gap-large);
+      margin-bottom: var(--gap-medium);
+    }
+
+    ul {
+      list-style: none;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
+    }
+
+    li {
+      background-color: var(--color-background-secondary);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+    }
+
+    a {
+      display: flex;
+      padding: var(--padding-medium);
+      color: var(--text-primary);
+      font-weight: var(--text-weight-medium);
+    }
+
+    li:hover {
+      background-color: var(--hover-bg);
+      border-color: var(--color-primary);
+    }
+
+    p {
+      color: var(--text-secondary);
+      font-style: italic;
     }
   `],
   imports: [

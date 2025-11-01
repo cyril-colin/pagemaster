@@ -55,64 +55,79 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       flex-direction: column;
       height: 100%;
       width: 100%;
-      --header-height: 140px;
-      --footer-height: 100px;
       padding-top: var(--header-height);
       padding-bottom: var(--footer-height);
+    }
 
-      .header {
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: var(--header-height);
-        background-color: var(--color-background-main);
-        border-bottom: var(--view-border);
-      }
+    .header {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: var(--header-height);
+      background-color: var(--color-background-secondary);
+      border-bottom: var(--view-border);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 8px var(--color-shadow-heavy);
+    }
 
-      .links {
+    .links {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: var(--padding-medium);
+      gap: var(--gap-medium);
+      border-bottom: 1px solid var(--color-border-heavy);
+
+      a {
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: var(--gap-medium);
+        align-items: center;
+        padding: var(--gap-small) var(--padding-medium);
+        border: var(--view-border);
+        border-radius: var(--view-border-radius);
+        color: var(--text-primary);
+        background-color: var(--color-background-tertiary);
+        font-size: var(--text-size-small);
+        font-weight: var(--text-weight-medium);
 
-        a {
-          border: var(--view-border);
-          border-radius: var(--view-border-radius);
-          padding: var(--gap-small);
-          text-decoration: none;
-
-          &:hover {
-            background-color: var(--color-background-hover);
-          }
+        &:hover {
+          background-color: var(--hover-bg);
+          border-color: var(--color-border-light);
         }
       }
+    }
 
-      .main-content {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-      }
+    .main-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: var(--padding-large);
+    }
 
-      .footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: var(--footer-height);
-        justify-content: center;
-        gap: var(--gap-medium);
-        overflow-x: auto;
-        background-color: var(--color-background-main);
-        border-top: var(--view-border);
-      }
-    }`],
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: var(--footer-height);
+      justify-content: center;
+      align-items: center;
+      gap: var(--gap-medium);
+      padding: var(--gap-medium);
+      overflow-x: auto;
+      background-color: var(--color-background-secondary);
+      border-top: var(--view-border);
+      box-shadow: 0 -2px 8px var(--color-shadow-heavy);
+    }
+  `],
   imports: [
     RouterModule,
     CharacterSmallComponent,

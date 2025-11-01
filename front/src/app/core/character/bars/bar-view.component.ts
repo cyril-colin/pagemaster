@@ -14,18 +14,17 @@ import { Bar } from './bars-control.component';
   styles: [`
     :host {
       display: flex;
-      
       width: 100%;
     }
     
     .bar-container {
       position: relative;
       width: 100%;
-      height: var(--view-height-medium);
+      height: 32px;
       border: var(--view-border);
       border-radius: var(--view-border-radius);
       overflow: hidden;
-      background: transparent;
+      background-color: var(--color-background-main);
     }
     
     .bar-fill {
@@ -33,7 +32,7 @@ import { Bar } from './bars-control.component';
       top: 0;
       left: 0;
       height: 100%;
-      transition: width 1s ease;
+      opacity: 0.7;
     }
     
     .bar-text {
@@ -45,12 +44,13 @@ import { Bar } from './bars-control.component';
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
+      font-size: var(--text-size-small);
+      font-weight: var(--text-weight-medium);
       color: var(--text-primary);
       z-index: 1;
+      text-shadow: 0 0 4px var(--color-background-main);
     }
-    `,
-  ],
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule],
 })
