@@ -3,6 +3,7 @@ import { Server } from 'socket.io';
 import { spaFallbackMiddleware } from './core/spa-fallback.middleware';
 import { serviceContainer } from './dependency-container';
 import { GameDefController } from './features/gamedef/gamedef.controller';
+import { GameEventController } from './features/gameevent/game-event.controller';
 import { GameInstanceController } from './features/gameinstance/game-instance.controller';
 
 const app = express();
@@ -15,8 +16,9 @@ if (staticPath) {
 }
 
 const controllers = [
-  new GameDefController(serviceContainer.mongoClient),
-  new GameInstanceController(serviceContainer.mongoClient, serviceContainer.socketServerService),
+  new GameDefController(serviceContainer.gameDefMongoClient),
+  new GameInstanceController(serviceContainer.gameInstanceMongoClient, serviceContainer.socketServerService, serviceContainer.logger),
+  new GameEventController(serviceContainer.gameEventMongoClient, serviceContainer.gameInstanceMongoClient),
 ];
 controllers.forEach(controller => serviceContainer.router.registerRoutes(controller, app));
 serviceContainer.logger.debug('Registered controllers', {routes: serviceContainer.router.debugRoutes()});
@@ -59,13 +61,24 @@ app.use((err: Error, req: express.Request, res: express.Response, next: express.
 const server = app.listen(serviceContainer.configuration.getConfig().port, async () => {
   serviceContainer.logger.info(`Pagemaster API is running on port ${serviceContainer.configuration.getConfig().port}`);
   
-  // Connect to MongoDB
+  // Connect to MongoDB - single shared connection
   try {
-    await serviceContainer.mongoClient.connect();
-    await serviceContainer.mongoClient.initializeDatabase();
-    serviceContainer.logger.info('MongoDB connection established and database initialized');
+    await serviceContainer.mongoConnection.connect();
+    serviceContainer.logger.info('MongoDB connection established');
+    
+    // Initialize indexes for all collections
+    await Promise.all([
+      serviceContainer.gameDefMongoClient.initializeIndexes(),
+      serviceContainer.gameInstanceMongoClient.initializeIndexes(),
+      serviceContainer.gameEventMongoClient.initializeIndexes(),
+      serviceContainer.gameSessionMongoClient.initializeIndexes(),
+    ]);
+    serviceContainer.logger.info('Database indexes initialized');
+    
+    // Load fixtures
     await serviceContainer.gameDefFixture.initFirstGameDef();
     await serviceContainer.gameInstanceFixture.initFirstGameInstance();
+    await serviceContainer.gameEventFixture.initGameEvents();
   } catch (error) {
     serviceContainer.logger.error('Failed to connect to MongoDB', { 
       error: error instanceof Error ? error.message : String(error) 
@@ -84,7 +97,7 @@ const shutdown = async () => {
   
   // Close MongoDB connection
   try {
-    await serviceContainer.mongoClient.disconnect();
+    await serviceContainer.mongoConnection.disconnect();
     serviceContainer.logger.info('MongoDB connection closed');
   } catch (error) {
     serviceContainer.logger.error('Error closing MongoDB connection', { 

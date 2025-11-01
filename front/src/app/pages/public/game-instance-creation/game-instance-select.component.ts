@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { GameDef } from '@pagemaster/common/pagemaster.types';
 import { GameDefSelectorComponent } from '../../../core/game/game-def-selector.component';
 import { PageMasterRoutes } from '../../../core/pagemaster.router';
-import { GameDefService } from '../../../core/repositories/gamedef.service';
+import { GameDefRepository } from '../../../core/repositories/gamedef.repository';
 
 @Component({
   selector: 'app-game-instance-select',
@@ -25,7 +25,7 @@ import { GameDefService } from '../../../core/repositories/gamedef.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameInstanceSelectComponent {
-  protected gameDefs = toSignal(inject(GameDefService).getAllGameDefs());
+  protected gameDefs = toSignal(inject(GameDefRepository).getAllGameDefs());
   protected router = inject(Router);
 
   protected selectGame(gameDef: GameDef) {

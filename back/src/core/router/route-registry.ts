@@ -6,7 +6,7 @@ import { HttpBadRequestError, HttpError } from './http-errors';
 
 export type RouteDefinition = {
   path: string;
-  requestMethod: 'get' | 'post' | 'put' | 'delete';
+  requestMethod: 'get' | 'post' | 'put' | 'delete' | 'patch';
   methodName: string;
   options?: {
     withoutApiPrefix?: boolean;
@@ -31,12 +31,12 @@ export class Router {
   addRoute(
     target: {constructor: {name: string}},
     path: string,
-    requestMethod: 'get' | 'post' | 'put' | 'delete',
+    requestMethod: 'get' | 'post' | 'put' | 'delete' | 'patch',
     methodName: string,
     options?: RouteDefinition['options']
   ) {
     const routes = this.RouteRegistry.get(target.constructor) || [];
-    routes.push({ path, requestMethod: requestMethod as  "get" | "post" | "put" | "delete", methodName, options });
+    routes.push({ path, requestMethod: requestMethod as  "get" | "post" | "put" | "delete" | "patch", methodName, options });
     this.RouteRegistry.set(target.constructor, routes);
   }
 

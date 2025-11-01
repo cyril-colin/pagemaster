@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
 import { ModalService } from '../../../modal';
-import { ModalItemFormComponent } from './modal-item-form.component';
+import { InventoryItemEvent } from '../inventory-list.component';
+import { ItemListPermissions } from '../item-list.component';
+import { ItemModalComponent } from './item-modal.component';
 
 @Component({
-  selector: 'app-add-item-button',
+  selector: 'app-add-item',
   template: `
     <button type="button" class="add-item-btn" (click)="openItemGallery()" title="Add new item">
       <span class="icon">➕</span>
@@ -28,16 +30,16 @@ import { ModalItemFormComponent } from './modal-item-form.component';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddItemButtonComponent {
-  public itemAdded = output<Item>();
+export class AddItemComponent {
+  public itemAdded = output<Omit<InventoryItemEvent, 'inventory'>>();
+  public permissions = input.required<ItemListPermissions>();
   
   private modalService = inject(ModalService);
 
   protected openItemGallery() {
-    const ref = this.modalService.open(ModalItemFormComponent, {isManager: true});
-    ref.componentRef.instance.itemSubmitted.subscribe((newItem: Item) => {
-      this.itemAdded.emit(newItem);
-      ref.close();
+    const ref = this.modalService.open(ItemModalComponent, {permissions: this.permissions()});
+    ref.componentRef.instance.editItem.subscribe((newItem: Item) => {
+      this.itemAdded.emit({ item: newItem, modalRef: ref });
     });
   }
 }

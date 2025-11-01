@@ -1,12 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { EventMessage, EventsCenterStateService } from './events-center.state';
+import { EventsCenterStateService } from './events-center.state';
 
 @Component({
   selector: 'app-events-center',
   template: `
   <section>
-    @for(e of events(); track e.message) {
-      <article>{{ e.message }} <button (click)="removeEvent(e)">Remove</button></article>
+    @for(e of events(); track e.id) {
+      <article>
+        <p>{{ formatTimestamp(e.timestamp) }} : {{ e.description }}</p>
+      </article>
     }
   </section>
   `,
@@ -17,8 +19,8 @@ export class EventsCenterComponent {
   protected eventsCenterState = inject(EventsCenterStateService);
   protected events = this.eventsCenterState.events;
 
-  protected removeEvent(event: EventMessage) {
-    this.eventsCenterState.removeEvent(event);
+  protected formatTimestamp(timestamp: number): string {
+    return new Date(timestamp).toLocaleString();
   }
 
 }

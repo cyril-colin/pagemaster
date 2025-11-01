@@ -1,23 +1,31 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, linkedSignal, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
-import { CurrentSessionState } from '../../current-session.state';
 import { ModalService } from '../../modal';
+import { InventoryItemEvent } from './inventory-list.component';
 import { Inventory } from './inventory.types';
-import { ModalItemFormComponent } from './items/modal-item-form.component';
+import { AddItemComponent } from './items/add-item.component';
+import { ItemModalComponent } from './items/item-modal.component';
+import { ItemComponent } from './items/item.component';
+
+export type ItemListPermissions = {
+  add: boolean,
+  edit: boolean,
+  delete: boolean,
+}
+
 
 @Component({
-  selector: 'app-inventory-view-details',
+  selector: 'app-item-list',
   template: `  
     <div class="items">
       @for(item of sortedItems(); track item.id) {
-        <div class="item" (click)="openItemGallery(item)">
-          <img [src]="item.picture" [alt]="item.name"/>
-          <div>{{ item.name }}</div>
-          <div> weight : {{ item.weight  }}</div>
-        </div>
+        <app-item [item]="item" (itemClicked)="openItemGallery($event)" />
       }
     </div>
+    @if(permissions().add) {
+      <app-add-item [permissions]="permissions()" (itemAdded)="addItem.emit({ item: $event.item, modalRef: $event.modalRef })" />
+    }
   `,
   styles: [`
     :host {
@@ -80,45 +88,34 @@ import { ModalItemFormComponent } from './items/modal-item-form.component';
       transform: scale(0.95);
     }
   `],
-  imports: [],
+  imports: [ItemComponent, AddItemComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InventoryViewDetailsComponent {
+export class ItemListComponent {
   public character = input.required<Character>();
   public inventory = input.required<Inventory>();
-  protected inventoryState = linkedSignal(this.inventory);
-  public newInventory = output<Inventory>();
-  protected modalService = inject(ModalService);
+  public permissions = input.required<ItemListPermissions>();
+  public addItem = output<Omit<InventoryItemEvent, 'inventory'>>();
+  public deleteItem = output<Omit<InventoryItemEvent, 'inventory'>>();
+  public editItem = output<Omit<InventoryItemEvent, 'inventory'>>();
 
+
+  protected modalService = inject(ModalService);
   protected sortedItems = computed(() => {
-    return this.inventoryState().instance.current.sort((a, b) => b.weight - a.weight);
+    return this.inventory().instance.current.sort((a, b) => b.weight - a.weight);
   });
 
-  private currentSessionState = inject(CurrentSessionState);
-  protected isManager = this.currentSessionState.allowedToEditCharacter(this.character);
-
-  protected deleteItem(item: { id: string }) {
-    const state = this.inventoryState();
-    state.instance.current = state.instance.current.filter(i => i.id !== item.id);
-    this.inventoryState.set(state);
-    this.newInventory.emit(state);
-  }
-
   protected openItemGallery(item: Item) {
-    const ref = this.modalService.open(ModalItemFormComponent, {
+    const ref = this.modalService.open(ItemModalComponent, {
       existingItem: item,
-      isManager: this.isManager(),
+      permissions: this.permissions(),
     });
-    ref.componentRef.instance.itemSubmitted.subscribe((newItem: Item) => {
-      this.inventoryState().instance.current = this.inventoryState().instance.current.map(i => i.id === newItem.id ? newItem : i);
-      this.inventoryState.set(this.inventoryState());
-      this.newInventory.emit(this.inventoryState());
-      ref.close();
+    ref.componentRef.instance.editItem.subscribe((newItem: Item) => {
+      this.editItem.emit({ item: newItem, modalRef: ref });
     });
 
-    ref.componentRef.instance.deleteAction.subscribe(() => {
-      this.deleteItem(item);
-      ref.close();
+    ref.componentRef.instance.deleteItem.subscribe(() => {
+      this.deleteItem.emit({ item, modalRef: ref });
     });
   }
 }

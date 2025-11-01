@@ -1,15 +1,15 @@
 import { inject, Injectable, signal } from '@angular/core';
-import { Observable, of, tap } from 'rxjs';
 import { GameInstance } from '@pagemaster/common/pagemaster.types';
+import { Observable, of, tap } from 'rxjs';
 import { CURRENT_GAME_INSTANCE_CACHE_KEY, LocalStorageService } from './local-storage.service';
-import { GameInstanceService } from './repositories/game-instance.service';
+import { GameInstanceRepository } from './repositories/game-instance.repository';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CurrentGameInstanceState {
   protected localStorageService = inject(LocalStorageService);
-  protected gameInstanceService = inject(GameInstanceService);
+  protected gameInstanceService = inject(GameInstanceRepository);
   
   private readonly currentGameInstanceSignal = signal<GameInstance | null>(null);
   public readonly currentGameInstance = this.currentGameInstanceSignal.asReadonly();

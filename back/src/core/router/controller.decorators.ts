@@ -57,3 +57,17 @@ export function Delete(path: string, options?: RouteDefinition['options']) {
     router.addRoute(target, fullPath, 'delete', propertyKey as string, options);
   };
 };
+
+/**
+ * Use this decorator to register a PATCH route for the decorated method.
+ * The method will be called when a PATCH request is made to the specified path.
+ * @param path The path for the PATCH route, e.g., '/api/deluge/torrent'.
+ * @returns A function that registers the route.
+ */
+export function Patch(path: string, options?: RouteDefinition['options']) {
+  const fullPath = options?.withoutApiPrefix ? path : `${apiPrefix}${path}`;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  return function (target: {constructor: {name: string}}, propertyKey: string, descriptor: PropertyDescriptor) {
+    router.addRoute(target, fullPath, 'patch', propertyKey as string, options);
+  };
+};

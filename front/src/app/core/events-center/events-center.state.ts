@@ -1,41 +1,30 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
+import { GameEvent } from '@pagemaster/common/pagemaster.types';
+import { Observable, tap } from 'rxjs';
+import { GameEventRepository } from '../repositories/game-event.repository';
 
 
-export type EventMessage = {
-  type: 'info' | 'warning' | 'error',
-  /**
-   * Time to live in seconds
-   * 0 means infinite
-   */
-  ttl: number,
-  message: string,
-  timestamp: Date,
-};
 @Injectable({
   providedIn: 'root',
 })
 export class EventsCenterStateService {
-  private eventsSignal = signal<EventMessage[]>([]);
-  public readonly events = this.eventsSignal.asReadonly();
+  private gameEventService = inject(GameEventRepository);
+  private eventsSignal = signal<GameEvent[]>([]);
 
-  public addEvent(event: EventMessage): void {
-    event.ttl = 0; // tmp disable ttl
+  public readonly events = computed(() => {
+    const events = this.eventsSignal.asReadonly();
+    return events().sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+  });
+
+  public addEvent(event: GameEvent): void {
     this.eventsSignal.update((events) => [...events, event]);
-    if (event.ttl > 0) {
-      this.listenTTL(event);
-    }
-  }
-  public clearEvents(): void {
-    this.eventsSignal.set([]);
-  }
-  public removeEvent(event: EventMessage): void {
-    this.eventsSignal.update(events => events.filter(e => e !== event));
   }
 
-  private listenTTL(event: EventMessage): void {
-    setTimeout(() => {
-      this.removeEvent(event);
-    }, event.ttl * 1000);
+  public init(gameInstanceId: string): Observable<GameEvent[]> {
+    return this.gameEventService.getGameEventsByGameInstanceId(gameInstanceId).pipe(
+      tap((gameEvents) => {
+        this.eventsSignal.set(gameEvents);
+      }),
+    );
   }
-
 }

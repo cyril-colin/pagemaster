@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { switchMap, tap } from 'rxjs';
 import { GameInstance } from '@pagemaster/common/pagemaster.types';
+import { switchMap, tap } from 'rxjs';
 import { GameInstanceFormComponent } from '../../../core/game/game-instance-form.component';
 import { PageMasterRoutes } from '../../../core/pagemaster.router';
-import { GameInstanceService } from '../../../core/repositories/game-instance.service';
-import { GameDefService } from '../../../core/repositories/gamedef.service';
+import { GameInstanceRepository } from '../../../core/repositories/game-instance.repository';
+import { GameDefRepository } from '../../../core/repositories/gamedef.repository';
 
 @Component({
   selector: 'app-game-instance-config',
@@ -37,8 +37,8 @@ import { GameDefService } from '../../../core/repositories/gamedef.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameInstanceConfigComponent {
-  protected gameDefService = inject(GameDefService);
-  protected gameInstanceService = inject(GameInstanceService);
+  protected gameDefService = inject(GameDefRepository);
+  protected gameInstanceService = inject(GameInstanceRepository);
   protected route = inject(ActivatedRoute);
   protected newGameInstance = signal<GameInstance | null>(null);
   protected gameInstanceLink = signal<string | null>(null);

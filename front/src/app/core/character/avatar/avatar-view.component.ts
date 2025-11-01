@@ -1,13 +1,23 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { AvatarPermissions } from './picture-control.component';
 
 @Component({
   selector: 'app-avatar-view',
   template: `
     @let src = source();
     @if (src) {
-      <img [src]="src" alt="Character Picture" [height]="100" [width]="100" (click)="needSrc.emit()" />
+      <img 
+        [src]="src" 
+        alt="Character Picture" 
+        [height]="100" 
+        [width]="100" 
+        [class.clickable]="permissions().edit"
+        (click)="permissions().edit && needSrc.emit()" 
+      />
     } @else {
-      <span (click)="needSrc.emit()">Set Picture URL</span>
+      @if (permissions().edit) {
+        <span (click)="needSrc.emit()">Set Picture URL</span>
+      }
     }
   `,
   styles: `
@@ -16,9 +26,12 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
     }
 
     img {
-      cursor: pointer;
       max-width: 100%;
       height: auto;
+    }
+
+    img.clickable {
+      cursor: pointer;
     }
 
     span {
@@ -31,5 +44,6 @@ import { ChangeDetectionStrategy, Component, input, output } from '@angular/core
 })
 export class AvatarViewComponent {
   public source = input<string>();
+  public permissions = input.required<AvatarPermissions>();
   public needSrc = output<void>();
 }

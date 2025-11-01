@@ -3,7 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
 import { MainTitleService } from 'src/app/core/main-bar/main-title.service';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
-import { GameInstanceService } from '../../core/repositories/game-instance.service';
+import { GameInstanceRepository } from '../../core/repositories/game-instance.repository';
 
 @Component({
   selector: 'app-home',
@@ -46,7 +46,7 @@ import { GameInstanceService } from '../../core/repositories/game-instance.servi
 })
 export class HomeComponent {
   protected routes = PageMasterRoutes();
-  protected gameInstanceService = inject(GameInstanceService);
+  protected gameInstanceService = inject(GameInstanceRepository);
   protected instanceList = toSignal(this.gameInstanceService.getAllGameInstances(), { initialValue: [] });
 
   constructor() {

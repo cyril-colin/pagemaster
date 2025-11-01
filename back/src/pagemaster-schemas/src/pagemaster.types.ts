@@ -79,6 +79,50 @@ export type GameSession = {
   onlinePlayers: Participant['id'][],
 }
 
+/**
+ * This defines a game event that occurred during a game instance.
+ * Events are used to track the history of actions and occurrences in the game,
+ * such as player actions, game master decisions, dice rolls, etc.
+ */
+export type GameEvent = {
+  /**
+   * A unique identifier for this event.
+   */
+  id: string,
+  /**
+   * The id of the game instance this event belongs to.
+   */
+  gameInstanceId: GameInstance['id'],
+  /**
+   * The type of event (e.g., 'action', 'dice-roll', 'narrative', 'combat', etc.)
+   */
+  type: string,
+  /**
+   * The participant who triggered this event (can be a player or game master).
+   */
+  participantId: Participant['id'],
+  /**
+   * The participant's name at the time of the event.
+   */
+  participantName: string,
+  /**
+   * The title or short description of the event.
+   */
+  title: string,
+  /**
+   * Detailed description of what happened.
+   */
+  description: string,
+  /**
+   * Timestamp when the event occurred.
+   */
+  timestamp: number,
+  /**
+   * Optional metadata for the event (dice results, affected characters, etc.)
+   */
+  metadata?: Record<string, unknown>,
+}
+
 
 export type Participant = 
   | Player

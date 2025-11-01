@@ -10,7 +10,7 @@ import { NameViewComponent } from './names/name-view.component';
     @let char = character();
     
     <div class="character-small" (click)="clicked.emit()">
-      <app-avatar-view [source]="char.picture"/>
+      <app-avatar-view [source]="char.picture" [permissions]="{edit: false}" />
       <div class="info">
         <app-name-view [name]="char.name" />
         @for(bar of playerBars(); track bar.instance.id) {

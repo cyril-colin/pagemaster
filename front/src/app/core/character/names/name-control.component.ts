@@ -2,20 +2,34 @@ import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, input, 
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { NameViewComponent } from './name-view.component';
 
+export type NamePermissions = {
+  edit: boolean,
+};
+
 @Component({
   selector: 'app-name-control',
   template: `
     @if(mode() === 'view') {
-      <div (click)="setMode('edit')" class="name-view">
+      <div (click)="setMode('edit')" [class.name-view]="permissions().edit" [class.name-readonly]="!permissions().edit">
         <app-name-view [name]="nameForm().controls.name.value"></app-name-view>
       </div>
     } @else {
-      <input #input type="text" [formControl]="nameForm().controls.name" (blur)="submit()" (keyup.enter)="submit()" />
+      <input 
+        #input
+        type="text"
+        [formControl]="nameForm().controls.name"
+        (blur)="submit()"
+        (keydown.enter)="$event.preventDefault(); submit()"
+      />
     }
   `,
   styles: [`
     .name-view {
       cursor: pointer;
+      width: 100%;
+    }
+
+    .name-readonly {
       width: 100%;
     }
     
@@ -38,6 +52,7 @@ import { NameViewComponent } from './name-view.component';
 })
 export class NameControlComponent {
   public name = input<string>('');
+  public permissions = input.required<NamePermissions>();
   public newName = output<{value: string}>();
   protected input = viewChild.required('input', { read: ElementRef<HTMLInputElement> });
   protected mode = signal<'view' | 'edit'>('view');
@@ -55,6 +70,9 @@ export class NameControlComponent {
   }
 
   protected setMode(newMode: 'view' | 'edit'): void {
+    if (!this.permissions().edit && newMode === 'edit') {
+      return;
+    }
     this.mode.set(newMode);
     if (newMode === 'edit') {
       setTimeout(() => {

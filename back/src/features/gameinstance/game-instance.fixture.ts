@@ -1,6 +1,6 @@
 import { LoggerService } from '../../core/logger.service';
-import { PageMasterMongoClient } from '../../core/pagemaster-mongo-client';
 import { GameInstance } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameInstanceMongoClient } from './game-instance.mongo-client';
 
 const defaultGameInstance: GameInstance = {
   "id": "medieval-fantasy-v1-Cyril-1758352912606",
@@ -357,7 +357,7 @@ const defaultGameInstance: GameInstance = {
 export class GameInstanceFixture {
   constructor(
     private logger: LoggerService,
-    private mongoClient: PageMasterMongoClient,
+    private mongoClient: GameInstanceMongoClient,
   ) {}
 
   public async initFirstGameInstance(): Promise<void> {

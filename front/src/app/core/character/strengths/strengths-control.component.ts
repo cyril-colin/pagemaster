@@ -9,6 +9,10 @@ export type Strength = {
   selected: boolean,
 };
 
+export type StrengthsPermissions = {
+  edit: boolean,
+};
+
 type StrengthForm = FormGroup<{
   id: FormControl<string>,
   selected: FormControl<boolean>,
@@ -18,7 +22,7 @@ type StrengthForm = FormGroup<{
   selector: 'app-strengths-control',
   template: `
     @if (mode() === 'view') {
-      <div (click)="setMode('edit')" class="strength-views">
+      <div (click)="setMode('edit')" [class.strength-views]="permissions().edit" [class.strength-readonly]="!permissions().edit">
         @let selection = selectedStrengths();
         @if (selection.length === 0) {
           <span>No strengths selected. Click to edit.</span>
@@ -33,7 +37,7 @@ type StrengthForm = FormGroup<{
           <label>{{ strength.def.name }}</label>
         </div>
       }
-      <button (click)="submit()">Save</button>
+      <button (click)="$event.preventDefault(); submit()">Save</button>
     }
   `,
   styles: [`
@@ -42,6 +46,13 @@ type StrengthForm = FormGroup<{
       flex-direction: column;
       gap: var(--gap-medium);
       cursor: pointer;
+      align-items: center;
+    }
+
+    .strength-readonly {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
       align-items: center;
     }
   `],
@@ -53,6 +64,7 @@ type StrengthForm = FormGroup<{
 })
 export class StrengthsControlComponent {
   public strengths = input.required<Strength[]>();
+  public permissions = input.required<StrengthsPermissions>();
   protected strengthsState = linkedSignal(this.strengths);
   protected selectedStrengths = computed(() => this.strengthsState().filter(strength => strength.selected));
   public newStrengths = output<Strength[]>();
@@ -78,6 +90,9 @@ export class StrengthsControlComponent {
   }
 
   protected setMode(newMode: 'view' | 'edit'): void {
+    if (!this.permissions().edit && newMode === 'edit') {
+      return;
+    }
     this.mode.set(newMode);
   }
 

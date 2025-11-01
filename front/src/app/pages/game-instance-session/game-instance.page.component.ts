@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { CharacterButtonComponent } from 'src/app/core/character/character-button.component';
@@ -6,7 +7,7 @@ import { CharacterSmallComponent } from 'src/app/core/character/character-small.
 import { CurrentSessionState } from 'src/app/core/current-session.state';
 import { EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
-import { GameInstanceService } from 'src/app/core/repositories/game-instance.service';
+import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.repository';
 
 @Component({
   selector: 'app-game-instance',
@@ -123,11 +124,15 @@ export class GameInstancePageComponent {
   protected router = inject(Router);
   protected route = inject(ActivatedRoute);
   protected currentSession = inject(CurrentSessionState);
-  protected gameInstanceService = inject(GameInstanceService);
+  protected gameInstanceService = inject(GameInstanceRepository);
   protected eventService = inject(EventsCenterStateService);
   protected eventsRoute = computed(() => '/' + PageMasterRoutes().GameInstanceSession.interpolated(
     this.currentSession.currentSession().gameInstance.id,
   ));
+
+  constructor() {
+    toSignal(this.eventService.init(this.currentSession.currentSession().gameInstance.id));
+  }
 
   protected players = computed(() => {
     const currentPlayer = this.currentSession.currentSession().participant;

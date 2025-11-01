@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, linkedSign
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Item } from '@pagemaster/common/items.types';
 import { PictureGalleryComponent } from 'src/app/core/gallery/picture-gallery.component';
+import { ItemListPermissions } from '../item-list.component';
 import { ItemsDataState } from './items-data.state';
 
 type ItemFormControl = {
@@ -16,7 +17,7 @@ type ItemFormControl = {
   selector: 'app-item-form',
   template: `
     @let itemForm = form();
-    @if(pictureMode() === 'edit' && isManager()) {
+    @if(pictureMode() === 'edit' && (permissions().edit || permissions().add)) {
       <app-picture-gallery [items]="pictures()" (itemSelected)="pictureMode.set('view'); selectPicture($event)"/>
       <button (click)="pictureMode.set('view')">Cancel</button>
     }
@@ -26,7 +27,7 @@ type ItemFormControl = {
       
         <div class="form-field">
           <img [src]="itemForm.controls.picture.value" alt="Selected Picture" width="64" height="64"/>
-          @if(isManager()) {
+          @if(permissions().edit || permissions().add) {
             <button (click)="pictureMode.set('edit')">Change Picture</button>
           }
         </div>
@@ -63,7 +64,7 @@ type ItemFormControl = {
       </div>
 
       
-      @if(isManager()) {
+      @if(permissions().edit || permissions().add) {
         <div class="form-actions">
           <button type="button" (click)="submit()">
             Submit
@@ -127,7 +128,7 @@ type ItemFormControl = {
 })
 export class ItemFormComponent {
   public existingItem = input<Item | null>(null);
-  public isManager = input.required<boolean>();
+  public permissions = input.required<ItemListPermissions>();
   public itemSubmitted = output<Item>();
   protected itemModels = inject(ItemsDataState);
   protected pictureMode = linkedSignal<'view' | 'edit'>(() => {
@@ -142,11 +143,12 @@ export class ItemFormComponent {
   
   protected form = computed(() => {
     const existingCharacter = this.existingItem();
+    const enabled = this.permissions().edit || this.permissions().add;
     return this.fb.group<ItemFormControl>({
-      name: this.fb.control({value: existingCharacter?.name ?? '', disabled: !this.isManager()}, { nonNullable: true }),
-      description: this.fb.control({value: existingCharacter?.description ?? '', disabled: !this.isManager()}, { nonNullable: true }),
-      weight: this.fb.control({value: existingCharacter?.weight ?? 0, disabled: !this.isManager()}, { nonNullable: true }),
-      picture: this.fb.control({value: existingCharacter?.picture ?? '', disabled: !this.isManager()}, { nonNullable: true }),
+      name: this.fb.control({value: existingCharacter?.name ?? '', disabled: !enabled}, { nonNullable: true }),
+      description: this.fb.control({value: existingCharacter?.description ?? '', disabled: !enabled}, { nonNullable: true }),
+      weight: this.fb.control({value: existingCharacter?.weight ?? 0, disabled: !enabled}, { nonNullable: true }),
+      picture: this.fb.control({value: existingCharacter?.picture ?? '', disabled: !enabled}, { nonNullable: true }),
     });
   });
 

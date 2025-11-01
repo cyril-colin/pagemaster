@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input, linkedSignal, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, input, output, signal } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AttributeBar, Attributes } from '@pagemaster/common/attributes.types';
 import { BarListViewComponent } from './bar-list-view.component';
@@ -12,12 +12,16 @@ type BarForm = FormGroup<{
 
 export type Bar = {def: AttributeBar, instance: Attributes['bar']['instance'], selected: boolean};
 
+export type BarsPermissions = {
+  edit: boolean,
+};
+
 @Component({
   selector: 'app-bars-control',
   template: `
 
     @if (mode() === 'view') {
-      <div (click)="setMode('edit')">
+      <div (click)="setMode('edit')" [class.bars-view]="permissions().edit" [class.bars-readonly]="!permissions().edit">
         <app-bar-list-view [bars]="selectedBars()" />
       </div>
     } @else {
@@ -32,11 +36,20 @@ export type Bar = {def: AttributeBar, instance: Attributes['bar']['instance'], s
             [formControl]="form.controls.barForms.controls[i].controls.current" />
         </div>
       }
-      <button (click)="submit()">Save</button>
+      <button (click)="$event.preventDefault(); submit()">Save</button>
     }
     
   `,
-  styles: [ ],
+  styles: [
+    `
+    .bars-view {
+      cursor: pointer;
+    }
+
+    .bars-readonly {
+    }
+    `,
+  ],
   imports: [
     ReactiveFormsModule,
     BarListViewComponent,
@@ -45,8 +58,8 @@ export type Bar = {def: AttributeBar, instance: Attributes['bar']['instance'], s
 })
 export class BarsControlComponent {
   public bars = input.required<Bar[]>();
-  protected barsState = linkedSignal(this.bars);
-  protected selectedBars = computed(() => this.barsState().filter(bar => bar.selected));
+  public permissions = input.required<BarsPermissions>();
+  protected selectedBars = computed(() => this.bars().filter(bar => bar.selected));
   public newBars = output<Bar[]>();
   
   protected fb = inject(FormBuilder);
@@ -57,6 +70,7 @@ export class BarsControlComponent {
   protected mode = signal<'view' | 'edit'>('view');
   constructor() {
     effect(() => {
+      this.mode.set('view');
       this.form.controls.barForms.clear();
       this.bars().forEach((bar) => {
         const formGroup = this.fb.group({
@@ -74,6 +88,9 @@ export class BarsControlComponent {
 
 
   protected setMode(newMode: 'view' | 'edit'): void {
+    if (!this.permissions().edit && newMode === 'edit') {
+      return;
+    }
     this.mode.set(newMode);
   }
 
@@ -99,7 +116,7 @@ export class BarsControlComponent {
       }
       return acc;
     }, []);
-    this.barsState.set(result);
+
     this.newBars.emit(result);
   }
   
