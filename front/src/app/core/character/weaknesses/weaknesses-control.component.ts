@@ -9,6 +9,10 @@ export type Weakness = {
   selected: boolean,
 };
 
+export type WeaknessesPermissions = {
+  edit: boolean,
+};
+
 type WeaknessForm = FormGroup<{
   id: FormControl<string>,
   selected: FormControl<boolean>,
@@ -18,7 +22,7 @@ type WeaknessForm = FormGroup<{
   selector: 'app-weaknesses-control',
   template: `
     @if (mode() === 'view') {
-      <div (click)="setMode('edit')" class="weakness-views">
+      <div (click)="setMode('edit')" [class.weakness-views]="permissions().edit" [class.weakness-readonly]="!permissions().edit">
         @let selection = selectedWeaknesses();
         @if (selection.length === 0) {
           <span>No weaknesses selected. Click to edit.</span>
@@ -33,7 +37,7 @@ type WeaknessForm = FormGroup<{
           <label>{{ weakness.def.name }}</label>
         </div>
       }
-      <button (click)="submit()">Save</button>
+      <button (click)="$event.preventDefault(); submit()">Save</button>
     }
   `,
   styles: [`
@@ -42,6 +46,13 @@ type WeaknessForm = FormGroup<{
       flex-direction: column;
       gap: var(--gap-medium);
       cursor: pointer;
+      align-items: center;
+    }
+
+    .weakness-readonly {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
       align-items: center;
     }
   `],
@@ -53,6 +64,7 @@ type WeaknessForm = FormGroup<{
 })
 export class WeaknessesControlComponent {
   public weaknesses = input.required<Weakness[]>();
+  public permissions = input.required<WeaknessesPermissions>();
   protected weaknessesState = linkedSignal(this.weaknesses);
   protected selectedWeaknesses = computed(() => this.weaknessesState().filter(weakness => weakness.selected));
   public newWeaknesses = output<Weakness[]>();
@@ -78,6 +90,9 @@ export class WeaknessesControlComponent {
   }
 
   protected setMode(newMode: 'view' | 'edit'): void {
+    if (!this.permissions().edit && newMode === 'edit') {
+      return;
+    }
     this.mode.set(newMode);
   }
 

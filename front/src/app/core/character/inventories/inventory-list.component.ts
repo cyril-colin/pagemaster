@@ -6,8 +6,7 @@ import { ModalRef, ModalService } from '../../modal';
 import { InventorySelectorButtonComponent, InventorySelectorComponent } from './inventory-selector.component';
 import { InventoryComponent } from './inventory.component';
 import { Inventory } from './inventory.types';
-import { ItemListComponent } from './item-list.component';
-import { AddItemComponent } from './items/add-item.component';
+import { ItemListComponent, ItemListPermissions } from './item-list.component';
 import { ItemModalComponent } from './items/item-modal.component';
 
 export type InventoryItemEvent = {
@@ -22,6 +21,10 @@ export type InventorySelectionEvent = {
   modalRef: ModalRef<InventorySelectorComponent>,
 };
 
+export type InventoryPermissions = {
+  item: ItemListPermissions,
+  selection: boolean,
+};
 
 @Component({
   selector: 'app-inventory-list',
@@ -30,14 +33,14 @@ export type InventorySelectionEvent = {
       <section class="inventory-item">
         <div class="inventory-header">
           <app-inventory [inventory]="inventory"></app-inventory>
-          @if(isManager()) {
-            <app-add-item (itemAdded)="addItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })" />
-          }
+          
         </div>
         
         <app-item-list
           [inventory]="inventory"
           [character]="character()"
+          [permissions]="permissions().item"
+          (addItem)="addItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
           (deleteItem)="deleteItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
           (editItem)="editItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
         />
@@ -45,7 +48,7 @@ export type InventorySelectionEvent = {
       </section>
     }
 
-    @if(isManager()) {
+    @if(permissions().selection) {
       <app-inventory-selector-button [inventories]="inventories()" (select)="select.emit($event)" (unselect)="unselect.emit($event)" />
     }
     
@@ -78,21 +81,21 @@ export type InventorySelectionEvent = {
   imports: [
     InventoryComponent,
     ItemListComponent,
-    AddItemComponent,
     InventorySelectorButtonComponent,
   ],
 })
 export class InventoryListComponent {
-  private currentSessionState = inject(CurrentSessionState);
+  
   public character = input.required<Character>();
   public inventories = input.required<Inventory[]>();
+  public permissions = input.required<InventoryPermissions>();
   public deleteItem = output<InventoryItemEvent>();
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();
   public select = output<InventorySelectionEvent>();
   public unselect = output<InventorySelectionEvent>();
 
-  public deleteInventory = output<Inventory>();
+  private currentSessionState = inject(CurrentSessionState);
   protected modalService = inject(ModalService);
 
   private allowedInventories = computed(() => {

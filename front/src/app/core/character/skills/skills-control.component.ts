@@ -10,11 +10,15 @@ type SkillForm = FormGroup<{
 
 export type Skill = { def: SkillDef, instance: SkillInstance, selected: boolean };
 
+export type SkillsPermissions = {
+  edit: boolean,
+};
+
 @Component({
   selector: 'app-skills-control',
   template: `
     @if (mode() === 'view') {
-      <div (click)="setMode('edit')" class="skill-views">
+      <div (click)="setMode('edit')" [class.skill-views]="permissions().edit" [class.skill-readonly]="!permissions().edit">
         @let selection = selectedSkills();
         @if (selection.length === 0) {
           <span>No skills selected. Click to edit.</span>
@@ -32,7 +36,7 @@ export type Skill = { def: SkillDef, instance: SkillInstance, selected: boolean 
             [formControl]="form.controls.skillForms.controls[i].controls.id" />
         </div>
       }
-      <button (click)="submit()">Save</button>
+      <button (click)="$event.preventDefault(); submit()">Save</button>
     }
   `,
   styles: [`
@@ -41,6 +45,13 @@ export type Skill = { def: SkillDef, instance: SkillInstance, selected: boolean 
       flex-direction: column;
       gap: var(--gap-medium);
       cursor: pointer;
+      align-items: center;
+    }
+
+    .skill-readonly {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
       align-items: center;
     }
   `],
@@ -52,6 +63,7 @@ export type Skill = { def: SkillDef, instance: SkillInstance, selected: boolean 
 })
 export class SkillsControlComponent {
   public skills = input.required<Skill[]>();
+  public permissions = input.required<SkillsPermissions>();
   protected skillsState = linkedSignal(this.skills);
   protected selectedSkills = computed(() => this.skillsState().filter(skill => skill.selected));
   public newSkills = output<Skill[]>();
@@ -77,6 +89,9 @@ export class SkillsControlComponent {
   }
 
   protected setMode(newMode: 'view' | 'edit'): void {
+    if (!this.permissions().edit && newMode === 'edit') {
+      return;
+    }
     this.mode.set(newMode);
   }
 

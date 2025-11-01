@@ -2,11 +2,15 @@ import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, input, 
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { DescriptionViewComponent } from './description-view.component';
 
+export type DescriptionPermissions = {
+  edit: boolean,
+};
+
 @Component({
   selector: 'app-description-control',
   template: `
     @if(mode() === 'view') {
-      <div (click)="setMode('edit')" class="description-view">
+      <div (click)="setMode('edit')" [class.description-view]="permissions().edit" [class.description-readonly]="!permissions().edit">
         <app-description-view [description]="descriptionForm().controls.description.value"></app-description-view>
       </div>
     } @else {
@@ -16,6 +20,10 @@ import { DescriptionViewComponent } from './description-view.component';
   styles: [`
     .description-view {
       cursor: pointer;
+      width: 100%;
+    }
+
+    .description-readonly {
       width: 100%;
     }
     
@@ -40,6 +48,7 @@ import { DescriptionViewComponent } from './description-view.component';
 })
 export class DescriptionControlComponent {
   public description = input<string>('');
+  public permissions = input.required<DescriptionPermissions>();
   public newDescription = output<{value: string}>();
   protected input = viewChild.required('input', { read: ElementRef<HTMLTextAreaElement> });
   protected mode = signal<'view' | 'edit'>('view');
@@ -57,6 +66,9 @@ export class DescriptionControlComponent {
   }
 
   protected setMode(newMode: 'view' | 'edit'): void {
+    if (!this.permissions().edit && newMode === 'edit') {
+      return;
+    }
     this.mode.set(newMode);
     if (newMode === 'edit') {
       setTimeout(() => {

@@ -9,7 +9,7 @@ import { NameViewComponent } from './names/name-view.component';
     @let char = character();
     
     <div class="character-button" (click)="clicked.emit()">
-      <app-avatar-view [source]="char.picture"/>
+      <app-avatar-view [source]="char.picture" [permissions]="{ edit: false }"/>
       <app-name-view [name]="char.name" />
     </div>
   `,

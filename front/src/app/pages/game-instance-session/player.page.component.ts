@@ -22,6 +22,7 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
     <app-character-form
       [existingCharacter]="viewedPlayer().character"
       [gameDef]="game.gameDef"
+      [permissions]="permissions()"
       (renameEvent)="renameParticipant($event.value, viewedPlayer())"
       (avatarEvent)="updateAvatar($event.value, viewedPlayer())"
       (descriptionEvent)="updateDescription($event.value, viewedPlayer())"
@@ -69,6 +70,44 @@ export class PlayerPageComponent {
       throw new Error(`Participant with ID ${playerId} is not a player.`);
     }
     return participant;
+  });
+
+  protected permissions = computed(() => {
+    const isManager = this.currentSession.allowedToEditCharacterSnapshot(this.viewedPlayer().character);
+    return {
+      avatar: {
+        edit: isManager,
+      },
+      name: {
+        edit: isManager,
+      },
+      description: {
+        edit: isManager,
+      },
+      bars: {
+        edit: isManager,
+      },
+      statuses: {
+        edit: isManager,
+      },
+      strengths: {
+        edit: isManager,
+      },
+      weaknesses: {
+        edit: isManager,
+      },
+      skills: {
+        edit: isManager,
+      },
+      inventory: {
+        item: {
+          add: isManager,
+          edit: isManager,
+          delete: isManager,
+        },
+        selection: isManager,
+      },
+    };
   });
 
   protected renameParticipant(newName: string, player: Player): void {

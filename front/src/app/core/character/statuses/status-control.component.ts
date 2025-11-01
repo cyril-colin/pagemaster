@@ -9,6 +9,10 @@ export type Status = {
   selected: boolean,
 };
 
+export type StatusesPermissions = {
+  edit: boolean,
+};
+
 type StatusForm = FormGroup<{
   id: FormControl<string>,
   current: FormControl<string>,
@@ -19,7 +23,7 @@ type StatusForm = FormGroup<{
   selector: 'app-status-control',
   template: `
     @if (mode() === 'view') {
-      <div (click)="setMode('edit')">
+      <div (click)="setMode('edit')" [class.statuses-view]="permissions().edit" [class.statuses-readonly]="!permissions().edit">
         @let selection = selectedStatuses();
         @if (selection.length === 0) {
           <span>No statuses selected. Click to edit.</span>
@@ -37,10 +41,19 @@ type StatusForm = FormGroup<{
             [formControl]="form.controls.statusForms.controls[i].controls.current" />
         </div>
       }
-      <button (click)="submit()">Save</button>
+      <button (click)="$event.preventDefault(); submit()">Save</button>
     }
   `,
-  styles: [ ],
+  styles: [
+    `
+    .statuses-view {
+      cursor: pointer;
+    }
+
+    .statuses-readonly {
+    }
+    `,
+  ],
   imports: [
     ReactiveFormsModule,
     StatusListViewComponent,
@@ -49,6 +62,7 @@ type StatusForm = FormGroup<{
 })
 export class StatusControlComponent {
   public statuses = input.required<Status[]>();
+  public permissions = input.required<StatusesPermissions>();
   protected statusesState = linkedSignal(this.statuses);
   protected selectedStatuses = computed(() => this.statusesState().filter(status => status.selected));
   public newStatuses = output<Status[]>();
@@ -74,6 +88,9 @@ export class StatusControlComponent {
   }
 
   protected setMode(newMode: 'view' | 'edit'): void {
+    if (!this.permissions().edit && newMode === 'edit') {
+      return;
+    }
     this.mode.set(newMode);
   }
 

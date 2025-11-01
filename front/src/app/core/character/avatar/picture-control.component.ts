@@ -4,12 +4,19 @@ import { AVATAR_ICONS } from '../../gallery/item-icons.const';
 import { PictureGalleryComponent } from '../../gallery/picture-gallery.component';
 import { AvatarViewComponent } from './avatar-view.component';
 
+export type AvatarPermissions = {
+  edit: boolean,
+};
 
 @Component({
   selector: 'app-picture-control',
   template: `
     @if(this.mode() === 'view') {
-      <app-avatar-view [source]="pictureForm().controls.picture.value" (needSrc)="setMode('edit')"/>
+      <app-avatar-view 
+        [source]="pictureForm().controls.picture.value" 
+        [permissions]="permissions()"
+        (needSrc)="setMode('edit')"
+      />
     } @else {
       <app-picture-gallery [items]="avatarList" (itemSelected)="setNewPicture($event)"/>
     }
@@ -30,12 +37,15 @@ import { AvatarViewComponent } from './avatar-view.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PictureControlComponent {
-  protected avatarList = AVATAR_ICONS;
   public picture = input<string>('');
+  public permissions = input.required<AvatarPermissions>();
   public newPicture = output<{value: string}>();
+
+  protected fb = inject(FormBuilder);
+  protected avatarList = AVATAR_ICONS;
   protected input = viewChild.required('input', { read: ElementRef<HTMLInputElement> });
   protected mode = signal<'view' | 'edit'>('view');
-  protected fb = inject(FormBuilder);
+  
   protected pictureForm = signal(this.createForm(this.picture()));
   protected availablePictures = Array.from({ length: 12 }, (_, index) => `/avatars/avatar${index + 1}.png`);
   
@@ -56,6 +66,9 @@ export class PictureControlComponent {
   }
 
   protected setMode(newMode: 'view' | 'edit'): void {
+    if (!this.permissions().edit && newMode === 'edit') {
+      return;
+    }
     this.mode.set(newMode);
   }
 

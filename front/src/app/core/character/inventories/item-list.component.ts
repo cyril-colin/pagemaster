@@ -1,12 +1,19 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
-import { CurrentSessionState } from '../../current-session.state';
 import { ModalService } from '../../modal';
 import { InventoryItemEvent } from './inventory-list.component';
 import { Inventory } from './inventory.types';
+import { AddItemComponent } from './items/add-item.component';
 import { ItemModalComponent } from './items/item-modal.component';
 import { ItemComponent } from './items/item.component';
+
+export type ItemListPermissions = {
+  add: boolean,
+  edit: boolean,
+  delete: boolean,
+}
+
 
 @Component({
   selector: 'app-item-list',
@@ -16,6 +23,9 @@ import { ItemComponent } from './items/item.component';
         <app-item [item]="item" (itemClicked)="openItemGallery($event)" />
       }
     </div>
+    @if(permissions().add) {
+      <app-add-item (itemAdded)="addItem.emit({ item: $event.item, modalRef: $event.modalRef })" />
+    }
   `,
   styles: [`
     :host {
@@ -78,12 +88,14 @@ import { ItemComponent } from './items/item.component';
       transform: scale(0.95);
     }
   `],
-  imports: [ItemComponent],
+  imports: [ItemComponent, AddItemComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemListComponent {
   public character = input.required<Character>();
   public inventory = input.required<Inventory>();
+  public permissions = input.required<ItemListPermissions>();
+  public addItem = output<Omit<InventoryItemEvent, 'inventory'>>();
   public deleteItem = output<Omit<InventoryItemEvent, 'inventory'>>();
   public editItem = output<Omit<InventoryItemEvent, 'inventory'>>();
 
@@ -93,13 +105,10 @@ export class ItemListComponent {
     return this.inventory().instance.current.sort((a, b) => b.weight - a.weight);
   });
 
-  private currentSessionState = inject(CurrentSessionState);
-  protected isManager = this.currentSessionState.allowedToEditCharacter(this.character);
-
   protected openItemGallery(item: Item) {
     const ref = this.modalService.open(ItemModalComponent, {
       existingItem: item,
-      isManager: this.isManager(),
+      permissions: this.permissions(),
     });
     ref.componentRef.instance.editItem.subscribe((newItem: Item) => {
       this.editItem.emit({ item: newItem, modalRef: ref });
