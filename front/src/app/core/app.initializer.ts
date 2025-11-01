@@ -3,7 +3,6 @@ import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
 import { catchError, EMPTY, Observable, switchMap, tap } from 'rxjs';
 import { ItemsDataState } from './character/inventories/items/items-data.state';
 import { CurrentSessionState } from './current-session.state';
-import { EventsCenterStateService } from './events-center/events-center.state';
 import { GameInstanceSocketService } from './game-instance-socket.service';
 import { SocketService } from './socket.service';
 
@@ -24,10 +23,8 @@ export const appInitializer: () => Observable<unknown> = () => {
       return EMPTY;
     }),
   );
-  const events = inject(EventsCenterStateService);
 
   return inject(ItemsDataState).init().pipe(
     switchMap(() => currentSessionInit),
-    switchMap((r) => events.init(r.gameInstance.id)),
   );
 };

@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
 import { GameEvent } from '@pagemaster/common/pagemaster.types';
-import { map, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { GameEventRepository } from '../repositories/game-event.repository';
 
 
@@ -20,14 +20,11 @@ export class EventsCenterStateService {
     this.eventsSignal.update((events) => [...events, event]);
   }
 
-  public init(gameEventid: string): Observable<void> {
-    return this.gameEventService.getGameEventsByGameInstanceId(gameEventid).pipe(
+  public init(gameInstanceId: string): Observable<GameEvent[]> {
+    return this.gameEventService.getGameEventsByGameInstanceId(gameInstanceId).pipe(
       tap((gameEvents) => {
-        gameEvents.forEach((gameEvent) => {
-          this.addEvent(gameEvent);
-        });
+        this.eventsSignal.set(gameEvents);
       }),
-      map(() => void 0),
     );
   }
 }
