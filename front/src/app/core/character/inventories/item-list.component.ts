@@ -24,7 +24,7 @@ export type ItemListPermissions = {
       }
     </div>
     @if(permissions().add) {
-      <app-add-item (itemAdded)="addItem.emit({ item: $event.item, modalRef: $event.modalRef })" />
+      <app-add-item [permissions]="permissions()" (itemAdded)="addItem.emit({ item: $event.item, modalRef: $event.modalRef })" />
     }
   `,
   styles: [`

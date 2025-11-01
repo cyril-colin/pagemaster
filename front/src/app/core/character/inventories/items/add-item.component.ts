@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
 import { ModalService } from '../../../modal';
 import { InventoryItemEvent } from '../inventory-list.component';
+import { ItemListPermissions } from '../item-list.component';
 import { ItemModalComponent } from './item-modal.component';
 
 @Component({
@@ -31,11 +32,12 @@ import { ItemModalComponent } from './item-modal.component';
 })
 export class AddItemComponent {
   public itemAdded = output<Omit<InventoryItemEvent, 'inventory'>>();
+  public permissions = input.required<ItemListPermissions>();
   
   private modalService = inject(ModalService);
 
   protected openItemGallery() {
-    const ref = this.modalService.open(ItemModalComponent, {isManager: true});
+    const ref = this.modalService.open(ItemModalComponent, {permissions: this.permissions()});
     ref.componentRef.instance.editItem.subscribe((newItem: Item) => {
       this.itemAdded.emit({ item: newItem, modalRef: ref });
     });
