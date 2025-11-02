@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
+import { BadgeComponent } from '../../design-system/badge.component';
 import { CardComponent } from '../../design-system/card.component';
 import { ModalService } from '../../modal';
 import { InventoryItemEvent } from './inventory-list.component';
@@ -22,7 +23,7 @@ export type InventoryPermissions = {
     <ds-card>
       <div class="inventory-header">
         <h3 class="inventory-title">{{ inventory().def.name }}</h3>
-        <span class="inventory-capacity">{{ capacityDisplay() }}</span>
+        <ds-badge size="medium">{{ capacityDisplay() }}</ds-badge>
       </div>
       <div class="items">
         @for(item of sortedItems(); track item.id) {
@@ -77,70 +78,9 @@ export type InventoryPermissions = {
       margin-bottom: var(--gap-medium);
     }
 
-    .inventory-capacity {
-      font-size: var(--text-size-medium);
-      color: var(--text-secondary);
-      font-weight: var(--text-weight-medium);
-      padding: 4px 8px;
-      background: var(--color-background-tertiary);
-      border-radius: 4px;
-      border: 1px solid var(--color-border);
-      text-transform: capitalize;
-    }
 
-    .items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--gap-small);
-    }
-
-    .item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      --item-size: 130px;
-      --img-size: 64px;
-      height: var(--item-size);
-      width: var(--item-size);
-      img {
-        width: var(--img-size);
-        height: var(--img-size);
-      }
-    }
-
-    
-
-    .delete {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      width: var(--delete-button-size);
-      height: var(--delete-button-size);
-      display: grid;
-      place-items: center;
-      background: var(--color-danger);
-      color: white;
-      border-radius: 50%;
-      font-size: var(--text-size-small);
-      line-height: 0;
-      cursor: pointer;
-      opacity: 0.5;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-
-    .delete:hover {
-      opacity: 1;
-      background: var(--color-danger-hover);
-      transform: scale(1.1);
-    }
-
-    .delete:active {
-      transform: scale(0.95);
-    }
   `],
-  imports: [ItemComponent, CardComponent, ItemPlaceholderComponent],
+  imports: [ItemComponent, CardComponent, ItemPlaceholderComponent, BadgeComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InventoryComponent {

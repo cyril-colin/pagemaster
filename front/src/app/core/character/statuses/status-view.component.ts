@@ -1,14 +1,19 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { BadgeComponent } from '../../design-system/badge.component';
 import { Status } from './status-control.component';
 
 @Component({
   selector: 'app-status-view',
   template: `
     @let s = status();
-    <div class="status-container" [style.border-color]="s.definition.color">
+    <ds-badge 
+      size="medium" 
+      [customColor]="'transparent'"
+      [customBorderColor]="s.definition.color"
+    >
       <span class="status-name">{{s.definition.name}}</span>
       <span class="status-value">{{s.instance.current}}</span>
-    </div>
+    </ds-badge>
   `,
   styles: [`
     :host {
@@ -17,16 +22,13 @@ import { Status } from './status-control.component';
       width: fit-content;
     }
     
-    .status-container {
+    ds-badge {
       display: flex;
       align-items: center;
       justify-content: space-between;
       width: 100%;
-      height: var(--view-height-medium);
-      border: var(--view-border);
-      border-radius: var(--view-border-radius);
-      padding: 0 var(--gap-small);
-      background: transparent;
+      min-height: var(--view-height-medium);
+      gap: var(--gap-small);
     }
     
     .status-name {
@@ -41,6 +43,7 @@ import { Status } from './status-control.component';
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [BadgeComponent],
 })
 export class StatusViewComponent {
   public status = input.required<Status>();

@@ -1,30 +1,24 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { BadgeComponent } from '../../../design-system/badge.component';
 
 @Component({
   selector: 'app-item-weight',
   template: `
-    <div class="weight-badge">
+    <ds-badge size="small">
       {{ weight() }}
-    </div>
+    </ds-badge>
   `,
   styles: [`
-    .weight-badge {
+    :host {
       position: absolute;
       bottom: 4px;
       right: 4px;
-      background: var(--color-background-tertiary);
-      color: var(--text-primary);
-      font-size: var(--text-size-small);
-      font-weight: var(--text-weight-medium);
-      padding: 2px 6px;
-      border-radius: 4px;
-      border: 1px solid var(--color-border);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       z-index: 1;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  imports: [BadgeComponent],
 })
 export class ItemWeightComponent {
   public weight = input.required<number>();
