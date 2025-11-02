@@ -11,6 +11,7 @@ import { GameEventFixture } from './features/gameevent/game-event.fixture';
 import { GameEventMongoClient } from './features/gameevent/game-event.mongo-client';
 import { GameInstanceFixture } from './features/gameinstance/game-instance.fixture';
 import { GameInstanceMongoClient } from './features/gameinstance/game-instance.mongo-client';
+import { GameInstanceService } from './features/gameinstance/game-instance.service';
 import { GameSessionMongoClient } from './features/gamesession/game-session.mongo-client';
 
 const ajv = new Ajv({ allErrors: true });
@@ -35,6 +36,9 @@ export const router = new Router(logger, ajv);
 
 const socketServerService = new SocketServerService(logger, gameEventMongoClient);
 
+// Create the game instance service (composition over inheritance)
+const gameInstanceService = new GameInstanceService(gameInstanceMongoClient, socketServerService);
+
 const gameDefFixture = new GameDefFixture(logger, gameDefMongoClient);
 const gameInstanceFixture = new GameInstanceFixture(logger, gameInstanceMongoClient);
 const gameEventFixture = new GameEventFixture(logger, gameEventMongoClient);
@@ -50,6 +54,7 @@ export const serviceContainer = {
   gameEventFixture,
   gameDefMongoClient,
   gameInstanceMongoClient,
+  gameInstanceService,
   gameEventMongoClient,
   gameSessionMongoClient,
   jsonSchemaValidator: ajv,
