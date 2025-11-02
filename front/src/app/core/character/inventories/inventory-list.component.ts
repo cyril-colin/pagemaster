@@ -4,9 +4,8 @@ import { Character } from '@pagemaster/common/pagemaster.types';
 import { CurrentSessionState } from '../../current-session.state';
 import { ModalRef, ModalService } from '../../modal';
 import { InventorySelectorButtonComponent, InventorySelectorComponent } from './inventory-selector.component';
-import { InventoryComponent } from './inventory.component';
+import { InventoryComponent, InventoryPermissions as ItemPermissions } from './inventory.component';
 import { Inventory } from './inventory.types';
-import { ItemListComponent, ItemListPermissions } from './item-list.component';
 import { ItemModalComponent } from './items/item-modal.component';
 
 export type InventoryItemEvent = {
@@ -21,8 +20,8 @@ export type InventorySelectionEvent = {
   modalRef: ModalRef<InventorySelectorComponent>,
 };
 
-export type InventoryPermissions = {
-  item: ItemListPermissions,
+export type InventoryListPermissions = {
+  item: ItemPermissions,
   selection: boolean,
 };
 
@@ -31,12 +30,8 @@ export type InventoryPermissions = {
   template: `
     @for(inventory of selectedInventories(); track inventory.instance.id) {
       <section class="inventory-item">
-        <div class="inventory-header">
-          <app-inventory [inventory]="inventory"></app-inventory>
-          
-        </div>
         
-        <app-item-list
+        <app-inventory
           [inventory]="inventory"
           [character]="character()"
           [permissions]="permissions().item"
@@ -67,6 +62,10 @@ export type InventoryPermissions = {
         border: none;
       }
 
+      .inventory-item {
+        width: 100%;
+      }
+
       .inventory-header {
         display: flex;
         align-items: center;
@@ -80,7 +79,6 @@ export type InventoryPermissions = {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     InventoryComponent,
-    ItemListComponent,
     InventorySelectorButtonComponent,
   ],
 })
@@ -88,7 +86,7 @@ export class InventoryListComponent {
   
   public character = input.required<Character>();
   public inventories = input.required<Inventory[]>();
-  public permissions = input.required<InventoryPermissions>();
+  public permissions = input.required<InventoryListPermissions>();
   public deleteItem = output<InventoryItemEvent>();
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();

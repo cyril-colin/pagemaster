@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ImageComponent, ImageShape } from '../../design-system/image.component';
 import { AvatarPermissions } from './picture-control.component';
 
 @Component({
@@ -6,12 +7,12 @@ import { AvatarPermissions } from './picture-control.component';
   template: `
     @let src = source();
     @if (src) {
-      <img 
+      <ds-image
         [src]="src" 
-        alt="Character Picture" 
-        [height]="100" 
-        [width]="100" 
-        [class.clickable]="permissions().edit"
+        [alt]="'Character Picture'"
+        size="large"
+        [shape]="shape()"
+        [clickable]="permissions().edit"
         (click)="permissions().edit && needSrc.emit()" 
       />
     } @else {
@@ -22,16 +23,11 @@ import { AvatarPermissions } from './picture-control.component';
   `,
   styles: `
     :host {
-      display: block;
-    }
-
-    img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       max-width: 100%;
-      height: auto;
-    }
-
-    img.clickable {
-      cursor: pointer;
+      max-height: 100%;
     }
 
     span {
@@ -41,9 +37,11 @@ import { AvatarPermissions } from './picture-control.component';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ImageComponent],
 })
 export class AvatarViewComponent {
   public source = input<string>();
+  public shape = input<ImageShape>('circle');
   public permissions = input.required<AvatarPermissions>();
   public needSrc = output<void>();
 }

@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, linkedSignal, output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Item } from '@pagemaster/common/items.types';
+import { ImageComponent } from 'src/app/core/design-system/image.component';
 import { PictureGalleryComponent } from 'src/app/core/gallery/picture-gallery.component';
-import { ItemListPermissions } from '../item-list.component';
+import { InventoryPermissions } from '../inventory.component';
 import { ItemsDataState } from './items-data.state';
 
 type ItemFormControl = {
@@ -26,7 +27,12 @@ type ItemFormControl = {
       
       
         <div class="form-field">
-          <img [src]="itemForm.controls.picture.value" alt="Selected Picture" width="64" height="64"/>
+          <ds-image 
+            [src]="itemForm.controls.picture.value" 
+            [alt]="'Selected Picture'"
+            size="medium"
+            shape="rectangle"
+          />
           @if(permissions().edit || permissions().add) {
             <button (click)="pictureMode.set('edit')">Change Picture</button>
           }
@@ -124,11 +130,11 @@ type ItemFormControl = {
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PictureGalleryComponent, ReactiveFormsModule],
+  imports: [PictureGalleryComponent, ReactiveFormsModule, ImageComponent],
 })
 export class ItemFormComponent {
   public existingItem = input<Item | null>(null);
-  public permissions = input.required<ItemListPermissions>();
+  public permissions = input.required<InventoryPermissions>();
   public itemSubmitted = output<Item>();
   protected itemModels = inject(ItemsDataState);
   protected pictureMode = linkedSignal<'view' | 'edit'>(() => {

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, input, output } from '@angu
 import { Item } from '@pagemaster/common/items.types';
 import { ModalService } from '../../../modal';
 import { InventoryItemEvent } from '../inventory-list.component';
-import { ItemListPermissions } from '../item-list.component';
+import { InventoryPermissions } from '../inventory.component';
 import { ItemModalComponent } from './item-modal.component';
 
 @Component({
@@ -32,7 +32,7 @@ import { ItemModalComponent } from './item-modal.component';
 })
 export class AddItemComponent {
   public itemAdded = output<Omit<InventoryItemEvent, 'inventory'>>();
-  public permissions = input.required<ItemListPermissions>();
+  public permissions = input.required<InventoryPermissions>();
   
   private modalService = inject(ModalService);
 

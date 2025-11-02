@@ -1,5 +1,5 @@
-import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
+import { ImageComponent } from '../design-system/image.component';
 
 export type PictureItem = { name: string, path: string };
 @Component({
@@ -15,11 +15,11 @@ export type PictureItem = { name: string, path: string };
     <div class="gallery">
       @for (item of paginatedItems(); track item.name) {
         <button type="button" class="gallery-item" (click)="selectItem(item)">
-          <img 
-            [ngSrc]="item.path" 
+          <ds-image
+            [src]="item.path" 
             [alt]="item.name"
-            width="50"
-            height="50"
+            size="small"
+            shape="rectangle"
           />
           <span class="item-name">{{ item.name }}</span>
         </button>
@@ -94,12 +94,6 @@ export type PictureItem = { name: string, path: string };
       border-color: var(--color-primary, #000);
     }
 
-    .gallery-item img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-    }
-
     .item-name {
       font-size: 0.75rem;
       text-align: center;
@@ -137,7 +131,7 @@ export type PictureItem = { name: string, path: string };
       font-size: 0.875rem;
     }
   `],
-  imports: [NgOptimizedImage],
+  imports: [ImageComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PictureGalleryComponent {

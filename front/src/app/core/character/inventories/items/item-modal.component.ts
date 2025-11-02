@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
-import { ItemListPermissions } from '../item-list.component';
+import { InventoryPermissions } from '../inventory.component';
 import { ItemFormComponent } from './item-form.component';
 
 @Component({
@@ -18,7 +18,7 @@ import { ItemFormComponent } from './item-form.component';
 })
 export class ItemModalComponent {
   public existingItem = input<Item | null>(null);
-  public permissions = input.required<ItemListPermissions>();
+  public permissions = input.required<InventoryPermissions>();
   public editItem = output<Item>();
   public deleteItem = output<Item | null>();
 }

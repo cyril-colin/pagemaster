@@ -10,7 +10,7 @@ import { DescriptionControlComponent, DescriptionPermissions } from './descripti
 import {
   InventoryItemEvent,
   InventoryListComponent,
-  InventoryPermissions,
+  InventoryListPermissions,
   InventorySelectionEvent,
 } from './inventories/inventory-list.component';
 import { Inventory } from './inventories/inventory.types';
@@ -22,7 +22,7 @@ import { Weakness, WeaknessesControlComponent, WeaknessesPermissions } from './w
 
 
 export type CharacterPermissions = {
-  inventory: InventoryPermissions,
+  inventory: InventoryListPermissions,
   avatar: AvatarPermissions,
   name: NamePermissions,
   description: DescriptionPermissions,
