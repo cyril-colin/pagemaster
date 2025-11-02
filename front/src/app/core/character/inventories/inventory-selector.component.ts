@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
+import { ButtonComponent } from '../../design-system/button.component';
 import { ModalService } from '../../modal';
 import { InventorySelectionEvent } from './inventory-list.component';
 import { Inventory } from './inventory.types';
@@ -8,9 +9,10 @@ import { Inventory } from './inventory.types';
 @Component({
   selector: 'app-inventory-selector-button',
   template: `
-  <button type="button" (click)="onManageInventories()">Manage Inventories</button>
+  <ds-button [mode]="'secondary'" [icon]="'plus'" (click)="onManageInventories()">Manage Inventories</ds-button>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ButtonComponent],
 })
 export class InventorySelectorButtonComponent {
   public inventories = input.required<Inventory[]>();

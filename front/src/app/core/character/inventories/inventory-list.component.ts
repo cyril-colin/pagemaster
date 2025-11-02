@@ -28,9 +28,10 @@ export type InventoryListPermissions = {
 @Component({
   selector: 'app-inventory-list',
   template: `
+    @if(permissions().selection) {
+      <app-inventory-selector-button [inventories]="inventories()" (select)="select.emit($event)" (unselect)="unselect.emit($event)" />
+    }
     @for(inventory of selectedInventories(); track inventory.instance.id) {
-      <section class="inventory-item">
-        
         <app-inventory
           [inventory]="inventory"
           [character]="character()"
@@ -39,43 +40,9 @@ export type InventoryListPermissions = {
           (deleteItem)="deleteItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
           (editItem)="editItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
         />
-        
-      </section>
     }
-
-    @if(permissions().selection) {
-      <app-inventory-selector-button [inventories]="inventories()" (select)="select.emit($event)" (unselect)="unselect.emit($event)" />
-    }
-    
   `,
-  styles: [`
-    :host {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      gap: var(--gap-medium);
-      width: 100%;
-      
-
-      button {
-        border: none;
-      }
-
-      .inventory-item {
-        width: 100%;
-      }
-
-      .inventory-header {
-        display: flex;
-        align-items: center;
-        gap: var(--gap-small);
-        width: 100%;
-        height: 120px;
-        justify-content: space-between;
-      }
-    }
-  `],
+  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     InventoryComponent,

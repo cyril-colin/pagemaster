@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Attributes } from '@pagemaster/common/attributes.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
+import { AvatarEvent } from 'src/app/core/character/avatar/picture-control.component';
 import { Bar } from 'src/app/core/character/bars/bars-control.component';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
 import { InventoryItemEvent, InventorySelectionEvent } from 'src/app/core/character/inventories/inventory-list.component';
@@ -24,7 +25,7 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       [gameDef]="game.gameDef"
       [permissions]="permissions()"
       (renameEvent)="renameParticipant($event.value, viewedPlayer())"
-      (avatarEvent)="updateAvatar($event.value, viewedPlayer())"
+      (avatarEvent)="updateAvatar($event, viewedPlayer())"
       (descriptionEvent)="updateDescription($event.value, viewedPlayer())"
       (barsEvent)="updateBars($event, viewedPlayer())"
       (statusesEvent)="updateStatuses($event, viewedPlayer())"
@@ -122,10 +123,12 @@ export class PlayerPageComponent {
     this.gameInstanceService.renameCharacter(gameInstanceId, participantId, { name: newName }).subscribe();
   }
 
-  protected updateAvatar(newAvatar: string, player: Player): void {
+  protected updateAvatar(newAvatar: AvatarEvent, player: Player): void {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.updateCharacterAvatar(gameInstanceId, participantId, { picture: newAvatar }).subscribe();
+    this.gameInstanceService.updateCharacterAvatar(gameInstanceId, participantId, { picture: newAvatar.picture }).pipe(
+      tap(() => newAvatar.modalRef.close()),
+    ).subscribe();
   }
 
   protected updateDescription(newDescription: string, player: Player): void {

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, linkedSignal, output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Item } from '@pagemaster/common/items.types';
+import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { ImageComponent } from 'src/app/core/design-system/image.component';
 import { PictureGalleryComponent } from 'src/app/core/gallery/picture-gallery.component';
 import { InventoryPermissions } from '../inventory.component';
@@ -34,7 +35,7 @@ type ItemFormControl = {
             shape="rectangle"
           />
           @if(permissions().edit || permissions().add) {
-            <button (click)="pictureMode.set('edit')">Change Picture</button>
+            <ds-button [mode]="'secondary'"  (click)="pictureMode.set('edit')">Change Picture</ds-button>
           }
         </div>
       
@@ -72,9 +73,9 @@ type ItemFormControl = {
       
       @if(permissions().edit || permissions().add) {
         <div class="form-actions">
-          <button type="button" (click)="submit()">
+          <ds-button (click)="submit()">
             Submit
-          </button>
+          </ds-button>
         </div>
       }
       
@@ -130,7 +131,7 @@ type ItemFormControl = {
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [PictureGalleryComponent, ReactiveFormsModule, ImageComponent],
+  imports: [PictureGalleryComponent, ReactiveFormsModule, ImageComponent, ButtonComponent],
 })
 export class ItemFormComponent {
   public existingItem = input<Item | null>(null);

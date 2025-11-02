@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { Item } from '@pagemaster/common/items.types';
+import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { InventoryPermissions } from '../inventory.component';
 import { ItemFormComponent } from './item-form.component';
 
@@ -9,12 +10,12 @@ import { ItemFormComponent } from './item-form.component';
   @let item = existingItem();
     <app-item-form [existingItem]="item" (itemSubmitted)="editItem.emit($event)" [permissions]="permissions()"/>
     @if (item && permissions().delete) {
-      <button type="button" (click)="deleteItem.emit(item)">Remove Item</button>
+      <ds-button [mode]="'secondary-danger'" (click)="deleteItem.emit(item)" [icon]="'empty'">Remove Item</ds-button>
     }
   `,
   styles: [''],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ItemFormComponent],
+  imports: [ItemFormComponent, ButtonComponent],
 })
 export class ItemModalComponent {
   public existingItem = input<Item | null>(null);

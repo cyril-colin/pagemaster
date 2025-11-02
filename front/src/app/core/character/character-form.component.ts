@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
+import { DividerComponent } from '../design-system/divider.component';
 import { ITEM_ICONS } from '../gallery/item-icons.const';
-import { AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
+import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
 import { Bar, BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
 import { CharacterAttributesService } from './character-attributes.service';
 import { DescriptionControlComponent, DescriptionPermissions } from './descriptions/description-control.component';
@@ -68,7 +69,7 @@ export type CharacterPermissions = {
         [permissions]="permissions().statuses"
         (newStatuses)="statusesEvent.emit($event)"
       />
-
+      <ds-divider />
       <app-inventory-list
         [inventories]="playerInventories()"
         [character]="existingCharacter()"
@@ -79,17 +80,20 @@ export type CharacterPermissions = {
         (select)="select.emit($event)"
         (unselect)="unselect.emit($event)"
       />
+      <ds-divider />
 
       <app-strengths-control
         [strengths]="playerStrengths()"
         [permissions]="permissions().strengths"
         (newStrengths)="strengthsEvent.emit($event)"
       />
+      <ds-divider />
       <app-weaknesses-control
         [weaknesses]="playerWeaknesses()"
         [permissions]="permissions().weaknesses"
         (newWeaknesses)="weaknessesEvent.emit($event)"
       />
+      <ds-divider />
       <app-skills-control
         [skills]="playerSkills()"
         [permissions]="permissions().skills"
@@ -135,6 +139,7 @@ export type CharacterPermissions = {
     WeaknessesControlComponent,
     SkillsControlComponent,
     InventoryListComponent,
+    DividerComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -147,7 +152,7 @@ export class CharacterFormComponent  {
   public fb = inject(FormBuilder);
   private characterAttributesService = inject(CharacterAttributesService);
   public renameEvent = output<{value: string}>();
-  public avatarEvent = output<{value: string}>();
+  public avatarEvent = output<AvatarEvent>();
   public descriptionEvent = output<{value: string}>();
   public barsEvent = output<Bar[]>();
   public statusesEvent = output<Status[]>();
