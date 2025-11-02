@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
+import { CardComponent } from '../design-system/card.component';
 import { DividerComponent } from '../design-system/divider.component';
 import { ITEM_ICONS } from '../gallery/item-icons.const';
 import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
@@ -9,11 +10,11 @@ import { Bar, BarsControlComponent, BarsPermissions } from './bars/bars-control.
 import { CharacterAttributesService } from './character-attributes.service';
 import { DescriptionControlComponent, DescriptionPermissions } from './descriptions/description-control.component';
 import {
-  InventoryItemEvent,
+  InventoryAdditionEvent,
   InventoryListComponent,
   InventoryListPermissions,
-  InventorySelectionEvent,
 } from './inventories/inventory-list.component';
+import { InventoryDeletionEvent, InventoryItemEvent } from './inventories/inventory.component';
 import { Inventory } from './inventories/inventory.types';
 import { NameControlComponent, NamePermissions } from './names/name-control.component';
 import { Skill, SkillsControlComponent, SkillsPermissions } from './skills/skills-control.component';
@@ -39,31 +40,33 @@ export type CharacterPermissions = {
   selector: 'app-character-form',
   template: `
     <form>
-      <section class="identity">
-        <app-picture-control
-          [picture]="existingCharacter().picture"
-          [permissions]="permissions().avatar"
-          (newPicture)="avatarEvent.emit($event)"
-        />
-        <div class="identity-data">
-          <app-name-control
-            [name]="existingCharacter().name"
-            [permissions]="permissions().name"
-            (newName)="renameEvent.emit($event)"
+      <ds-card>
+        <div class="identity">
+          <app-picture-control
+            [picture]="existingCharacter().picture"
+            [permissions]="permissions().avatar"
+            (newPicture)="avatarEvent.emit($event)"
           />
-          <app-description-control
-            [description]="existingCharacter().description"
-            [permissions]="permissions().description"
-            (newDescription)="descriptionEvent.emit($event)"
-          />
+          <div class="identity-data">
+            <app-name-control
+              [name]="existingCharacter().name"
+              [permissions]="permissions().name"
+              (newName)="renameEvent.emit($event)"
+            />
+            <app-description-control
+              [description]="existingCharacter().description"
+              [permissions]="permissions().description"
+              (newDescription)="descriptionEvent.emit($event)"
+            />
+          </div>
         </div>
-      </section>
-      
-      <app-bars-control
-        [bars]="playerBars()"
-        [permissions]="permissions().bars"
-        (newBars)="barsEvent.emit($event)"
-      />
+        <app-bars-control
+          [bars]="playerBars()"
+          [permissions]="permissions().bars"
+          (newBars)="barsEvent.emit($event)"
+        />
+      </ds-card>
+
       <app-status-control
         [statuses]="playerStatuses()"
         [permissions]="permissions().statuses"
@@ -77,8 +80,8 @@ export type CharacterPermissions = {
         (addItem)="addItem.emit($event)"
         (deleteItem)="deleteItem.emit($event)"
         (editItem)="editItem.emit($event)"
-        (select)="select.emit($event)"
-        (unselect)="unselect.emit($event)"
+        (addInventory)="addInventory.emit($event)"
+        (deleteInventory)="deleteInventory.emit($event)"
       />
       <ds-divider />
 
@@ -112,11 +115,6 @@ export type CharacterPermissions = {
     .identity {
       display: flex;
       flex-direction: row;
-      gap: var(--gap-medium);
-      padding: var(--card-padding);
-      background-color: var(--color-background-secondary);
-      border: var(--view-border);
-      border-radius: var(--view-border-radius);
       align-items: flex-start;
     }
 
@@ -140,6 +138,7 @@ export type CharacterPermissions = {
     SkillsControlComponent,
     InventoryListComponent,
     DividerComponent,
+    CardComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -162,8 +161,8 @@ export class CharacterFormComponent  {
   public deleteItem = output<InventoryItemEvent>();
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();
-  public select = output<InventorySelectionEvent>();
-  public unselect = output<InventorySelectionEvent>();
+  public addInventory = output<InventoryAdditionEvent>();
+  public deleteInventory = output<InventoryDeletionEvent>();
 
   protected playerBars = computed(() => {
     return this.characterAttributesService.mapPlayerBars(

@@ -140,13 +140,24 @@ export class GameInstanceRepository {
     );
   }
 
-  unselectInventoryForCharacter(
+  addInventoryForCharacter(
     gameInstanceId: string,
     participantId: string,
     inventoryId: string,
   ): Observable<Participant> {
     return this.http.post<Participant>(
-      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/unselect`,
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/add`,
+      {},
+    );
+  }
+
+  deleteInventoryForCharacter(
+    gameInstanceId: string,
+    participantId: string,
+    inventoryId: string,
+  ): Observable<Participant> {
+    return this.http.delete<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/delete`,
       {},
     );
   }

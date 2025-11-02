@@ -63,6 +63,10 @@ export type ButtonState =
       align-items: center;
     }
 
+    .content:empty {
+      display: none;
+    }
+
     .icon {
       display: inline-flex;
       align-items: center;

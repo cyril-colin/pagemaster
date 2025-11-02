@@ -2,6 +2,7 @@ import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ApplicationRef, ComponentRef, createComponent, EnvironmentInjector, inject, Injectable, Type } from '@angular/core';
 import { take, tap } from 'rxjs';
+import { ConfirmationModalComponent, ConfirmationResult } from './confirmation-modal.component';
 import { ModalWrapperComponent } from './modal-wrapper.component';
 
 export interface ModalConfig {
@@ -81,5 +82,21 @@ export class ModalService {
       componentRef: contentRef,
       close,
     };
+  }
+
+  async confirmation(message: string, title?: string): Promise<ConfirmationResult> {
+    const inputs: Record<string, unknown> = { message };
+    if (title) {
+      inputs['title'] = title;
+    }
+    
+    const modalRef = this.open(ConfirmationModalComponent, inputs, { disableClose: true });
+    
+    return new Promise<ConfirmationResult>((resolve) => {
+      modalRef.componentRef.instance.result.subscribe((result) => {
+        modalRef.close();
+        resolve(result);
+      });
+    });
   }
 }

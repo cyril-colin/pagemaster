@@ -76,7 +76,7 @@ export class CharacterAttributesService {
       const matchingInstance = characterPlayerRefs.find(i => i.id === inventoryDef.id);
       return {
         def: inventoryDef,
-        instance: matchingInstance || { id: inventoryDef.id, current: [] },
+        instance: matchingInstance || { id: '', current: [] },
         selected: !!matchingInstance,
       };
     });

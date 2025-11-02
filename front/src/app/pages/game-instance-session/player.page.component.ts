@@ -7,7 +7,8 @@ import { tap } from 'rxjs';
 import { AvatarEvent } from 'src/app/core/character/avatar/picture-control.component';
 import { Bar } from 'src/app/core/character/bars/bars-control.component';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
-import { InventoryItemEvent, InventorySelectionEvent } from 'src/app/core/character/inventories/inventory-list.component';
+import { InventoryAdditionEvent } from 'src/app/core/character/inventories/inventory-list.component';
+import { InventoryDeletionEvent, InventoryItemEvent } from 'src/app/core/character/inventories/inventory.component';
 import { Skill } from 'src/app/core/character/skills/skills-control.component';
 import { Status } from 'src/app/core/character/statuses/status-control.component';
 import { Strength } from 'src/app/core/character/strengths/strengths-control.component';
@@ -35,8 +36,8 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       (addItem)="addItemToInventory($event, viewedPlayer())"
       (editItem)="editItemToInventory($event, viewedPlayer())"
       (deleteItem)="deleteItemToInventory($event, viewedPlayer())"
-      (select)="selectInventory($event, viewedPlayer())"
-      (unselect)="unselectInventory($event, viewedPlayer())"
+      (addInventory)="addInventory($event, viewedPlayer())"
+      (deleteInventory)="deleteInventory($event, viewedPlayer())"
     />
   `,
   styles: [`
@@ -112,7 +113,7 @@ export class PlayerPageComponent {
           edit: isManager,
           delete: isManager,
         },
-        selection: isManager,
+        addition: isManager,
       },
     };
   });
@@ -204,21 +205,20 @@ export class PlayerPageComponent {
     ).subscribe();
   }
 
-  protected selectInventory(event: InventorySelectionEvent, player: Player): void {
+  protected addInventory(event: InventoryAdditionEvent, player: Player): void {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.selectInventoryForCharacter(
-      gameInstanceId, participantId, event.inventory.instance.id).pipe(
+    this.gameInstanceService.addInventoryForCharacter(
+      gameInstanceId, participantId, event.inventory.def.id).pipe(
       tap(() => event.modalRef.close()),
     ).subscribe();
   }
 
-  protected unselectInventory(event: InventorySelectionEvent, player: Player): void {
+  protected deleteInventory(event: InventoryDeletionEvent, player: Player): void {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.unselectInventoryForCharacter(
+    this.gameInstanceService.deleteInventoryForCharacter(
       gameInstanceId, participantId, event.inventory.instance.id).pipe(
-      tap(() => event.modalRef.close()),
     ).subscribe();
   }
 }

@@ -2,9 +2,9 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, output } f
 import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
 import { BadgeComponent } from '../../design-system/badge.component';
+import { ButtonComponent } from '../../design-system/button.component';
 import { CardComponent } from '../../design-system/card.component';
-import { ModalService } from '../../modal';
-import { InventoryItemEvent } from './inventory-list.component';
+import { ModalRef, ModalService } from '../../modal';
 import { Inventory } from './inventory.types';
 import { ItemModalComponent } from './items/item-modal.component';
 import { ItemPlaceholderComponent } from './items/item-placeholder.component';
@@ -16,6 +16,16 @@ export type InventoryPermissions = {
   delete: boolean,
 }
 
+export type InventoryItemEvent = {
+  item: Item,
+  inventory: Inventory,
+  modalRef: ModalRef<ItemModalComponent>,
+};
+
+export type InventoryDeletionEvent = {
+  inventory: Inventory,
+};
+
 
 @Component({
   selector: 'app-inventory',
@@ -23,7 +33,16 @@ export type InventoryPermissions = {
     <ds-card>
       <div class="inventory-header">
         <h3 class="inventory-title">{{ inventory().def.name }}</h3>
-        <ds-badge size="medium">{{ capacityDisplay() }}</ds-badge>
+        <div class="header-actions">
+          <ds-badge size="medium">{{ capacityDisplay() }}</ds-badge>
+          @if(permissions().delete) {
+            <ds-button 
+              mode="secondary-danger" 
+              icon="trash"
+              (click)="onDeleteInventory()"
+            />
+          }
+        </div>
       </div>
       <div class="items">
         @for(item of sortedItems(); track item.id) {
@@ -78,9 +97,15 @@ export type InventoryPermissions = {
       margin-bottom: var(--gap-medium);
     }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-small);
+    }
+
 
   `],
-  imports: [ItemComponent, CardComponent, ItemPlaceholderComponent, BadgeComponent],
+  imports: [ItemComponent, CardComponent, ItemPlaceholderComponent, BadgeComponent, ButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InventoryComponent {
@@ -90,6 +115,7 @@ export class InventoryComponent {
   public addItem = output<Omit<InventoryItemEvent, 'inventory'>>();
   public deleteItem = output<Omit<InventoryItemEvent, 'inventory'>>();
   public editItem = output<Omit<InventoryItemEvent, 'inventory'>>();
+  public deleteInventory = output<InventoryDeletionEvent>();
 
 
   protected modalService = inject(ModalService);
@@ -164,4 +190,18 @@ export class InventoryComponent {
       this.addItem.emit({ item: newItem, modalRef: ref });
     });
   }
+
+  protected async onDeleteInventory() {
+    const inventoryName = this.inventory().def.name;
+    const result = await this.modalService.confirmation(
+      `Are you sure you want to delete the inventory "${inventoryName}"? This action cannot be undone.`,
+      `Confirm deletion of "${inventoryName}"`,
+    );
+    
+    if (result === 'confirmed') {
+      this.deleteInventory.emit({inventory: this.inventory()});
+    }
+  }
 }
+
+
