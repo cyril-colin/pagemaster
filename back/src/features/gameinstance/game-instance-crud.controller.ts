@@ -1,12 +1,12 @@
 import { Request } from 'express';
-import { Item } from '../../pagemaster-schemas/src/items.types';
 import { LoggerService } from '../../core/logger.service';
-import { SocketServerService } from '../../core/socket.service';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
 import { HttpForbiddenError } from '../../core/router/http-errors';
+import { SocketServerService } from '../../core/socket.service';
+import { Item } from '../../pagemaster-schemas/src/items.types';
 import { GameInstance, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
-import { GameInstanceService } from './game-instance.service';
 import { GameInstanceMongoClient } from './game-instance.mongo-client';
+import { GameInstanceService } from './game-instance.service';
 
 export class GameInstanceController {
   private gameInstanceService: GameInstanceService;
@@ -92,6 +92,44 @@ export class GameInstanceController {
     return gameInstanceCleaned;
   }
 
+  @Post('/game-instances/:gameInstanceId/participants')
+  public async addParticipant(
+    participant: Participant,
+    params: {gameInstanceId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.gameInstanceService.validateContext(params.gameInstanceId, req, 'gameMaster');
+
+    // Add the new participant to the game instance
+    gameInstance.participants = gameInstance.participants || [];
+    gameInstance.participants.push(participant);
+
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.gameInstanceService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'participant-added',
+        title: 'New participant added',
+        description: `${currentParticipant.name} added a new participant: ${participant.name}`,
+        metadata: { 
+          participantId: participant.id,
+          participantName: participant.name,
+          participantType: participant.type
+        }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
   @Put('/game-instances/:id')
   public async updateGameInstance(
     newGameInstance: GameInstance,
@@ -154,6 +192,45 @@ export class GameInstanceController {
           updatedParticipantName: participant.name,
           updatedByGameMaster: currentParticipant.type === 'gameMaster' && currentParticipant.id !== participant.id,
           oldName: oldParticipant.name
+        }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
+  @Delete('/game-instances/:gameInstanceId/participants/:participantId')
+  public async deleteParticipant(
+    body: unknown,
+    params: {gameInstanceId: string, participantId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameInstance> {
+    const { gameInstance, currentParticipant } = await this.gameInstanceService.validateContext(params.gameInstanceId, req, 'gameMaster');
+
+    const participantIndex = this.gameInstanceService.findParticipantIndex(gameInstance, params.participantId);
+    const deletedParticipant = gameInstance.participants[participantIndex];
+    
+    // Remove the participant from the array
+    gameInstance.participants.splice(participantIndex, 1);
+
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
+
+    const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.gameInstanceService.notifyGameInstanceUpdate({
+      gameInstance: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'participant-deleted',
+        title: 'Participant removed',
+        description: `${currentParticipant.name} removed participant: ${deletedParticipant.name}`,
+        metadata: { 
+          deletedParticipantId: deletedParticipant.id,
+          deletedParticipantName: deletedParticipant.name,
         }
       }
     });
