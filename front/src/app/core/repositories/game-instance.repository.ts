@@ -26,6 +26,14 @@ export class GameInstanceRepository {
     return this.http.put<GameInstance>(`${this.baseUrl}/game-instances/${gameInstance.id}`, gameInstance);
   }
 
+  addParticipant(gameInstanceId: string, participant: Participant): Observable<GameInstance> {
+    return this.http.post<GameInstance>(`${this.baseUrl}/game-instances/${gameInstanceId}/participants`, participant);
+  }
+
+  deleteParticipant(gameInstanceId: string, participantId: string): Observable<GameInstance> {
+    return this.http.delete<GameInstance>(`${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}`);
+  }
+
   updateParticipant(gameInstanceId: string, participant: Participant): Observable<Participant> {
     return this.http.put<Participant>(`${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participant.id}`, participant);
   }
