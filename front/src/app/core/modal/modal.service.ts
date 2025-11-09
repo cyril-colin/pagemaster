@@ -3,6 +3,7 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { ApplicationRef, ComponentRef, createComponent, EnvironmentInjector, inject, Injectable, Type } from '@angular/core';
 import { take, tap } from 'rxjs';
 import { ConfirmationModalComponent, ConfirmationResult } from './confirmation-modal.component';
+import { LeftPanelWrapperComponent } from './left-panel-wrapper.component';
 import { ModalWrapperComponent } from './modal-wrapper.component';
 
 export interface ModalConfig {
@@ -14,7 +15,7 @@ export interface ModalConfig {
 
 export interface ModalRef<T = unknown> {
   componentRef: ComponentRef<T>,
-  close: () => void,
+  close: () => void | Promise<void>,
 }
 
 @Injectable({
@@ -84,17 +85,84 @@ export class ModalService {
     };
   }
 
+  openLeftPanel<T>(
+    component: Type<T>,
+    inputs?: Record<string, unknown>,
+    config?: Omit<ModalConfig, 'panelClass'>,
+  ): ModalRef<T> {
+    // Create overlay for left panel
+    const overlayRef = this.overlay.create({
+      hasBackdrop: config?.hasBackdrop ?? true,
+      backdropClass: config?.backdropClass ?? 'cdk-overlay-dark-backdrop',
+      panelClass: 'left-panel-overlay',
+      positionStrategy: this.overlay.position().global(),
+      scrollStrategy: this.overlay.scrollStrategies.block(),
+    });
+
+    // Create the left panel wrapper component
+    const wrapperPortal = new ComponentPortal(LeftPanelWrapperComponent);
+    const wrapperRef = overlayRef.attach(wrapperPortal);
+
+    // Create the content component
+    const contentRef = createComponent(component, {
+      environmentInjector: this.injector,
+      elementInjector: wrapperRef.injector,
+    });
+
+    // Set inputs if provided
+    if (inputs) {
+      Object.keys(inputs).forEach((key) => {
+        contentRef.setInput(key, inputs[key]);
+      });
+    }
+
+    // Attach the content component to the wrapper
+    wrapperRef.instance.attachContent(contentRef);
+
+    // Close function
+    const close = async () => {
+      // Remove history state if still present
+      const state = window.history.state as { leftPanelOpen?: boolean } | null;
+      if (state?.leftPanelOpen === true) {
+        window.history.back();
+      }
+      // Trigger the close animation on the wrapper
+      await wrapperRef.instance.closeAnimation();
+      this.appRef.detachView(contentRef.hostView);
+      contentRef.destroy();
+      overlayRef.dispose();
+    };
+
+    // Subscribe to back button events
+    wrapperRef.instance.backButtonPressed.subscribe(() => {
+      void close();
+    });
+
+    // Handle backdrop click
+    if (config?.disableClose !== true) {
+      overlayRef.backdropClick().pipe(
+        take(1),
+        tap(() => { void close(); }),
+      ).subscribe();
+    }
+
+    return {
+      componentRef: contentRef,
+      close,
+    };
+  }
+
   async confirmation(message: string, title?: string): Promise<ConfirmationResult> {
     const inputs: Record<string, unknown> = { message };
     if (title) {
       inputs['title'] = title;
     }
-    
+
     const modalRef = this.open(ConfirmationModalComponent, inputs, { disableClose: true });
-    
+
     return new Promise<ConfirmationResult>((resolve) => {
       modalRef.componentRef.instance.result.subscribe((result) => {
-        modalRef.close();
+        void modalRef.close();
         resolve(result);
       });
     });
