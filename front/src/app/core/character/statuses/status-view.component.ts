@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { AttributeStatus } from '@pagemaster/common/attributes.types';
 import { BadgeComponent } from '../../design-system/badge.component';
-import { Status } from './status-control.component';
 
 @Component({
   selector: 'app-status-view',
@@ -9,10 +9,9 @@ import { Status } from './status-control.component';
     <ds-badge 
       size="medium" 
       [customColor]="'transparent'"
-      [customBorderColor]="s.definition.color"
+      [customBorderColor]="s.color"
     >
-      <span class="status-name">{{s.definition.name}}</span>
-      <span class="status-value">{{s.instance.current}}</span>
+      <span class="status-name">{{s.name}}</span>
     </ds-badge>
   `,
   styles: [`
@@ -25,10 +24,8 @@ import { Status } from './status-control.component';
     ds-badge {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       width: 100%;
       min-height: var(--view-height-medium);
-      gap: var(--gap-small);
     }
     
     .status-name {
@@ -36,15 +33,10 @@ import { Status } from './status-control.component';
       color: var(--text-primary);
       font-weight: var(--text-weight-bold);
     }
-    
-    .status-value {
-      font-size: 12px;
-      color: var(--text-primary);
-    }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BadgeComponent],
 })
 export class StatusViewComponent {
-  public status = input.required<Status>();
+  public status = input.required<AttributeStatus>();
 }

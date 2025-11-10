@@ -12,6 +12,7 @@ import {
   viewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { HISTORY } from 'src/app/app.config';
 import { ContentAttachmentService } from './content-attachment.service';
 import { ComponentInputs } from './modal.service';
 
@@ -45,6 +46,7 @@ export class LeftPanelWrapperComponent implements AfterViewInit {
   private elementRef = inject(ElementRef<HTMLElement>);
   private renderer = inject(Renderer2);
   private contentAttachment = inject(ContentAttachmentService);
+  private history = inject(HISTORY);
   protected panelContent = viewChild.required('panelContent', { read: ViewContainerRef });
   
   // Output event for back button press
@@ -62,7 +64,7 @@ export class LeftPanelWrapperComponent implements AfterViewInit {
     });
 
     // Push a state to history so back button can close the panel
-    history.pushState({ leftPanelOpen: true }, '');
+    this.history.pushState({ leftPanelOpen: true }, '');
   }
 
   attachContent<T>(componentRef: ComponentRef<T>): void {

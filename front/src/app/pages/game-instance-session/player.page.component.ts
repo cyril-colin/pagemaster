@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { Attributes } from '@pagemaster/common/attributes.types';
+import { Attributes, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
 import { AvatarEvent } from 'src/app/core/character/avatar/picture-control.component';
@@ -10,7 +10,6 @@ import { CharacterFormComponent } from 'src/app/core/character/character-form.co
 import { InventoryAdditionEvent } from 'src/app/core/character/inventories/inventory-list.component';
 import { InventoryDeletionEvent, InventoryItemEvent } from 'src/app/core/character/inventories/inventory.component';
 import { Skill } from 'src/app/core/character/skills/skills-control.component';
-import { Status } from 'src/app/core/character/statuses/status-control.component';
 import { Strength } from 'src/app/core/character/strengths/strengths-control.component';
 import { Weakness } from 'src/app/core/character/weaknesses/weaknesses-control.component';
 import { CurrentSessionState } from 'src/app/core/current-session.state';
@@ -29,7 +28,9 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       (avatarEvent)="updateAvatar($event, viewedPlayer())"
       (descriptionEvent)="updateDescription($event.value, viewedPlayer())"
       (barsEvent)="updateBars($event, viewedPlayer())"
-      (statusesEvent)="updateStatuses($event, viewedPlayer())"
+      (newStatusEvent)="addStatus($event, viewedPlayer())"
+      (editStatusEvent)="updateStatus($event, viewedPlayer())"
+      (deleteStatusEvent)="deleteStatus($event, viewedPlayer())"
       (strengthsEvent)="updateStrengths($event, viewedPlayer())"
       (weaknessesEvent)="updateWeaknesses($event, viewedPlayer())"
       (skillsEvent)="updateSkills($event, viewedPlayer())"
@@ -97,6 +98,8 @@ export class PlayerPageComponent {
       },
       statuses: {
         edit: isManager,
+        add: isManager,
+        delete: isManager,
       },
       strengths: {
         edit: isManager,
@@ -128,7 +131,7 @@ export class PlayerPageComponent {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     this.gameInstanceService.updateCharacterAvatar(gameInstanceId, participantId, { picture: newAvatar.picture }).pipe(
-      tap(() => newAvatar.modalRef.close()),
+      tap(() => void newAvatar.modalRef.close()),
     ).subscribe();
   }
 
@@ -145,11 +148,22 @@ export class PlayerPageComponent {
     this.gameInstanceService.updateCharacterBars(gameInstanceId, participantId, { bar: selectedBars }).subscribe();
   }
 
-  protected updateStatuses(statuses: Status[], player: Player): void {
+  protected addStatus(status: AttributeStatus, player: Player): void {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    const selectedStatuses = statuses.filter(s => s.selected).map(s => s.instance);
-    this.gameInstanceService.updateCharacterStatuses(gameInstanceId, participantId, { status: selectedStatuses }).subscribe();
+    this.gameInstanceService.addCharacterStatus(gameInstanceId, participantId, status).subscribe();
+  }
+
+  protected updateStatus(status: AttributeStatus, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.updateCharacterStatus(gameInstanceId, participantId, status.id, status).subscribe();
+  }
+
+  protected deleteStatus(status: AttributeStatus, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.deleteCharacterStatus(gameInstanceId, participantId, status.id).subscribe();
   }
 
   protected updateStrengths(strengths: Strength[], player: Player): void {
@@ -183,7 +197,7 @@ export class PlayerPageComponent {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     this.gameInstanceService.addItemToInventory(gameInstanceId, participantId, itemEvent.inventory.instance.id, itemEvent.item).pipe(
-      tap(() => itemEvent.modalRef.close()),
+      tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
 
@@ -192,7 +206,7 @@ export class PlayerPageComponent {
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     this.gameInstanceService.editItemInInventory(
       gameInstanceId, participantId, itemEvent.inventory.instance.id, itemEvent.item).pipe(
-      tap(() => itemEvent.modalRef.close()),
+      tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
 
@@ -201,7 +215,7 @@ export class PlayerPageComponent {
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     this.gameInstanceService.deleteItemFromInventory(
       gameInstanceId, participantId, itemEvent.inventory.instance.id, itemEvent.item.id).pipe(
-      tap(() => itemEvent.modalRef.close()),
+      tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
 
@@ -210,7 +224,7 @@ export class PlayerPageComponent {
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     this.gameInstanceService.addInventoryForCharacter(
       gameInstanceId, participantId, event.inventory.def.id).pipe(
-      tap(() => event.modalRef.close()),
+      tap(() => void event.modalRef.close()),
     ).subscribe();
   }
 

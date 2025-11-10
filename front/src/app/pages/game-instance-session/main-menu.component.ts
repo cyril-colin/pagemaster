@@ -158,7 +158,7 @@ export class MainMenuComponent {
 
     const gameInstanceId = this.currentGameInstance.currentGameInstance()!.id;
     const parentRoute = PageMasterRoutes().GameInstanceSession.interpolated(gameInstanceId);
-    const segments = ['/'+parentRoute, route].join('/').split('/');
+    const segments = [parentRoute, route].join('/').split('/');
     await this.router.navigate(segments);
     this.close.emit();
   }

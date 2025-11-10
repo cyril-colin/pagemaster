@@ -14,6 +14,7 @@ import { currentParticipantInterceptor } from './core/repositories/current-parti
 import { GameDefRepository } from './core/repositories/gamedef.repository';
 
 export const WINDOW = new InjectionToken<Window>('WindowToken');
+export const HISTORY = new InjectionToken<History>('HistoryToken');
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
@@ -22,6 +23,7 @@ export const appConfig: ApplicationConfig = {
 
     provideHttpClient(withInterceptors([currentParticipantInterceptor])),
     { provide: WINDOW, useValue: window },
+    { provide: HISTORY, useValue: window.history },
     provideAppInitializer(appInitializer),
     GameDefRepository,
   ],

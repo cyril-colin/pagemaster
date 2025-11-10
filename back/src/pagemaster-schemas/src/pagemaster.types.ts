@@ -169,7 +169,11 @@ export type Character = {
   name: string,
   description: string,
   attributes:{
-    [K in keyof Attributes]-?: Attributes[K]['instance'][];
+    bar: Attributes['bar']['instance'][];
+    inventory: Attributes['inventory']['instance'][];
+    strength: Attributes['strength']['instance'][];
+    weakness: Attributes['weakness']['instance'][];
+    status: Attributes['status'][];
   },
   skills: SkillInstance[],
 }

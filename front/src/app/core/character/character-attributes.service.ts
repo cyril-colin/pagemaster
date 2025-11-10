@@ -3,7 +3,6 @@ import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { Bar } from './bars/bars-control.component';
 import { Inventory } from './inventories/inventory.types';
 import { Skill } from './skills/skills-control.component';
-import { Status } from './statuses/status-control.component';
 import { Strength } from './strengths/strengths-control.component';
 import { Weakness } from './weaknesses/weaknesses-control.component';
 
@@ -21,20 +20,6 @@ export class CharacterAttributesService {
       return {
         def: barDef,
         instance: matchingInstance || { id: barDef.id, current: barDef.min },
-        selected: !!matchingInstance,
-      };
-    });
-  }
-
-  public mapPlayerStatuses(character: Character, gameDef: GameDef): Status[] {
-    const characterPlayerRefs = character.attributes.status;
-    const possibleStatuses = gameDef.possibleAttributes.status;
-
-    return possibleStatuses.map(statusDef => {
-      const matchingInstance = characterPlayerRefs.find(s => s.id === statusDef.id);
-      return {
-        definition: statusDef,
-        instance: matchingInstance || { id: statusDef.id, current: '' },
         selected: !!matchingInstance,
       };
     });

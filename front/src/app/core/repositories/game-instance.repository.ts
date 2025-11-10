@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Item } from '@pagemaster/common/items.types';
 import { Character, GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
 import { Observable } from 'rxjs';
@@ -67,6 +68,39 @@ export class GameInstanceRepository {
   ): Observable<Participant> {
     return this.http.patch<Participant>(
       `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/statuses`, attributes);
+  }
+
+  addCharacterStatus(
+    gameInstanceId: string,
+    participantId: string,
+    status: AttributeStatus,
+  ): Observable<Participant> {
+    return this.http.post<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/statuses`,
+      status,
+    );
+  }
+
+  updateCharacterStatus(
+    gameInstanceId: string,
+    participantId: string,
+    statusId: string,
+    status: AttributeStatus,
+  ): Observable<Participant> {
+    return this.http.put<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/statuses/${statusId}`,
+      status,
+    );
+  }
+
+  deleteCharacterStatus(
+    gameInstanceId: string,
+    participantId: string,
+    statusId: string,
+  ): Observable<Participant> {
+    return this.http.delete<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/statuses/${statusId}`,
+    );
   }
 
   updateCharacterStrengths(

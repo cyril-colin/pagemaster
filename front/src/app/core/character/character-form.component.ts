@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
 import { DividerComponent } from '../design-system/divider.component';
@@ -18,7 +19,7 @@ import { InventoryDeletionEvent, InventoryItemEvent } from './inventories/invent
 import { Inventory } from './inventories/inventory.types';
 import { NameControlComponent, NamePermissions } from './names/name-control.component';
 import { Skill, SkillsControlComponent, SkillsPermissions } from './skills/skills-control.component';
-import { Status, StatusControlComponent, StatusesPermissions } from './statuses/status-control.component';
+import { StatusControlComponent, StatusesPermissions } from './statuses/status-control.component';
 import { Strength, StrengthsControlComponent, StrengthsPermissions } from './strengths/strengths-control.component';
 import { Weakness, WeaknessesControlComponent, WeaknessesPermissions } from './weaknesses/weaknesses-control.component';
 
@@ -70,7 +71,9 @@ export type CharacterPermissions = {
       <app-status-control
         [statuses]="playerStatuses()"
         [permissions]="permissions().statuses"
-        (newStatuses)="statusesEvent.emit($event)"
+        (newStatus)="newStatusEvent.emit($event)"
+        (editStatus)="editStatusEvent.emit($event)"
+        (deleteStatus)="deleteStatusEvent.emit($event)"
       />
       <ds-divider />
       <app-inventory-list
@@ -154,7 +157,9 @@ export class CharacterFormComponent  {
   public avatarEvent = output<AvatarEvent>();
   public descriptionEvent = output<{value: string}>();
   public barsEvent = output<Bar[]>();
-  public statusesEvent = output<Status[]>();
+  public newStatusEvent = output<AttributeStatus>();
+  public editStatusEvent = output<AttributeStatus>();
+  public deleteStatusEvent = output<AttributeStatus>();
   public strengthsEvent = output<Strength[]>();
   public weaknessesEvent = output<Weakness[]>();
   public skillsEvent = output<Skill[]>();
@@ -172,10 +177,8 @@ export class CharacterFormComponent  {
   });
 
   protected playerStatuses = computed(() => {
-    return this.characterAttributesService.mapPlayerStatuses(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
+    const a = this.existingCharacter().attributes.status.map(s => s.definition);
+    return a;
   });
 
   protected playerStrengths = computed(() => {
