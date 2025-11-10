@@ -60,7 +60,7 @@ export class ParticipantStatusesController {
 
     // Add the new status instance
     status.id = `status-${status.name}-${Date.now()}`;
-    player.character.attributes.status.push({definition: status} as {definition: AttributeStatus;instance: never;});
+    player.character.attributes.status.push(status);
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
 
@@ -97,13 +97,13 @@ export class ParticipantStatusesController {
     this.gameInstanceService.validatePlayerType(player);
 
     // Find and update the status instance
-    const statusIndex = player.character.attributes.status.findIndex(s => s.definition.id === params.statusId);
+    const statusIndex = player.character.attributes.status.findIndex(s => s.id === params.statusId);
     if (statusIndex === -1) {
       throw new HttpForbiddenError(`Status with id ${params.statusId} not found`);
     }
 
     // Update the status (keeping the current value if needed)
-    player.character.attributes.status[statusIndex].definition = status
+    player.character.attributes.status[statusIndex] = status
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
 
@@ -140,7 +140,7 @@ export class ParticipantStatusesController {
     this.gameInstanceService.validatePlayerType(player);
 
     // Find and remove the status
-    const statusIndex = player.character.attributes.status.findIndex(s => s.definition.id === params.statusId);
+    const statusIndex = player.character.attributes.status.findIndex(s => s.id === params.statusId);
     if (statusIndex === -1) {
       throw new HttpForbiddenError(`Status with id ${params.statusId} not found`);
     }
@@ -161,7 +161,7 @@ export class ParticipantStatusesController {
       event: {
         type: 'participant-status-delete',
         title: 'Status Deleted',
-        description: `${currentParticipant.name} deleted status "${deletedStatus.definition.name}" from ${player.character.name}`,
+        description: `${currentParticipant.name} deleted status "${deletedStatus.name}" from ${player.character.name}`,
       }
     });
     

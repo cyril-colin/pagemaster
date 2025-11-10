@@ -62,7 +62,7 @@ export type CharacterPermissions = {
       </ds-card>
 
       <app-status-control
-        [statuses]="playerStatuses()"
+        [statuses]="existingCharacter().attributes.status"
         [permissions]="permissions().statuses"
         (newStatus)="newStatusEvent.emit($event)"
         (editStatus)="editStatusEvent.emit($event)"
@@ -140,11 +140,6 @@ export class CharacterFormComponent  {
       this.existingCharacter(),
       this.gameDef(),
     );
-  });
-
-  protected playerStatuses = computed(() => {
-    const a = this.existingCharacter().attributes.status.map(s => s.definition);
-    return a;
   });
 
 
