@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, ComponentRef, viewChild, ViewContainerRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ComponentRef,
+  inject,
+  Type,
+  viewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { ContentAttachmentService } from './content-attachment.service';
+import { ComponentInputs } from './modal.service';
 
 @Component({
   selector: 'app-modal-wrapper',
@@ -27,12 +37,18 @@ import { ChangeDetectionStrategy, Component, ComponentRef, viewChild, ViewContai
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ContentAttachmentService],
 })
 export class ModalWrapperComponent {
 
+  private contentAttachment = inject(ContentAttachmentService);
   protected modalContent = viewChild.required('modalContent', { read: ViewContainerRef });
 
   attachContent<T>(componentRef: ComponentRef<T>): void {
-    this.modalContent().insert(componentRef.hostView);
+    this.contentAttachment.attachContent(componentRef, this.modalContent());
+  }
+
+  createAndAttachContent<T>(component: Type<T>, inputs: Partial<ComponentInputs<T>>): ComponentRef<T> {
+    return this.contentAttachment.createAndAttachContent(component, this.modalContent(), inputs);
   }
 }

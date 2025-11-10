@@ -8,9 +8,12 @@ import {
   inject,
   output,
   Renderer2,
+  Type,
   viewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { ContentAttachmentService } from './content-attachment.service';
+import { ComponentInputs } from './modal.service';
 
 @Component({
   selector: 'app-left-panel-wrapper',
@@ -35,11 +38,13 @@ import {
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ContentAttachmentService],
 })
 export class LeftPanelWrapperComponent implements AfterViewInit {
 
   private elementRef = inject(ElementRef<HTMLElement>);
   private renderer = inject(Renderer2);
+  private contentAttachment = inject(ContentAttachmentService);
   protected panelContent = viewChild.required('panelContent', { read: ViewContainerRef });
   
   // Output event for back button press
@@ -61,7 +66,11 @@ export class LeftPanelWrapperComponent implements AfterViewInit {
   }
 
   attachContent<T>(componentRef: ComponentRef<T>): void {
-    this.panelContent().insert(componentRef.hostView);
+    this.contentAttachment.attachContent(componentRef, this.panelContent());
+  }
+
+  createAndAttachContent<T>(component: Type<T>, inputs: Partial<ComponentInputs<T>>): ComponentRef<T> {
+    return this.contentAttachment.createAndAttachContent(component, this.panelContent(), inputs);
   }
 
   closeAnimation(): Promise<void> {
