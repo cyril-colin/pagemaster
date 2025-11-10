@@ -4,7 +4,6 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
-import { DividerComponent } from '../design-system/divider.component';
 import { ITEM_ICONS } from '../gallery/item-icons.const';
 import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
 import { Bar, BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
@@ -18,10 +17,7 @@ import {
 import { InventoryDeletionEvent, InventoryItemEvent } from './inventories/inventory.component';
 import { Inventory } from './inventories/inventory.types';
 import { NameControlComponent, NamePermissions } from './names/name-control.component';
-import { Skill, SkillsControlComponent, SkillsPermissions } from './skills/skills-control.component';
 import { StatusControlComponent, StatusesPermissions } from './statuses/status-control.component';
-import { Strength, StrengthsControlComponent, StrengthsPermissions } from './strengths/strengths-control.component';
-import { Weakness, WeaknessesControlComponent, WeaknessesPermissions } from './weaknesses/weaknesses-control.component';
 
 
 export type CharacterPermissions = {
@@ -31,9 +27,6 @@ export type CharacterPermissions = {
   description: DescriptionPermissions,
   bars: BarsPermissions,
   statuses: StatusesPermissions,
-  strengths: StrengthsPermissions,
-  weaknesses: WeaknessesPermissions,
-  skills: SkillsPermissions,
 }
 
 
@@ -75,7 +68,6 @@ export type CharacterPermissions = {
         (editStatus)="editStatusEvent.emit($event)"
         (deleteStatus)="deleteStatusEvent.emit($event)"
       />
-      <ds-divider />
       <app-inventory-list
         [inventories]="playerInventories()"
         [character]="existingCharacter()"
@@ -85,25 +77,6 @@ export type CharacterPermissions = {
         (editItem)="editItem.emit($event)"
         (addInventory)="addInventory.emit($event)"
         (deleteInventory)="deleteInventory.emit($event)"
-      />
-      <ds-divider />
-
-      <app-strengths-control
-        [strengths]="playerStrengths()"
-        [permissions]="permissions().strengths"
-        (newStrengths)="strengthsEvent.emit($event)"
-      />
-      <ds-divider />
-      <app-weaknesses-control
-        [weaknesses]="playerWeaknesses()"
-        [permissions]="permissions().weaknesses"
-        (newWeaknesses)="weaknessesEvent.emit($event)"
-      />
-      <ds-divider />
-      <app-skills-control
-        [skills]="playerSkills()"
-        [permissions]="permissions().skills"
-        (newSkills)="skillsEvent.emit($event)"
       />
     </form>
   `,
@@ -136,11 +109,7 @@ export type CharacterPermissions = {
     DescriptionControlComponent,
     BarsControlComponent,
     StatusControlComponent,
-    StrengthsControlComponent,
-    WeaknessesControlComponent,
-    SkillsControlComponent,
     InventoryListComponent,
-    DividerComponent,
     CardComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -160,9 +129,6 @@ export class CharacterFormComponent  {
   public newStatusEvent = output<AttributeStatus>();
   public editStatusEvent = output<AttributeStatus>();
   public deleteStatusEvent = output<AttributeStatus>();
-  public strengthsEvent = output<Strength[]>();
-  public weaknessesEvent = output<Weakness[]>();
-  public skillsEvent = output<Skill[]>();
   public deleteItem = output<InventoryItemEvent>();
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();
@@ -181,29 +147,9 @@ export class CharacterFormComponent  {
     return a;
   });
 
-  protected playerStrengths = computed(() => {
-    return this.characterAttributesService.mapPlayerStrengths(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
-
-  protected playerWeaknesses = computed(() => {
-    return this.characterAttributesService.mapPlayerWeaknesses(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
 
   protected playerInventories: Signal<Inventory[]> = computed(() => {
     return this.characterAttributesService.mapPlayerInventories(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
-
-  protected playerSkills = computed(() => {
-    return this.characterAttributesService.mapPlayerSkills(
       this.existingCharacter(),
       this.gameDef(),
     );

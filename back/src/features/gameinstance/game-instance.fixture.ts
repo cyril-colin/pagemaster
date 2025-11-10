@@ -40,10 +40,7 @@ const defaultGameInstance: GameInstance = {
           "isSecret": true
         }
       ],
-      "strength": [],
-      "weakness": []
     },
-    "possibleSkills": [],
     "possibleItems": []
   },
   "participants": [
@@ -70,10 +67,7 @@ const defaultGameInstance: GameInstance = {
               "current": []
             }
           ],
-          "strength": [],
-          "weakness": []
         },
-        "skills": []
       }
     },
     {
@@ -90,10 +84,7 @@ const defaultGameInstance: GameInstance = {
           "bar": [],
           "status": [],
           "inventory": [],
-          "strength": [],
-          "weakness": []
         },
-        "skills": []
       }
     },
     {
@@ -110,10 +101,7 @@ const defaultGameInstance: GameInstance = {
           "bar": [],
           "status": [],
           "inventory": [],
-          "strength": [],
-          "weakness": []
         },
-        "skills": []
       }
     },
     {
@@ -130,10 +118,7 @@ const defaultGameInstance: GameInstance = {
           "bar": [],
           "status": [],
           "inventory": [],
-          "strength": [],
-          "weakness": []
         },
-        "skills": []
       }
     },
     {

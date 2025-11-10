@@ -1,6 +1,5 @@
 import { Attributes } from './attributes.types';
 import { Item } from './items.types';
-import { Skill, SkillInstance } from './skills.types';
 
 /**
  * This defines a game definition, that can be used to create game instances.
@@ -19,7 +18,6 @@ export type GameDef = {
   minPlayers: number,
   maxPlayers: number,
   possibleAttributes: { [K in keyof Attributes]-?: Attributes[K]['definition'][];},
-  possibleSkills: Skill[],
   possibleItems: Item[],
 }
 
@@ -171,10 +169,7 @@ export type Character = {
   attributes:{
     bar: Attributes['bar']['instance'][];
     inventory: Attributes['inventory']['instance'][];
-    strength: Attributes['strength']['instance'][];
-    weakness: Attributes['weakness']['instance'][];
     status: Attributes['status'][];
   },
-  skills: SkillInstance[],
 }
 

@@ -35,10 +35,7 @@ const defaultGameDef: GameDef = {
         isSecret: true
       }
     ],
-    strength: [],
-    weakness: []
   },
-  possibleSkills: [],
   possibleItems: []
 }
 

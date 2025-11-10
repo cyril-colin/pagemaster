@@ -12,15 +12,6 @@ export type AttributeBar = AbstractAttribute & {
   max: number,
 }
 
-export type AttributeStrength = AbstractAttribute & {
-  type: 'strength',
-  name: string,
-}
-export type AttributeWeakness = AbstractAttribute & {
-  type: 'weakness',
-  name: string,
-}
-
 export type AttributeStatus = AbstractAttribute &  {
   type: 'status',
   color: string,
@@ -41,7 +32,5 @@ export type Attributes = {
   bar: {definition: AttributeBar, instance: { id: AttributeBar['id'], current: number}},
   status: {definition: AttributeStatus, instance: never},
   inventory: {definition: AttributeInventory, instance: { id: AttributeInventory['id'], current: Item[]}},
-  strength: {definition: AttributeStrength, instance: { id: AttributeStrength['id']}},
-  weakness: {definition: AttributeWeakness, instance: { id: AttributeWeakness['id']}},
 }
 

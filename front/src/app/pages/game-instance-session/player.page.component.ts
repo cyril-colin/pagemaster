@@ -9,9 +9,6 @@ import { Bar } from 'src/app/core/character/bars/bars-control.component';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
 import { InventoryAdditionEvent } from 'src/app/core/character/inventories/inventory-list.component';
 import { InventoryDeletionEvent, InventoryItemEvent } from 'src/app/core/character/inventories/inventory.component';
-import { Skill } from 'src/app/core/character/skills/skills-control.component';
-import { Strength } from 'src/app/core/character/strengths/strengths-control.component';
-import { Weakness } from 'src/app/core/character/weaknesses/weaknesses-control.component';
 import { CurrentSessionState } from 'src/app/core/current-session.state';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.repository';
@@ -31,9 +28,6 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       (newStatusEvent)="addStatus($event, viewedPlayer())"
       (editStatusEvent)="updateStatus($event, viewedPlayer())"
       (deleteStatusEvent)="deleteStatus($event, viewedPlayer())"
-      (strengthsEvent)="updateStrengths($event, viewedPlayer())"
-      (weaknessesEvent)="updateWeaknesses($event, viewedPlayer())"
-      (skillsEvent)="updateSkills($event, viewedPlayer())"
       (addItem)="addItemToInventory($event, viewedPlayer())"
       (editItem)="editItemToInventory($event, viewedPlayer())"
       (deleteItem)="deleteItemToInventory($event, viewedPlayer())"
@@ -164,27 +158,6 @@ export class PlayerPageComponent {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
     this.gameInstanceService.deleteCharacterStatus(gameInstanceId, participantId, status.id).subscribe();
-  }
-
-  protected updateStrengths(strengths: Strength[], player: Player): void {
-    const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    const selectedStrengths = strengths.filter(s => s.selected).map(s => s.instance);
-    this.gameInstanceService.updateCharacterStrengths(gameInstanceId, participantId, { strength: selectedStrengths }).subscribe();
-  }
-
-  protected updateWeaknesses(weaknesses: Weakness[], player: Player): void {
-    const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    const selectedWeaknesses = weaknesses.filter(w => w.selected).map(w => w.instance);
-    this.gameInstanceService.updateCharacterWeaknesses(gameInstanceId, participantId, { weakness: selectedWeaknesses }).subscribe();
-  }
-
-  protected updateSkills(skills: Skill[], player: Player): void {
-    const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    const selectedSkills = skills.filter(s => s.selected).map(s => s.instance);
-    this.gameInstanceService.updateCharacterSkills(gameInstanceId, participantId, { skills: selectedSkills }).subscribe();
   }
 
   protected updateInventories(inventories: Attributes['inventory']['instance'][], player: Player): void {

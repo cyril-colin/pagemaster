@@ -8,10 +8,7 @@ import { GameInstanceController } from './features/gameinstance/game-instance-cr
 import { ParticipantBarsController } from './features/gameinstance/participant-bars.controller';
 import { ParticipantInventoryController } from './features/gameinstance/participant-inventory.controller';
 import { ParticipantProfileController } from './features/gameinstance/participant-profile.controller';
-import { ParticipantSkillsController } from './features/gameinstance/participant-skills.controller';
 import { ParticipantStatusesController } from './features/gameinstance/participant-statuses.controller';
-import { ParticipantStrengthsController } from './features/gameinstance/participant-strengths.controller';
-import { ParticipantWeaknessesController } from './features/gameinstance/participant-weaknesses.controller';
 
 const app = express();
 
@@ -27,9 +24,6 @@ const controllers = [
   new GameInstanceController(serviceContainer.gameInstanceMongoClient, serviceContainer.socketServerService, serviceContainer.logger),
   new ParticipantBarsController(serviceContainer.gameInstanceService),
   new ParticipantStatusesController(serviceContainer.gameInstanceService),
-  new ParticipantStrengthsController(serviceContainer.gameInstanceService),
-  new ParticipantWeaknessesController(serviceContainer.gameInstanceService),
-  new ParticipantSkillsController(serviceContainer.gameInstanceService),
   new ParticipantProfileController(serviceContainer.gameInstanceService),
   new ParticipantInventoryController(serviceContainer.gameInstanceService),
   new GameEventController(serviceContainer.gameEventMongoClient, serviceContainer.gameInstanceMongoClient),
