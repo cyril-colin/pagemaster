@@ -5,29 +5,141 @@ import { GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
 import { switchMap, tap } from 'rxjs';
 import { CurrentGameInstanceState } from '../../core/current-game-instance.state';
 import { CurrentParticipantState } from '../../core/current-participant.state';
+import { ButtonComponent } from '../../core/design-system/button.component';
+import { CardComponent } from '../../core/design-system/card.component';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
 import { GameInstanceRepository } from '../../core/repositories/game-instance.repository';
 
 @Component({
   selector: 'app-game-instance-session-choose-participant',
+  imports: [ButtonComponent, CardComponent],
   template: `
-    <div>
-      <h1>Game Instance Session</h1>
-       @let instance = selectedGameInstance();
-       @if (instance) {
-         @for(participant of instance.participants; track participant.id) {
-          @if(participant.type === 'player') {
-            <button (click)="selectParticipant(instance, participant)">
-              {{ participant.name }} playing as {{ participant.character.name }}
-            </button>
-          } @else {
-            <button (click)="selectParticipant(instance, participant)">{{ participant.name }} playing as Game Master</button>
-         }
-       }
+    <div class="container">
+      <h1>Choose Your Character</h1>
+      @let instance = selectedGameInstance();
+      @if (instance) {
+        <p class="subtitle">{{ instance.gameDef.name }} - Master: {{ instance.masterName }}</p>
+        
+        <div class="participants-grid">
+          @for(participant of instance.participants; track participant.id) {
+            <ds-card class="participant-card">
+              @if(participant.type === 'player') {
+                <div class="participant-info">
+                  <h3 class="participant-name">{{ participant.character.name }}</h3>
+                  <p class="player-name">Played by {{ participant.name }}</p>
+                </div>
+                <ds-button 
+                  [mode]="'primary'" 
+                  (click)="selectParticipant(instance, participant)">
+                  Play as {{ participant.character.name }}
+                </ds-button>
+              } @else {
+                <div class="participant-info">
+                  <h3 class="participant-name">Game Master</h3>
+                  <p class="player-name">{{ participant.name }}</p>
+                </div>
+                <ds-button 
+                  [mode]="'secondary'" 
+                  (click)="selectParticipant(instance, participant)">
+                  Join as Game Master
+                </ds-button>
+              }
+            </ds-card>
+          }
+        </div>
+      } @else {
+        <p class="loading">Loading game instance...</p>
       }
     </div>
   `,
-  styles: [],
+  styles: [`
+    :host {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--padding-large);
+      width: 100%;
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      gap: var(--gap-large);
+    }
+
+    h1 {
+      color: var(--color-primary);
+      font-size: 32px;
+      font-weight: var(--text-weight-bold);
+      text-align: center;
+      margin: 0;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: var(--text-size-large);
+      text-align: center;
+      margin: 0;
+    }
+
+    .participants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--gap-large);
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .participant-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
+      padding: var(--padding-large);
+      transition: transform var(--transition-speed) ease, 
+                  box-shadow var(--transition-speed) ease;
+      cursor: pointer;
+    }
+
+    .participant-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px var(--color-shadow-heavy);
+      border-color: var(--color-primary);
+    }
+
+    .participant-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-small);
+      flex: 1;
+    }
+
+    .participant-name {
+      color: var(--text-primary);
+      font-size: var(--text-size-xlarge);
+      font-weight: var(--text-weight-bold);
+      margin: 0;
+    }
+
+    .player-name {
+      color: var(--text-secondary);
+      font-size: var(--text-size-medium);
+      margin: 0;
+    }
+
+    .loading {
+      color: var(--text-secondary);
+      font-size: var(--text-size-large);
+      text-align: center;
+    }
+
+    ds-button {
+      width: 100%;
+    }
+  `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameInstanceSessionChooseParticipantComponent {
