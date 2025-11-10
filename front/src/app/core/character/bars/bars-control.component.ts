@@ -1,123 +1,146 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input, output, signal } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AttributeBar, Attributes } from '@pagemaster/common/attributes.types';
-import { BarListViewComponent } from './bar-list-view.component';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
+import { AttributeBar } from '@pagemaster/common/attributes.types';
+import { BarComponent } from '../../design-system/bar.component';
+import { ButtonComponent } from '../../design-system/button.component';
+import { ModalService } from '../../modal';
+import { BarFormComponent } from './bar-form.component';
 
-
-type BarForm = FormGroup<{
-  id: FormControl<string>,
-  current: FormControl<number>,
-  selected: FormControl<boolean>,
-}>;
-
-export type Bar = {def: AttributeBar, instance: Attributes['bar']['instance'], selected: boolean};
 
 export type BarsPermissions = {
   edit: boolean,
+  add: boolean,
+  delete: boolean,
 };
 
 @Component({
   selector: 'app-bars-control',
   template: `
-
-    @if (mode() === 'view') {
-      <div (click)="setMode('edit')" [class.bars-view]="permissions().edit" [class.bars-readonly]="!permissions().edit">
-        <app-bar-list-view [bars]="selectedBars()" />
+    @if (bars().length === 0 && permissions().add) {
+      <div class="bars-view">
+        <span class="empty-message">No bars configured.</span>
       </div>
-    } @else {
-      @for(bar of bars(); track bar.instance; let i = $index) {
-        <div>
-          <input type="checkbox" [formControl]="form.controls.barForms.controls[i].controls.selected" />
-          <label>{{ bar.def.name }}</label>
-          <input
-            type="number"
-            [min]="bar.def.min"
-            [max]="bar.def.max"
-            [formControl]="form.controls.barForms.controls[i].controls.current" />
-        </div>
-      }
-      <button (click)="$event.preventDefault(); submit()">Save</button>
     }
-    
+
+    @for(bar of bars(); track bar.id) {
+      <div class="bar-item">
+        <div class="bar-content">
+          <ds-bar 
+            [value]="bar.current" 
+            [color]="bar.color" 
+            [editable]="permissions().edit"
+            [min]="bar.min"
+            [max]="bar.max"
+            (newValue)="updateBarValue(bar, $event)"
+          />
+        </div>
+        @if (permissions().edit || permissions().delete) {
+          <div class="bar-actions">
+            @if (permissions().edit) {
+              <ds-button [mode]="'secondary'" [icon]="'edit'" (click)="openEditBarModal(bar)" />
+            }
+            @if (permissions().delete) {
+              <ds-button [mode]="'primary-danger'" [icon]="'trash'" (click)="onDeleteBar(bar)" />
+            }
+          </div>
+        }
+      </div>
+    }
+
+    @if (permissions().add) {
+      <ds-button [mode]="'secondary'" (click)="openNewBarModal()" [icon]="'plus'">New Bar</ds-button>
+    }
   `,
   styles: [
     `
-    .bars-view {
-      cursor: pointer;
+    :host {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
     }
 
-    .bars-readonly {
+    .bars-view {
+      padding: var(--card-padding);
+      background-color: var(--color-background-secondary);
+      border: var(--view-border);
+      border-radius: var(--view-border-radius);
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .empty-message {
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+
+    .bar-item {
+      display: flex;
+      gap: var(--gap-medium);
+      align-items: center;
+    }
+
+    .bar-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-small);
+      flex: 1;
+    }
+
+    .bar-actions {
+      display: flex;
+      gap: var(--gap-small);
     }
     `,
   ],
   imports: [
-    ReactiveFormsModule,
-    BarListViewComponent,
+    BarComponent,
+    ButtonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarsControlComponent {
-  public bars = input.required<Bar[]>();
+  public bars = input.required<AttributeBar[]>();
   public permissions = input.required<BarsPermissions>();
-  protected selectedBars = computed(() => this.bars().filter(bar => bar.selected));
-  public newBars = output<Bar[]>();
-  
-  protected fb = inject(FormBuilder);
-  protected form = this.fb.group<{barForms: FormArray<BarForm>}>({
-    barForms: this.fb.array<BarForm>([]),
-  });
+  public newBarValue = output<AttributeBar>();
+  public newBar = output<AttributeBar>();
+  public editBar = output<AttributeBar>();
+  public deleteBar = output<AttributeBar>();
 
-  protected mode = signal<'view' | 'edit'>('view');
-  constructor() {
-    effect(() => {
-      this.mode.set('view');
-      this.form.controls.barForms.clear();
-      this.bars().forEach((bar) => {
-        const formGroup = this.fb.group({
-          id: this.fb.control(bar.instance.id, {nonNullable: true}),
-          current: this.fb.control(bar.instance.current, {nonNullable: true, validators: [
-            Validators.min(bar.def.min),
-            Validators.max(bar.def.max),
-          ]}),
-          selected: this.fb.control(bar.selected, {nonNullable: true}),
-        });
-        this.form.controls.barForms.push(formGroup);
-      });
+  private modalService = inject(ModalService);
+
+  protected updateBarValue(bar: AttributeBar, newValue: number): void {
+    const updatedBar: AttributeBar = {
+      ...bar,
+      current: newValue,
+    };
+    this.newBarValue.emit(updatedBar);
+  }
+
+  protected openNewBarModal() {
+    const modalRef = this.modalService.open(BarFormComponent);
+    modalRef.componentRef.instance.newBar.subscribe((bar: AttributeBar) => {
+      this.newBar.emit(bar);
+      void modalRef.close();
     });
   }
 
-
-  protected setMode(newMode: 'view' | 'edit'): void {
-    if (!this.permissions().edit && newMode === 'edit') {
-      return;
-    }
-    this.mode.set(newMode);
+  protected openEditBarModal(bar: AttributeBar) {
+    const modalRef = this.modalService.open(BarFormComponent, { 
+      bar,
+      permissions: { delete: this.permissions().delete },
+    });
+    modalRef.componentRef.instance.newBar.subscribe((updatedBar: AttributeBar) => {
+      this.editBar.emit(updatedBar);
+      void modalRef.close();
+    });
+    modalRef.componentRef.instance.deleteBar.subscribe((deletedBar: AttributeBar) => {
+      this.deleteBar.emit(deletedBar);
+      void modalRef.close();
+    });
   }
 
-  protected matchingBar(id: string): {def: AttributeBar, instance: Attributes['bar']['instance'], selected: boolean} |null {
-    return this.bars().find(b => b.instance.id === id) || null;
-  }
-
-  protected submit(): void {
-    this.setMode('view');
-
-    const data = this.form.getRawValue().barForms;
-    const result = data.reduce<Bar[]>((acc, barForm) => {
-      const matching = this.matchingBar(barForm.id);
-      if (matching) {
-        acc.push({
-          def: matching.def,
-          instance: {
-            id: barForm.id,
-            current: barForm.current,
-          },
-          selected: barForm.selected,
-        });
-      }
-      return acc;
-    }, []);
-
-    this.newBars.emit(result);
+  protected onDeleteBar(bar: AttributeBar) {
+    this.deleteBar.emit(bar);
   }
   
 }

@@ -1,7 +1,6 @@
-import { computed, inject, Injectable, InputSignal } from '@angular/core';
-import { map, tap } from 'rxjs';
-import { Character } from '@pagemaster/common/pagemaster.types';
+import { computed, inject, Injectable } from '@angular/core';
 import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
+import { map, tap } from 'rxjs';
 import { CurrentGameInstanceState } from './current-game-instance.state';
 import { CurrentParticipantState } from './current-participant.state';
 import { SocketService } from './socket.service';
@@ -43,13 +42,13 @@ export class CurrentSessionState {
     }
   });
 
-  public allowedToEditCharacterSnapshot(characterToEdit: Character) {
+  public allowedToEditCharacterSnapshot() {
     const currentParticipant = this.currentParticipant();
-    return currentParticipant.type === 'gameMaster' || characterToEdit.id === currentParticipant.character.id;
+    return currentParticipant.type === 'gameMaster';
   }
 
-  public allowedToEditCharacter = (characterToEdit: InputSignal<Character>) => computed(() => {
-    return this.allowedToEditCharacterSnapshot(characterToEdit());
+  public allowedToEditCharacter = () => computed(() => {
+    return this.allowedToEditCharacterSnapshot();
   });
 
   public init() {

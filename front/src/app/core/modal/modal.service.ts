@@ -1,85 +1,88 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Overlay } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { ApplicationRef, ComponentRef, createComponent, EnvironmentInjector, inject, Injectable, Type } from '@angular/core';
-import { take, tap } from 'rxjs';
+import { ComponentRef, inject, Injectable, InputSignal, Type } from '@angular/core';
+import { ConfirmationModalComponent, ConfirmationResult } from './confirmation-modal.component';
+import { LeftPanelWrapperComponent } from './left-panel-wrapper.component';
 import { ModalWrapperComponent } from './modal-wrapper.component';
-
-export interface ModalConfig {
-  hasBackdrop?: boolean,
-  backdropClass?: string,
-  panelClass?: string,
-  disableClose?: boolean,
-}
 
 export interface ModalRef<T = unknown> {
   componentRef: ComponentRef<T>,
-  close: () => void,
+  close: () => void | Promise<void>,
 }
+
+export type ComponentInputs<T> = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [P in keyof T as T[P] extends InputSignal<any> ? P : never]: T[P] extends InputSignal<infer A> ? A : never;
+};
+
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalService {
+  private dialog = inject(Dialog);
   private overlay = inject(Overlay);
-  private appRef = inject(ApplicationRef);
-  private injector = inject(EnvironmentInjector);
+  private defaultPositionStrategy = this.overlay.position()
+    .global()
+    .centerHorizontally()
+    .centerVertically();
 
   open<T>(
     component: Type<T>,
-    inputs?: Record<string, unknown>,
-    config?: ModalConfig,
+    inputs?: Partial<ComponentInputs<T>>,
   ): ModalRef<T> {
-    // Create overlay
-    const overlayRef = this.overlay.create({
-      hasBackdrop: config?.hasBackdrop ?? true,
-      backdropClass: config?.backdropClass ?? 'cdk-overlay-dark-backdrop',
-      panelClass: config?.panelClass,
-      positionStrategy: this.overlay.position()
-        .global()
-        .centerHorizontally()
-        .centerVertically(),
-      scrollStrategy: this.overlay.scrollStrategies.block(),
+    const dialogRef = this.dialog.open<unknown, unknown, ModalWrapperComponent>(ModalWrapperComponent, {
+      positionStrategy: this.defaultPositionStrategy,
     });
 
-    // Create the wrapper component
-    const wrapperPortal = new ComponentPortal(ModalWrapperComponent);
-    const wrapperRef = overlayRef.attach(wrapperPortal);
-
-    // Create the content component
-    const contentRef = createComponent(component, {
-      environmentInjector: this.injector,
-      elementInjector: wrapperRef.injector,
-    });
-
-    // Set inputs if provided
-    if (inputs) {
-      Object.keys(inputs).forEach((key) => {
-        contentRef.setInput(key, inputs[key]);
-      });
-    }
-
-    // Attach the content component to the wrapper
-    wrapperRef.instance.attachContent(contentRef);
-
-
-    // Close function
-    const close = () => {
-      this.appRef.detachView(contentRef.hostView);
-      contentRef.destroy();
-      overlayRef.dispose();
-    };
-
-    // Handle backdrop click
-    if (config?.disableClose !== true) {
-      overlayRef.backdropClick().pipe(
-        take(1),
-        tap(() => close()),
-      ).subscribe();
-    }
+    const wrapperRef = dialogRef.componentRef!;
+    const contentRef = wrapperRef.instance.createAndAttachContent(component, inputs || {});
 
     return {
       componentRef: contentRef,
-      close,
+      close: () => dialogRef.close(),
     };
+  }
+
+  openLeftPanel<T>(
+    component: Type<T>,
+    inputs?: Partial<ComponentInputs<T>>,
+  ): ModalRef<T> {
+    const dialogRef = this.dialog.open<unknown, unknown, LeftPanelWrapperComponent>(LeftPanelWrapperComponent, {
+      positionStrategy: this.overlay.position().global(),
+    });
+
+    const wrapperRef = dialogRef.componentRef!;
+    const contentRef = wrapperRef.instance.createAndAttachContent(component, inputs || {});
+
+    // Close function with animation
+    const close = async () => {
+      await wrapperRef.instance.closeAnimation();
+      dialogRef.close();
+    };
+
+    // Subscribe to back button events
+    wrapperRef.instance.backButtonPressed.subscribe(() => {
+      void close();
+    });
+
+    return { componentRef: contentRef, close };
+  }
+
+  async confirmation(message: string, title?: string): Promise<ConfirmationResult> {
+    const inputs: Partial<ComponentInputs<ConfirmationModalComponent>> = { 
+      message,
+      ...(title && { title }),
+    };
+
+    const modalRef = this.open(ConfirmationModalComponent, inputs);
+
+    return new Promise<ConfirmationResult>((resolve) => {
+      modalRef.componentRef.instance.result.subscribe((result) => {
+        void modalRef.close();
+        resolve(result);
+      });
+    });
   }
 }

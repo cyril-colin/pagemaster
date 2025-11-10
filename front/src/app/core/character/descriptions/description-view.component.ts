@@ -16,6 +16,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       color: var(--text-primary);
       font-weight: var(--text-weight-normal);
       margin: 0;
+      min-height: 60px;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,

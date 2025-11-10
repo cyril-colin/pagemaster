@@ -1,7 +1,7 @@
 {
   "name": "pagemaster-back",
-  "version": "1.0.0-dev.10",
-  "description": "A proxy server between a front end and any torrent server like deluge",
+  "version": "1.0.0-dev.14",
+  "description": "The backend for the Pagemaster application",
   "main": "index.js",
   "scripts": {
     "start": "docker compose up -d && tsc-watch --onSuccess \"node -r source-map-support/register dist/index.js\"",

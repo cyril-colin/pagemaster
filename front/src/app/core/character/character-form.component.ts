@@ -1,36 +1,32 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
+import { CardComponent } from '../design-system/card.component';
 import { ITEM_ICONS } from '../gallery/item-icons.const';
-import { AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
-import { Bar, BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
+import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
+import { BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
 import { CharacterAttributesService } from './character-attributes.service';
 import { DescriptionControlComponent, DescriptionPermissions } from './descriptions/description-control.component';
 import {
-  InventoryItemEvent,
+  InventoryAdditionEvent,
   InventoryListComponent,
-  InventoryPermissions,
-  InventorySelectionEvent,
+  InventoryListPermissions,
 } from './inventories/inventory-list.component';
+import { InventoryDeletionEvent, InventoryItemEvent } from './inventories/inventory.component';
 import { Inventory } from './inventories/inventory.types';
 import { NameControlComponent, NamePermissions } from './names/name-control.component';
-import { Skill, SkillsControlComponent, SkillsPermissions } from './skills/skills-control.component';
-import { Status, StatusControlComponent, StatusesPermissions } from './statuses/status-control.component';
-import { Strength, StrengthsControlComponent, StrengthsPermissions } from './strengths/strengths-control.component';
-import { Weakness, WeaknessesControlComponent, WeaknessesPermissions } from './weaknesses/weaknesses-control.component';
+import { StatusControlComponent, StatusesPermissions } from './statuses/status-control.component';
 
 
 export type CharacterPermissions = {
-  inventory: InventoryPermissions,
+  inventory: InventoryListPermissions,
   avatar: AvatarPermissions,
   name: NamePermissions,
   description: DescriptionPermissions,
   bars: BarsPermissions,
   statuses: StatusesPermissions,
-  strengths: StrengthsPermissions,
-  weaknesses: WeaknessesPermissions,
-  skills: SkillsPermissions,
 }
 
 
@@ -38,37 +34,43 @@ export type CharacterPermissions = {
   selector: 'app-character-form',
   template: `
     <form>
-      <section class="identity">
-        <app-picture-control
-          [picture]="existingCharacter().picture"
-          [permissions]="permissions().avatar"
-          (newPicture)="avatarEvent.emit($event)"
-        />
-        <div class="identity-data">
-          <app-name-control
-            [name]="existingCharacter().name"
-            [permissions]="permissions().name"
-            (newName)="renameEvent.emit($event)"
+      <ds-card>
+        <div class="identity">
+          <app-picture-control
+            [picture]="existingCharacter().picture"
+            [permissions]="permissions().avatar"
+            (newPicture)="avatarEvent.emit($event)"
           />
-          <app-description-control
-            [description]="existingCharacter().description"
-            [permissions]="permissions().description"
-            (newDescription)="descriptionEvent.emit($event)"
-          />
+          <div class="identity-data">
+            <app-name-control
+              [name]="existingCharacter().name"
+              [permissions]="permissions().name"
+              (newName)="renameEvent.emit($event)"
+            />
+            <app-description-control
+              [description]="existingCharacter().description"
+              [permissions]="permissions().description"
+              (newDescription)="descriptionEvent.emit($event)"
+            />
+          </div>
         </div>
-      </section>
-      
-      <app-bars-control
-        [bars]="playerBars()"
-        [permissions]="permissions().bars"
-        (newBars)="barsEvent.emit($event)"
-      />
-      <app-status-control
-        [statuses]="playerStatuses()"
-        [permissions]="permissions().statuses"
-        (newStatuses)="statusesEvent.emit($event)"
-      />
+        <app-bars-control
+          [bars]="existingCharacter().attributes.bar"
+          [permissions]="permissions().bars"
+          (newBarValue)="newBarValueEvent.emit($event)"
+          (newBar)="newBarEvent.emit($event)"
+          (editBar)="editBarEvent.emit($event)"
+          (deleteBar)="deleteBarEvent.emit($event)"
+        />
+      </ds-card>
 
+      <app-status-control
+        [statuses]="existingCharacter().attributes.status"
+        [permissions]="permissions().statuses"
+        (newStatus)="newStatusEvent.emit($event)"
+        (editStatus)="editStatusEvent.emit($event)"
+        (deleteStatus)="deleteStatusEvent.emit($event)"
+      />
       <app-inventory-list
         [inventories]="playerInventories()"
         [character]="existingCharacter()"
@@ -76,46 +78,32 @@ export type CharacterPermissions = {
         (addItem)="addItem.emit($event)"
         (deleteItem)="deleteItem.emit($event)"
         (editItem)="editItem.emit($event)"
-        (select)="select.emit($event)"
-        (unselect)="unselect.emit($event)"
-      />
-
-      <app-strengths-control
-        [strengths]="playerStrengths()"
-        [permissions]="permissions().strengths"
-        (newStrengths)="strengthsEvent.emit($event)"
-      />
-      <app-weaknesses-control
-        [weaknesses]="playerWeaknesses()"
-        [permissions]="permissions().weaknesses"
-        (newWeaknesses)="weaknessesEvent.emit($event)"
-      />
-      <app-skills-control
-        [skills]="playerSkills()"
-        [permissions]="permissions().skills"
-        (newSkills)="skillsEvent.emit($event)"
+        (addInventory)="addInventory.emit($event)"
+        (deleteInventory)="deleteInventory.emit($event)"
       />
     </form>
   `,
   styles: [`
     form {
-
-      .identity {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-
-        .identity-data {
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-        }
-      }
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: var(--gap-large);
+      width: 100%;
     }
-    `],
+
+    .identity {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .identity-data {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
+      flex: 1;
+    }
+  `],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -124,10 +112,8 @@ export type CharacterPermissions = {
     DescriptionControlComponent,
     BarsControlComponent,
     StatusControlComponent,
-    StrengthsControlComponent,
-    WeaknessesControlComponent,
-    SkillsControlComponent,
     InventoryListComponent,
+    CardComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -140,56 +126,24 @@ export class CharacterFormComponent  {
   public fb = inject(FormBuilder);
   private characterAttributesService = inject(CharacterAttributesService);
   public renameEvent = output<{value: string}>();
-  public avatarEvent = output<{value: string}>();
+  public avatarEvent = output<AvatarEvent>();
   public descriptionEvent = output<{value: string}>();
-  public barsEvent = output<Bar[]>();
-  public statusesEvent = output<Status[]>();
-  public strengthsEvent = output<Strength[]>();
-  public weaknessesEvent = output<Weakness[]>();
-  public skillsEvent = output<Skill[]>();
+  public newBarValueEvent = output<AttributeBar>();
+  public newBarEvent = output<AttributeBar>();
+  public editBarEvent = output<AttributeBar>();
+  public deleteBarEvent = output<AttributeBar>();
+  public newStatusEvent = output<AttributeStatus>();
+  public editStatusEvent = output<AttributeStatus>();
+  public deleteStatusEvent = output<AttributeStatus>();
   public deleteItem = output<InventoryItemEvent>();
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();
-  public select = output<InventorySelectionEvent>();
-  public unselect = output<InventorySelectionEvent>();
+  public addInventory = output<InventoryAdditionEvent>();
+  public deleteInventory = output<InventoryDeletionEvent>();
 
-  protected playerBars = computed(() => {
-    return this.characterAttributesService.mapPlayerBars(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
-
-  protected playerStatuses = computed(() => {
-    return this.characterAttributesService.mapPlayerStatuses(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
-
-  protected playerStrengths = computed(() => {
-    return this.characterAttributesService.mapPlayerStrengths(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
-
-  protected playerWeaknesses = computed(() => {
-    return this.characterAttributesService.mapPlayerWeaknesses(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
 
   protected playerInventories: Signal<Inventory[]> = computed(() => {
     return this.characterAttributesService.mapPlayerInventories(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
-
-  protected playerSkills = computed(() => {
-    return this.characterAttributesService.mapPlayerSkills(
       this.existingCharacter(),
       this.gameDef(),
     );

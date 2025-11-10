@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { AttributeBar } from '@pagemaster/common/attributes.types';
 import { BarViewComponent } from './bar-view.component';
-import { Bar } from './bars-control.component';
 
 @Component({
   selector: 'app-bar-list-view',
   template: `
-    @for(bar of selected(); track bar.instance.id) {
+    @for(bar of bars(); track bar.id) {
       <app-bar-view [bar]="bar"></app-bar-view>
     }
   `,
@@ -21,6 +21,5 @@ import { Bar } from './bars-control.component';
   imports: [BarViewComponent],
 })
 export class BarListViewComponent {
-  public bars = input.required<Bar[]>();
-  protected selected = computed(() => this.bars().filter(b => b.selected));
+  public bars = input.required<AttributeBar[]>();
 }
