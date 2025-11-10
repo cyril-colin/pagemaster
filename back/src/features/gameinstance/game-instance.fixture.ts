@@ -15,8 +15,6 @@ const defaultGameInstance: GameInstance = {
     "minPlayers": 2,
     "maxPlayers": 6,
     "possibleAttributes": {
-      "bar": [],
-      "status": [],
       "inventory": [
         {
           "id": "backpack",
@@ -55,7 +53,15 @@ const defaultGameInstance: GameInstance = {
         "description": "aaaaaa",
         "picture": "/avatars/avatar2.png",
         "attributes": {
-          "bar": [],
+          "bar": [{
+            "id": "health",
+            "type": "bar",
+            "color": "red",
+            "name": "Health",
+            "min": 0,
+            "max": 100,
+            "current": 85
+          }],
           "status": [],
           "inventory": [
             {

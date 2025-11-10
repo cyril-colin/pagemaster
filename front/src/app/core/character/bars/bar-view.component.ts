@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Bar } from './bars-control.component';
+import { AttributeBar } from '@pagemaster/common/attributes.types';
 
 @Component({
   selector: 'app-bar-view',
   template: `
     @let b = bar();
     <div class="bar-container">
-      <div class="bar-fill" [style.width.%]="percent() * 100" [style.background-color]="b.def.color"></div>
-      <span class="bar-text">{{b.instance.current}} / {{b.def.max}}</span>
+      <div class="bar-fill" [style.width.%]="percent() * 100" [style.background-color]="b.color"></div>
+      <span class="bar-text">{{b.current}} / {{b.max}}</span>
     </div>
   `,
   styles: [`
@@ -55,9 +55,9 @@ import { Bar } from './bars-control.component';
   imports: [ReactiveFormsModule],
 })
 export class BarViewComponent {
-  public bar = input.required<Bar>();
+  public bar = input.required<AttributeBar>();
   public percent = computed(() => {
     const b = this.bar();
-    return (b.instance.current / b.def.max);
+    return (b.current / b.max);
   });
 }

@@ -1,4 +1,4 @@
-import { Attributes, AttributeStatus } from './attributes.types';
+import { AttributeBar, Attributes, AttributeStatus } from './attributes.types';
 import { Item } from './items.types';
 
 /**
@@ -18,8 +18,6 @@ export type GameDef = {
   minPlayers: number,
   maxPlayers: number,
   possibleAttributes: {
-    bar: Attributes['bar']['definition'][];
-    status: AttributeStatus[];
     inventory: Attributes['inventory']['definition'][];
   },
   possibleItems: Item[],
@@ -171,9 +169,9 @@ export type Character = {
   name: string,
   description: string,
   attributes:{
-    bar: Attributes['bar']['instance'][];
+    bar: AttributeBar[];
     inventory: Attributes['inventory']['instance'][];
-    status: Attributes['status'][];
+    status: AttributeStatus[];
   },
 }
 

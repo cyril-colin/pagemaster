@@ -10,6 +10,7 @@ export type AttributeBar = AbstractAttribute & {
   name: string,
   min: number,
   max: number,
+  current: number,
 }
 
 export type AttributeStatus = AbstractAttribute &  {
@@ -29,7 +30,7 @@ export type AttributeInventory = AbstractAttribute &  {
 }
 
 export type Attributes = {
-  bar: {definition: AttributeBar, instance: { id: AttributeBar['id'], current: number}},
+  bar: AttributeBar,
   status: AttributeStatus,
   inventory: {definition: AttributeInventory, instance: { id: AttributeInventory['id'], current: Item[]}},
 }

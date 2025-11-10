@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { AvatarViewComponent } from './avatar/avatar-view.component';
 import { CharacterAttributesService } from './character-attributes.service';
@@ -13,8 +13,8 @@ import { NameViewComponent } from './names/name-view.component';
       <app-avatar-view [source]="char.picture" [permissions]="{edit: false}" />
       <div class="info">
         <app-name-view [name]="char.name" />
-        @for(bar of playerBars(); track bar.instance.id) {
-          <div>{{ bar.def.name }}: {{ bar.instance.current }} / {{ bar.def.max }}</div>
+        @for(bar of character().attributes.bar; track bar.id) {
+          <div>{{ bar.name }}: {{ bar.current }} / {{ bar.max }}</div>
         }
       </div>
     </div>
@@ -67,11 +67,4 @@ export class CharacterSmallComponent {
   public character = input.required<Character>();
   public gameDef = input.required<GameDef>();
   public clicked = output<void>();
-  
-  protected playerBars = computed(() => {
-    return this.characterAttributesService.mapPlayerBars(
-      this.character(),
-      this.gameDef(),
-    ).filter(bar => bar.selected);
-  });
 }

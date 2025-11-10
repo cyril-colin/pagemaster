@@ -1,16 +1,8 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input, output, signal } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AttributeBar, Attributes } from '@pagemaster/common/attributes.types';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AttributeBar } from '@pagemaster/common/attributes.types';
 import { BarComponent } from '../../design-system/bar.component';
 
-
-type BarForm = FormGroup<{
-  id: FormControl<string>,
-  current: FormControl<number>,
-  selected: FormControl<boolean>,
-}>;
-
-export type Bar = {def: AttributeBar, instance: Attributes['bar']['instance'], selected: boolean};
 
 export type BarsPermissions = {
   edit: boolean,
@@ -19,13 +11,13 @@ export type BarsPermissions = {
 @Component({
   selector: 'app-bars-control',
   template: `
-    @for(bar of selectedBars(); track bar.instance.id) {
+    @for(bar of bars(); track bar.id) {
         <ds-bar 
-          [value]="bar.instance.current" 
-          [color]="bar.def.color" 
+          [value]="bar.current" 
+          [color]="bar.color" 
           [editable]="permissions().edit"
-          [min]="bar.def.min"
-          [max]="bar.def.max"
+          [min]="bar.min"
+          [max]="bar.max"
           (newValue)="updateBarValue(bar, $event)"
         />
     }
@@ -114,53 +106,20 @@ export type BarsPermissions = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarsControlComponent {
-  public bars = input.required<Bar[]>();
+  public bars = input.required<AttributeBar[]>();
   public permissions = input.required<BarsPermissions>();
-  protected selectedBars = computed(() => this.bars().filter(bar => bar.selected));
-  public newBars = output<Bar[]>();
-  
-  protected fb = inject(FormBuilder);
-  protected form = this.fb.group<{barForms: FormArray<BarForm>}>({
-    barForms: this.fb.array<BarForm>([]),
-  });
+  public newBars = output<AttributeBar[]>();
 
-  protected mode = signal<'view' | 'edit'>('view');
-  constructor() {
-    effect(() => {
-      this.mode.set('view');
-      this.form.controls.barForms.clear();
-      this.bars().forEach((bar) => {
-        const formGroup = this.fb.group({
-          id: this.fb.control(bar.instance.id, {nonNullable: true}),
-          current: this.fb.control(bar.instance.current, {nonNullable: true, validators: [
-            Validators.min(bar.def.min),
-            Validators.max(bar.def.max),
-          ]}),
-          selected: this.fb.control(bar.selected, {nonNullable: true}),
-        });
-        this.form.controls.barForms.push(formGroup);
-      });
-    });
+  protected matchingBar(id: string, bars: AttributeBar[]): AttributeBar |null {
+    return bars.find(b => b.id === id) || null;
   }
 
-
-  protected setMode(newMode: 'view' | 'edit'): void {
-    if (!this.permissions().edit && newMode === 'edit') {
-      return;
-    }
-    this.mode.set(newMode);
-  }
-
-  protected matchingBar(id: string, bars: Bar[]): Bar |null {
-    return bars.find(b => b.instance.id === id) || null;
-  }
-
-  protected updateBarValue(bar: Bar, newValue: number): void {
+  protected updateBarValue(bar: AttributeBar, newValue: number): void {
     const bars = this.bars();
-    const matching = this.matchingBar(bar.instance.id, bars);
+    const matching = this.matchingBar(bar.id, bars);
 
     if (matching) {
-      matching.instance.current = newValue;
+      matching.current = newValue;
       this.newBars.emit(bars);
     }
   }

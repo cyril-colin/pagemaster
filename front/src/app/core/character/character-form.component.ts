@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { AttributeStatus } from '@pagemaster/common/attributes.types';
+import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
 import { ITEM_ICONS } from '../gallery/item-icons.const';
 import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
-import { Bar, BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
+import { BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
 import { CharacterAttributesService } from './character-attributes.service';
 import { DescriptionControlComponent, DescriptionPermissions } from './descriptions/description-control.component';
 import {
@@ -55,7 +55,7 @@ export type CharacterPermissions = {
           </div>
         </div>
         <app-bars-control
-          [bars]="playerBars()"
+          [bars]="existingCharacter().attributes.bar"
           [permissions]="permissions().bars"
           (newBars)="barsEvent.emit($event)"
         />
@@ -125,7 +125,7 @@ export class CharacterFormComponent  {
   public renameEvent = output<{value: string}>();
   public avatarEvent = output<AvatarEvent>();
   public descriptionEvent = output<{value: string}>();
-  public barsEvent = output<Bar[]>();
+  public barsEvent = output<AttributeBar[]>();
   public newStatusEvent = output<AttributeStatus>();
   public editStatusEvent = output<AttributeStatus>();
   public deleteStatusEvent = output<AttributeStatus>();
@@ -134,13 +134,6 @@ export class CharacterFormComponent  {
   public addItem = output<InventoryItemEvent>();
   public addInventory = output<InventoryAdditionEvent>();
   public deleteInventory = output<InventoryDeletionEvent>();
-
-  protected playerBars = computed(() => {
-    return this.characterAttributesService.mapPlayerBars(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
 
 
   protected playerInventories: Signal<Inventory[]> = computed(() => {

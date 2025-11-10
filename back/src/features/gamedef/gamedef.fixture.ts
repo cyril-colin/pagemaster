@@ -10,8 +10,6 @@ const defaultGameDef: GameDef = {
   minPlayers: 2,
   maxPlayers: 6,
   possibleAttributes: {
-    bar: [],
-    status: [],
     inventory: [
       {
         id: "backpack",

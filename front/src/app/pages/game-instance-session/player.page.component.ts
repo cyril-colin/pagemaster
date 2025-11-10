@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { Attributes, AttributeStatus } from '@pagemaster/common/attributes.types';
+import { AttributeBar, Attributes, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
 import { AvatarEvent } from 'src/app/core/character/avatar/picture-control.component';
-import { Bar } from 'src/app/core/character/bars/bars-control.component';
 import { CharacterFormComponent } from 'src/app/core/character/character-form.component';
 import { InventoryAdditionEvent } from 'src/app/core/character/inventories/inventory-list.component';
 import { InventoryDeletionEvent, InventoryItemEvent } from 'src/app/core/character/inventories/inventory.component';
@@ -135,11 +134,10 @@ export class PlayerPageComponent {
     this.gameInstanceService.updateCharacterDescription(gameInstanceId, participantId, { description: newDescription }).subscribe();
   }
 
-  protected updateBars(bars: Bar[], player: Player): void {
+  protected updateBars(bars: AttributeBar[], player: Player): void {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    const selectedBars = bars.filter(b => b.selected).map(b => b.instance);
-    this.gameInstanceService.updateCharacterBars(gameInstanceId, participantId, { bar: selectedBars }).subscribe();
+    this.gameInstanceService.updateCharacterBars(gameInstanceId, participantId, { bar: bars }).subscribe();
   }
 
   protected addStatus(status: AttributeStatus, player: Player): void {
