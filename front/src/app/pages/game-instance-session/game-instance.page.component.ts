@@ -1,14 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Player } from '@pagemaster/common/pagemaster.types';
+import { RouterModule } from '@angular/router';
 
 import { CurrentSessionState } from 'src/app/core/current-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
-import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.repository';
 import { MainMenuComponent } from './main-menu.component';
 
 @Component({
@@ -24,7 +22,7 @@ import { MainMenuComponent } from './main-menu.component';
   </section>
 
   <section class="main-content">
-    <router-outlet></router-outlet>
+    <router-outlet />
   </section>
   `,
   styles: [`
@@ -94,10 +92,7 @@ import { MainMenuComponent } from './main-menu.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameInstancePageComponent {
-  protected router = inject(Router);
-  protected route = inject(ActivatedRoute);
   protected currentSession = inject(CurrentSessionState);
-  protected gameInstanceService = inject(GameInstanceRepository);
   protected modalService = inject(ModalService);
   protected eventService = inject(EventsCenterStateService);
   protected eventsRoute = computed(() => '/' + PageMasterRoutes().GameInstanceSession.interpolated(
@@ -108,21 +103,10 @@ export class GameInstancePageComponent {
     toSignal(this.eventService.init(this.currentSession.currentSession().gameInstance.id));
   }
 
-  protected goToPlayerPage(player: Player): void {
-    const route = PageMasterRoutes().GameInstanceSession.children[2].interpolated(
-      player.id,
-    );
-    void this.router.navigate([route], { relativeTo: this.route });
-  }
-
   protected openMainMenu(): void {
-    const modalRef = this.modalService.openLeftPanel(MainMenuComponent);
-    modalRef.componentRef.instance.close.subscribe(() => {
-      void modalRef.close();
-    });
-    modalRef.componentRef.instance.playerClick.subscribe((player) => {
-      this.goToPlayerPage(player);
-      void modalRef.close();
+    const ref = this.modalService.openLeftPanel(MainMenuComponent);
+    ref.componentRef.instance.close.subscribe(() => {
+      void ref.close();
     });
   }
 }

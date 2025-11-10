@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
 import { CharacterButtonComponent } from 'src/app/core/character/character-button.component';
@@ -7,6 +8,7 @@ import { CurrentSessionState } from 'src/app/core/current-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { NewPlayerModalComponent } from 'src/app/core/game/new-player-modal.component';
 import { ModalService } from 'src/app/core/modal';
+import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.repository';
 
 @Component({
@@ -44,7 +46,7 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
 
     @if (participants().currentPlayer.type === 'gameMaster') {
       <footer>
-        <ds-button [mode]="'primary-danger'" (click)="addPlayer()" [icon]="'plus'">New Player</ds-button>
+        <ds-button [mode]="'primary'" (click)="addPlayer()" [icon]="'plus'">New Player</ds-button>
       </footer>
     }
   `,
@@ -52,8 +54,8 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
     :host {
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      width: 100vw;
+      height: 100%;
+      width: 100%;
       background-color: var(--color-background-main);
       overflow: hidden;
       border-right: var(--view-border);
@@ -66,8 +68,6 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       padding: var(--padding-small);
       background-color: var(--color-background-secondary);
       border-bottom: var(--view-border);
-      box-shadow: 0 2px 4px var(--color-shadow-heavy);
-      flex-shrink: 0;
 
       ds-button {
         position: absolute;
@@ -126,8 +126,8 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
 })
 export class MainMenuComponent {
   public close = output<void>();
-  public playerClick = output<Player>();
 
+  private router = inject(Router);
   private modalService = inject(ModalService);
   private gameInstanceRepository = inject(GameInstanceRepository);
   private currentSession = inject(CurrentSessionState);
@@ -140,16 +140,27 @@ export class MainMenuComponent {
     return { currentPlayer, otherPlayers };
   });
   
-  protected onPlayerClick(player: Player): void {
-    this.playerClick.emit(player);
-    this.close.emit(); // Close menu after player selection
+  protected async onPlayerClick(player: Player): Promise<void> {
+    await this.goToPlayerPage(player);
   }
-  
-  protected onCurrentPlayerClick(): void {
+
+  protected async onCurrentPlayerClick(): Promise<void> {
     const current = this.participants().currentPlayer;
     if (current && current.type === 'player') {
-      this.onPlayerClick(current);
+      await this.onPlayerClick(current);
     }
+  }
+
+  private async goToPlayerPage(player: Player): Promise<void> {
+    const route = PageMasterRoutes().GameInstanceSession.children[2].interpolated(
+      player.id,
+    );
+
+    const gameInstanceId = this.currentGameInstance.currentGameInstance()!.id;
+    const parentRoute = PageMasterRoutes().GameInstanceSession.interpolated(gameInstanceId);
+    const segments = ['/'+parentRoute, route].join('/').split('/');
+    await this.router.navigate(segments);
+    this.close.emit();
   }
   
   protected getCurrentPlayerCharacter() {

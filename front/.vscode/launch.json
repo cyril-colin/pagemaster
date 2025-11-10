@@ -10,6 +10,17 @@
       "url": "http://localhost:4200/"
     },
     {
+      "name": "ng serve (with DevTools)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200/",
+      "runtimeArgs": [
+        "--auto-open-devtools-for-tabs"
+      ],
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true
+    },
+    {
       "name": "ng test",
       "type": "chrome",
       "request": "launch",

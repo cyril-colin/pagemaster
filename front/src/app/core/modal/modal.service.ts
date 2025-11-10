@@ -121,11 +121,6 @@ export class ModalService {
 
     // Close function
     const close = async () => {
-      // Remove history state if still present
-      const state = window.history.state as { leftPanelOpen?: boolean } | null;
-      if (state?.leftPanelOpen === true) {
-        window.history.back();
-      }
       // Trigger the close animation on the wrapper
       await wrapperRef.instance.closeAnimation();
       this.appRef.detachView(contentRef.hostView);
