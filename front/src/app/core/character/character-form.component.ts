@@ -57,7 +57,10 @@ export type CharacterPermissions = {
         <app-bars-control
           [bars]="existingCharacter().attributes.bar"
           [permissions]="permissions().bars"
-          (newBars)="barsEvent.emit($event)"
+          (newBarValue)="newBarValueEvent.emit($event)"
+          (newBar)="newBarEvent.emit($event)"
+          (editBar)="editBarEvent.emit($event)"
+          (deleteBar)="deleteBarEvent.emit($event)"
         />
       </ds-card>
 
@@ -125,7 +128,10 @@ export class CharacterFormComponent  {
   public renameEvent = output<{value: string}>();
   public avatarEvent = output<AvatarEvent>();
   public descriptionEvent = output<{value: string}>();
-  public barsEvent = output<AttributeBar[]>();
+  public newBarValueEvent = output<AttributeBar>();
+  public newBarEvent = output<AttributeBar>();
+  public editBarEvent = output<AttributeBar>();
+  public deleteBarEvent = output<AttributeBar>();
   public newStatusEvent = output<AttributeStatus>();
   public editStatusEvent = output<AttributeStatus>();
   public deleteStatusEvent = output<AttributeStatus>();

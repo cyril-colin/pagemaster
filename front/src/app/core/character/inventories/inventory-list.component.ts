@@ -74,6 +74,6 @@ export class InventoryListComponent {
     return this.allowedInventories().filter(inv => inv.instance.id);
   });
 
-  protected isManager = this.currentSessionState.allowedToEditCharacter(this.character);
+  protected isManager = this.currentSessionState.allowedToEditCharacter();
 
 }

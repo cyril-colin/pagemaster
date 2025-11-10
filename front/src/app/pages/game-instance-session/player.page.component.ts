@@ -23,7 +23,10 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
       (renameEvent)="renameParticipant($event.value, viewedPlayer())"
       (avatarEvent)="updateAvatar($event, viewedPlayer())"
       (descriptionEvent)="updateDescription($event.value, viewedPlayer())"
-      (barsEvent)="updateBars($event, viewedPlayer())"
+      (newBarValueEvent)="updateBarValue($event, viewedPlayer())"
+      (newBarEvent)="addBar($event, viewedPlayer())"
+      (editBarEvent)="updateBar($event, viewedPlayer())"
+      (deleteBarEvent)="deleteBar($event, viewedPlayer())"
       (newStatusEvent)="addStatus($event, viewedPlayer())"
       (editStatusEvent)="updateStatus($event, viewedPlayer())"
       (deleteStatusEvent)="deleteStatus($event, viewedPlayer())"
@@ -75,7 +78,7 @@ export class PlayerPageComponent {
   });
 
   protected permissions = computed(() => {
-    const isManager = this.currentSession.allowedToEditCharacterSnapshot(this.viewedPlayer().character);
+    const isManager = this.currentSession.allowedToEditCharacterSnapshot();
     return {
       avatar: {
         edit: isManager,
@@ -88,20 +91,13 @@ export class PlayerPageComponent {
       },
       bars: {
         edit: isManager,
+        add: isManager,
+        delete: isManager,
       },
       statuses: {
         edit: isManager,
         add: isManager,
         delete: isManager,
-      },
-      strengths: {
-        edit: isManager,
-      },
-      weaknesses: {
-        edit: isManager,
-      },
-      skills: {
-        edit: isManager,
       },
       inventory: {
         item: {
@@ -134,10 +130,28 @@ export class PlayerPageComponent {
     this.gameInstanceService.updateCharacterDescription(gameInstanceId, participantId, { description: newDescription }).subscribe();
   }
 
-  protected updateBars(bars: AttributeBar[], player: Player): void {
+  protected updateBarValue(bar: AttributeBar, player: Player): void {
     const participantId = player.id;
     const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.updateCharacterBars(gameInstanceId, participantId, { bar: bars }).subscribe();
+    this.gameInstanceService.updateCharacterBar(gameInstanceId, participantId, bar.id, bar).subscribe();
+  }
+
+  protected addBar(bar: AttributeBar, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.addCharacterBar(gameInstanceId, participantId, bar).subscribe();
+  }
+
+  protected updateBar(bar: AttributeBar, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.updateCharacterBar(gameInstanceId, participantId, bar.id, bar).subscribe();
+  }
+
+  protected deleteBar(bar: AttributeBar, player: Player): void {
+    const participantId = player.id;
+    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    this.gameInstanceService.deleteCharacterBar(gameInstanceId, participantId, bar.id).subscribe();
   }
 
   protected addStatus(status: AttributeStatus, player: Player): void {

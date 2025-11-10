@@ -1,25 +1,53 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { AttributeBar } from '@pagemaster/common/attributes.types';
 import { BarComponent } from '../../design-system/bar.component';
+import { ButtonComponent } from '../../design-system/button.component';
+import { ModalService } from '../../modal';
+import { BarFormComponent } from './bar-form.component';
 
 
 export type BarsPermissions = {
   edit: boolean,
+  add: boolean,
+  delete: boolean,
 };
 
 @Component({
   selector: 'app-bars-control',
   template: `
+    @if (bars().length === 0 && permissions().add) {
+      <div class="bars-view">
+        <span class="empty-message">No bars configured.</span>
+      </div>
+    }
+
     @for(bar of bars(); track bar.id) {
-        <ds-bar 
-          [value]="bar.current" 
-          [color]="bar.color" 
-          [editable]="permissions().edit"
-          [min]="bar.min"
-          [max]="bar.max"
-          (newValue)="updateBarValue(bar, $event)"
-        />
+      <div class="bar-item">
+        <div class="bar-content">
+          <ds-bar 
+            [value]="bar.current" 
+            [color]="bar.color" 
+            [editable]="permissions().edit"
+            [min]="bar.min"
+            [max]="bar.max"
+            (newValue)="updateBarValue(bar, $event)"
+          />
+        </div>
+        @if (permissions().edit || permissions().delete) {
+          <div class="bar-actions">
+            @if (permissions().edit) {
+              <ds-button [mode]="'secondary'" [icon]="'edit'" (click)="openEditBarModal(bar)" />
+            }
+            @if (permissions().delete) {
+              <ds-button [mode]="'primary-danger'" [icon]="'trash'" (click)="onDeleteBar(bar)" />
+            }
+          </div>
+        }
+      </div>
+    }
+
+    @if (permissions().add) {
+      <ds-button [mode]="'secondary'" (click)="openNewBarModal()" [icon]="'plus'">New Bar</ds-button>
     }
   `,
   styles: [
@@ -31,97 +59,88 @@ export type BarsPermissions = {
     }
 
     .bars-view {
-      cursor: pointer;
       padding: var(--card-padding);
       background-color: var(--color-background-secondary);
       border: var(--view-border);
       border-radius: var(--view-border-radius);
-    }
-
-    .bars-view:hover {
-      background-color: var(--hover-bg);
-      border-color: var(--color-border-light);
-    }
-
-    .bars-readonly {
-      padding: var(--card-padding);
-      background-color: var(--color-background-secondary);
-      border: var(--view-border);
-      border-radius: var(--view-border-radius);
-    }
-
-    .bar-edit-item {
+      min-height: 60px;
       display: flex;
-      flex-direction: row;
       align-items: center;
+    }
+
+    .empty-message {
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+
+    .bar-item {
+      display: flex;
       gap: var(--gap-medium);
-      padding: var(--gap-small);
-      background-color: var(--color-background-tertiary);
-      border: var(--view-border);
-      border-radius: var(--view-border-radius);
-      margin-bottom: var(--gap-small);
+      align-items: center;
     }
 
-    .bar-edit-item label {
+    .bar-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-small);
       flex: 1;
-      color: var(--text-primary);
-      font-weight: var(--text-weight-medium);
     }
 
-    .bar-edit-item input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      cursor: pointer;
-    }
-
-    .bar-edit-item input[type="number"] {
-      width: 80px;
-      padding: var(--gap-small);
-      background-color: var(--color-background-main);
-      border: var(--view-border);
-      border-radius: var(--view-border-radius);
-      color: var(--text-primary);
-      text-align: center;
-    }
-
-    button {
-      padding: var(--gap-small) var(--padding-medium);
-      background-color: var(--color-primary);
-      color: var(--text-on-primary);
-      border: none;
-      border-radius: var(--view-border-radius);
-      cursor: pointer;
-      font-weight: var(--text-weight-medium);
-    }
-
-    button:hover {
-      background-color: var(--color-primary-hover);
+    .bar-actions {
+      display: flex;
+      gap: var(--gap-small);
     }
     `,
   ],
   imports: [
-    ReactiveFormsModule,
     BarComponent,
+    ButtonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BarsControlComponent {
   public bars = input.required<AttributeBar[]>();
   public permissions = input.required<BarsPermissions>();
-  public newBars = output<AttributeBar[]>();
+  public newBarValue = output<AttributeBar>();
+  public newBar = output<AttributeBar>();
+  public editBar = output<AttributeBar>();
+  public deleteBar = output<AttributeBar>();
 
-  protected matchingBar(id: string, bars: AttributeBar[]): AttributeBar |null {
-    return bars.find(b => b.id === id) || null;
-  }
+  private modalService = inject(ModalService);
 
   protected updateBarValue(bar: AttributeBar, newValue: number): void {
-    const bars = this.bars();
-    const matching = this.matchingBar(bar.id, bars);
+    const updatedBar: AttributeBar = {
+      ...bar,
+      current: newValue,
+    };
+    this.newBarValue.emit(updatedBar);
+  }
 
-    if (matching) {
-      matching.current = newValue;
-      this.newBars.emit(bars);
-    }
+  protected openNewBarModal() {
+    const modalRef = this.modalService.open(BarFormComponent);
+    modalRef.componentRef.instance.newBar.subscribe((bar: AttributeBar) => {
+      this.newBar.emit(bar);
+      void modalRef.close();
+    });
+  }
+
+  protected openEditBarModal(bar: AttributeBar) {
+    const modalRef = this.modalService.open(BarFormComponent, { 
+      bar,
+      permissions: { delete: this.permissions().delete },
+    });
+    modalRef.componentRef.instance.newBar.subscribe((updatedBar: AttributeBar) => {
+      this.editBar.emit(updatedBar);
+      void modalRef.close();
+    });
+    modalRef.componentRef.instance.deleteBar.subscribe((deletedBar: AttributeBar) => {
+      this.deleteBar.emit(deletedBar);
+      void modalRef.close();
+    });
+  }
+
+  protected onDeleteBar(bar: AttributeBar) {
+    this.deleteBar.emit(bar);
   }
   
 }
