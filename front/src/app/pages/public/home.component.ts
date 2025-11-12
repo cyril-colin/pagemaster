@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
 import { MainTitleService } from 'src/app/core/main-bar/main-title.service';
+import { CurrentSessionState } from '../../core/current-session.state';
 import { ButtonComponent } from '../../core/design-system/button.component';
 import { CardComponent } from '../../core/design-system/card.component';
 import { DividerComponent } from '../../core/design-system/divider.component';
@@ -16,6 +17,29 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
         <h1>Welcome to PageMaster</h1>
         <p class="subtitle">Your tabletop RPG companion</p>
       </div>
+
+      @if (currentSession(); as session) {
+        <ds-card class="current-session-card">
+          <div class="card-content">
+            <h3>Your Active Session</h3>
+            <p class="session-game">{{ session.gameInstance.gameDef.name }}</p>
+            <p class="session-participant">
+              Playing as: <strong>{{ session.participant.name }}</strong>
+              @if (session.participant.type === 'player') {
+                <span class="character-badge">({{ session.participant.character.name }})</span>
+              }
+              @if (session.participant.type === 'gameMaster') {
+                <span class="gm-badge">🎭 Game Master</span>
+              }
+            </p>
+          </div>
+          <ds-button 
+            [mode]="'primary'" 
+            [routerLink]="'/' + routes.GameInstanceSession.interpolated(session.gameInstance.id)">
+            Continue Session
+          </ds-button>
+        </ds-card>
+      }
 
       <div class="actions-section">
         <h2>Quick Actions</h2>
@@ -105,6 +129,62 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
       font-size: var(--text-size-xlarge);
       text-align: center;
       margin: 0;
+    }
+
+    .current-session-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
+      padding: var(--padding-large);
+      background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+      border: 2px solid var(--color-primary);
+      box-shadow: 0 4px 12px var(--color-shadow-heavy);
+    }
+
+    .current-session-card .card-content h3 {
+      color: var(--color-text-on-primary);
+      font-size: var(--text-size-xlarge);
+      font-weight: var(--text-weight-bold);
+      margin: 0;
+    }
+
+    .current-session-card .card-content p {
+      margin: var(--gap-small) 0 0 0;
+    }
+
+    .session-game {
+      color: var(--color-text-on-primary);
+      font-size: var(--text-size-large);
+      font-weight: var(--text-weight-bold);
+      margin: var(--gap-small) 0 0 0;
+    }
+
+    .session-participant {
+      color: var(--color-text-on-primary);
+      font-size: var(--text-size-medium);
+      display: flex;
+      align-items: center;
+      gap: var(--gap-small);
+      flex-wrap: wrap;
+    }
+
+    .session-participant strong {
+      font-weight: var(--text-weight-bold);
+    }
+
+    .character-badge {
+      color: var(--color-text-on-primary);
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .gm-badge {
+      background-color: var(--color-background-main);
+      color: var(--color-primary);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: var(--text-size-small);
+      font-weight: var(--text-weight-bold);
     }
 
     .actions-section,
@@ -270,6 +350,14 @@ export class HomeComponent {
   protected routes = PageMasterRoutes();
   protected gameInstanceService = inject(GameInstanceRepository);
   protected instanceList = toSignal(this.gameInstanceService.getAllGameInstances(), { initialValue: [] });
+  protected currentSessionState = inject(CurrentSessionState);
+  protected currentSession = computed(() => {
+    try {
+      return this.currentSessionState.currentSessionNullable();
+    } catch {
+      return null;
+    }
+  });
 
   constructor() {
     inject(MainTitleService).setTitle('');

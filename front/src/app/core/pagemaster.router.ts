@@ -7,11 +7,34 @@ import { GameInstanceConfigComponent } from '../pages/public/game-instance-creat
 import { GameInstanceSelectComponent } from '../pages/public/game-instance-creation/game-instance-select.component';
 import { GameInstanceSessionChooseParticipantComponent } from '../pages/public/game-instance-session-choose-participant.component';
 import { HomeComponent } from '../pages/public/home.component';
+import { PublicLayoutComponent } from '../pages/public/public-layout.component';
 import { EventsCenterComponent } from './events-center/events-center.component';
 
 export function PageMasterRoutes() {
   return {
     Home: { path: 'home', component: HomeComponent },
+    PublicPages: {
+      path: '',
+      component: PublicLayoutComponent,
+      children: [
+        { path: 'game-instance/select', component: GameInstanceSelectComponent },
+        ((params= ['instanceId'] as const,path = `game-instance/config/:${params[0]}`) => ({
+          path,
+          params,
+          interpolated: (id: string) => path.replace(`:${params[0]}`, id),
+          component: GameInstanceConfigComponent,
+        }))(),
+        ((
+          params= ['instanceId'] as const,
+          path = `game-instance/sessions/:${params[0]}/choose-participant`,
+        ) => ({
+          path,
+          params,
+          interpolated: (id: string) => path.replace(`:${params[0]}`, id),
+          component: GameInstanceSessionChooseParticipantComponent,
+        }))(),
+      ],
+    },
     GameInstanceSelect: { path: 'game-instance/select', component: GameInstanceSelectComponent },
     GameInstanceConfig: ((params= ['instanceId'] as const,path = `game-instance/config/:${params[0]}`) => ({
       path,
