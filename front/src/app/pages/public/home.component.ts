@@ -31,42 +31,6 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
               Create Session
             </ds-button>
           </ds-card>
-
-          <ds-card class="action-card">
-            <div class="card-content">
-              <h3>Join Session</h3>
-              <p>Connect to an existing game with a link</p>
-            </div>
-            <ds-button 
-              [mode]="'secondary'" 
-              [routerLink]="'/' + routes.GameInstanceJoin.path">
-              Join with Link
-            </ds-button>
-          </ds-card>
-
-          <ds-card class="action-card">
-            <div class="card-content">
-              <h3>Load Session</h3>
-              <p>Import a saved game from file</p>
-            </div>
-            <ds-button 
-              [mode]="'secondary'" 
-              [routerLink]="'/' + routes.GameInstanceLoad.path">
-              Load from File
-            </ds-button>
-          </ds-card>
-
-          <ds-card class="action-card">
-            <div class="card-content">
-              <h3>Define Game</h3>
-              <p>Create a new game definition</p>
-            </div>
-            <ds-button 
-              [mode]="'tertiary'" 
-              [routerLink]="'/' + routes.GameDefNew.path">
-              New Game Def
-            </ds-button>
-          </ds-card>
         </div>
       </div>
 
