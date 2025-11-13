@@ -1,19 +1,21 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
+import { AttributeInventory } from '@pagemaster/common/attributes.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
 import { CurrentSessionState } from '../../current-session.state';
 import { ModalRef, ModalService } from '../../modal';
-import { InventoryAdderButtonComponent, InventoryAdderComponent } from './inventory-selector.component';
+import { InventoryFormComponent } from './inventory-form.component';
+import { InventoryAdderButtonComponent } from './inventory-selector.component';
 import {
   InventoryComponent,
   InventoryDeletionEvent,
   InventoryItemEvent,
   InventoryPermissions,
+  InventoryUpdateEvent,
 } from './inventory.component';
-import { Inventory } from './inventory.types';
 
 export type InventoryAdditionEvent = {
-  inventory: Inventory,
-  modalRef: ModalRef<InventoryAdderComponent>,
+  inventory: AttributeInventory,
+  modalRef: ModalRef<InventoryFormComponent>,
 };
 
 export type InventoryListPermissions = {
@@ -25,9 +27,9 @@ export type InventoryListPermissions = {
   selector: 'app-inventory-list',
   template: `
     @if(permissions().addition) {
-      <app-inventory-adder-button [inventories]="inventories()" (addInventory)="addInventory.emit($event)" />
+      <app-inventory-adder-button (addInventory)="addInventory.emit($event)" />
     }
-    @for(inventory of displayedInventories(); track inventory.instance.id) {
+    @for(inventory of allowedInventories(); track inventory.id) {
         <app-inventory
           [inventory]="inventory"
           [character]="character()"
@@ -35,6 +37,7 @@ export type InventoryListPermissions = {
           (addItem)="addItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
           (deleteItem)="deleteItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
           (editItem)="editItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
+          (updateInventory)="updateInventory.emit($event)"
           (deleteInventory)="deleteInventory.emit({ inventory })"
         />
     }
@@ -49,29 +52,25 @@ export type InventoryListPermissions = {
 export class InventoryListComponent {
   
   public character = input.required<Character>();
-  public inventories = input.required<Inventory[]>();
+  public inventories = input.required<AttributeInventory[]>();
   public permissions = input.required<InventoryListPermissions>();
   public deleteItem = output<InventoryItemEvent>();
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();
   public addInventory = output<InventoryAdditionEvent>();
+  public updateInventory = output<InventoryUpdateEvent>();
   public deleteInventory = output<InventoryDeletionEvent>();
 
   private currentSessionState = inject(CurrentSessionState);
   protected modalService = inject(ModalService);
 
-  private allowedInventories = computed(() => {
+  protected allowedInventories = computed(() => {
     // @todo : this is a security issue, should be handled server side.
     if (this.isManager()) {
       return this.inventories();
     }
 
-    return this.inventories().filter(inv => !inv.def.isSecret);
-  });
-
-  protected displayedInventories = computed(() => {
-    // Only show inventories that have been added (have an instance.id)
-    return this.allowedInventories().filter(inv => inv.instance.id);
+    return this.inventories().filter(inv => !inv.isSecret);
   });
 
   protected isManager = this.currentSessionState.allowedToEditCharacter();

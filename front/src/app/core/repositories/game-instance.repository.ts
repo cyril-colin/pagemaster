@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
+import { AttributeBar, AttributeInventory, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Item } from '@pagemaster/common/items.types';
 import { Character, GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
 import { Observable } from 'rxjs';
@@ -182,26 +182,26 @@ export class GameInstanceRepository {
     );
   }
 
-
-  selectInventoryForCharacter(
-    gameInstanceId: string,
-    participantId: string,
-    inventoryId: string,
-  ): Observable<Participant> {
-    return this.http.post<Participant>(
-      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/select`,
-      {},
-    );
-  }
-
   addInventoryForCharacter(
     gameInstanceId: string,
     participantId: string,
-    inventoryId: string,
+    inventory: AttributeInventory,
   ): Observable<Participant> {
     return this.http.post<Participant>(
-      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/add`,
-      {},
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/add`,
+      inventory,
+    );
+  }
+
+  updateInventoryForCharacter(
+    gameInstanceId: string,
+    participantId: string,
+    inventoryId: string,
+    inventory: AttributeInventory,
+  ): Observable<Participant> {
+    return this.http.put<Participant>(
+      `${this.baseUrl}/game-instances/${gameInstanceId}/participants/${participantId}/inventories/${inventoryId}/update`,
+      inventory,
     );
   }
 

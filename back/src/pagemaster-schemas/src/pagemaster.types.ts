@@ -1,4 +1,4 @@
-import { AttributeBar, Attributes, AttributeStatus } from './attributes.types';
+import { AttributeBar, AttributeInventory, AttributeStatus } from './attributes.types';
 import { Item } from './items.types';
 
 /**
@@ -17,9 +17,6 @@ export type GameDef = {
   description: string,
   minPlayers: number,
   maxPlayers: number,
-  possibleAttributes: {
-    inventory: Attributes['inventory']['definition'][];
-  },
   possibleItems: Item[],
 }
 
@@ -170,7 +167,7 @@ export type Character = {
   description: string,
   attributes:{
     bar: AttributeBar[];
-    inventory: Attributes['inventory']['instance'][];
+    inventory: AttributeInventory[];
     status: AttributeStatus[];
   },
 }

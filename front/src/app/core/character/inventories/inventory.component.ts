@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
+import { AttributeInventory } from '@pagemaster/common/attributes.types';
 import { Item } from '@pagemaster/common/items.types';
 import { Character } from '@pagemaster/common/pagemaster.types';
 import { BadgeComponent } from '../../design-system/badge.component';
 import { ButtonComponent } from '../../design-system/button.component';
 import { CardComponent } from '../../design-system/card.component';
 import { ModalRef, ModalService } from '../../modal';
-import { Inventory } from './inventory.types';
+import { InventoryFormComponent } from './inventory-form.component';
 import { ItemModalComponent } from './items/item-modal.component';
 import { ItemPlaceholderComponent } from './items/item-placeholder.component';
 import { ItemComponent } from './items/item.component';
@@ -18,12 +19,17 @@ export type InventoryPermissions = {
 
 export type InventoryItemEvent = {
   item: Item,
-  inventory: Inventory,
+  inventory: AttributeInventory,
   modalRef: ModalRef<ItemModalComponent>,
 };
 
 export type InventoryDeletionEvent = {
-  inventory: Inventory,
+  inventory: AttributeInventory,
+};
+
+export type InventoryUpdateEvent = {
+  inventory: AttributeInventory,
+  modalRef: ModalRef<InventoryFormComponent>,
 };
 
 
@@ -32,9 +38,16 @@ export type InventoryDeletionEvent = {
   template: `
     <ds-card>
       <div class="inventory-header">
-        <h3 class="inventory-title">{{ inventory().def.name }}</h3>
+        <h3 class="inventory-title">{{ inventory().name }}</h3>
         <div class="header-actions">
           <ds-badge size="medium">{{ capacityDisplay() }}</ds-badge>
+          @if(permissions().edit) {
+            <ds-button 
+              mode="secondary" 
+              icon="edit"
+              (click)="onEditInventory()"
+            />
+          }
           @if(permissions().delete) {
             <ds-button 
               mode="secondary-danger" 
@@ -110,31 +123,32 @@ export type InventoryDeletionEvent = {
 })
 export class InventoryComponent {
   public character = input.required<Character>();
-  public inventory = input.required<Inventory>();
+  public inventory = input.required<AttributeInventory>();
   public permissions = input.required<InventoryPermissions>();
   public addItem = output<Omit<InventoryItemEvent, 'inventory'>>();
   public deleteItem = output<Omit<InventoryItemEvent, 'inventory'>>();
   public editItem = output<Omit<InventoryItemEvent, 'inventory'>>();
   public deleteInventory = output<InventoryDeletionEvent>();
+  public updateInventory = output<InventoryUpdateEvent>();
 
 
   protected modalService = inject(ModalService);
   protected sortedItems = computed(() => {
-    return this.inventory().instance.current.sort((a, b) => b.weight - a.weight);
+    return this.inventory().current.sort((a, b) => b.weight - a.weight);
   });
 
   protected placeholderMode = computed(() => {
-    const capacity = this.inventory().def.capacity;
+    const capacity = this.inventory().capacity;
     return capacity.type;
   });
 
   protected capacityDisplay = computed(() => {
     const inventory = this.inventory();
-    const capacity = inventory.def.capacity;
+    const capacity = inventory.capacity;
 
     if (capacity.type === 'weight') {
       const maxWeight = capacity.max;
-      return `${inventory.instance.current.length} / ${maxWeight}`;
+      return `${inventory.current.length} / ${maxWeight}`;
     }
 
     if (capacity.type === 'state') {
@@ -148,17 +162,17 @@ export class InventoryComponent {
     const inventory = this.inventory();
     
     // Only show placeholders if the inventory has a weight-based capacity
-    if (inventory.def.capacity.type !== 'weight') {
+    if (inventory.capacity.type !== 'weight') {
       // For state-based capacity, show 1 placeholder if not full
-      if (inventory.def.capacity.type === 'state') {
-        const state = inventory.def.capacity.value;
+      if (inventory.capacity.type === 'state') {
+        const state = inventory.capacity.value;
         return state === 'full' ? [] as number[] : [1] as number[];
       }
       return [] as number[];
     }
 
-    const currentWeight = inventory.instance.current.reduce((sum, item) => sum + item.weight, 0);
-    const maxWeight = inventory.def.capacity.max;
+    const currentWeight = inventory.current.reduce((sum, item) => sum + item.weight, 0);
+    const maxWeight = inventory.capacity.max;
     const remainingWeight = maxWeight - currentWeight;
     
     // Calculate how many empty slots to show (one per remaining weight unit)
@@ -191,8 +205,18 @@ export class InventoryComponent {
     });
   }
 
+  protected onEditInventory() {
+    const modalRef = this.modalService.open(InventoryFormComponent, {
+      inventory: this.inventory(),
+      permissions: { delete: false },
+    });
+    modalRef.componentRef.instance.newInventory.subscribe((updatedInventory: AttributeInventory) => {
+      this.updateInventory.emit({inventory: updatedInventory, modalRef});
+    });
+  }
+
   protected async onDeleteInventory() {
-    const inventoryName = this.inventory().def.name;
+    const inventoryName = this.inventory().name;
     const result = await this.modalService.confirmation(
       `Are you sure you want to delete the inventory "${inventoryName}"? This action cannot be undone.`,
       `Confirm deletion of "${inventoryName}"`,

@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { AvatarViewComponent } from './avatar/avatar-view.component';
-import { CharacterAttributesService } from './character-attributes.service';
 import { NameViewComponent } from './names/name-view.component';
 
 @Component({
@@ -63,7 +62,6 @@ import { NameViewComponent } from './names/name-view.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharacterSmallComponent {
-  private characterAttributesService = inject(CharacterAttributesService);
   public character = input.required<Character>();
   public gameDef = input.required<GameDef>();
   public clicked = output<void>();

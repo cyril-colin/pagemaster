@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, inject, input, output, Signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
@@ -7,15 +7,13 @@ import { CardComponent } from '../design-system/card.component';
 import { ITEM_ICONS } from '../gallery/item-icons.const';
 import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
 import { BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
-import { CharacterAttributesService } from './character-attributes.service';
 import { DescriptionControlComponent, DescriptionPermissions } from './descriptions/description-control.component';
 import {
   InventoryAdditionEvent,
   InventoryListComponent,
   InventoryListPermissions,
 } from './inventories/inventory-list.component';
-import { InventoryDeletionEvent, InventoryItemEvent } from './inventories/inventory.component';
-import { Inventory } from './inventories/inventory.types';
+import { InventoryDeletionEvent, InventoryItemEvent, InventoryUpdateEvent } from './inventories/inventory.component';
 import { NameControlComponent, NamePermissions } from './names/name-control.component';
 import { StatusControlComponent, StatusesPermissions } from './statuses/status-control.component';
 
@@ -72,13 +70,14 @@ export type CharacterPermissions = {
         (deleteStatus)="deleteStatusEvent.emit($event)"
       />
       <app-inventory-list
-        [inventories]="playerInventories()"
+        [inventories]="existingCharacter().attributes.inventory"
         [character]="existingCharacter()"
         [permissions]="permissions().inventory"
         (addItem)="addItem.emit($event)"
         (deleteItem)="deleteItem.emit($event)"
         (editItem)="editItem.emit($event)"
         (addInventory)="addInventory.emit($event)"
+        (updateInventory)="updateInventory.emit($event)"
         (deleteInventory)="deleteInventory.emit($event)"
       />
     </form>
@@ -124,7 +123,6 @@ export class CharacterFormComponent  {
   public permissions = input.required<CharacterPermissions>();
   public newCharacter = output<Character>();
   public fb = inject(FormBuilder);
-  private characterAttributesService = inject(CharacterAttributesService);
   public renameEvent = output<{value: string}>();
   public avatarEvent = output<AvatarEvent>();
   public descriptionEvent = output<{value: string}>();
@@ -139,13 +137,6 @@ export class CharacterFormComponent  {
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();
   public addInventory = output<InventoryAdditionEvent>();
+  public updateInventory = output<InventoryUpdateEvent>();
   public deleteInventory = output<InventoryDeletionEvent>();
-
-
-  protected playerInventories: Signal<Inventory[]> = computed(() => {
-    return this.characterAttributesService.mapPlayerInventories(
-      this.existingCharacter(),
-      this.gameDef(),
-    );
-  });
 }

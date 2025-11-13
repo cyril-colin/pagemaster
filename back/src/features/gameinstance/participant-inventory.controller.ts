@@ -1,4 +1,5 @@
 import { Request } from 'express';
+import { AttributeInventory } from 'src/pagemaster-schemas/src/attributes.types';
 import { Delete, Patch, Post, Put } from '../../core/router/controller.decorators';
 import { HttpBadRequestError, HttpForbiddenError } from '../../core/router/http-errors';
 import { Item } from '../../pagemaster-schemas/src/items.types';
@@ -169,52 +170,10 @@ export class ParticipantInventoryController {
     });
   }
 
-  @Post('/game-instances/:gameInstanceId/participants/:participantId/inventories/:inventoryId/select')
-  public async selectInventoryForCharacter(
-    body: unknown,
-    params: {gameInstanceId: string, participantId: string, inventoryId: string},
-    query: unknown,
-    req: Request,
-  ): Promise<GameInstance> {
-    const { gameInstance, currentParticipant, player } = await this.setupInventoryOperation(
-      params.gameInstanceId,
-      params.participantId,
-      req
-    );
-
-    const inventoryDef = gameInstance.gameDef.possibleAttributes.inventory.find(
-      inv => inv.id === params.inventoryId
-    );
-    
-    if (!inventoryDef) {
-      throw new HttpBadRequestError('Inventory definition not found in game definition');
-    }
-
-    const inventoryIndex = player.character.attributes.inventory.findIndex(inv => inv.id === params.inventoryId);
-    if (inventoryIndex !== -1) {
-      // Already selected, just return the current state without changes
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { _id, ...gameInstanceCleaned } = gameInstance as GameInstance & {_id?: unknown};
-      return gameInstanceCleaned;
-    }
-
-    player.character.attributes.inventory.push({
-      id: params.inventoryId,
-      current: []
-    });
-
-    return this.finalizeOperation(gameInstance, currentParticipant, {
-      type: 'inventory-selected',
-      title: 'Inventory Selected',
-      description: `${currentParticipant.name} selected inventory ${inventoryDef.name} for ${player.character.name}`,
-      metadata: { inventoryId: params.inventoryId, inventoryName: inventoryDef.name }
-    });
-  }
-
-  @Post('/game-instances/:gameInstanceId/participants/:participantId/inventories/:inventoryId/add')
+  @Post('/game-instances/:gameInstanceId/participants/:participantId/inventories/add')
   public async addInventoryForCharacter(
-    body: unknown,
-    params: {gameInstanceId: string, participantId: string, inventoryId: string},
+    body: AttributeInventory,
+    params: {gameInstanceId: string, participantId: string},
     query: unknown,
     req: Request,
   ): Promise<GameInstance> {
@@ -224,35 +183,21 @@ export class ParticipantInventoryController {
       req
     );
 
-    const inventoryDef = gameInstance.gameDef.possibleAttributes.inventory.find(
-      inv => inv.id === params.inventoryId
-    );
-    
-    if (!inventoryDef) {
-      throw new HttpBadRequestError('Inventory definition not found in game definition');
-    }
-
-    const inventoryIndex = player.character.attributes.inventory.findIndex(inv => inv.id === params.inventoryId);
-    if (inventoryIndex !== -1) {
-      throw new HttpBadRequestError('Inventory already exists for this character');
-    }
-
-    player.character.attributes.inventory.push({
-      id: params.inventoryId,
-      current: []
-    });
+    // Generate ID for the new inventory
+    body.id = `inventory-${body.name}-${Date.now()}`;
+    player.character.attributes.inventory.push(body);
 
     return this.finalizeOperation(gameInstance, currentParticipant, {
       type: 'inventory-added',
       title: 'Inventory Added',
-      description: `${currentParticipant.name} added inventory ${inventoryDef.name} to ${player.character.name}`,
-      metadata: { inventoryId: params.inventoryId, inventoryName: inventoryDef.name }
+      description: `${currentParticipant.name} added inventory ${body.name} to ${player.character.name}`,
+      metadata: { inventory: body }
     });
   }
 
-  @Post('/game-instances/:gameInstanceId/participants/:participantId/inventories/:inventoryId/unselect')
-  public async unselectInventoryForCharacter(
-    body: unknown,
+  @Put('/game-instances/:gameInstanceId/participants/:participantId/inventories/:inventoryId/update')
+  public async updateInventoryForCharacter(
+    body: AttributeInventory,
     params: {gameInstanceId: string, participantId: string, inventoryId: string},
     query: unknown,
     req: Request,
@@ -265,17 +210,18 @@ export class ParticipantInventoryController {
 
     const { inventoryIndex } = this.findInventory(player, params.inventoryId);
 
-    const inventoryDef = gameInstance.gameDef.possibleAttributes.inventory.find(
-      inv => inv.id === params.inventoryId
-    );
+    // Preserve the current items when updating
+    body.id = params.inventoryId;
+    const currentItems = player.character.attributes.inventory[inventoryIndex].current;
+    body.current = currentItems;
 
-    player.character.attributes.inventory.splice(inventoryIndex, 1);
+    player.character.attributes.inventory[inventoryIndex] = body;
 
     return this.finalizeOperation(gameInstance, currentParticipant, {
-      type: 'inventory-unselected',
-      title: 'Inventory Unselected',
-      description: `${currentParticipant.name} unselected inventory ${inventoryDef?.name || params.inventoryId} for ${player.character.name}`,
-      metadata: { inventoryId: params.inventoryId, inventoryName: inventoryDef?.name }
+      type: 'inventory-updated',
+      title: 'Inventory Updated',
+      description: `${currentParticipant.name} updated inventory ${body.name} for ${player.character.name}`,
+      metadata: { inventoryId: params.inventoryId, inventoryName: body.name }
     });
   }
 
@@ -292,19 +238,15 @@ export class ParticipantInventoryController {
       req
     );
 
-    const { inventoryIndex } = this.findInventory(player, params.inventoryId);
-
-    const inventoryDef = gameInstance.gameDef.possibleAttributes.inventory.find(
-      inv => inv.id === params.inventoryId
-    );
+    const { inventoryIndex, inventory } = this.findInventory(player, params.inventoryId);
 
     player.character.attributes.inventory.splice(inventoryIndex, 1);
 
     return this.finalizeOperation(gameInstance, currentParticipant, {
       type: 'inventory-deleted',
       title: 'Inventory Deleted',
-      description: `${currentParticipant.name} deleted inventory ${inventoryDef?.name || params.inventoryId} from ${player.character.name}`,
-      metadata: { inventoryId: params.inventoryId, inventoryName: inventoryDef?.name }
+      description: `${currentParticipant.name} deleted inventory ${inventory.name || params.inventoryId} from ${player.character.name}`,
+      metadata: { inventoryId: params.inventoryId, inventoryName: inventory.name }
     });
   }
 }

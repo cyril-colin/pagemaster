@@ -14,31 +14,6 @@ const defaultGameInstance: GameInstance = {
     "description": "A classic medieval fantasy RPG with wizards, warriors, and mythical creatures.",
     "minPlayers": 2,
     "maxPlayers": 6,
-    "possibleAttributes": {
-      "inventory": [
-        {
-          "id": "backpack",
-          "type": "inventory",
-          "name": "Backpack",
-          "capacity": {
-            "type": "weight",
-            "value": 0,
-            "max": 12
-          },
-          "isSecret": false
-        },
-        {
-          "id": "secret-pouch",
-          "type": "inventory",
-          "name": "Secret Pouch",
-          "capacity": {
-            "type": "state",
-            "value": "empty"
-          },
-          "isSecret": true
-        }
-      ],
-    },
     "possibleItems": []
   },
   "participants": [
@@ -66,10 +41,25 @@ const defaultGameInstance: GameInstance = {
           "inventory": [
             {
               "id": "backpack",
-              "current": []
+              "type": "inventory",
+              "name": "Backpack",
+              "capacity": {
+                "type": "weight",
+                "value": 0,
+                "max": 12
+              },
+              "isSecret": false,
+               "current": []
             },
             {
               "id": "secret-pouch",
+              "type": "inventory",
+              "name": "Secret Pouch",
+              "capacity": {
+                "type": "state",
+                "value": "empty"
+              },
+              "isSecret": true,
               "current": []
             }
           ],
