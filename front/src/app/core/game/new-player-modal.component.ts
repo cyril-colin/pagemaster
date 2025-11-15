@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, output } from '@angular/core';
+import { defaultBar, defaultInventories } from '@pagemaster/common/attributes.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { ButtonComponent } from '../design-system/button.component';
 import { PlayerFormComponent, PlayerFormValue } from './player-form.component';
@@ -104,9 +105,9 @@ export class NewPlayerModalComponent {
           description: '',
           picture: '',
           attributes: {
-            bar: [],
+            bar: Object.values(defaultBar),
             status: [],
-            inventory: [],
+            inventory: Object.values(defaultInventories),
           },
         },
       };

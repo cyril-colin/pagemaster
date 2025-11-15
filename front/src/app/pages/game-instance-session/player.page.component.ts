@@ -80,6 +80,8 @@ export class PlayerPageComponent {
 
   protected permissions = computed(() => {
     const isManager = this.currentSession.allowedToEditCharacterSnapshot();
+    const me = this.currentSession.currentSession().participant;
+    const isMyPlayer = me.type === 'player' && me.id === this.viewedPlayer().id;
     return {
       avatar: {
         edit: isManager,
@@ -88,7 +90,7 @@ export class PlayerPageComponent {
         edit: isManager,
       },
       description: {
-        edit: isManager,
+        edit: isManager || isMyPlayer,
       },
       bars: {
         edit: isManager,
