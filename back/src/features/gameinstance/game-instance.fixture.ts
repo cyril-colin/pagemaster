@@ -23,10 +23,10 @@ const defaultGameInstance: GameInstance = {
       "name": "Alain",
       "position": 0,
       "character": {
-        "id": "Gorbakddd-1759075666828",
-        "name": "Gorbakddd",
-        "description": "aaaaaa",
-        "picture": "/avatars/avatar2.png",
+        "id": "Gorbak-1759075666828",
+        "name": "Gorbak",
+        "description": "A fierce orc warrior from the northern tribes.",
+        "picture": "/fantasy/avatars/orcs-farmer.png",
         "attributes": {
           "bar": [{
             "id": "health",
@@ -35,7 +35,7 @@ const defaultGameInstance: GameInstance = {
             "name": "Health",
             "min": 0,
             "max": 100,
-            "current": 85
+            "current": 100
           }],
           "status": [],
           "inventory": [
@@ -72,12 +72,20 @@ const defaultGameInstance: GameInstance = {
       "name": "Claude",
       "position": 1,
       "character": {
-        "id": "Elrondsss-1758931870753",
-        "name": "Elrondsss",
-        "description": "Un super eqqqqqq",
-        "picture": "/avatars/avatar1.png",
+        "id": "Elrond-1758931870753",
+        "name": "Elrond",
+        "description": "A wise elf lord with vast knowledge.",
+        "picture": "/fantasy/avatars/elfe-archer.png",
         "attributes": {
-          "bar": [],
+          "bar": [{
+            "id": "health",
+            "type": "bar",
+            "color": "red",
+            "name": "Health",
+            "min": 0,
+            "max": 100,
+            "current": 100
+          }],
           "status": [],
           "inventory": [],
         },
@@ -91,10 +99,18 @@ const defaultGameInstance: GameInstance = {
       "character": {
         "id": "Gimli-1758931889802",
         "name": "Gimli",
-        "description": "yyyy",
-        "picture": "/avatars/avatar6.png",
+        "description": "A doughty dwarf warrior with a big axe.",
+        "picture": "/fantasy/avatars/dwarf-knight.png",
         "attributes": {
-          "bar": [],
+          "bar": [{
+            "id": "health",
+            "type": "bar",
+            "color": "red",
+            "name": "Health",
+            "min": 0,
+            "max": 100,
+            "current": 100
+          }],
           "status": [],
           "inventory": [],
         },
@@ -108,10 +124,18 @@ const defaultGameInstance: GameInstance = {
       "character": {
         "id": "Arwen-1758931932742",
         "name": "Arwen",
-        "description": "zzzzzz",
-        "picture": "/avatars/avatar1.png",
+        "description": "A graceful elf princess with healing powers.",
+        "picture": "/fantasy/avatars/elf-girl.png",
         "attributes": {
-          "bar": [],
+          "bar": [{
+            "id": "health",
+            "type": "bar",
+            "color": "red",
+            "name": "Health",
+            "min": 0,
+            "max": 100,
+            "current": 100
+          }],
           "status": [],
           "inventory": [],
         },

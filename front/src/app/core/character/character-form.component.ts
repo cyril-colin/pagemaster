@@ -44,13 +44,15 @@ export type CharacterPermissions = {
               [permissions]="permissions().name"
               (newName)="renameEvent.emit($event)"
             />
-            <app-description-control
-              [description]="existingCharacter().description"
-              [permissions]="permissions().description"
-              (newDescription)="descriptionEvent.emit($event)"
-            />
+            
           </div>
         </div>
+        <app-description-control
+          [description]="existingCharacter().description"
+          [permissions]="permissions().description"
+          (newDescription)="descriptionEvent.emit($event)"
+        />
+
         <app-bars-control
           [bars]="existingCharacter().attributes.bar"
           [permissions]="permissions().bars"
