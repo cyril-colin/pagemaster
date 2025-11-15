@@ -44,6 +44,13 @@ export type CharacterPermissions = {
               [permissions]="permissions().name"
               (newName)="renameEvent.emit($event)"
             />
+            <app-status-control
+              [statuses]="existingCharacter().attributes.status"
+              [permissions]="permissions().statuses"
+              (newStatus)="newStatusEvent.emit($event)"
+              (editStatus)="editStatusEvent.emit($event)"
+              (deleteStatus)="deleteStatusEvent.emit($event)"
+            />
             
           </div>
         </div>
@@ -63,13 +70,7 @@ export type CharacterPermissions = {
         />
       </ds-card>
 
-      <app-status-control
-        [statuses]="existingCharacter().attributes.status"
-        [permissions]="permissions().statuses"
-        (newStatus)="newStatusEvent.emit($event)"
-        (editStatus)="editStatusEvent.emit($event)"
-        (deleteStatus)="deleteStatusEvent.emit($event)"
-      />
+      
       <app-inventory-list
         [inventories]="existingCharacter().attributes.inventory"
         [character]="existingCharacter()"
@@ -100,6 +101,7 @@ export type CharacterPermissions = {
     .identity-data {
       display: flex;
       flex-direction: column;
+      padding: 0 var(--gap-large);
       gap: var(--gap-medium);
       flex: 1;
     }

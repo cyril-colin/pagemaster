@@ -11,6 +11,7 @@ import { marked } from 'marked';
     :host {
       display: flex;
       width: 100%;
+      padding: 0 var(--gap-large);
     }
     
     .description {
