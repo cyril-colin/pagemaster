@@ -1,0 +1,194 @@
+[
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "wasteland_warrior.png",
+    "name": "Wasteland Warrior",
+    "description": "A battle-hardened survivor who has conquered the harsh wastelands",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "mutant_scout.png",
+    "name": "Mutant Scout",
+    "description": "A mutated survivor adapted to the radioactive wilderness",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "cyberpunk_survivor.png",
+    "name": "Cyberpunk Survivor",
+    "description": "A tech-enhanced survivor navigating the ruins of civilization",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "desert_nomad.png",
+    "name": "Desert Nomad",
+    "description": "A wandering survivor who roams the endless desert wastes",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "raider_leader.png",
+    "name": "Raider Leader",
+    "description": "A fierce leader commanding respect through strength and cunning",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "gas_mask_mercenary.png",
+    "name": "Gas Mask Mercenary",
+    "description": "A mysterious mercenary protected from toxic air and danger",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "tech_salvager.png",
+    "name": "Tech Salvager",
+    "description": "A resourceful scavenger who recovers technology from the old world",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "radiation_hunter.png",
+    "name": "Radiation Hunter",
+    "description": "A fearless hunter who tracks prey through radioactive zones",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "scavenger_queen.png",
+    "name": "Scavenger Queen",
+    "description": "A powerful leader ruling over a network of scavengers",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "nomadic_healer.png",
+    "name": "Nomadic Healer",
+    "description": "A compassionate healer traveling to aid survivors in need",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "rusted_soldier.png",
+    "name": "Rusted Soldier",
+    "description": "A weathered soldier still fighting in worn and rusted armor",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "bunker_survivor.png",
+    "name": "Bunker Survivor",
+    "description": "A cautious survivor emerging from the safety of underground shelters",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "toxic_wastelander.png",
+    "name": "Toxic Wastelander",
+    "description": "A survivor immune to toxins prowling the most dangerous zones",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "rebel_engineer.png",
+    "name": "Rebel Engineer",
+    "description": "A brilliant engineer building machines from salvaged parts",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "ashland_hunter.png",
+    "name": "Ashland Hunter",
+    "description": "A skilled hunter tracking dangerous prey through ash-covered lands",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "post-apo",
+    "path": "steel_mask_raider.png",
+    "name": "Steel Mask Raider",
+    "description": "An intimidating raider concealed behind a steel mask",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  }
+]

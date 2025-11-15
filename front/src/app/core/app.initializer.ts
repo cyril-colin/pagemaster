@@ -1,9 +1,9 @@
 import { inject } from '@angular/core';
 import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
 import { catchError, EMPTY, Observable, switchMap, tap } from 'rxjs';
-import { ItemsDataState } from './character/inventories/items/items-data.state';
 import { CurrentSessionState } from './current-session.state';
 import { GameInstanceSocketService } from './game-instance-socket.service';
+import { ResourcePacksStorage } from './resource-packs-storage.service';
 import { SocketService } from './socket.service';
 
 export const appInitializer: () => Observable<unknown> = () => {
@@ -24,7 +24,7 @@ export const appInitializer: () => Observable<unknown> = () => {
     }),
   );
 
-  return inject(ItemsDataState).init().pipe(
+  return inject(ResourcePacksStorage).init().pipe(
     switchMap(() => currentSessionInit),
   );
 };

@@ -4,7 +4,6 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
-import { ITEM_ICONS } from '../gallery/item-icons.const';
 import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
 import { BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
 import { DescriptionControlComponent, DescriptionPermissions } from './descriptions/description-control.component';
@@ -117,7 +116,6 @@ export type CharacterPermissions = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CharacterFormComponent  {
-  protected ITEM_ICONS = ITEM_ICONS;
   public existingCharacter = input.required<Character>();
   public gameDef = input.required<GameDef>();
   public permissions = input.required<CharacterPermissions>();

@@ -1,0 +1,290 @@
+[
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "dwarf-knight.png",
+    "name": "Dwarf Knight",
+    "description": "A sturdy dwarf warrior clad in heavy armor, ready for battle",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "dwarf-knight2.png",
+    "name": "Dwarf Knight 2",
+    "description": "A seasoned dwarf knight with battle-tested armor and determination",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "dwarf.png",
+    "name": "Dwarf",
+    "description": "A proud dwarf adventurer with a mighty beard and stout frame",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "elf-farmer.png",
+    "name": "Elf Farmer",
+    "description": "A peaceful elf who tends the land with grace and care",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "elf-girl.png",
+    "name": "Elf Girl",
+    "description": "A young elven maiden with keen eyes and natural grace",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "elf-knight-girl.png",
+    "name": "Elf Knight Girl",
+    "description": "A noble elven knight, swift and deadly with blade and bow",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "elf-scout.png",
+    "name": "Elf Scout",
+    "description": "A vigilant elven scout trained in stealth and reconnaissance",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "elfe-archer.png",
+    "name": "Elf Archer",
+    "description": "A skilled elven archer with unerring aim and steady hands",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "halfling-farmer.png",
+    "name": "Halfling Farmer",
+    "description": "A cheerful halfling who works the fields with joy and dedication",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "halfling-scout.png",
+    "name": "Halfling Scout",
+    "description": "A nimble halfling scout who moves silently and observes carefully",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "halfling-scout2.png",
+    "name": "Halfling Scout 2",
+    "description": "An experienced halfling scout with sharp senses and quick reflexes",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-.png",
+    "name": "Human",
+    "description": "A versatile human adventurer ready for any challenge",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-farmer.png",
+    "name": "Human Farmer",
+    "description": "A hardworking human farmer who provides for the community",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-knight.png",
+    "name": "Human Knight",
+    "description": "A valiant human knight sworn to protect the innocent",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-knight2.png",
+    "name": "Human Knight 2",
+    "description": "A distinguished human knight with honor and courage",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-man-knight.png",
+    "name": "Human Man Knight",
+    "description": "A noble human knight standing strong in defense of the realm",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-man-scout.png",
+    "name": "Human Man Scout",
+    "description": "A resourceful human scout who explores unknown territories",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-monk.png",
+    "name": "Human Monk",
+    "description": "A disciplined human monk mastering body and mind",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-monk2.png",
+    "name": "Human Monk 2",
+    "description": "A serene human monk channeling inner strength and wisdom",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-scout.png",
+    "name": "Human Scout",
+    "description": "An alert human scout tracking through wilderness and danger",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-scout2.png",
+    "name": "Human Scout 2",
+    "description": "A seasoned human scout with keen survival instincts",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "human-woman.png",
+    "name": "Human Woman",
+    "description": "A capable human woman ready to face any adventure",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "orcs-farmer.png",
+    "name": "Orc Farmer",
+    "description": "A strong orc who cultivates the land with determination",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  },
+  {
+    "type": "avatar",
+    "theme": "fantasy",
+    "path": "orcs-mage.png",
+    "name": "Orc Mage",
+    "description": "A powerful orc mage wielding ancient and formidable magic",
+    "origin": "microsoft copilot ai",
+    "originalSize": {
+      "height": 256,
+      "width": 256
+    }
+  }
+]

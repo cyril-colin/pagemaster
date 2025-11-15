@@ -1,0 +1,20 @@
+[
+  {
+    "theme": "Post Apocaliptic",
+    "items": {
+      "path": "/post-apo/items/post-apo-items.models.json"
+    },
+    "avatars": {
+      "path": "/post-apo/avatars/post-apo-avatars.models.json"
+    }
+  },
+  {
+    "theme": "Fantasy",
+    "items": {
+      "path": "/fantasy/items/fantasy-items.models.json"
+    },
+    "avatars": {
+      "path": "/fantasy/avatars/fantasy-avatars.models.json"
+    }
+  }
+]

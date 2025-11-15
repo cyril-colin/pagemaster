@@ -4,8 +4,8 @@ import { Item } from '@pagemaster/common/items.types';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { ImageComponent } from 'src/app/core/design-system/image.component';
 import { PictureGalleryComponent } from 'src/app/core/gallery/picture-gallery.component';
+import { ResourcePacksStorage } from '../../../resource-packs-storage.service';
 import { InventoryPermissions } from '../inventory.component';
-import { ItemsDataState } from './items-data.state';
 
 type ItemFormControl = {
   name: FormControl<string>,
@@ -137,13 +137,15 @@ export class ItemFormComponent {
   public existingItem = input<Item | null>(null);
   public permissions = input.required<InventoryPermissions>();
   public itemSubmitted = output<Item>();
-  protected itemModels = inject(ItemsDataState);
+  protected itemModels = inject(ResourcePacksStorage);
   protected pictureMode = linkedSignal<'view' | 'edit'>(() => {
     return this.existingItem() ? 'view' : 'edit';
   });
   protected pictures = computed(() => {
-    const modelStore = this.itemModels.itemsFile();
-    const data =  modelStore.flatMap(theme => theme.models.map(model => ({ name: model.name, path: `${model.path}` })));
+    const packs = this.itemModels.resourcePacks();
+    const data = packs.flatMap(pack =>
+      pack.items.models.map(model => ({ name: model.name, path: model.path })),
+    );
     return data;
   });
   protected fb = inject(FormBuilder);
@@ -161,7 +163,9 @@ export class ItemFormComponent {
 
   protected selectPicture(picture: { name: string, path: string }) {
 
-    const matchingItemModel = this.itemModels.itemsFile().flatMap(theme => theme.models).find(model => model.path === picture.path);
+    const matchingItemModel = this.itemModels.resourcePacks()
+      .flatMap(pack => pack.items.models)
+      .find(model => model.path === picture.path);
     if (!matchingItemModel) {
       console.warn(`Selected picture ${picture.path} does not match any item model.`);
       return;
