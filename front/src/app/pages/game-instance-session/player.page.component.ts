@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, HostListener, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AttributeBar, AttributeInventory, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
@@ -59,8 +59,14 @@ export class PlayerPageComponent {
   protected currentSession = inject(CurrentSessionState);
   protected gameInstanceService = inject(GameInstanceRepository);
   protected route = inject(ActivatedRoute);
+  protected router = inject(Router);
 
   protected routeParams = toSignal(this.route.paramMap);
+
+  // Swipe detection state
+  private touchStartX = 0;
+  private touchEndX = 0;
+  private readonly SWIPE_THRESHOLD = 50; // Minimum distance for a swipe
 
   protected viewedPlayer = computed(() => {
     const paramName = PageMasterRoutes().GameInstanceSession.params[1];
@@ -77,6 +83,74 @@ export class PlayerPageComponent {
     }
     return participant;
   });
+
+  protected players = computed(() => {
+    return this.currentSession.currentSession().gameInstance.participants.filter(
+      (p): p is Player => p.type === 'player',
+    );
+  });
+
+  protected currentPlayerIndex = computed(() => {
+    return this.players().findIndex(p => p.id === this.viewedPlayer().id);
+  });
+
+  @HostListener('touchstart', ['$event'])
+  protected onTouchStart(event: TouchEvent): void {
+    this.touchStartX = event.changedTouches[0].screenX;
+  }
+
+  @HostListener('touchend', ['$event'])
+  protected onTouchEnd(event: TouchEvent): void {
+    this.touchEndX = event.changedTouches[0].screenX;
+    this.handleSwipe();
+  }
+
+  protected handleSwipe(): void {
+    const swipeDistance = this.touchEndX - this.touchStartX;
+    
+    if (Math.abs(swipeDistance) < this.SWIPE_THRESHOLD) {
+      return; // Not a significant swipe
+    }
+
+    if (swipeDistance > 0) {
+      // Swipe right - go to previous player
+      this.navigateToPreviousPlayer();
+    } else {
+      // Swipe left - go to next player
+      this.navigateToNextPlayer();
+    }
+  }
+
+  protected navigateToNextPlayer(): void {
+    const players = this.players();
+    const currentIndex = this.currentPlayerIndex();
+    
+    if (players.length === 0) return;
+    
+    const nextIndex = (currentIndex + 1) % players.length;
+    const nextPlayer = players[nextIndex];
+    
+    this.navigateToPlayer(nextPlayer.id);
+  }
+
+  protected navigateToPreviousPlayer(): void {
+    const players = this.players();
+    const currentIndex = this.currentPlayerIndex();
+    
+    if (players.length === 0) return;
+    
+    const previousIndex = (currentIndex - 1 + players.length) % players.length;
+    const previousPlayer = players[previousIndex];
+    
+    this.navigateToPlayer(previousPlayer.id);
+  }
+
+  protected navigateToPlayer(playerId: string): void {
+    const instanceId = this.currentSession.currentSession().gameInstance.id;
+    const route = PageMasterRoutes().GameInstanceSession;
+    const basePath = route.interpolated(instanceId);
+    void this.router.navigate([basePath, 'player', playerId]);
+  }
 
   protected permissions = computed(() => {
     const isManager = this.currentSession.allowedToEditCharacterSnapshot();

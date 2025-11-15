@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, input, output, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { ButtonComponent } from '../../design-system/button.component';
 import { DescriptionViewComponent } from './description-view.component';
 
 export type DescriptionPermissions = {
@@ -12,23 +13,13 @@ export type DescriptionCollapseState = 'expanded' | 'collapsed';
   selector: 'app-description-control',
   template: `
     <div class="description-wrapper">
-      <button 
-        type="button" 
-        class="collapse-button" 
+      <ds-button 
+        [mode]="'tertiary'" 
+        [icon]="collapseState() === 'expanded' ? 'chevron-down' : 'chevron-up'"
         (click)="toggleCollapse()"
-        [attr.aria-label]="collapseState() === 'expanded' ? 'Collapse' : 'Expand'">
-        <svg 
-          xmlns="http://www.w3.org/2000/svg" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="currentColor" 
-          stroke-width="2" 
-          stroke-linecap="round" 
-          stroke-linejoin="round"
-          [class.rotated]="collapseState() === 'collapsed'">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
+        [attr.aria-label]="collapseState() === 'expanded' ? 'Collapse' : 'Expand'"
+        class="collapse-button">
+      </ds-button>
       <div class="description-content" [class.collapsed]="collapseState() === 'collapsed'">
         @if(mode() === 'view') {
           <div (click)="setMode('edit')" [class.description-view]="permissions().edit" [class.description-readonly]="!permissions().edit">
@@ -60,31 +51,6 @@ export type DescriptionCollapseState = 'expanded' | 'collapsed';
 
     .collapse-button {
       flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      padding: 0;
-      border: none;
-      background: transparent;
-      color: var(--text-secondary);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.2s;
-    }
-
-    .collapse-button:hover {
-      color: var(--text-primary);
-    }
-
-    .collapse-button svg {
-      width: 20px;
-      height: 20px;
-      transition: transform 0.2s;
-    }
-
-    .collapse-button svg.rotated {
-      transform: rotate(-90deg);
     }
 
     .description-content {
@@ -159,6 +125,7 @@ export type DescriptionCollapseState = 'expanded' | 'collapsed';
   imports: [
     ReactiveFormsModule,
     DescriptionViewComponent,
+    ButtonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
