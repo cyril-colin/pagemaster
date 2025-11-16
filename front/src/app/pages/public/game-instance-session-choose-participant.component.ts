@@ -18,7 +18,7 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
       <h1>Choose Your Character</h1>
       @let instance = selectedGameInstance();
       @if (instance) {
-        <p class="subtitle">{{ instance.id }} - Master: {{ instance.masterName }}</p>
+        <p class="subtitle">{{ instance.id }} - Master: {{ getGameMasterName(instance) }}</p>
         
         <div class="participants-grid">
           @for(participant of instance.participants; track participant.id) {
@@ -166,5 +166,10 @@ export class GameInstanceSessionChooseParticipantComponent {
         void this.router.navigate(['/', ...PageMasterRoutes().GameInstanceSession.interpolated(newInstance.id).split('/')]);
       }),
     ).subscribe();
+  }
+
+  protected getGameMasterName(gameInstance: GameInstance): string {
+    const master = gameInstance.participants.find(p => p.type === 'gameMaster');
+    return master ? master.name : 'Unknown';
   }
 }

@@ -16,12 +16,6 @@ export type GameInstance = {
    * the latest version before making its own updates.
    */
   version: number,
-
-  /**
-   * The name of the game master (the person who created this game instance).
-   * Without spaces
-   */
-  readonly masterName: string,
   
   participants: Participant[],
 };

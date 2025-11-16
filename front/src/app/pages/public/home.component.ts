@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
+import { GameInstance } from '@pagemaster/common/pagemaster.types';
 import { MainTitleService } from 'src/app/core/main-bar/main-title.service';
 import { CurrentSessionState } from '../../core/current-session.state';
 import { ButtonComponent } from '../../core/design-system/button.component';
@@ -69,7 +70,7 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
                 <div class="instance-info">
                   <h3 class="instance-name">{{ instance.id }}</h3>
                   <p class="instance-details">
-                    <span class="label">Game Master:</span> {{ instance.masterName }}
+                    <span class="label">Game Master:</span> {{ getGameMasterName(instance) }}
                   </p>
                   <p class="instance-id">ID: {{ instance.id }}</p>
                 </div>
@@ -361,5 +362,10 @@ export class HomeComponent {
 
   constructor() {
     inject(MainTitleService).setTitle('');
+  }
+
+  protected getGameMasterName(gameInstance: GameInstance): string {
+    const master = gameInstance.participants.find(p => p.type === 'gameMaster');
+    return master ? master.name : 'Unknown';
   }
 }

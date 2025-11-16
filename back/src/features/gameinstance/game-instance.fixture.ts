@@ -6,7 +6,6 @@ import { GameInstanceMongoClient } from './game-instance.mongo-client';
 
 const defaultGameInstance: GameInstance = {
   "id": "medieval-fantasy-v1-Cyril-1758352912606",
-  "masterName": "Cyril",
   "version": 1,
   "participants": [
     {

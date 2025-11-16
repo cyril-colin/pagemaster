@@ -213,7 +213,6 @@ export class GameInstanceFormComponent {
     if (this.form.valid && gameInstanceForm) {
       const gameInstance: GameInstance = {
         id: `session-${gameInstanceForm.masterName}-${Date.now()}`,
-        masterName: gameInstanceForm.masterName.replaceAll(' ', '-'),
         version: 0,
         participants: [
           {

@@ -40,7 +40,7 @@ import { GameInstanceRepository } from '../../../core/repositories/game-instance
                   </div>
                   <div class="info-item">
                     <span class="info-label">Game Master:</span>
-                    <span class="info-value">{{ instance.masterName }}</span>
+                    <span class="info-value">{{ getGameMasterName(instance) }}</span>
                   </div>
                   <div class="info-item">
                     <span class="info-label">Instance ID:</span>
@@ -281,6 +281,11 @@ export class GameInstanceConfigComponent {
         this.newGameInstance.set(createdInstance);
       }),
     ).subscribe();
+  }
+
+  protected getGameMasterName(gameInstance: GameInstance): string {
+    const master = gameInstance.participants.find(p => p.type === 'gameMaster');
+    return master ? master.name : 'Unknown';
   }
 
   protected getFullLink(): string {
