@@ -1,15 +1,31 @@
 import { Request } from 'express';
+import { EventBase } from 'src/pagemaster-schemas/src/events.types';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
-import { HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
+import { HttpBadRequestError, HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
+import { EventCharacterTypes } from '../../pagemaster-schemas/src/events-character.types';
 import { GameEvent } from '../../pagemaster-schemas/src/pagemaster.types';
+import { EventCharacterExecuter } from '../event-executer/event-character/event-character.executer';
+import { GameEventExecuter } from '../event-executer/event-executer';
 import { GameSessionMongoClient } from '../gamesession/game-session.mongo-client';
 import { GameEventMongoClient } from './game-event.mongo-client';
+
+const CHARACTER_EVENT_TYPES = new Set<EventCharacterTypes>([
+  EventCharacterTypes.CHARACTER_INVENTORY_DELETE,
+  EventCharacterTypes.CHARACTER_INVENTORY_ADD,
+  EventCharacterTypes.CHARACTER_INVENTORY_UPDATE,
+  EventCharacterTypes.CHARACTER_INVENTORY_ITEM_ADD,
+  EventCharacterTypes.CHARACTER_INVENTORY_ITEM_EDIT,
+  EventCharacterTypes.CHARACTER_INVENTORY_ITEM_DELETE,
+  EventCharacterTypes.CHARACTER_NAME_EDIT,
+  EventCharacterTypes.CHARACTER_DESCRIPTION_EDIT,
+]);
 
 export class GameEventController {
   constructor(
     private mongoClient: GameEventMongoClient,
     private gameInstanceMongoClient: GameSessionMongoClient,
+    private characterEventExecuter: EventCharacterExecuter,
   ) {}
 
   @Get('/game-events')
@@ -42,6 +58,37 @@ export class GameEventController {
       const { _id, ...gameEvent } = doc;
       return gameEvent as GameEvent;
     });
+  }
+
+  @Post('/game-sessions/:gameSessionId/game-events/command')
+  public async createCommandGameEvent(
+    gameEvent: EventBase,
+    params: {gameSessionId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<EventBase> {
+    const gameSession = await this.gameInstanceMongoClient.findGameSessionById(params.gameSessionId);
+    if (!gameSession) {
+      throw new HttpNotFoundError('Game session not found');
+    }
+    const currentParticipantId = (Array.isArray(req.headers[HEADER_CURRENT_PARTICIPANT]) ? null : req.headers[HEADER_CURRENT_PARTICIPANT]) || null;
+    const triggerer = gameSession.participants.find(p => p.id === currentParticipantId);
+    if (!triggerer) {
+      throw new HttpForbiddenError('Forbidden: You need to be a participant of this game session');
+    }
+
+
+    const executer = this.getExecuter(gameEvent);
+    const res = await executer.executeEvent(gameEvent, triggerer, gameSession);
+    return res;
+  }
+
+  protected getExecuter(gameEvent: EventBase,): GameEventExecuter {
+    if (CHARACTER_EVENT_TYPES.has(gameEvent.type as EventCharacterTypes)) {
+      return this.characterEventExecuter;
+    }
+    
+    throw new HttpBadRequestError(`Unsupported event type: ${gameEvent.type}`);
   }
 
   @Post('/game-sessions/:gameSessionId/game-events')

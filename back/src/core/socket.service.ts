@@ -1,5 +1,6 @@
 import { Server } from 'socket.io';
 import { GameEventMongoClient } from '../features/gameevent/game-event.mongo-client';
+import { EventBase } from '../pagemaster-schemas/src/events.types';
 import { GameEvent, GameSession, Participant } from '../pagemaster-schemas/src/pagemaster.types';
 import { PageMasterSocketEvents, RoomId } from '../pagemaster-schemas/src/socket-events.types';
 import { LoggerService } from './logger.service';
@@ -36,6 +37,15 @@ export class SocketServerService {
         this.logger.info('Client disconnected:', socket.id);
       });
     });
+  }
+
+  public async notifySessionUpdate(event: EventBase) {
+    if (!this.io) {
+      throw new Error('SocketServerService not initialized');
+    }
+
+    const roomName = RoomId(event.gameSessionId);
+    this.io.to(roomName).emit(PageMasterSocketEvents.GAME_SESSION_UPDATED, event);
   }
 
   async notifyGameSessionUpdate(params: {

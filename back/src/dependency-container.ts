@@ -5,12 +5,12 @@ import { MongoConnection } from './core/base-mongo-client';
 import { LoggerService } from './core/logger.service';
 import { Router } from './core/router/route-registry';
 import { SocketServerService } from './core/socket.service';
+import { EventCharacterExecuter } from './features/event-executer/event-character/event-character.executer';
 import { GameEventFixture } from './features/gameevent/game-event.fixture';
 import { GameEventMongoClient } from './features/gameevent/game-event.mongo-client';
 import { GameSessionFixture } from './features/gamesession/game-session.fixture';
 import { GameSessionMongoClient } from './features/gamesession/game-session.mongo-client';
 import { GameSessionService } from './features/gamesession/game-session.service';
-
 const ajv = new Ajv({ allErrors: true });
 const configuration = new ConfigurationService(ajv);
 configuration.init();
@@ -36,6 +36,12 @@ const gameInstanceService = new GameSessionService(gameInstanceMongoClient, sock
 const gameInstanceFixture = new GameSessionFixture(logger, gameInstanceMongoClient);
 const gameEventFixture = new GameEventFixture(logger, gameEventMongoClient);
 
+
+const characterEventExecuter = new EventCharacterExecuter(
+  gameInstanceMongoClient,
+  socketServerService,
+);
+
 export const serviceContainer = {
   logger,
   configuration,
@@ -48,4 +54,5 @@ export const serviceContainer = {
   gameInstanceService,
   gameEventMongoClient,
   jsonSchemaValidator: ajv,
+  characterEventExecuter,
 };

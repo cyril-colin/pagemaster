@@ -24,7 +24,7 @@ const controllers = [
   new ParticipantStatusesController(serviceContainer.gameInstanceService),
   new ParticipantProfileController(serviceContainer.gameInstanceService),
   new ParticipantInventoryController(serviceContainer.gameInstanceService),
-  new GameEventController(serviceContainer.gameEventMongoClient, serviceContainer.gameInstanceMongoClient),
+  new GameEventController(serviceContainer.gameEventMongoClient, serviceContainer.gameInstanceMongoClient, serviceContainer.characterEventExecuter),
 ];
 controllers.forEach(controller => serviceContainer.router.registerRoutes(controller, app));
 serviceContainer.logger.debug('Registered controllers', {routes: serviceContainer.router.debugRoutes()});
