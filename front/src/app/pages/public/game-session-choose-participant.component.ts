@@ -1,22 +1,22 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
+import { GameSession, Participant } from '@pagemaster/common/pagemaster.types';
 import { switchMap, tap } from 'rxjs';
-import { CurrentGameInstanceState } from '../../core/current-game-instance.state';
+import { CurrentGameSessionState } from '../../core/current-game-session.state';
 import { CurrentParticipantState } from '../../core/current-participant.state';
 import { ButtonComponent } from '../../core/design-system/button.component';
 import { CardComponent } from '../../core/design-system/card.component';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
-import { GameInstanceRepository } from '../../core/repositories/game-instance.repository';
+import { GameSessionRepository } from '../../core/repositories/game-session.repository';
 
 @Component({
-  selector: 'app-game-instance-session-choose-participant',
+  selector: 'app-game-session-session-choose-participant',
   imports: [ButtonComponent, CardComponent],
   template: `
     <div class="container">
       <h1>Choose Your Character</h1>
-      @let instance = selectedGameInstance();
+      @let instance = selectedGameSession();
       @if (instance) {
         <p class="subtitle">{{ instance.id }} - Master: {{ getGameMasterName(instance) }}</p>
         
@@ -142,25 +142,25 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GameInstanceSessionChooseParticipantComponent {
+export class GameSessionChooseParticipantComponent {
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
-  protected gameInstanceService = inject(GameInstanceRepository);
+  protected gameSessionService = inject(GameSessionRepository);
   protected currentParticipantService = inject(CurrentParticipantState);
-  protected currentGameInstanceService = inject(CurrentGameInstanceState);
-  protected selectedGameInstance = toSignal(this.route.paramMap.pipe(
+  protected currentGameSessionService = inject(CurrentGameSessionState);
+  protected selectedGameSession = toSignal(this.route.paramMap.pipe(
     switchMap(params => {
       const instanceId = params.get(PageMasterRoutes().GameInstanceSession.params[0]);
       if (!instanceId) {
         throw new Error('No instanceId in route parameters');
       }
-      return this.gameInstanceService.getGameInstanceById(instanceId);
+      return this.gameSessionService.getGameSessionById(instanceId);
     }),
   ));
 
-  protected selectParticipant(gameInstance: GameInstance, participant: Participant) {
+  protected selectParticipant(gameSession: GameSession, participant: Participant) {
    
-    this.currentGameInstanceService.setCurrentGameInstance(gameInstance).pipe(
+    this.currentGameSessionService.setCurrentGameSession(gameSession).pipe(
       tap((newInstance) => {
         this.currentParticipantService.setParticipant(participant.id);
         void this.router.navigate(['/', ...PageMasterRoutes().GameInstanceSession.interpolated(newInstance.id).split('/')]);
@@ -168,8 +168,8 @@ export class GameInstanceSessionChooseParticipantComponent {
     ).subscribe();
   }
 
-  protected getGameMasterName(gameInstance: GameInstance): string {
-    const master = gameInstance.participants.find(p => p.type === 'gameMaster');
+  protected getGameMasterName(gameSession: GameSession): string {
+    const master = gameSession.participants.find(p => p.type === 'gameMaster');
     return master ? master.name : 'Unknown';
   }
 }

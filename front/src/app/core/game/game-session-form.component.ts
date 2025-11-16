@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GameInstance } from '@pagemaster/common/pagemaster.types';
+import { GameSession } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
 
 interface GameFormType {
@@ -9,7 +9,7 @@ interface GameFormType {
 }
 
 @Component({
-  selector: 'app-game-instance-form',
+  selector: 'app-game-session-form',
   template: `
     <ds-card>
       <div [formGroup]="form" class="form-container">
@@ -200,8 +200,8 @@ interface GameFormType {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GameInstanceFormComponent {
-  public newGameInstance = output<GameInstance>();
+export class GameSessionFormComponent {
+  public newGameSession = output<GameSession>();
   private fb = inject(FormBuilder);
   
   protected form = this.fb.group<GameFormType>({
@@ -211,7 +211,7 @@ export class GameInstanceFormComponent {
   protected submit() {
     const gameInstanceForm = this.form.getRawValue();
     if (this.form.valid && gameInstanceForm) {
-      const gameInstance: GameInstance = {
+      const gameSession: GameSession = {
         id: `session-${gameInstanceForm.masterName}-${Date.now()}`,
         version: 0,
         participants: [
@@ -223,7 +223,7 @@ export class GameInstanceFormComponent {
         ],
       };
 
-      this.newGameInstance.emit(gameInstance);
+      this.newGameSession.emit(gameSession);
     }
   }
 }

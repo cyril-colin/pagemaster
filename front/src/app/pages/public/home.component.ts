@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
-import { GameInstance } from '@pagemaster/common/pagemaster.types';
+import { GameSession } from '@pagemaster/common/pagemaster.types';
 import { MainTitleService } from 'src/app/core/main-bar/main-title.service';
 import { CurrentSessionState } from '../../core/current-session.state';
 import { ButtonComponent } from '../../core/design-system/button.component';
 import { CardComponent } from '../../core/design-system/card.component';
 import { DividerComponent } from '../../core/design-system/divider.component';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
-import { GameInstanceRepository } from '../../core/repositories/game-instance.repository';
+import { GameSessionRepository } from '../../core/repositories/game-session.repository';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +23,7 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
         <ds-card class="current-session-card">
           <div class="card-content">
             <h3>Your Active Session</h3>
-            <p class="session-game">{{ session.gameInstance.id }}</p>
+            <p class="session-game">{{ session.gameSession.id }}</p>
             <p class="session-participant">
               Playing as: <strong>{{ session.participant.name }}</strong>
               @if (session.participant.type === 'player') {
@@ -36,7 +36,7 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
           </div>
           <ds-button 
             [mode]="'primary'" 
-            [routerLink]="'/' + routes.GameInstanceSession.interpolated(session.gameInstance.id)">
+            [routerLink]="'/' + routes.GameInstanceSession.interpolated(session.gameSession.id)">
             Continue Session
           </ds-button>
         </ds-card>
@@ -349,7 +349,7 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
 })
 export class HomeComponent {
   protected routes = PageMasterRoutes();
-  protected gameInstanceService = inject(GameInstanceRepository);
+  protected gameInstanceService = inject(GameSessionRepository);
   protected instanceList = toSignal(this.gameInstanceService.getAllGameInstances(), { initialValue: [] });
   protected currentSessionState = inject(CurrentSessionState);
   protected currentSession = computed(() => {
@@ -364,8 +364,8 @@ export class HomeComponent {
     inject(MainTitleService).setTitle('');
   }
 
-  protected getGameMasterName(gameInstance: GameInstance): string {
-    const master = gameInstance.participants.find(p => p.type === 'gameMaster');
+  protected getGameMasterName(gameSession: GameSession): string {
+    const master = gameSession.participants.find(p => p.type === 'gameMaster');
     return master ? master.name : 'Unknown';
   }
 }

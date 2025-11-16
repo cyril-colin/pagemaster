@@ -3,73 +3,73 @@ import { LoggerService } from '../../core/logger.service';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
 import { HttpForbiddenError } from '../../core/router/http-errors';
 import { SocketServerService } from '../../core/socket.service';
-import { GameInstance, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
-import { GameInstanceMongoClient } from './game-instance.mongo-client';
-import { GameInstanceService } from './game-instance.service';
+import { GameSession, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameSessionMongoClient } from './game-session.mongo-client';
+import { GameSessionService } from './game-session.service';
 
-export class GameInstanceController {
-  private gameInstanceService: GameInstanceService;
+export class GameSessionController {
+  private gameInstanceService: GameSessionService;
 
   constructor(
-    private mongoClient: GameInstanceMongoClient,
+    private mongoClient: GameSessionMongoClient,
     socketServerService: SocketServerService,
     private logger: LoggerService,
   ) {
-    this.gameInstanceService = new GameInstanceService(mongoClient, socketServerService);
+    this.gameInstanceService = new GameSessionService(mongoClient, socketServerService);
   }
 
-  @Get('/game-instances')
-  public async getAllGameInstances(): Promise<GameInstance[]> {
-    const gameInstanceDocuments = await this.mongoClient.getAllGameInstances();
+  @Get('/game-sessions')
+  public async getAllGameSessions(): Promise<GameSession[]> {
+    const gameInstanceDocuments = await this.mongoClient.getAllGameSessions();
     
-    // Convert MongoDB documents to plain GameInstance objects (remove MongoDB _id field)
+    // Convert MongoDB documents to plain GameSession objects (remove MongoDB _id field)
     return gameInstanceDocuments.map(doc => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { _id, ...gameInstance } = doc;
-      return gameInstance as GameInstance;
+      const { _id, ...gameSession } = doc;
+      return gameSession as GameSession;
     });
   }
 
-  @Get('/game-instances/:id')
-  public async getGameInstanceById(body: unknown, params: {id: string}): Promise<GameInstance | null> {
-    const doc = await this.mongoClient.findGameInstanceById(params.id);
+  @Get('/game-sessions/:id')
+  public async getGameInstanceById(body: unknown, params: {id: string}): Promise<GameSession | null> {
+    const doc = await this.mongoClient.findGameSessionById(params.id);
     if (!doc) return null;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { _id, ...gameInstance } = doc;
-    return gameInstance as GameInstance;
+    const { _id, ...gameSession } = doc;
+    return gameSession as GameSession;
   }
 
-  @Post('/game-instances')
-  public async createGameInstance(gameInstance: GameInstance): Promise<GameInstance> {
-    const doc = await this.mongoClient.createGameInstance(gameInstance);
+  @Post('/game-sessions')
+  public async createGameSession(gameSession: GameSession): Promise<GameSession> {
+    const doc = await this.mongoClient.createGameSession(gameSession);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { _id, ...createdGameInstance } = doc;
+    const { _id, ...createdGameSession } = doc;
     
-    return createdGameInstance as GameInstance;
+    return createdGameSession as GameSession;
   }
 
-  @Post('/game-instances/:gameInstanceId/participants')
+  @Post('/game-sessions/:gameSessionId/participants')
   public async addParticipant(
     participant: Participant,
-    params: {gameInstanceId: string},
+    params: {gameSessionId: string},
     query: unknown,
     req: Request,
-  ): Promise<GameInstance> {
-    const { gameInstance, currentParticipant } = await this.gameInstanceService.validateContext(params.gameInstanceId, req, 'gameMaster');
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'gameMaster');
 
     // Add the new participant to the game instance
-    gameInstance.participants = gameInstance.participants || [];
-    gameInstance.participants.push(participant);
+    gameSession.participants = gameSession.participants || [];
+    gameSession.participants.push(participant);
 
-    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
     const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
     
-    this.gameInstanceService.notifyGameInstanceUpdate({
-      gameInstance: gameInstanceCleaned,
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
       by: updatedParticipant,
       event: {
         type: 'participant-added',
@@ -86,26 +86,26 @@ export class GameInstanceController {
     return gameInstanceCleaned;
   }
 
-  @Put('/game-instances/:id')
-  public async updateGameInstance(
-    newGameInstance: GameInstance,
+  @Put('/game-sessions/:id')
+  public async updateGameSession(
+    newGameSession: GameSession,
     params: {id: string},
     query: unknown,
     req: Request,
-  ): Promise<GameInstance> {
+  ): Promise<GameSession> {
     const { currentParticipant } = await this.gameInstanceService.validateContext(params.id, req, 'player');
-    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(newGameInstance);
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(newGameSession);
 
     const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
     
-    this.gameInstanceService.notifyGameInstanceUpdate({
-      gameInstance: gameInstanceCleaned,
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
       by: updatedParticipant,
       event: {
-        type: 'game-instance-updated',
+        type: 'game-session-updated',
         title: 'Game instance updated',
         description: `${currentParticipant.name} updated the game instance`,
         metadata: { version: gameInstanceCleaned.version }
@@ -115,29 +115,29 @@ export class GameInstanceController {
     return gameInstanceCleaned;
   }
 
-  @Put('/game-instances/:gameInstanceId/participants/:participantId')
+  @Put('/game-sessions/:gameSessionId/participants/:participantId')
   public async updateParticipant(
     participant: Participant,
-    params: {gameInstanceId: string, participantId: string},
+    params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
-  ): Promise<GameInstance> {
-    const { gameInstance, currentParticipant } = await this.gameInstanceService.validateContext(params.gameInstanceId, req, 'player');
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
     this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
 
-    const participantIndex = this.gameInstanceService.findParticipantIndex(gameInstance, params.participantId);
-    const oldParticipant = gameInstance.participants[participantIndex];
-    gameInstance.participants[participantIndex] = participant;
+    const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
+    const oldParticipant = gameSession.participants[participantIndex];
+    gameSession.participants[participantIndex] = participant;
 
-    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
     const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
     
-    this.gameInstanceService.notifyGameInstanceUpdate({
-      gameInstance: gameInstanceCleaned,
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
       by: updatedParticipant,
       event: {
         type: 'participant-updated',
@@ -155,30 +155,30 @@ export class GameInstanceController {
     return gameInstanceCleaned;
   }
 
-  @Delete('/game-instances/:gameInstanceId/participants/:participantId')
+  @Delete('/game-sessions/:gameSessionId/participants/:participantId')
   public async deleteParticipant(
     body: unknown,
-    params: {gameInstanceId: string, participantId: string},
+    params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
-  ): Promise<GameInstance> {
-    const { gameInstance, currentParticipant } = await this.gameInstanceService.validateContext(params.gameInstanceId, req, 'gameMaster');
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'gameMaster');
 
-    const participantIndex = this.gameInstanceService.findParticipantIndex(gameInstance, params.participantId);
-    const deletedParticipant = gameInstance.participants[participantIndex];
+    const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
+    const deletedParticipant = gameSession.participants[participantIndex];
     
     // Remove the participant from the array
-    gameInstance.participants.splice(participantIndex, 1);
+    gameSession.participants.splice(participantIndex, 1);
 
-    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
     const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
     
-    this.gameInstanceService.notifyGameInstanceUpdate({
-      gameInstance: gameInstanceCleaned,
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
       by: updatedParticipant,
       event: {
         type: 'participant-deleted',
@@ -194,8 +194,8 @@ export class GameInstanceController {
     return gameInstanceCleaned;
   }
 
-  @Delete('/game-instances/:id')
-  public async deleteGameInstance(body: unknown, params: {id: string}): Promise<boolean> {
-    return await this.mongoClient.deleteGameInstance(params.id);
+  @Delete('/game-sessions/:id')
+  public async deleteGameSession(body: unknown, params: {id: string}): Promise<boolean> {
+    return await this.mongoClient.deleteGameSession(params.id);
   }
 }

@@ -5,7 +5,7 @@ import { GameEventMongoClient } from './game-event.mongo-client';
 const defaultGameEvents: GameEvent[] = [
   {
     id: "medieval-fantasy-v1-Cyril-1758352912606-event-1",
-    gameInstanceId: "medieval-fantasy-v1-Cyril-1758352912606",
+    gameSessionId: "medieval-fantasy-v1-Cyril-1758352912606",
     type: "narrative",
     participantId: "gamemaster-Cyril",
     participantName: "Cyril",
@@ -18,7 +18,7 @@ const defaultGameEvents: GameEvent[] = [
   },
   {
     id: "medieval-fantasy-v1-Cyril-1758352912606-event-2",
-    gameInstanceId: "medieval-fantasy-v1-Cyril-1758352912606",
+    gameSessionId: "medieval-fantasy-v1-Cyril-1758352912606",
     type: "action",
     participantId: "player-Alain-0",
     participantName: "Alain",
@@ -32,7 +32,7 @@ const defaultGameEvents: GameEvent[] = [
   },
   {
     id: "medieval-fantasy-v1-Cyril-1758352912606-event-3",
-    gameInstanceId: "medieval-fantasy-v1-Cyril-1758352912606",
+    gameSessionId: "medieval-fantasy-v1-Cyril-1758352912606",
     type: "dice-roll",
     participantId: "player-Claude-1",
     participantName: "Claude",

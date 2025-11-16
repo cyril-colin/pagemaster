@@ -29,7 +29,7 @@ export class GameEventMongoClient extends BaseMongoClient {
             );
             await this.createIndex(
                 GameEventMongoClient.COLLECTION_NAME,
-                { gameInstanceId: 1 }
+                { gameSessionId: 1 }
             );
             await this.createIndex(
                 GameEventMongoClient.COLLECTION_NAME,
@@ -67,10 +67,10 @@ export class GameEventMongoClient extends BaseMongoClient {
         );
     }
 
-    public async findGameEventsByGameInstanceId(gameInstanceId: string): Promise<WithId<GameEventDocument>[]> {
+    public async findGameEventsByGameSessionId(gameSessionId: string): Promise<WithId<GameEventDocument>[]> {
         return this.find<GameEventDocument>(
             GameEventMongoClient.COLLECTION_NAME,
-            { gameInstanceId },
+            { gameSessionId },
             { sort: { timestamp: -1 } }
         );
     }

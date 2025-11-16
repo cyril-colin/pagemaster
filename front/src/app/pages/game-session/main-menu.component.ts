@@ -3,13 +3,13 @@ import { Router } from '@angular/router';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
 import { CharacterButtonComponent } from 'src/app/core/character/character-button.component';
-import { CurrentGameInstanceState } from 'src/app/core/current-game-instance.state';
+import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentSessionState } from 'src/app/core/current-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { NewPlayerModalComponent } from 'src/app/core/game/new-player-modal.component';
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
-import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.repository';
+import { GameSessionRepository } from 'src/app/core/repositories/game-session.repository';
 
 @Component({
   selector: 'app-main-menu',
@@ -129,13 +129,13 @@ export class MainMenuComponent {
 
   private router = inject(Router);
   private modalService = inject(ModalService);
-  private gameInstanceRepository = inject(GameInstanceRepository);
+  private gameInstanceRepository = inject(GameSessionRepository);
   private currentSession = inject(CurrentSessionState);
-  private currentGameInstance = inject(CurrentGameInstanceState);
+  private currentGameSession = inject(CurrentGameSessionState);
 
   protected participants = computed(() => {
     const currentPlayer = this.currentSession.currentSession().participant;
-    const selectedGame = this.currentSession.currentSession().gameInstance;
+    const selectedGame = this.currentSession.currentSession().gameSession;
     const otherPlayers: Player[] = selectedGame.participants.filter(p => p.id !== currentPlayer.id).filter(p => p.type === 'player') || [];
     return { currentPlayer, otherPlayers };
   });
@@ -156,8 +156,8 @@ export class MainMenuComponent {
       player.id,
     );
 
-    const gameInstanceId = this.currentGameInstance.currentGameInstance()!.id;
-    const parentRoute = PageMasterRoutes().GameInstanceSession.interpolated(gameInstanceId);
+    const gameSessionId = this.currentGameSession.currentGameSession()!.id;
+    const parentRoute = PageMasterRoutes().GameInstanceSession.interpolated(gameSessionId);
     const segments = [parentRoute, route].join('/').split('/');
     await this.router.navigate(segments);
     this.close.emit();
@@ -181,9 +181,9 @@ export class MainMenuComponent {
     
     modalRef.componentRef.instance.result.subscribe((player) => {
       if (player) {
-        const gameInstance = this.currentGameInstance.currentGameInstance();
-        if (gameInstance) {
-          this.gameInstanceRepository.addParticipant(gameInstance.id, player).pipe(
+        const gameSession = this.currentGameSession.currentGameSession();
+        if (gameSession) {
+          this.gameInstanceRepository.addParticipant(gameSession.id, player).pipe(
             tap(() => void modalRef.close()),
           ).subscribe();
         }
@@ -198,9 +198,9 @@ export class MainMenuComponent {
     const description = 'This action cannot be undone.';
     const confirmation = await this.modalService.confirmation(description, title);
     if (confirmation === 'confirmed') {
-      const gameInstance = this.currentGameInstance.currentGameInstance();
-      if (gameInstance) {
-        this.gameInstanceRepository.deleteParticipant(gameInstance.id, player.id).subscribe();
+      const gameSession = this.currentGameSession.currentGameSession();
+      if (gameSession) {
+        this.gameInstanceRepository.deleteParticipant(gameSession.id, player.id).subscribe();
       }
     }
   }

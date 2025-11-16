@@ -1,28 +1,28 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { GameInstance } from '@pagemaster/common/pagemaster.types';
+import { GameSession } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
 import { ButtonComponent } from '../../../core/design-system/button.component';
 import { CardComponent } from '../../../core/design-system/card.component';
 import { DividerComponent } from '../../../core/design-system/divider.component';
-import { GameInstanceFormComponent } from '../../../core/game/game-instance-form.component';
+import { GameSessionFormComponent } from '../../../core/game/game-session-form.component';
 import { PageMasterRoutes } from '../../../core/pagemaster.router';
-import { GameInstanceRepository } from '../../../core/repositories/game-instance.repository';
+import { GameSessionRepository } from '../../../core/repositories/game-session.repository';
 
 @Component({
-  selector: 'app-game-instance-config',
+  selector: 'app-game-session-config',
   template: `
     <div class="container">
-      @if (!newGameInstance()) {
+      @if (!newGameSession()) {
         <div class="header">
           <h1>Configure Your Game Instance</h1>
           <p class="subtitle">Set up your game master profile to begin</p>
         </div>
         
-        <app-game-instance-form (newGameInstance)="onNewGame($event)"></app-game-instance-form>
+        <app-game-session-form (newGameSession)="onNewGame($event)"></app-game-session-form>
       }
 
-      @if (newGameInstance(); as instance) {
+      @if (newGameSession(); as instance) {
         <div class="success-container">
           <div class="header">
             <h1>🎉 Game Instance Created!</h1>
@@ -260,7 +260,7 @@ import { GameInstanceRepository } from '../../../core/repositories/game-instance
     }
   `],
   imports: [
-    GameInstanceFormComponent,
+    GameSessionFormComponent,
     RouterModule,
     CardComponent,
     ButtonComponent,
@@ -268,23 +268,23 @@ import { GameInstanceRepository } from '../../../core/repositories/game-instance
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GameInstanceConfigComponent {
-  protected gameInstanceService = inject(GameInstanceRepository);
+export class GameSessionConfigComponent {
+  protected gameInstanceService = inject(GameSessionRepository);
   protected route = inject(ActivatedRoute);
-  protected newGameInstance = signal<GameInstance | null>(null);
+  protected newGameSession = signal<GameSession | null>(null);
   protected gameInstanceLink = signal<string | null>(null);
 
-  protected onNewGame(gameInstance: GameInstance) {
-    this.gameInstanceService.postGameInstance(gameInstance).pipe(
+  protected onNewGame(gameSession: GameSession) {
+    this.gameInstanceService.postGameSession(gameSession).pipe(
       tap(createdInstance => {
         this.gameInstanceLink.set(`/${PageMasterRoutes().GameInstanceSession.interpolated(createdInstance.id)}`);
-        this.newGameInstance.set(createdInstance);
+        this.newGameSession.set(createdInstance);
       }),
     ).subscribe();
   }
 
-  protected getGameMasterName(gameInstance: GameInstance): string {
-    const master = gameInstance.participants.find(p => p.type === 'gameMaster');
+  protected getGameMasterName(gameSession: GameSession): string {
+    const master = gameSession.participants.find(p => p.type === 'gameMaster');
     return master ? master.name : 'Unknown';
   }
 

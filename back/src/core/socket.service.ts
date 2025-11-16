@@ -1,6 +1,6 @@
 import { Server } from 'socket.io';
 import { GameEventMongoClient } from '../features/gameevent/game-event.mongo-client';
-import { GameEvent, GameInstance, Participant } from '../pagemaster-schemas/src/pagemaster.types';
+import { GameEvent, GameSession, Participant } from '../pagemaster-schemas/src/pagemaster.types';
 import { PageMasterSocketEvents, RoomId } from '../pagemaster-schemas/src/socket-events.types';
 import { LoggerService } from './logger.service';
 
@@ -18,17 +18,17 @@ export class SocketServerService {
     this.io.on('connection', (socket) => {
       this.logger.info('New client connected:', socket.id);
 
-      socket.on(PageMasterSocketEvents.JOIN_GAME_INSTANCE, ({ gameInstanceId, participantId }) => {
-        const roomName = RoomId(gameInstanceId);
+      socket.on(PageMasterSocketEvents.JOIN_GAME_SESSION, ({ gameSessionId, participantId }) => {
+        const roomName = RoomId(gameSessionId);
         socket.join(roomName);
         this.logger.info(`Participant ${participantId} joined room: ${roomName}`);
-        socket.emit(PageMasterSocketEvents.JOINED_GAME_INSTANCE, { gameInstanceId, participantId });
+        socket.emit(PageMasterSocketEvents.JOINED_GAME_SESSION, { gameSessionId, participantId });
       });
 
-      socket.on(PageMasterSocketEvents.LEAVE_GAME_INSTANCE, ({ gameInstanceId }) => {
-        const roomName = `gameInstance_${gameInstanceId}`;
+      socket.on(PageMasterSocketEvents.LEAVE_GAME_SESSION, ({ gameSessionId }) => {
+        const roomName = RoomId(gameSessionId);
         socket.leave(roomName);
-        socket.emit(PageMasterSocketEvents.LEFT_GAME_INSTANCE, { gameInstanceId });
+        socket.emit(PageMasterSocketEvents.LEFT_GAME_SESSION, { gameSessionId });
         this.logger.info(`Client ${socket.id} left room: ${roomName}`);
       });
 
@@ -38,8 +38,8 @@ export class SocketServerService {
     });
   }
 
-  async notifyGameInstanceUpdate(params: {
-    gameInstance: GameInstance,
+  async notifyGameSessionUpdate(params: {
+    gameSession: GameSession,
     by: Participant,
     event: {
       type: string,
@@ -54,7 +54,7 @@ export class SocketServerService {
     
     // Create game event
     const gameEvent = await this.createGameEvent(
-      params.gameInstance,
+      params.gameSession,
       params.by,
       params.event.type,
       params.event.title,
@@ -63,17 +63,17 @@ export class SocketServerService {
     );
     
     // Notify via socket with the same event structure
-    const roomName = RoomId(params.gameInstance.id);
-    this.io.to(roomName).emit(PageMasterSocketEvents.GAME_INSTANCE_UPDATED, { 
-      gameInstance: params.gameInstance, 
+    const roomName = RoomId(params.gameSession.id);
+    this.io.to(roomName).emit(PageMasterSocketEvents.GAME_SESSION_UPDATED, { 
+      gameSession: params.gameSession, 
       by: params.by,
       event: gameEvent 
     });
-    this.logger.info(`Notified room ${roomName} of game instance update`);
+    this.logger.info(`Notified room ${roomName} of game session update`);
   }
 
   private async createGameEvent(
-    gameInstance: GameInstance,
+    gameSession: GameSession,
     participant: Participant,
     type: string,
     title: string,
@@ -82,7 +82,7 @@ export class SocketServerService {
   ): Promise<GameEvent> {
     const event: GameEvent = {
       id: `${Date.now()}-${Math.random().toString(36).substring(7)}`,
-      gameInstanceId: gameInstance.id,
+      gameSessionId: gameSession.id,
       type,
       participantId: participant.id,
       participantName: participant.name,
@@ -99,7 +99,7 @@ export class SocketServerService {
       this.logger.error('Failed to create game event', { 
         error: error instanceof Error ? error.message : String(error),
         eventType: type,
-        gameInstanceId: gameInstance.id
+        gameSessionId: gameSession.id
       });
     }
     

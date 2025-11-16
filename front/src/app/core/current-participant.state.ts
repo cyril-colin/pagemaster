@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameInstance, Participant } from '@pagemaster/common/pagemaster.types';
+import { GameSession, Participant } from '@pagemaster/common/pagemaster.types';
 import { CURRENT_PARTICIPANT_CACHE_KEY, CURRENT_PARTICIPANT_TTL, LocalStorageService } from './local-storage.service';
 import { PageMasterRoutes } from './pagemaster.router';
 
@@ -14,13 +14,13 @@ export class CurrentParticipantState {
   private currentParticipantSignal = signal<Participant['id'] | null>(null);
   public currentParticipant = this.currentParticipantSignal.asReadonly();
 
-  init(gameInstance: GameInstance){
+  init(gameSession: GameSession){
     const cachedParticipant = this.localStorageService.getItem<Participant['id']>(CURRENT_PARTICIPANT_CACHE_KEY);
     if (!cachedParticipant) {
       return;
     }
 
-    const existingParticipant = gameInstance.participants.find(p => p.id === cachedParticipant);
+    const existingParticipant = gameSession.participants.find(p => p.id === cachedParticipant);
     if (!existingParticipant) {
       this.currentParticipantSignal.set(null);
       this.localStorageService.removeItem(CURRENT_PARTICIPANT_CACHE_KEY);

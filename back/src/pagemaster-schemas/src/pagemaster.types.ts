@@ -1,18 +1,18 @@
 import { AttributeBar, AttributeInventory, AttributeStatus } from './attributes.types';
 
-export type GameInstance = {
+export type GameSession = {
   /**
-   * A unique identifier for this game instance.
+   * A unique identifier for this game session.
    */
   readonly id: string,
 
   /**
-   * The version of the game instance. This is incremented each time the game instance is updated.
-   * This allows clients to know if they have the latest version of the game instance or not.
+   * The version of the game session. This is incremented each time the game session is updated.
+   * This allows clients to know if they have the latest version of the game session or not.
    * 
-   * This is useful for optimistic concurrency control: when a client wants to update the game instance,
+   * This is useful for optimistic concurrency control: when a client wants to update the game session,
    * it can check if the version it has is the same as the version on the server. If not, it means
-   * that someone else has updated the game instance in the meantime, and the client should fetch
+   * that someone else has updated the game session in the meantime, and the client should fetch
    * the latest version before making its own updates.
    */
   version: number,
@@ -21,7 +21,7 @@ export type GameInstance = {
 };
 
 /**
- * This defines a game event that occurred during a game instance.
+ * This defines a game event that occurred during a game session.
  * Events are used to track the history of actions and occurrences in the game,
  * such as player actions, game master decisions, dice rolls, etc.
  */
@@ -31,9 +31,9 @@ export type GameEvent = {
    */
   id: string,
   /**
-   * The id of the game instance this event belongs to.
+   * The id of the game session this event belongs to.
    */
-  gameInstanceId: GameInstance['id'],
+  gameSessionId: GameSession['id'],
   /**
    * The type of event (e.g., 'action', 'dice-roll', 'narrative', 'combat', etc.)
    */
@@ -87,7 +87,7 @@ export type AbstractParticipant = {
    * The actual name of the player playing the game.
    * Not the same as the {@link Character.name}!
    * 
-   * Should be unique across all players in the same {@link GameInstance}.
+   * Should be unique across all players in the same {@link GameSession}.
    */
   name: string,
 }
@@ -105,7 +105,7 @@ export type Character = {
   id: string,
   picture: string,
   /**
-   * Should be unique across all players in the same {@link GameInstance}.
+   * Should be unique across all players in the same {@link GameSession}.
    */
   name: string,
   description: string,

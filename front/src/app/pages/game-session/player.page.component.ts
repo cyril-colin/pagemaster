@@ -10,7 +10,7 @@ import { InventoryAdditionEvent } from 'src/app/core/character/inventories/inven
 import { InventoryDeletionEvent, InventoryItemEvent, InventoryUpdateEvent } from 'src/app/core/character/inventories/inventory.component';
 import { CurrentSessionState } from 'src/app/core/current-session.state';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
-import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.repository';
+import { GameSessionRepository } from 'src/app/core/repositories/game-session.repository';
 
 @Component({
   selector: 'app-game-player-view',
@@ -55,7 +55,7 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
 })
 export class PlayerPageComponent {
   protected currentSession = inject(CurrentSessionState);
-  protected gameInstanceService = inject(GameInstanceRepository);
+  protected gameInstanceService = inject(GameSessionRepository);
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
 
@@ -72,7 +72,7 @@ export class PlayerPageComponent {
     if (!playerId) {
       throw new Error('Player ID parameter is missing in the route.');
     }
-    const participant = this.currentSession.currentSession().gameInstance.participants.find(p => p.id === playerId);
+    const participant = this.currentSession.currentSession().gameSession.participants.find(p => p.id === playerId);
     if (!participant) {
       throw new Error(`Player with ID ${playerId} not found in current game instance.`);
     }
@@ -83,7 +83,7 @@ export class PlayerPageComponent {
   });
 
   protected players = computed(() => {
-    return this.currentSession.currentSession().gameInstance.participants.filter(
+    return this.currentSession.currentSession().gameSession.participants.filter(
       (p): p is Player => p.type === 'player',
     );
   });
@@ -144,7 +144,7 @@ export class PlayerPageComponent {
   }
 
   protected navigateToPlayer(playerId: string): void {
-    const instanceId = this.currentSession.currentSession().gameInstance.id;
+    const instanceId = this.currentSession.currentSession().gameSession.id;
     const route = PageMasterRoutes().GameInstanceSession;
     const basePath = route.interpolated(instanceId);
     void this.router.navigate([basePath, 'player', playerId]);
@@ -187,121 +187,121 @@ export class PlayerPageComponent {
 
   protected renameParticipant(newName: string, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.renameCharacter(gameInstanceId, participantId, { name: newName }).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.renameCharacter(gameSessionId, participantId, { name: newName }).subscribe();
   }
 
   protected updateAvatar(newAvatar: AvatarEvent, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.updateCharacterAvatar(gameInstanceId, participantId, { picture: newAvatar.picture }).pipe(
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.updateCharacterAvatar(gameSessionId, participantId, { picture: newAvatar.picture }).pipe(
       tap(() => void newAvatar.modalRef.close()),
     ).subscribe();
   }
 
   protected updateDescription(newDescription: string, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.updateCharacterDescription(gameInstanceId, participantId, { description: newDescription }).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.updateCharacterDescription(gameSessionId, participantId, { description: newDescription }).subscribe();
   }
 
   protected updateBarValue(bar: AttributeBar, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.updateCharacterBar(gameInstanceId, participantId, bar.id, bar).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.updateCharacterBar(gameSessionId, participantId, bar.id, bar).subscribe();
   }
 
   protected addBar(bar: AttributeBar, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.addCharacterBar(gameInstanceId, participantId, bar).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.addCharacterBar(gameSessionId, participantId, bar).subscribe();
   }
 
   protected updateBar(bar: AttributeBar, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.updateCharacterBar(gameInstanceId, participantId, bar.id, bar).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.updateCharacterBar(gameSessionId, participantId, bar.id, bar).subscribe();
   }
 
   protected deleteBar(bar: AttributeBar, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.deleteCharacterBar(gameInstanceId, participantId, bar.id).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.deleteCharacterBar(gameSessionId, participantId, bar.id).subscribe();
   }
 
   protected addStatus(status: AttributeStatus, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.addCharacterStatus(gameInstanceId, participantId, status).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.addCharacterStatus(gameSessionId, participantId, status).subscribe();
   }
 
   protected updateStatus(status: AttributeStatus, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.updateCharacterStatus(gameInstanceId, participantId, status.id, status).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.updateCharacterStatus(gameSessionId, participantId, status.id, status).subscribe();
   }
 
   protected deleteStatus(status: AttributeStatus, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.deleteCharacterStatus(gameInstanceId, participantId, status.id).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.deleteCharacterStatus(gameSessionId, participantId, status.id).subscribe();
   }
 
   protected updateInventories(inventories: AttributeInventory[], player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.updateCharacterInventories(gameInstanceId, participantId, { inventory: inventories }).subscribe();
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.updateCharacterInventories(gameSessionId, participantId, { inventory: inventories }).subscribe();
   }
 
   protected addItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
-    this.gameInstanceService.addItemToInventory(gameInstanceId, participantId, itemEvent.inventory.id, itemEvent.item).pipe(
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
+    this.gameInstanceService.addItemToInventory(gameSessionId, participantId, itemEvent.inventory.id, itemEvent.item).pipe(
       tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
 
   protected editItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
     this.gameInstanceService.editItemInInventory(
-      gameInstanceId, participantId, itemEvent.inventory.id, itemEvent.item).pipe(
+      gameSessionId, participantId, itemEvent.inventory.id, itemEvent.item).pipe(
       tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
 
   protected deleteItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
     this.gameInstanceService.deleteItemFromInventory(
-      gameInstanceId, participantId, itemEvent.inventory.id, itemEvent.item.id).pipe(
+      gameSessionId, participantId, itemEvent.inventory.id, itemEvent.item.id).pipe(
       tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
 
   protected addInventory(event: InventoryAdditionEvent, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
     this.gameInstanceService.addInventoryForCharacter(
-      gameInstanceId, participantId, event.inventory).pipe(
+      gameSessionId, participantId, event.inventory).pipe(
       tap(() => void event.modalRef.close()),
     ).subscribe();
   }
 
   protected updateInventory(event: InventoryUpdateEvent, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
     this.gameInstanceService.updateInventoryForCharacter(
-      gameInstanceId, participantId, event.inventory.id, event.inventory).pipe(
+      gameSessionId, participantId, event.inventory.id, event.inventory).pipe(
       tap(() => void event.modalRef.close()),
     ).subscribe();
   }
 
   protected deleteInventory(event: InventoryDeletionEvent, player: Player): void {
     const participantId = player.id;
-    const gameInstanceId = this.currentSession.currentSession().gameInstance.id;
+    const gameSessionId = this.currentSession.currentSession().gameSession.id;
     this.gameInstanceService.deleteInventoryForCharacter(
-      gameInstanceId, participantId, event.inventory.id).pipe(
+      gameSessionId, participantId, event.inventory.id).pipe(
     ).subscribe();
   }
 }

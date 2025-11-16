@@ -1,10 +1,10 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Route, RouterStateSnapshot } from '@angular/router';
-import { AuthGuard } from '../pages/game-instance-session/auth.guard';
-import { GameInstancePageComponent } from '../pages/game-instance-session/game-instance.page.component';
-import { PlayerPageComponent } from '../pages/game-instance-session/player.page.component';
-import { GameInstanceConfigComponent } from '../pages/public/game-instance-creation/game-instance-config.component';
-import { GameInstanceSessionChooseParticipantComponent } from '../pages/public/game-instance-session-choose-participant.component';
+import { AuthGuard } from '../pages/game-session/auth.guard';
+import { GameSessionPageComponent } from '../pages/game-session/game-session.page.component';
+import { PlayerPageComponent } from '../pages/game-session/player.page.component';
+import { GameSessionChooseParticipantComponent } from '../pages/public/game-session-choose-participant.component';
+import { GameSessionConfigComponent } from '../pages/public/game-session-creation/game-session-config.component';
 import { HomeComponent } from '../pages/public/home.component';
 import { PublicLayoutComponent } from '../pages/public/public-layout.component';
 import { EventsCenterComponent } from './events-center/events-center.component';
@@ -16,36 +16,36 @@ export function PageMasterRoutes() {
       path: '',
       component: PublicLayoutComponent,
       children: [
-        ((params= ['instanceId'] as const,path = 'game-instance/config') => ({
+        ((params= ['instanceId'] as const,path = 'game-session/config') => ({
           path,
           params,
           interpolated: (id: string) => path.replace(`:${params[0]}`, id),
-          component: GameInstanceConfigComponent,
+          component: GameSessionConfigComponent,
         }))(),
         ((
           params= ['instanceId'] as const,
-          path = `game-instance/sessions/:${params[0]}/choose-participant`,
+          path = `game-session/sessions/:${params[0]}/choose-participant`,
         ) => ({
           path,
           params,
           interpolated: (id: string) => path.replace(`:${params[0]}`, id),
-          component: GameInstanceSessionChooseParticipantComponent,
+          component: GameSessionChooseParticipantComponent,
         }))(),
       ],
     },
-    GameInstanceConfig: ((params= ['instanceId'] as const,path = `game-instance/config/:${params[0]}`) => ({
+    GameInstanceConfig: ((params= ['instanceId'] as const,path = `game-session/config/:${params[0]}`) => ({
       path,
       params,
       interpolated: (id: string) => path.replace(`:${params[0]}`, id),
-      component: GameInstanceConfigComponent,
+      component: GameSessionConfigComponent,
     }))(),
-    GameInstanceSession: ((params= ['instanceId', 'playerId'] as const, path = `game-instance/sessions/:${params[0]}`) => {
+    GameInstanceSession: ((params= ['instanceId', 'playerId'] as const, path = `game-session/sessions/:${params[0]}`) => {
       
       return ({
         path,
         params,
         interpolated: (id: string) => path.replace(`:${params[0]}`, id),
-        component: GameInstancePageComponent,
+        component: GameSessionPageComponent,
         canActivate: [((route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
           return inject(AuthGuard).canActivate(route, state);
         })] satisfies CanActivateFn[],
@@ -62,12 +62,12 @@ export function PageMasterRoutes() {
     })(),
     GameInstanceSessionChooseParticipant: ((
       params= ['instanceId'] as const,
-      path = `game-instance/sessions/:${params[0]}/choose-participant`,
+      path = `game-session/sessions/:${params[0]}/choose-participant`,
     ) => ({
       path,
       params,
       interpolated: (id: string) => path.replace(`:${params[0]}`, id),
-      component: GameInstanceSessionChooseParticipantComponent,
+      component: GameSessionChooseParticipantComponent,
     }))(),
   } satisfies Record<string, Route>;
 }

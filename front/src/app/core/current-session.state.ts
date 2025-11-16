@@ -1,7 +1,7 @@
 import { computed, inject, Injectable } from '@angular/core';
 import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
 import { map, tap } from 'rxjs';
-import { CurrentGameInstanceState } from './current-game-instance.state';
+import { CurrentGameSessionState } from './current-game-session.state';
 import { CurrentParticipantState } from './current-participant.state';
 import { SocketService } from './socket.service';
 
@@ -9,28 +9,28 @@ import { SocketService } from './socket.service';
   providedIn: 'root',
 })
 export class CurrentSessionState {
-  protected currentGameState = inject(CurrentGameInstanceState);
+  protected currentGameState = inject(CurrentGameSessionState);
   protected currentParticipantState = inject(CurrentParticipantState);
   private currentParticipant = computed(() => {
-    const participants = this.currentGameState.currentGameInstance()?.participants || [];
+    const participants = this.currentGameState.currentGameSession()?.participants || [];
     const currentParticipantId = this.currentParticipantState.currentParticipant();
     const currentParticipant = participants.find(p => p.id === currentParticipantId);
     if (!currentParticipant) {
       throw new Error(`No participant with id <${currentParticipantId}>`
-        +` found in GameInstance <${this.currentGameState.currentGameInstance()?.id}>`);
+        +` found in GameSession <${this.currentGameState.currentGameSession()?.id}>`);
     }
     return currentParticipant;
   });
   protected socketService = inject(SocketService);
   
   public currentSession = computed(() => {
-    const gameInstance = this.currentGameState.currentGameInstance();
+    const gameSession = this.currentGameState.currentGameSession();
     const participant = this.currentParticipant();
-    if (!gameInstance || !participant) {
+    if (!gameSession || !participant) {
       throw new Error('No current session available');
     }
 
-    return { gameInstance, participant };
+    return { gameSession, participant };
   });
 
   public currentSessionNullable = computed(() => {
@@ -53,11 +53,11 @@ export class CurrentSessionState {
 
   public init() {
     return this.currentGameState.init().pipe(
-      tap(gameInstance => {
-        if (!gameInstance) {
+      tap(gameSession => {
+        if (!gameSession) {
           throw new Error('No current game instance set');
         }
-        return this.currentParticipantState.init(gameInstance);
+        return this.currentParticipantState.init(gameSession);
       }),
       map(() => this.currentSession()),
     );
@@ -66,9 +66,9 @@ export class CurrentSessionState {
   
 
   public logout() {
-    const currentGameInstance = this.currentGameState.currentGameInstance();
-    this.currentGameState.clearCurrentGameInstance();
+    const currentGameSession = this.currentGameState.currentGameSession();
+    this.currentGameState.clearCurrentGameSession();
     this.currentParticipantState.clearParticipant();
-    this.socketService.emit(PageMasterSocketEvents.LEAVE_GAME_INSTANCE, { gameInstanceId: currentGameInstance?.id || 'unknown' });
+    this.socketService.emit(PageMasterSocketEvents.LEAVE_GAME_SESSION, { gameSessionId: currentGameSession?.id || 'unknown' });
   }
 }

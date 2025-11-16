@@ -4,8 +4,8 @@ import { WINDOW } from '../app.config';
 
 export const CURRENT_PARTICIPANT_TTL = 3600; // 1 hour in seconds
 export const CURRENT_PARTICIPANT_CACHE_KEY = 'currentParticipant';
-export const CURRENT_GAME_INSTANCE_TTL = 3600; // 1 hour in seconds
-export const CURRENT_GAME_INSTANCE_CACHE_KEY = 'currentGameInstance';
+export const CURRENT_GAME_SESSION_TTL = 3600; // 1 hour in seconds
+export const CURRENT_GAME_SESSION_CACHE_KEY = 'currentGameSession';
 
 
 interface StorageItem<T> {

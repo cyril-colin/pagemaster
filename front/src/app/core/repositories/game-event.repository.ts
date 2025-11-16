@@ -17,8 +17,8 @@ export class GameEventRepository {
     return this.http.get<GameEvent>(`${this.baseUrl}/game-events/${id}`);
   }
 
-  getGameEventsByGameInstanceId(gameInstanceId: string): Observable<GameEvent[]> {
-    return this.http.get<GameEvent[]>(`${this.baseUrl}/game-instances/${gameInstanceId}/game-events`);
+  getGameEventsByGameInstanceId(gameSessionId: string): Observable<GameEvent[]> {
+    return this.http.get<GameEvent[]>(`${this.baseUrl}/game-sessions/${gameSessionId}/game-events`);
   }
 
   getGameEventsByParticipantId(participantId: string): Observable<GameEvent[]> {

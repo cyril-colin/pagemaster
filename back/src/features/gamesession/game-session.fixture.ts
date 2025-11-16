@@ -1,10 +1,10 @@
 
 import { LoggerService } from '../../core/logger.service';
 import { defaultBar, defaultInventories } from '../../pagemaster-schemas/src/attributes.types';
-import { GameInstance } from '../../pagemaster-schemas/src/pagemaster.types';
-import { GameInstanceMongoClient } from './game-instance.mongo-client';
+import { GameSession } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameSessionMongoClient } from './game-session.mongo-client';
 
-const defaultGameInstance: GameInstance = {
+const defaultGameSession: GameSession = {
   "id": "medieval-fantasy-v1-Cyril-1758352912606",
   "version": 1,
   "participants": [
@@ -84,19 +84,19 @@ const defaultGameInstance: GameInstance = {
   ]
 }
 
-export class GameInstanceFixture {
+export class GameSessionFixture {
   constructor(
     private logger: LoggerService,
-    private mongoClient: GameInstanceMongoClient,
+    private mongoClient: GameSessionMongoClient,
   ) {}
 
-  public async initFirstGameInstance(): Promise<void> {
-    const existing = await this.mongoClient.findGameInstanceById(defaultGameInstance.id);
+  public async initFirstGameSession(): Promise<void> {
+    const existing = await this.mongoClient.findGameSessionById(defaultGameSession.id);
     if (existing) {
-      this.logger.info(`Default GameInstance with id '${defaultGameInstance.id}' already exists. Skipping creation.`);
+      this.logger.info(`Default GameSession with id '${defaultGameSession.id}' already exists. Skipping creation.`);
       return;
     }
-    this.logger.info(`Default GameInstance with id '${defaultGameInstance.id}' does not exist. Creating new GameInstance.`);
-    await this.mongoClient.createGameInstance(defaultGameInstance);
+    this.logger.info(`Default GameSession with id '${defaultGameSession.id}' does not exist. Creating new GameSession.`);
+    await this.mongoClient.createGameSession(defaultGameSession);
   }
 }

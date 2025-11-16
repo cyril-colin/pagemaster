@@ -10,7 +10,7 @@ import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { MainMenuComponent } from './main-menu.component';
 
 @Component({
-  selector: 'app-game-instance',
+  selector: 'app-game-session',
   template: `
   <section class="header">
     <div class="links">
@@ -91,16 +91,16 @@ import { MainMenuComponent } from './main-menu.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GameInstancePageComponent {
+export class GameSessionPageComponent {
   protected currentSession = inject(CurrentSessionState);
   protected modalService = inject(ModalService);
   protected eventService = inject(EventsCenterStateService);
   protected eventsRoute = computed(() => '/' + PageMasterRoutes().GameInstanceSession.interpolated(
-    this.currentSession.currentSession().gameInstance.id,
+    this.currentSession.currentSession().gameSession.id,
   ));
 
   constructor() {
-    toSignal(this.eventService.init(this.currentSession.currentSession().gameInstance.id));
+    toSignal(this.eventService.init(this.currentSession.currentSession().gameSession.id));
   }
 
   protected openMainMenu(): void {

@@ -1,21 +1,21 @@
-import { GameEvent, GameInstance, Participant } from './pagemaster.types';
+import { GameEvent, GameSession, Participant } from './pagemaster.types';
 
 export enum PageMasterSocketEvents {
-  JOIN_GAME_INSTANCE = 'joinGameInstance',
-  LEAVE_GAME_INSTANCE = 'leaveGameInstance',
-  LEFT_GAME_INSTANCE = 'leftGameInstance',
-  JOINED_GAME_INSTANCE = 'joinedGameInstance',
-  GAME_INSTANCE_UPDATED = 'gameInstanceUpdated',
+  JOIN_GAME_SESSION = 'joinGameSession',
+  LEAVE_GAME_SESSION = 'leaveGameSession',
+  LEFT_GAME_SESSION = 'leftGameSession',
+  JOINED_GAME_SESSION = 'joinedGameSession',
+  GAME_SESSION_UPDATED = 'gameSessionUpdated',
 }
 
 export type PageMasterSocketEventsPayloads = {
-  [PageMasterSocketEvents.JOIN_GAME_INSTANCE]: { gameInstanceId: string, participantId: string },
-  [PageMasterSocketEvents.LEAVE_GAME_INSTANCE]: { gameInstanceId: string },
-  [PageMasterSocketEvents.LEFT_GAME_INSTANCE]: { gameInstanceId: string },
-  [PageMasterSocketEvents.JOINED_GAME_INSTANCE]: { gameInstanceId: string, participantId: string },
-  [PageMasterSocketEvents.GAME_INSTANCE_UPDATED]: { gameInstance: GameInstance, by: Participant, event: GameEvent },
+  [PageMasterSocketEvents.JOIN_GAME_SESSION]: { gameSessionId: string, participantId: string },
+  [PageMasterSocketEvents.LEAVE_GAME_SESSION]: { gameSessionId: string },
+  [PageMasterSocketEvents.LEFT_GAME_SESSION]: { gameSessionId: string },
+  [PageMasterSocketEvents.JOINED_GAME_SESSION]: { gameSessionId: string, participantId: string },
+  [PageMasterSocketEvents.GAME_SESSION_UPDATED]: { gameSession: GameSession, by: Participant, event: GameEvent },
 };
 
-export function RoomId(gameInstanceId: string): string {
-  return `gameInstance_${gameInstanceId}`;
+export function RoomId(gameSessionId: string): string {
+  return `gameSession_${gameSessionId}`;
 }

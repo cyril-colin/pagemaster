@@ -20,8 +20,8 @@ export class EventsCenterStateService {
     this.eventsSignal.update((events) => [...events, event]);
   }
 
-  public init(gameInstanceId: string): Observable<GameEvent[]> {
-    return this.gameEventService.getGameEventsByGameInstanceId(gameInstanceId).pipe(
+  public init(gameSessionId: string): Observable<GameEvent[]> {
+    return this.gameEventService.getGameEventsByGameInstanceId(gameSessionId).pipe(
       tap((gameEvents) => {
         this.eventsSignal.set(gameEvents);
       }),

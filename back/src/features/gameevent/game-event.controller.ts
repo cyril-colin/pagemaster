@@ -3,13 +3,13 @@ import { Delete, Get, Post, Put } from '../../core/router/controller.decorators'
 import { HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
 import { GameEvent } from '../../pagemaster-schemas/src/pagemaster.types';
-import { GameInstanceMongoClient } from '../gameinstance/game-instance.mongo-client';
+import { GameSessionMongoClient } from '../gamesession/game-session.mongo-client';
 import { GameEventMongoClient } from './game-event.mongo-client';
 
 export class GameEventController {
   constructor(
     private mongoClient: GameEventMongoClient,
-    private gameInstanceMongoClient: GameInstanceMongoClient,
+    private gameInstanceMongoClient: GameSessionMongoClient,
   ) {}
 
   @Get('/game-events')
@@ -33,9 +33,9 @@ export class GameEventController {
     return gameEvent as GameEvent;
   }
 
-  @Get('/game-instances/:gameInstanceId/game-events')
-  public async getGameEventsByGameInstanceId(body: unknown, params: {gameInstanceId: string}): Promise<GameEvent[]> {
-    const gameEventDocuments = await this.mongoClient.findGameEventsByGameInstanceId(params.gameInstanceId);
+  @Get('/game-sessions/:gameSessionId/game-events')
+  public async getGameEventsByGameInstanceId(body: unknown, params: {gameSessionId: string}): Promise<GameEvent[]> {
+    const gameEventDocuments = await this.mongoClient.findGameEventsByGameSessionId(params.gameSessionId);
     // Convert MongoDB documents to plain GameEvent objects (remove MongoDB _id field)
     return gameEventDocuments.map(doc => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -44,22 +44,22 @@ export class GameEventController {
     });
   }
 
-  @Post('/game-instances/:gameInstanceId/game-events')
+  @Post('/game-sessions/:gameSessionId/game-events')
   public async createGameEvent(
-    gameEvent: Omit<GameEvent, 'id' | 'timestamp' | 'gameInstanceId'>,
-    params: {gameInstanceId: string},
+    gameEvent: Omit<GameEvent, 'id' | 'timestamp' | 'gameSessionId'>,
+    params: {gameSessionId: string},
     query: unknown,
     req: Request,
   ): Promise<GameEvent> {
     // Validate that the game instance exists
-    const gameInstance = await this.gameInstanceMongoClient.findGameInstanceById(params.gameInstanceId);
-    if (!gameInstance) {
+    const gameSession = await this.gameInstanceMongoClient.findGameSessionById(params.gameSessionId);
+    if (!gameSession) {
       throw new HttpNotFoundError('Game instance not found');
     }
 
     // Validate that the participant exists in this game instance
     const currentParticipantId = (Array.isArray(req.headers[HEADER_CURRENT_PARTICIPANT]) ? null : req.headers[HEADER_CURRENT_PARTICIPANT]) || null;
-    const currentParticipant = gameInstance.participants.find(p => p.id === currentParticipantId);
+    const currentParticipant = gameSession.participants.find(p => p.id === currentParticipantId);
     
     if (!currentParticipant) {
       throw new HttpForbiddenError('Forbidden: You need to be a participant of this game instance');
@@ -68,8 +68,8 @@ export class GameEventController {
     // Create the complete game event with generated fields
     const completeGameEvent: GameEvent = {
       ...gameEvent,
-      id: `${params.gameInstanceId}-event-${Date.now()}`,
-      gameInstanceId: params.gameInstanceId,
+      id: `${params.gameSessionId}-event-${Date.now()}`,
+      gameSessionId: params.gameSessionId,
       timestamp: Date.now(),
     };
 
@@ -93,14 +93,14 @@ export class GameEventController {
     }
 
     // Validate that the game instance exists
-    const gameInstance = await this.gameInstanceMongoClient.findGameInstanceById(existingEvent.gameInstanceId);
-    if (!gameInstance) {
+    const gameSession = await this.gameInstanceMongoClient.findGameSessionById(existingEvent.gameSessionId);
+    if (!gameSession) {
       throw new HttpNotFoundError('Game instance not found');
     }
 
     // Check if the current participant is the event owner or game master
     const currentParticipantId = (Array.isArray(req.headers[HEADER_CURRENT_PARTICIPANT]) ? null : req.headers[HEADER_CURRENT_PARTICIPANT]) || null;
-    const currentParticipant = gameInstance.participants.find(p => p.id === currentParticipantId);
+    const currentParticipant = gameSession.participants.find(p => p.id === currentParticipantId);
     
     if (!currentParticipant) {
       throw new HttpForbiddenError('Forbidden: You need to be a participant of this game instance');
@@ -112,7 +112,7 @@ export class GameEventController {
 
     // Prevent updating certain immutable fields
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { id, gameInstanceId, timestamp, ...allowedUpdates } = gameEvent;
+    const { id, gameSessionId, timestamp, ...allowedUpdates } = gameEvent;
 
     const updated = await this.mongoClient.updateGameEvent(params.id, allowedUpdates);
     return updated;
@@ -132,14 +132,14 @@ export class GameEventController {
     }
 
     // Validate that the game instance exists
-    const gameInstance = await this.gameInstanceMongoClient.findGameInstanceById(existingEvent.gameInstanceId);
-    if (!gameInstance) {
+    const gameSession = await this.gameInstanceMongoClient.findGameSessionById(existingEvent.gameSessionId);
+    if (!gameSession) {
       throw new HttpNotFoundError('Game instance not found');
     }
 
     // Check if the current participant is the event owner or game master
     const currentParticipantId = (Array.isArray(req.headers[HEADER_CURRENT_PARTICIPANT]) ? null : req.headers[HEADER_CURRENT_PARTICIPANT]) || null;
-    const currentParticipant = gameInstance.participants.find(p => p.id === currentParticipantId);
+    const currentParticipant = gameSession.participants.find(p => p.id === currentParticipantId);
     
     if (!currentParticipant) {
       throw new HttpForbiddenError('Forbidden: You need to be a participant of this game instance');

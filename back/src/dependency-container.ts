@@ -7,9 +7,9 @@ import { Router } from './core/router/route-registry';
 import { SocketServerService } from './core/socket.service';
 import { GameEventFixture } from './features/gameevent/game-event.fixture';
 import { GameEventMongoClient } from './features/gameevent/game-event.mongo-client';
-import { GameInstanceFixture } from './features/gameinstance/game-instance.fixture';
-import { GameInstanceMongoClient } from './features/gameinstance/game-instance.mongo-client';
-import { GameInstanceService } from './features/gameinstance/game-instance.service';
+import { GameSessionFixture } from './features/gamesession/game-session.fixture';
+import { GameSessionMongoClient } from './features/gamesession/game-session.mongo-client';
+import { GameSessionService } from './features/gamesession/game-session.service';
 
 const ajv = new Ajv({ allErrors: true });
 const configuration = new ConfigurationService(ajv);
@@ -24,7 +24,7 @@ const mongoConfig = {
 const mongoConnection = new MongoConnection(logger, mongoConfig, true);
 
 // Create all mongo clients - they share the same connection via mongoConnection
-const gameInstanceMongoClient = new GameInstanceMongoClient(logger, mongoConnection, true);
+const gameInstanceMongoClient = new GameSessionMongoClient(logger, mongoConnection, true);
 const gameEventMongoClient = new GameEventMongoClient(logger, mongoConnection, true);
 
 export const router = new Router(logger, ajv);
@@ -32,8 +32,8 @@ export const router = new Router(logger, ajv);
 const socketServerService = new SocketServerService(logger, gameEventMongoClient);
 
 // Create the game instance service (composition over inheritance)
-const gameInstanceService = new GameInstanceService(gameInstanceMongoClient, socketServerService);
-const gameInstanceFixture = new GameInstanceFixture(logger, gameInstanceMongoClient);
+const gameInstanceService = new GameSessionService(gameInstanceMongoClient, socketServerService);
+const gameInstanceFixture = new GameSessionFixture(logger, gameInstanceMongoClient);
 const gameEventFixture = new GameEventFixture(logger, gameEventMongoClient);
 
 export const serviceContainer = {

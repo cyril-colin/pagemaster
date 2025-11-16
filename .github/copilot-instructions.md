@@ -54,11 +54,11 @@ This is a **monorepo** with three main components:
 - Inject dependencies via constructor
 - Example:
   ```typescript
-  export class GameInstanceController {
-    constructor(private mongoClient: GameInstanceMongoClient) {}
+  export class GameSessionController {
+    constructor(private mongoClient: GameSessionMongoClient) {}
     
-    @Get('/game-instances')
-    public async getAllGameInstances(): Promise<GameInstance[]> {
+    @Get('/game-sessions')
+    public async getAllGameSessions(): Promise<GameSession[]> {
       // Implementation
     }
   }
@@ -67,7 +67,7 @@ This is a **monorepo** with three main components:
 #### API Routes
 - All routes are prefixed with `/api` by default (configured in `apiPrefix`)
 - Use `{withoutApiPrefix: true}` option to bypass this
-- Route parameters use Express syntax: `/game-instances/:id`
+- Route parameters use Express syntax: `/game-sessions/:id`
 
 #### MongoDB
 - Extend `BaseMongoClient` for database operations
@@ -106,13 +106,13 @@ This is a **monorepo** with three main components:
 
 #### State Management
 - Use **services with signals** for shared state
-- Examples: `CurrentGameInstanceState`, `CurrentParticipantState`, `CurrentSessionState`
+- Examples: `CurrentGameSessionState`, `CurrentParticipantState`, `CurrentSessionState`
 - Keep state immutable; use `update()` or `set()` on signals
 
 #### HTTP & API
 - Use `HttpClient` from `@angular/common/http`
 - Interceptors are configured in `app.config.ts`
-- API calls should go through repository services (e.g., `GameInstanceRepository`)
+- API calls should go through repository services (e.g., `GameSessionRepository`)
 
 #### Routing
 - Define routes in `app.routes.ts`
@@ -120,7 +120,7 @@ This is a **monorepo** with three main components:
 - Lazy load page components when possible
 
 #### Real-time Communication
-- Use `GameInstanceSocketService` for Socket.IO connections
+- Use `GameSessionSocketService` for Socket.IO connections
 - Emit and listen to events in services, not components
 - Handle disconnections gracefully
 
@@ -138,9 +138,9 @@ This is a **monorepo** with three main components:
 - Run: `ng test`
 
 ### File Naming
-- **Backend**: `kebab-case.ts` (e.g., `game-instance.controller.ts`)
-- **Frontend**: `kebab-case.ts` (e.g., `game-instance.component.ts`)
-- **Types/Interfaces**: PascalCase (e.g., `GameInstance`, `Participant`)
+- **Backend**: `kebab-case.ts` (e.g., `game-session.controller.ts`)
+- **Frontend**: `kebab-case.ts` (e.g., `game-session.component.ts`)
+- **Types/Interfaces**: PascalCase (e.g., `GameSession`, `Participant`)
 - **Services**: Suffix with `.service.ts`
 - **Controllers**: Suffix with `.controller.ts`
 - **Repositories**: Suffix with `.repository.ts`

@@ -1,38 +1,38 @@
 import { Request } from 'express';
 import { Patch } from '../../core/router/controller.decorators';
 import { HttpForbiddenError } from '../../core/router/http-errors';
-import { Character, GameInstance } from '../../pagemaster-schemas/src/pagemaster.types';
-import { GameInstanceService } from './game-instance.service';
+import { Character, GameSession } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameSessionService } from './game-session.service';
 
 export class ParticipantProfileController {
-  constructor(private gameInstanceService: GameInstanceService) {}
+  constructor(private gameInstanceService: GameSessionService) {}
 
-  @Patch('/game-instances/:gameInstanceId/participants/:participantId/rename')
+  @Patch('/game-sessions/:gameSessionId/participants/:participantId/rename')
   public async renameParticipant(
     character: Pick<Character, 'name'>,
-    params: {gameInstanceId: string, participantId: string},
+    params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
-  ): Promise<GameInstance> {
-    const { gameInstance, currentParticipant } = await this.gameInstanceService.validateContext(params.gameInstanceId, req, 'player');
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
     this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
 
-    const participantIndex = this.gameInstanceService.findParticipantIndex(gameInstance, params.participantId);
-    const player = gameInstance.participants[participantIndex];
+    const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
+    const player = gameSession.participants[participantIndex];
     this.gameInstanceService.validatePlayerType(player);
 
     const oldName = player.character.name;
     player.character.name = character.name;
 
-    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
     const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
     
-    this.gameInstanceService.notifyGameInstanceUpdate({
-      gameInstance: gameInstanceCleaned,
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
       by: updatedParticipant,
       event: {
         type: 'participant-rename',
@@ -44,31 +44,31 @@ export class ParticipantProfileController {
     return gameInstanceCleaned;
   }
 
-  @Patch('/game-instances/:gameInstanceId/participants/:participantId/avatar')
+  @Patch('/game-sessions/:gameSessionId/participants/:participantId/avatar')
   public async updateParticipantAvatar(
     character: Pick<Character, 'picture'>,
-    params: {gameInstanceId: string, participantId: string},
+    params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
-  ): Promise<GameInstance> {
-    const { gameInstance, currentParticipant } = await this.gameInstanceService.validateContext(params.gameInstanceId, req, 'player');
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
     this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
 
-    const participantIndex = this.gameInstanceService.findParticipantIndex(gameInstance, params.participantId);
-    const player = gameInstance.participants[participantIndex];
+    const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
+    const player = gameSession.participants[participantIndex];
     this.gameInstanceService.validatePlayerType(player);
 
     player.character.picture = character.picture;
 
-    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
     const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
     
-    this.gameInstanceService.notifyGameInstanceUpdate({
-      gameInstance: gameInstanceCleaned,
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
       by: updatedParticipant,
       event: {
         type: 'participant-avatar-update',
@@ -80,31 +80,31 @@ export class ParticipantProfileController {
     return gameInstanceCleaned;
   }
 
-  @Patch('/game-instances/:gameInstanceId/participants/:participantId/description')
+  @Patch('/game-sessions/:gameSessionId/participants/:participantId/description')
   public async updateParticipantDescription(
     character: Pick<Character, 'description'>,
-    params: {gameInstanceId: string, participantId: string},
+    params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
-  ): Promise<GameInstance> {
-    const { gameInstance, currentParticipant } = await this.gameInstanceService.validateContext(params.gameInstanceId, req, 'player');
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
     this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
 
-    const participantIndex = this.gameInstanceService.findParticipantIndex(gameInstance, params.participantId);
-    const player = gameInstance.participants[participantIndex];
+    const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
+    const player = gameSession.participants[participantIndex];
     this.gameInstanceService.validatePlayerType(player);
 
     player.character.description = character.description;
 
-    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
     const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
     if (!updatedParticipant) {
       throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
     }
     
-    this.gameInstanceService.notifyGameInstanceUpdate({
-      gameInstance: gameInstanceCleaned,
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
       by: updatedParticipant,
       event: {
         type: 'participant-description-update',
