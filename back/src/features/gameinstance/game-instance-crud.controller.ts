@@ -3,7 +3,6 @@ import { LoggerService } from '../../core/logger.service';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
 import { HttpForbiddenError } from '../../core/router/http-errors';
 import { SocketServerService } from '../../core/socket.service';
-import { Item } from '../../pagemaster-schemas/src/items.types';
 import { GameInstance, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameInstanceMongoClient } from './game-instance.mongo-client';
 import { GameInstanceService } from './game-instance.service';
@@ -40,17 +39,6 @@ export class GameInstanceController {
     return gameInstance as GameInstance;
   }
 
-  @Get('/game-instances/:id')
-  public async getGameInstancesByGameDefId(body: unknown, params: {id: string}): Promise<GameInstance[]> {
-    const gameInstanceDocuments = await this.mongoClient.findGameInstancesByGameDefId(params.id);
-    // Convert MongoDB documents to plain GameInstance objects (remove MongoDB _id field)
-    return gameInstanceDocuments.map(doc => {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { _id, ...gameInstance } = doc;
-      return gameInstance as GameInstance;
-    });
-  }
-
   @Post('/game-instances')
   public async createGameInstance(gameInstance: GameInstance): Promise<GameInstance> {
     const doc = await this.mongoClient.createGameInstance(gameInstance);
@@ -58,38 +46,6 @@ export class GameInstanceController {
     const { _id, ...createdGameInstance } = doc;
     
     return createdGameInstance as GameInstance;
-  }
-
-  @Post('/game-instances/:gameInstanceId/items')
-  public async createGameInstanceItem(
-    item: Item,
-    params: {gameInstanceId: string},
-    query: unknown,
-    req: Request,
-  ): Promise<GameInstance> {
-    const { gameInstance, currentParticipant } = await this.gameInstanceService.validateContext(params.gameInstanceId, req, 'gameMaster');
-
-    gameInstance.gameDef.possibleItems = gameInstance.gameDef.possibleItems || [];
-    gameInstance.gameDef.possibleItems = [...gameInstance.gameDef.possibleItems, item];
-    const gameInstanceCleaned = await this.gameInstanceService.commitGameInstance(gameInstance);
-
-    const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
-    if (!updatedParticipant) {
-      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
-    }
-    
-    this.gameInstanceService.notifyGameInstanceUpdate({
-      gameInstance: gameInstanceCleaned,
-      by: updatedParticipant,
-      event: {
-        type: 'item-created',
-        title: 'New item added',
-        description: `${currentParticipant.name} added a new item: ${item.name}`,
-        metadata: { itemId: item.id, itemName: item.name, itemWeight: item.weight }
-      }
-    });
-    
-    return gameInstanceCleaned;
   }
 
   @Post('/game-instances/:gameInstanceId/participants')

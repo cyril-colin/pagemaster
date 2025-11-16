@@ -18,7 +18,7 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
       <h1>Choose Your Character</h1>
       @let instance = selectedGameInstance();
       @if (instance) {
-        <p class="subtitle">{{ instance.gameDef.name }} - Master: {{ instance.masterName }}</p>
+        <p class="subtitle">{{ instance.id }} - Master: {{ instance.masterName }}</p>
         
         <div class="participants-grid">
           @for(participant of instance.participants; track participant.id) {

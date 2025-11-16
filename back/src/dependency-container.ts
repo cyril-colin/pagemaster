@@ -5,8 +5,6 @@ import { MongoConnection } from './core/base-mongo-client';
 import { LoggerService } from './core/logger.service';
 import { Router } from './core/router/route-registry';
 import { SocketServerService } from './core/socket.service';
-import { GameDefFixture } from './features/gamedef/gamedef.fixture';
-import { GameDefMongoClient } from './features/gamedef/gamedef.mongo-client';
 import { GameEventFixture } from './features/gameevent/game-event.fixture';
 import { GameEventMongoClient } from './features/gameevent/game-event.mongo-client';
 import { GameInstanceFixture } from './features/gameinstance/game-instance.fixture';
@@ -27,7 +25,6 @@ const mongoConfig = {
 const mongoConnection = new MongoConnection(logger, mongoConfig, true);
 
 // Create all mongo clients - they share the same connection via mongoConnection
-const gameDefMongoClient = new GameDefMongoClient(logger, mongoConnection, true);
 const gameInstanceMongoClient = new GameInstanceMongoClient(logger, mongoConnection, true);
 const gameEventMongoClient = new GameEventMongoClient(logger, mongoConnection, true);
 const gameSessionMongoClient = new GameSessionMongoClient(logger, mongoConnection, true);
@@ -38,8 +35,6 @@ const socketServerService = new SocketServerService(logger, gameEventMongoClient
 
 // Create the game instance service (composition over inheritance)
 const gameInstanceService = new GameInstanceService(gameInstanceMongoClient, socketServerService);
-
-const gameDefFixture = new GameDefFixture(logger, gameDefMongoClient);
 const gameInstanceFixture = new GameInstanceFixture(logger, gameInstanceMongoClient);
 const gameEventFixture = new GameEventFixture(logger, gameEventMongoClient);
 
@@ -49,10 +44,8 @@ export const serviceContainer = {
   router,
   socketServerService,
   mongoConnection,
-  gameDefFixture,
   gameInstanceFixture,
   gameEventFixture,
-  gameDefMongoClient,
   gameInstanceMongoClient,
   gameInstanceService,
   gameEventMongoClient,

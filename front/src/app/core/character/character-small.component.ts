@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
+import { Character } from '@pagemaster/common/pagemaster.types';
 import { AvatarViewComponent } from './avatar/avatar-view.component';
 import { NameViewComponent } from './names/name-view.component';
 
@@ -63,6 +63,5 @@ import { NameViewComponent } from './names/name-view.component';
 })
 export class CharacterSmallComponent {
   public character = input.required<Character>();
-  public gameDef = input.required<GameDef>();
   public clicked = output<void>();
 }

@@ -4,7 +4,6 @@ import { AuthGuard } from '../pages/game-instance-session/auth.guard';
 import { GameInstancePageComponent } from '../pages/game-instance-session/game-instance.page.component';
 import { PlayerPageComponent } from '../pages/game-instance-session/player.page.component';
 import { GameInstanceConfigComponent } from '../pages/public/game-instance-creation/game-instance-config.component';
-import { GameInstanceSelectComponent } from '../pages/public/game-instance-creation/game-instance-select.component';
 import { GameInstanceSessionChooseParticipantComponent } from '../pages/public/game-instance-session-choose-participant.component';
 import { HomeComponent } from '../pages/public/home.component';
 import { PublicLayoutComponent } from '../pages/public/public-layout.component';
@@ -17,8 +16,7 @@ export function PageMasterRoutes() {
       path: '',
       component: PublicLayoutComponent,
       children: [
-        { path: 'game-instance/select', component: GameInstanceSelectComponent },
-        ((params= ['instanceId'] as const,path = `game-instance/config/:${params[0]}`) => ({
+        ((params= ['instanceId'] as const,path = 'game-instance/config') => ({
           path,
           params,
           interpolated: (id: string) => path.replace(`:${params[0]}`, id),
@@ -35,7 +33,6 @@ export function PageMasterRoutes() {
         }))(),
       ],
     },
-    GameInstanceSelect: { path: 'game-instance/select', component: GameInstanceSelectComponent },
     GameInstanceConfig: ((params= ['instanceId'] as const,path = `game-instance/config/:${params[0]}`) => ({
       path,
       params,

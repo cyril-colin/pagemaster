@@ -2,7 +2,6 @@ import express from 'express';
 import { Server } from 'socket.io';
 import { spaFallbackMiddleware } from './core/spa-fallback.middleware';
 import { serviceContainer } from './dependency-container';
-import { GameDefController } from './features/gamedef/gamedef.controller';
 import { GameEventController } from './features/gameevent/game-event.controller';
 import { GameInstanceController } from './features/gameinstance/game-instance-crud.controller';
 import { ParticipantBarsController } from './features/gameinstance/participant-bars.controller';
@@ -20,7 +19,6 @@ if (staticPath) {
 }
 
 const controllers = [
-  new GameDefController(serviceContainer.gameDefMongoClient),
   new GameInstanceController(serviceContainer.gameInstanceMongoClient, serviceContainer.socketServerService, serviceContainer.logger),
   new ParticipantBarsController(serviceContainer.gameInstanceService),
   new ParticipantStatusesController(serviceContainer.gameInstanceService),
@@ -76,7 +74,6 @@ const server = app.listen(serviceContainer.configuration.getConfig().port, async
     
     // Initialize indexes for all collections
     await Promise.all([
-      serviceContainer.gameDefMongoClient.initializeIndexes(),
       serviceContainer.gameInstanceMongoClient.initializeIndexes(),
       serviceContainer.gameEventMongoClient.initializeIndexes(),
       serviceContainer.gameSessionMongoClient.initializeIndexes(),
@@ -84,7 +81,6 @@ const server = app.listen(serviceContainer.configuration.getConfig().port, async
     serviceContainer.logger.info('Database indexes initialized');
     
     // Load fixtures
-    await serviceContainer.gameDefFixture.initFirstGameDef();
     await serviceContainer.gameInstanceFixture.initFirstGameInstance();
     await serviceContainer.gameEventFixture.initGameEvents();
   } catch (error) {

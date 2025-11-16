@@ -1,15 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { GameInstance } from '@pagemaster/common/pagemaster.types';
-import { switchMap, tap } from 'rxjs';
+import { tap } from 'rxjs';
 import { ButtonComponent } from '../../../core/design-system/button.component';
 import { CardComponent } from '../../../core/design-system/card.component';
 import { DividerComponent } from '../../../core/design-system/divider.component';
 import { GameInstanceFormComponent } from '../../../core/game/game-instance-form.component';
 import { PageMasterRoutes } from '../../../core/pagemaster.router';
 import { GameInstanceRepository } from '../../../core/repositories/game-instance.repository';
-import { GameDefRepository } from '../../../core/repositories/gamedef.repository';
 
 @Component({
   selector: 'app-game-instance-config',
@@ -21,14 +19,7 @@ import { GameDefRepository } from '../../../core/repositories/gamedef.repository
           <p class="subtitle">Set up your game master profile to begin</p>
         </div>
         
-        @let game = selectedGameDef();
-        @if (game) {
-          <app-game-instance-form [gameDef]="game" (newGameInstance)="onNewGame($event)"></app-game-instance-form>
-        } @else { 
-          <div class="loading">
-            <p>Loading game configuration...</p>
-          </div>
-        }
+        <app-game-instance-form (newGameInstance)="onNewGame($event)"></app-game-instance-form>
       }
 
       @if (newGameInstance(); as instance) {
@@ -45,7 +36,7 @@ import { GameDefRepository } from '../../../core/repositories/gamedef.repository
                 <div class="info-grid">
                   <div class="info-item">
                     <span class="info-label">Game System:</span>
-                    <span class="info-value">{{ instance.gameDef.name }}</span>
+                    <span class="info-value">{{ instance.id }}</span>
                   </div>
                   <div class="info-item">
                     <span class="info-label">Game Master:</span>
@@ -278,20 +269,10 @@ import { GameDefRepository } from '../../../core/repositories/gamedef.repository
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameInstanceConfigComponent {
-  protected gameDefService = inject(GameDefRepository);
   protected gameInstanceService = inject(GameInstanceRepository);
   protected route = inject(ActivatedRoute);
   protected newGameInstance = signal<GameInstance | null>(null);
   protected gameInstanceLink = signal<string | null>(null);
-  protected selectedGameDef = toSignal(this.route.paramMap.pipe(
-    switchMap(params => {
-      const gameDefId = params.get(PageMasterRoutes().GameInstanceConfig.params[0]);
-      if (!gameDefId) {
-        throw new Error('No gameDefId in route parameters');
-      }
-      return this.gameDefService.getGameDefById(gameDefId);
-    }),
-  ));
 
   protected onNewGame(gameInstance: GameInstance) {
     this.gameInstanceService.postGameInstance(gameInstance).pipe(

@@ -22,7 +22,7 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
         <ds-card class="current-session-card">
           <div class="card-content">
             <h3>Your Active Session</h3>
-            <p class="session-game">{{ session.gameInstance.gameDef.name }}</p>
+            <p class="session-game">{{ session.gameInstance.id }}</p>
             <p class="session-participant">
               Playing as: <strong>{{ session.participant.name }}</strong>
               @if (session.participant.type === 'player') {
@@ -51,7 +51,7 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
             </div>
             <ds-button 
               [mode]="'primary'" 
-              [routerLink]="'/' + routes.GameInstanceSelect.path">
+              [routerLink]="'/' + routes.GameInstanceConfig.path">
               Create Session
             </ds-button>
           </ds-card>
@@ -67,7 +67,7 @@ import { GameInstanceRepository } from '../../core/repositories/game-instance.re
             @for (instance of instanceList(); track instance.id) {
               <ds-card class="instance-card">
                 <div class="instance-info">
-                  <h3 class="instance-name">{{ instance.gameDef.name }}</h3>
+                  <h3 class="instance-name">{{ instance.id }}</h3>
                   <p class="instance-details">
                     <span class="label">Game Master:</span> {{ instance.masterName }}
                   </p>

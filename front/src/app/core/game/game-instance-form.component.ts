@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GameDef, GameInstance } from '@pagemaster/common/pagemaster.types';
+import { GameInstance } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
 
 interface GameFormType {
@@ -16,7 +16,7 @@ interface GameFormType {
         <div class="form-content">
           <h3 class="form-title">Setup Your Game Master</h3>
           <p class="form-description">
-            Create your Game Master profile for the <strong>{{ gameDef().name }}</strong> session
+            Create your Game Master profile for the new session
           </p>
           
           <div class="input-wrapper">
@@ -201,7 +201,6 @@ interface GameFormType {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameInstanceFormComponent {
-  public gameDef = input.required<GameDef>();
   public newGameInstance = output<GameInstance>();
   private fb = inject(FormBuilder);
   
@@ -211,14 +210,11 @@ export class GameInstanceFormComponent {
 
   protected submit() {
     const gameInstanceForm = this.form.getRawValue();
-    const selectedGameDef = this.gameDef();
     if (this.form.valid && gameInstanceForm) {
       const gameInstance: GameInstance = {
-        id: `${selectedGameDef.id}-${gameInstanceForm.masterName}-${Date.now()}`,
+        id: `session-${gameInstanceForm.masterName}-${Date.now()}`,
         masterName: gameInstanceForm.masterName.replaceAll(' ', '-'),
         version: 0,
-        gameDefId: selectedGameDef.id,
-        gameDef: selectedGameDef,
         participants: [
           {
             id: `gamemaster-${gameInstanceForm.masterName}`,

@@ -27,10 +27,6 @@ export class GameSessionMongoClient extends BaseMongoClient {
                 { id: 1 },
                 { unique: true }
             );
-            await this.createIndex(
-                GameSessionMongoClient.COLLECTION_NAME,
-                { 'gameInstance.gameDefId': 1 }
-            );
 
             console.log('GameSession collection indexes initialized');
         } catch (error) {

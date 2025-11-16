@@ -15,10 +15,8 @@ import { GameInstanceRepository } from 'src/app/core/repositories/game-instance.
 @Component({
   selector: 'app-game-player-view',
   template: `
-    @let game = currentSession.currentSession().gameInstance;
     <app-character-form
       [existingCharacter]="viewedPlayer().character"
-      [gameDef]="game.gameDef"
       [permissions]="permissions()"
       (renameEvent)="renameParticipant($event.value, viewedPlayer())"
       (avatarEvent)="updateAvatar($event, viewedPlayer())"

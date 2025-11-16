@@ -54,11 +54,11 @@ This is a **monorepo** with three main components:
 - Inject dependencies via constructor
 - Example:
   ```typescript
-  export class GameDefController {
-    constructor(private mongoClient: GameDefMongoClient) {}
+  export class GameInstanceController {
+    constructor(private mongoClient: GameInstanceMongoClient) {}
     
-    @Get('/gamedefs')
-    public async getAllGameDefs(): Promise<GameDef[]> {
+    @Get('/game-instances')
+    public async getAllGameInstances(): Promise<GameInstance[]> {
       // Implementation
     }
   }
@@ -67,7 +67,7 @@ This is a **monorepo** with three main components:
 #### API Routes
 - All routes are prefixed with `/api` by default (configured in `apiPrefix`)
 - Use `{withoutApiPrefix: true}` option to bypass this
-- Route parameters use Express syntax: `/gamedefs/:id`
+- Route parameters use Express syntax: `/game-instances/:id`
 
 #### MongoDB
 - Extend `BaseMongoClient` for database operations
@@ -112,7 +112,7 @@ This is a **monorepo** with three main components:
 #### HTTP & API
 - Use `HttpClient` from `@angular/common/http`
 - Interceptors are configured in `app.config.ts`
-- API calls should go through repository services (e.g., `GameDefRepository`)
+- API calls should go through repository services (e.g., `GameInstanceRepository`)
 
 #### Routing
 - Define routes in `app.routes.ts`
@@ -140,7 +140,7 @@ This is a **monorepo** with three main components:
 ### File Naming
 - **Backend**: `kebab-case.ts` (e.g., `game-instance.controller.ts`)
 - **Frontend**: `kebab-case.ts` (e.g., `game-instance.component.ts`)
-- **Types/Interfaces**: PascalCase (e.g., `GameDef`, `GameInstance`)
+- **Types/Interfaces**: PascalCase (e.g., `GameInstance`, `Participant`)
 - **Services**: Suffix with `.service.ts`
 - **Controllers**: Suffix with `.controller.ts`
 - **Repositories**: Suffix with `.repository.ts`

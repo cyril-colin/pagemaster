@@ -8,16 +8,6 @@ const defaultGameInstance: GameInstance = {
   "id": "medieval-fantasy-v1-Cyril-1758352912606",
   "masterName": "Cyril",
   "version": 1,
-  "gameDefId": "medieval-fantasy-v1",
-  "gameDef": {
-    "id": "medieval-fantasy-v1",
-    "name": "Medieval Fantasy Adventure",
-    "version": "1.0.0",
-    "description": "A classic medieval fantasy RPG with wizards, warriors, and mythical creatures.",
-    "minPlayers": 2,
-    "maxPlayers": 6,
-    "possibleItems": []
-  },
   "participants": [
     {
       "id": "player-Alain-0",

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
-import { Character, GameDef } from '@pagemaster/common/pagemaster.types';
+import { Character } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
 import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
 import { BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
@@ -121,7 +121,6 @@ export type CharacterPermissions = {
 })
 export class CharacterFormComponent  {
   public existingCharacter = input.required<Character>();
-  public gameDef = input.required<GameDef>();
   public permissions = input.required<CharacterPermissions>();
   public newCharacter = output<Character>();
   public fb = inject(FormBuilder);

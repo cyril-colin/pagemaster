@@ -29,7 +29,7 @@ import { PageMasterRoutes } from '../../core/pagemaster.router';
                   <span class="gm-badge">🎭 GM</span>
                 }
               </span>
-              <span class="game-name">in {{ session.gameInstance.gameDef.name }}</span>
+              <span class="game-name">in {{ session.gameInstance.id }}</span>
             </div>
           }
         </div>

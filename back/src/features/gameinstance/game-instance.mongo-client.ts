@@ -27,14 +27,6 @@ export class GameInstanceMongoClient extends BaseMongoClient {
                 { id: 1 },
                 { unique: true }
             );
-            await this.createIndex(
-                GameInstanceMongoClient.COLLECTION_NAME,
-                { gameDefId: 1 }
-            );
-            await this.createIndex(
-                GameInstanceMongoClient.COLLECTION_NAME,
-                { 'gameDef.id': 1 }
-            );
 
             console.log('GameInstance collection indexes initialized');
         } catch (error) {
@@ -67,13 +59,6 @@ export class GameInstanceMongoClient extends BaseMongoClient {
         return this.findOne<GameInstanceDocument>(
             GameInstanceMongoClient.COLLECTION_NAME,
             { _id: new ObjectId(id) }
-        );
-    }
-
-    public async findGameInstancesByGameDefId(gameDefId: string): Promise<WithId<GameInstanceDocument>[]> {
-        return this.find<GameInstanceDocument>(
-            GameInstanceMongoClient.COLLECTION_NAME,
-            { gameDefId }
         );
     }
 

@@ -1,39 +1,8 @@
 import { AttributeBar, AttributeInventory, AttributeStatus } from './attributes.types';
-import { Item } from './items.types';
 
-/**
- * This defines a game definition, that can be used to create game instances.
- * 
- * A game definition allows you to define multiple game universes. For example 
- * you could have a "Medieval Fantasy" game definition, and a "Sci-Fi" game definition,
- * each with their own set of attributes, skills, and items.
- * The game definition itself is immutable: once created, it cannot be changed.
- * However, you can create multiple {@link GameInstance} based on the same game definition.
- */
-export type GameDef = {
-  id: string,
-  name: string,
-  version: string,
-  description: string,
-  minPlayers: number,
-  maxPlayers: number,
-  possibleItems: Item[],
-}
-
-
-/**
- * This defines a specific instance of a game, based on a {@link GameDef}.
- * 
- * A game instance is created when a group of players decide which {@link GameDef} to play together.
- * It contains the state of the game, including the players and their characters.
- * 
- * A game instance is mutable: the state of the game can change over time,
- * as players progress through the game, gain new skills, acquire new items, etc.
- */
 export type GameInstance = {
   /**
    * A unique identifier for this game instance.
-   * Format is `${gameInstanceForm.gameDefId}-${gameInstanceForm.masterName}-${Date.now()}`
    */
   readonly id: string,
 
@@ -53,19 +22,6 @@ export type GameInstance = {
    * Without spaces
    */
   readonly masterName: string,
-  /**
-   * The id of the game definition this instance is based on.
-   * Thanks to this, we can always retrieve the original game definition if needed.
-   */
-  readonly gameDefId: GameDef['id'],
-  /**
-   * The game definition this instance is based on.
-   * This is here because during a game session, the game definition might change : we could
-   * add new attributes, new items, new skills... but the game instance should remain the same.
-   * That's why we keep {@link GameInstance.gameDefId} as a reference, in order to retrieve the original game definition
-   * if needed.
-   */
-  gameDef: GameDef,
   
   participants: Participant[],
 };
