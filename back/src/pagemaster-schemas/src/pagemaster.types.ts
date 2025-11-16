@@ -26,12 +26,6 @@ export type GameInstance = {
   participants: Participant[],
 };
 
-export type GameSession = {
-  id: string,
-  gameInstance: GameInstance,
-  onlinePlayers: Participant['id'][],
-}
-
 /**
  * This defines a game event that occurred during a game instance.
  * Events are used to track the history of actions and occurrences in the game,

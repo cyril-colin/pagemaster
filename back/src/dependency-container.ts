@@ -10,7 +10,6 @@ import { GameEventMongoClient } from './features/gameevent/game-event.mongo-clie
 import { GameInstanceFixture } from './features/gameinstance/game-instance.fixture';
 import { GameInstanceMongoClient } from './features/gameinstance/game-instance.mongo-client';
 import { GameInstanceService } from './features/gameinstance/game-instance.service';
-import { GameSessionMongoClient } from './features/gamesession/game-session.mongo-client';
 
 const ajv = new Ajv({ allErrors: true });
 const configuration = new ConfigurationService(ajv);
@@ -27,7 +26,6 @@ const mongoConnection = new MongoConnection(logger, mongoConfig, true);
 // Create all mongo clients - they share the same connection via mongoConnection
 const gameInstanceMongoClient = new GameInstanceMongoClient(logger, mongoConnection, true);
 const gameEventMongoClient = new GameEventMongoClient(logger, mongoConnection, true);
-const gameSessionMongoClient = new GameSessionMongoClient(logger, mongoConnection, true);
 
 export const router = new Router(logger, ajv);
 
@@ -49,6 +47,5 @@ export const serviceContainer = {
   gameInstanceMongoClient,
   gameInstanceService,
   gameEventMongoClient,
-  gameSessionMongoClient,
   jsonSchemaValidator: ajv,
 };

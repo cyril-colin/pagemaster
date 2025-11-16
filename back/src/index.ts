@@ -76,7 +76,6 @@ const server = app.listen(serviceContainer.configuration.getConfig().port, async
     await Promise.all([
       serviceContainer.gameInstanceMongoClient.initializeIndexes(),
       serviceContainer.gameEventMongoClient.initializeIndexes(),
-      serviceContainer.gameSessionMongoClient.initializeIndexes(),
     ]);
     serviceContainer.logger.info('Database indexes initialized');
     
