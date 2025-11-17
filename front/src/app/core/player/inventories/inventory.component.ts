@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
 import { Item } from '@pagemaster/common/items.types';
-import { Character } from '@pagemaster/common/pagemaster.types';
 import { BadgeComponent } from '../../design-system/badge.component';
 import { ButtonComponent } from '../../design-system/button.component';
 import { CardComponent } from '../../design-system/card.component';
@@ -122,7 +121,6 @@ export type InventoryUpdateEvent = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InventoryComponent {
-  public character = input.required<Character>();
   public inventory = input.required<AttributeInventory>();
   public permissions = input.required<InventoryPermissions>();
   public addItem = output<Omit<InventoryItemEvent, 'inventory'>>();

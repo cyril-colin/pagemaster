@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
-import { GameSession } from '@pagemaster/common/pagemaster.types';
+import { ParticipantType } from '@pagemaster/common/pagemaster.types';
+import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
+import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { MainTitleService } from 'src/app/core/main-bar/main-title.service';
-import { CurrentSessionState } from '../../core/current-session.state';
 import { ButtonComponent } from '../../core/design-system/button.component';
 import { CardComponent } from '../../core/design-system/card.component';
 import { DividerComponent } from '../../core/design-system/divider.component';
@@ -26,10 +27,10 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
             <p class="session-game">{{ session.gameSession.id }}</p>
             <p class="session-participant">
               Playing as: <strong>{{ session.participant.name }}</strong>
-              @if (session.participant.type === 'player') {
-                <span class="character-badge">({{ session.participant.character.name }})</span>
+              @if (session.participant.type === ParticipantType.Player) {
+                <span class="player-badge">({{ session.participant.name }})</span>
               }
-              @if (session.participant.type === 'gameMaster') {
+              @if (session.participant.type === ParticipantType.GameMaster) {
                 <span class="gm-badge">🎭 Game Master</span>
               }
             </p>
@@ -70,7 +71,7 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
                 <div class="instance-info">
                   <h3 class="instance-name">{{ instance.id }}</h3>
                   <p class="instance-details">
-                    <span class="label">Game Master:</span> {{ getGameMasterName(instance) }}
+                    <span class="label">Game Master:</span> {{ instance.master.name }}
                   </p>
                   <p class="instance-id">ID: {{ instance.id }}</p>
                 </div>
@@ -173,7 +174,7 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
       font-weight: var(--text-weight-bold);
     }
 
-    .character-badge {
+    .player-badge {
       color: var(--color-text-on-primary);
       font-style: italic;
       opacity: 0.9;
@@ -351,21 +352,17 @@ export class HomeComponent {
   protected routes = PageMasterRoutes();
   protected gameInstanceService = inject(GameSessionRepository);
   protected instanceList = toSignal(this.gameInstanceService.getAllGameInstances(), { initialValue: [] });
-  protected currentSessionState = inject(CurrentSessionState);
+  protected gameSession = inject(CurrentGameSessionState).currentGameSession();
+  protected participant = inject(CurrentParticipantState).currentParticipant();
   protected currentSession = computed(() => {
-    try {
-      return this.currentSessionState.currentSessionNullable();
-    } catch {
-      return null;
+    if (this.gameSession && this.participant) {
+      return { gameSession: this.gameSession, participant: this.participant };
     }
+    return null;
   });
+  protected ParticipantType = ParticipantType;
 
   constructor() {
     inject(MainTitleService).setTitle('');
-  }
-
-  protected getGameMasterName(gameSession: GameSession): string {
-    const master = gameSession.participants.find(p => p.type === 'gameMaster');
-    return master ? master.name : 'Unknown';
   }
 }

@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
-import { Character } from '@pagemaster/common/pagemaster.types';
+import { Player } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
 import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
 import { BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
@@ -17,7 +17,7 @@ import { NameControlComponent, NamePermissions } from './names/name-control.comp
 import { StatusControlComponent, StatusesPermissions } from './statuses/status-control.component';
 
 
-export type CharacterPermissions = {
+export type PlayerPermissions = {
   inventory: InventoryListPermissions,
   avatar: AvatarPermissions,
   name: NamePermissions,
@@ -28,24 +28,24 @@ export type CharacterPermissions = {
 
 
 @Component({
-  selector: 'app-character-form',
+  selector: 'app-player-form',
   template: `
     <form>
       <ds-card>
         <div class="identity">
           <app-picture-control
-            [picture]="existingCharacter().picture"
+            [picture]="existingPlayer().picture"
             [permissions]="permissions().avatar"
             (newPicture)="avatarEvent.emit($event)"
           />
           <div class="identity-data">
             <app-name-control
-              [name]="existingCharacter().name"
+              [name]="existingPlayer().name"
               [permissions]="permissions().name"
               (newName)="renameEvent.emit($event)"
             />
             <app-status-control
-              [statuses]="existingCharacter().attributes.status"
+              [statuses]="existingPlayer().attributes.status"
               [permissions]="permissions().statuses"
               (newStatus)="newStatusEvent.emit($event)"
               (editStatus)="editStatusEvent.emit($event)"
@@ -55,13 +55,13 @@ export type CharacterPermissions = {
           </div>
         </div>
         <app-description-control
-          [description]="existingCharacter().description"
+          [description]="existingPlayer().description"
           [permissions]="permissions().description"
           (newDescription)="descriptionEvent.emit($event)"
         />
 
         <app-bars-control
-          [bars]="existingCharacter().attributes.bar"
+          [bars]="existingPlayer().attributes.bar"
           [permissions]="permissions().bars"
           (newBarValue)="newBarValueEvent.emit($event)"
           (newBar)="newBarEvent.emit($event)"
@@ -72,8 +72,7 @@ export type CharacterPermissions = {
 
       
       <app-inventory-list
-        [inventories]="existingCharacter().attributes.inventory"
-        [character]="existingCharacter()"
+        [inventories]="existingPlayer().attributes.inventory"
         [permissions]="permissions().inventory"
         (addItem)="addItem.emit($event)"
         (deleteItem)="deleteItem.emit($event)"
@@ -119,10 +118,10 @@ export type CharacterPermissions = {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CharacterFormComponent  {
-  public existingCharacter = input.required<Character>();
-  public permissions = input.required<CharacterPermissions>();
-  public newCharacter = output<Character>();
+export class PlayerFormComponent  {
+  public existingPlayer = input.required<Player>();
+  public permissions = input.required<PlayerPermissions>();
+  public newPlayer = output<Player>();
   public fb = inject(FormBuilder);
   public renameEvent = output<{value: string}>();
   public avatarEvent = output<AvatarEvent>();

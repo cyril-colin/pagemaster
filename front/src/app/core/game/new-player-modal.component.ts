@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { defaultBar, defaultInventories } from '@pagemaster/common/attributes.types';
-import { Player } from '@pagemaster/common/pagemaster.types';
+import { ParticipantType, Player } from '@pagemaster/common/pagemaster.types';
 import { ButtonComponent } from '../design-system/button.component';
 import { PlayerFormComponent, PlayerFormValue } from './player-form.component';
 
@@ -83,8 +83,7 @@ export class NewPlayerModalComponent {
   protected isValid(): boolean {
     return !!(
       this.playerData &&
-      this.playerData.name &&
-      this.playerData.characterName
+      this.playerData.name
     );
   }
 
@@ -95,20 +94,15 @@ export class NewPlayerModalComponent {
   protected save(): void {
     if (this.isValid() && this.playerData) {
       const newPlayer: Player = {
+        type: ParticipantType.Player,
         id: `player-${this.playerData.name}-${Date.now()}`,
-        type: 'player',
         name: this.playerData.name,
-        position: this.playerData.position,
-        character: {
-          id: `character-${this.playerData.characterName}-${Date.now()}`,
-          name: this.playerData.characterName,
-          description: '',
-          picture: '',
-          attributes: {
-            bar: Object.values(defaultBar),
-            status: [],
-            inventory: Object.values(defaultInventories),
-          },
+        description: '',
+        picture: '',
+        attributes: {
+          bar: Object.values(defaultBar),
+          status: [],
+          inventory: Object.values(defaultInventories),
         },
       };
       

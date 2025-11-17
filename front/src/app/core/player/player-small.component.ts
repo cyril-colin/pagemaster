@@ -1,25 +1,25 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { Character } from '@pagemaster/common/pagemaster.types';
+import { Player } from '@pagemaster/common/pagemaster.types';
 import { AvatarViewComponent } from './avatar/avatar-view.component';
 import { NameViewComponent } from './names/name-view.component';
 
 @Component({
-  selector: 'app-character-small',
+  selector: 'app-player-small',
   template: `
-    @let char = character();
+    @let p = player();
     
-    <div class="character-small" (click)="clicked.emit()">
-      <app-avatar-view [source]="char.picture" [permissions]="{edit: false}" />
+    <div class="player-small" (click)="clicked.emit()">
+      <app-avatar-view [source]="p.picture" [permissions]="{edit: false}" />
       <div class="info">
-        <app-name-view [name]="char.name" />
-        @for(bar of character().attributes.bar; track bar.id) {
+        <app-name-view [name]="p.name" />
+        @for(bar of p.attributes.bar; track bar.id) {
           <div>{{ bar.name }}: {{ bar.current }} / {{ bar.max }}</div>
         }
       </div>
     </div>
   `,
   styles: [`
-    .character-small {
+    .player-small {
       display: flex;
       flex-direction: row;
       gap: var(--gap-medium);
@@ -31,7 +31,7 @@ import { NameViewComponent } from './names/name-view.component';
       border: 1px solid var(--color-border-heavy);
     }
 
-    .character-small:hover {
+    .player-small:hover {
       background-color: var(--hover-bg);
       border-color: var(--color-border);
     }
@@ -61,7 +61,7 @@ import { NameViewComponent } from './names/name-view.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CharacterSmallComponent {
-  public character = input.required<Character>();
+export class PlayerSmallComponent {
+  public player = input.required<Player>();
   public clicked = output<void>();
 }

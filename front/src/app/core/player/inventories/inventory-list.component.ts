@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
-import { Character } from '@pagemaster/common/pagemaster.types';
-import { CurrentSessionState } from '../../current-session.state';
+import { CurrentParticipantState } from '../../current-participant.state';
 import { ModalRef, ModalService } from '../../modal';
 import { InventoryFormComponent } from './inventory-form.component';
 import { InventoryAdderButtonComponent } from './inventory-selector.component';
@@ -32,7 +31,6 @@ export type InventoryListPermissions = {
     @for(inventory of allowedInventories(); track inventory.id) {
         <app-inventory
           [inventory]="inventory"
-          [character]="character()"
           [permissions]="permissions().item"
           (addItem)="addItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
           (deleteItem)="deleteItem.emit({ item: $event.item, inventory, modalRef: $event.modalRef })"
@@ -50,8 +48,6 @@ export type InventoryListPermissions = {
   ],
 })
 export class InventoryListComponent {
-  
-  public character = input.required<Character>();
   public inventories = input.required<AttributeInventory[]>();
   public permissions = input.required<InventoryListPermissions>();
   public deleteItem = output<InventoryItemEvent>();
@@ -61,7 +57,7 @@ export class InventoryListComponent {
   public updateInventory = output<InventoryUpdateEvent>();
   public deleteInventory = output<InventoryDeletionEvent>();
 
-  private currentSessionState = inject(CurrentSessionState);
+  private currentParticipant = inject(CurrentParticipantState);
   protected modalService = inject(ModalService);
 
   protected allowedInventories = computed(() => {
@@ -73,6 +69,6 @@ export class InventoryListComponent {
     return this.inventories().filter(inv => !inv.isSecret);
   });
 
-  protected isManager = this.currentSessionState.allowedToEditCharacter();
+  protected isManager = this.currentParticipant.allowedToEditPlayer();
 
 }

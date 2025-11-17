@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import { Patch } from '../../core/router/controller.decorators';
 import { HttpForbiddenError } from '../../core/router/http-errors';
-import { Character, GameSession } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameSessionService } from './game-session.service';
 
 export class ParticipantProfileController {
@@ -9,21 +9,18 @@ export class ParticipantProfileController {
 
   @Patch('/game-sessions/:gameSessionId/participants/:participantId/rename')
   public async renameParticipant(
-    character: Pick<Character, 'name'>,
+    newPlayer: Pick<Player, 'name'>,
     params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
-    this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
-    const player = gameSession.participants[participantIndex];
-    this.gameInstanceService.validatePlayerType(player);
+    const player = gameSession.players[participantIndex];
 
-    const oldName = player.character.name;
-    player.character.name = character.name;
-
+    const oldName = player.name;
+    player.name = newPlayer.name;
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
     const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
@@ -37,7 +34,7 @@ export class ParticipantProfileController {
       event: {
         type: 'participant-rename',
         title: 'Participant Rename',
-        description: `${currentParticipant.name} renamed participant : ${oldName} => ${character.name}`,
+        description: `${currentParticipant.name} renamed participant : ${oldName} => ${newPlayer.name}`,
       }
     });
     
@@ -46,19 +43,17 @@ export class ParticipantProfileController {
 
   @Patch('/game-sessions/:gameSessionId/participants/:participantId/avatar')
   public async updateParticipantAvatar(
-    character: Pick<Character, 'picture'>,
+    newPlayer: Pick<Player, 'picture'>,
     params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
-    this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
-    const player = gameSession.participants[participantIndex];
-    this.gameInstanceService.validatePlayerType(player);
+    const player = gameSession.players[participantIndex];
 
-    player.character.picture = character.picture;
+    player.picture = newPlayer.picture;
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
@@ -73,7 +68,7 @@ export class ParticipantProfileController {
       event: {
         type: 'participant-avatar-update',
         title: 'Avatar Updated',
-        description: `${currentParticipant.name} updated avatar of ${player.character.name}`,
+        description: `${currentParticipant.name} updated avatar of ${player.name}`,
       }
     });
     
@@ -82,19 +77,17 @@ export class ParticipantProfileController {
 
   @Patch('/game-sessions/:gameSessionId/participants/:participantId/description')
   public async updateParticipantDescription(
-    character: Pick<Character, 'description'>,
+    newPlayer: Pick<Player, 'description'>,
     params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
-    this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
-    const player = gameSession.participants[participantIndex];
-    this.gameInstanceService.validatePlayerType(player);
+    const player = gameSession.players[participantIndex];
 
-    player.character.description = character.description;
+    player.description = newPlayer.description;
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
@@ -109,7 +102,7 @@ export class ParticipantProfileController {
       event: {
         type: 'participant-description-update',
         title: 'Description Updated',
-        description: `${currentParticipant.name} updated description of ${player.character.name}`,
+        description: `${currentParticipant.name} updated description of ${player.name}`,
       }
     });
     

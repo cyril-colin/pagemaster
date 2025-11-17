@@ -1,20 +1,20 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { Character } from '@pagemaster/common/pagemaster.types';
+import { Player } from '@pagemaster/common/pagemaster.types';
 import { AvatarViewComponent } from './avatar/avatar-view.component';
 import { NameViewComponent } from './names/name-view.component';
 
 @Component({
-  selector: 'app-character-button',
+  selector: 'app-player-button',
   template: `
-    @let char = character();
+    @let p = player();
     
-    <div class="character-button" (click)="clicked.emit()">
-      <app-avatar-view [source]="char.picture" [permissions]="{ edit: false }"/>
-      <app-name-view [name]="char.name" />
+    <div class="player-button" (click)="clicked.emit()">
+      <app-avatar-view [source]="p.picture" [permissions]="{ edit: false }"/>
+      <app-name-view [name]="p.name" />
     </div>
   `,
   styles: [`
-    .character-button {
+    .player-button {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -27,7 +27,7 @@ import { NameViewComponent } from './names/name-view.component';
       width: 100%;
     }
 
-    .character-button:hover {
+    .player-button:hover {
       background-color: var(--hover-bg);
       border-color: var(--color-primary);
     }
@@ -55,7 +55,7 @@ import { NameViewComponent } from './names/name-view.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CharacterButtonComponent {
-  public character = input.required<Character>();
+export class PlayerButtonComponent {
+  public player = input.required<Player>();
   public clicked = output<void>();
 }

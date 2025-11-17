@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { Delete, Patch, Post, Put } from '../../core/router/controller.decorators';
 import { HttpForbiddenError } from '../../core/router/http-errors';
 import { AttributeBar } from '../../pagemaster-schemas/src/attributes.types';
-import { Character, GameSession } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameSessionService } from './game-session.service';
 
 export class ParticipantBarsController {
@@ -10,19 +10,17 @@ export class ParticipantBarsController {
 
   @Patch('/game-sessions/:gameSessionId/participants/:participantId/bars')
   public async updateParticipantBars(
-    attributes: Pick<Character['attributes'], 'bar'>,
+    attributes: Pick<Player['attributes'], 'bar'>,
     params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
-    this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
-    const player = gameSession.participants[participantIndex];
-    this.gameInstanceService.validatePlayerType(player);
+    const player = gameSession.players[participantIndex];
 
-    player.character.attributes.bar = attributes.bar;
+    player.attributes.bar = attributes.bar;
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
@@ -37,7 +35,7 @@ export class ParticipantBarsController {
       event: {
         type: 'participant-bars-update',
         title: 'Bars Updated',
-        description: `${currentParticipant.name} updated bars of ${player.character.name}`,
+        description: `${currentParticipant.name} updated bars of ${player.name}`,
       }
     });
     
@@ -51,16 +49,13 @@ export class ParticipantBarsController {
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
-    this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
-    const player = gameSession.participants[participantIndex];
-    this.gameInstanceService.validatePlayerType(player);
-
+    const player = gameSession.players[participantIndex];
     // Add the new bar
     bar.id = `bar-${bar.name}-${Date.now()}`;
-    player.character.attributes.bar.push(bar);
+    player.attributes.bar.push(bar);
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
@@ -75,7 +70,7 @@ export class ParticipantBarsController {
       event: {
         type: 'participant-bar-add',
         title: 'Bar Added',
-        description: `${currentParticipant.name} added bar "${bar.name}" to ${player.character.name}`,
+        description: `${currentParticipant.name} added bar "${bar.name}" to ${player.name}`,
       }
     });
     
@@ -89,20 +84,18 @@ export class ParticipantBarsController {
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
-    this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
-    const player = gameSession.participants[participantIndex];
-    this.gameInstanceService.validatePlayerType(player);
+    const player = gameSession.players[participantIndex];
 
     // Find and update the bar
-    const barIndex = player.character.attributes.bar.findIndex(b => b.id === params.barId);
+    const barIndex = player.attributes.bar.findIndex(b => b.id === params.barId);
     if (barIndex === -1) {
       throw new HttpForbiddenError(`Bar with id ${params.barId} not found`);
     }
 
-    player.character.attributes.bar[barIndex] = bar;
+    player.attributes.bar[barIndex] = bar;
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
@@ -117,7 +110,7 @@ export class ParticipantBarsController {
       event: {
         type: 'participant-bar-update',
         title: 'Bar Updated',
-        description: `${currentParticipant.name} updated bar "${bar.name}" for ${player.character.name}`,
+        description: `${currentParticipant.name} updated bar "${bar.name}" for ${player.name}`,
       }
     });
     
@@ -131,21 +124,20 @@ export class ParticipantBarsController {
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
-    this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
+
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
-    const player = gameSession.participants[participantIndex];
-    this.gameInstanceService.validatePlayerType(player);
+    const player = gameSession.players[participantIndex];
 
     // Find and remove the bar
-    const barIndex = player.character.attributes.bar.findIndex(b => b.id === params.barId);
+    const barIndex = player.attributes.bar.findIndex(b => b.id === params.barId);
     if (barIndex === -1) {
       throw new HttpForbiddenError(`Bar with id ${params.barId} not found`);
     }
 
-    const deletedBar = player.character.attributes.bar[barIndex];
-    player.character.attributes.bar.splice(barIndex, 1);
+    const deletedBar = player.attributes.bar[barIndex];
+    player.attributes.bar.splice(barIndex, 1);
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
@@ -160,7 +152,7 @@ export class ParticipantBarsController {
       event: {
         type: 'participant-bar-delete',
         title: 'Bar Deleted',
-        description: `${currentParticipant.name} deleted bar "${deletedBar.name}" from ${player.character.name}`,
+        description: `${currentParticipant.name} deleted bar "${deletedBar.name}" from ${player.name}`,
       }
     });
     

@@ -1,4 +1,4 @@
-import { GameEvent, GameSession, Participant } from './pagemaster.types';
+import { GameEvent, GameMaster, GameSession, Player } from './pagemaster.types';
 
 export enum PageMasterSocketEvents {
   JOIN_GAME_SESSION = 'joinGameSession',
@@ -13,7 +13,7 @@ export type PageMasterSocketEventsPayloads = {
   [PageMasterSocketEvents.LEAVE_GAME_SESSION]: { gameSessionId: string },
   [PageMasterSocketEvents.LEFT_GAME_SESSION]: { gameSessionId: string },
   [PageMasterSocketEvents.JOINED_GAME_SESSION]: { gameSessionId: string, participantId: string },
-  [PageMasterSocketEvents.GAME_SESSION_UPDATED]: { gameSession: GameSession, by: Participant, event: GameEvent },
+  [PageMasterSocketEvents.GAME_SESSION_UPDATED]: { gameSession: GameSession, by: Player | GameMaster, event: GameEvent },
 };
 
 export function RoomId(gameSessionId: string): string {

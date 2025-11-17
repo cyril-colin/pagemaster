@@ -1,13 +1,13 @@
 import { SocketServerService } from '../../core/socket.service';
-import { EventBase, EventCharacterBase, EventCharacterComputed } from '../../pagemaster-schemas/src/events.types';
-import { GameSession, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
+import { EventBase, EventPlayerBase, EventPlayerComputed } from '../../pagemaster-schemas/src/events.types';
+import { GameMaster, GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameSessionMongoClient } from '../gameinstance/game-instance.mongo-client';
 
-export abstract class GameEventHandler<T extends EventCharacterBase> {
+export abstract class GameEventHandler<T extends EventPlayerBase> {
   public abstract handle(event: T, gameSession: GameSession): GameSession;
 }
 
-export type GameEventHandlerFn<T extends EventCharacterBase = EventCharacterBase> = (
+export type GameEventHandlerFn<T extends EventPlayerBase = EventPlayerBase> = (
   event: T,
   gameSession: GameSession,
 ) => GameSession;
@@ -20,7 +20,7 @@ export abstract class GameEventExecuter {
 
   public abstract executeEvent(
     gameEvent: EventBase,
-    triggerer: Participant,
+    triggerer: Player | GameMaster,
     currentSession: GameSession,
-  ): Promise<EventCharacterComputed<EventCharacterBase>>;
+  ): Promise<EventPlayerComputed<EventPlayerBase>>;
 }

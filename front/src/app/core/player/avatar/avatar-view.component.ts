@@ -9,7 +9,7 @@ import { AvatarPermissions } from './picture-control.component';
     @if (src) {
       <ds-image
         [src]="src" 
-        [alt]="'Character Picture'"
+        [alt]="'Player Picture'"
         size="large"
         [shape]="shape()"
         [clickable]="permissions().edit"

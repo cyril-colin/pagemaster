@@ -151,13 +151,13 @@ export class ItemFormComponent {
   protected fb = inject(FormBuilder);
   
   protected form = computed(() => {
-    const existingCharacter = this.existingItem();
+    const existingItem = this.existingItem();
     const enabled = this.permissions().edit || this.permissions().add;
     return this.fb.group<ItemFormControl>({
-      name: this.fb.control({value: existingCharacter?.name ?? '', disabled: !enabled}, { nonNullable: true }),
-      description: this.fb.control({value: existingCharacter?.description ?? '', disabled: !enabled}, { nonNullable: true }),
-      weight: this.fb.control({value: existingCharacter?.weight ?? 0, disabled: !enabled}, { nonNullable: true }),
-      picture: this.fb.control({value: existingCharacter?.picture ?? '', disabled: !enabled}, { nonNullable: true }),
+      name: this.fb.control({value: existingItem?.name ?? '', disabled: !enabled}, { nonNullable: true }),
+      description: this.fb.control({value: existingItem?.description ?? '', disabled: !enabled}, { nonNullable: true }),
+      weight: this.fb.control({value: existingItem?.weight ?? 0, disabled: !enabled}, { nonNullable: true }),
+      picture: this.fb.control({value: existingItem?.picture ?? '', disabled: !enabled}, { nonNullable: true }),
     });
   });
 

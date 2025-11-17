@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CurrentSessionState } from '../../core/current-session.state';
+import { ParticipantType } from '@pagemaster/common/pagemaster.types';
+import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
+import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { ButtonComponent } from '../../core/design-system/button.component';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
 
@@ -22,10 +24,10 @@ import { PageMasterRoutes } from '../../core/pagemaster.router';
               <span class="session-label">Connected as:</span>
               <span class="session-details">
                 {{ session.participant.name }}
-                @if (session.participant.type === 'player') {
-                  <span class="character-name">({{ session.participant.character.name }})</span>
+                @if (session.participant.type === ParticipantType.Player) {
+                  <span class="player-name">({{ session.participant.name }})</span>
                 }
-                @if (session.participant.type === 'gameMaster') {
+                @if (session.participant.type === ParticipantType.GameMaster) {
                   <span class="gm-badge">🎭 GM</span>
                 }
               </span>
@@ -96,7 +98,7 @@ import { PageMasterRoutes } from '../../core/pagemaster.router';
       color: var(--text-primary);
     }
 
-    .character-name {
+    .player-name {
       color: var(--color-primary);
       font-style: italic;
     }
@@ -145,12 +147,15 @@ import { PageMasterRoutes } from '../../core/pagemaster.router';
 })
 export class PublicLayoutComponent {
   protected routes = PageMasterRoutes();
-  protected currentSessionState = inject(CurrentSessionState);
+  
+  protected gameSession = inject(CurrentGameSessionState).currentGameSession();
+  protected participant = inject(CurrentParticipantState).currentParticipant();
   protected currentSession = computed(() => {
-    try {
-      return this.currentSessionState.currentSessionNullable();
-    } catch {
-      return null;
+    if (this.gameSession && this.participant) {
+      return { gameSession: this.gameSession, participant: this.participant };
     }
+    return null;
   });
+  
+  protected ParticipantType = ParticipantType;
 }

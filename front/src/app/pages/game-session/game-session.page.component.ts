@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterModule } from '@angular/router';
 
-import { CurrentSessionState } from 'src/app/core/current-session.state';
+import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { ModalService } from 'src/app/core/modal';
@@ -92,15 +92,15 @@ import { MainMenuComponent } from './main-menu.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSessionPageComponent {
-  protected currentSession = inject(CurrentSessionState);
+  protected currentGameSession = inject(CurrentGameSessionState);
   protected modalService = inject(ModalService);
   protected eventService = inject(EventsCenterStateService);
   protected eventsRoute = computed(() => '/' + PageMasterRoutes().GameInstanceSession.interpolated(
-    this.currentSession.currentSession().gameSession.id,
+    this.currentGameSession.currentGameSession().id,
   ));
 
   constructor() {
-    toSignal(this.eventService.init(this.currentSession.currentSession().gameSession.id));
+    toSignal(this.eventService.init(this.currentGameSession.currentGameSession().id));
   }
 
   protected openMainMenu(): void {

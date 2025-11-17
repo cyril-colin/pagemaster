@@ -16,15 +16,44 @@ export type GameSession = {
    * the latest version before making its own updates.
    */
   version: number,
-  
-  participants: Participant[],
+  master: GameMaster,
+  players: Player[],
 };
 
-/**
- * This defines a game event that occurred during a game session.
- * Events are used to track the history of actions and occurrences in the game,
- * such as player actions, game master decisions, dice rolls, etc.
- */
+
+export enum ParticipantType {
+  GameMaster = 'gameMaster',
+  Player = 'player',
+}
+
+export type GameMaster =  ParticipantBase & {
+  type: ParticipantType.GameMaster,
+  id: ParticipantType.GameMaster,
+  /**
+   * Should be unique across all players in the same {@link GameSession}.
+   */
+  name: string,
+};
+
+export type ParticipantBase = {
+  type: ParticipantType,
+  id: string,
+  name: string,
+}
+export type Participant = GameMaster | Player;
+
+export type Player = ParticipantBase &{
+  type: ParticipantType.Player,
+  picture: string,
+  description: string,
+  attributes:{
+    bar: AttributeBar[];
+    inventory: AttributeInventory[];
+    status: AttributeStatus[];
+  },
+}
+
+
 export type GameEvent = {
   /**
    * A unique identifier for this event.
@@ -59,60 +88,7 @@ export type GameEvent = {
    */
   timestamp: number,
   /**
-   * Optional metadata for the event (dice results, affected characters, etc.)
+   * Optional metadata for the event (dice results, affected players, etc.)
    */
   metadata?: Record<string, unknown>,
 }
-
-
-export type Participant = 
-  | Player
-  | GameMaster;
-/**
- * This defines an IRL players, that have a character in the game.
- */
-export type Player = AbstractParticipant & {
-  type: 'player',
-  /**
-   * The position of the player in the turn order.
-   */
-  position: number,
-  character: Character,
-}
-
-export type AbstractParticipant = {
-  id: string,
-  type: 'player' | 'gameMaster',
-  /**
-   * The actual name of the player playing the game.
-   * Not the same as the {@link Character.name}!
-   * 
-   * Should be unique across all players in the same {@link GameSession}.
-   */
-  name: string,
-}
-
-
-export type GameMaster =  AbstractParticipant & {
-  type: 'gameMaster',
-}
-
-/**
- * An in-game character, controlled by a player. It is owned by a only one
- * {@link Participant}. 
- */
-export type Character = {
-  id: string,
-  picture: string,
-  /**
-   * Should be unique across all players in the same {@link GameSession}.
-   */
-  name: string,
-  description: string,
-  attributes:{
-    bar: AttributeBar[];
-    inventory: AttributeInventory[];
-    status: AttributeStatus[];
-  },
-}
-

@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { HttpBadRequestError, HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
 import { SocketServerService } from '../../core/socket.service';
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
-import { GameSession, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameMaster, GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameSessionMongoClient } from './game-session.mongo-client';
 
 export class GameSessionService {
@@ -14,8 +14,7 @@ export class GameSessionService {
   public async validateContext(
     gameSessionId: string,
     req: Request,
-    requiredRole: Participant['type'],
-  ): Promise<{gameSession: GameSession, currentParticipant: Participant}> {
+  ): Promise<{gameSession: GameSession, currentParticipant: Player | GameMaster}> {
     if (!gameSessionId) {
       throw new HttpBadRequestError('Missing gameSessionId parameter');
     }
@@ -26,11 +25,8 @@ export class GameSessionService {
 
     const currentParticipantId = (Array.isArray(req.headers[HEADER_CURRENT_PARTICIPANT]) ? null : req.headers[HEADER_CURRENT_PARTICIPANT]) || null;
     const currentParticipant = this.getParticipant(currentParticipantId, gameSession);
-    if (requiredRole === 'gameMaster' && currentParticipant?.type !== 'gameMaster') {
-      throw new HttpForbiddenError('Forbidden: You need to be a game master');
-    }
     if (!currentParticipant) {
-      throw new HttpForbiddenError('Forbidden: You need to be a player');
+      throw new HttpForbiddenError('Forbidden: You are not a participant of this game session');
     }
 
     return { gameSession, currentParticipant };
@@ -44,34 +40,26 @@ export class GameSessionService {
     return gameSessionCleaned;
   }
 
-  public getParticipant(participantId: Participant['id'] |null, gameSession: GameSession): Participant | null {
-    const currentParticipant = gameSession.participants.find(p => p.id === participantId);
+  public getParticipant(participantId: string |null, gameSession: GameSession): Player | GameMaster | null {
+    if (participantId === gameSession.master.id) {
+      return gameSession.master;
+    }
+
+    const currentParticipant = gameSession.players.find(p => p.id === participantId);
     return currentParticipant || null;
   }
 
-  public validateParticipantPermission(currentParticipant: Participant, participantId: string): void {
-    if ((currentParticipant.id !== participantId && currentParticipant.type !== 'gameMaster')) {
-      throw new HttpForbiddenError('Forbidden: You can only update your own participant data');
-    }
-  }
-
   public findParticipantIndex(gameSession: GameSession, participantId: string): number {
-    const participantIndex = gameSession.participants.findIndex(p => p.id === participantId);
+    const participantIndex = gameSession.players.findIndex(p => p.id === participantId);
     if (participantIndex === -1) {
       throw new HttpBadRequestError('Participant not found in the specified game session');
     }
     return participantIndex;
   }
 
-  public validatePlayerType(participant: Participant): asserts participant is Participant & {type: 'player'} {
-    if (participant.type !== 'player') {
-      throw new HttpForbiddenError('Forbidden: Only players can have this property updated');
-    }
-  }
-
   public notifyGameSessionUpdate(params: {
     gameSession: GameSession,
-    by: Participant,
+    by: Player | GameMaster,
     event: {
       type: string,
       title: string,

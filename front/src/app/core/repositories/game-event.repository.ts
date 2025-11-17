@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { EventBase } from '@pagemaster/common/events.types';
 import { GameEvent } from '@pagemaster/common/pagemaster.types';
 import { Observable } from 'rxjs';
 
@@ -35,6 +36,10 @@ export class GameEventRepository {
 
   deleteGameEvent(id: string): Observable<boolean> {
     return this.http.delete<boolean>(`${this.baseUrl}/game-events/${id}`);
+  }
+
+  postGameEventCommand(command: EventBase): Observable<EventBase> {
+    return this.http.post<EventBase>(`${this.baseUrl}/game-events/command`, command);
   }
 
 }

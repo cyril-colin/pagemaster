@@ -1,7 +1,7 @@
 import { Server } from 'socket.io';
 import { GameEventMongoClient } from '../features/gameevent/game-event.mongo-client';
 import { EventBase } from '../pagemaster-schemas/src/events.types';
-import { GameEvent, GameSession, Participant } from '../pagemaster-schemas/src/pagemaster.types';
+import { GameEvent, GameMaster, GameSession, Player } from '../pagemaster-schemas/src/pagemaster.types';
 import { PageMasterSocketEvents, RoomId } from '../pagemaster-schemas/src/socket-events.types';
 import { LoggerService } from './logger.service';
 
@@ -50,7 +50,7 @@ export class SocketServerService {
 
   async notifyGameSessionUpdate(params: {
     gameSession: GameSession,
-    by: Participant,
+    by: Player | GameMaster,
     event: {
       type: string,
       title: string,
@@ -84,7 +84,7 @@ export class SocketServerService {
 
   private async createGameEvent(
     gameSession: GameSession,
-    participant: Participant,
+    participant: Player | GameMaster,
     type: string,
     title: string,
     description: string,

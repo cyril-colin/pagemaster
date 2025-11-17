@@ -3,10 +3,8 @@ import { AttributeInventory } from 'src/pagemaster-schemas/src/attributes.types'
 import { Delete, Patch, Post, Put } from '../../core/router/controller.decorators';
 import { HttpBadRequestError, HttpForbiddenError } from '../../core/router/http-errors';
 import { Item } from '../../pagemaster-schemas/src/items.types';
-import { Character, GameSession, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameMaster, GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameSessionService } from './game-session.service';
-
-type Player = Participant & { type: 'player' };
 
 export class ParticipantInventoryController {
   constructor(private gameInstanceService: GameSessionService) {}
@@ -19,28 +17,25 @@ export class ParticipantInventoryController {
     const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(
       gameSessionId,
       req,
-      'player'
     );
-    this.gameInstanceService.validateParticipantPermission(currentParticipant, participantId);
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, participantId);
-    const player = gameSession.participants[participantIndex];
-    this.gameInstanceService.validatePlayerType(player);
+    const player = gameSession.players[participantIndex];
 
-    return { gameSession, currentParticipant, player: player as Player, participantIndex };
+    return { gameSession, currentParticipant, player, participantIndex };
   }
 
   private findInventory(player: Player, inventoryId: string) {
-    const inventoryIndex = player.character.attributes.inventory.findIndex(
+    const inventoryIndex = player.attributes.inventory.findIndex(
       inv => inv.id === inventoryId
     );
     if (inventoryIndex === -1) {
       throw new HttpBadRequestError('Inventory not found for the specified participant');
     }
-    return { inventoryIndex, inventory: player.character.attributes.inventory[inventoryIndex] };
+    return { inventoryIndex, inventory: player.attributes.inventory[inventoryIndex] };
   }
 
-  private findItem(inventory: Character['attributes']['inventory'][0], itemId: string) {
+  private findItem(inventory: Player['attributes']['inventory'][0], itemId: string) {
     const itemIndex = inventory.current.findIndex(i => i.id === itemId);
     if (itemIndex === -1) {
       throw new HttpBadRequestError('Item not found in the specified inventory');
@@ -50,7 +45,7 @@ export class ParticipantInventoryController {
 
   private async finalizeOperation(
     gameSession: GameSession,
-    currentParticipant: Participant,
+    currentParticipant: Player | GameMaster,
     event: { type: string; title: string; description: string; metadata?: Record<string, unknown> }
   ) {
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
@@ -74,7 +69,7 @@ export class ParticipantInventoryController {
 
   @Patch('/game-sessions/:gameSessionId/participants/:participantId/inventories')
   public async updateParticipantInventories(
-    attributes: Pick<Character['attributes'], 'inventory'>,
+    attributes: Pick<Player['attributes'], 'inventory'>,
     params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
@@ -85,12 +80,12 @@ export class ParticipantInventoryController {
       req
     );
 
-    player.character.attributes.inventory = attributes.inventory;
+    player.attributes.inventory = attributes.inventory;
 
     return this.finalizeOperation(gameSession, currentParticipant, {
       type: 'participant-inventories-update',
       title: 'Inventories Updated',
-      description: `${currentParticipant.name} updated inventories of ${player.character.name}`,
+      description: `${currentParticipant.name} updated inventories of ${player.name}`,
     });
   }
 
@@ -113,7 +108,7 @@ export class ParticipantInventoryController {
     return this.finalizeOperation(gameSession, currentParticipant, {
       type: 'item-added-to-inventory',
       title: 'Item Added',
-      description: `${currentParticipant.name} added item ${item.name} to ${player.character.name}'s inventory`,
+      description: `${currentParticipant.name} added item ${item.name} to ${player.name}'s inventory`,
       metadata: { itemId: item.id, itemName: item.name, inventoryId: params.inventoryId }
     });
   }
@@ -134,12 +129,12 @@ export class ParticipantInventoryController {
     const { inventory, inventoryIndex } = this.findInventory(player, params.inventoryId);
     const { itemIndex } = this.findItem(inventory, params.itemId);
 
-    player.character.attributes.inventory[inventoryIndex].current[itemIndex] = item;
+    player.attributes.inventory[inventoryIndex].current[itemIndex] = item;
 
     return this.finalizeOperation(gameSession, currentParticipant, {
       type: 'item-edited-in-inventory',
       title: 'Item Edited',
-      description: `${currentParticipant.name} edited item ${item.name} in ${player.character.name}'s inventory`,
+      description: `${currentParticipant.name} edited item ${item.name} in ${player.name}'s inventory`,
       metadata: { itemId: item.id, itemName: item.name, inventoryId: params.inventoryId }
     });
   }
@@ -160,18 +155,18 @@ export class ParticipantInventoryController {
     const { inventory, inventoryIndex } = this.findInventory(player, params.inventoryId);
     const { itemIndex, item: deletedItem } = this.findItem(inventory, params.itemId);
 
-    player.character.attributes.inventory[inventoryIndex].current.splice(itemIndex, 1);
+    player.attributes.inventory[inventoryIndex].current.splice(itemIndex, 1);
 
     return this.finalizeOperation(gameSession, currentParticipant, {
       type: 'item-deleted-from-inventory',
       title: 'Item Deleted',
-      description: `${currentParticipant.name} deleted item ${deletedItem.name} from ${player.character.name}'s inventory`,
+      description: `${currentParticipant.name} deleted item ${deletedItem.name} from ${player.name}'s inventory`,
       metadata: { itemId: params.itemId, itemName: deletedItem.name, inventoryId: params.inventoryId }
     });
   }
 
   @Post('/game-sessions/:gameSessionId/participants/:participantId/inventories/add')
-  public async addInventoryForCharacter(
+  public async addInventoryForPlayer(
     body: AttributeInventory,
     params: {gameSessionId: string, participantId: string},
     query: unknown,
@@ -185,18 +180,18 @@ export class ParticipantInventoryController {
 
     // Generate ID for the new inventory
     body.id = `inventory-${body.name}-${Date.now()}`;
-    player.character.attributes.inventory.push(body);
+    player.attributes.inventory.push(body);
 
     return this.finalizeOperation(gameSession, currentParticipant, {
       type: 'inventory-added',
       title: 'Inventory Added',
-      description: `${currentParticipant.name} added inventory ${body.name} to ${player.character.name}`,
+      description: `${currentParticipant.name} added inventory ${body.name} to ${player.name}`,
       metadata: { inventory: body }
     });
   }
 
   @Put('/game-sessions/:gameSessionId/participants/:participantId/inventories/:inventoryId/update')
-  public async updateInventoryForCharacter(
+  public async updateInventoryForPlayer(
     body: AttributeInventory,
     params: {gameSessionId: string, participantId: string, inventoryId: string},
     query: unknown,
@@ -212,21 +207,21 @@ export class ParticipantInventoryController {
 
     // Preserve the current items when updating
     body.id = params.inventoryId;
-    const currentItems = player.character.attributes.inventory[inventoryIndex].current;
+    const currentItems = player.attributes.inventory[inventoryIndex].current;
     body.current = currentItems;
 
-    player.character.attributes.inventory[inventoryIndex] = body;
+    player.attributes.inventory[inventoryIndex] = body;
 
     return this.finalizeOperation(gameSession, currentParticipant, {
       type: 'inventory-updated',
       title: 'Inventory Updated',
-      description: `${currentParticipant.name} updated inventory ${body.name} for ${player.character.name}`,
+      description: `${currentParticipant.name} updated inventory ${body.name} for ${player.name}`,
       metadata: { inventoryId: params.inventoryId, inventoryName: body.name }
     });
   }
 
   @Delete('/game-sessions/:gameSessionId/participants/:participantId/inventories/:inventoryId/delete')
-  public async deleteInventoryForCharacter(
+  public async deleteInventoryForPlayer(
     body: unknown,
     params: {gameSessionId: string, participantId: string, inventoryId: string},
     query: unknown,
@@ -240,12 +235,12 @@ export class ParticipantInventoryController {
 
     const { inventoryIndex, inventory } = this.findInventory(player, params.inventoryId);
 
-    player.character.attributes.inventory.splice(inventoryIndex, 1);
+    player.attributes.inventory.splice(inventoryIndex, 1);
 
     return this.finalizeOperation(gameSession, currentParticipant, {
       type: 'inventory-deleted',
       title: 'Inventory Deleted',
-      description: `${currentParticipant.name} deleted inventory ${inventory.name || params.inventoryId} from ${player.character.name}`,
+      description: `${currentParticipant.name} deleted inventory ${inventory.name || params.inventoryId} from ${player.name}`,
       metadata: { inventoryId: params.inventoryId, inventoryName: inventory.name }
     });
   }
