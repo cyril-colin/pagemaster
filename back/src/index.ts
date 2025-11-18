@@ -4,10 +4,6 @@ import { spaFallbackMiddleware } from './core/spa-fallback.middleware';
 import { serviceContainer } from './dependency-container';
 import { GameEventController } from './features/gameevent/game-event.controller';
 import { GameSessionController } from './features/gamesession/game-session-crud.controller';
-import { ParticipantBarsController } from './features/gamesession/participant-bars.controller';
-import { ParticipantInventoryController } from './features/gamesession/participant-inventory.controller';
-import { ParticipantProfileController } from './features/gamesession/participant-profile.controller';
-import { ParticipantStatusesController } from './features/gamesession/participant-statuses.controller';
 
 const app = express();
 
@@ -20,10 +16,6 @@ if (staticPath) {
 
 const controllers = [
   new GameSessionController(serviceContainer.gameInstanceMongoClient, serviceContainer.socketServerService, serviceContainer.logger),
-  new ParticipantBarsController(serviceContainer.gameInstanceService),
-  new ParticipantStatusesController(serviceContainer.gameInstanceService),
-  new ParticipantProfileController(serviceContainer.gameInstanceService),
-  new ParticipantInventoryController(serviceContainer.gameInstanceService),
   new GameEventController(serviceContainer.gameEventMongoClient, serviceContainer.gameInstanceMongoClient, serviceContainer.playerEventExecuter),
 ];
 controllers.forEach(controller => serviceContainer.router.registerRoutes(controller, app));

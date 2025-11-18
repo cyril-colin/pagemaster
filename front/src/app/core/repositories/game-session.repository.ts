@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Item } from '@pagemaster/common/items.types';
-import { GameSession, Participant, Player } from '@pagemaster/common/pagemaster.types';
+import { GameSession, Participant } from '@pagemaster/common/pagemaster.types';
 import { Observable } from 'rxjs';
 
 
@@ -36,17 +35,6 @@ export class GameSessionRepository {
 
   updateParticipant(gameSessionId: string, participant: Participant): Observable<Participant> {
     return this.http.put<Participant>(`${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participant.id}`, participant);
-  }
-
-  updatePlayerInventories(
-    gameSessionId: string, participantId: string, attributes: Pick<Player['attributes'], 'inventory'>,
-  ): Observable<Participant> {
-    return this.http.patch<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/inventories`, attributes);
-  }
-
-  addItem(gameSessionId: string, item: Item): Observable<GameSession> {
-    return this.http.post<GameSession>(`${this.baseUrl}/game-sessions/${gameSessionId}/items`, item);
   }
 
 }
