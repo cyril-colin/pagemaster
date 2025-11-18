@@ -7,6 +7,6 @@ export const playerNameEditHandler: GameEventHandlerFn<EventPlayerNameEdit> = (e
     throw new Error('Player not found in game session');
   }
   
-  player.name = event.name;
+  player.name = event.newName;
   return gameSession;
 }

@@ -44,7 +44,7 @@ export type Participant = GameMaster | Player;
 
 export type Player = ParticipantBase &{
   type: ParticipantType.Player,
-  picture: string,
+  avatar: string,
   description: string,
   attributes:{
     bar: AttributeBar[];

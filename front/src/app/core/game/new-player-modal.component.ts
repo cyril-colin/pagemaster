@@ -98,7 +98,7 @@ export class NewPlayerModalComponent {
         id: `player-${this.playerData.name}-${Date.now()}`,
         name: this.playerData.name,
         description: '',
-        picture: '',
+        avatar: '',
         attributes: {
           bar: Object.values(defaultBar),
           status: [],

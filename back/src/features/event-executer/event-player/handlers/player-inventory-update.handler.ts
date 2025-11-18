@@ -7,10 +7,10 @@ export const playerInventoryUpdateHandler: GameEventHandlerFn<EventPlayerInvento
     throw new Error('Player not found in game session');
   }
   
-  const inventoryIndex = player.attributes.inventory.findIndex(inv => inv.id === event.inventory.id);
+  const inventoryIndex = player.attributes.inventory.findIndex(inv => inv.id === event.newInventory.id);
   if (inventoryIndex === -1) {
     throw new Error('Inventory not found for update');
   }
-  player.attributes.inventory[inventoryIndex] = event.inventory;
+  player.attributes.inventory[inventoryIndex] = event.newInventory;
   return gameSession;
 }

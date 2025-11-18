@@ -12,6 +12,6 @@ export const playerInventoryItemAddHandler: GameEventHandlerFn<EventPlayerInvent
     throw new Error('Inventory not found in player attributes');
   }
   
-  inventory.current.push({ ...event.item, id: `item_${Date.now()}` });
+  inventory.current.push({ ...event.newItem, id: `item_${Date.now()}` });
   return gameSession;
 }

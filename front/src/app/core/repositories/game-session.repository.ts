@@ -44,7 +44,7 @@ export class GameSessionRepository {
       `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/rename`, player);
   }
 
-  updatePlayerAvatar(gameSessionId: string, participantId: string, player: Pick<Player, 'picture'>): Observable<Participant> {
+  updatePlayerAvatar(gameSessionId: string, participantId: string, player: Pick<Player, 'avatar'>): Observable<Participant> {
     return this.http.patch<Participant>(
       `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/avatar`, player);
   }

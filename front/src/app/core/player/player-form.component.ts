@@ -34,7 +34,7 @@ export type PlayerPermissions = {
       <ds-card>
         <div class="identity">
           <app-picture-control
-            [picture]="existingPlayer().picture"
+            [picture]="existingPlayer().avatar"
             [permissions]="permissions().avatar"
             (newPicture)="avatarEvent.emit($event)"
           />

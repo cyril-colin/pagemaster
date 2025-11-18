@@ -2,7 +2,18 @@ import { ChangeDetectionStrategy, Component, computed, HostListener, inject } fr
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AttributeBar, AttributeInventory, AttributeStatus } from '@pagemaster/common/attributes.types';
-import { EventPlayerNameEdit, EventPlayerTypes } from '@pagemaster/common/events-player.types';
+import {
+  EventPlayerAvatarEdit,
+  EventPlayerDescriptionEdit,
+  EventPlayerInventoryAdd,
+  EventPlayerInventoryDelete,
+  EventPlayerInventoryItemAdd,
+  EventPlayerInventoryItemDelete,
+  EventPlayerInventoryItemEdit,
+  EventPlayerInventoryUpdate,
+  EventPlayerNameEdit,
+  EventPlayerTypes,
+} from '@pagemaster/common/events-player.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
@@ -201,23 +212,38 @@ export class PlayerPageComponent {
       type: EventPlayerTypes.PLAYER_NAME_EDIT,
       gameSessionId,
       playerId: player.id,
-      name: newName,
+      newName: newName,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();  }
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
+  }
 
   protected updateAvatar(newAvatar: AvatarEvent, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.updatePlayerAvatar(gameSessionId, participantId, { picture: newAvatar.picture }).pipe(
+
+    const command: EventPlayerAvatarEdit = {
+      type: EventPlayerTypes.PLAYER_AVATAR_EDIT,
+      gameSessionId,
+      playerId: player.id,
+      newAvatar: newAvatar.picture,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).pipe(
       tap(() => void newAvatar.modalRef.close()),
     ).subscribe();
   }
 
   protected updateDescription(newDescription: string, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.updatePlayerDescription(gameSessionId, participantId, { description: newDescription }).subscribe();
+
+    const command: EventPlayerDescriptionEdit = {
+      type: EventPlayerTypes.PLAYER_DESCRIPTION_EDIT,
+      gameSessionId,
+      playerId: player.id,
+      newDescription,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
   }
 
   protected updateBarValue(bar: AttributeBar, player: Player): void {
@@ -269,54 +295,93 @@ export class PlayerPageComponent {
   }
 
   protected addItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.addItemToInventory(gameSessionId, participantId, itemEvent.inventory.id, itemEvent.item).pipe(
+
+    const command: EventPlayerInventoryItemAdd = {
+      type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD,
+      gameSessionId,
+      playerId: player.id,
+      inventoryId: itemEvent.inventory.id,
+      newItem: itemEvent.item,
+    } ;
+
+    this.gameEventRepository.postGameEventCommand(command).pipe(
       tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
 
   protected editItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.editItemInInventory(
-      gameSessionId, participantId, itemEvent.inventory.id, itemEvent.item).pipe(
+
+    const command: EventPlayerInventoryItemEdit = {
+      type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT,
+      gameSessionId,
+      playerId: player.id,
+      inventoryId: itemEvent.inventory.id,
+      newItem: itemEvent.item,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).pipe(
       tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
 
   protected deleteItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.deleteItemFromInventory(
-      gameSessionId, participantId, itemEvent.inventory.id, itemEvent.item.id).pipe(
+
+    const command: EventPlayerInventoryItemDelete = {
+      type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE,
+      gameSessionId,
+      playerId: player.id,
+      inventoryId: itemEvent.inventory.id,
+      itemId: itemEvent.item.id,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).pipe(
       tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
 
   protected addInventory(event: InventoryAdditionEvent, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.addInventoryForPlayer(
-      gameSessionId, participantId, event.inventory).pipe(
+
+    const command: EventPlayerInventoryAdd = {
+      type: EventPlayerTypes.PLAYER_INVENTORY_ADD,
+      gameSessionId,
+      playerId: player.id,
+      newInventory: event.inventory,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).pipe(
       tap(() => void event.modalRef.close()),
     ).subscribe();
   }
 
   protected updateInventory(event: InventoryUpdateEvent, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.updateInventoryForPlayer(
-      gameSessionId, participantId, event.inventory.id, event.inventory).pipe(
+
+    const command: EventPlayerInventoryUpdate = {
+      type: EventPlayerTypes.PLAYER_INVENTORY_UPDATE,
+      gameSessionId,
+      playerId: player.id,
+      newInventory: event.inventory,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).pipe(
       tap(() => void event.modalRef.close()),
     ).subscribe();
   }
 
   protected deleteInventory(event: InventoryDeletionEvent, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.deleteInventoryForPlayer(
-      gameSessionId, participantId, event.inventory.id).pipe(
-    ).subscribe();
+
+    const command: EventPlayerInventoryDelete = {
+      type: EventPlayerTypes.PLAYER_INVENTORY_DELETE,
+      gameSessionId,
+      playerId: player.id,
+      inventoryId: event.inventory.id,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
   }
 }

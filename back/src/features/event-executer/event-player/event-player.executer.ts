@@ -2,6 +2,7 @@ import { EventPlayerTypes } from '../../../pagemaster-schemas/src/events-player.
 import { EventPlayerBase, EventPlayerComputed } from '../../../pagemaster-schemas/src/events.types';
 import { GameMaster, GameSession, Player } from '../../../pagemaster-schemas/src/pagemaster.types';
 import { GameEventExecuter, GameEventHandlerFn } from '../event-executer';
+import { playerAvatarEditHandler } from './handlers/player-avatar-edit.handler';
 import { playerDescriptionEditHandler } from './handlers/player-description-edit.handler';
 import { playerInventoryAddHandler } from './handlers/player-inventory-add.handler';
 import { playerInventoryDeleteHandler } from './handlers/player-inventory-delete.handler';
@@ -16,6 +17,7 @@ import { playerNameEditHandler } from './handlers/player-name-edit.handler';
 export const EventPlayerMapper = {
   [EventPlayerTypes.PLAYER_DESCRIPTION_EDIT]: playerDescriptionEditHandler,
   [EventPlayerTypes.PLAYER_NAME_EDIT]: playerNameEditHandler,
+  [EventPlayerTypes.PLAYER_AVATAR_EDIT]: playerAvatarEditHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_DELETE]: playerInventoryDeleteHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_ADD]: playerInventoryAddHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_UPDATE]: playerInventoryUpdateHandler,

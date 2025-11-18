@@ -43,7 +43,7 @@ export class ParticipantProfileController {
 
   @Patch('/game-sessions/:gameSessionId/participants/:participantId/avatar')
   public async updateParticipantAvatar(
-    newPlayer: Pick<Player, 'picture'>,
+    newPlayer: Pick<Player, 'avatar'>,
     params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
@@ -53,7 +53,7 @@ export class ParticipantProfileController {
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
     const player = gameSession.players[participantIndex];
 
-    player.picture = newPlayer.picture;
+    player.avatar = newPlayer.avatar;
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 

@@ -7,7 +7,7 @@ export const playerDescriptionEditHandler: GameEventHandlerFn<EventPlayerDescrip
     throw new Error('Player not found in game session');
   }
 
-  player.description = event.description;
+  player.description = event.newDescription;
   return gameSession;
 }
 

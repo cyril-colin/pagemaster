@@ -19,6 +19,7 @@ const PLAYER_EVENT_TYPES = new Set<EventPlayerTypes>([
   EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE,
   EventPlayerTypes.PLAYER_NAME_EDIT,
   EventPlayerTypes.PLAYER_DESCRIPTION_EDIT,
+  EventPlayerTypes.PLAYER_AVATAR_EDIT,
 ]);
 
 export class GameEventController {

@@ -7,6 +7,6 @@ export const playerInventoryAddHandler: GameEventHandlerFn<EventPlayerInventoryA
     throw new Error('Player not found in game session');
   }
   
-  player.attributes.inventory.push({ ...event.inventory, id: `inv_${Date.now()}` });
+  player.attributes.inventory.push({ ...event.newInventory, id: `inv_${Date.now()}` });
   return gameSession;
 }
