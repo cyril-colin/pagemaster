@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { AttributeBar, AttributeInventory, AttributeStatus } from '@pagemaster/common/attributes.types';
+import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Item } from '@pagemaster/common/items.types';
 import { GameSession, Participant, Player } from '@pagemaster/common/pagemaster.types';
 import { Observable } from 'rxjs';
@@ -37,23 +37,6 @@ export class GameSessionRepository {
 
   updateParticipant(gameSessionId: string, participant: Participant): Observable<Participant> {
     return this.http.put<Participant>(`${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participant.id}`, participant);
-  }
-
-  renamePlayer(gameSessionId: string, participantId: string, player: Pick<Player, 'name'>): Observable<Participant> {
-    return this.http.patch<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/rename`, player);
-  }
-
-  updatePlayerAvatar(gameSessionId: string, participantId: string, player: Pick<Player, 'avatar'>): Observable<Participant> {
-    return this.http.patch<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/avatar`, player);
-  }
-
-  updatePlayerDescription(
-    gameSessionId: string, participantId: string, player: Pick<Player, 'description'>,
-  ): Observable<Participant> {
-    return this.http.patch<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/description`, player);
   }
 
   updatePlayerBars(
@@ -142,75 +125,6 @@ export class GameSessionRepository {
 
   addItem(gameSessionId: string, item: Item): Observable<GameSession> {
     return this.http.post<GameSession>(`${this.baseUrl}/game-sessions/${gameSessionId}/items`, item);
-  }
-
-  addItemToInventory(
-    gameSessionId: string,
-    participantId: string,
-    inventoryId: string,
-    item: Item,
-  ): Observable<Participant> {
-    return this.http.post<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/inventories/${inventoryId}/items`,
-      item,
-    );
-  }
-
-  editItemInInventory(
-    gameSessionId: string,
-    participantId: string,
-    inventoryId: string,
-    item: Item,
-  ): Observable<Participant> {
-    return this.http.put<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/inventories/${inventoryId}/items/${item.id}`,
-      item,
-    );
-  }
-
-  deleteItemFromInventory(
-    gameSessionId: string,
-    participantId: string,
-    inventoryId: string,
-    itemId: string,
-  ): Observable<Participant> {
-    return this.http.delete<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/inventories/${inventoryId}/items/${itemId}`,
-    );
-  }
-
-  addInventoryForPlayer(
-    gameSessionId: string,
-    participantId: string,
-    inventory: AttributeInventory,
-  ): Observable<Participant> {
-    return this.http.post<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/inventories/add`,
-      inventory,
-    );
-  }
-
-  updateInventoryForPlayer(
-    gameSessionId: string,
-    participantId: string,
-    inventoryId: string,
-    inventory: AttributeInventory,
-  ): Observable<Participant> {
-    return this.http.put<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/inventories/${inventoryId}/update`,
-      inventory,
-    );
-  }
-
-  deleteInventoryForPlayer(
-    gameSessionId: string,
-    participantId: string,
-    inventoryId: string,
-  ): Observable<Participant> {
-    return this.http.delete<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/inventories/${inventoryId}/delete`,
-      {},
-    );
   }
 
 }
