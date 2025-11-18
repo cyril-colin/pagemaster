@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, HostListener, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AttributeBar, AttributeInventory, AttributeStatus } from '@pagemaster/common/attributes.types';
+import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import {
   EventPlayerAvatarEdit,
+  EventPlayerBarAdd,
+  EventPlayerBarDelete,
+  EventPlayerBarEdit,
   EventPlayerDescriptionEdit,
   EventPlayerInventoryAdd,
   EventPlayerInventoryDelete,
@@ -12,6 +15,9 @@ import {
   EventPlayerInventoryItemEdit,
   EventPlayerInventoryUpdate,
   EventPlayerNameEdit,
+  EventPlayerStatusAdd,
+  EventPlayerStatusDelete,
+  EventPlayerStatusEdit,
   EventPlayerTypes,
 } from '@pagemaster/common/events-player.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
@@ -24,7 +30,6 @@ import { InventoryAdditionEvent } from 'src/app/core/player/inventories/inventor
 import { InventoryDeletionEvent, InventoryItemEvent, InventoryUpdateEvent } from 'src/app/core/player/inventories/inventory.component';
 import { PlayerFormComponent } from 'src/app/core/player/player-form.component';
 import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
-import { GameSessionRepository } from 'src/app/core/repositories/game-session.repository';
 
 @Component({
   selector: 'app-game-player-view',
@@ -77,7 +82,6 @@ export class PlayerPageComponent {
     return null;
   });
   protected currentParticipantState = inject(CurrentParticipantState);
-  protected gameInstanceService = inject(GameSessionRepository);
   protected gameEventRepository = inject(GameEventRepository);
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
@@ -247,51 +251,94 @@ export class PlayerPageComponent {
   }
 
   protected updateBarValue(bar: AttributeBar, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.updatePlayerBar(gameSessionId, participantId, bar.id, bar).subscribe();
+
+    const command: EventPlayerBarEdit = {
+      type: EventPlayerTypes.PLAYER_BAR_EDIT,
+      gameSessionId,
+      playerId: player.id,
+      newBar: bar,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
   }
 
   protected addBar(bar: AttributeBar, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.addPlayerBar(gameSessionId, participantId, bar).subscribe();
+
+    const command: EventPlayerBarAdd = {
+      type: EventPlayerTypes.PLAYER_BAR_ADD,
+      gameSessionId,
+      playerId: player.id,
+      newBar: bar,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
   }
 
   protected updateBar(bar: AttributeBar, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.updatePlayerBar(gameSessionId, participantId, bar.id, bar).subscribe();
+
+    const command: EventPlayerBarEdit = {
+      type: EventPlayerTypes.PLAYER_BAR_EDIT,
+      gameSessionId,
+      playerId: player.id,
+      newBar: bar,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
   }
 
   protected deleteBar(bar: AttributeBar, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.deletePlayerBar(gameSessionId, participantId, bar.id).subscribe();
+
+    const command: EventPlayerBarDelete = {
+      type: EventPlayerTypes.PLAYER_BAR_DELETE,
+      gameSessionId,
+      playerId: player.id,
+      barId: bar.id,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
   }
 
   protected addStatus(status: AttributeStatus, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.addPlayerStatus(gameSessionId, participantId, status).subscribe();
+
+    const command: EventPlayerStatusAdd = {
+      type: EventPlayerTypes.PLAYER_STATUS_ADD,
+      gameSessionId,
+      playerId: player.id,
+      newStatus: status,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
   }
 
   protected updateStatus(status: AttributeStatus, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.updatePlayerStatus(gameSessionId, participantId, status.id, status).subscribe();
+
+    const command: EventPlayerStatusEdit = {
+      type: EventPlayerTypes.PLAYER_STATUS_EDIT,
+      gameSessionId,
+      playerId: player.id,
+      newStatus: status,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
   }
 
   protected deleteStatus(status: AttributeStatus, player: Player): void {
-    const participantId = player.id;
     const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.deletePlayerStatus(gameSessionId, participantId, status.id).subscribe();
-  }
 
-  protected updateInventories(inventories: AttributeInventory[], player: Player): void {
-    const participantId = player.id;
-    const gameSessionId = this.currentSession()!.gameSession.id;
-    this.gameInstanceService.updatePlayerInventories(gameSessionId, participantId, { inventory: inventories }).subscribe();
+    const command: EventPlayerStatusDelete = {
+      type: EventPlayerTypes.PLAYER_STATUS_DELETE,
+      gameSessionId,
+      playerId: player.id,
+      statusId: status.id,
+    };
+
+    this.gameEventRepository.postGameEventCommand(command).subscribe();
   }
 
   protected addItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {

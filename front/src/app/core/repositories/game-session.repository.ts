@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Item } from '@pagemaster/common/items.types';
 import { GameSession, Participant, Player } from '@pagemaster/common/pagemaster.types';
 import { Observable } from 'rxjs';
@@ -37,83 +36,6 @@ export class GameSessionRepository {
 
   updateParticipant(gameSessionId: string, participant: Participant): Observable<Participant> {
     return this.http.put<Participant>(`${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participant.id}`, participant);
-  }
-
-  updatePlayerBars(
-    gameSessionId: string, participantId: string, attributes: Pick<Player['attributes'], 'bar'>,
-  ): Observable<Participant> {
-    return this.http.patch<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/bars`, attributes);
-  }
-
-  addPlayerBar(
-    gameSessionId: string,
-    participantId: string,
-    bar: AttributeBar,
-  ): Observable<Participant> {
-    return this.http.post<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/bars`,
-      bar,
-    );
-  }
-
-  updatePlayerBar(
-    gameSessionId: string,
-    participantId: string,
-    barId: string,
-    bar: AttributeBar,
-  ): Observable<Participant> {
-    return this.http.put<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/bars/${barId}`,
-      bar,
-    );
-  }
-
-  deletePlayerBar(
-    gameSessionId: string,
-    participantId: string,
-    barId: string,
-  ): Observable<Participant> {
-    return this.http.delete<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/bars/${barId}`,
-    );
-  }
-
-  updatePlayerStatuses(
-    gameSessionId: string, participantId: string, attributes: Pick<Player['attributes'], 'status'>,
-  ): Observable<Participant> {
-    return this.http.patch<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/statuses`, attributes);
-  }
-
-  deletePlayerStatus(
-    gameSessionId: string, participantId: string, statusId: string,
-  ): Observable<Participant> {
-    return this.http.delete<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/statuses/${statusId}`);
-  }
-
-  addPlayerStatus(
-    gameSessionId: string,
-    participantId: string,
-    status: AttributeStatus,
-  ): Observable<Participant> {
-    return this.http.post<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/statuses`,
-      status,
-    );
-  }
-
-  updatePlayerStatus(
-    gameSessionId: string,
-    participantId: string,
-    statusId: string,
-    status: AttributeStatus,
-  ): Observable<Participant> {
-    return this.http.put<Participant>(
-      `${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participantId}/statuses/${statusId}`,
-      status,
-    );
   }
 
   updatePlayerInventories(

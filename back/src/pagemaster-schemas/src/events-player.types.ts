@@ -1,4 +1,4 @@
-import { AttributeInventory } from './attributes.types'
+import { AttributeBar, AttributeInventory, AttributeStatus } from './attributes.types'
 import { EventPlayerBase } from './events.types'
 import { Item } from './items.types'
 
@@ -6,6 +6,12 @@ export enum EventPlayerTypes {
   PLAYER_DESCRIPTION_EDIT = 'player.description.edit',
   PLAYER_AVATAR_EDIT = 'player.avatar.edit',
   PLAYER_NAME_EDIT = 'player.name.edit',
+  PLAYER_BAR_ADD = 'player.bar.add',
+  PLAYER_BAR_EDIT = 'player.bar.edit',
+  PLAYER_BAR_DELETE = 'player.bar.delete',
+  PLAYER_STATUS_ADD = 'player.status.add',
+  PLAYER_STATUS_EDIT = 'player.status.edit',
+  PLAYER_STATUS_DELETE = 'player.status.delete',
   PLAYER_INVENTORY_DELETE = 'player.inventory.delete',
   PLAYER_INVENTORY_ADD = 'player.inventory.add',
   PLAYER_INVENTORY_UPDATE = 'player.inventory.update',
@@ -65,4 +71,34 @@ export type EventPlayerInventoryItemDelete = EventPlayerInventoryBase & {
   type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE,
   inventoryId: string,
   itemId: string,
+}
+
+export type EventPlayerBarAdd = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_BAR_ADD,
+  newBar: Omit<AttributeBar, 'id'>,
+}
+
+export type EventPlayerBarEdit = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_BAR_EDIT,
+  newBar: AttributeBar,
+}
+
+export type EventPlayerBarDelete = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_BAR_DELETE,
+  barId: string,
+}
+
+export type EventPlayerStatusAdd = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_STATUS_ADD,
+  newStatus: Omit<AttributeStatus, 'id'>,
+}
+
+export type EventPlayerStatusEdit = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_STATUS_EDIT,
+  newStatus: AttributeStatus,
+}
+
+export type EventPlayerStatusDelete = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_STATUS_DELETE,
+  statusId: string,
 }

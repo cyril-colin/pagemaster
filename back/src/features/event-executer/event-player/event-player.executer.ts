@@ -3,6 +3,9 @@ import { EventPlayerBase, EventPlayerComputed } from '../../../pagemaster-schema
 import { GameMaster, GameSession, Player } from '../../../pagemaster-schemas/src/pagemaster.types';
 import { GameEventExecuter, GameEventHandlerFn } from '../event-executer';
 import { playerAvatarEditHandler } from './handlers/player-avatar-edit.handler';
+import { playerBarAddHandler } from './handlers/player-bar-add.handler';
+import { playerBarDeleteHandler } from './handlers/player-bar-delete.handler';
+import { playerBarEditHandler } from './handlers/player-bar-edit.handler';
 import { playerDescriptionEditHandler } from './handlers/player-description-edit.handler';
 import { playerInventoryAddHandler } from './handlers/player-inventory-add.handler';
 import { playerInventoryDeleteHandler } from './handlers/player-inventory-delete.handler';
@@ -11,6 +14,9 @@ import { playerInventoryItemDeleteHandler } from './handlers/player-inventory-it
 import { playerInventoryItemEditHandler } from './handlers/player-inventory-item-edit.handler';
 import { playerInventoryUpdateHandler } from './handlers/player-inventory-update.handler';
 import { playerNameEditHandler } from './handlers/player-name-edit.handler';
+import { playerStatusAddHandler } from './handlers/player-status-add.handler';
+import { playerStatusDeleteHandler } from './handlers/player-status-delete.handler';
+import { playerStatusEditHandler } from './handlers/player-status-edit.handler';
 
 
 
@@ -18,6 +24,12 @@ export const EventPlayerMapper = {
   [EventPlayerTypes.PLAYER_DESCRIPTION_EDIT]: playerDescriptionEditHandler,
   [EventPlayerTypes.PLAYER_NAME_EDIT]: playerNameEditHandler,
   [EventPlayerTypes.PLAYER_AVATAR_EDIT]: playerAvatarEditHandler,
+  [EventPlayerTypes.PLAYER_BAR_ADD]: playerBarAddHandler,
+  [EventPlayerTypes.PLAYER_BAR_EDIT]: playerBarEditHandler,
+  [EventPlayerTypes.PLAYER_BAR_DELETE]: playerBarDeleteHandler,
+  [EventPlayerTypes.PLAYER_STATUS_ADD]: playerStatusAddHandler,
+  [EventPlayerTypes.PLAYER_STATUS_EDIT]: playerStatusEditHandler,
+  [EventPlayerTypes.PLAYER_STATUS_DELETE]: playerStatusDeleteHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_DELETE]: playerInventoryDeleteHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_ADD]: playerInventoryAddHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_UPDATE]: playerInventoryUpdateHandler,

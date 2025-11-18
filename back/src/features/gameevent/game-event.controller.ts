@@ -20,6 +20,12 @@ const PLAYER_EVENT_TYPES = new Set<EventPlayerTypes>([
   EventPlayerTypes.PLAYER_NAME_EDIT,
   EventPlayerTypes.PLAYER_DESCRIPTION_EDIT,
   EventPlayerTypes.PLAYER_AVATAR_EDIT,
+  EventPlayerTypes.PLAYER_BAR_ADD,
+  EventPlayerTypes.PLAYER_BAR_EDIT,
+  EventPlayerTypes.PLAYER_BAR_DELETE,
+  EventPlayerTypes.PLAYER_STATUS_ADD,
+  EventPlayerTypes.PLAYER_STATUS_EDIT,
+  EventPlayerTypes.PLAYER_STATUS_DELETE,
 ]);
 
 export class GameEventController {
