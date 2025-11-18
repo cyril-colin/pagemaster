@@ -1,12 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
-import { EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { ModalService } from 'src/app/core/modal';
-import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { MainMenuComponent } from './main-menu.component';
 
 @Component({
@@ -15,9 +12,6 @@ import { MainMenuComponent } from './main-menu.component';
   <section class="header">
     <div class="links">
       <ds-button [icon]="'menu'" (click)="openMainMenu()"/>
-      <a [routerLink]="eventsRoute()">
-        Events page ({{ eventService.events().length }})
-      </a>
     </div>
   </section>
 
@@ -94,14 +88,6 @@ import { MainMenuComponent } from './main-menu.component';
 export class GameSessionPageComponent {
   protected currentGameSession = inject(CurrentGameSessionState);
   protected modalService = inject(ModalService);
-  protected eventService = inject(EventsCenterStateService);
-  protected eventsRoute = computed(() => '/' + PageMasterRoutes().GameInstanceSession.interpolated(
-    this.currentGameSession.currentGameSession().id,
-  ));
-
-  constructor() {
-    toSignal(this.eventService.init(this.currentGameSession.currentGameSession().id));
-  }
 
   protected openMainMenu(): void {
     const ref = this.modalService.openLeftPanel(MainMenuComponent);

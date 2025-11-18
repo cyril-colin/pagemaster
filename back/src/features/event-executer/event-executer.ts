@@ -1,7 +1,7 @@
 import { SocketServerService } from '../../core/socket.service';
 import { EventBase, EventPlayerBase, EventPlayerComputed } from '../../pagemaster-schemas/src/events.types';
 import { GameMaster, GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
-import { GameSessionMongoClient } from '../gameinstance/game-instance.mongo-client';
+import { GameSessionMongoClient } from '../gamesession/game-session.mongo-client';
 
 export abstract class GameEventHandler<T extends EventPlayerBase> {
   public abstract handle(event: T, gameSession: GameSession): GameSession;

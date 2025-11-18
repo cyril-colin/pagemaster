@@ -2,6 +2,7 @@ import { Request } from 'express';
 import { HttpBadRequestError, HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
 import { SocketServerService } from '../../core/socket.service';
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
+import { EventBase } from '../../pagemaster-schemas/src/events.types';
 import { GameMaster, GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameSessionMongoClient } from './game-session.mongo-client';
 
@@ -67,6 +68,12 @@ export class GameSessionService {
       metadata?: Record<string, unknown>
     }
   }): void {
-    this.socketServerService.notifyGameSessionUpdate(params);
+    // Create a simple event base for notification
+    const eventBase: EventBase = {
+      id: `${Date.now()}-${Math.random().toString(36).substring(7)}`,
+      type: params.event.type,
+      gameSessionId: params.gameSession.id,
+    };
+    this.socketServerService.notifySessionUpdate(eventBase);
   }
 }

@@ -1,30 +1,20 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
-import { GameEvent } from '@pagemaster/common/pagemaster.types';
-import { Observable, tap } from 'rxjs';
-import { GameEventRepository } from '../repositories/game-event.repository';
+import { Injectable, signal } from '@angular/core';
+import { EventBase } from '@pagemaster/common/events.types';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventsCenterStateService {
-  private gameEventService = inject(GameEventRepository);
-  private eventsSignal = signal<GameEvent[]>([]);
+  private eventsSignal = signal<EventBase[]>([]);
 
-  public readonly events = computed(() => {
-    const events = this.eventsSignal.asReadonly();
-    return events().sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-  });
+  public readonly events = this.eventsSignal.asReadonly();
 
-  public addEvent(event: GameEvent): void {
+  public addEvent(event: EventBase): void {
     this.eventsSignal.update((events) => [...events, event]);
   }
 
-  public init(gameSessionId: string): Observable<GameEvent[]> {
-    return this.gameEventService.getGameEventsByGameInstanceId(gameSessionId).pipe(
-      tap((gameEvents) => {
-        this.eventsSignal.set(gameEvents);
-      }),
-    );
+  public clearEvents(): void {
+    this.eventsSignal.set([]);
   }
 }

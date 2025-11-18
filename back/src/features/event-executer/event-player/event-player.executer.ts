@@ -42,6 +42,11 @@ export const EventPlayerMapper = {
 
 export class EventPlayerExecuter extends GameEventExecuter {
   public async executeEvent(event: EventPlayerBase, triggerer: Player | GameMaster, currentSession: GameSession) {
+    // Generate event ID if not provided
+    if (!event.id) {
+      event.id = `${Date.now()}-${Math.random().toString(36).substring(7)}`;
+    }
+
     const targetPlayer = currentSession.players.find(p => p.id === event.playerId);
     if (!targetPlayer) {
       throw new Error('Target player not found in the current game session');

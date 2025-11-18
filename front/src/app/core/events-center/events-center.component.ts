@@ -7,7 +7,7 @@ import { EventsCenterStateService } from './events-center.state';
   <section>
     @for(e of events(); track e.id) {
       <article>
-        <p>{{ formatTimestamp(e.timestamp) }} : {{ e.description }}</p>
+        <p>{{ e.type }} - Game Session: {{ e.gameSessionId }}</p>
       </article>
     }
   </section>
@@ -18,9 +18,5 @@ import { EventsCenterStateService } from './events-center.state';
 export class EventsCenterComponent {
   protected eventsCenterState = inject(EventsCenterStateService);
   protected events = this.eventsCenterState.events;
-
-  protected formatTimestamp(timestamp: number): string {
-    return new Date(timestamp).toLocaleString();
-  }
 
 }
