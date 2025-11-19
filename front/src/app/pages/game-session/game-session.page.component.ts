@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
+import { EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { MainMenuComponent } from './main-menu.component';
@@ -13,7 +14,7 @@ import { MainMenuComponent } from './main-menu.component';
   <section class="header">
     <div class="links">
       <ds-button [icon]="'menu'" (click)="openMainMenu()"/>
-      <ds-button (click)="goToEvents()" [mode]="'secondary'">Events Center</ds-button>
+      <ds-button (click)="goToEvents()" [mode]="'secondary'">Events Center ({{ eventCount() }})</ds-button>
     </div>
   </section>
 
@@ -92,6 +93,8 @@ export class GameSessionPageComponent {
   protected route = inject(ActivatedRoute);
   protected currentGameSession = inject(CurrentGameSessionState);
   protected modalService = inject(ModalService);
+  protected eventsCenterState = inject(EventsCenterStateService);
+  protected eventCount = computed(() => this.eventsCenterState.events().length);
 
   protected openMainMenu(): void {
     const ref = this.modalService.openLeftPanel(MainMenuComponent);

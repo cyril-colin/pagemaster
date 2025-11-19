@@ -7,7 +7,7 @@ import { EventsCenterStateService } from './events-center.state';
   <section>
     @for(e of events(); track e.id) {
       <article>
-        <p>{{ e.type }} - Game Session: {{ e.gameSessionId }}</p>
+        <p>{{ e.type }}</p>
       </article>
     }
   </section>
