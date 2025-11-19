@@ -1,35 +1,18 @@
 import { Request } from 'express';
+import { SocketServerService } from 'src/core/socket.service';
 import { EventBase } from 'src/pagemaster-schemas/src/events.types';
 import { Post } from '../../core/router/controller.decorators';
 import { HttpBadRequestError, HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
-import { EventPlayerTypes } from '../../pagemaster-schemas/src/events-player.types';
+import { isEventPlayerType } from '../../pagemaster-schemas/src/events-player.types';
 import { GameEventExecuter } from '../event-executer/event-executer';
 import { EventPlayerExecuter } from '../event-executer/event-player/event-player.executer';
 import { GameSessionMongoClient } from '../gamesession/game-session.mongo-client';
 
-const PLAYER_EVENT_TYPES = new Set<EventPlayerTypes>([
-  EventPlayerTypes.PLAYER_INVENTORY_DELETE,
-  EventPlayerTypes.PLAYER_INVENTORY_ADD,
-  EventPlayerTypes.PLAYER_INVENTORY_UPDATE,
-  EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD,
-  EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT,
-  EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE,
-  EventPlayerTypes.PLAYER_NAME_EDIT,
-  EventPlayerTypes.PLAYER_DESCRIPTION_EDIT,
-  EventPlayerTypes.PLAYER_AVATAR_EDIT,
-  EventPlayerTypes.PLAYER_BAR_ADD,
-  EventPlayerTypes.PLAYER_BAR_EDIT,
-  EventPlayerTypes.PLAYER_BAR_DELETE,
-  EventPlayerTypes.PLAYER_STATUS_ADD,
-  EventPlayerTypes.PLAYER_STATUS_EDIT,
-  EventPlayerTypes.PLAYER_STATUS_DELETE,
-]);
-
 export class GameEventController {
   constructor(
     private gameInstanceMongoClient: GameSessionMongoClient,
-    private playerEventExecuter: EventPlayerExecuter,
+    private socketServerService: SocketServerService,
   ) {}
 
   @Post('/game-events/command')
@@ -51,12 +34,17 @@ export class GameEventController {
 
     const executer = this.getExecuter(gameEvent);
     const res = await executer.executeEvent(gameEvent, gameSession.master, gameSession);
-    return res;
+
+    console.log('Game event executed:', res.newGameSession.players.map(p => ({id: p.id, name: p.name})));
+
+    await this.gameInstanceMongoClient.updateGameSession(res.newGameSession.id, res.newGameSession.version || 0, res.newGameSession);
+    await this.socketServerService.notifySessionUpdate(res.newGameSession, res.event);
+    return res.event;
   }
 
   protected getExecuter(gameEvent: EventBase,): GameEventExecuter {
-    if (PLAYER_EVENT_TYPES.has(gameEvent.type as EventPlayerTypes)) {
-      return this.playerEventExecuter;
+    if (isEventPlayerType(gameEvent.type)) {
+      return new EventPlayerExecuter();
     }
     
     throw new HttpBadRequestError(`Unsupported event type: ${gameEvent.type}`);

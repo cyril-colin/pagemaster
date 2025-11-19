@@ -22,7 +22,21 @@ cd ./back && npm start
 cd ./front && npm start 
 ```
 
-## Why Monorepo?
+
+
+## Architecture point
+
+### State management
+
+The state management rely on socket event : when an event is triggered, the new whole game session representation is sent via socket to the front that re-render on modified items thanks to angular zoneless and signals.
+
+
+### Design Pattern Command
+
+Each event is sent via a `POST /game-events/command`. Then the backend use a Command Pattern to deal with different event types and keep them into an history.
+
+
+### Why Monorepo?
 
 This project uses a monorepo structure for several practical reasons:
 

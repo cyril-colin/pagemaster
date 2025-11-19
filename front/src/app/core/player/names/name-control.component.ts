@@ -19,7 +19,7 @@ export type NamePermissions = {
         type="text"
         [formControl]="nameForm().controls.name"
         (blur)="submit()"
-        (keydown.enter)="$event.preventDefault(); submit()"
+        (keydown.enter)="$event.preventDefault(); triggerBlur()"
       />
     }
   `,
@@ -79,6 +79,10 @@ export class NameControlComponent {
         (this.input().nativeElement as HTMLInputElement).focus();
       });
     }
+  }
+
+  protected triggerBlur() {
+    (this.input().nativeElement as HTMLInputElement).blur();
   }
 
   protected submit(): void {

@@ -58,9 +58,6 @@ export class EventPlayerExecuter extends GameEventExecuter {
     }
     (handler as GameEventHandlerFn<EventPlayerBase>)(event, currentSession);
 
-    
-    await this.mongoClient.updateGameSession(currentSession.id, currentSession.version || 0, currentSession);
-
 
    
     const computedEvent: EventPlayerComputed<EventPlayerBase> = {
@@ -70,8 +67,7 @@ export class EventPlayerExecuter extends GameEventExecuter {
       timestamp: Date.now(),
     }
 
-    await this.socketServerService.notifySessionUpdate(computedEvent);
-    return computedEvent;
+    return {event: computedEvent, newGameSession: currentSession};
   }
 }
 

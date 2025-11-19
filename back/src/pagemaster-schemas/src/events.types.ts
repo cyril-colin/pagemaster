@@ -2,7 +2,7 @@ import { EventPlayerTypes } from './events-player.types'
 import { GameMaster, Player } from './pagemaster.types'
 
 export type EventBase = {
-  id?: string,
+  id: string,
   type: string,
   gameSessionId: string,
 }

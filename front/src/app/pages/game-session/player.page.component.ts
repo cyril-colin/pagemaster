@@ -73,11 +73,13 @@ import { GameEventRepository } from 'src/app/core/repositories/game-event.reposi
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerPageComponent {
-  protected gameSession = inject(CurrentGameSessionState).currentGameSession();
-  protected participant = inject(CurrentParticipantState).currentParticipant();
+  protected gameSession = inject(CurrentGameSessionState);
+  protected participant = inject(CurrentParticipantState);
   protected currentSession = computed(() => {
-    if (this.gameSession && this.participant) {
-      return { gameSession: this.gameSession, participant: this.participant };
+    const gameSession = this.gameSession.currentGameSessionNullable();
+    const participant = this.participant.currentParticipant();
+    if (gameSession && participant) {
+      return { gameSession, participant };
     }
     return null;
   });
@@ -94,6 +96,9 @@ export class PlayerPageComponent {
   private touchStartX = 0;
   private touchEndX = 0;
   private readonly SWIPE_THRESHOLD = 50; // Minimum distance for a swipe
+  protected players = computed(() => {
+    return this.currentSession()!.gameSession.players;
+  });
 
   protected viewedPlayer = computed(() => {
     const paramName = PageMasterRoutes().GameInstanceSession.params[1];
@@ -101,16 +106,14 @@ export class PlayerPageComponent {
     if (!playerId) {
       throw new Error('Player ID parameter is missing in the route.');
     }
-    const participant = this.currentSession()!.gameSession.players.find(p => p.id === playerId);
+    const participant = this.players().find(p => p.id === playerId);
     if (!participant) {
       throw new Error(`Player with ID ${playerId} not found in current game instance.`);
     }
     return participant;
   });
 
-  protected players = computed(() => {
-    return this.currentSession()!.gameSession.players;
-  });
+  
 
   protected currentPlayerIndex = computed(() => {
     return this.players().findIndex(p => p.id === this.viewedPlayer().id);
@@ -212,7 +215,7 @@ export class PlayerPageComponent {
   protected renameParticipant(newName: string, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerNameEdit = {
+    const command: Omit<EventPlayerNameEdit, 'id'> = {
       type: EventPlayerTypes.PLAYER_NAME_EDIT,
       gameSessionId,
       playerId: player.id,
@@ -225,7 +228,7 @@ export class PlayerPageComponent {
   protected updateAvatar(newAvatar: AvatarEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerAvatarEdit = {
+    const command: Omit<EventPlayerAvatarEdit, 'id'> = {
       type: EventPlayerTypes.PLAYER_AVATAR_EDIT,
       gameSessionId,
       playerId: player.id,
@@ -240,7 +243,7 @@ export class PlayerPageComponent {
   protected updateDescription(newDescription: string, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerDescriptionEdit = {
+    const command: Omit<EventPlayerDescriptionEdit, 'id'> = {
       type: EventPlayerTypes.PLAYER_DESCRIPTION_EDIT,
       gameSessionId,
       playerId: player.id,
@@ -253,7 +256,7 @@ export class PlayerPageComponent {
   protected updateBarValue(bar: AttributeBar, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerBarEdit = {
+    const command: Omit<EventPlayerBarEdit, 'id'> = {
       type: EventPlayerTypes.PLAYER_BAR_EDIT,
       gameSessionId,
       playerId: player.id,
@@ -266,7 +269,7 @@ export class PlayerPageComponent {
   protected addBar(bar: AttributeBar, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerBarAdd = {
+    const command: Omit<EventPlayerBarAdd, 'id'> = {
       type: EventPlayerTypes.PLAYER_BAR_ADD,
       gameSessionId,
       playerId: player.id,
@@ -279,7 +282,7 @@ export class PlayerPageComponent {
   protected updateBar(bar: AttributeBar, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerBarEdit = {
+    const command: Omit<EventPlayerBarEdit, 'id'> = {
       type: EventPlayerTypes.PLAYER_BAR_EDIT,
       gameSessionId,
       playerId: player.id,
@@ -292,7 +295,7 @@ export class PlayerPageComponent {
   protected deleteBar(bar: AttributeBar, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerBarDelete = {
+    const command: Omit<EventPlayerBarDelete, 'id'> = {
       type: EventPlayerTypes.PLAYER_BAR_DELETE,
       gameSessionId,
       playerId: player.id,
@@ -305,7 +308,7 @@ export class PlayerPageComponent {
   protected addStatus(status: AttributeStatus, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerStatusAdd = {
+    const command: Omit<EventPlayerStatusAdd, 'id'> = {
       type: EventPlayerTypes.PLAYER_STATUS_ADD,
       gameSessionId,
       playerId: player.id,
@@ -318,7 +321,7 @@ export class PlayerPageComponent {
   protected updateStatus(status: AttributeStatus, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerStatusEdit = {
+    const command: Omit<EventPlayerStatusEdit, 'id'> = {
       type: EventPlayerTypes.PLAYER_STATUS_EDIT,
       gameSessionId,
       playerId: player.id,
@@ -331,7 +334,7 @@ export class PlayerPageComponent {
   protected deleteStatus(status: AttributeStatus, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerStatusDelete = {
+    const command: Omit<EventPlayerStatusDelete, 'id'> = {
       type: EventPlayerTypes.PLAYER_STATUS_DELETE,
       gameSessionId,
       playerId: player.id,
@@ -344,7 +347,7 @@ export class PlayerPageComponent {
   protected addItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerInventoryItemAdd = {
+    const command: Omit<EventPlayerInventoryItemAdd, 'id'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD,
       gameSessionId,
       playerId: player.id,
@@ -360,7 +363,7 @@ export class PlayerPageComponent {
   protected editItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerInventoryItemEdit = {
+    const command: Omit<EventPlayerInventoryItemEdit, 'id'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT,
       gameSessionId,
       playerId: player.id,
@@ -376,7 +379,7 @@ export class PlayerPageComponent {
   protected deleteItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerInventoryItemDelete = {
+    const command: Omit<EventPlayerInventoryItemDelete, 'id'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE,
       gameSessionId,
       playerId: player.id,
@@ -392,7 +395,7 @@ export class PlayerPageComponent {
   protected addInventory(event: InventoryAdditionEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerInventoryAdd = {
+    const command: Omit<EventPlayerInventoryAdd, 'id'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_ADD,
       gameSessionId,
       playerId: player.id,
@@ -407,7 +410,7 @@ export class PlayerPageComponent {
   protected updateInventory(event: InventoryUpdateEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerInventoryUpdate = {
+    const command: Omit<EventPlayerInventoryUpdate, 'id'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_UPDATE,
       gameSessionId,
       playerId: player.id,
@@ -422,7 +425,7 @@ export class PlayerPageComponent {
   protected deleteInventory(event: InventoryDeletionEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: EventPlayerInventoryDelete = {
+    const command: Omit<EventPlayerInventoryDelete, 'id'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_DELETE,
       gameSessionId,
       playerId: player.id,

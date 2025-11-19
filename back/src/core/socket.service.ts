@@ -1,5 +1,6 @@
 import { Server } from 'socket.io';
-import { EventBase } from '../pagemaster-schemas/src/events.types';
+import { EventBase } from 'src/pagemaster-schemas/src/events.types';
+import { GameSession } from 'src/pagemaster-schemas/src/pagemaster.types';
 import { PageMasterSocketEvents, RoomId } from '../pagemaster-schemas/src/socket-events.types';
 import { LoggerService } from './logger.service';
 
@@ -36,13 +37,13 @@ export class SocketServerService {
     });
   }
 
-  public async notifySessionUpdate(event: EventBase) {
+  public async notifySessionUpdate(session: GameSession, event: EventBase) {
     if (!this.io) {
       throw new Error('SocketServerService not initialized');
     }
 
-    const roomName = RoomId(event.gameSessionId);
-    this.io.to(roomName).emit(PageMasterSocketEvents.GAME_SESSION_UPDATED, event);
+    const roomName = RoomId(session.id);
+    this.io.to(roomName).emit(PageMasterSocketEvents.GAME_SESSION_UPDATED, { gameSession: session, event: event });
     this.logger.info(`Notified room ${roomName} of game session update`);
   }
 }

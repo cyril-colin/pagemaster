@@ -74,6 +74,6 @@ export class GameSessionService {
       type: params.event.type,
       gameSessionId: params.gameSession.id,
     };
-    this.socketServerService.notifySessionUpdate(eventBase);
+    this.socketServerService.notifySessionUpdate(params.gameSession, eventBase);
   }
 }

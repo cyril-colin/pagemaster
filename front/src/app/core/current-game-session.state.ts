@@ -18,7 +18,7 @@ export class CurrentGameSessionState {
     return this.currentGameSessionNullable()!;
   });
 
-  init(): Observable<GameSession | null> {
+  public init(): Observable<GameSession | null> {
     const cachedInstance = this.localStorageService.getItem<GameSession>(CURRENT_GAME_SESSION_CACHE_KEY);
     if (!cachedInstance) {
       this.currentGameInstanceSignal.set(null);

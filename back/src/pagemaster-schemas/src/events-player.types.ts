@@ -1,6 +1,6 @@
-import { AttributeBar, AttributeInventory, AttributeStatus } from './attributes.types'
-import { EventPlayerBase } from './events.types'
-import { Item } from './items.types'
+import { AttributeBar, AttributeInventory, AttributeStatus } from './attributes.types';
+import { EventPlayerBase } from './events.types';
+import { Item } from './items.types';
 
 export enum EventPlayerTypes {
   PLAYER_DESCRIPTION_EDIT = 'player.description.edit',
@@ -18,6 +18,10 @@ export enum EventPlayerTypes {
   PLAYER_INVENTORY_ITEM_ADD = 'player.inventory.item.add',
   PLAYER_INVENTORY_ITEM_EDIT = 'player.inventory.item.edit',
   PLAYER_INVENTORY_ITEM_DELETE = 'player.inventory.item.delete',
+}
+
+export function isEventPlayerType(value: string): value is EventPlayerTypes {
+  return Object.values(EventPlayerTypes).includes(value as EventPlayerTypes);
 }
 
 export type EventPlayerDescriptionEdit = EventPlayerBase & {
