@@ -3,7 +3,7 @@ import { LoggerService } from '../../core/logger.service';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
 import { HttpForbiddenError } from '../../core/router/http-errors';
 import { SocketServerService } from '../../core/socket.service';
-import { GameSession, Participant } from '../../pagemaster-schemas/src/pagemaster.types';
+import { GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameSessionMongoClient } from './game-session.mongo-client';
 import { GameSessionService } from './game-session.service';
 
@@ -50,16 +50,16 @@ export class GameSessionController {
 
   @Post('/game-sessions/:gameSessionId/participants')
   public async addParticipant(
-    participant: Participant,
+    participant: Player,
     params: {gameSessionId: string},
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'gameMaster');
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
 
     // Add the new participant to the game instance
-    gameSession.participants = gameSession.participants || [];
-    gameSession.participants.push(participant);
+    gameSession.players = gameSession.players || [];
+    gameSession.players.push(participant);
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
@@ -78,7 +78,6 @@ export class GameSessionController {
         metadata: { 
           participantId: participant.id,
           participantName: participant.name,
-          participantType: participant.type
         }
       }
     });
@@ -93,7 +92,7 @@ export class GameSessionController {
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { currentParticipant } = await this.gameInstanceService.validateContext(params.id, req, 'player');
+    const { currentParticipant } = await this.gameInstanceService.validateContext(params.id, req);
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(newGameSession);
 
     const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
@@ -117,17 +116,16 @@ export class GameSessionController {
 
   @Put('/game-sessions/:gameSessionId/participants/:participantId')
   public async updateParticipant(
-    participant: Participant,
+    participant: Player,
     params: {gameSessionId: string, participantId: string},
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'player');
-    this.gameInstanceService.validateParticipantPermission(currentParticipant, params.participantId);
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
-    const oldParticipant = gameSession.participants[participantIndex];
-    gameSession.participants[participantIndex] = participant;
+    const oldParticipant = gameSession.players[participantIndex];
+    gameSession.players[participantIndex] = participant;
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 
@@ -146,7 +144,6 @@ export class GameSessionController {
         metadata: { 
           updatedParticipantId: participant.id,
           updatedParticipantName: participant.name,
-          updatedByGameMaster: currentParticipant.type === 'gameMaster' && currentParticipant.id !== participant.id,
           oldName: oldParticipant.name
         }
       }
@@ -162,13 +159,13 @@ export class GameSessionController {
     query: unknown,
     req: Request,
   ): Promise<GameSession> {
-    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req, 'gameMaster');
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
 
     const participantIndex = this.gameInstanceService.findParticipantIndex(gameSession, params.participantId);
-    const deletedParticipant = gameSession.participants[participantIndex];
+    const deletedParticipant = gameSession.players[participantIndex];
     
     // Remove the participant from the array
-    gameSession.participants.splice(participantIndex, 1);
+    gameSession.players.splice(participantIndex, 1);
 
     const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
 

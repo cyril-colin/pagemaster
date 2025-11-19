@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GameSession, Participant } from '@pagemaster/common/pagemaster.types';
+import { GameMaster, GameSession, Player } from '@pagemaster/common/pagemaster.types';
 import { switchMap, tap } from 'rxjs';
 import { CurrentGameSessionState } from '../../core/current-game-session.state';
 import { CurrentParticipantState } from '../../core/current-participant.state';
@@ -15,37 +15,35 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
   imports: [ButtonComponent, CardComponent],
   template: `
     <div class="container">
-      <h1>Choose Your Character</h1>
+      <h1>Choose Your Player</h1>
       @let instance = selectedGameSession();
       @if (instance) {
-        <p class="subtitle">{{ instance.id }} - Master: {{ getGameMasterName(instance) }}</p>
+        <p class="subtitle">{{ instance.id }} - Master: {{ instance.master.name }}</p>
         
         <div class="participants-grid">
-          @for(participant of instance.participants; track participant.id) {
+          @for(player of instance.players; track player.id) {
             <ds-card class="participant-card">
-              @if(participant.type === 'player') {
-                <div class="participant-info">
-                  <h3 class="participant-name">{{ participant.character.name }}</h3>
-                  <p class="player-name">Played by {{ participant.name }}</p>
+              <div class="participant-info">
+                  <h3 class="participant-name">{{ player.name }}</h3>
+                  <p class="player-name">Played by {{ player.name }}</p>
                 </div>
                 <ds-button 
                   [mode]="'primary'" 
-                  (click)="selectParticipant(instance, participant)">
-                  Play as {{ participant.character.name }}
+                  (click)="selectParticipant(instance, player)">
+                  Play as {{ player.name }}
                 </ds-button>
-              } @else {
-                <div class="participant-info">
-                  <h3 class="participant-name">Game Master</h3>
-                  <p class="player-name">{{ participant.name }}</p>
-                </div>
-                <ds-button 
-                  [mode]="'secondary'" 
-                  (click)="selectParticipant(instance, participant)">
-                  Join as Game Master
-                </ds-button>
-              }
             </ds-card>
           }
+
+          <div class="participant-info">
+            <h3 class="participant-name">Game Master</h3>
+            <p class="player-name">{{ instance.master.name }}</p>
+          </div>
+          <ds-button 
+            [mode]="'secondary'" 
+            (click)="selectParticipant(instance, instance.master)">
+            Join as Game Master
+          </ds-button>
         </div>
       } @else {
         <p class="loading">Loading game instance...</p>
@@ -158,7 +156,7 @@ export class GameSessionChooseParticipantComponent {
     }),
   ));
 
-  protected selectParticipant(gameSession: GameSession, participant: Participant) {
+  protected selectParticipant(gameSession: GameSession, participant: Player | GameMaster) {
    
     this.currentGameSessionService.setCurrentGameSession(gameSession).pipe(
       tap((newInstance) => {
@@ -166,10 +164,5 @@ export class GameSessionChooseParticipantComponent {
         void this.router.navigate(['/', ...PageMasterRoutes().GameInstanceSession.interpolated(newInstance.id).split('/')]);
       }),
     ).subscribe();
-  }
-
-  protected getGameMasterName(gameSession: GameSession): string {
-    const master = gameSession.participants.find(p => p.type === 'gameMaster');
-    return master ? master.name : 'Unknown';
   }
 }

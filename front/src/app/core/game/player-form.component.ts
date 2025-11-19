@@ -6,14 +6,10 @@ import { tap } from 'rxjs';
 
 export interface PlayerFormValue {
   name: string,
-  position: number,
-  characterName: string,
 }
 
 interface PlayerItem {
   name: FormControl<string>,
-  position: FormControl<number>,
-  characterName: FormControl<string>,
 }
 
 @Component({
@@ -23,16 +19,6 @@ interface PlayerItem {
       <div class="form-field">
         <label [for]="'name-' + index()">Player Name</label>
         <input [id]="'name-' + index()" [formControl]="form.controls.name" type="text" />
-      </div>
-
-      <div class="form-field">
-        <label [for]="'characterName-' + index()">Character Name</label>
-        <input [id]="'characterName-' + index()" [formControl]="form.controls.characterName" type="text" />
-      </div>
-      
-      <div class="form-field">
-        <label [for]="'characterPosition-' + index()">Character Position</label>
-        <input [id]="'characterPosition-' + index()" [formControl]="form.controls.position" type="number" />
       </div>
     </div>
   `,
@@ -95,8 +81,6 @@ export class PlayerFormComponent implements OnInit {
   
   protected form: FormGroup<PlayerItem> = new FormGroup<PlayerItem>({
     name: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    position: new FormControl(0, { nonNullable: true }),
-    characterName: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
   });
 
   constructor() {

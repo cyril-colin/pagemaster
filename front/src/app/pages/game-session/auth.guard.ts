@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateFn, Router } from '@angular/router';
-import { GameSession, Participant } from '@pagemaster/common/pagemaster.types';
+import { GameSession } from '@pagemaster/common/pagemaster.types';
 import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
-import { CurrentSessionState } from '../../core/current-session.state';
+import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
+import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
 import { SocketService } from '../../core/socket.service';
 
@@ -10,12 +11,13 @@ import { SocketService } from '../../core/socket.service';
   providedIn: 'root',
 })
 export class AuthGuard {
-  protected currentSession = inject(CurrentSessionState);
+  protected currentGameSession = inject(CurrentGameSessionState);
+  protected currentParticipantState = inject(CurrentParticipantState);
   protected socketService = inject(SocketService);
   protected router = inject(Router);
   public canActivate: CanActivateFn = ((route: ActivatedRouteSnapshot) => {
-    const currentParticipant = this.currentSession.currentSessionNullable()?.participant || null;
-    const currentGameSession = this.currentSession.currentSessionNullable()?.gameSession || null;
+    const currentParticipantId = this.currentParticipantState.currentParticipantId() || null;
+    const currentGameSession = this.currentGameSession.currentGameSessionNullable() || null;
     const targetInstance = route.paramMap.get(PageMasterRoutes().GameInstanceSession.params[0]);
     if (!targetInstance) {
       throw new Error('No instanceId in route parameters');
@@ -25,17 +27,17 @@ export class AuthGuard {
       return this.goChooseAParticipant(targetInstance);
     }
 
-    if (!this.currentParticipantValid(currentGameSession, currentParticipant)) {
+    if (!this.currentParticipantValid(currentGameSession, currentParticipantId)) {
       return this.goChooseAParticipant(targetInstance);
     }
 
-    if (!currentGameSession || !currentParticipant) {
+    if (!currentGameSession || !currentParticipantId) {
       return this.goChooseAParticipant(targetInstance);
     }
 
     this.socketService.emit(PageMasterSocketEvents.JOIN_GAME_SESSION, {
       gameSessionId: targetInstance,
-      participantId: currentParticipant.id,
+      participantId: currentParticipantId,
     });
     return true;
   });
@@ -44,8 +46,11 @@ export class AuthGuard {
     return !!(currentGameSession && currentGameSession.id === targetInstance);
   }
 
-  private currentParticipantValid(currentGameSession: GameSession | null, participant: Participant | null): boolean {
-    return !!(participant && currentGameSession?.participants.some(p => p.id === participant.id));
+  private currentParticipantValid(currentGameSession: GameSession | null, participantId: string | null): boolean {
+    if (currentGameSession?.master.id === participantId) {
+      return true;
+    }
+    return !!(participantId && currentGameSession?.players.some(p => p.id === participantId));
   }
 
   private goChooseAParticipant(targetInstance: string) {

@@ -4,10 +4,6 @@ import { spaFallbackMiddleware } from './core/spa-fallback.middleware';
 import { serviceContainer } from './dependency-container';
 import { GameEventController } from './features/gameevent/game-event.controller';
 import { GameSessionController } from './features/gamesession/game-session-crud.controller';
-import { ParticipantBarsController } from './features/gamesession/participant-bars.controller';
-import { ParticipantInventoryController } from './features/gamesession/participant-inventory.controller';
-import { ParticipantProfileController } from './features/gamesession/participant-profile.controller';
-import { ParticipantStatusesController } from './features/gamesession/participant-statuses.controller';
 
 const app = express();
 
@@ -20,11 +16,7 @@ if (staticPath) {
 
 const controllers = [
   new GameSessionController(serviceContainer.gameInstanceMongoClient, serviceContainer.socketServerService, serviceContainer.logger),
-  new ParticipantBarsController(serviceContainer.gameInstanceService),
-  new ParticipantStatusesController(serviceContainer.gameInstanceService),
-  new ParticipantProfileController(serviceContainer.gameInstanceService),
-  new ParticipantInventoryController(serviceContainer.gameInstanceService),
-  new GameEventController(serviceContainer.gameEventMongoClient, serviceContainer.gameInstanceMongoClient),
+  new GameEventController(serviceContainer.gameInstanceMongoClient, serviceContainer.gameEventMongoClient, serviceContainer.socketServerService),
 ];
 controllers.forEach(controller => serviceContainer.router.registerRoutes(controller, app));
 serviceContainer.logger.debug('Registered controllers', {routes: serviceContainer.router.debugRoutes()});
@@ -73,15 +65,12 @@ const server = app.listen(serviceContainer.configuration.getConfig().port, async
     serviceContainer.logger.info('MongoDB connection established');
     
     // Initialize indexes for all collections
-    await Promise.all([
-      serviceContainer.gameInstanceMongoClient.initializeIndexes(),
-      serviceContainer.gameEventMongoClient.initializeIndexes(),
-    ]);
+    await serviceContainer.gameInstanceMongoClient.initializeIndexes();
+    await serviceContainer.gameEventMongoClient.initializeIndexes();
     serviceContainer.logger.info('Database indexes initialized');
     
     // Load fixtures
     await serviceContainer.gameInstanceFixture.initFirstGameSession();
-    await serviceContainer.gameEventFixture.initGameEvents();
   } catch (error) {
     serviceContainer.logger.error('Failed to connect to MongoDB', { 
       error: error instanceof Error ? error.message : String(error) 

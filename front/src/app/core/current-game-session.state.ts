@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { GameSession } from '@pagemaster/common/pagemaster.types';
 import { Observable, of, tap } from 'rxjs';
 import { CURRENT_GAME_SESSION_CACHE_KEY, LocalStorageService } from './local-storage.service';
@@ -12,9 +12,13 @@ export class CurrentGameSessionState {
   protected gameInstanceService = inject(GameSessionRepository);
   
   private readonly currentGameInstanceSignal = signal<GameSession | null>(null);
-  public readonly currentGameSession = this.currentGameInstanceSignal.asReadonly();
+  
+  public readonly currentGameSessionNullable = this.currentGameInstanceSignal.asReadonly();
+  public readonly currentGameSession = computed(() => {
+    return this.currentGameSessionNullable()!;
+  });
 
-  init(): Observable<GameSession | null> {
+  public init(): Observable<GameSession | null> {
     const cachedInstance = this.localStorageService.getItem<GameSession>(CURRENT_GAME_SESSION_CACHE_KEY);
     if (!cachedInstance) {
       this.currentGameInstanceSignal.set(null);

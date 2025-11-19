@@ -1,10 +1,10 @@
-import { Document, WithId } from 'mongodb';
-import { BaseMongoClient, MongoConnection } from '../../core/base-mongo-client';
+import { Document, ObjectId, WithId } from 'mongodb';
+import { BaseMongoClient, MongoConnection } from '../../core/database/base-mongo-client';
 import { LoggerService } from '../../core/logger.service';
-import { GameEvent } from '../../pagemaster-schemas/src/pagemaster.types';
+import { EventBase } from '../../pagemaster-schemas/src/events.types';
 
 // MongoDB document type that extends the domain type
-export type GameEventDocument = GameEvent & Document;
+export type EventDocument = EventBase & Document;
 
 export class GameEventMongoClient extends BaseMongoClient {
     private static readonly COLLECTION_NAME = 'gameevents';
@@ -27,18 +27,6 @@ export class GameEventMongoClient extends BaseMongoClient {
                 { id: 1 },
                 { unique: true }
             );
-            await this.createIndex(
-                GameEventMongoClient.COLLECTION_NAME,
-                { gameSessionId: 1 }
-            );
-            await this.createIndex(
-                GameEventMongoClient.COLLECTION_NAME,
-                { timestamp: -1 }
-            );
-            await this.createIndex(
-                GameEventMongoClient.COLLECTION_NAME,
-                { participantId: 1 }
-            );
 
             console.log('GameEvent collection indexes initialized');
         } catch (error) {
@@ -47,69 +35,61 @@ export class GameEventMongoClient extends BaseMongoClient {
         }
     }
 
-    public async createGameEvent(gameEvent: GameEvent): Promise<WithId<GameEventDocument>> {
-        await this.insertOne<GameEventDocument>(
+    public async createEvent(event: EventBase): Promise<WithId<EventDocument>> {
+        const result = await this.insertOne<EventDocument>(
             GameEventMongoClient.COLLECTION_NAME,
-            gameEvent as GameEventDocument
+            event as EventDocument
         );
-        
-        const inserted = await this.findGameEventById(gameEvent.id);
+
+        const inserted = await this.findEventByMongoId(result.insertedId.toString());
         if (!inserted) {
-            throw new Error('Failed to retrieve inserted GameEvent');
+            throw new Error('Failed to retrieve inserted Event');
         }
         return inserted;
     }
 
-    public async findGameEventById(id: string): Promise<WithId<GameEventDocument> | null> {
-        return this.findOne<GameEventDocument>(
+    public async findEventById(id: string): Promise<WithId<EventDocument> | null> {
+        return this.findOne<EventDocument>(
             GameEventMongoClient.COLLECTION_NAME,
             { id }
         );
     }
 
-    public async findGameEventsByGameSessionId(gameSessionId: string): Promise<WithId<GameEventDocument>[]> {
-        return this.find<GameEventDocument>(
+    public async findEventByMongoId(id: string): Promise<WithId<EventDocument> | null> {
+        return this.findOne<EventDocument>(
             GameEventMongoClient.COLLECTION_NAME,
-            { gameSessionId },
-            { sort: { timestamp: -1 } }
+            { _id: new ObjectId(id) }
         );
     }
 
-    public async findGameEventsByParticipantId(participantId: string): Promise<WithId<GameEventDocument>[]> {
-        return this.find<GameEventDocument>(
-            GameEventMongoClient.COLLECTION_NAME,
-            { participantId },
-            { sort: { timestamp: -1 } }
+    public async getAllEvents(): Promise<WithId<EventDocument>[]> {
+        return this.find<EventDocument>(
+            GameEventMongoClient.COLLECTION_NAME
         );
     }
 
-    public async getAllGameEvents(): Promise<WithId<GameEventDocument>[]> {
-        return this.find<GameEventDocument>(
-            GameEventMongoClient.COLLECTION_NAME,
-            {},
-            { sort: { timestamp: -1 } }
-        );
-    }
-
-    public async updateGameEvent(id: string, update: Partial<GameEvent>): Promise<boolean> {
-        const result = await this.updateOne<GameEventDocument>(
+    public async updateEvent(id: string, update: Partial<EventBase>): Promise<EventBase> {
+        await this.updateOne<EventDocument>(
             GameEventMongoClient.COLLECTION_NAME,
             { id },
             { $set: update }
         );
-        return result.modifiedCount > 0;
+        const updated = await this.findEventById(id);
+        if (!updated) {
+            throw new Error('Failed to retrieve updated Event');
+        }
+        return updated;
     }
 
-    public async deleteGameEvent(id: string): Promise<boolean> {
-        const result = await this.deleteOne<GameEventDocument>(
+    public async deleteEvent(id: string): Promise<boolean> {
+        const result = await this.deleteOne<EventDocument>(
             GameEventMongoClient.COLLECTION_NAME,
-            { id }
+            { _id: new ObjectId(id) }
         );
         return result.deletedCount > 0;
     }
 
-    public async countGameEvents(): Promise<number> {
-        return this.countDocuments<GameEventDocument>(GameEventMongoClient.COLLECTION_NAME);
+    public async countEvents(): Promise<number> {
+        return this.countDocuments<EventDocument>(GameEventMongoClient.COLLECTION_NAME);
     }
 }
-
