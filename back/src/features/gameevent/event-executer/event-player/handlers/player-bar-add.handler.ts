@@ -1,4 +1,4 @@
-import { EventPlayerBarAdd } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerBarAdd } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
 
 export const playerBarAddHandler: GameEventHandlerFn<EventPlayerBarAdd> = (event, gameSession) => {

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { ModalService } from 'src/app/core/modal';
+import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { MainMenuComponent } from './main-menu.component';
 
 @Component({
@@ -12,6 +13,7 @@ import { MainMenuComponent } from './main-menu.component';
   <section class="header">
     <div class="links">
       <ds-button [icon]="'menu'" (click)="openMainMenu()"/>
+      <ds-button (click)="goToEvents()" [mode]="'secondary'">Events Center</ds-button>
     </div>
   </section>
 
@@ -86,6 +88,8 @@ import { MainMenuComponent } from './main-menu.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSessionPageComponent {
+  protected router = inject(Router);
+  protected route = inject(ActivatedRoute);
   protected currentGameSession = inject(CurrentGameSessionState);
   protected modalService = inject(ModalService);
 
@@ -93,6 +97,13 @@ export class GameSessionPageComponent {
     const ref = this.modalService.openLeftPanel(MainMenuComponent);
     ref.componentRef.instance.close.subscribe(() => {
       void ref.close();
+    });
+  }
+
+  protected goToEvents(): void {
+    void this.router.navigate([
+      PageMasterRoutes().GameInstanceSession.children[1].path,
+    ], { relativeTo: this.route,
     });
   }
 }

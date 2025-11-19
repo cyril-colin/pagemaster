@@ -1,5 +1,5 @@
 import { Collection, CreateIndexesOptions, Db, DeleteOptions, DeleteResult, Document, Filter, FindOptions, IndexSpecification, InsertOneResult, MongoClient, OptionalUnlessRequiredId, UpdateFilter, UpdateOptions, UpdateResult, WithId } from 'mongodb';
-import { LoggerService } from './logger.service';
+import { LoggerService } from '../logger.service';
 
 export class MongoClientError extends Error {
     constructor(

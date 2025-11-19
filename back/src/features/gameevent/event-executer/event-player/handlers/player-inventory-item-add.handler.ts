@@ -1,7 +1,8 @@
-import { EventPlayerInventoryItemDelete } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerInventoryItemAdd } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
 
-export const playerInventoryItemDeleteHandler: GameEventHandlerFn<EventPlayerInventoryItemDelete> = (event, gameSession) => {
+
+export const playerInventoryItemAddHandler: GameEventHandlerFn<EventPlayerInventoryItemAdd> = (event, gameSession) => {
   const player = gameSession.players.find(p => p.id === event.playerId);
   if (!player) {
     throw new Error('Player not found in game session');
@@ -11,6 +12,6 @@ export const playerInventoryItemDeleteHandler: GameEventHandlerFn<EventPlayerInv
     throw new Error('Inventory not found in player attributes');
   }
   
-  inventory.current = inventory.current.filter(item => item.id !== event.itemId);
+  inventory.current.push({ ...event.newItem, id: `item_${Date.now()}` });
   return gameSession;
 }

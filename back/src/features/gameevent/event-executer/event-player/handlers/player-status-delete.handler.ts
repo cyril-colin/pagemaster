@@ -1,4 +1,4 @@
-import { EventPlayerStatusDelete } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerStatusDelete } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
 
 export const playerStatusDeleteHandler: GameEventHandlerFn<EventPlayerStatusDelete> = (event, gameSession) => {

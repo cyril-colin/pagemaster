@@ -1,4 +1,4 @@
-import { EventPlayerStatusAdd } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerStatusAdd } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
 
 export const playerStatusAddHandler: GameEventHandlerFn<EventPlayerStatusAdd> = (event, gameSession) => {

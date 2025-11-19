@@ -1,6 +1,6 @@
-import { EventPlayerTypes } from '../../../pagemaster-schemas/src/events-player.types';
-import { EventPlayerBase, EventPlayerComputed } from '../../../pagemaster-schemas/src/events.types';
-import { GameMaster, GameSession, Player } from '../../../pagemaster-schemas/src/pagemaster.types';
+import { EventPlayerTypes } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerBase, EventPlayerComputed } from '../../../../pagemaster-schemas/src/events.types';
+import { GameMaster, GameSession, Player } from '../../../../pagemaster-schemas/src/pagemaster.types';
 import { GameEventExecuter, GameEventHandlerFn } from '../event-executer';
 import { playerAvatarEditHandler } from './handlers/player-avatar-edit.handler';
 import { playerBarAddHandler } from './handlers/player-bar-add.handler';

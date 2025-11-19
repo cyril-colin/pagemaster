@@ -222,7 +222,7 @@ export class PlayerPageComponent {
       newName: newName,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected updateAvatar(newAvatar: AvatarEvent, player: Player): void {
@@ -235,7 +235,7 @@ export class PlayerPageComponent {
       newAvatar: newAvatar.picture,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).pipe(
+    this.gameEventRepository.postCommand(command).pipe(
       tap(() => void newAvatar.modalRef.close()),
     ).subscribe();
   }
@@ -250,7 +250,7 @@ export class PlayerPageComponent {
       newDescription,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected updateBarValue(bar: AttributeBar, player: Player): void {
@@ -263,7 +263,7 @@ export class PlayerPageComponent {
       newBar: bar,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected addBar(bar: AttributeBar, player: Player): void {
@@ -276,7 +276,7 @@ export class PlayerPageComponent {
       newBar: bar,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected updateBar(bar: AttributeBar, player: Player): void {
@@ -289,7 +289,7 @@ export class PlayerPageComponent {
       newBar: bar,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected deleteBar(bar: AttributeBar, player: Player): void {
@@ -302,7 +302,7 @@ export class PlayerPageComponent {
       barId: bar.id,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected addStatus(status: AttributeStatus, player: Player): void {
@@ -315,7 +315,7 @@ export class PlayerPageComponent {
       newStatus: status,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected updateStatus(status: AttributeStatus, player: Player): void {
@@ -328,7 +328,7 @@ export class PlayerPageComponent {
       newStatus: status,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected deleteStatus(status: AttributeStatus, player: Player): void {
@@ -341,7 +341,7 @@ export class PlayerPageComponent {
       statusId: status.id,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected addItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
@@ -355,7 +355,7 @@ export class PlayerPageComponent {
       newItem: itemEvent.item,
     } ;
 
-    this.gameEventRepository.postGameEventCommand(command).pipe(
+    this.gameEventRepository.postCommand(command).pipe(
       tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
@@ -371,7 +371,7 @@ export class PlayerPageComponent {
       newItem: itemEvent.item,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).pipe(
+    this.gameEventRepository.postCommand(command).pipe(
       tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
@@ -387,7 +387,7 @@ export class PlayerPageComponent {
       itemId: itemEvent.item.id,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).pipe(
+    this.gameEventRepository.postCommand(command).pipe(
       tap(() => void itemEvent.modalRef.close()),
     ).subscribe();
   }
@@ -402,7 +402,7 @@ export class PlayerPageComponent {
       newInventory: event.inventory,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).pipe(
+    this.gameEventRepository.postCommand(command).pipe(
       tap(() => void event.modalRef.close()),
     ).subscribe();
   }
@@ -417,7 +417,7 @@ export class PlayerPageComponent {
       newInventory: event.inventory,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).pipe(
+    this.gameEventRepository.postCommand(command).pipe(
       tap(() => void event.modalRef.close()),
     ).subscribe();
   }
@@ -432,6 +432,6 @@ export class PlayerPageComponent {
       inventoryId: event.inventory.id,
     };
 
-    this.gameEventRepository.postGameEventCommand(command).subscribe();
+    this.gameEventRepository.postCommand(command).subscribe();
   }
 }

@@ -16,7 +16,7 @@ if (staticPath) {
 
 const controllers = [
   new GameSessionController(serviceContainer.gameInstanceMongoClient, serviceContainer.socketServerService, serviceContainer.logger),
-  new GameEventController(serviceContainer.gameInstanceMongoClient, serviceContainer.socketServerService),
+  new GameEventController(serviceContainer.gameInstanceMongoClient, serviceContainer.gameEventMongoClient, serviceContainer.socketServerService),
 ];
 controllers.forEach(controller => serviceContainer.router.registerRoutes(controller, app));
 serviceContainer.logger.debug('Registered controllers', {routes: serviceContainer.router.debugRoutes()});
@@ -66,6 +66,7 @@ const server = app.listen(serviceContainer.configuration.getConfig().port, async
     
     // Initialize indexes for all collections
     await serviceContainer.gameInstanceMongoClient.initializeIndexes();
+    await serviceContainer.gameEventMongoClient.initializeIndexes();
     serviceContainer.logger.info('Database indexes initialized');
     
     // Load fixtures

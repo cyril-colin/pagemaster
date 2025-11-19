@@ -1,4 +1,4 @@
-import { EventPlayerInventoryItemEdit } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerInventoryItemEdit } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
 
 export const playerInventoryItemEditHandler: GameEventHandlerFn<EventPlayerInventoryItemEdit> = (event, gameSession) => {

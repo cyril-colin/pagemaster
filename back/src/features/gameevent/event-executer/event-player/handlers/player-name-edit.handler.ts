@@ -1,4 +1,4 @@
-import { EventPlayerNameEdit } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerNameEdit } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
 
 export const playerNameEditHandler: GameEventHandlerFn<EventPlayerNameEdit> = (event, gameSession) => {

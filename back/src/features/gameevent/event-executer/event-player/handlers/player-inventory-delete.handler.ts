@@ -1,4 +1,4 @@
-import { EventPlayerInventoryDelete } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerInventoryDelete } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
 
 export const playerInventoryDeleteHandler: GameEventHandlerFn<EventPlayerInventoryDelete> = (event, gameSession) => {

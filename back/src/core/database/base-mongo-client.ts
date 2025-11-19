@@ -16,7 +16,7 @@ import {
   UpdateResult,
   WithId
 } from 'mongodb';
-import { LoggerService } from './logger.service';
+import { LoggerService } from '../logger.service';
 import { MongoClientError, MongoConnectionConfig } from './mongo-client';
 
 /**

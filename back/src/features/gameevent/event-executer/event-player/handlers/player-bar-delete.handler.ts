@@ -1,4 +1,4 @@
-import { EventPlayerBarDelete } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerBarDelete } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
 
 export const playerBarDeleteHandler: GameEventHandlerFn<EventPlayerBarDelete> = (event, gameSession) => {

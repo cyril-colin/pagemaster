@@ -1,10 +1,11 @@
 
 import Ajv from "ajv";
 import { ConfigurationService } from './config/configuration.service';
-import { MongoConnection } from './core/base-mongo-client';
+import { MongoConnection } from './core/database/base-mongo-client';
 import { LoggerService } from './core/logger.service';
 import { Router } from './core/router/route-registry';
 import { SocketServerService } from './core/socket.service';
+import { GameEventMongoClient } from "./features/gameevent/game-event.mongo-client";
 import { GameSessionFixture } from './features/gamesession/game-session.fixture';
 import { GameSessionMongoClient } from './features/gamesession/game-session.mongo-client';
 import { GameSessionService } from './features/gamesession/game-session.service';
@@ -22,6 +23,7 @@ const mongoConnection = new MongoConnection(logger, mongoConfig, true);
 
 // Create all mongo clients - they share the same connection via mongoConnection
 const gameInstanceMongoClient = new GameSessionMongoClient(logger, mongoConnection, true);
+const gameEventMongoClient = new GameEventMongoClient(logger, mongoConnection, true);
 
 export const router = new Router(logger, ajv);
 
@@ -39,6 +41,7 @@ export const serviceContainer = {
   mongoConnection,
   gameInstanceFixture,
   gameInstanceMongoClient,
+  gameEventMongoClient,
   gameInstanceService,
   jsonSchemaValidator: ajv,
 };

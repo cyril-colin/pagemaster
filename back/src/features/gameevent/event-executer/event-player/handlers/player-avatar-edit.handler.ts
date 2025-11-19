@@ -1,4 +1,4 @@
-import { EventPlayerAvatarEdit } from '../../../../pagemaster-schemas/src/events-player.types';
+import { EventPlayerAvatarEdit } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
 
 export const playerAvatarEditHandler: GameEventHandlerFn<EventPlayerAvatarEdit> = (event, gameSession) => {
