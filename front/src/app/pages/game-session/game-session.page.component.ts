@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
-import { CurrentSessionState } from 'src/app/core/current-session.state';
+import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { ModalService } from 'src/app/core/modal';
@@ -15,9 +14,7 @@ import { MainMenuComponent } from './main-menu.component';
   <section class="header">
     <div class="links">
       <ds-button [icon]="'menu'" (click)="openMainMenu()"/>
-      <a [routerLink]="eventsRoute()">
-        Events page ({{ eventService.events().length }})
-      </a>
+      <ds-button (click)="goToEvents()" [mode]="'secondary'">Events Center ({{ eventCount() }})</ds-button>
     </div>
   </section>
 
@@ -92,21 +89,24 @@ import { MainMenuComponent } from './main-menu.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameSessionPageComponent {
-  protected currentSession = inject(CurrentSessionState);
+  protected router = inject(Router);
+  protected route = inject(ActivatedRoute);
+  protected currentGameSession = inject(CurrentGameSessionState);
   protected modalService = inject(ModalService);
-  protected eventService = inject(EventsCenterStateService);
-  protected eventsRoute = computed(() => '/' + PageMasterRoutes().GameInstanceSession.interpolated(
-    this.currentSession.currentSession().gameSession.id,
-  ));
-
-  constructor() {
-    toSignal(this.eventService.init(this.currentSession.currentSession().gameSession.id));
-  }
+  protected eventsCenterState = inject(EventsCenterStateService);
+  protected eventCount = computed(() => this.eventsCenterState.events().length);
 
   protected openMainMenu(): void {
     const ref = this.modalService.openLeftPanel(MainMenuComponent);
     ref.componentRef.instance.close.subscribe(() => {
       void ref.close();
+    });
+  }
+
+  protected goToEvents(): void {
+    void this.router.navigate([
+      PageMasterRoutes().GameInstanceSession.children[1].path,
+    ], { relativeTo: this.route,
     });
   }
 }

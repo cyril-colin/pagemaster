@@ -1,5 +1,5 @@
 import { Document, ObjectId, WithId } from 'mongodb';
-import { BaseMongoClient, MongoConnection } from '../../core/base-mongo-client';
+import { BaseMongoClient, MongoConnection } from '../../core/database/base-mongo-client';
 import { LoggerService } from '../../core/logger.service';
 import { GameSession } from '../../pagemaster-schemas/src/pagemaster.types';
 

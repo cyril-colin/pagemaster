@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { EventFactoryDirective } from './event-factory.directive';
 import { EventsCenterStateService } from './events-center.state';
 
 @Component({
@@ -6,21 +7,41 @@ import { EventsCenterStateService } from './events-center.state';
   template: `
   <section>
     @for(e of events(); track e.id) {
-      <article>
-        <p>{{ formatTimestamp(e.timestamp) }} : {{ e.description }}</p>
+      <article appEventFactory [event]="e">
       </article>
     }
   </section>
   `,
-  styles: [],
+  styles: [`
+    :host {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      height: 100%;
+      section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        overflow-y: auto;
+        padding-right: 8px;
+        width: 100%;
+        height: 100%;
+        article {
+
+        }
+      }
+    }
+    `],
+  imports: [
+    EventFactoryDirective,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventsCenterComponent {
   protected eventsCenterState = inject(EventsCenterStateService);
   protected events = this.eventsCenterState.events;
-
-  protected formatTimestamp(timestamp: number): string {
-    return new Date(timestamp).toLocaleString();
-  }
 
 }

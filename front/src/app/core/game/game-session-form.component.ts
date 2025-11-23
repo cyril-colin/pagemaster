@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { GameSession } from '@pagemaster/common/pagemaster.types';
+import { GameSession, ParticipantType } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
 
 interface GameFormType {
@@ -214,13 +214,12 @@ export class GameSessionFormComponent {
       const gameSession: GameSession = {
         id: `session-${gameInstanceForm.masterName}-${Date.now()}`,
         version: 0,
-        participants: [
-          {
-            id: `gamemaster-${gameInstanceForm.masterName}`,
-            type: 'gameMaster',
-            name: gameInstanceForm.masterName.replaceAll(' ', '-'),
-          },
-        ],
+        master: {
+          name: gameInstanceForm.masterName,
+          type: ParticipantType.GameMaster,
+          id: ParticipantType.GameMaster,
+        },
+        players: [],
       };
 
       this.newGameSession.emit(gameSession);

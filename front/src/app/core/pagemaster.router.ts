@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivateFn, Route, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Route, RouterStateSnapshot } from '@angular/router';
 import { AuthGuard } from '../pages/game-session/auth.guard';
 import { GameSessionPageComponent } from '../pages/game-session/game-session.page.component';
 import { PlayerPageComponent } from '../pages/game-session/player.page.component';
@@ -8,6 +8,7 @@ import { GameSessionConfigComponent } from '../pages/public/game-session-creatio
 import { HomeComponent } from '../pages/public/home.component';
 import { PublicLayoutComponent } from '../pages/public/public-layout.component';
 import { EventsCenterComponent } from './events-center/events-center.component';
+import { EventsCenterStateService } from './events-center/events-center.state';
 
 export function PageMasterRoutes() {
   return {
@@ -46,9 +47,14 @@ export function PageMasterRoutes() {
         params,
         interpolated: (id: string) => path.replace(`:${params[0]}`, id),
         component: GameSessionPageComponent,
-        canActivate: [((route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-          return inject(AuthGuard).canActivate(route, state);
-        })] satisfies CanActivateFn[],
+        canActivate: [
+          (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+            return inject(AuthGuard).canActivate(route, state);
+          },
+          () => {
+            return inject(EventsCenterStateService).init();
+          },
+        ],
         children: [
           { path: '', redirectTo: 'events', pathMatch: 'full' as const },
           { path: 'events', component: EventsCenterComponent },

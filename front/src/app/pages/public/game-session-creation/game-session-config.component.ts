@@ -40,7 +40,7 @@ import { GameSessionRepository } from '../../../core/repositories/game-session.r
                   </div>
                   <div class="info-item">
                     <span class="info-label">Game Master:</span>
-                    <span class="info-value">{{ getGameMasterName(instance) }}</span>
+                    <span class="info-value">{{ instance.master.name }}</span>
                   </div>
                   <div class="info-item">
                     <span class="info-label">Instance ID:</span>
@@ -283,10 +283,6 @@ export class GameSessionConfigComponent {
     ).subscribe();
   }
 
-  protected getGameMasterName(gameSession: GameSession): string {
-    const master = gameSession.participants.find(p => p.type === 'gameMaster');
-    return master ? master.name : 'Unknown';
-  }
 
   protected getFullLink(): string {
     if (typeof window !== 'undefined') {

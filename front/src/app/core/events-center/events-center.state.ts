@@ -1,6 +1,6 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
-import { GameEvent } from '@pagemaster/common/pagemaster.types';
-import { Observable, tap } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
+import { EventBase } from '@pagemaster/common/events.types';
+import { tap } from 'rxjs';
 import { GameEventRepository } from '../repositories/game-event.repository';
 
 
@@ -8,23 +8,27 @@ import { GameEventRepository } from '../repositories/game-event.repository';
   providedIn: 'root',
 })
 export class EventsCenterStateService {
-  private gameEventService = inject(GameEventRepository);
-  private eventsSignal = signal<GameEvent[]>([]);
+  private eventsSignal = signal<EventBase[]>([]);
+  private gameEventRepository = inject(GameEventRepository);
 
-  public readonly events = computed(() => {
-    const events = this.eventsSignal.asReadonly();
-    return events().sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
-  });
+  public readonly events = this.eventsSignal.asReadonly();
 
-  public addEvent(event: GameEvent): void {
-    this.eventsSignal.update((events) => [...events, event]);
-  }
-
-  public init(gameSessionId: string): Observable<GameEvent[]> {
-    return this.gameEventService.getGameEventsByGameInstanceId(gameSessionId).pipe(
-      tap((gameEvents) => {
-        this.eventsSignal.set(gameEvents);
+  /**
+   * Used in route guards to preload events before activating the route.
+   */
+  public init() {
+    return this.gameEventRepository.getAll().pipe(
+      tap((events) => {
+        this.eventsSignal.set(events.sort((a, b) => b.timestamp - a.timestamp));
       }),
     );
+  }
+
+  public addEvent(event: EventBase): void {
+    this.eventsSignal.update((events) => [event, ...events]);
+  }
+
+  public clearEvents(): void {
+    this.eventsSignal.set([]);
   }
 }
