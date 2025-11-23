@@ -1,5 +1,5 @@
 import { EventPlayerTypes } from '../../../../pagemaster-schemas/src/events-player.types';
-import { EventPlayerBase, EventPlayerComputed } from '../../../../pagemaster-schemas/src/events.types';
+import { EventPlayerBase } from '../../../../pagemaster-schemas/src/events.types';
 import { GameMaster, GameSession, Player } from '../../../../pagemaster-schemas/src/pagemaster.types';
 import { GameEventExecuter, GameEventHandlerFn } from '../event-executer';
 import { playerAvatarEditHandler } from './handlers/player-avatar-edit.handler';
@@ -59,15 +59,9 @@ export class EventPlayerExecuter extends GameEventExecuter {
     (handler as GameEventHandlerFn<EventPlayerBase>)(event, currentSession);
 
 
-   
-    const computedEvent: EventPlayerComputed<EventPlayerBase> = {
-      ...event,
-      targetPlayer,
-      triggerer,
-      timestamp: Date.now(),
-    }
+    event.timestamp = Date.now();
 
-    return {event: computedEvent, newGameSession: currentSession};
+    return {event, newGameSession: currentSession};
   }
 }
 

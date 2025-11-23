@@ -71,6 +71,7 @@ export class GameSessionService {
     // Create a simple event base for notification
     const eventBase: EventBase = {
       id: `${Date.now()}-${Math.random().toString(36).substring(7)}`,
+      timestamp: Date.now(),
       type: params.event.type,
       gameSessionId: params.gameSession.id,
     };

@@ -74,7 +74,7 @@ export type EventPlayerInventoryItemEdit = EventPlayerInventoryBase & {
 export type EventPlayerInventoryItemDelete = EventPlayerInventoryBase & {
   type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE,
   inventoryId: string,
-  itemId: string,
+  deletedItem: Item,
 }
 
 export type EventPlayerBarAdd = EventPlayerBase & {

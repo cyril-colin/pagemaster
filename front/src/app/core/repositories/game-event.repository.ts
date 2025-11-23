@@ -9,7 +9,7 @@ export class GameEventRepository {
   private readonly baseUrl = '/api';
   private http = inject(HttpClient);
 
-  postCommand(command: Omit<EventBase, 'id'>): Observable<EventBase> {
+  postCommand(command: Omit<EventBase, 'id' | 'timestamp'>): Observable<EventBase> {
     return this.http.post<EventBase>(`${this.baseUrl}/game-events/command`, command);
   }
 

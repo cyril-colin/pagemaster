@@ -220,6 +220,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newName: newName,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -233,6 +234,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newAvatar: newAvatar.picture,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -248,6 +250,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newDescription,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -261,6 +264,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newBar: bar,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -274,6 +278,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newBar: bar,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -287,6 +292,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newBar: bar,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -300,6 +306,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       barId: bar.id,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -313,6 +320,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newStatus: status,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -326,6 +334,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newStatus: status,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -339,6 +348,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       statusId: status.id,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -353,6 +363,7 @@ export class PlayerPageComponent {
       playerId: player.id,
       inventoryId: itemEvent.inventory.id,
       newItem: itemEvent.item,
+      timestamp: Date.now(),
     } ;
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -369,6 +380,7 @@ export class PlayerPageComponent {
       playerId: player.id,
       inventoryId: itemEvent.inventory.id,
       newItem: itemEvent.item,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -384,7 +396,8 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       inventoryId: itemEvent.inventory.id,
-      itemId: itemEvent.item.id,
+      deletedItem: itemEvent.item,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -400,6 +413,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newInventory: event.inventory,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -415,6 +429,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       newInventory: event.inventory,
+      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -425,7 +440,7 @@ export class PlayerPageComponent {
   protected deleteInventory(event: InventoryDeletionEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerInventoryDelete, 'id'> = {
+    const command: Omit<EventPlayerInventoryDelete, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_DELETE,
       gameSessionId,
       playerId: player.id,

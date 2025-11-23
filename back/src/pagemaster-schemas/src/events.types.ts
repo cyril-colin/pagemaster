@@ -1,24 +1,17 @@
 import { EventPlayerTypes } from './events-player.types'
-import { GameMaster, Player } from './pagemaster.types'
 
 export type EventBase = {
   id: string,
+  timestamp: number,
   type: string,
   gameSessionId: string,
 }
 
 export type EventPlayerBase = EventBase & {
   type: EventPlayerTypes,
+  /**
+   * The ID of the player this event is about.
+   */
   playerId: string,
-}
-
-
-/**
- * The event that will be saved, with participant and player info populated.
- */
-export type EventPlayerComputed<T extends EventPlayerBase> = T & {
-  triggerer: Player | GameMaster,
-  targetPlayer: Player,
-  timestamp: number,
 }
 

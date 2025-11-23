@@ -19,13 +19,13 @@ export class EventsCenterStateService {
   public init() {
     return this.gameEventRepository.getAll().pipe(
       tap((events) => {
-        this.eventsSignal.set(events);
+        this.eventsSignal.set(events.sort((a, b) => b.timestamp - a.timestamp));
       }),
     );
   }
 
   public addEvent(event: EventBase): void {
-    this.eventsSignal.update((events) => [...events, event]);
+    this.eventsSignal.update((events) => [event, ...events]);
   }
 
   public clearEvents(): void {

@@ -11,6 +11,6 @@ export const playerInventoryItemDeleteHandler: GameEventHandlerFn<EventPlayerInv
     throw new Error('Inventory not found in player attributes');
   }
   
-  inventory.current = inventory.current.filter(item => item.id !== event.itemId);
+  inventory.current = inventory.current.filter(item => item.id !== event.deletedItem.id);
   return gameSession;
 }
