@@ -6,6 +6,8 @@ import { playerAvatarEditHandler } from './handlers/player-avatar-edit.handler';
 import { playerBarAddHandler } from './handlers/player-bar-add.handler';
 import { playerBarDeleteHandler } from './handlers/player-bar-delete.handler';
 import { playerBarEditHandler } from './handlers/player-bar-edit.handler';
+import { playerBarPointAddHandler } from './handlers/player-bar-point-add.handler';
+import { playerBarPointRemoveHandler } from './handlers/player-bar-point-remove.handler';
 import { playerDescriptionEditHandler } from './handlers/player-description-edit.handler';
 import { playerInventoryAddHandler } from './handlers/player-inventory-add.handler';
 import { playerInventoryDeleteHandler } from './handlers/player-inventory-delete.handler';
@@ -36,6 +38,8 @@ export const EventPlayerMapper = {
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD]: playerInventoryItemAddHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE]: playerInventoryItemDeleteHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT]: playerInventoryItemEditHandler,
+  [EventPlayerTypes.PLAYER_BAR_POINT_ADD]: playerBarPointAddHandler,
+  [EventPlayerTypes.PLAYER_BAR_POINT_REMOVE]: playerBarPointRemoveHandler,
 };
 
 

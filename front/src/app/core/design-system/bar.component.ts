@@ -171,7 +171,7 @@ export class BarComponent {
   public max = input<number>(100);
 
   // Outputs
-  public newValue = output<number>();
+  public newValue = output<{previous: number, newValue: number}>();
 
   // Debounce timer
   private debounceTimer: number | null = null;
@@ -188,6 +188,7 @@ export class BarComponent {
   protected onSliderChange(event: Event): void {
     const target = event.target as HTMLInputElement;
     const newVal = parseInt(target.value, 10);
+    const previousVal = this.value();
     
     // Update value immediately for smooth visual feedback
     this.value.set(newVal);
@@ -198,7 +199,7 @@ export class BarComponent {
     }
     
     this.debounceTimer = window.setTimeout(() => {
-      this.newValue.emit(newVal);
+      this.newValue.emit({ previous: previousVal, newValue: newVal });
       this.debounceTimer = null;
     }, this.debounceTime);
   }

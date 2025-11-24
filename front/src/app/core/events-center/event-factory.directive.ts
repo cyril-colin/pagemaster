@@ -16,6 +16,8 @@ import { EventRenameComponent } from './event-views/event-rename.component';
 import { EventStatusAddComponent } from './event-views/event-status-add.component';
 import { EventStatusDeleteComponent } from './event-views/event-status-delete.component';
 import { EventStatusEditComponent } from './event-views/event-status-edit.component';
+import { PlayerBarPointAddEventViewComponent } from './event-views/player-bar-point-add-event-view.component';
+import { PlayerBarPointRemoveEventViewComponent } from './event-views/player-bar-point-remove-event-view.component';
 
 export const EVENT_COMPONENTS_MAP = {
   [EventPlayerTypes.PLAYER_NAME_EDIT]: EventRenameComponent,
@@ -33,6 +35,8 @@ export const EVENT_COMPONENTS_MAP = {
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD]: EventInventoryItemAddComponent,
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT]: EventInventoryItemEditComponent,
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE]: EventInventoryItemDeleteComponent,
+  [EventPlayerTypes.PLAYER_BAR_POINT_REMOVE]: PlayerBarPointRemoveEventViewComponent,
+  [EventPlayerTypes.PLAYER_BAR_POINT_ADD]: PlayerBarPointAddEventViewComponent,
 } as const;
 
 

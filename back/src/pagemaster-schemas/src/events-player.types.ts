@@ -18,6 +18,14 @@ export enum EventPlayerTypes {
   PLAYER_INVENTORY_ITEM_ADD = 'player.inventory.item.add',
   PLAYER_INVENTORY_ITEM_EDIT = 'player.inventory.item.edit',
   PLAYER_INVENTORY_ITEM_DELETE = 'player.inventory.item.delete',
+  PLAYER_BAR_POINT_ADD = 'player.bar.point.add',
+  PLAYER_BAR_POINT_REMOVE = 'player.bar.point.remove',
+}
+
+export type EventPlayerBarPointAdd = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_BAR_POINT_ADD;
+  barId: string;
+  addedValue: number;
 }
 
 export function isEventPlayerType(value: string): value is EventPlayerTypes {
@@ -90,6 +98,18 @@ export type EventPlayerBarEdit = EventPlayerBase & {
 export type EventPlayerBarDelete = EventPlayerBase & {
   type: EventPlayerTypes.PLAYER_BAR_DELETE,
   barId: string,
+}
+
+export type EventPlayerBarNotifyAdd = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_BAR_POINT_ADD,
+  barId: string,
+  addedValue: number,
+}
+
+export type EventPlayerBarPointRemove = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_BAR_POINT_REMOVE,
+  barId: string,
+  removedValue: number,
 }
 
 export type EventPlayerStatusAdd = EventPlayerBase & {

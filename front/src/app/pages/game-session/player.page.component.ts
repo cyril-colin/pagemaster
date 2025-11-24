@@ -7,6 +7,8 @@ import {
   EventPlayerBarAdd,
   EventPlayerBarDelete,
   EventPlayerBarEdit,
+  EventPlayerBarPointAdd,
+  EventPlayerBarPointRemove,
   EventPlayerDescriptionEdit,
   EventPlayerInventoryAdd,
   EventPlayerInventoryDelete,
@@ -26,6 +28,7 @@ import { CurrentGameSessionState } from 'src/app/core/current-game-session.state
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { AvatarEvent } from 'src/app/core/player/avatar/picture-control.component';
+import { BarValueUpdateEvent } from 'src/app/core/player/bars/bars-control.component';
 import { InventoryAdditionEvent } from 'src/app/core/player/inventories/inventory-list.component';
 import { InventoryDeletionEvent, InventoryItemEvent, InventoryUpdateEvent } from 'src/app/core/player/inventories/inventory.component';
 import { PlayerFormComponent } from 'src/app/core/player/player-form.component';
@@ -215,12 +218,11 @@ export class PlayerPageComponent {
   protected renameParticipant(newName: string, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerNameEdit, 'id'> = {
+    const command: Omit<EventPlayerNameEdit, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_NAME_EDIT,
       gameSessionId,
       playerId: player.id,
       newName: newName,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -229,12 +231,11 @@ export class PlayerPageComponent {
   protected updateAvatar(newAvatar: AvatarEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerAvatarEdit, 'id'> = {
+    const command: Omit<EventPlayerAvatarEdit, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_AVATAR_EDIT,
       gameSessionId,
       playerId: player.id,
       newAvatar: newAvatar.picture,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -245,40 +246,64 @@ export class PlayerPageComponent {
   protected updateDescription(newDescription: string, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerDescriptionEdit, 'id'> = {
+    const command: Omit<EventPlayerDescriptionEdit, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_DESCRIPTION_EDIT,
       gameSessionId,
       playerId: player.id,
       newDescription,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
   }
 
-  protected updateBarValue(bar: AttributeBar, player: Player): void {
-    const gameSessionId = this.currentSession()!.gameSession.id;
+  protected updateBarValue(bar: BarValueUpdateEvent, player: Player): void {
 
-    const command: Omit<EventPlayerBarEdit, 'id'> = {
-      type: EventPlayerTypes.PLAYER_BAR_EDIT,
+    if (bar.newBar.current === bar.previousValue.current) {
+      return; // No change in value, do not send event
+    }
+
+    if (bar.newBar.current > bar.previousValue.current) {
+      const addedValue = bar.newBar.current - bar.previousValue.current;
+      this.addPointToBar(bar.newBar.id, addedValue, player);
+    } else {
+      const removedValue = bar.previousValue.current - bar.newBar.current;
+      this.removePointFromBar(bar.newBar.id, removedValue, player);
+    }
+  }
+
+  protected addPointToBar(barId: string, addedValue: number, player: Player): void {
+    const gameSessionId = this.currentSession()!.gameSession.id;
+    const command: Omit<EventPlayerBarPointAdd, 'id' | 'timestamp'> = {
+      type: EventPlayerTypes.PLAYER_BAR_POINT_ADD,
       gameSessionId,
       playerId: player.id,
-      newBar: bar,
-      timestamp: Date.now(),
+      barId,
+      addedValue,
     };
 
+    this.gameEventRepository.postCommand(command).subscribe();
+  }
+
+  protected removePointFromBar(barId: string, removedValue: number, player: Player): void {
+    const gameSessionId = this.currentSession()!.gameSession.id;
+    const command: Omit<EventPlayerBarPointRemove, 'id' | 'timestamp'> = {
+      type: EventPlayerTypes.PLAYER_BAR_POINT_REMOVE,
+      gameSessionId,
+      playerId: player.id,
+      barId,
+      removedValue,
+    };
     this.gameEventRepository.postCommand(command).subscribe();
   }
 
   protected addBar(bar: AttributeBar, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerBarAdd, 'id'> = {
+    const command: Omit<EventPlayerBarAdd, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_BAR_ADD,
       gameSessionId,
       playerId: player.id,
       newBar: bar,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -287,12 +312,11 @@ export class PlayerPageComponent {
   protected updateBar(bar: AttributeBar, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerBarEdit, 'id'> = {
+    const command: Omit<EventPlayerBarEdit, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_BAR_EDIT,
       gameSessionId,
       playerId: player.id,
       newBar: bar,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -301,12 +325,11 @@ export class PlayerPageComponent {
   protected deleteBar(bar: AttributeBar, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerBarDelete, 'id'> = {
+    const command: Omit<EventPlayerBarDelete, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_BAR_DELETE,
       gameSessionId,
       playerId: player.id,
       barId: bar.id,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -315,12 +338,11 @@ export class PlayerPageComponent {
   protected addStatus(status: AttributeStatus, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerStatusAdd, 'id'> = {
+    const command: Omit<EventPlayerStatusAdd, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_STATUS_ADD,
       gameSessionId,
       playerId: player.id,
       newStatus: status,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -329,12 +351,11 @@ export class PlayerPageComponent {
   protected updateStatus(status: AttributeStatus, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerStatusEdit, 'id'> = {
+    const command: Omit<EventPlayerStatusEdit, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_STATUS_EDIT,
       gameSessionId,
       playerId: player.id,
       newStatus: status,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -343,12 +364,11 @@ export class PlayerPageComponent {
   protected deleteStatus(status: AttributeStatus, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerStatusDelete, 'id'> = {
+    const command: Omit<EventPlayerStatusDelete, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_STATUS_DELETE,
       gameSessionId,
       playerId: player.id,
       statusId: status.id,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).subscribe();
@@ -357,13 +377,12 @@ export class PlayerPageComponent {
   protected addItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerInventoryItemAdd, 'id'> = {
+    const command: Omit<EventPlayerInventoryItemAdd, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD,
       gameSessionId,
       playerId: player.id,
       inventoryId: itemEvent.inventory.id,
       newItem: itemEvent.item,
-      timestamp: Date.now(),
     } ;
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -374,13 +393,12 @@ export class PlayerPageComponent {
   protected editItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerInventoryItemEdit, 'id'> = {
+    const command: Omit<EventPlayerInventoryItemEdit, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT,
       gameSessionId,
       playerId: player.id,
       inventoryId: itemEvent.inventory.id,
       newItem: itemEvent.item,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -391,13 +409,12 @@ export class PlayerPageComponent {
   protected deleteItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerInventoryItemDelete, 'id'> = {
+    const command: Omit<EventPlayerInventoryItemDelete, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE,
       gameSessionId,
       playerId: player.id,
       inventoryId: itemEvent.inventory.id,
       deletedItem: itemEvent.item,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -408,12 +425,11 @@ export class PlayerPageComponent {
   protected addInventory(event: InventoryAdditionEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerInventoryAdd, 'id'> = {
+    const command: Omit<EventPlayerInventoryAdd, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_ADD,
       gameSessionId,
       playerId: player.id,
       newInventory: event.inventory,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -424,12 +440,11 @@ export class PlayerPageComponent {
   protected updateInventory(event: InventoryUpdateEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerInventoryUpdate, 'id'> = {
+    const command: Omit<EventPlayerInventoryUpdate, 'id' | 'timestamp'> = {
       type: EventPlayerTypes.PLAYER_INVENTORY_UPDATE,
       gameSessionId,
       playerId: player.id,
       newInventory: event.inventory,
-      timestamp: Date.now(),
     };
 
     this.gameEventRepository.postCommand(command).pipe(
