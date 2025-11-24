@@ -19,18 +19,10 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
     }
     
   `,
+  styleUrls: ['./event-view-common.scss'],
   styles: [`
     :host {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
       color: var(--color-danger);
-      img {
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-      }
     }
   `],
   imports: [
