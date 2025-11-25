@@ -7,6 +7,7 @@ import { CurrentGameSessionState } from '../../core/current-game-session.state';
 import { CurrentParticipantState } from '../../core/current-participant.state';
 import { ButtonComponent } from '../../core/design-system/button.component';
 import { CardComponent } from '../../core/design-system/card.component';
+import { DownloadService } from '../../core/download.service';
 import { PageMasterRoutes } from '../../core/pagemaster.router';
 import { GameSessionRepository } from '../../core/repositories/game-session.repository';
 
@@ -19,7 +20,13 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
       @let instance = selectedGameSession();
       @if (instance) {
         <p class="subtitle">{{ instance.id }} - Master: {{ instance.master.name }}</p>
-        
+
+        <div class="actions" style="width:100%;text-align:right;">
+          <ds-button [mode]="'tertiary'" (click)="exportSession(instance)">
+            Export as JSON
+          </ds-button>
+        </div>
+
         <div class="participants-grid">
           @for(player of instance.players; track player.id) {
             <ds-card class="participant-card">
@@ -146,6 +153,7 @@ export class GameSessionChooseParticipantComponent {
   protected gameSessionService = inject(GameSessionRepository);
   protected currentParticipantService = inject(CurrentParticipantState);
   protected currentGameSessionService = inject(CurrentGameSessionState);
+  protected downloadService = inject(DownloadService);
   protected selectedGameSession = toSignal(this.route.paramMap.pipe(
     switchMap(params => {
       const instanceId = params.get(PageMasterRoutes().GameInstanceSession.params[0]);
@@ -157,12 +165,15 @@ export class GameSessionChooseParticipantComponent {
   ));
 
   protected selectParticipant(gameSession: GameSession, participant: Player | GameMaster) {
-   
     this.currentGameSessionService.setCurrentGameSession(gameSession).pipe(
       tap((newInstance) => {
         this.currentParticipantService.setParticipant(participant.id);
         void this.router.navigate(['/', ...PageMasterRoutes().GameInstanceSession.interpolated(newInstance.id).split('/')]);
       }),
     ).subscribe();
+  }
+
+  protected exportSession(gameSession: GameSession) {
+    this.downloadService.downloadJson(gameSession, `game-session-${gameSession.id}.json`);
   }
 }

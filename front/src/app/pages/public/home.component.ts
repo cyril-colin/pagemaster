@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ParticipantType } from '@pagemaster/common/pagemaster.types';
+import { GameSession, ParticipantType } from '@pagemaster/common/pagemaster.types';
+import { catchError, tap } from 'rxjs/operators';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { MainTitleService } from 'src/app/core/main-bar/main-title.service';
@@ -56,6 +56,16 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
               [routerLink]="'/' + routes.GameInstanceConfig.path">
               Create Session
             </ds-button>
+          </ds-card>
+          <ds-card class="action-card">
+            <div class="card-content">
+              <h3>Import Session</h3>
+              <p>Import a game session from a JSON file</p>
+            </div>
+            <ds-button [mode]="'secondary'" (click)="triggerImport()">
+              Import Session
+            </ds-button>
+            <input type="file" accept="application/json" #fileInput style="display:none" (change)="onFileSelected($event)" />
           </ds-card>
         </div>
       </div>
@@ -351,7 +361,7 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
 export class HomeComponent {
   protected routes = PageMasterRoutes();
   protected gameInstanceService = inject(GameSessionRepository);
-  protected instanceList = toSignal(this.gameInstanceService.getAllGameInstances(), { initialValue: [] });
+  protected instanceList = signal<GameSession[]>([]);
   protected gameSession = inject(CurrentGameSessionState).currentGameSession();
   protected participant = inject(CurrentParticipantState).currentParticipant();
   protected currentSession = computed(() => {
@@ -362,7 +372,55 @@ export class HomeComponent {
   });
   protected ParticipantType = ParticipantType;
 
+  @ViewChild('fileInput') fileInputRef!: ElementRef<HTMLInputElement>;
+
   constructor() {
     inject(MainTitleService).setTitle('');
+    this.refreshInstanceList();
+  }
+
+  triggerImport(): void {
+    if (this.fileInputRef?.nativeElement) {
+      this.fileInputRef.nativeElement.value = '';
+      this.fileInputRef.nativeElement.click();
+    }
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (!input.files || input.files.length === 0) return;
+    const file = input.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      let json: GameSession;
+      try {
+        json = JSON.parse(reader.result as string) as GameSession;
+      } catch {
+        alert('Invalid JSON file.');
+        return;
+      }
+      this.gameInstanceService.postGameSession(json)
+        .pipe(
+          tap(() => this.refreshInstanceList()),
+          catchError(() => {
+            alert('Failed to import session.');
+            return [] as GameSession[];
+          }),
+        )
+        .subscribe();
+    };
+    reader.readAsText(file);
+  }
+
+  private refreshInstanceList(): void {
+    this.gameInstanceService.getAllGameInstances()
+      .pipe(
+        tap((list: GameSession[]) => this.instanceList.set(list)),
+        catchError(() => {
+          // Optionally handle error
+          return [] as GameSession[];
+        }),
+      )
+      .subscribe();
   }
 }

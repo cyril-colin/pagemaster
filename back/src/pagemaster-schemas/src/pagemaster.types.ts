@@ -4,7 +4,7 @@ export type GameSession = {
   /**
    * A unique identifier for this game session.
    */
-  readonly id: string,
+  id: string,
 
   /**
    * The version of the game session. This is incremented each time the game session is updated.
