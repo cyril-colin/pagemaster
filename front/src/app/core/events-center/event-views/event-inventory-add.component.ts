@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerInventoryAdd } from '@pagemaster/common/events-player.types';
-import { AbstractEventViewComponent } from './abstract-event-view.component';
+import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
   selector: 'app-event-inventory-add',
@@ -18,6 +18,6 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventInventoryAddComponent extends AbstractEventViewComponent<EventPlayerInventoryAdd> {
+export class EventInventoryAddComponent extends AbstractEventViewPlayerComponent<EventPlayerInventoryAdd> {
 
 }

@@ -6,6 +6,7 @@ import { HttpBadRequestError, HttpForbiddenError, HttpNotFoundError } from '../.
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
 import { isEventPlayerType } from '../../pagemaster-schemas/src/events-player.types';
 import { GameSessionMongoClient } from '../gamesession/game-session.mongo-client';
+import { EventDiceRollExecuter } from './event-executer/event-dice-roll.executer';
 import { GameEventExecuter } from './event-executer/event-executer';
 import { EventPlayerExecuter } from './event-executer/event-player/event-player.executer';
 import { GameEventMongoClient } from './game-event.mongo-client';
@@ -53,11 +54,13 @@ export class GameEventController {
     return res.event;
   }
 
-  protected getExecuter(gameEvent: EventBase,): GameEventExecuter {
+  protected getExecuter(gameEvent: EventBase): GameEventExecuter {
     if (isEventPlayerType(gameEvent.type)) {
       return new EventPlayerExecuter();
     }
-    
+    if (gameEvent.type === 'dice-roll') {
+      return new EventDiceRollExecuter();
+    }
     throw new HttpBadRequestError(`Unsupported event type: ${gameEvent.type}`);
   }
 }

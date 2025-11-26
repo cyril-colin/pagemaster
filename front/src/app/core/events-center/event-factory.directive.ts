@@ -6,6 +6,7 @@ import { EventBarAddComponent } from './event-views/event-bar-add.component';
 import { EventBarDeleteComponent } from './event-views/event-bar-delete.component';
 import { EventBarEditComponent } from './event-views/event-bar-edit.component';
 import { EventDescriptionEditComponent } from './event-views/event-description-edit.component';
+import { EventDiceRollComponent } from './event-views/event-dice-roll.component';
 import { EventInventoryAddComponent } from './event-views/event-inventory-add.component';
 import { EventInventoryDeleteComponent } from './event-views/event-inventory-delete.component';
 import { EventInventoryItemAddComponent } from './event-views/event-inventory-item-add.component';
@@ -37,6 +38,7 @@ export const EVENT_COMPONENTS_MAP = {
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE]: EventInventoryItemDeleteComponent,
   [EventPlayerTypes.PLAYER_BAR_POINT_REMOVE]: PlayerBarPointRemoveEventViewComponent,
   [EventPlayerTypes.PLAYER_BAR_POINT_ADD]: PlayerBarPointAddEventViewComponent,
+  'dice-roll': EventDiceRollComponent,
 } as const;
 
 

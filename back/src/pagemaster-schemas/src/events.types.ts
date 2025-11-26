@@ -15,3 +15,11 @@ export type EventPlayerBase = EventBase & {
   playerId: string,
 }
 
+
+
+export type EventDiceRoll = EventBase & {
+  type: 'dice-roll',
+  result: number,
+  sides: number,
+}
+

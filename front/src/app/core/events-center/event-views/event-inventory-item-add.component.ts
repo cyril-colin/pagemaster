@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerInventoryItemAdd } from '@pagemaster/common/events-player.types';
-import { AbstractEventViewComponent } from './abstract-event-view.component';
+import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
   selector: 'app-event-inventory-item-add',
@@ -20,7 +20,7 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventInventoryItemAddComponent extends AbstractEventViewComponent<EventPlayerInventoryItemAdd> {
+export class EventInventoryItemAddComponent extends AbstractEventViewPlayerComponent<EventPlayerInventoryItemAdd> {
   protected inventory = computed(() => {
     return this.player()?.attributes.inventory.find(i => i.id === this.event().inventoryId);
   });

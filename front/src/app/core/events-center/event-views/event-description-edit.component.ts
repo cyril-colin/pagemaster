@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerDescriptionEdit } from '@pagemaster/common/events-player.types';
-import { AbstractEventViewComponent } from './abstract-event-view.component';
+import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
   selector: 'app-event-description-edit',
@@ -15,4 +15,4 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
   imports: [RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventDescriptionEditComponent extends AbstractEventViewComponent<EventPlayerDescriptionEdit> {}
+export class EventDescriptionEditComponent extends AbstractEventViewPlayerComponent<EventPlayerDescriptionEdit> {}

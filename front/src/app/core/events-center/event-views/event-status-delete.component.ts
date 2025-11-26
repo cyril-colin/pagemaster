@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerStatusDelete } from '@pagemaster/common/events-player.types';
-import { AbstractEventViewComponent } from './abstract-event-view.component';
+import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
   selector: 'app-event-status-delete',
@@ -16,4 +16,4 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
   imports: [RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventStatusDeleteComponent extends AbstractEventViewComponent<EventPlayerStatusDelete> {}
+export class EventStatusDeleteComponent extends AbstractEventViewPlayerComponent<EventPlayerStatusDelete> {}

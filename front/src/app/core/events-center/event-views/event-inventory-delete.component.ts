@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerInventoryDelete } from '@pagemaster/common/events-player.types';
-import { AbstractEventViewComponent } from './abstract-event-view.component';
+import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
   selector: 'app-event-inventory-delete',
@@ -19,7 +19,7 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventInventoryDeleteComponent extends AbstractEventViewComponent<EventPlayerInventoryDelete> {
+export class EventInventoryDeleteComponent extends AbstractEventViewPlayerComponent<EventPlayerInventoryDelete> {
   protected inventory = computed(() => {
     return this.player()?.attributes.inventory.find(i => i.id === this.event().inventoryId);
   });

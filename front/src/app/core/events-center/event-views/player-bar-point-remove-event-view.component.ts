@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerBarPointRemove } from '@pagemaster/common/events-player.types';
-import { AbstractEventViewComponent } from './abstract-event-view.component';
+import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
   selector: 'app-player-bar-point-remove-event-view',
@@ -30,7 +30,7 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlayerBarPointRemoveEventViewComponent extends AbstractEventViewComponent<EventPlayerBarPointRemove> {
+export class PlayerBarPointRemoveEventViewComponent extends AbstractEventViewPlayerComponent<EventPlayerBarPointRemove> {
   protected bar = computed(() => {
     const bars = this.player()?.attributes.bar || [];
     return bars.find(b => b.id === this.event().barId);

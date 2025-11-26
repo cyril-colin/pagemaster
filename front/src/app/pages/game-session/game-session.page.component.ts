@@ -1,11 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
+import { EventDiceRoll } from '@pagemaster/common/events.types';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
+import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
 import { MainMenuComponent } from './main-menu.component';
 
 @Component({
@@ -14,6 +16,8 @@ import { MainMenuComponent } from './main-menu.component';
   <section class="header">
     <div class="links">
       <ds-button [icon]="'menu'" (click)="openMainMenu()"/>
+      <ds-button (click)="runDice(6)">d6</ds-button>
+      <ds-button (click)="runDice(20)">d20</ds-button>
       <ds-button (click)="goToEvents()" [mode]="'secondary'">Events Center ({{ eventCount() }})</ds-button>
     </div>
   </section>
@@ -93,6 +97,7 @@ export class GameSessionPageComponent {
   protected route = inject(ActivatedRoute);
   protected currentGameSession = inject(CurrentGameSessionState);
   protected modalService = inject(ModalService);
+  protected gameEventRepository = inject(GameEventRepository);
   protected eventsCenterState = inject(EventsCenterStateService);
   protected eventCount = computed(() => this.eventsCenterState.events().length);
 
@@ -103,6 +108,16 @@ export class GameSessionPageComponent {
     });
   }
 
+  protected runDice(faces: number): void {
+    const event: Omit<EventDiceRoll, 'id' | 'timestamp'> = {
+      type: 'dice-roll',
+      gameSessionId: this.currentGameSession.currentGameSession().id,
+      result: Math.floor(Math.random() * faces) + 1,
+      sides: faces,
+    };
+    
+    this.gameEventRepository.postCommand(event).subscribe();
+  }
   protected goToEvents(): void {
     void this.router.navigate([
       PageMasterRoutes().GameInstanceSession.children[1].path,
