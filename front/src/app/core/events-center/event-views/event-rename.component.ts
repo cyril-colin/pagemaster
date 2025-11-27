@@ -9,7 +9,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
   template: `
     @let e = event();
     @let p = player();
-    <span>Player renamed to "{{e.newName}}" </span>
+    <span>Player renamed to "{{e.event.newName}}" </span>
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],

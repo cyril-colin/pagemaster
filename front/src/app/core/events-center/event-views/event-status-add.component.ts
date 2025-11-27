@@ -9,7 +9,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
   template: `
     @let e = event();
     @let p = player();
-    <span>Status "{{e.newStatus.name}}" added to </span>
+    <span>Status "{{e.event.newStatus.name}}" added to </span>
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],

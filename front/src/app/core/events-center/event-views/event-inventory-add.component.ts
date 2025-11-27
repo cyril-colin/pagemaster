@@ -9,7 +9,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let e = event();
     @let p = player();
     
-    <span>Inventory "{{e.newInventory.name}}" added to </span>
+    <span>Inventory "{{e.event.newInventory.name}}" added to </span>
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],

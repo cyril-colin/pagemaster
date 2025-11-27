@@ -1,6 +1,5 @@
 import { Directive, inject, input, inputBinding, Type, ViewContainerRef } from '@angular/core';
 import { EventPlayerTypes } from '@pagemaster/common/events-player.types';
-import { EventBase } from '@pagemaster/common/events.types';
 import { EventAvatarEditComponent } from './event-views/event-avatar-edit.component';
 import { EventBarAddComponent } from './event-views/event-bar-add.component';
 import { EventBarDeleteComponent } from './event-views/event-bar-delete.component';
@@ -19,6 +18,7 @@ import { EventStatusDeleteComponent } from './event-views/event-status-delete.co
 import { EventStatusEditComponent } from './event-views/event-status-edit.component';
 import { PlayerBarPointAddEventViewComponent } from './event-views/player-bar-point-add-event-view.component';
 import { PlayerBarPointRemoveEventViewComponent } from './event-views/player-bar-point-remove-event-view.component';
+import { EventMeta } from './events-center.state';
 
 export const EVENT_COMPONENTS_MAP = {
   [EventPlayerTypes.PLAYER_NAME_EDIT]: EventRenameComponent,
@@ -46,12 +46,12 @@ export const EVENT_COMPONENTS_MAP = {
   selector: '[appEventFactory]',
 })
 export class EventFactoryDirective {
-  public event = input.required<EventBase>();
+  public event = input.required<EventMeta>();
   private vcr = inject(ViewContainerRef);
 
   ngOnChanges() {
     const eventValue = this.event();
-    const componentType = EVENT_COMPONENTS_MAP[eventValue.type as keyof typeof EVENT_COMPONENTS_MAP] as Type<unknown>;
+    const componentType = EVENT_COMPONENTS_MAP[eventValue.event.type as keyof typeof EVENT_COMPONENTS_MAP] as Type<unknown>;
     if (componentType) {
       this.vcr.clear();
       this.vcr.createComponent(componentType, {

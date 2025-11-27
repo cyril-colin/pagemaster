@@ -10,7 +10,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let inv = inventory();
     @let p = player();
     
-    <img [src]="e.newItem.picture" />
+    <img [src]="e.event.newItem.picture" />
     added to "{{inv?.name}}" of
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,
@@ -22,6 +22,6 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
 })
 export class EventInventoryItemAddComponent extends AbstractEventViewPlayerComponent<EventPlayerInventoryItemAdd> {
   protected inventory = computed(() => {
-    return this.player()?.attributes.inventory.find(i => i.id === this.event().inventoryId);
+    return this.player()?.attributes.inventory.find(i => i.id === this.event().event.inventoryId);
   });
 }

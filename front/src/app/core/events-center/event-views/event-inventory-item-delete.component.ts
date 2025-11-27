@@ -10,7 +10,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let inv = inventory();
     @let p = player();
     
-    <img [src]="e.deletedItem.picture" />
+    <img [src]="e.event.deletedItem.picture" />
     deleted from "{{inv?.name}}" of
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,
@@ -22,6 +22,6 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
 })
 export class EventInventoryItemDeleteComponent extends AbstractEventViewPlayerComponent<EventPlayerInventoryItemDelete> {
   protected inventory = computed(() => {
-    return this.player()?.attributes.inventory.find(i => i.id === this.event().inventoryId);
+    return this.player()?.attributes.inventory.find(i => i.id === this.event().event.inventoryId);
   });
 }

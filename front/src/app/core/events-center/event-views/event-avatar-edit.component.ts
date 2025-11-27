@@ -9,7 +9,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
   template: `
     @let e = event();
     @let p = player();
-    <img [src]="e.newAvatar" />
+    <img [src]="e.event.newAvatar" />
     avatar updated for
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,

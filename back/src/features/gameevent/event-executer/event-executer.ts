@@ -8,6 +8,7 @@ export abstract class GameEventHandler<T extends EventPlayerBase> {
 export type GameEventHandlerFn<T extends EventPlayerBase = EventPlayerBase> = (
   event: T,
   gameSession: GameSession,
+  currentParticipantId: string | null,
 ) => GameSession;
 
 export abstract class GameEventExecuter {
@@ -15,5 +16,6 @@ export abstract class GameEventExecuter {
     gameEvent: EventBase,
     triggerer: Player | GameMaster,
     currentSession: GameSession,
+    currentParticipantId: string | null,
   ): Promise<{event: EventBase, newGameSession: GameSession}>;
 }

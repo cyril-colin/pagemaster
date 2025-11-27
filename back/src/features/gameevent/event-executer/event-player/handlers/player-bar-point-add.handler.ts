@@ -1,10 +1,11 @@
 import { EventPlayerBarNotifyAdd } from "src/pagemaster-schemas/src/events-player.types";
 import { GameSession } from "src/pagemaster-schemas/src/pagemaster.types";
+import { assertAttributeIndex, assertGameMaster, assertPlayerExists } from "../event-player.executer";
 
-export function playerBarPointAddHandler(event: EventPlayerBarNotifyAdd, session: GameSession): void {
-  const player = session.players.find(p => p.id === event.playerId);
-  if (!player) throw new Error('Player not found');
-  const bar = player.attributes.bar.find(b => b.id === event.barId);
-  if (!bar) throw new Error('Bar not found');
+export const playerBarPointAddHandler = (event: EventPlayerBarNotifyAdd, session: GameSession, currentParticipantId: string | null): void => {
+  assertGameMaster(session, currentParticipantId);
+  const player = assertPlayerExists(session, event.playerId);
+  const barIndex = assertAttributeIndex(player, 'bar', event.barId);
+  const bar = player.attributes.bar[barIndex];
   bar.current += event.addedValue;
 }

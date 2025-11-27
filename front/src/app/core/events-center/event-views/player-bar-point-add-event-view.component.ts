@@ -10,7 +10,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let p = player();
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
     gained
-    <strong>{{ event().addedValue }}</strong>
+    <strong>{{ event().event.addedValue }}</strong>
     point(s)
     @let b = bar();
     @if(b) {
@@ -33,6 +33,6 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
 export class PlayerBarPointAddEventViewComponent extends AbstractEventViewPlayerComponent<EventPlayerBarPointAdd> {
   protected bar = computed(() => {
     const bars = this.player()?.attributes.bar || [];
-    return bars.find(b => b.id === this.event().barId);
+    return bars.find(b => b.id === this.event().event.barId);
   });
 }

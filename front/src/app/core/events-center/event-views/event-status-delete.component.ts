@@ -9,7 +9,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
   template: `
     @let e = event();
     @let p = player();
-    <span>Status deleted (ID: {{e.statusId}}) for </span>
+    <span>Status deleted (ID: {{e.event.statusId}}) for </span>
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],

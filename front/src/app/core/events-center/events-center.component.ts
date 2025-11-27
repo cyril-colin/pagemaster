@@ -6,7 +6,7 @@ import { EventsCenterStateService } from './events-center.state';
   selector: 'app-events-center',
   template: `
   <section>
-    @for(e of events(); track e.id) {
+    @for(e of events(); track e.event.id) {
       <article appEventFactory [event]="e">
       </article>
     }

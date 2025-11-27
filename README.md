@@ -43,3 +43,22 @@ This project uses a monorepo structure for several practical reasons:
 - **Solo Development Simplicity**: As a solo developer, maintaining a single repository makes it much easier to update and synchronize changes across the codebase.
 - **No Need for Separate Artifacts**: There are no plans for separate artifact management or versioning between the frontend and backend, which eliminates the need for separate CI/CD pipelines.
 - **Flexible Architecture**: Thanks to VS Code workspace configuration, the project maintains a logical separation between frontend and backend, making it easier to split them into separate repositories in the future if needed.
+
+
+### Features
+
+
+- realtime : all action is treated as an Event that will update the GameSession (a JSON representing the game session : all users and there attributes)
+- Mobile first : the application should be usable as fast as possible, that why it is made for mobile, using a simple browser to avoid the need of an application
+- user list
+  - can see their attributes and public attributes of other players
+  - can take notes in their description
+  - can see the list of events : dice, new item to inventories, new statuses
+- game master :
+  - avatar
+  - inventory :
+    - crud
+    - item management
+  - status :
+    - crud
+- run dice

@@ -21,6 +21,6 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
 })
 export class EventInventoryDeleteComponent extends AbstractEventViewPlayerComponent<EventPlayerInventoryDelete> {
   protected inventory = computed(() => {
-    return this.player()?.attributes.inventory.find(i => i.id === this.event().inventoryId);
+    return this.player()?.attributes.inventory.find(i => i.id === this.event().event.inventoryId);
   });
 }

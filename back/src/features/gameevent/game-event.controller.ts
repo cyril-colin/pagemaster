@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { SocketServerService } from 'src/core/socket.service';
 import { EventBase } from 'src/pagemaster-schemas/src/events.types';
 import { Get, Post } from '../../core/router/controller.decorators';
-import { HttpBadRequestError, HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
+import { HttpBadRequestError, HttpNotFoundError } from '../../core/router/http-errors';
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
 import { isEventPlayerType } from '../../pagemaster-schemas/src/events-player.types';
 import { GameSessionMongoClient } from '../gamesession/game-session.mongo-client';
@@ -40,13 +40,10 @@ export class GameEventController {
       throw new HttpNotFoundError('Game session not found');
     }
     const currentParticipantId = (Array.isArray(req.headers[HEADER_CURRENT_PARTICIPANT]) ? null : req.headers[HEADER_CURRENT_PARTICIPANT]) || null;
-    if (currentParticipantId !== gameSession.master.id) {
-      throw new HttpForbiddenError('Forbidden: Only the game master can execute command events');
-    }
 
 
     const executer = this.getExecuter(gameEvent);
-    const res = await executer.executeEvent(gameEvent, gameSession.master, gameSession);
+    const res = await executer.executeEvent(gameEvent, gameSession.master, gameSession, currentParticipantId);
 
     await this.gameInstanceMongoClient.updateGameSession(res.newGameSession.id, res.newGameSession.version || 0, res.newGameSession);
     await this.socketServerService.notifySessionUpdate(res.newGameSession, res.event);

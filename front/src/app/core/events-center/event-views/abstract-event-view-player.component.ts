@@ -7,7 +7,7 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
 @Directive()
 export abstract class AbstractEventViewPlayerComponent<T extends EventPlayerBase> extends AbstractEventViewComponent<T> {
   protected player = computed(() => 
-    this.gameSession.currentGameSession().players.find(p => p.id === this.event().playerId),
+    this.gameSession.currentGameSession().players.find(p => p.id === this.event().event.playerId),
   );
   protected router = inject(Router);
   protected route = inject(ActivatedRoute);

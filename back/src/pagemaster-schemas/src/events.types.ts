@@ -20,6 +20,10 @@ export type EventPlayerBase = EventBase & {
 export type EventDiceRoll = EventBase & {
   type: 'dice-roll',
   result: number,
+  /**
+   * If null, the dice roll was triggered by the GM.
+   */
+  triggeringPlayerId: string | null,
   sides: number,
 }
 
