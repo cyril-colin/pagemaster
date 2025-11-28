@@ -4,35 +4,41 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { EventDiceRoll } from '@pagemaster/common/events.types';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
+import { BottomBarComponent } from 'src/app/core/design-system/bottom-bar.component';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { EventDiceRollComponent } from 'src/app/core/events-center/event-views/event-dice-roll.component';
 import { EventMeta, EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
-import { MainMenuComponent } from './main-menu.component';
+import { QuickActionModalComponent } from './quick-action.modal.component';
 
 @Component({
   selector: 'app-game-session',
   template: `
   <section class="header">
     <div class="links">
-      <ds-button [icon]="'menu'" (click)="openMainMenu()"/>
-      <ds-button (click)="runDice(6)">d6</ds-button>
-      <ds-button (click)="runDice(20)">d20</ds-button>
       @let e = lastRunningDiceEvent();
       @if (e) {
           <app-event-dice-roll [event]="e"></app-event-dice-roll>
         }
-      <ds-button (click)="goToEvents()" [mode]="'secondary'" [icon]="'bell'">
-        ({{ eventCount() }})
-      </ds-button>
+
+      <ds-button mode="secondary-danger" (click)="logout()" [icon]="'logout'"/>
     </div>
   </section>
 
   <section class="main-content">
     <router-outlet />
   </section>
+
+  <footer>
+    <ds-bottom-bar
+     (quickAction)="runQuickAction()"
+        [eventCount]="eventCount()"
+      (history)="goToEvents()"
+      (me)="goToMyPlayerPage()"
+    (session)="goToPlayerList()" />
+  </footer>
   `,
   styles: [`
     :host {
@@ -91,13 +97,30 @@ import { MainMenuComponent } from './main-menu.component';
       max-width: var(--content-max-width);
       margin: 0 auto;
       padding: var(--padding-medium);
-      flex: 1;
+      flex: 1; // extra space for visibility
+      padding-bottom: var(--footer-height);
+    }
+
+    footer {
+      position: fixed;
+      z-index: 100;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: var(--footer-height);
+      background-color: var(--color-background-secondary);
+      border-top: var(--view-border);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -2px 8px var(--color-shadow-heavy);
     }
   `],
   imports: [
     RouterModule,
     ButtonComponent,
     EventDiceRollComponent,
+    BottomBarComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -109,12 +132,30 @@ export class GameSessionPageComponent {
   protected modalService = inject(ModalService);
   protected gameEventRepository = inject(GameEventRepository);
   protected eventsCenterState = inject(EventsCenterStateService);
-  protected eventCount = computed(() => this.eventsCenterState.events().length);
+  protected eventCount = computed(() => this.eventsCenterState.events().filter(e => e.isNew).length);
 
-  protected openMainMenu(): void {
-    const ref = this.modalService.openLeftPanel(MainMenuComponent);
-    ref.componentRef.instance.close.subscribe(() => {
-      void ref.close();
+
+  protected goToPlayerList(): void {
+    void this.router.navigate([
+      PageMasterRoutes().GameInstanceSession.children[2].path,
+    ], { relativeTo: this.route,
+    });
+  }
+
+  protected async logout(): Promise<void> {
+    const response = await this.modalService.confirmation('Are youre sure you want to logout?', 'Logout');
+    if (response === 'confirmed') {
+      this.currentParticipantState.logout();
+    }
+  }
+
+  protected goToMyPlayerPage(): void {
+    const currentParticipant = this.currentParticipantState.currentParticipant()!;
+    if (currentParticipant.type !== 'player') return;
+
+    void this.router.navigate([
+      PageMasterRoutes().GameInstanceSession.children[3].interpolated(currentParticipant.id),
+    ], { relativeTo: this.route,
     });
   }
 
@@ -144,6 +185,19 @@ export class GameSessionPageComponent {
     void this.router.navigate([
       PageMasterRoutes().GameInstanceSession.children[1].path,
     ], { relativeTo: this.route,
+    });
+  }
+
+  protected runQuickAction(): void {
+    const modalRef = this.modalService.open(QuickActionModalComponent);
+    modalRef.componentRef.instance.d6.subscribe(() => {
+      this.runDice(6);
+      void modalRef.close();
+    });
+
+    modalRef.componentRef.instance.d20.subscribe(() => {
+      this.runDice(20);
+      void modalRef.close();
     });
   }
 }

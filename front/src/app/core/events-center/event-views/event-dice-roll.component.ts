@@ -69,7 +69,7 @@ export class EventDiceRollComponent extends AbstractEventViewComponent<EventDice
     const urlTree = this.router.createUrlTree(
       [
         PageMasterRoutes().GameInstanceSession.interpolated(this.gameSession.currentGameSession().id),
-        PageMasterRoutes().GameInstanceSession.children[2].interpolated(this.participant()?.id || ''),
+        PageMasterRoutes().GameInstanceSession.children[3].interpolated(this.participant()?.id || ''),
       ],
     );
 

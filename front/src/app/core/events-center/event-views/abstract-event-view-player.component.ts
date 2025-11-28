@@ -14,7 +14,7 @@ export abstract class AbstractEventViewPlayerComponent<T extends EventPlayerBase
 
   protected playerUrl() {
     const urlTree = this.router.createUrlTree(
-      ['..', PageMasterRoutes().GameInstanceSession.children[2].interpolated(this.player()?.id || '')],
+      ['..', PageMasterRoutes().GameInstanceSession.children[3].interpolated(this.player()?.id || '')],
       { relativeTo: this.route },
     );
 

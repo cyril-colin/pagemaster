@@ -12,7 +12,7 @@ import { PlayerButtonComponent } from 'src/app/core/player/player-button.compone
 import { GameSessionRepository } from 'src/app/core/repositories/game-session.repository';
 
 @Component({
-  selector: 'app-main-menu',
+  selector: 'app-player-list',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -27,7 +27,7 @@ import { GameSessionRepository } from 'src/app/core/repositories/game-session.re
           <app-player-button (click)="goToParticipantPage(currentPlayer)" [player]="currentPlayer"
           />
         }
-        <ds-button mode="secondary-danger" (click)="logout()" [icon]="'logout'"/>
+        
       </header>
       <nav>
         @if (otherPlayers.length > 0) {
@@ -129,7 +129,7 @@ import { GameSessionRepository } from 'src/app/core/repositories/game-session.re
   `],
   imports: [ButtonComponent, PlayerButtonComponent],
 })
-export class MainMenuComponent {
+export class PlayerListPageComponent {
   public close = output<void>();
 
   private router = inject(Router);
@@ -156,17 +156,12 @@ export class MainMenuComponent {
 
 
   protected async goToParticipantPage(participant: Participant): Promise<void> {
-    const route = PageMasterRoutes().GameInstanceSession.children[2].interpolated(participant.id);
+    const route = PageMasterRoutes().GameInstanceSession.children[3].interpolated(participant.id);
 
     const gameSessionId = this.currentGameSession.currentGameSession().id;
     const parentRoute = PageMasterRoutes().GameInstanceSession.interpolated(gameSessionId);
     const segments = [parentRoute, route].join('/').split('/');
     await this.router.navigate(segments);
-    this.close.emit();
-  }
-  
-  protected logout(): void {
-    this.currentParticipant.logout();
     this.close.emit();
   }
 
