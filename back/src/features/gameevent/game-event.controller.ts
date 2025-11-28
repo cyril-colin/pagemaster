@@ -2,10 +2,11 @@ import { Request } from 'express';
 import { SocketServerService } from 'src/core/socket.service';
 import { EventBase } from 'src/pagemaster-schemas/src/events.types';
 import { Get, Post } from '../../core/router/controller.decorators';
-import { HttpBadRequestError, HttpForbiddenError, HttpNotFoundError } from '../../core/router/http-errors';
+import { HttpBadRequestError, HttpNotFoundError } from '../../core/router/http-errors';
 import { HEADER_CURRENT_PARTICIPANT } from '../../pagemaster-schemas/src/constants';
 import { isEventPlayerType } from '../../pagemaster-schemas/src/events-player.types';
 import { GameSessionMongoClient } from '../gamesession/game-session.mongo-client';
+import { EventDiceRollExecuter } from './event-executer/event-dice-roll.executer';
 import { GameEventExecuter } from './event-executer/event-executer';
 import { EventPlayerExecuter } from './event-executer/event-player/event-player.executer';
 import { GameEventMongoClient } from './game-event.mongo-client';
@@ -39,13 +40,10 @@ export class GameEventController {
       throw new HttpNotFoundError('Game session not found');
     }
     const currentParticipantId = (Array.isArray(req.headers[HEADER_CURRENT_PARTICIPANT]) ? null : req.headers[HEADER_CURRENT_PARTICIPANT]) || null;
-    if (currentParticipantId !== gameSession.master.id) {
-      throw new HttpForbiddenError('Forbidden: Only the game master can execute command events');
-    }
 
 
     const executer = this.getExecuter(gameEvent);
-    const res = await executer.executeEvent(gameEvent, gameSession.master, gameSession);
+    const res = await executer.executeEvent(gameEvent, gameSession.master, gameSession, currentParticipantId);
 
     await this.gameInstanceMongoClient.updateGameSession(res.newGameSession.id, res.newGameSession.version || 0, res.newGameSession);
     await this.socketServerService.notifySessionUpdate(res.newGameSession, res.event);
@@ -53,11 +51,13 @@ export class GameEventController {
     return res.event;
   }
 
-  protected getExecuter(gameEvent: EventBase,): GameEventExecuter {
+  protected getExecuter(gameEvent: EventBase): GameEventExecuter {
     if (isEventPlayerType(gameEvent.type)) {
       return new EventPlayerExecuter();
     }
-    
+    if (gameEvent.type === 'dice-roll') {
+      return new EventDiceRollExecuter();
+    }
     throw new HttpBadRequestError(`Unsupported event type: ${gameEvent.type}`);
   }
 }

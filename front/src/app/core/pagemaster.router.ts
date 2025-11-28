@@ -2,6 +2,7 @@ import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Route, RouterStateSnapshot } from '@angular/router';
 import { AuthGuard } from '../pages/game-session/auth.guard';
 import { GameSessionPageComponent } from '../pages/game-session/game-session.page.component';
+import { PlayerListPageComponent } from '../pages/game-session/player-list.page.component';
 import { PlayerPageComponent } from '../pages/game-session/player.page.component';
 import { GameSessionChooseParticipantComponent } from '../pages/public/game-session-choose-participant.component';
 import { GameSessionConfigComponent } from '../pages/public/game-session-creation/game-session-config.component';
@@ -58,6 +59,7 @@ export function PageMasterRoutes() {
         children: [
           { path: '', redirectTo: 'events', pathMatch: 'full' as const },
           { path: 'events', component: EventsCenterComponent },
+          { path: 'player', component: PlayerListPageComponent },
           {
             path: `player/:${params[1]}`,
             interpolated: (playerId: string) => `player/:${params[1]}`.replace(`:${params[1]}`, playerId),

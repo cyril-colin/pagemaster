@@ -41,6 +41,8 @@ export class GameSessionController {
 
   @Post('/game-sessions')
   public async createGameSession(gameSession: GameSession): Promise<GameSession> {
+    gameSession.id = `game-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+    gameSession.version = 0;
     const doc = await this.mongoClient.createGameSession(gameSession);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { _id, ...createdGameSession } = doc;

@@ -5,7 +5,7 @@ import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.typ
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { CardComponent } from '../design-system/card.component';
 import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
-import { BarsControlComponent, BarsPermissions } from './bars/bars-control.component';
+import { BarsControlComponent, BarsPermissions, BarValueUpdateEvent } from './bars/bars-control.component';
 import { DescriptionControlComponent, DescriptionPermissions } from './descriptions/description-control.component';
 import {
   InventoryAdditionEvent,
@@ -126,7 +126,7 @@ export class PlayerFormComponent  {
   public renameEvent = output<{value: string}>();
   public avatarEvent = output<AvatarEvent>();
   public descriptionEvent = output<{value: string}>();
-  public newBarValueEvent = output<AttributeBar>();
+  public newBarValueEvent = output<BarValueUpdateEvent>();
   public newBarEvent = output<AttributeBar>();
   public editBarEvent = output<AttributeBar>();
   public deleteBarEvent = output<AttributeBar>();

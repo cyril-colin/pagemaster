@@ -1,16 +1,12 @@
 import { EventPlayerBarEdit } from '../../../../../pagemaster-schemas/src/events-player.types';
 import { GameEventHandlerFn } from '../../event-executer';
+import { assertAttributeIndex, assertGameMaster, assertPlayerExists } from '../event-player.executer';
 
-export const playerBarEditHandler: GameEventHandlerFn<EventPlayerBarEdit> = (event, gameSession) => {
-  const player = gameSession.players.find(p => p.id === event.playerId);
-  if (!player) {
-    throw new Error('Player not found in game session');
-  }
+export const playerBarEditHandler: GameEventHandlerFn<EventPlayerBarEdit> = (event, gameSession, currentParticipantId) => {
+  assertGameMaster(gameSession, currentParticipantId);
+  const player = assertPlayerExists(gameSession, event.playerId);
 
-  const barIndex = player.attributes.bar.findIndex(b => b.id === event.newBar.id);
-  if (barIndex === -1) {
-    throw new Error('Bar not found for update');
-  }
+  const barIndex = assertAttributeIndex(player, 'bar', event.newBar.id);
   player.attributes.bar[barIndex] = event.newBar;
   return gameSession;
 }

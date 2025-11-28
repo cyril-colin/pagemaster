@@ -12,6 +12,8 @@ export type BarsPermissions = {
   delete: boolean,
 };
 
+export type BarValueUpdateEvent = {newBar: AttributeBar, previousValue: AttributeBar};
+
 @Component({
   selector: 'app-bars-control',
   template: `
@@ -101,19 +103,20 @@ export type BarsPermissions = {
 export class BarsControlComponent {
   public bars = input.required<AttributeBar[]>();
   public permissions = input.required<BarsPermissions>();
-  public newBarValue = output<AttributeBar>();
+  public newBarValue = output<BarValueUpdateEvent>();
   public newBar = output<AttributeBar>();
   public editBar = output<AttributeBar>();
   public deleteBar = output<AttributeBar>();
 
   private modalService = inject(ModalService);
 
-  protected updateBarValue(bar: AttributeBar, newValue: number): void {
+  protected updateBarValue(bar: AttributeBar, newValue: { previous: number, newValue: number }): void {
+    const previousVal = bar;
     const updatedBar: AttributeBar = {
       ...bar,
-      current: newValue,
+      current: newValue.newValue,
     };
-    this.newBarValue.emit(updatedBar);
+    this.newBarValue.emit({ newBar: updatedBar, previousValue: previousVal });
   }
 
   protected openNewBarModal() {

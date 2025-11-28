@@ -2,21 +2,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerAvatarEdit } from '@pagemaster/common/events-player.types';
-import { AbstractEventViewComponent } from './abstract-event-view.component';
+import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
   selector: 'app-event-avatar-edit',
   template: `
     @let e = event();
     @let p = player();
-    <img [src]="e.newAvatar" />
+    <img [src]="e.event.newAvatar" />
     avatar updated for
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,
-  styles: [
-    ':host { img { width: 32px; height: 32px; } }',
-  ],
+  styleUrls: ['./event-view-common.scss'],
   imports: [RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventAvatarEditComponent extends AbstractEventViewComponent<EventPlayerAvatarEdit> {}
+export class EventAvatarEditComponent extends AbstractEventViewPlayerComponent<EventPlayerAvatarEdit> {}

@@ -1,11 +1,11 @@
 import { Directive, inject, input, inputBinding, Type, ViewContainerRef } from '@angular/core';
 import { EventPlayerTypes } from '@pagemaster/common/events-player.types';
-import { EventBase } from '@pagemaster/common/events.types';
 import { EventAvatarEditComponent } from './event-views/event-avatar-edit.component';
 import { EventBarAddComponent } from './event-views/event-bar-add.component';
 import { EventBarDeleteComponent } from './event-views/event-bar-delete.component';
 import { EventBarEditComponent } from './event-views/event-bar-edit.component';
 import { EventDescriptionEditComponent } from './event-views/event-description-edit.component';
+import { EventDiceRollComponent } from './event-views/event-dice-roll.component';
 import { EventInventoryAddComponent } from './event-views/event-inventory-add.component';
 import { EventInventoryDeleteComponent } from './event-views/event-inventory-delete.component';
 import { EventInventoryItemAddComponent } from './event-views/event-inventory-item-add.component';
@@ -16,6 +16,9 @@ import { EventRenameComponent } from './event-views/event-rename.component';
 import { EventStatusAddComponent } from './event-views/event-status-add.component';
 import { EventStatusDeleteComponent } from './event-views/event-status-delete.component';
 import { EventStatusEditComponent } from './event-views/event-status-edit.component';
+import { PlayerBarPointAddEventViewComponent } from './event-views/player-bar-point-add-event-view.component';
+import { PlayerBarPointRemoveEventViewComponent } from './event-views/player-bar-point-remove-event-view.component';
+import { EventMeta } from './events-center.state';
 
 export const EVENT_COMPONENTS_MAP = {
   [EventPlayerTypes.PLAYER_NAME_EDIT]: EventRenameComponent,
@@ -33,6 +36,9 @@ export const EVENT_COMPONENTS_MAP = {
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD]: EventInventoryItemAddComponent,
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT]: EventInventoryItemEditComponent,
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE]: EventInventoryItemDeleteComponent,
+  [EventPlayerTypes.PLAYER_BAR_POINT_REMOVE]: PlayerBarPointRemoveEventViewComponent,
+  [EventPlayerTypes.PLAYER_BAR_POINT_ADD]: PlayerBarPointAddEventViewComponent,
+  'dice-roll': EventDiceRollComponent,
 } as const;
 
 
@@ -40,12 +46,12 @@ export const EVENT_COMPONENTS_MAP = {
   selector: '[appEventFactory]',
 })
 export class EventFactoryDirective {
-  public event = input.required<EventBase>();
+  public event = input.required<EventMeta>();
   private vcr = inject(ViewContainerRef);
 
   ngOnChanges() {
     const eventValue = this.event();
-    const componentType = EVENT_COMPONENTS_MAP[eventValue.type as keyof typeof EVENT_COMPONENTS_MAP] as Type<unknown>;
+    const componentType = EVENT_COMPONENTS_MAP[eventValue.event.type as keyof typeof EVENT_COMPONENTS_MAP] as Type<unknown>;
     if (componentType) {
       this.vcr.clear();
       this.vcr.createComponent(componentType, {

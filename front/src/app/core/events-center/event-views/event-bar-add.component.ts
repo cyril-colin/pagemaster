@@ -2,20 +2,18 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerBarAdd } from '@pagemaster/common/events-player.types';
-import { AbstractEventViewComponent } from './abstract-event-view.component';
+import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
   selector: 'app-event-bar-add',
   template: `
     @let e = event();
     @let p = player();
-    <span>Bar "{{e.newBar.name}}" added to </span>
+    <span>Bar "{{e.event.newBar.name}}" added to </span>
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,
-  styles: [
-    ':host { img { width: 32px; height: 32px; } }',
-  ],
+  styleUrls: ['./event-view-common.scss'],
   imports: [RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventBarAddComponent extends AbstractEventViewComponent<EventPlayerBarAdd> {}
+export class EventBarAddComponent extends AbstractEventViewPlayerComponent<EventPlayerBarAdd> {}
