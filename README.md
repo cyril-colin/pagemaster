@@ -62,3 +62,8 @@ This project uses a monorepo structure for several practical reasons:
   - status :
     - crud
 - run dice
+- event center : the list of events that occurs during the game session :
+  - inventory : new, update, delete
+    - items add
+    - items delete
+    - item edit
