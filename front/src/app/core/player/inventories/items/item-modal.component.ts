@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal } from '@angular/core';
-import { Item } from '@pagemaster/common/items.types';
+import { Item, ItemTag } from '@pagemaster/common/items.types';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { ResourcePacksStorage } from 'src/app/core/resource-packs-storage.service';
 import { ImageComponent } from '../../../design-system/image.component';
@@ -127,7 +127,13 @@ export class ItemModalComponent {
     count: 0,
     filters: {
       fullText: '',
-      tags: [],
+      tags: [
+        ItemTag.AMMO,
+        ItemTag.ARMOR,
+        ItemTag.MEDICAL,
+        ItemTag.WEAPON_MELEE,
+        ItemTag.WEAPON_RANGED,
+      ],
       rarity: [],
     },
     pagination: {
@@ -144,7 +150,7 @@ export class ItemModalComponent {
       if (newState.filters.rarity.length > 0 && !newState.filters.rarity.includes(item.rarity)) {
         return false;
       }
-      if (newState.filters.tags.length > 0 && !newState.filters.tags.every(tag => item.tags.includes(tag))) {
+      if (newState.filters.tags.length > 0 && !newState.filters.tags.some(tag => item.tags.includes(tag))) {
         return false;
       }
       if (newState.filters.fullText) {

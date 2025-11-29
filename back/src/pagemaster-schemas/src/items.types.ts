@@ -54,6 +54,8 @@ export enum ItemTag {
   MISC = 'MISC',
   WEAPON_RANGED = 'WEAPON_RANGED',
   WEAPON_MELEE ='WEAPON_MELEE',
+  CLOTHING = 'CLOTHING',
+  ARMOR = 'ARMOR',
   AMMO = 'AMMO',
   TOOL = 'TOOL',
   CONTAINER = 'CONTAINER',
@@ -91,6 +93,14 @@ export const ItemTagFilters: Record<ItemTag, ItemFilter<ItemTag>> = {
   [ItemTag.WEAPON_MELEE]: {
     id: ItemTag.WEAPON_MELEE,
     label: 'Melee Weapon',
+  },
+  [ItemTag.CLOTHING]: {
+    id: ItemTag.CLOTHING,
+    label: 'Clothing',
+  },
+  [ItemTag.ARMOR]: {
+    id: ItemTag.ARMOR,
+    label: 'Armor',
   },
   [ItemTag.AMMO]: {
     id: ItemTag.AMMO,

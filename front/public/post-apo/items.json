@@ -7,7 +7,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "airconditioner1",
@@ -17,7 +17,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "airconditioner2",
@@ -27,7 +27,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "airpump1",
@@ -37,7 +37,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "alarm1",
@@ -47,7 +47,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "ammoclip1",
@@ -57,7 +57,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "ammoclip2",
@@ -67,18 +67,18 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "ammo_shotgun1",
-    "name": "Ammo_ Shotgun 1",
+    "name": "Ammo Shotgun 1",
     "path": "post-apo/item-assets/Ammo_Shotgun1.png",
     "tags": [
       "AMMO",
       "WEAPON_RANGED"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "antler1",
@@ -88,7 +88,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "ashtray1",
@@ -98,7 +98,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bag1",
@@ -108,7 +108,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "banner1",
@@ -118,7 +118,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barsign1",
@@ -128,7 +128,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barrel1",
@@ -138,7 +138,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barrel2",
@@ -148,7 +148,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barrel3",
@@ -158,7 +158,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barrel4",
@@ -168,7 +168,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barrel5",
@@ -178,7 +178,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barrel6",
@@ -188,7 +188,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barrel7",
@@ -198,7 +198,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barrel8",
@@ -208,7 +208,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barricade1",
@@ -218,7 +218,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "barricade2",
@@ -228,7 +228,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "basket1",
@@ -238,7 +238,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "basket2",
@@ -248,7 +248,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "basket3",
@@ -258,17 +258,18 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bathtub1",
     "name": "Bathtub 1",
     "path": "post-apo/item-assets/Bathtub1.png",
     "tags": [
-      "WEAPON_MELEE"
+      "CONTAINER",
+      "FURNITURE"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 3
+    "rarity": "COMMON",
+    "weight":  1
   },
   {
     "id": "battery1",
@@ -276,10 +277,10 @@
     "path": "post-apo/item-assets/Battery1.png",
     "tags": [
       "ELECTRONICS",
-      "WEAPON_MELEE"
+      "MATERIAL"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 4
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "battery2",
@@ -287,10 +288,10 @@
     "path": "post-apo/item-assets/Battery2.png",
     "tags": [
       "ELECTRONICS",
-      "WEAPON_MELEE"
+      "MATERIAL"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 4
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "battery3",
@@ -298,10 +299,10 @@
     "path": "post-apo/item-assets/Battery3.png",
     "tags": [
       "ELECTRONICS",
-      "WEAPON_MELEE"
+      "MATERIAL"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 4
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "bayonet1",
@@ -310,18 +311,19 @@
     "tags": [
       "WEAPON_MELEE"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 3
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "beartrap1",
     "name": "Bear Trap 1",
     "path": "post-apo/item-assets/BearTrap1.png",
     "tags": [
-      "MISC"
+      "AMMO",
+      "WEAPON_MELEE"
     ],
-    "rarity": "COMMON",
-    "weight": 1
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "bed1",
@@ -331,7 +333,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "bed2",
@@ -341,7 +343,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "bike1",
@@ -351,7 +353,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bike2",
@@ -361,17 +363,17 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "billow1",
     "name": "Billow 1",
     "path": "post-apo/item-assets/Billow1.png",
     "tags": [
-      "MISC"
+      "TOOL"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "binder1",
@@ -381,17 +383,17 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "binoculars1",
     "name": "Binoculars 1",
     "path": "post-apo/item-assets/Binoculars1.png",
     "tags": [
-      "CONTAINER"
+      "TOOL"
     ],
-    "rarity": "COMMON",
-    "weight": 3
+    "rarity": "EPIC",
+    "weight":  1
   },
   {
     "id": "birdcage1",
@@ -401,7 +403,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "birdfeeder1",
@@ -411,7 +413,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "blanket1",
@@ -421,7 +423,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "boat1",
@@ -431,7 +433,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "boat2",
@@ -441,7 +443,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "boatoar1",
@@ -451,7 +453,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "body1",
@@ -461,7 +463,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "body2",
@@ -471,7 +473,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "body3",
@@ -481,7 +483,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bonechimes1",
@@ -491,7 +493,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book1",
@@ -501,7 +503,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book10",
@@ -511,7 +513,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book11",
@@ -521,7 +523,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book12",
@@ -531,7 +533,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book13",
@@ -541,7 +543,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book14",
@@ -551,7 +553,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book15",
@@ -561,7 +563,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book16",
@@ -571,7 +573,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book17",
@@ -581,7 +583,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book18",
@@ -591,7 +593,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book19",
@@ -601,7 +603,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book2",
@@ -611,7 +613,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book3",
@@ -621,7 +623,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book4",
@@ -631,7 +633,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book5",
@@ -641,7 +643,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book6",
@@ -651,7 +653,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book7",
@@ -661,7 +663,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book8",
@@ -671,7 +673,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "book9",
@@ -681,7 +683,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "books1",
@@ -691,7 +693,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "books2",
@@ -701,7 +703,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle1",
@@ -711,7 +713,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle10",
@@ -721,7 +723,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle11",
@@ -731,7 +733,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle12",
@@ -741,7 +743,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle13",
@@ -751,7 +753,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle14",
@@ -761,7 +763,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle15",
@@ -771,7 +773,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle16",
@@ -781,7 +783,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle17",
@@ -791,7 +793,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle18",
@@ -801,7 +803,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle19",
@@ -811,7 +813,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle2",
@@ -821,7 +823,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle20",
@@ -831,7 +833,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle21",
@@ -841,7 +843,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle22",
@@ -851,7 +853,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle23",
@@ -861,7 +863,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle24",
@@ -871,7 +873,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle25",
@@ -881,7 +883,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle26",
@@ -891,7 +893,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle27",
@@ -901,7 +903,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle28",
@@ -911,7 +913,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle29",
@@ -921,7 +923,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle3",
@@ -931,7 +933,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle30",
@@ -941,7 +943,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle31",
@@ -951,7 +953,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle32",
@@ -961,7 +963,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle33",
@@ -971,7 +973,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle34",
@@ -981,7 +983,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle35",
@@ -991,7 +993,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle36",
@@ -1001,7 +1003,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle37",
@@ -1011,7 +1013,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle38",
@@ -1021,7 +1023,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle39",
@@ -1031,7 +1033,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle4",
@@ -1041,7 +1043,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle40",
@@ -1051,7 +1053,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle5",
@@ -1061,7 +1063,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle6",
@@ -1071,7 +1073,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle7",
@@ -1081,7 +1083,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle8",
@@ -1091,7 +1093,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bottle9",
@@ -1101,7 +1103,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bowl1",
@@ -1111,7 +1113,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bowl2",
@@ -1121,7 +1123,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bowl3",
@@ -1131,7 +1133,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "box_ammo1",
@@ -1141,8 +1143,8 @@
       "AMMO",
       "CONTAINER"
     ],
-    "rarity": "COMMON",
-    "weight": 3
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "box_ammo2",
@@ -1152,8 +1154,8 @@
       "AMMO",
       "CONTAINER"
     ],
-    "rarity": "COMMON",
-    "weight": 3
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "box_ammo3",
@@ -1163,8 +1165,8 @@
       "AMMO",
       "CONTAINER"
     ],
-    "rarity": "COMMON",
-    "weight": 3
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "box_ammo4",
@@ -1174,8 +1176,8 @@
       "AMMO",
       "CONTAINER"
     ],
-    "rarity": "COMMON",
-    "weight": 3
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "box_ammo5",
@@ -1185,8 +1187,8 @@
       "AMMO",
       "CONTAINER"
     ],
-    "rarity": "COMMON",
-    "weight": 3
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "box_ammo6",
@@ -1197,7 +1199,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_bloody1",
@@ -1207,7 +1209,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_cardboard1",
@@ -1218,7 +1220,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard10",
@@ -1229,7 +1231,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard11",
@@ -1240,7 +1242,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard2",
@@ -1251,7 +1253,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard3",
@@ -1262,7 +1264,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard4",
@@ -1273,7 +1275,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard5",
@@ -1284,7 +1286,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard6",
@@ -1295,7 +1297,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard7",
@@ -1306,7 +1308,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard8",
@@ -1317,7 +1319,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_cardboard9",
@@ -1328,7 +1330,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_files1",
@@ -1338,7 +1340,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_garbage1",
@@ -1348,7 +1350,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_goods1",
@@ -1358,7 +1360,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_goods2",
@@ -1368,7 +1370,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_goods3",
@@ -1378,7 +1380,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_goods4",
@@ -1388,7 +1390,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_goods5",
@@ -1398,7 +1400,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_goods6",
@@ -1408,7 +1410,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_grenades1",
@@ -1418,7 +1420,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_metal1",
@@ -1429,7 +1431,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "box_military1",
@@ -1439,7 +1441,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_military2",
@@ -1449,7 +1451,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_rations1",
@@ -1460,7 +1462,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_rations2",
@@ -1471,7 +1473,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_rations3",
@@ -1482,7 +1484,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_rations4",
@@ -1493,7 +1495,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_rations5",
@@ -1504,7 +1506,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "box_rations6",
@@ -1515,7 +1517,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "brick1",
@@ -1525,7 +1527,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "broom1",
@@ -1535,7 +1537,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bucket1",
@@ -1545,7 +1547,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bucket2",
@@ -1555,7 +1557,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bucket_offal1",
@@ -1565,7 +1567,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bullet1",
@@ -1575,7 +1577,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bullets1",
@@ -1585,7 +1587,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bunker_device1",
@@ -1595,7 +1597,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bunker_device2",
@@ -1605,7 +1607,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bunker_device3",
@@ -1615,7 +1617,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bunker_device4",
@@ -1625,7 +1627,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bunker_scanner1",
@@ -1635,7 +1637,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "bunker_vent1",
@@ -1645,7 +1647,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "busstop1",
@@ -1655,7 +1657,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "butane1",
@@ -1665,7 +1667,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cctv1",
@@ -1675,7 +1677,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "cabinet1",
@@ -1685,7 +1687,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "cabinet2",
@@ -1695,7 +1697,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "cabinet3",
@@ -1705,7 +1707,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "cable1",
@@ -1715,7 +1717,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "cable2",
@@ -1725,7 +1727,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "cablespool1",
@@ -1735,7 +1737,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "cage1",
@@ -1745,7 +1747,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "calculator1",
@@ -1755,7 +1757,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "camera1",
@@ -1765,7 +1767,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "campstove1",
@@ -1775,7 +1777,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "campingkit1",
@@ -1785,7 +1787,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can1",
@@ -1795,7 +1797,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can10",
@@ -1805,7 +1807,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can11",
@@ -1815,7 +1817,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can12",
@@ -1825,7 +1827,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can13",
@@ -1835,7 +1837,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can14",
@@ -1845,7 +1847,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can15",
@@ -1855,7 +1857,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can16",
@@ -1865,7 +1867,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can17",
@@ -1875,7 +1877,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can18",
@@ -1885,7 +1887,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can19",
@@ -1895,7 +1897,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can2",
@@ -1905,7 +1907,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can20",
@@ -1915,7 +1917,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can21",
@@ -1925,7 +1927,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can22",
@@ -1935,7 +1937,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can23",
@@ -1945,7 +1947,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can24",
@@ -1955,7 +1957,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can25",
@@ -1965,7 +1967,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can3",
@@ -1975,7 +1977,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can4",
@@ -1985,7 +1987,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can5",
@@ -1995,7 +1997,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can6",
@@ -2005,7 +2007,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can7",
@@ -2015,7 +2017,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can8",
@@ -2025,7 +2027,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can9",
@@ -2035,97 +2037,97 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can_oil1",
     "name": "Can_ Oil 1",
     "path": "post-apo/item-assets/Can_Oil1.png",
     "tags": [
-      "FOOD"
+      "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can_oil2",
     "name": "Can_ Oil 2",
     "path": "post-apo/item-assets/Can_Oil2.png",
     "tags": [
-      "FOOD"
+      "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "can_oil3",
     "name": "Can_ Oil 3",
     "path": "post-apo/item-assets/Can_Oil3.png",
     "tags": [
-      "FOOD"
+      "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "candle1",
     "name": "Candle 1",
     "path": "post-apo/item-assets/Candle1.png",
     "tags": [
-      "FOOD"
+      "TOOL"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "candlestick1",
     "name": "Candlestick 1",
     "path": "post-apo/item-assets/Candlestick1.png",
     "tags": [
-      "FOOD"
+      "TOOL"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "canvasroll1",
     "name": "Canvas Roll 1",
     "path": "post-apo/item-assets/CanvasRoll1.png",
     "tags": [
-      "FOOD"
+      "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "canvasroll2",
     "name": "Canvas Roll 2",
     "path": "post-apo/item-assets/CanvasRoll2.png",
     "tags": [
-      "FOOD"
+      "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "canvasroll3",
     "name": "Canvas Roll 3",
     "path": "post-apo/item-assets/CanvasRoll3.png",
     "tags": [
-      "FOOD"
+      "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "carriage1",
     "name": "Carriage 1",
     "path": "post-apo/item-assets/Carriage1.png",
     "tags": [
-      "MISC"
+      "TOOL"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cash1",
@@ -2135,7 +2137,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cashbox1",
@@ -2145,17 +2147,17 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "cementmixer1",
     "name": "Cement Mixer 1",
     "path": "post-apo/item-assets/CementMixer1.png",
     "tags": [
-      "MISC"
+      "TOOL"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "chainsaw1",
@@ -2165,7 +2167,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "chair1",
@@ -2175,7 +2177,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chair10",
@@ -2185,7 +2187,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chair2",
@@ -2195,7 +2197,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chair3",
@@ -2205,7 +2207,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chair4",
@@ -2215,7 +2217,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chair5",
@@ -2225,7 +2227,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chair6",
@@ -2235,7 +2237,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chair7",
@@ -2245,7 +2247,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chair8",
@@ -2255,7 +2257,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chair9",
@@ -2265,7 +2267,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "chopsticks1",
@@ -2275,7 +2277,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cinderblock1",
@@ -2285,7 +2287,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "cinderblock2",
@@ -2295,7 +2297,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "cinderblock3",
@@ -2305,7 +2307,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "claypot1",
@@ -2315,27 +2317,27 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "clock1",
     "name": "Clock 1",
     "path": "post-apo/item-assets/Clock1.png",
     "tags": [
-      "MISC"
+      "TOOL"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cloth1",
     "name": "Cloth 1",
     "path": "post-apo/item-assets/Cloth1.png",
     "tags": [
-      "MISC"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "computer1",
@@ -2345,7 +2347,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computer2",
@@ -2355,7 +2357,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computer3",
@@ -2365,7 +2367,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computer4",
@@ -2375,7 +2377,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computer5",
@@ -2385,7 +2387,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computer6",
@@ -2395,7 +2397,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computer7",
@@ -2405,7 +2407,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computerkeyboard1",
@@ -2416,7 +2418,7 @@
       "MATERIAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "computerserver1",
@@ -2426,7 +2428,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computerserver2",
@@ -2436,7 +2438,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computerserver3",
@@ -2446,7 +2448,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computerterminal1",
@@ -2456,7 +2458,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computerterminal2",
@@ -2466,7 +2468,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "computerterminal3",
@@ -2476,7 +2478,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "container1",
@@ -2486,7 +2488,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "cooler1",
@@ -2496,7 +2498,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cooler2",
@@ -2506,7 +2508,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cooler3",
@@ -2516,7 +2518,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "corkboard1",
@@ -2527,7 +2529,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "corkboard2",
@@ -2538,7 +2540,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "corkboard3",
@@ -2549,7 +2551,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "cot1",
@@ -2559,7 +2561,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "cradle1",
@@ -2569,7 +2571,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "crate1",
@@ -2579,7 +2581,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate10",
@@ -2589,7 +2591,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate11",
@@ -2599,7 +2601,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate12",
@@ -2609,7 +2611,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate2",
@@ -2619,7 +2621,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate3",
@@ -2629,7 +2631,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate4",
@@ -2639,7 +2641,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate5",
@@ -2649,7 +2651,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate6",
@@ -2659,7 +2661,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate7",
@@ -2669,7 +2671,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate8",
@@ -2679,7 +2681,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate9",
@@ -2689,7 +2691,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate_weapons1",
@@ -2699,7 +2701,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crate_weapons2",
@@ -2709,7 +2711,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "crowbar1",
@@ -2719,7 +2721,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "cultivator1",
@@ -2729,7 +2731,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup1",
@@ -2739,7 +2741,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup10",
@@ -2749,7 +2751,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup11",
@@ -2759,7 +2761,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup12",
@@ -2769,7 +2771,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup13",
@@ -2779,7 +2781,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup2",
@@ -2789,7 +2791,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup3",
@@ -2799,7 +2801,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup4",
@@ -2809,7 +2811,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup5",
@@ -2819,7 +2821,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup6",
@@ -2829,7 +2831,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup7",
@@ -2839,7 +2841,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup8",
@@ -2849,7 +2851,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "cup9",
@@ -2859,7 +2861,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "dartboard1",
@@ -2869,7 +2871,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "desk1",
@@ -2879,7 +2881,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "detergent1",
@@ -2889,7 +2891,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "detergent2",
@@ -2899,7 +2901,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "detonator1",
@@ -2909,7 +2911,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "device1",
@@ -2919,7 +2921,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "device2",
@@ -2929,7 +2931,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "device3",
@@ -2939,7 +2941,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "device4",
@@ -2949,7 +2951,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "device5",
@@ -2959,7 +2961,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_accessory1",
@@ -2969,7 +2971,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_accessory3",
@@ -2979,7 +2981,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_accessory4",
@@ -2989,7 +2991,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_accessory5",
@@ -2999,7 +3001,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_axe1",
@@ -3009,7 +3011,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "doomsday_bat1",
@@ -3019,7 +3021,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "doomsday_bat2",
@@ -3028,8 +3030,8 @@
     "tags": [
       "WEAPON_MELEE"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 3
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "doomsday_bottom1",
@@ -3039,7 +3041,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_bottom10",
@@ -3049,7 +3051,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_bottom2",
@@ -3059,7 +3061,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_bottom3",
@@ -3069,7 +3071,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_bottom4",
@@ -3079,7 +3081,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_bottom6",
@@ -3089,7 +3091,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_bottom7",
@@ -3099,7 +3101,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_bottom8",
@@ -3109,7 +3111,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_bottom9",
@@ -3119,7 +3121,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_cleaver",
@@ -3129,7 +3131,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "doomsday_female_bottom11",
@@ -3139,7 +3141,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_female_bottom5",
@@ -3149,7 +3151,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_female_top10",
@@ -3159,7 +3161,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_female_top5",
@@ -3169,7 +3171,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_head1",
@@ -3179,7 +3181,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_head2",
@@ -3189,7 +3191,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_head3",
@@ -3199,7 +3201,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_head4",
@@ -3209,7 +3211,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_head5",
@@ -3219,7 +3221,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_katana",
@@ -3229,37 +3231,37 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_mg1",
-    "name": "Doomsday_ M G 1",
+    "name": "AK-47",
     "path": "post-apo/item-assets/Doomsday_MG1.png",
     "tags": [
       "WEAPON_RANGED"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 4
+    "rarity": "EPIC",
+    "weight":  1
   },
   {
     "id": "doomsday_mg2",
-    "name": "Doomsday_ M G 2",
+    "name": "M4",
     "path": "post-apo/item-assets/Doomsday_MG2.png",
     "tags": [
       "WEAPON_RANGED"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 4
+    "rarity": "EPIC",
+    "weight":  1
   },
   {
     "id": "doomsday_machete1",
-    "name": "Doomsday_ Machete 1",
+    "name": "Machete 1",
     "path": "post-apo/item-assets/Doomsday_Machete1.png",
     "tags": [
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "doomsday_male_accessory4",
@@ -3269,7 +3271,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_male_bottom5",
@@ -3279,7 +3281,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_male_top10",
@@ -3289,7 +3291,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_male_top17",
@@ -3299,7 +3301,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_male_top5",
@@ -3309,7 +3311,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_pipesaw",
@@ -3320,47 +3322,47 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "doomsday_pistol1",
-    "name": "Doomsday_ Pistol 1",
+    "name": "Gun",
     "path": "post-apo/item-assets/Doomsday_Pistol1.png",
     "tags": [
       "WEAPON_RANGED"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "doomsday_pistol2",
-    "name": "Doomsday_ Pistol 2",
+    "name": "Gun 2",
     "path": "post-apo/item-assets/Doomsday_Pistol2.png",
     "tags": [
       "WEAPON_RANGED"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "doomsday_smg1",
-    "name": "Doomsday_ S M G 1",
+    "name": "SMG 1",
     "path": "post-apo/item-assets/Doomsday_SMG1.png",
     "tags": [
       "WEAPON_RANGED"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 4
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "doomsday_smg2",
-    "name": "Doomsday_ S M G 2",
+    "name": "SMG 2",
     "path": "post-apo/item-assets/Doomsday_SMG2.png",
     "tags": [
       "WEAPON_RANGED"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 4
+    "rarity": "RARE",
+    "weight":  1
   },
   {
     "id": "doomsday_screwdriver",
@@ -3370,7 +3372,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_shield1",
@@ -3380,17 +3382,17 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_shotgun1",
-    "name": "Doomsday_ Shotgun 1",
+    "name": "Shotgun 1",
     "path": "post-apo/item-assets/Doomsday_Shotgun1.png",
     "tags": [
       "WEAPON_RANGED"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "doomsday_tireiron",
@@ -3401,7 +3403,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "doomsday_top1",
@@ -3411,7 +3413,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top11",
@@ -3421,7 +3423,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top12",
@@ -3431,7 +3433,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top13",
@@ -3441,7 +3443,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top14",
@@ -3451,7 +3453,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top15",
@@ -3461,7 +3463,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top16",
@@ -3471,7 +3473,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top17",
@@ -3481,7 +3483,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top2",
@@ -3491,7 +3493,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top3",
@@ -3501,7 +3503,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top4",
@@ -3511,7 +3513,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top6",
@@ -3521,7 +3523,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top7",
@@ -3531,7 +3533,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top8",
@@ -3541,7 +3543,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "doomsday_top9",
@@ -3551,7 +3553,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "dresser1",
@@ -3561,7 +3563,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "drugs1",
@@ -3571,7 +3573,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "drugs2",
@@ -3581,7 +3583,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "electricbox1",
@@ -3592,7 +3594,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "electricbox2",
@@ -3603,7 +3605,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "electricbox3",
@@ -3614,7 +3616,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "electricbox4",
@@ -3625,7 +3627,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "electricbox5",
@@ -3636,7 +3638,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "emergencylight1",
@@ -3646,7 +3648,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "exactoknife1",
@@ -3656,557 +3658,550 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "expansion_accessory1",
-    "name": "Expansion_ Accessory 1",
+    "name": " Accessory 1",
     "path": "post-apo/item-assets/Expansion_Accessory1.png",
     "tags": [
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_accessory2",
-    "name": "Expansion_ Accessory 2",
+    "name": " Accessory 2",
     "path": "post-apo/item-assets/Expansion_Accessory2.png",
     "tags": [
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_assaultrifle1",
-    "name": "Expansion_ Assault Rifle 1",
+    "name": "Assault Rifle 1",
     "path": "post-apo/item-assets/Expansion_AssaultRifle1.png",
     "tags": [
-      "FOOD",
       "WEAPON_RANGED"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 4
+    "rarity": "LEGENDARY",
+    "weight":  1
   },
   {
     "id": "expansion_assaultrifle2",
-    "name": "Expansion_ Assault Rifle 2",
+    "name": "Assault Rifle 2",
     "path": "post-apo/item-assets/Expansion_AssaultRifle2.png",
     "tags": [
-      "FOOD",
       "WEAPON_RANGED"
     ],
-    "rarity": "UNCOMMON",
-    "weight": 4
+    "rarity": "LEGENDARY",
+    "weight":  1
   },
   {
     "id": "expansion_bat1",
-    "name": "Expansion_ Bat 1",
+    "name": " Bat 1",
     "path": "post-apo/item-assets/Expansion_Bat1.png",
     "tags": [
-      "FOOD",
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "expansion_bottom1",
-    "name": "Expansion_ Bottom 1",
+    "name": " Bottom 1",
     "path": "post-apo/item-assets/Expansion_Bottom1.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_bottom3",
-    "name": "Expansion_ Bottom 3",
+    "name": " Bottom 3",
     "path": "post-apo/item-assets/Expansion_Bottom3.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_bottom6",
-    "name": "Expansion_ Bottom 6",
+    "name": " Bottom 6",
     "path": "post-apo/item-assets/Expansion_Bottom6.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_bottom7",
-    "name": "Expansion_ Bottom 7",
+    "name": " Bottom 7",
     "path": "post-apo/item-assets/Expansion_Bottom7.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_bottom8",
-    "name": "Expansion_ Bottom 8",
+    "name": " Bottom 8",
     "path": "post-apo/item-assets/Expansion_Bottom8.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_female_bottom2",
-    "name": "Expansion_ Female_ Bottom 2",
+    "name": " Female_ Bottom 2",
     "path": "post-apo/item-assets/Expansion_Female_Bottom2.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_female_bottom4",
-    "name": "Expansion_ Female_ Bottom 4",
+    "name": " Female_ Bottom 4",
     "path": "post-apo/item-assets/Expansion_Female_Bottom4.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_female_bottom5",
-    "name": "Expansion_ Female_ Bottom 5",
+    "name": " Female_ Bottom 5",
     "path": "post-apo/item-assets/Expansion_Female_Bottom5.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_female_head6",
-    "name": "Expansion_ Female_ Head 6",
+    "name": " Female_ Head 6",
     "path": "post-apo/item-assets/Expansion_Female_Head6.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_female_top12",
-    "name": "Expansion_ Female_ Top 12",
+    "name": " Female_ Top 12",
     "path": "post-apo/item-assets/Expansion_Female_Top12.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_female_top14",
-    "name": "Expansion_ Female_ Top 14",
+    "name": " Female_ Top 14",
     "path": "post-apo/item-assets/Expansion_Female_Top14.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_female_top18",
-    "name": "Expansion_ Female_ Top 18",
+    "name": " Female_ Top 18",
     "path": "post-apo/item-assets/Expansion_Female_Top18.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_female_top9",
-    "name": "Expansion_ Female_ Top 9",
+    "name": " Female_ Top 9",
     "path": "post-apo/item-assets/Expansion_Female_Top9.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_hammer1",
-    "name": "Expansion_ Hammer 1",
+    "name": " Hammer 1",
     "path": "post-apo/item-assets/Expansion_Hammer1.png",
     "tags": [
-      "FOOD",
-      "TOOL"
-    ],
-    "rarity": "UNCOMMON",
-    "weight": 2
-  },
-  {
-    "id": "expansion_hatchet1",
-    "name": "Expansion_ Hatchet 1",
-    "path": "post-apo/item-assets/Expansion_Hatchet1.png",
-    "tags": [
-      "FOOD",
-      "WEAPON_MELEE"
-    ],
-    "rarity": "UNCOMMON",
-    "weight": 3
-  },
-  {
-    "id": "expansion_head1",
-    "name": "Expansion_ Head 1",
-    "path": "post-apo/item-assets/Expansion_Head1.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_head2",
-    "name": "Expansion_ Head 2",
-    "path": "post-apo/item-assets/Expansion_Head2.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_head3",
-    "name": "Expansion_ Head 3",
-    "path": "post-apo/item-assets/Expansion_Head3.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_head4",
-    "name": "Expansion_ Head 4",
-    "path": "post-apo/item-assets/Expansion_Head4.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_head5",
-    "name": "Expansion_ Head 5",
-    "path": "post-apo/item-assets/Expansion_Head5.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_head7",
-    "name": "Expansion_ Head 7",
-    "path": "post-apo/item-assets/Expansion_Head7.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_head8",
-    "name": "Expansion_ Head 8",
-    "path": "post-apo/item-assets/Expansion_Head8.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_head9",
-    "name": "Expansion_ Head 9",
-    "path": "post-apo/item-assets/Expansion_Head9.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_knife1",
-    "name": "Expansion_ Knife 1",
-    "path": "post-apo/item-assets/Expansion_Knife1.png",
-    "tags": [
-      "FOOD",
-      "WEAPON_MELEE"
-    ],
-    "rarity": "UNCOMMON",
-    "weight": 3
-  },
-  {
-    "id": "expansion_male_bottom2",
-    "name": "Expansion_ Male_ Bottom 2",
-    "path": "post-apo/item-assets/Expansion_Male_Bottom2.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_male_bottom4",
-    "name": "Expansion_ Male_ Bottom 4",
-    "path": "post-apo/item-assets/Expansion_Male_Bottom4.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_male_bottom5",
-    "name": "Expansion_ Male_ Bottom 5",
-    "path": "post-apo/item-assets/Expansion_Male_Bottom5.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_male_head6",
-    "name": "Expansion_ Male_ Head 6",
-    "path": "post-apo/item-assets/Expansion_Male_Head6.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_male_top12",
-    "name": "Expansion_ Male_ Top 12",
-    "path": "post-apo/item-assets/Expansion_Male_Top12.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_male_top14",
-    "name": "Expansion_ Male_ Top 14",
-    "path": "post-apo/item-assets/Expansion_Male_Top14.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_male_top9",
-    "name": "Expansion_ Male_ Top 9",
-    "path": "post-apo/item-assets/Expansion_Male_Top9.png",
-    "tags": [
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "expansion_prybar1",
-    "name": "Expansion_ Prybar 1",
-    "path": "post-apo/item-assets/Expansion_Prybar1.png",
-    "tags": [
-      "FOOD",
-      "TOOL"
-    ],
-    "rarity": "UNCOMMON",
-    "weight": 2
-  },
-  {
-    "id": "expansion_sawaxe1",
-    "name": "Expansion_ Saw Axe 1",
-    "path": "post-apo/item-assets/Expansion_SawAxe1.png",
-    "tags": [
-      "FOOD",
       "TOOL",
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
+  },
+  {
+    "id": "expansion_hatchet1",
+    "name": " Hatchet 1",
+    "path": "post-apo/item-assets/Expansion_Hatchet1.png",
+    "tags": [
+      "TOOL",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_head1",
+    "name": " Head 1",
+    "path": "post-apo/item-assets/Expansion_Head1.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_head2",
+    "name": " Head 2",
+    "path": "post-apo/item-assets/Expansion_Head2.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_head3",
+    "name": " Head 3",
+    "path": "post-apo/item-assets/Expansion_Head3.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_head4",
+    "name": " Head 4",
+    "path": "post-apo/item-assets/Expansion_Head4.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_head5",
+    "name": " Head 5",
+    "path": "post-apo/item-assets/Expansion_Head5.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_head7",
+    "name": " Head 7",
+    "path": "post-apo/item-assets/Expansion_Head7.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_head8",
+    "name": " Head 8",
+    "path": "post-apo/item-assets/Expansion_Head8.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_head9",
+    "name": " Head 9",
+    "path": "post-apo/item-assets/Expansion_Head9.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_knife1",
+    "name": " Knife 1",
+    "path": "post-apo/item-assets/Expansion_Knife1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_male_bottom2",
+    "name": " Male_ Bottom 2",
+    "path": "post-apo/item-assets/Expansion_Male_Bottom2.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_male_bottom4",
+    "name": " Male_ Bottom 4",
+    "path": "post-apo/item-assets/Expansion_Male_Bottom4.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_male_bottom5",
+    "name": " Male_ Bottom 5",
+    "path": "post-apo/item-assets/Expansion_Male_Bottom5.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_male_head6",
+    "name": " Male_ Head 6",
+    "path": "post-apo/item-assets/Expansion_Male_Head6.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_male_top12",
+    "name": " Male_ Top 12",
+    "path": "post-apo/item-assets/Expansion_Male_Top12.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_male_top14",
+    "name": " Male_ Top 14",
+    "path": "post-apo/item-assets/Expansion_Male_Top14.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_male_top9",
+    "name": " Male_ Top 9",
+    "path": "post-apo/item-assets/Expansion_Male_Top9.png",
+    "tags": [
+      "CLOTHING"
+    ],
+    "rarity": "COMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_prybar1",
+    "name": " Prybar 1",
+    "path": "post-apo/item-assets/Expansion_Prybar1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight":  1
+  },
+  {
+    "id": "expansion_sawaxe1",
+    "name": " Saw Axe 1",
+    "path": "post-apo/item-assets/Expansion_SawAxe1.png",
+    "tags": [
+      "TOOL",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight":  1
   },
   {
     "id": "expansion_shield1",
-    "name": "Expansion_ Shield 1",
+    "name": " Shield 1",
     "path": "post-apo/item-assets/Expansion_Shield1.png",
     "tags": [
-      "FOOD"
+      "WEAPON_MELEE"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_shotgun1",
-    "name": "Expansion_ Shotgun 1",
+    "name": "Shotgun 2",
     "path": "post-apo/item-assets/Expansion_Shotgun1.png",
     "tags": [
-      "FOOD",
       "WEAPON_RANGED"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "expansion_top1",
-    "name": "Expansion_ Top 1",
+    "name": " Top 1",
     "path": "post-apo/item-assets/Expansion_Top1.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top10",
-    "name": "Expansion_ Top 10",
+    "name": " Top 10",
     "path": "post-apo/item-assets/Expansion_Top10.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top11",
-    "name": "Expansion_ Top 11",
+    "name": " Top 11",
     "path": "post-apo/item-assets/Expansion_Top11.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top13",
-    "name": "Expansion_ Top 13",
+    "name": " Top 13",
     "path": "post-apo/item-assets/Expansion_Top13.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top15",
-    "name": "Expansion_ Top 15",
+    "name": " Top 15",
     "path": "post-apo/item-assets/Expansion_Top15.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top16",
-    "name": "Expansion_ Top 16",
+    "name": " Top 16",
     "path": "post-apo/item-assets/Expansion_Top16.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top17",
-    "name": "Expansion_ Top 17",
+    "name": " Top 17",
     "path": "post-apo/item-assets/Expansion_Top17.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top2",
-    "name": "Expansion_ Top 2",
+    "name": " Top 2",
     "path": "post-apo/item-assets/Expansion_Top2.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top3",
-    "name": "Expansion_ Top 3",
+    "name": " Top 3",
     "path": "post-apo/item-assets/Expansion_Top3.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top4",
-    "name": "Expansion_ Top 4",
+    "name": " Top 4",
     "path": "post-apo/item-assets/Expansion_Top4.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top5",
-    "name": "Expansion_ Top 5",
+    "name": " Top 5",
     "path": "post-apo/item-assets/Expansion_Top5.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top6",
-    "name": "Expansion_ Top 6",
+    "name": " Top 6",
     "path": "post-apo/item-assets/Expansion_Top6.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top7",
-    "name": "Expansion_ Top 7",
+    "name": " Top 7",
     "path": "post-apo/item-assets/Expansion_Top7.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "expansion_top8",
-    "name": "Expansion_ Top 8",
+    "name": " Top 8",
     "path": "post-apo/item-assets/Expansion_Top8.png",
     "tags": [
-      "FOOD"
+      "CLOTHING"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "facilitycomputer1",
@@ -4216,7 +4211,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "facilitycontainmentcube1",
@@ -4226,7 +4221,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "facilitycrate1",
@@ -4236,7 +4231,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "facilitycrate2",
@@ -4246,7 +4241,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "facilitycrate3",
@@ -4256,7 +4251,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "fan1",
@@ -4266,7 +4261,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "filecabinet1",
@@ -4276,7 +4271,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "firebucket1",
@@ -4286,7 +4281,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "fireextinguisher1",
@@ -4296,7 +4291,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "fireextinguisher2",
@@ -4306,7 +4301,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "fireextinguisher3",
@@ -4316,7 +4311,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "fireextinguisher4",
@@ -4326,7 +4321,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "firehose1",
@@ -4336,7 +4331,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "firehydrant1",
@@ -4346,7 +4341,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "firstaid1",
@@ -4356,7 +4351,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "floorrug1",
@@ -4366,7 +4361,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "floorrug2",
@@ -4376,7 +4371,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "floorrug3",
@@ -4386,7 +4381,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "flyer1",
@@ -4396,7 +4391,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "flyer2",
@@ -4406,7 +4401,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "flyer3",
@@ -4416,7 +4411,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "food1",
@@ -4426,7 +4421,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "food2",
@@ -4436,7 +4431,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "foodcontainer1",
@@ -4447,7 +4442,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "foodtray1",
@@ -4457,7 +4452,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "food_box1",
@@ -4468,7 +4463,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "food_box2",
@@ -4479,7 +4474,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "food_noodles1",
@@ -4489,7 +4484,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "food_noodles2",
@@ -4499,7 +4494,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "food_pizza1",
@@ -4509,7 +4504,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "food_pizza2",
@@ -4519,7 +4514,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "food_pizza3",
@@ -4529,7 +4524,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "food_sandwhich1",
@@ -4539,7 +4534,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "food_sandwhich2",
@@ -4549,7 +4544,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "fridge1",
@@ -4559,7 +4554,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "fridge2",
@@ -4569,7 +4564,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "fusebox1",
@@ -4580,7 +4575,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "gascan1",
@@ -4590,7 +4585,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "gascan2",
@@ -4600,7 +4595,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "gascan3",
@@ -4610,7 +4605,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "gascylinder1",
@@ -4620,7 +4615,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "gascylinder2",
@@ -4630,7 +4625,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "gaspump1",
@@ -4640,7 +4635,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "gaspump2",
@@ -4650,7 +4645,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "generator1",
@@ -4660,7 +4655,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "generator2",
@@ -4670,7 +4665,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "generator3",
@@ -4680,7 +4675,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "generator4",
@@ -4690,7 +4685,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "globe1",
@@ -4700,7 +4695,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "goldbar1",
@@ -4710,7 +4705,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "gorebag1",
@@ -4720,7 +4715,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "gorebarrel1",
@@ -4730,7 +4725,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "grenade1",
@@ -4740,7 +4735,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "grenade2",
@@ -4750,7 +4745,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "grill1",
@@ -4760,7 +4755,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "grill2",
@@ -4770,7 +4765,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "guitar1",
@@ -4780,7 +4775,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "handcuffs1",
@@ -4790,7 +4785,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "hatchet1",
@@ -4800,7 +4795,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "hatchet2",
@@ -4810,7 +4805,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "hedgehog1",
@@ -4820,7 +4815,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "hightechmonitor1",
@@ -4830,7 +4825,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "hose1",
@@ -4840,7 +4835,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "hospitalgurney1",
@@ -4850,7 +4845,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "industrialbucket1",
@@ -4860,7 +4855,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "industrialbucket2",
@@ -4870,7 +4865,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "industrialcannister1",
@@ -4880,7 +4875,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "iron1",
@@ -4890,7 +4885,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "jug1",
@@ -4900,7 +4895,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jug10",
@@ -4910,7 +4905,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jug2",
@@ -4920,7 +4915,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jug3",
@@ -4930,7 +4925,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jug4",
@@ -4940,7 +4935,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jug5",
@@ -4950,7 +4945,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jug6",
@@ -4960,7 +4955,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jug7",
@@ -4970,7 +4965,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jug8",
@@ -4980,7 +4975,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jug9",
@@ -4990,7 +4985,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "jukebox1",
@@ -5001,7 +4996,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "jumpercables1",
@@ -5011,7 +5006,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "junk1",
@@ -5021,7 +5016,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk10",
@@ -5031,7 +5026,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk11",
@@ -5041,7 +5036,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk12",
@@ -5051,7 +5046,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk13",
@@ -5061,7 +5056,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk14",
@@ -5071,7 +5066,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk15",
@@ -5081,7 +5076,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk16",
@@ -5091,7 +5086,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk17",
@@ -5101,7 +5096,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk18",
@@ -5111,7 +5106,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk19",
@@ -5121,7 +5116,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk2",
@@ -5131,7 +5126,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk20",
@@ -5141,7 +5136,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk21",
@@ -5151,7 +5146,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk22",
@@ -5161,7 +5156,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk23",
@@ -5171,7 +5166,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk24",
@@ -5181,7 +5176,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk3",
@@ -5191,7 +5186,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk4",
@@ -5201,7 +5196,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk5",
@@ -5211,7 +5206,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk6",
@@ -5221,7 +5216,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk7",
@@ -5231,7 +5226,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk8",
@@ -5241,7 +5236,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "junk9",
@@ -5251,7 +5246,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "kettle1",
@@ -5261,7 +5256,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "keypad1",
@@ -5271,7 +5266,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "labdevice1",
@@ -5281,7 +5276,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "labdevice2",
@@ -5291,7 +5286,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "labdevice3",
@@ -5301,7 +5296,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "labdevice4",
@@ -5311,7 +5306,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "labdevice5",
@@ -5321,7 +5316,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "labvials1",
@@ -5331,7 +5326,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "lab_microscope1",
@@ -5341,7 +5336,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "ladder1",
@@ -5351,7 +5346,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "ladder2",
@@ -5361,7 +5356,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "lamp1",
@@ -5371,7 +5366,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "lamp2",
@@ -5381,7 +5376,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "landmine1",
@@ -5391,7 +5386,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "lantern1",
@@ -5401,7 +5396,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "lantern2",
@@ -5411,7 +5406,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "laptop1",
@@ -5421,7 +5416,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "laptop2",
@@ -5431,7 +5426,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "lawnmower1",
@@ -5441,7 +5436,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "leaf1",
@@ -5451,7 +5446,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "lighter1",
@@ -5461,7 +5456,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "lock1",
@@ -5471,7 +5466,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "lock2",
@@ -5481,7 +5476,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "lock3",
@@ -5491,7 +5486,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "locker1",
@@ -5501,7 +5496,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "locker2",
@@ -5511,7 +5506,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "machine1",
@@ -5521,7 +5516,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "machine2",
@@ -5531,7 +5526,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "magazine1",
@@ -5541,7 +5536,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "magazine2",
@@ -5551,7 +5546,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "magazine3",
@@ -5561,7 +5556,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "magazine4",
@@ -5571,7 +5566,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "magazine5",
@@ -5581,7 +5576,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "magazine6",
@@ -5591,7 +5586,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "magazine7",
@@ -5601,7 +5596,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "magazine8",
@@ -5611,7 +5606,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "magazines1",
@@ -5621,7 +5616,7 @@
       "AMMO"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "mail1",
@@ -5631,7 +5626,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "mail2",
@@ -5641,7 +5636,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "mail3",
@@ -5651,7 +5646,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "mailbox1",
@@ -5661,7 +5656,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "mannequin1",
@@ -5671,7 +5666,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "mannequin2",
@@ -5681,7 +5676,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "mannequin3",
@@ -5691,7 +5686,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "map1",
@@ -5701,7 +5696,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "map2",
@@ -5711,7 +5706,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "mattress1",
@@ -5721,7 +5716,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "mattress2",
@@ -5731,7 +5726,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "meat1",
@@ -5741,7 +5736,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "meat2",
@@ -5751,7 +5746,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "meat3",
@@ -5761,7 +5756,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "meat4",
@@ -5771,7 +5766,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_antibiotics1",
@@ -5781,7 +5776,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_antibiotics2",
@@ -5791,7 +5786,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_bottle1",
@@ -5802,7 +5797,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_bottle2",
@@ -5813,7 +5808,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_lab1",
@@ -5823,7 +5818,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_lab2",
@@ -5833,7 +5828,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_lab3",
@@ -5843,7 +5838,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_needle1",
@@ -5853,7 +5848,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_needle2",
@@ -5863,7 +5858,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_needle3",
@@ -5873,7 +5868,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_pillbottle1",
@@ -5884,7 +5879,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_pillpack1",
@@ -5894,7 +5889,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_scissors1",
@@ -5904,7 +5899,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "medicine_tweezers1",
@@ -5914,7 +5909,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "metalbars1",
@@ -5924,7 +5919,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "metalfence1",
@@ -5934,7 +5929,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "metalgrate1",
@@ -5944,7 +5939,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "metalpipe1",
@@ -5955,7 +5950,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "metalpipes1",
@@ -5966,7 +5961,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "microwave1",
@@ -5976,7 +5971,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "microwave2",
@@ -5986,7 +5981,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "milkcrate1",
@@ -5996,7 +5991,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "ministove1",
@@ -6006,7 +6001,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "mirrorbroken1",
@@ -6016,7 +6011,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "mirrorbroken2",
@@ -6026,7 +6021,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "missle1",
@@ -6036,7 +6031,7 @@
       "WEAPON_RANGED"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "missle2",
@@ -6046,7 +6041,7 @@
       "WEAPON_RANGED"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "monitor1",
@@ -6056,7 +6051,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "monitor2",
@@ -6066,7 +6061,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "mopandbucket1",
@@ -6076,7 +6071,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "newspaper1",
@@ -6086,7 +6081,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "newspaper2",
@@ -6096,7 +6091,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "newspaperbox1",
@@ -6107,7 +6102,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "newspaperbox2",
@@ -6118,7 +6113,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "oilcan1",
@@ -6128,7 +6123,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "oilcan2",
@@ -6138,7 +6133,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "oven1",
@@ -6148,7 +6143,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "oxygentank1",
@@ -6158,7 +6153,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "paintbrush1",
@@ -6168,7 +6163,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "paintbucket1",
@@ -6178,7 +6173,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "paintcan1",
@@ -6188,7 +6183,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "paintcan2",
@@ -6198,7 +6193,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pallet1",
@@ -6208,7 +6203,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "palletjack1",
@@ -6218,7 +6213,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "pallet_ammo1",
@@ -6229,7 +6224,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "pamphlets1",
@@ -6239,7 +6234,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pan1",
@@ -6249,7 +6244,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pan2",
@@ -6259,7 +6254,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pan3",
@@ -6269,7 +6264,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pan4",
@@ -6279,7 +6274,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pan5",
@@ -6289,7 +6284,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "paper1",
@@ -6299,7 +6294,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "paper2",
@@ -6309,7 +6304,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "paper3",
@@ -6319,7 +6314,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "patchworkcloth1",
@@ -6329,7 +6324,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "phone1",
@@ -6339,7 +6334,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "phone2",
@@ -6349,7 +6344,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "phone_old1",
@@ -6359,7 +6354,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "pickaxe1",
@@ -6370,7 +6365,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "picture1",
@@ -6380,7 +6375,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "picture2",
@@ -6390,7 +6385,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "picture3",
@@ -6400,7 +6395,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "picture4",
@@ -6410,7 +6405,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "picture5",
@@ -6420,7 +6415,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "picture6",
@@ -6430,7 +6425,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pillow1",
@@ -6440,7 +6435,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pillow2",
@@ -6450,7 +6445,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pillow3",
@@ -6460,7 +6455,7 @@
       "MEDICAL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant1",
@@ -6470,7 +6465,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant10",
@@ -6480,7 +6475,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant11",
@@ -6490,7 +6485,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant2",
@@ -6500,7 +6495,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant3",
@@ -6510,7 +6505,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant4",
@@ -6520,7 +6515,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant5",
@@ -6530,7 +6525,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant6",
@@ -6540,7 +6535,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant7",
@@ -6550,7 +6545,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant8",
@@ -6560,7 +6555,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plant9",
@@ -6570,7 +6565,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plate1",
@@ -6580,7 +6575,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plate2",
@@ -6590,7 +6585,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plate3",
@@ -6600,7 +6595,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plate4",
@@ -6610,7 +6605,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "plywood1",
@@ -6620,7 +6615,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "portableheater1",
@@ -6630,7 +6625,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "portablelight1",
@@ -6640,7 +6635,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "poster1",
@@ -6650,7 +6645,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "poster2",
@@ -6660,7 +6655,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "poster3",
@@ -6670,7 +6665,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "pot1",
@@ -6680,7 +6675,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "propanetank1",
@@ -6690,7 +6685,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "quarantinebed1",
@@ -6700,7 +6695,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "rackmountcrate1",
@@ -6710,7 +6705,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "radio1",
@@ -6720,7 +6715,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "radio2",
@@ -6730,7 +6725,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "radio3",
@@ -6740,7 +6735,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "radio4",
@@ -6750,7 +6745,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "radio5",
@@ -6760,7 +6755,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "radio6",
@@ -6770,7 +6765,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "raiderbed1",
@@ -6780,7 +6775,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "raidercollar1",
@@ -6790,7 +6785,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "ration1",
@@ -6800,7 +6795,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "razorwire1",
@@ -6810,7 +6805,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "rock1",
@@ -6820,7 +6815,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "rock2",
@@ -6830,7 +6825,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "sandbag1",
@@ -6840,7 +6835,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "scrapmetal1",
@@ -6850,7 +6845,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "scrapmetal2",
@@ -6860,7 +6855,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "sheet1",
@@ -6870,7 +6865,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "shelf1",
@@ -6880,7 +6875,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "shelf2",
@@ -6890,7 +6885,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "shelter1",
@@ -6900,7 +6895,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "shovel1",
@@ -6910,7 +6905,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "shovel2",
@@ -6920,7 +6915,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "sign1",
@@ -6930,7 +6925,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign10",
@@ -6940,7 +6935,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign11",
@@ -6950,7 +6945,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign12",
@@ -6960,7 +6955,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign13",
@@ -6970,7 +6965,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign14",
@@ -6980,7 +6975,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign15",
@@ -6990,7 +6985,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign16",
@@ -7000,7 +6995,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign17",
@@ -7010,7 +7005,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign18",
@@ -7020,7 +7015,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign19",
@@ -7030,7 +7025,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign2",
@@ -7040,7 +7035,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign20",
@@ -7050,7 +7045,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign3",
@@ -7060,7 +7055,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign4",
@@ -7070,7 +7065,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign5",
@@ -7080,7 +7075,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign6",
@@ -7090,7 +7085,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign7",
@@ -7100,7 +7095,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign8",
@@ -7110,7 +7105,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sign9",
@@ -7120,7 +7115,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "silverbar1",
@@ -7130,7 +7125,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sink1",
@@ -7140,7 +7135,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "skeletalgoo1",
@@ -7150,7 +7145,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "slab1",
@@ -7160,7 +7155,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sleepingbag1",
@@ -7170,7 +7165,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "sleepingbag2",
@@ -7180,7 +7175,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "soda1",
@@ -7190,7 +7185,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "soda2",
@@ -7200,7 +7195,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sofa1",
@@ -7210,7 +7205,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "sofa2",
@@ -7220,7 +7215,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "spraycan1",
@@ -7230,7 +7225,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "sprayer1",
@@ -7240,7 +7235,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "suitcase1",
@@ -7250,7 +7245,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "suitcase2",
@@ -7260,7 +7255,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "suitcase3",
@@ -7270,7 +7265,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "switchbox1",
@@ -7280,7 +7275,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "tv1",
@@ -7290,7 +7285,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "tv2",
@@ -7300,7 +7295,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "tv3",
@@ -7310,7 +7305,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "tablet1",
@@ -7321,7 +7316,7 @@
       "FURNITURE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "tap1",
@@ -7331,7 +7326,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "target1",
@@ -7341,7 +7336,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "target2",
@@ -7351,7 +7346,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "tin1",
@@ -7361,7 +7356,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "tire1",
@@ -7371,7 +7366,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "tire2",
@@ -7381,7 +7376,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "tire3",
@@ -7391,7 +7386,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "tirerim1",
@@ -7401,7 +7396,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "tissues1",
@@ -7411,7 +7406,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "toilet1",
@@ -7421,7 +7416,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "toilet2",
@@ -7431,7 +7426,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "toiletpaper1",
@@ -7441,7 +7436,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "tool_drill1",
@@ -7451,7 +7446,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_gardenrake1",
@@ -7461,7 +7456,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_hammer1",
@@ -7471,7 +7466,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_handrake1",
@@ -7481,7 +7476,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_hoe1",
@@ -7491,7 +7486,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_nails1",
@@ -7501,7 +7496,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_nutsbox1",
@@ -7512,7 +7507,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "tool_pitchfork1",
@@ -7522,7 +7517,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_saw1",
@@ -7532,7 +7527,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_screwdriver1",
@@ -7542,7 +7537,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_screws1",
@@ -7552,7 +7547,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_sledgehammer1",
@@ -7563,7 +7558,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "tool_solderingiron1",
@@ -7574,7 +7569,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "tool_spade1",
@@ -7584,7 +7579,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_spanner1",
@@ -7595,7 +7590,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_toolbox1",
@@ -7606,7 +7601,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "tool_toolbox2",
@@ -7617,7 +7612,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "tool_toolbox3",
@@ -7628,7 +7623,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "tool_trowel1",
@@ -7638,7 +7633,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_wrench1",
@@ -7648,7 +7643,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_wrench2",
@@ -7658,7 +7653,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_wrench3",
@@ -7668,7 +7663,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tool_wrench4",
@@ -7678,7 +7673,7 @@
       "TOOL"
     ],
     "rarity": "UNCOMMON",
-    "weight": 2
+    "weight":  1
   },
   {
     "id": "tooth1",
@@ -7688,7 +7683,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "toy_bear1",
@@ -7698,7 +7693,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "toy_boardgame1",
@@ -7708,7 +7703,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "toy_dollhouse1",
@@ -7718,7 +7713,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "toy_plushie1",
@@ -7728,7 +7723,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "toy_rockinghorse1",
@@ -7738,7 +7733,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "toy_tricycle1",
@@ -7748,7 +7743,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "trafficcone1",
@@ -7758,7 +7753,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "trash1",
@@ -7768,7 +7763,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash10",
@@ -7778,7 +7773,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash11",
@@ -7788,7 +7783,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash12",
@@ -7798,7 +7793,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash13",
@@ -7808,7 +7803,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash14",
@@ -7818,7 +7813,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash15",
@@ -7828,7 +7823,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash16",
@@ -7838,7 +7833,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash2",
@@ -7848,7 +7843,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash3",
@@ -7858,7 +7853,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash4",
@@ -7868,7 +7863,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash5",
@@ -7878,7 +7873,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash6",
@@ -7888,7 +7883,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash7",
@@ -7898,7 +7893,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash8",
@@ -7908,7 +7903,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trash9",
@@ -7918,7 +7913,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trashbag1",
@@ -7928,7 +7923,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trashbag2",
@@ -7938,7 +7933,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trashbag3",
@@ -7948,7 +7943,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trashbag4",
@@ -7958,7 +7953,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trashbag5",
@@ -7968,7 +7963,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trashbin1",
@@ -7978,7 +7973,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trashbin2",
@@ -7988,7 +7983,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trashbin3",
@@ -7998,7 +7993,7 @@
       "CONTAINER"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trashcan1",
@@ -8009,7 +8004,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "trolly1",
@@ -8019,7 +8014,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "trolly2",
@@ -8029,7 +8024,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "urn1",
@@ -8039,7 +8034,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "utensil_fork1",
@@ -8049,7 +8044,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "utensil_knife1",
@@ -8059,7 +8054,7 @@
       "WEAPON_MELEE"
     ],
     "rarity": "UNCOMMON",
-    "weight": 3
+    "weight":  1
   },
   {
     "id": "utensil_spoon1",
@@ -8069,7 +8064,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vacuum1",
@@ -8079,7 +8074,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vase1",
@@ -8089,7 +8084,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vase2",
@@ -8099,7 +8094,7 @@
       "DECORATION"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle1",
@@ -8109,7 +8104,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle10",
@@ -8119,7 +8114,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle11",
@@ -8129,7 +8124,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle12",
@@ -8139,7 +8134,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle13",
@@ -8149,7 +8144,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle14",
@@ -8159,7 +8154,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle15",
@@ -8169,7 +8164,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle2",
@@ -8179,7 +8174,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle3",
@@ -8189,7 +8184,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle4",
@@ -8199,7 +8194,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle5",
@@ -8209,7 +8204,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle6",
@@ -8219,7 +8214,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle7",
@@ -8229,7 +8224,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle8",
@@ -8239,7 +8234,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vehicle9",
@@ -8249,7 +8244,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "vendingmachine1",
@@ -8259,7 +8254,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "vendingmachine2",
@@ -8269,7 +8264,7 @@
       "ELECTRONICS"
     ],
     "rarity": "UNCOMMON",
-    "weight": 4
+    "weight":  1
   },
   {
     "id": "washingmachine1",
@@ -8279,7 +8274,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "washingmachine2",
@@ -8289,7 +8284,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "watercooler1",
@@ -8299,7 +8294,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "waterjug1",
@@ -8309,7 +8304,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "watertank1",
@@ -8319,7 +8314,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "watertank2",
@@ -8329,7 +8324,7 @@
       "MISC"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "wateringcan1",
@@ -8339,7 +8334,7 @@
       "FOOD"
     ],
     "rarity": "COMMON",
-    "weight": 1
+    "weight":  1
   },
   {
     "id": "wheelchair1",
@@ -8349,7 +8344,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "wheelchair2",
@@ -8359,7 +8354,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "whiteboard1",
@@ -8370,7 +8365,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "whiteboard2",
@@ -8381,7 +8376,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "wood1",
@@ -8391,7 +8386,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "wood2",
@@ -8401,7 +8396,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "wood3",
@@ -8411,7 +8406,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "woodpile1",
@@ -8421,7 +8416,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "woodstove1",
@@ -8431,7 +8426,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "woodenplank1",
@@ -8441,7 +8436,7 @@
       "MATERIAL"
     ],
     "rarity": "COMMON",
-    "weight": 5
+    "weight":  1
   },
   {
     "id": "workbench1",
@@ -8451,7 +8446,7 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   },
   {
     "id": "workbench2",
@@ -8461,6 +8456,6 @@
       "FURNITURE"
     ],
     "rarity": "COMMON",
-    "weight": 10
+    "weight":  1
   }
 ]
