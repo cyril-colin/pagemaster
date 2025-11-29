@@ -10,7 +10,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let inv = inventory();
     @let p = player();
     
-    <img [src]="e.event.newItem.picture" />
+    <img [src]="e.event.newItem.path" />
     added to "{{inv?.name}}" of
     <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
   `,

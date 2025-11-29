@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { Item } from '@pagemaster/common/items.types';
+import { Item, ItemRarity } from '@pagemaster/common/items.types';
 import { ImageComponent } from '../../../design-system/image.component';
 import { ItemWeightComponent } from './item-weight.component';
 
 @Component({
   selector: 'app-item',
   template: `
-    <div class="item" (click)="itemClicked.emit(item())">
-      <ds-image [src]="item().picture" [alt]="item().name" size="medium" />
+    <div class="item" (click)="itemClicked.emit(item())" [style.border-color]="getBorderColor(item().rarity)">
+      <ds-image [src]="item().path" [alt]="item().name" size="medium" />
       <div>{{ item().name }}</div>
       <app-item-weight [weight]="item().weight" />
     </div>
@@ -30,6 +30,12 @@ import { ItemWeightComponent } from './item-weight.component';
       background: var(--color-background-secondary);
     }
 
+    .item app-item-weight {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+    }
+
     .item:hover {
       opacity: 0.8;
       border-color: var(--color-primary);
@@ -41,4 +47,19 @@ import { ItemWeightComponent } from './item-weight.component';
 export class ItemComponent {
   public item = input.required<Item>();
   public itemClicked = output<Item>();
+
+  public getBorderColor(rarity: ItemRarity): string {
+    switch (rarity) {
+      case ItemRarity.COMMON:
+        return 'var(--color-uncommon, #357738ff)';
+      case ItemRarity.RARE:
+        return 'var(--color-rare, #2196f3)';
+      case ItemRarity.EPIC:
+        return 'var(--color-epic, #9c27b0)';
+      case ItemRarity.LEGENDARY:
+        return 'var(--color-legendary, #ffc107)';
+      default:
+        return 'var(--color-border)';
+    }
+  }
 }

@@ -127,6 +127,11 @@
   --ds-card-border-radius: var(--view-border-radius);
   --ds-card-padding: var(--padding-medium);
   --ds-card-background: var(--color-background-secondary);
+
+  /* Design system defaults for dropdowns and surfaces */
+  --color-surface: var(--color-surface-elevated);
+  --ds-dropdown-z: 10000;
+  --ds-dropdown-shadow: var(--color-shadow-heavy);
 }
 
 /* === GLOBAL STYLES === */

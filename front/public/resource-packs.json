@@ -2,7 +2,7 @@
   {
     "theme": "Post Apocaliptic",
     "items": {
-      "path": "/post-apo/items/post-apo-items.models.json"
+      "path": "/post-apo/items.json"
     },
     "avatars": {
       "path": "/post-apo/avatars/post-apo-avatars.models.json"

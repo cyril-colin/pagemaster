@@ -1,0 +1,8466 @@
+[
+  {
+    "id": "acetone1",
+    "name": "Acetone 1",
+    "path": "post-apo/item-assets/Acetone1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "airconditioner1",
+    "name": "Air Conditioner 1",
+    "path": "post-apo/item-assets/AirConditioner1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "airconditioner2",
+    "name": "Air Conditioner 2",
+    "path": "post-apo/item-assets/AirConditioner2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "airpump1",
+    "name": "Air Pump 1",
+    "path": "post-apo/item-assets/AirPump1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "alarm1",
+    "name": "Alarm 1",
+    "path": "post-apo/item-assets/Alarm1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "ammoclip1",
+    "name": "Ammo Clip 1",
+    "path": "post-apo/item-assets/AmmoClip1.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "ammoclip2",
+    "name": "Ammo Clip 2",
+    "path": "post-apo/item-assets/AmmoClip2.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "ammo_shotgun1",
+    "name": "Ammo_ Shotgun 1",
+    "path": "post-apo/item-assets/Ammo_Shotgun1.png",
+    "tags": [
+      "AMMO",
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "antler1",
+    "name": "Antler 1",
+    "path": "post-apo/item-assets/Antler1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "ashtray1",
+    "name": "Ashtray 1",
+    "path": "post-apo/item-assets/Ashtray1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bag1",
+    "name": "Bag 1",
+    "path": "post-apo/item-assets/Bag1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "banner1",
+    "name": "Banner 1",
+    "path": "post-apo/item-assets/Banner1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barsign1",
+    "name": "Bar Sign 1",
+    "path": "post-apo/item-assets/BarSign1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barrel1",
+    "name": "Barrel 1",
+    "path": "post-apo/item-assets/Barrel1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barrel2",
+    "name": "Barrel 2",
+    "path": "post-apo/item-assets/Barrel2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barrel3",
+    "name": "Barrel 3",
+    "path": "post-apo/item-assets/Barrel3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barrel4",
+    "name": "Barrel 4",
+    "path": "post-apo/item-assets/Barrel4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barrel5",
+    "name": "Barrel 5",
+    "path": "post-apo/item-assets/Barrel5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barrel6",
+    "name": "Barrel 6",
+    "path": "post-apo/item-assets/Barrel6.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barrel7",
+    "name": "Barrel 7",
+    "path": "post-apo/item-assets/Barrel7.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barrel8",
+    "name": "Barrel 8",
+    "path": "post-apo/item-assets/Barrel8.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barricade1",
+    "name": "Barricade 1",
+    "path": "post-apo/item-assets/Barricade1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "barricade2",
+    "name": "Barricade 2",
+    "path": "post-apo/item-assets/Barricade2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "basket1",
+    "name": "Basket 1",
+    "path": "post-apo/item-assets/Basket1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "basket2",
+    "name": "Basket 2",
+    "path": "post-apo/item-assets/Basket2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "basket3",
+    "name": "Basket 3",
+    "path": "post-apo/item-assets/Basket3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bathtub1",
+    "name": "Bathtub 1",
+    "path": "post-apo/item-assets/Bathtub1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "battery1",
+    "name": "Battery 1",
+    "path": "post-apo/item-assets/Battery1.png",
+    "tags": [
+      "ELECTRONICS",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "battery2",
+    "name": "Battery 2",
+    "path": "post-apo/item-assets/Battery2.png",
+    "tags": [
+      "ELECTRONICS",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "battery3",
+    "name": "Battery 3",
+    "path": "post-apo/item-assets/Battery3.png",
+    "tags": [
+      "ELECTRONICS",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "bayonet1",
+    "name": "Bayonet 1",
+    "path": "post-apo/item-assets/Bayonet1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "beartrap1",
+    "name": "Bear Trap 1",
+    "path": "post-apo/item-assets/BearTrap1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bed1",
+    "name": "Bed 1",
+    "path": "post-apo/item-assets/Bed1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "bed2",
+    "name": "Bed 2",
+    "path": "post-apo/item-assets/Bed2.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "bike1",
+    "name": "Bike 1",
+    "path": "post-apo/item-assets/Bike1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bike2",
+    "name": "Bike 2",
+    "path": "post-apo/item-assets/Bike2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "billow1",
+    "name": "Billow 1",
+    "path": "post-apo/item-assets/Billow1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "binder1",
+    "name": "Binder 1",
+    "path": "post-apo/item-assets/Binder1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "binoculars1",
+    "name": "Binoculars 1",
+    "path": "post-apo/item-assets/Binoculars1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "birdcage1",
+    "name": "Bird Cage 1",
+    "path": "post-apo/item-assets/BirdCage1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "birdfeeder1",
+    "name": "Bird Feeder 1",
+    "path": "post-apo/item-assets/BirdFeeder1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "blanket1",
+    "name": "Blanket 1",
+    "path": "post-apo/item-assets/Blanket1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "boat1",
+    "name": "Boat 1",
+    "path": "post-apo/item-assets/Boat1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "boat2",
+    "name": "Boat 2",
+    "path": "post-apo/item-assets/Boat2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "boatoar1",
+    "name": "Boat Oar 1",
+    "path": "post-apo/item-assets/BoatOar1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "body1",
+    "name": "Body 1",
+    "path": "post-apo/item-assets/Body1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "body2",
+    "name": "Body 2",
+    "path": "post-apo/item-assets/Body2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "body3",
+    "name": "Body 3",
+    "path": "post-apo/item-assets/Body3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bonechimes1",
+    "name": "Bone Chimes 1",
+    "path": "post-apo/item-assets/BoneChimes1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book1",
+    "name": "Book 1",
+    "path": "post-apo/item-assets/Book1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book10",
+    "name": "Book 10",
+    "path": "post-apo/item-assets/Book10.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book11",
+    "name": "Book 11",
+    "path": "post-apo/item-assets/Book11.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book12",
+    "name": "Book 12",
+    "path": "post-apo/item-assets/Book12.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book13",
+    "name": "Book 13",
+    "path": "post-apo/item-assets/Book13.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book14",
+    "name": "Book 14",
+    "path": "post-apo/item-assets/Book14.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book15",
+    "name": "Book 15",
+    "path": "post-apo/item-assets/Book15.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book16",
+    "name": "Book 16",
+    "path": "post-apo/item-assets/Book16.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book17",
+    "name": "Book 17",
+    "path": "post-apo/item-assets/Book17.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book18",
+    "name": "Book 18",
+    "path": "post-apo/item-assets/Book18.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book19",
+    "name": "Book 19",
+    "path": "post-apo/item-assets/Book19.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book2",
+    "name": "Book 2",
+    "path": "post-apo/item-assets/Book2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book3",
+    "name": "Book 3",
+    "path": "post-apo/item-assets/Book3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book4",
+    "name": "Book 4",
+    "path": "post-apo/item-assets/Book4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book5",
+    "name": "Book 5",
+    "path": "post-apo/item-assets/Book5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book6",
+    "name": "Book 6",
+    "path": "post-apo/item-assets/Book6.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book7",
+    "name": "Book 7",
+    "path": "post-apo/item-assets/Book7.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book8",
+    "name": "Book 8",
+    "path": "post-apo/item-assets/Book8.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "book9",
+    "name": "Book 9",
+    "path": "post-apo/item-assets/Book9.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "books1",
+    "name": "Books 1",
+    "path": "post-apo/item-assets/Books1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "books2",
+    "name": "Books 2",
+    "path": "post-apo/item-assets/Books2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle1",
+    "name": "Bottle 1",
+    "path": "post-apo/item-assets/Bottle1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle10",
+    "name": "Bottle 10",
+    "path": "post-apo/item-assets/Bottle10.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle11",
+    "name": "Bottle 11",
+    "path": "post-apo/item-assets/Bottle11.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle12",
+    "name": "Bottle 12",
+    "path": "post-apo/item-assets/Bottle12.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle13",
+    "name": "Bottle 13",
+    "path": "post-apo/item-assets/Bottle13.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle14",
+    "name": "Bottle 14",
+    "path": "post-apo/item-assets/Bottle14.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle15",
+    "name": "Bottle 15",
+    "path": "post-apo/item-assets/Bottle15.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle16",
+    "name": "Bottle 16",
+    "path": "post-apo/item-assets/Bottle16.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle17",
+    "name": "Bottle 17",
+    "path": "post-apo/item-assets/Bottle17.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle18",
+    "name": "Bottle 18",
+    "path": "post-apo/item-assets/Bottle18.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle19",
+    "name": "Bottle 19",
+    "path": "post-apo/item-assets/Bottle19.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle2",
+    "name": "Bottle 2",
+    "path": "post-apo/item-assets/Bottle2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle20",
+    "name": "Bottle 20",
+    "path": "post-apo/item-assets/Bottle20.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle21",
+    "name": "Bottle 21",
+    "path": "post-apo/item-assets/Bottle21.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle22",
+    "name": "Bottle 22",
+    "path": "post-apo/item-assets/Bottle22.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle23",
+    "name": "Bottle 23",
+    "path": "post-apo/item-assets/Bottle23.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle24",
+    "name": "Bottle 24",
+    "path": "post-apo/item-assets/Bottle24.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle25",
+    "name": "Bottle 25",
+    "path": "post-apo/item-assets/Bottle25.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle26",
+    "name": "Bottle 26",
+    "path": "post-apo/item-assets/Bottle26.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle27",
+    "name": "Bottle 27",
+    "path": "post-apo/item-assets/Bottle27.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle28",
+    "name": "Bottle 28",
+    "path": "post-apo/item-assets/Bottle28.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle29",
+    "name": "Bottle 29",
+    "path": "post-apo/item-assets/Bottle29.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle3",
+    "name": "Bottle 3",
+    "path": "post-apo/item-assets/Bottle3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle30",
+    "name": "Bottle 30",
+    "path": "post-apo/item-assets/Bottle30.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle31",
+    "name": "Bottle 31",
+    "path": "post-apo/item-assets/Bottle31.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle32",
+    "name": "Bottle 32",
+    "path": "post-apo/item-assets/Bottle32.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle33",
+    "name": "Bottle 33",
+    "path": "post-apo/item-assets/Bottle33.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle34",
+    "name": "Bottle 34",
+    "path": "post-apo/item-assets/Bottle34.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle35",
+    "name": "Bottle 35",
+    "path": "post-apo/item-assets/Bottle35.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle36",
+    "name": "Bottle 36",
+    "path": "post-apo/item-assets/Bottle36.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle37",
+    "name": "Bottle 37",
+    "path": "post-apo/item-assets/Bottle37.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle38",
+    "name": "Bottle 38",
+    "path": "post-apo/item-assets/Bottle38.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle39",
+    "name": "Bottle 39",
+    "path": "post-apo/item-assets/Bottle39.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle4",
+    "name": "Bottle 4",
+    "path": "post-apo/item-assets/Bottle4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle40",
+    "name": "Bottle 40",
+    "path": "post-apo/item-assets/Bottle40.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle5",
+    "name": "Bottle 5",
+    "path": "post-apo/item-assets/Bottle5.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle6",
+    "name": "Bottle 6",
+    "path": "post-apo/item-assets/Bottle6.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle7",
+    "name": "Bottle 7",
+    "path": "post-apo/item-assets/Bottle7.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle8",
+    "name": "Bottle 8",
+    "path": "post-apo/item-assets/Bottle8.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bottle9",
+    "name": "Bottle 9",
+    "path": "post-apo/item-assets/Bottle9.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bowl1",
+    "name": "Bowl 1",
+    "path": "post-apo/item-assets/Bowl1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bowl2",
+    "name": "Bowl 2",
+    "path": "post-apo/item-assets/Bowl2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bowl3",
+    "name": "Bowl 3",
+    "path": "post-apo/item-assets/Bowl3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "box_ammo1",
+    "name": "Box_ Ammo 1",
+    "path": "post-apo/item-assets/Box_Ammo1.png",
+    "tags": [
+      "AMMO",
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_ammo2",
+    "name": "Box_ Ammo 2",
+    "path": "post-apo/item-assets/Box_Ammo2.png",
+    "tags": [
+      "AMMO",
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_ammo3",
+    "name": "Box_ Ammo 3",
+    "path": "post-apo/item-assets/Box_Ammo3.png",
+    "tags": [
+      "AMMO",
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_ammo4",
+    "name": "Box_ Ammo 4",
+    "path": "post-apo/item-assets/Box_Ammo4.png",
+    "tags": [
+      "AMMO",
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_ammo5",
+    "name": "Box_ Ammo 5",
+    "path": "post-apo/item-assets/Box_Ammo5.png",
+    "tags": [
+      "AMMO",
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_ammo6",
+    "name": "Box_ Ammo 6",
+    "path": "post-apo/item-assets/Box_Ammo6.png",
+    "tags": [
+      "AMMO",
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_bloody1",
+    "name": "Box_ Bloody 1",
+    "path": "post-apo/item-assets/Box_Bloody1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_cardboard1",
+    "name": "Box_ Cardboard 1",
+    "path": "post-apo/item-assets/Box_Cardboard1.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard10",
+    "name": "Box_ Cardboard 10",
+    "path": "post-apo/item-assets/Box_Cardboard10.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard11",
+    "name": "Box_ Cardboard 11",
+    "path": "post-apo/item-assets/Box_Cardboard11.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard2",
+    "name": "Box_ Cardboard 2",
+    "path": "post-apo/item-assets/Box_Cardboard2.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard3",
+    "name": "Box_ Cardboard 3",
+    "path": "post-apo/item-assets/Box_Cardboard3.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard4",
+    "name": "Box_ Cardboard 4",
+    "path": "post-apo/item-assets/Box_Cardboard4.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard5",
+    "name": "Box_ Cardboard 5",
+    "path": "post-apo/item-assets/Box_Cardboard5.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard6",
+    "name": "Box_ Cardboard 6",
+    "path": "post-apo/item-assets/Box_Cardboard6.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard7",
+    "name": "Box_ Cardboard 7",
+    "path": "post-apo/item-assets/Box_Cardboard7.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard8",
+    "name": "Box_ Cardboard 8",
+    "path": "post-apo/item-assets/Box_Cardboard8.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_cardboard9",
+    "name": "Box_ Cardboard 9",
+    "path": "post-apo/item-assets/Box_Cardboard9.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_files1",
+    "name": "Box_ Files 1",
+    "path": "post-apo/item-assets/Box_Files1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_garbage1",
+    "name": "Box_ Garbage 1",
+    "path": "post-apo/item-assets/Box_Garbage1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_goods1",
+    "name": "Box_ Goods 1",
+    "path": "post-apo/item-assets/Box_Goods1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_goods2",
+    "name": "Box_ Goods 2",
+    "path": "post-apo/item-assets/Box_Goods2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_goods3",
+    "name": "Box_ Goods 3",
+    "path": "post-apo/item-assets/Box_Goods3.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_goods4",
+    "name": "Box_ Goods 4",
+    "path": "post-apo/item-assets/Box_Goods4.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_goods5",
+    "name": "Box_ Goods 5",
+    "path": "post-apo/item-assets/Box_Goods5.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_goods6",
+    "name": "Box_ Goods 6",
+    "path": "post-apo/item-assets/Box_Goods6.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_grenades1",
+    "name": "Box_ Grenades 1",
+    "path": "post-apo/item-assets/Box_Grenades1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_metal1",
+    "name": "Box_ Metal 1",
+    "path": "post-apo/item-assets/Box_Metal1.png",
+    "tags": [
+      "CONTAINER",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "box_military1",
+    "name": "Box_ Military 1",
+    "path": "post-apo/item-assets/Box_Military1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_military2",
+    "name": "Box_ Military 2",
+    "path": "post-apo/item-assets/Box_Military2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_rations1",
+    "name": "Box_ Rations 1",
+    "path": "post-apo/item-assets/Box_Rations1.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_rations2",
+    "name": "Box_ Rations 2",
+    "path": "post-apo/item-assets/Box_Rations2.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_rations3",
+    "name": "Box_ Rations 3",
+    "path": "post-apo/item-assets/Box_Rations3.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_rations4",
+    "name": "Box_ Rations 4",
+    "path": "post-apo/item-assets/Box_Rations4.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_rations5",
+    "name": "Box_ Rations 5",
+    "path": "post-apo/item-assets/Box_Rations5.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "box_rations6",
+    "name": "Box_ Rations 6",
+    "path": "post-apo/item-assets/Box_Rations6.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "brick1",
+    "name": "Brick 1",
+    "path": "post-apo/item-assets/Brick1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "broom1",
+    "name": "Broom 1",
+    "path": "post-apo/item-assets/Broom1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bucket1",
+    "name": "Bucket 1",
+    "path": "post-apo/item-assets/Bucket1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bucket2",
+    "name": "Bucket 2",
+    "path": "post-apo/item-assets/Bucket2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bucket_offal1",
+    "name": "Bucket_ Offal 1",
+    "path": "post-apo/item-assets/Bucket_Offal1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bullet1",
+    "name": "Bullet 1",
+    "path": "post-apo/item-assets/Bullet1.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bullets1",
+    "name": "Bullets 1",
+    "path": "post-apo/item-assets/Bullets1.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bunker_device1",
+    "name": "Bunker_ Device 1",
+    "path": "post-apo/item-assets/Bunker_Device1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bunker_device2",
+    "name": "Bunker_ Device 2",
+    "path": "post-apo/item-assets/Bunker_Device2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bunker_device3",
+    "name": "Bunker_ Device 3",
+    "path": "post-apo/item-assets/Bunker_Device3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bunker_device4",
+    "name": "Bunker_ Device 4",
+    "path": "post-apo/item-assets/Bunker_Device4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bunker_scanner1",
+    "name": "Bunker_ Scanner 1",
+    "path": "post-apo/item-assets/Bunker_Scanner1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "bunker_vent1",
+    "name": "Bunker_ Vent 1",
+    "path": "post-apo/item-assets/Bunker_Vent1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "busstop1",
+    "name": "Bus Stop 1",
+    "path": "post-apo/item-assets/BusStop1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "butane1",
+    "name": "Butane 1",
+    "path": "post-apo/item-assets/Butane1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cctv1",
+    "name": "C C T V 1",
+    "path": "post-apo/item-assets/CCTV1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "cabinet1",
+    "name": "Cabinet 1",
+    "path": "post-apo/item-assets/Cabinet1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "cabinet2",
+    "name": "Cabinet 2",
+    "path": "post-apo/item-assets/Cabinet2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "cabinet3",
+    "name": "Cabinet 3",
+    "path": "post-apo/item-assets/Cabinet3.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "cable1",
+    "name": "Cable 1",
+    "path": "post-apo/item-assets/Cable1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "cable2",
+    "name": "Cable 2",
+    "path": "post-apo/item-assets/Cable2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "cablespool1",
+    "name": "Cable Spool 1",
+    "path": "post-apo/item-assets/CableSpool1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "cage1",
+    "name": "Cage 1",
+    "path": "post-apo/item-assets/Cage1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "calculator1",
+    "name": "Calculator 1",
+    "path": "post-apo/item-assets/Calculator1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "camera1",
+    "name": "Camera 1",
+    "path": "post-apo/item-assets/Camera1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "campstove1",
+    "name": "Camp Stove 1",
+    "path": "post-apo/item-assets/CampStove1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "campingkit1",
+    "name": "Camping Kit 1",
+    "path": "post-apo/item-assets/CampingKit1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can1",
+    "name": "Can 1",
+    "path": "post-apo/item-assets/Can1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can10",
+    "name": "Can 10",
+    "path": "post-apo/item-assets/Can10.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can11",
+    "name": "Can 11",
+    "path": "post-apo/item-assets/Can11.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can12",
+    "name": "Can 12",
+    "path": "post-apo/item-assets/Can12.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can13",
+    "name": "Can 13",
+    "path": "post-apo/item-assets/Can13.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can14",
+    "name": "Can 14",
+    "path": "post-apo/item-assets/Can14.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can15",
+    "name": "Can 15",
+    "path": "post-apo/item-assets/Can15.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can16",
+    "name": "Can 16",
+    "path": "post-apo/item-assets/Can16.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can17",
+    "name": "Can 17",
+    "path": "post-apo/item-assets/Can17.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can18",
+    "name": "Can 18",
+    "path": "post-apo/item-assets/Can18.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can19",
+    "name": "Can 19",
+    "path": "post-apo/item-assets/Can19.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can2",
+    "name": "Can 2",
+    "path": "post-apo/item-assets/Can2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can20",
+    "name": "Can 20",
+    "path": "post-apo/item-assets/Can20.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can21",
+    "name": "Can 21",
+    "path": "post-apo/item-assets/Can21.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can22",
+    "name": "Can 22",
+    "path": "post-apo/item-assets/Can22.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can23",
+    "name": "Can 23",
+    "path": "post-apo/item-assets/Can23.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can24",
+    "name": "Can 24",
+    "path": "post-apo/item-assets/Can24.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can25",
+    "name": "Can 25",
+    "path": "post-apo/item-assets/Can25.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can3",
+    "name": "Can 3",
+    "path": "post-apo/item-assets/Can3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can4",
+    "name": "Can 4",
+    "path": "post-apo/item-assets/Can4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can5",
+    "name": "Can 5",
+    "path": "post-apo/item-assets/Can5.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can6",
+    "name": "Can 6",
+    "path": "post-apo/item-assets/Can6.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can7",
+    "name": "Can 7",
+    "path": "post-apo/item-assets/Can7.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can8",
+    "name": "Can 8",
+    "path": "post-apo/item-assets/Can8.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can9",
+    "name": "Can 9",
+    "path": "post-apo/item-assets/Can9.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can_oil1",
+    "name": "Can_ Oil 1",
+    "path": "post-apo/item-assets/Can_Oil1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can_oil2",
+    "name": "Can_ Oil 2",
+    "path": "post-apo/item-assets/Can_Oil2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "can_oil3",
+    "name": "Can_ Oil 3",
+    "path": "post-apo/item-assets/Can_Oil3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "candle1",
+    "name": "Candle 1",
+    "path": "post-apo/item-assets/Candle1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "candlestick1",
+    "name": "Candlestick 1",
+    "path": "post-apo/item-assets/Candlestick1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "canvasroll1",
+    "name": "Canvas Roll 1",
+    "path": "post-apo/item-assets/CanvasRoll1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "canvasroll2",
+    "name": "Canvas Roll 2",
+    "path": "post-apo/item-assets/CanvasRoll2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "canvasroll3",
+    "name": "Canvas Roll 3",
+    "path": "post-apo/item-assets/CanvasRoll3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "carriage1",
+    "name": "Carriage 1",
+    "path": "post-apo/item-assets/Carriage1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cash1",
+    "name": "Cash 1",
+    "path": "post-apo/item-assets/Cash1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cashbox1",
+    "name": "Cash Box 1",
+    "path": "post-apo/item-assets/CashBox1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "cementmixer1",
+    "name": "Cement Mixer 1",
+    "path": "post-apo/item-assets/CementMixer1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "chainsaw1",
+    "name": "Chainsaw 1",
+    "path": "post-apo/item-assets/Chainsaw1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "chair1",
+    "name": "Chair 1",
+    "path": "post-apo/item-assets/Chair1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chair10",
+    "name": "Chair 10",
+    "path": "post-apo/item-assets/Chair10.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chair2",
+    "name": "Chair 2",
+    "path": "post-apo/item-assets/Chair2.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chair3",
+    "name": "Chair 3",
+    "path": "post-apo/item-assets/Chair3.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chair4",
+    "name": "Chair 4",
+    "path": "post-apo/item-assets/Chair4.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chair5",
+    "name": "Chair 5",
+    "path": "post-apo/item-assets/Chair5.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chair6",
+    "name": "Chair 6",
+    "path": "post-apo/item-assets/Chair6.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chair7",
+    "name": "Chair 7",
+    "path": "post-apo/item-assets/Chair7.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chair8",
+    "name": "Chair 8",
+    "path": "post-apo/item-assets/Chair8.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chair9",
+    "name": "Chair 9",
+    "path": "post-apo/item-assets/Chair9.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "chopsticks1",
+    "name": "Chopsticks 1",
+    "path": "post-apo/item-assets/Chopsticks1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cinderblock1",
+    "name": "Cinderblock 1",
+    "path": "post-apo/item-assets/Cinderblock1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "cinderblock2",
+    "name": "Cinderblock 2",
+    "path": "post-apo/item-assets/Cinderblock2.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "cinderblock3",
+    "name": "Cinderblock 3",
+    "path": "post-apo/item-assets/Cinderblock3.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "claypot1",
+    "name": "Clay Pot 1",
+    "path": "post-apo/item-assets/ClayPot1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "clock1",
+    "name": "Clock 1",
+    "path": "post-apo/item-assets/Clock1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cloth1",
+    "name": "Cloth 1",
+    "path": "post-apo/item-assets/Cloth1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "computer1",
+    "name": "Computer 1",
+    "path": "post-apo/item-assets/Computer1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computer2",
+    "name": "Computer 2",
+    "path": "post-apo/item-assets/Computer2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computer3",
+    "name": "Computer 3",
+    "path": "post-apo/item-assets/Computer3.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computer4",
+    "name": "Computer 4",
+    "path": "post-apo/item-assets/Computer4.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computer5",
+    "name": "Computer 5",
+    "path": "post-apo/item-assets/Computer5.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computer6",
+    "name": "Computer 6",
+    "path": "post-apo/item-assets/Computer6.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computer7",
+    "name": "Computer 7",
+    "path": "post-apo/item-assets/Computer7.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computerkeyboard1",
+    "name": "Computer Keyboard 1",
+    "path": "post-apo/item-assets/ComputerKeyboard1.png",
+    "tags": [
+      "ELECTRONICS",
+      "MATERIAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 5
+  },
+  {
+    "id": "computerserver1",
+    "name": "Computer Server 1",
+    "path": "post-apo/item-assets/ComputerServer1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computerserver2",
+    "name": "Computer Server 2",
+    "path": "post-apo/item-assets/ComputerServer2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computerserver3",
+    "name": "Computer Server 3",
+    "path": "post-apo/item-assets/ComputerServer3.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computerterminal1",
+    "name": "Computer Terminal 1",
+    "path": "post-apo/item-assets/ComputerTerminal1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computerterminal2",
+    "name": "Computer Terminal 2",
+    "path": "post-apo/item-assets/ComputerTerminal2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "computerterminal3",
+    "name": "Computer Terminal 3",
+    "path": "post-apo/item-assets/ComputerTerminal3.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "container1",
+    "name": "Container 1",
+    "path": "post-apo/item-assets/Container1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "cooler1",
+    "name": "Cooler 1",
+    "path": "post-apo/item-assets/Cooler1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cooler2",
+    "name": "Cooler 2",
+    "path": "post-apo/item-assets/Cooler2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cooler3",
+    "name": "Cooler 3",
+    "path": "post-apo/item-assets/Cooler3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "corkboard1",
+    "name": "Cork Board 1",
+    "path": "post-apo/item-assets/CorkBoard1.png",
+    "tags": [
+      "DECORATION",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "corkboard2",
+    "name": "Cork Board 2",
+    "path": "post-apo/item-assets/CorkBoard2.png",
+    "tags": [
+      "DECORATION",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "corkboard3",
+    "name": "Cork Board 3",
+    "path": "post-apo/item-assets/CorkBoard3.png",
+    "tags": [
+      "DECORATION",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "cot1",
+    "name": "Cot 1",
+    "path": "post-apo/item-assets/Cot1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "cradle1",
+    "name": "Cradle 1",
+    "path": "post-apo/item-assets/Cradle1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "crate1",
+    "name": "Crate 1",
+    "path": "post-apo/item-assets/Crate1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate10",
+    "name": "Crate 10",
+    "path": "post-apo/item-assets/Crate10.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate11",
+    "name": "Crate 11",
+    "path": "post-apo/item-assets/Crate11.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate12",
+    "name": "Crate 12",
+    "path": "post-apo/item-assets/Crate12.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate2",
+    "name": "Crate 2",
+    "path": "post-apo/item-assets/Crate2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate3",
+    "name": "Crate 3",
+    "path": "post-apo/item-assets/Crate3.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate4",
+    "name": "Crate 4",
+    "path": "post-apo/item-assets/Crate4.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate5",
+    "name": "Crate 5",
+    "path": "post-apo/item-assets/Crate5.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate6",
+    "name": "Crate 6",
+    "path": "post-apo/item-assets/Crate6.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate7",
+    "name": "Crate 7",
+    "path": "post-apo/item-assets/Crate7.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate8",
+    "name": "Crate 8",
+    "path": "post-apo/item-assets/Crate8.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate9",
+    "name": "Crate 9",
+    "path": "post-apo/item-assets/Crate9.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate_weapons1",
+    "name": "Crate_ Weapons 1",
+    "path": "post-apo/item-assets/Crate_Weapons1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crate_weapons2",
+    "name": "Crate_ Weapons 2",
+    "path": "post-apo/item-assets/Crate_Weapons2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "crowbar1",
+    "name": "Crowbar 1",
+    "path": "post-apo/item-assets/Crowbar1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "cultivator1",
+    "name": "Cultivator 1",
+    "path": "post-apo/item-assets/Cultivator1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup1",
+    "name": "Cup 1",
+    "path": "post-apo/item-assets/Cup1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup10",
+    "name": "Cup 10",
+    "path": "post-apo/item-assets/Cup10.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup11",
+    "name": "Cup 11",
+    "path": "post-apo/item-assets/Cup11.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup12",
+    "name": "Cup 12",
+    "path": "post-apo/item-assets/Cup12.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup13",
+    "name": "Cup 13",
+    "path": "post-apo/item-assets/Cup13.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup2",
+    "name": "Cup 2",
+    "path": "post-apo/item-assets/Cup2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup3",
+    "name": "Cup 3",
+    "path": "post-apo/item-assets/Cup3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup4",
+    "name": "Cup 4",
+    "path": "post-apo/item-assets/Cup4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup5",
+    "name": "Cup 5",
+    "path": "post-apo/item-assets/Cup5.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup6",
+    "name": "Cup 6",
+    "path": "post-apo/item-assets/Cup6.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup7",
+    "name": "Cup 7",
+    "path": "post-apo/item-assets/Cup7.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup8",
+    "name": "Cup 8",
+    "path": "post-apo/item-assets/Cup8.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "cup9",
+    "name": "Cup 9",
+    "path": "post-apo/item-assets/Cup9.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "dartboard1",
+    "name": "Dartboard 1",
+    "path": "post-apo/item-assets/Dartboard1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "desk1",
+    "name": "Desk 1",
+    "path": "post-apo/item-assets/Desk1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "detergent1",
+    "name": "Detergent 1",
+    "path": "post-apo/item-assets/Detergent1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "detergent2",
+    "name": "Detergent 2",
+    "path": "post-apo/item-assets/Detergent2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "detonator1",
+    "name": "Detonator 1",
+    "path": "post-apo/item-assets/Detonator1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "device1",
+    "name": "Device 1",
+    "path": "post-apo/item-assets/Device1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "device2",
+    "name": "Device 2",
+    "path": "post-apo/item-assets/Device2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "device3",
+    "name": "Device 3",
+    "path": "post-apo/item-assets/Device3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "device4",
+    "name": "Device 4",
+    "path": "post-apo/item-assets/Device4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "device5",
+    "name": "Device 5",
+    "path": "post-apo/item-assets/Device5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_accessory1",
+    "name": "Doomsday_ Accessory 1",
+    "path": "post-apo/item-assets/Doomsday_Accessory1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_accessory3",
+    "name": "Doomsday_ Accessory 3",
+    "path": "post-apo/item-assets/Doomsday_Accessory3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_accessory4",
+    "name": "Doomsday_ Accessory 4",
+    "path": "post-apo/item-assets/Doomsday_Accessory4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_accessory5",
+    "name": "Doomsday_ Accessory 5",
+    "path": "post-apo/item-assets/Doomsday_Accessory5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_axe1",
+    "name": "Doomsday_ Axe 1",
+    "path": "post-apo/item-assets/Doomsday_Axe1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "doomsday_bat1",
+    "name": "Doomsday_ Bat 1",
+    "path": "post-apo/item-assets/Doomsday_Bat1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "doomsday_bat2",
+    "name": "Doomsday_ Bat 2",
+    "path": "post-apo/item-assets/Doomsday_Bat2.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "doomsday_bottom1",
+    "name": "Doomsday_ Bottom 1",
+    "path": "post-apo/item-assets/Doomsday_Bottom1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_bottom10",
+    "name": "Doomsday_ Bottom 10",
+    "path": "post-apo/item-assets/Doomsday_Bottom10.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_bottom2",
+    "name": "Doomsday_ Bottom 2",
+    "path": "post-apo/item-assets/Doomsday_Bottom2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_bottom3",
+    "name": "Doomsday_ Bottom 3",
+    "path": "post-apo/item-assets/Doomsday_Bottom3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_bottom4",
+    "name": "Doomsday_ Bottom 4",
+    "path": "post-apo/item-assets/Doomsday_Bottom4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_bottom6",
+    "name": "Doomsday_ Bottom 6",
+    "path": "post-apo/item-assets/Doomsday_Bottom6.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_bottom7",
+    "name": "Doomsday_ Bottom 7",
+    "path": "post-apo/item-assets/Doomsday_Bottom7.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_bottom8",
+    "name": "Doomsday_ Bottom 8",
+    "path": "post-apo/item-assets/Doomsday_Bottom8.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_bottom9",
+    "name": "Doomsday_ Bottom 9",
+    "path": "post-apo/item-assets/Doomsday_Bottom9.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_cleaver",
+    "name": "Doomsday_ Cleaver.png",
+    "path": "post-apo/item-assets/Doomsday_Cleaver.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "doomsday_female_bottom11",
+    "name": "Doomsday_ Female_ Bottom 11",
+    "path": "post-apo/item-assets/Doomsday_Female_Bottom11.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_female_bottom5",
+    "name": "Doomsday_ Female_ Bottom 5",
+    "path": "post-apo/item-assets/Doomsday_Female_Bottom5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_female_top10",
+    "name": "Doomsday_ Female_ Top 10",
+    "path": "post-apo/item-assets/Doomsday_Female_Top10.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_female_top5",
+    "name": "Doomsday_ Female_ Top 5",
+    "path": "post-apo/item-assets/Doomsday_Female_Top5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_head1",
+    "name": "Doomsday_ Head 1",
+    "path": "post-apo/item-assets/Doomsday_Head1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_head2",
+    "name": "Doomsday_ Head 2",
+    "path": "post-apo/item-assets/Doomsday_Head2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_head3",
+    "name": "Doomsday_ Head 3",
+    "path": "post-apo/item-assets/Doomsday_Head3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_head4",
+    "name": "Doomsday_ Head 4",
+    "path": "post-apo/item-assets/Doomsday_Head4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_head5",
+    "name": "Doomsday_ Head 5",
+    "path": "post-apo/item-assets/Doomsday_Head5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_katana",
+    "name": "Doomsday_ Katana.png",
+    "path": "post-apo/item-assets/Doomsday_Katana.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_mg1",
+    "name": "Doomsday_ M G 1",
+    "path": "post-apo/item-assets/Doomsday_MG1.png",
+    "tags": [
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "doomsday_mg2",
+    "name": "Doomsday_ M G 2",
+    "path": "post-apo/item-assets/Doomsday_MG2.png",
+    "tags": [
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "doomsday_machete1",
+    "name": "Doomsday_ Machete 1",
+    "path": "post-apo/item-assets/Doomsday_Machete1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "doomsday_male_accessory4",
+    "name": "Doomsday_ Male_ Accessory 4",
+    "path": "post-apo/item-assets/Doomsday_Male_Accessory4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_male_bottom5",
+    "name": "Doomsday_ Male_ Bottom 5",
+    "path": "post-apo/item-assets/Doomsday_Male_Bottom5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_male_top10",
+    "name": "Doomsday_ Male_ Top 10",
+    "path": "post-apo/item-assets/Doomsday_Male_Top10.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_male_top17",
+    "name": "Doomsday_ Male_ Top 17",
+    "path": "post-apo/item-assets/Doomsday_Male_Top17.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_male_top5",
+    "name": "Doomsday_ Male_ Top 5",
+    "path": "post-apo/item-assets/Doomsday_Male_Top5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_pipesaw",
+    "name": "Doomsday_ Pipe Saw.png",
+    "path": "post-apo/item-assets/Doomsday_PipeSaw.png",
+    "tags": [
+      "TOOL",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "doomsday_pistol1",
+    "name": "Doomsday_ Pistol 1",
+    "path": "post-apo/item-assets/Doomsday_Pistol1.png",
+    "tags": [
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "doomsday_pistol2",
+    "name": "Doomsday_ Pistol 2",
+    "path": "post-apo/item-assets/Doomsday_Pistol2.png",
+    "tags": [
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "doomsday_smg1",
+    "name": "Doomsday_ S M G 1",
+    "path": "post-apo/item-assets/Doomsday_SMG1.png",
+    "tags": [
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "doomsday_smg2",
+    "name": "Doomsday_ S M G 2",
+    "path": "post-apo/item-assets/Doomsday_SMG2.png",
+    "tags": [
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "doomsday_screwdriver",
+    "name": "Doomsday_ Screwdriver.png",
+    "path": "post-apo/item-assets/Doomsday_Screwdriver.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_shield1",
+    "name": "Doomsday_ Shield 1",
+    "path": "post-apo/item-assets/Doomsday_Shield1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_shotgun1",
+    "name": "Doomsday_ Shotgun 1",
+    "path": "post-apo/item-assets/Doomsday_Shotgun1.png",
+    "tags": [
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "doomsday_tireiron",
+    "name": "Doomsday_ Tire Iron.png",
+    "path": "post-apo/item-assets/Doomsday_TireIron.png",
+    "tags": [
+      "MATERIAL",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 5
+  },
+  {
+    "id": "doomsday_top1",
+    "name": "Doomsday_ Top 1",
+    "path": "post-apo/item-assets/Doomsday_Top1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top11",
+    "name": "Doomsday_ Top 11",
+    "path": "post-apo/item-assets/Doomsday_Top11.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top12",
+    "name": "Doomsday_ Top 12",
+    "path": "post-apo/item-assets/Doomsday_Top12.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top13",
+    "name": "Doomsday_ Top 13",
+    "path": "post-apo/item-assets/Doomsday_Top13.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top14",
+    "name": "Doomsday_ Top 14",
+    "path": "post-apo/item-assets/Doomsday_Top14.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top15",
+    "name": "Doomsday_ Top 15",
+    "path": "post-apo/item-assets/Doomsday_Top15.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top16",
+    "name": "Doomsday_ Top 16",
+    "path": "post-apo/item-assets/Doomsday_Top16.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top17",
+    "name": "Doomsday_ Top 17",
+    "path": "post-apo/item-assets/Doomsday_Top17.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top2",
+    "name": "Doomsday_ Top 2",
+    "path": "post-apo/item-assets/Doomsday_Top2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top3",
+    "name": "Doomsday_ Top 3",
+    "path": "post-apo/item-assets/Doomsday_Top3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top4",
+    "name": "Doomsday_ Top 4",
+    "path": "post-apo/item-assets/Doomsday_Top4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top6",
+    "name": "Doomsday_ Top 6",
+    "path": "post-apo/item-assets/Doomsday_Top6.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top7",
+    "name": "Doomsday_ Top 7",
+    "path": "post-apo/item-assets/Doomsday_Top7.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top8",
+    "name": "Doomsday_ Top 8",
+    "path": "post-apo/item-assets/Doomsday_Top8.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "doomsday_top9",
+    "name": "Doomsday_ Top 9",
+    "path": "post-apo/item-assets/Doomsday_Top9.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "dresser1",
+    "name": "Dresser 1",
+    "path": "post-apo/item-assets/Dresser1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "drugs1",
+    "name": "Drugs 1",
+    "path": "post-apo/item-assets/Drugs1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "drugs2",
+    "name": "Drugs 2",
+    "path": "post-apo/item-assets/Drugs2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "electricbox1",
+    "name": "Electric Box 1",
+    "path": "post-apo/item-assets/ElectricBox1.png",
+    "tags": [
+      "CONTAINER",
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "electricbox2",
+    "name": "Electric Box 2",
+    "path": "post-apo/item-assets/ElectricBox2.png",
+    "tags": [
+      "CONTAINER",
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "electricbox3",
+    "name": "Electric Box 3",
+    "path": "post-apo/item-assets/ElectricBox3.png",
+    "tags": [
+      "CONTAINER",
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "electricbox4",
+    "name": "Electric Box 4",
+    "path": "post-apo/item-assets/ElectricBox4.png",
+    "tags": [
+      "CONTAINER",
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "electricbox5",
+    "name": "Electric Box 5",
+    "path": "post-apo/item-assets/ElectricBox5.png",
+    "tags": [
+      "CONTAINER",
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "emergencylight1",
+    "name": "Emergency Light 1",
+    "path": "post-apo/item-assets/EmergencyLight1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "exactoknife1",
+    "name": "Exacto Knife 1",
+    "path": "post-apo/item-assets/ExactoKnife1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "expansion_accessory1",
+    "name": "Expansion_ Accessory 1",
+    "path": "post-apo/item-assets/Expansion_Accessory1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_accessory2",
+    "name": "Expansion_ Accessory 2",
+    "path": "post-apo/item-assets/Expansion_Accessory2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_assaultrifle1",
+    "name": "Expansion_ Assault Rifle 1",
+    "path": "post-apo/item-assets/Expansion_AssaultRifle1.png",
+    "tags": [
+      "FOOD",
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "expansion_assaultrifle2",
+    "name": "Expansion_ Assault Rifle 2",
+    "path": "post-apo/item-assets/Expansion_AssaultRifle2.png",
+    "tags": [
+      "FOOD",
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "expansion_bat1",
+    "name": "Expansion_ Bat 1",
+    "path": "post-apo/item-assets/Expansion_Bat1.png",
+    "tags": [
+      "FOOD",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "expansion_bottom1",
+    "name": "Expansion_ Bottom 1",
+    "path": "post-apo/item-assets/Expansion_Bottom1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_bottom3",
+    "name": "Expansion_ Bottom 3",
+    "path": "post-apo/item-assets/Expansion_Bottom3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_bottom6",
+    "name": "Expansion_ Bottom 6",
+    "path": "post-apo/item-assets/Expansion_Bottom6.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_bottom7",
+    "name": "Expansion_ Bottom 7",
+    "path": "post-apo/item-assets/Expansion_Bottom7.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_bottom8",
+    "name": "Expansion_ Bottom 8",
+    "path": "post-apo/item-assets/Expansion_Bottom8.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_female_bottom2",
+    "name": "Expansion_ Female_ Bottom 2",
+    "path": "post-apo/item-assets/Expansion_Female_Bottom2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_female_bottom4",
+    "name": "Expansion_ Female_ Bottom 4",
+    "path": "post-apo/item-assets/Expansion_Female_Bottom4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_female_bottom5",
+    "name": "Expansion_ Female_ Bottom 5",
+    "path": "post-apo/item-assets/Expansion_Female_Bottom5.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_female_head6",
+    "name": "Expansion_ Female_ Head 6",
+    "path": "post-apo/item-assets/Expansion_Female_Head6.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_female_top12",
+    "name": "Expansion_ Female_ Top 12",
+    "path": "post-apo/item-assets/Expansion_Female_Top12.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_female_top14",
+    "name": "Expansion_ Female_ Top 14",
+    "path": "post-apo/item-assets/Expansion_Female_Top14.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_female_top18",
+    "name": "Expansion_ Female_ Top 18",
+    "path": "post-apo/item-assets/Expansion_Female_Top18.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_female_top9",
+    "name": "Expansion_ Female_ Top 9",
+    "path": "post-apo/item-assets/Expansion_Female_Top9.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_hammer1",
+    "name": "Expansion_ Hammer 1",
+    "path": "post-apo/item-assets/Expansion_Hammer1.png",
+    "tags": [
+      "FOOD",
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "expansion_hatchet1",
+    "name": "Expansion_ Hatchet 1",
+    "path": "post-apo/item-assets/Expansion_Hatchet1.png",
+    "tags": [
+      "FOOD",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "expansion_head1",
+    "name": "Expansion_ Head 1",
+    "path": "post-apo/item-assets/Expansion_Head1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_head2",
+    "name": "Expansion_ Head 2",
+    "path": "post-apo/item-assets/Expansion_Head2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_head3",
+    "name": "Expansion_ Head 3",
+    "path": "post-apo/item-assets/Expansion_Head3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_head4",
+    "name": "Expansion_ Head 4",
+    "path": "post-apo/item-assets/Expansion_Head4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_head5",
+    "name": "Expansion_ Head 5",
+    "path": "post-apo/item-assets/Expansion_Head5.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_head7",
+    "name": "Expansion_ Head 7",
+    "path": "post-apo/item-assets/Expansion_Head7.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_head8",
+    "name": "Expansion_ Head 8",
+    "path": "post-apo/item-assets/Expansion_Head8.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_head9",
+    "name": "Expansion_ Head 9",
+    "path": "post-apo/item-assets/Expansion_Head9.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_knife1",
+    "name": "Expansion_ Knife 1",
+    "path": "post-apo/item-assets/Expansion_Knife1.png",
+    "tags": [
+      "FOOD",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "expansion_male_bottom2",
+    "name": "Expansion_ Male_ Bottom 2",
+    "path": "post-apo/item-assets/Expansion_Male_Bottom2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_male_bottom4",
+    "name": "Expansion_ Male_ Bottom 4",
+    "path": "post-apo/item-assets/Expansion_Male_Bottom4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_male_bottom5",
+    "name": "Expansion_ Male_ Bottom 5",
+    "path": "post-apo/item-assets/Expansion_Male_Bottom5.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_male_head6",
+    "name": "Expansion_ Male_ Head 6",
+    "path": "post-apo/item-assets/Expansion_Male_Head6.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_male_top12",
+    "name": "Expansion_ Male_ Top 12",
+    "path": "post-apo/item-assets/Expansion_Male_Top12.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_male_top14",
+    "name": "Expansion_ Male_ Top 14",
+    "path": "post-apo/item-assets/Expansion_Male_Top14.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_male_top9",
+    "name": "Expansion_ Male_ Top 9",
+    "path": "post-apo/item-assets/Expansion_Male_Top9.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_prybar1",
+    "name": "Expansion_ Prybar 1",
+    "path": "post-apo/item-assets/Expansion_Prybar1.png",
+    "tags": [
+      "FOOD",
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "expansion_sawaxe1",
+    "name": "Expansion_ Saw Axe 1",
+    "path": "post-apo/item-assets/Expansion_SawAxe1.png",
+    "tags": [
+      "FOOD",
+      "TOOL",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "expansion_shield1",
+    "name": "Expansion_ Shield 1",
+    "path": "post-apo/item-assets/Expansion_Shield1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_shotgun1",
+    "name": "Expansion_ Shotgun 1",
+    "path": "post-apo/item-assets/Expansion_Shotgun1.png",
+    "tags": [
+      "FOOD",
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "expansion_top1",
+    "name": "Expansion_ Top 1",
+    "path": "post-apo/item-assets/Expansion_Top1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top10",
+    "name": "Expansion_ Top 10",
+    "path": "post-apo/item-assets/Expansion_Top10.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top11",
+    "name": "Expansion_ Top 11",
+    "path": "post-apo/item-assets/Expansion_Top11.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top13",
+    "name": "Expansion_ Top 13",
+    "path": "post-apo/item-assets/Expansion_Top13.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top15",
+    "name": "Expansion_ Top 15",
+    "path": "post-apo/item-assets/Expansion_Top15.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top16",
+    "name": "Expansion_ Top 16",
+    "path": "post-apo/item-assets/Expansion_Top16.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top17",
+    "name": "Expansion_ Top 17",
+    "path": "post-apo/item-assets/Expansion_Top17.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top2",
+    "name": "Expansion_ Top 2",
+    "path": "post-apo/item-assets/Expansion_Top2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top3",
+    "name": "Expansion_ Top 3",
+    "path": "post-apo/item-assets/Expansion_Top3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top4",
+    "name": "Expansion_ Top 4",
+    "path": "post-apo/item-assets/Expansion_Top4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top5",
+    "name": "Expansion_ Top 5",
+    "path": "post-apo/item-assets/Expansion_Top5.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top6",
+    "name": "Expansion_ Top 6",
+    "path": "post-apo/item-assets/Expansion_Top6.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top7",
+    "name": "Expansion_ Top 7",
+    "path": "post-apo/item-assets/Expansion_Top7.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "expansion_top8",
+    "name": "Expansion_ Top 8",
+    "path": "post-apo/item-assets/Expansion_Top8.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "facilitycomputer1",
+    "name": "Facility Computer 1",
+    "path": "post-apo/item-assets/FacilityComputer1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "facilitycontainmentcube1",
+    "name": "Facility Containment Cube 1",
+    "path": "post-apo/item-assets/FacilityContainmentCube1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "facilitycrate1",
+    "name": "Facility Crate 1",
+    "path": "post-apo/item-assets/FacilityCrate1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "facilitycrate2",
+    "name": "Facility Crate 2",
+    "path": "post-apo/item-assets/FacilityCrate2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "facilitycrate3",
+    "name": "Facility Crate 3",
+    "path": "post-apo/item-assets/FacilityCrate3.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "fan1",
+    "name": "Fan 1",
+    "path": "post-apo/item-assets/Fan1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "filecabinet1",
+    "name": "File Cabinet 1",
+    "path": "post-apo/item-assets/FileCabinet1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "firebucket1",
+    "name": "Fire Bucket 1",
+    "path": "post-apo/item-assets/FireBucket1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "fireextinguisher1",
+    "name": "Fire Extinguisher 1",
+    "path": "post-apo/item-assets/FireExtinguisher1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "fireextinguisher2",
+    "name": "Fire Extinguisher 2",
+    "path": "post-apo/item-assets/FireExtinguisher2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "fireextinguisher3",
+    "name": "Fire Extinguisher 3",
+    "path": "post-apo/item-assets/FireExtinguisher3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "fireextinguisher4",
+    "name": "Fire Extinguisher 4",
+    "path": "post-apo/item-assets/FireExtinguisher4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "firehose1",
+    "name": "Fire Hose 1",
+    "path": "post-apo/item-assets/FireHose1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "firehydrant1",
+    "name": "Fire Hydrant 1",
+    "path": "post-apo/item-assets/FireHydrant1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "firstaid1",
+    "name": "First Aid 1",
+    "path": "post-apo/item-assets/FirstAid1.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "floorrug1",
+    "name": "Floor Rug 1",
+    "path": "post-apo/item-assets/FloorRug1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "floorrug2",
+    "name": "Floor Rug 2",
+    "path": "post-apo/item-assets/FloorRug2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "floorrug3",
+    "name": "Floor Rug 3",
+    "path": "post-apo/item-assets/FloorRug3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "flyer1",
+    "name": "Flyer 1",
+    "path": "post-apo/item-assets/Flyer1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "flyer2",
+    "name": "Flyer 2",
+    "path": "post-apo/item-assets/Flyer2.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "flyer3",
+    "name": "Flyer 3",
+    "path": "post-apo/item-assets/Flyer3.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "food1",
+    "name": "Food 1",
+    "path": "post-apo/item-assets/Food1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "food2",
+    "name": "Food 2",
+    "path": "post-apo/item-assets/Food2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "foodcontainer1",
+    "name": "Food Container 1",
+    "path": "post-apo/item-assets/FoodContainer1.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "foodtray1",
+    "name": "Food Tray 1",
+    "path": "post-apo/item-assets/FoodTray1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "food_box1",
+    "name": "Food_ Box 1",
+    "path": "post-apo/item-assets/Food_Box1.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "food_box2",
+    "name": "Food_ Box 2",
+    "path": "post-apo/item-assets/Food_Box2.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "food_noodles1",
+    "name": "Food_ Noodles 1",
+    "path": "post-apo/item-assets/Food_Noodles1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "food_noodles2",
+    "name": "Food_ Noodles 2",
+    "path": "post-apo/item-assets/Food_Noodles2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "food_pizza1",
+    "name": "Food_ Pizza 1",
+    "path": "post-apo/item-assets/Food_Pizza1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "food_pizza2",
+    "name": "Food_ Pizza 2",
+    "path": "post-apo/item-assets/Food_Pizza2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "food_pizza3",
+    "name": "Food_ Pizza 3",
+    "path": "post-apo/item-assets/Food_Pizza3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "food_sandwhich1",
+    "name": "Food_ Sandwhich 1",
+    "path": "post-apo/item-assets/Food_Sandwhich1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "food_sandwhich2",
+    "name": "Food_ Sandwhich 2",
+    "path": "post-apo/item-assets/Food_Sandwhich2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "fridge1",
+    "name": "Fridge 1",
+    "path": "post-apo/item-assets/Fridge1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "fridge2",
+    "name": "Fridge 2",
+    "path": "post-apo/item-assets/Fridge2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "fusebox1",
+    "name": "Fuse Box 1",
+    "path": "post-apo/item-assets/FuseBox1.png",
+    "tags": [
+      "CONTAINER",
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "gascan1",
+    "name": "Gas Can 1",
+    "path": "post-apo/item-assets/GasCan1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "gascan2",
+    "name": "Gas Can 2",
+    "path": "post-apo/item-assets/GasCan2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "gascan3",
+    "name": "Gas Can 3",
+    "path": "post-apo/item-assets/GasCan3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "gascylinder1",
+    "name": "Gas Cylinder 1",
+    "path": "post-apo/item-assets/GasCylinder1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "gascylinder2",
+    "name": "Gas Cylinder 2",
+    "path": "post-apo/item-assets/GasCylinder2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "gaspump1",
+    "name": "Gas Pump 1",
+    "path": "post-apo/item-assets/GasPump1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "gaspump2",
+    "name": "Gas Pump 2",
+    "path": "post-apo/item-assets/GasPump2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "generator1",
+    "name": "Generator 1",
+    "path": "post-apo/item-assets/Generator1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "generator2",
+    "name": "Generator 2",
+    "path": "post-apo/item-assets/Generator2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "generator3",
+    "name": "Generator 3",
+    "path": "post-apo/item-assets/Generator3.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "generator4",
+    "name": "Generator 4",
+    "path": "post-apo/item-assets/Generator4.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "globe1",
+    "name": "Globe 1",
+    "path": "post-apo/item-assets/Globe1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "goldbar1",
+    "name": "Gold Bar 1",
+    "path": "post-apo/item-assets/GoldBar1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "gorebag1",
+    "name": "Gore Bag 1",
+    "path": "post-apo/item-assets/GoreBag1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "gorebarrel1",
+    "name": "Gore Barrel 1",
+    "path": "post-apo/item-assets/GoreBarrel1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "grenade1",
+    "name": "Grenade 1",
+    "path": "post-apo/item-assets/Grenade1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "grenade2",
+    "name": "Grenade 2",
+    "path": "post-apo/item-assets/Grenade2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "grill1",
+    "name": "Grill 1",
+    "path": "post-apo/item-assets/Grill1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "grill2",
+    "name": "Grill 2",
+    "path": "post-apo/item-assets/Grill2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "guitar1",
+    "name": "Guitar 1",
+    "path": "post-apo/item-assets/Guitar1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "handcuffs1",
+    "name": "Hand Cuffs 1",
+    "path": "post-apo/item-assets/HandCuffs1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "hatchet1",
+    "name": "Hatchet 1",
+    "path": "post-apo/item-assets/Hatchet1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "hatchet2",
+    "name": "Hatchet 2",
+    "path": "post-apo/item-assets/Hatchet2.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "hedgehog1",
+    "name": "Hedgehog 1",
+    "path": "post-apo/item-assets/Hedgehog1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "hightechmonitor1",
+    "name": "High Tech Monitor 1",
+    "path": "post-apo/item-assets/HighTechMonitor1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "hose1",
+    "name": "Hose 1",
+    "path": "post-apo/item-assets/Hose1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "hospitalgurney1",
+    "name": "Hospital Gurney 1",
+    "path": "post-apo/item-assets/HospitalGurney1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "industrialbucket1",
+    "name": "Industrial Bucket 1",
+    "path": "post-apo/item-assets/IndustrialBucket1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "industrialbucket2",
+    "name": "Industrial Bucket 2",
+    "path": "post-apo/item-assets/IndustrialBucket2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "industrialcannister1",
+    "name": "Industrial Cannister 1",
+    "path": "post-apo/item-assets/IndustrialCannister1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "iron1",
+    "name": "Iron 1",
+    "path": "post-apo/item-assets/Iron1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "jug1",
+    "name": "Jug 1",
+    "path": "post-apo/item-assets/Jug1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jug10",
+    "name": "Jug 10",
+    "path": "post-apo/item-assets/Jug10.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jug2",
+    "name": "Jug 2",
+    "path": "post-apo/item-assets/Jug2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jug3",
+    "name": "Jug 3",
+    "path": "post-apo/item-assets/Jug3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jug4",
+    "name": "Jug 4",
+    "path": "post-apo/item-assets/Jug4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jug5",
+    "name": "Jug 5",
+    "path": "post-apo/item-assets/Jug5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jug6",
+    "name": "Jug 6",
+    "path": "post-apo/item-assets/Jug6.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jug7",
+    "name": "Jug 7",
+    "path": "post-apo/item-assets/Jug7.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jug8",
+    "name": "Jug 8",
+    "path": "post-apo/item-assets/Jug8.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jug9",
+    "name": "Jug 9",
+    "path": "post-apo/item-assets/Jug9.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "jukebox1",
+    "name": "Jukebox 1",
+    "path": "post-apo/item-assets/Jukebox1.png",
+    "tags": [
+      "CONTAINER",
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "jumpercables1",
+    "name": "Jumper Cables 1",
+    "path": "post-apo/item-assets/JumperCables1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "junk1",
+    "name": "Junk 1",
+    "path": "post-apo/item-assets/Junk1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk10",
+    "name": "Junk 10",
+    "path": "post-apo/item-assets/Junk10.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk11",
+    "name": "Junk 11",
+    "path": "post-apo/item-assets/Junk11.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk12",
+    "name": "Junk 12",
+    "path": "post-apo/item-assets/Junk12.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk13",
+    "name": "Junk 13",
+    "path": "post-apo/item-assets/Junk13.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk14",
+    "name": "Junk 14",
+    "path": "post-apo/item-assets/Junk14.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk15",
+    "name": "Junk 15",
+    "path": "post-apo/item-assets/Junk15.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk16",
+    "name": "Junk 16",
+    "path": "post-apo/item-assets/Junk16.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk17",
+    "name": "Junk 17",
+    "path": "post-apo/item-assets/Junk17.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk18",
+    "name": "Junk 18",
+    "path": "post-apo/item-assets/Junk18.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk19",
+    "name": "Junk 19",
+    "path": "post-apo/item-assets/Junk19.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk2",
+    "name": "Junk 2",
+    "path": "post-apo/item-assets/Junk2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk20",
+    "name": "Junk 20",
+    "path": "post-apo/item-assets/Junk20.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk21",
+    "name": "Junk 21",
+    "path": "post-apo/item-assets/Junk21.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk22",
+    "name": "Junk 22",
+    "path": "post-apo/item-assets/Junk22.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk23",
+    "name": "Junk 23",
+    "path": "post-apo/item-assets/Junk23.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk24",
+    "name": "Junk 24",
+    "path": "post-apo/item-assets/Junk24.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk3",
+    "name": "Junk 3",
+    "path": "post-apo/item-assets/Junk3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk4",
+    "name": "Junk 4",
+    "path": "post-apo/item-assets/Junk4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk5",
+    "name": "Junk 5",
+    "path": "post-apo/item-assets/Junk5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk6",
+    "name": "Junk 6",
+    "path": "post-apo/item-assets/Junk6.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk7",
+    "name": "Junk 7",
+    "path": "post-apo/item-assets/Junk7.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk8",
+    "name": "Junk 8",
+    "path": "post-apo/item-assets/Junk8.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "junk9",
+    "name": "Junk 9",
+    "path": "post-apo/item-assets/Junk9.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "kettle1",
+    "name": "Kettle 1",
+    "path": "post-apo/item-assets/Kettle1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "keypad1",
+    "name": "Keypad 1",
+    "path": "post-apo/item-assets/Keypad1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "labdevice1",
+    "name": "Lab Device 1",
+    "path": "post-apo/item-assets/LabDevice1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "labdevice2",
+    "name": "Lab Device 2",
+    "path": "post-apo/item-assets/LabDevice2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "labdevice3",
+    "name": "Lab Device 3",
+    "path": "post-apo/item-assets/LabDevice3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "labdevice4",
+    "name": "Lab Device 4",
+    "path": "post-apo/item-assets/LabDevice4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "labdevice5",
+    "name": "Lab Device 5",
+    "path": "post-apo/item-assets/LabDevice5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "labvials1",
+    "name": "Lab Vials 1",
+    "path": "post-apo/item-assets/LabVials1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "lab_microscope1",
+    "name": "Lab_ Microscope 1",
+    "path": "post-apo/item-assets/Lab_Microscope1.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "ladder1",
+    "name": "Ladder 1",
+    "path": "post-apo/item-assets/Ladder1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "ladder2",
+    "name": "Ladder 2",
+    "path": "post-apo/item-assets/Ladder2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "lamp1",
+    "name": "Lamp 1",
+    "path": "post-apo/item-assets/Lamp1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "lamp2",
+    "name": "Lamp 2",
+    "path": "post-apo/item-assets/Lamp2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "landmine1",
+    "name": "Landmine 1",
+    "path": "post-apo/item-assets/Landmine1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "lantern1",
+    "name": "Lantern 1",
+    "path": "post-apo/item-assets/Lantern1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "lantern2",
+    "name": "Lantern 2",
+    "path": "post-apo/item-assets/Lantern2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "laptop1",
+    "name": "Laptop 1",
+    "path": "post-apo/item-assets/Laptop1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "laptop2",
+    "name": "Laptop 2",
+    "path": "post-apo/item-assets/Laptop2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "lawnmower1",
+    "name": "Lawn Mower 1",
+    "path": "post-apo/item-assets/LawnMower1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "leaf1",
+    "name": "Leaf 1",
+    "path": "post-apo/item-assets/Leaf1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "lighter1",
+    "name": "Lighter 1",
+    "path": "post-apo/item-assets/Lighter1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "lock1",
+    "name": "Lock 1",
+    "path": "post-apo/item-assets/Lock1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "lock2",
+    "name": "Lock 2",
+    "path": "post-apo/item-assets/Lock2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "lock3",
+    "name": "Lock 3",
+    "path": "post-apo/item-assets/Lock3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "locker1",
+    "name": "Locker 1",
+    "path": "post-apo/item-assets/Locker1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "locker2",
+    "name": "Locker 2",
+    "path": "post-apo/item-assets/Locker2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "machine1",
+    "name": "Machine 1",
+    "path": "post-apo/item-assets/Machine1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "machine2",
+    "name": "Machine 2",
+    "path": "post-apo/item-assets/Machine2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "magazine1",
+    "name": "Magazine 1",
+    "path": "post-apo/item-assets/Magazine1.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "magazine2",
+    "name": "Magazine 2",
+    "path": "post-apo/item-assets/Magazine2.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "magazine3",
+    "name": "Magazine 3",
+    "path": "post-apo/item-assets/Magazine3.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "magazine4",
+    "name": "Magazine 4",
+    "path": "post-apo/item-assets/Magazine4.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "magazine5",
+    "name": "Magazine 5",
+    "path": "post-apo/item-assets/Magazine5.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "magazine6",
+    "name": "Magazine 6",
+    "path": "post-apo/item-assets/Magazine6.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "magazine7",
+    "name": "Magazine 7",
+    "path": "post-apo/item-assets/Magazine7.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "magazine8",
+    "name": "Magazine 8",
+    "path": "post-apo/item-assets/Magazine8.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "magazines1",
+    "name": "Magazines 1",
+    "path": "post-apo/item-assets/Magazines1.png",
+    "tags": [
+      "AMMO"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "mail1",
+    "name": "Mail 1",
+    "path": "post-apo/item-assets/Mail1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "mail2",
+    "name": "Mail 2",
+    "path": "post-apo/item-assets/Mail2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "mail3",
+    "name": "Mail 3",
+    "path": "post-apo/item-assets/Mail3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "mailbox1",
+    "name": "Mailbox 1",
+    "path": "post-apo/item-assets/Mailbox1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "mannequin1",
+    "name": "Mannequin 1",
+    "path": "post-apo/item-assets/Mannequin1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "mannequin2",
+    "name": "Mannequin 2",
+    "path": "post-apo/item-assets/Mannequin2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "mannequin3",
+    "name": "Mannequin 3",
+    "path": "post-apo/item-assets/Mannequin3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "map1",
+    "name": "Map 1",
+    "path": "post-apo/item-assets/Map1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "map2",
+    "name": "Map 2",
+    "path": "post-apo/item-assets/Map2.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "mattress1",
+    "name": "Mattress 1",
+    "path": "post-apo/item-assets/Mattress1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "mattress2",
+    "name": "Mattress 2",
+    "path": "post-apo/item-assets/Mattress2.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "meat1",
+    "name": "Meat 1",
+    "path": "post-apo/item-assets/Meat1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "meat2",
+    "name": "Meat 2",
+    "path": "post-apo/item-assets/Meat2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "meat3",
+    "name": "Meat 3",
+    "path": "post-apo/item-assets/Meat3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "meat4",
+    "name": "Meat 4",
+    "path": "post-apo/item-assets/Meat4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_antibiotics1",
+    "name": "Medicine_ Antibiotics 1",
+    "path": "post-apo/item-assets/Medicine_Antibiotics1.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_antibiotics2",
+    "name": "Medicine_ Antibiotics 2",
+    "path": "post-apo/item-assets/Medicine_Antibiotics2.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_bottle1",
+    "name": "Medicine_ Bottle 1",
+    "path": "post-apo/item-assets/Medicine_Bottle1.png",
+    "tags": [
+      "FOOD",
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_bottle2",
+    "name": "Medicine_ Bottle 2",
+    "path": "post-apo/item-assets/Medicine_Bottle2.png",
+    "tags": [
+      "FOOD",
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_lab1",
+    "name": "Medicine_ Lab 1",
+    "path": "post-apo/item-assets/Medicine_Lab1.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_lab2",
+    "name": "Medicine_ Lab 2",
+    "path": "post-apo/item-assets/Medicine_Lab2.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_lab3",
+    "name": "Medicine_ Lab 3",
+    "path": "post-apo/item-assets/Medicine_Lab3.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_needle1",
+    "name": "Medicine_ Needle 1",
+    "path": "post-apo/item-assets/Medicine_Needle1.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_needle2",
+    "name": "Medicine_ Needle 2",
+    "path": "post-apo/item-assets/Medicine_Needle2.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_needle3",
+    "name": "Medicine_ Needle 3",
+    "path": "post-apo/item-assets/Medicine_Needle3.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_pillbottle1",
+    "name": "Medicine_ Pill Bottle 1",
+    "path": "post-apo/item-assets/Medicine_PillBottle1.png",
+    "tags": [
+      "FOOD",
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_pillpack1",
+    "name": "Medicine_ Pill Pack 1",
+    "path": "post-apo/item-assets/Medicine_PillPack1.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_scissors1",
+    "name": "Medicine_ Scissors 1",
+    "path": "post-apo/item-assets/Medicine_Scissors1.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "medicine_tweezers1",
+    "name": "Medicine_ Tweezers 1",
+    "path": "post-apo/item-assets/Medicine_Tweezers1.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "metalbars1",
+    "name": "Metal Bars 1",
+    "path": "post-apo/item-assets/MetalBars1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "metalfence1",
+    "name": "Metal Fence 1",
+    "path": "post-apo/item-assets/MetalFence1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "metalgrate1",
+    "name": "Metal Grate 1",
+    "path": "post-apo/item-assets/MetalGrate1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "metalpipe1",
+    "name": "Metal Pipe 1",
+    "path": "post-apo/item-assets/MetalPipe1.png",
+    "tags": [
+      "MATERIAL",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 5
+  },
+  {
+    "id": "metalpipes1",
+    "name": "Metal Pipes 1",
+    "path": "post-apo/item-assets/MetalPipes1.png",
+    "tags": [
+      "MATERIAL",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 5
+  },
+  {
+    "id": "microwave1",
+    "name": "Microwave 1",
+    "path": "post-apo/item-assets/Microwave1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "microwave2",
+    "name": "Microwave 2",
+    "path": "post-apo/item-assets/Microwave2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "milkcrate1",
+    "name": "Milk Crate 1",
+    "path": "post-apo/item-assets/MilkCrate1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "ministove1",
+    "name": "Mini Stove 1",
+    "path": "post-apo/item-assets/MiniStove1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "mirrorbroken1",
+    "name": "Mirror Broken 1",
+    "path": "post-apo/item-assets/MirrorBroken1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "mirrorbroken2",
+    "name": "Mirror Broken 2",
+    "path": "post-apo/item-assets/MirrorBroken2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "missle1",
+    "name": "Missle 1",
+    "path": "post-apo/item-assets/Missle1.png",
+    "tags": [
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "missle2",
+    "name": "Missle 2",
+    "path": "post-apo/item-assets/Missle2.png",
+    "tags": [
+      "WEAPON_RANGED"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "monitor1",
+    "name": "Monitor 1",
+    "path": "post-apo/item-assets/Monitor1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "monitor2",
+    "name": "Monitor 2",
+    "path": "post-apo/item-assets/Monitor2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "mopandbucket1",
+    "name": "Mopand Bucket 1",
+    "path": "post-apo/item-assets/MopandBucket1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "newspaper1",
+    "name": "News Paper 1",
+    "path": "post-apo/item-assets/NewsPaper1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "newspaper2",
+    "name": "News Paper 2",
+    "path": "post-apo/item-assets/NewsPaper2.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "newspaperbox1",
+    "name": "Newspaper Box 1",
+    "path": "post-apo/item-assets/NewspaperBox1.png",
+    "tags": [
+      "CONTAINER",
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "newspaperbox2",
+    "name": "Newspaper Box 2",
+    "path": "post-apo/item-assets/NewspaperBox2.png",
+    "tags": [
+      "CONTAINER",
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "oilcan1",
+    "name": "Oil Can 1",
+    "path": "post-apo/item-assets/OilCan1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "oilcan2",
+    "name": "Oil Can 2",
+    "path": "post-apo/item-assets/OilCan2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "oven1",
+    "name": "Oven 1",
+    "path": "post-apo/item-assets/Oven1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "oxygentank1",
+    "name": "Oxygen Tank 1",
+    "path": "post-apo/item-assets/OxygenTank1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "paintbrush1",
+    "name": "Paint Brush 1",
+    "path": "post-apo/item-assets/PaintBrush1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "paintbucket1",
+    "name": "Paint Bucket 1",
+    "path": "post-apo/item-assets/PaintBucket1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "paintcan1",
+    "name": "Paint Can 1",
+    "path": "post-apo/item-assets/PaintCan1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "paintcan2",
+    "name": "Paint Can 2",
+    "path": "post-apo/item-assets/PaintCan2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "pallet1",
+    "name": "Pallet 1",
+    "path": "post-apo/item-assets/Pallet1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "palletjack1",
+    "name": "Pallet Jack 1",
+    "path": "post-apo/item-assets/PalletJack1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "pallet_ammo1",
+    "name": "Pallet_ Ammo 1",
+    "path": "post-apo/item-assets/Pallet_Ammo1.png",
+    "tags": [
+      "AMMO",
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "pamphlets1",
+    "name": "Pamphlets 1",
+    "path": "post-apo/item-assets/Pamphlets1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "pan1",
+    "name": "Pan 1",
+    "path": "post-apo/item-assets/Pan1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "pan2",
+    "name": "Pan 2",
+    "path": "post-apo/item-assets/Pan2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "pan3",
+    "name": "Pan 3",
+    "path": "post-apo/item-assets/Pan3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "pan4",
+    "name": "Pan 4",
+    "path": "post-apo/item-assets/Pan4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "pan5",
+    "name": "Pan 5",
+    "path": "post-apo/item-assets/Pan5.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "paper1",
+    "name": "Paper 1",
+    "path": "post-apo/item-assets/Paper1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "paper2",
+    "name": "Paper 2",
+    "path": "post-apo/item-assets/Paper2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "paper3",
+    "name": "Paper 3",
+    "path": "post-apo/item-assets/Paper3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "patchworkcloth1",
+    "name": "Patchwork Cloth 1",
+    "path": "post-apo/item-assets/PatchworkCloth1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "phone1",
+    "name": "Phone 1",
+    "path": "post-apo/item-assets/Phone1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "phone2",
+    "name": "Phone 2",
+    "path": "post-apo/item-assets/Phone2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "phone_old1",
+    "name": "Phone_ Old 1",
+    "path": "post-apo/item-assets/Phone_Old1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "pickaxe1",
+    "name": "Pickaxe 1",
+    "path": "post-apo/item-assets/Pickaxe1.png",
+    "tags": [
+      "TOOL",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "picture1",
+    "name": "Picture 1",
+    "path": "post-apo/item-assets/Picture1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "picture2",
+    "name": "Picture 2",
+    "path": "post-apo/item-assets/Picture2.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "picture3",
+    "name": "Picture 3",
+    "path": "post-apo/item-assets/Picture3.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "picture4",
+    "name": "Picture 4",
+    "path": "post-apo/item-assets/Picture4.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "picture5",
+    "name": "Picture 5",
+    "path": "post-apo/item-assets/Picture5.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "picture6",
+    "name": "Picture 6",
+    "path": "post-apo/item-assets/Picture6.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "pillow1",
+    "name": "Pillow 1",
+    "path": "post-apo/item-assets/Pillow1.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "pillow2",
+    "name": "Pillow 2",
+    "path": "post-apo/item-assets/Pillow2.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "pillow3",
+    "name": "Pillow 3",
+    "path": "post-apo/item-assets/Pillow3.png",
+    "tags": [
+      "MEDICAL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant1",
+    "name": "Plant 1",
+    "path": "post-apo/item-assets/Plant1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant10",
+    "name": "Plant 10",
+    "path": "post-apo/item-assets/Plant10.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant11",
+    "name": "Plant 11",
+    "path": "post-apo/item-assets/Plant11.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant2",
+    "name": "Plant 2",
+    "path": "post-apo/item-assets/Plant2.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant3",
+    "name": "Plant 3",
+    "path": "post-apo/item-assets/Plant3.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant4",
+    "name": "Plant 4",
+    "path": "post-apo/item-assets/Plant4.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant5",
+    "name": "Plant 5",
+    "path": "post-apo/item-assets/Plant5.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant6",
+    "name": "Plant 6",
+    "path": "post-apo/item-assets/Plant6.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant7",
+    "name": "Plant 7",
+    "path": "post-apo/item-assets/Plant7.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant8",
+    "name": "Plant 8",
+    "path": "post-apo/item-assets/Plant8.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plant9",
+    "name": "Plant 9",
+    "path": "post-apo/item-assets/Plant9.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plate1",
+    "name": "Plate 1",
+    "path": "post-apo/item-assets/Plate1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plate2",
+    "name": "Plate 2",
+    "path": "post-apo/item-assets/Plate2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plate3",
+    "name": "Plate 3",
+    "path": "post-apo/item-assets/Plate3.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plate4",
+    "name": "Plate 4",
+    "path": "post-apo/item-assets/Plate4.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "plywood1",
+    "name": "Plywood 1",
+    "path": "post-apo/item-assets/Plywood1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "portableheater1",
+    "name": "Portable Heater 1",
+    "path": "post-apo/item-assets/PortableHeater1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "portablelight1",
+    "name": "Portable Light 1",
+    "path": "post-apo/item-assets/PortableLight1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "poster1",
+    "name": "Poster 1",
+    "path": "post-apo/item-assets/Poster1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "poster2",
+    "name": "Poster 2",
+    "path": "post-apo/item-assets/Poster2.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "poster3",
+    "name": "Poster 3",
+    "path": "post-apo/item-assets/Poster3.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "pot1",
+    "name": "Pot 1",
+    "path": "post-apo/item-assets/Pot1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "propanetank1",
+    "name": "Propane Tank 1",
+    "path": "post-apo/item-assets/PropaneTank1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "quarantinebed1",
+    "name": "Quarantine Bed 1",
+    "path": "post-apo/item-assets/QuarantineBed1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "rackmountcrate1",
+    "name": "Rack Mount Crate 1",
+    "path": "post-apo/item-assets/RackMountCrate1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "radio1",
+    "name": "Radio 1",
+    "path": "post-apo/item-assets/Radio1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "radio2",
+    "name": "Radio 2",
+    "path": "post-apo/item-assets/Radio2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "radio3",
+    "name": "Radio 3",
+    "path": "post-apo/item-assets/Radio3.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "radio4",
+    "name": "Radio 4",
+    "path": "post-apo/item-assets/Radio4.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "radio5",
+    "name": "Radio 5",
+    "path": "post-apo/item-assets/Radio5.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "radio6",
+    "name": "Radio 6",
+    "path": "post-apo/item-assets/Radio6.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "raiderbed1",
+    "name": "Raider Bed 1",
+    "path": "post-apo/item-assets/RaiderBed1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "raidercollar1",
+    "name": "Raider Collar 1",
+    "path": "post-apo/item-assets/RaiderCollar1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "ration1",
+    "name": "Ration 1",
+    "path": "post-apo/item-assets/Ration1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "razorwire1",
+    "name": "Razor Wire 1",
+    "path": "post-apo/item-assets/RazorWire1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "rock1",
+    "name": "Rock 1",
+    "path": "post-apo/item-assets/Rock1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "rock2",
+    "name": "Rock 2",
+    "path": "post-apo/item-assets/Rock2.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "sandbag1",
+    "name": "Sandbag 1",
+    "path": "post-apo/item-assets/Sandbag1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "scrapmetal1",
+    "name": "Scrap Metal 1",
+    "path": "post-apo/item-assets/ScrapMetal1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "scrapmetal2",
+    "name": "Scrap Metal 2",
+    "path": "post-apo/item-assets/ScrapMetal2.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "sheet1",
+    "name": "Sheet 1",
+    "path": "post-apo/item-assets/Sheet1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "shelf1",
+    "name": "Shelf 1",
+    "path": "post-apo/item-assets/Shelf1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "shelf2",
+    "name": "Shelf 2",
+    "path": "post-apo/item-assets/Shelf2.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "shelter1",
+    "name": "Shelter 1",
+    "path": "post-apo/item-assets/Shelter1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "shovel1",
+    "name": "Shovel 1",
+    "path": "post-apo/item-assets/Shovel1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "shovel2",
+    "name": "Shovel 2",
+    "path": "post-apo/item-assets/Shovel2.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "sign1",
+    "name": "Sign 1",
+    "path": "post-apo/item-assets/Sign1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign10",
+    "name": "Sign 10",
+    "path": "post-apo/item-assets/Sign10.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign11",
+    "name": "Sign 11",
+    "path": "post-apo/item-assets/Sign11.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign12",
+    "name": "Sign 12",
+    "path": "post-apo/item-assets/Sign12.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign13",
+    "name": "Sign 13",
+    "path": "post-apo/item-assets/Sign13.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign14",
+    "name": "Sign 14",
+    "path": "post-apo/item-assets/Sign14.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign15",
+    "name": "Sign 15",
+    "path": "post-apo/item-assets/Sign15.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign16",
+    "name": "Sign 16",
+    "path": "post-apo/item-assets/Sign16.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign17",
+    "name": "Sign 17",
+    "path": "post-apo/item-assets/Sign17.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign18",
+    "name": "Sign 18",
+    "path": "post-apo/item-assets/Sign18.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign19",
+    "name": "Sign 19",
+    "path": "post-apo/item-assets/Sign19.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign2",
+    "name": "Sign 2",
+    "path": "post-apo/item-assets/Sign2.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign20",
+    "name": "Sign 20",
+    "path": "post-apo/item-assets/Sign20.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign3",
+    "name": "Sign 3",
+    "path": "post-apo/item-assets/Sign3.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign4",
+    "name": "Sign 4",
+    "path": "post-apo/item-assets/Sign4.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign5",
+    "name": "Sign 5",
+    "path": "post-apo/item-assets/Sign5.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign6",
+    "name": "Sign 6",
+    "path": "post-apo/item-assets/Sign6.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign7",
+    "name": "Sign 7",
+    "path": "post-apo/item-assets/Sign7.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign8",
+    "name": "Sign 8",
+    "path": "post-apo/item-assets/Sign8.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sign9",
+    "name": "Sign 9",
+    "path": "post-apo/item-assets/Sign9.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "silverbar1",
+    "name": "Silver Bar 1",
+    "path": "post-apo/item-assets/SilverBar1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sink1",
+    "name": "Sink 1",
+    "path": "post-apo/item-assets/Sink1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "skeletalgoo1",
+    "name": "Skeletal Goo 1",
+    "path": "post-apo/item-assets/SkeletalGoo1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "slab1",
+    "name": "Slab 1",
+    "path": "post-apo/item-assets/Slab1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sleepingbag1",
+    "name": "Sleeping Bag 1",
+    "path": "post-apo/item-assets/SleepingBag1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "sleepingbag2",
+    "name": "Sleeping Bag 2",
+    "path": "post-apo/item-assets/SleepingBag2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "soda1",
+    "name": "Soda 1",
+    "path": "post-apo/item-assets/Soda1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "soda2",
+    "name": "Soda 2",
+    "path": "post-apo/item-assets/Soda2.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sofa1",
+    "name": "Sofa 1",
+    "path": "post-apo/item-assets/Sofa1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "sofa2",
+    "name": "Sofa 2",
+    "path": "post-apo/item-assets/Sofa2.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "spraycan1",
+    "name": "Spray Can 1",
+    "path": "post-apo/item-assets/SprayCan1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "sprayer1",
+    "name": "Sprayer 1",
+    "path": "post-apo/item-assets/Sprayer1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "suitcase1",
+    "name": "Suitcase 1",
+    "path": "post-apo/item-assets/Suitcase1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "suitcase2",
+    "name": "Suitcase 2",
+    "path": "post-apo/item-assets/Suitcase2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "suitcase3",
+    "name": "Suitcase 3",
+    "path": "post-apo/item-assets/Suitcase3.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "switchbox1",
+    "name": "Switch Box 1",
+    "path": "post-apo/item-assets/SwitchBox1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "tv1",
+    "name": "T V 1",
+    "path": "post-apo/item-assets/TV1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "tv2",
+    "name": "T V 2",
+    "path": "post-apo/item-assets/TV2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "tv3",
+    "name": "T V 3",
+    "path": "post-apo/item-assets/TV3.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "tablet1",
+    "name": "Tablet 1",
+    "path": "post-apo/item-assets/Tablet1.png",
+    "tags": [
+      "ELECTRONICS",
+      "FURNITURE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 10
+  },
+  {
+    "id": "tap1",
+    "name": "Tap 1",
+    "path": "post-apo/item-assets/Tap1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "target1",
+    "name": "Target 1",
+    "path": "post-apo/item-assets/Target1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "target2",
+    "name": "Target 2",
+    "path": "post-apo/item-assets/Target2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "tin1",
+    "name": "Tin 1",
+    "path": "post-apo/item-assets/Tin1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "tire1",
+    "name": "Tire 1",
+    "path": "post-apo/item-assets/Tire1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "tire2",
+    "name": "Tire 2",
+    "path": "post-apo/item-assets/Tire2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "tire3",
+    "name": "Tire 3",
+    "path": "post-apo/item-assets/Tire3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "tirerim1",
+    "name": "Tire Rim 1",
+    "path": "post-apo/item-assets/TireRim1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "tissues1",
+    "name": "Tissues 1",
+    "path": "post-apo/item-assets/Tissues1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "toilet1",
+    "name": "Toilet 1",
+    "path": "post-apo/item-assets/Toilet1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "toilet2",
+    "name": "Toilet 2",
+    "path": "post-apo/item-assets/Toilet2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "toiletpaper1",
+    "name": "Toilet Paper 1",
+    "path": "post-apo/item-assets/ToiletPaper1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "tool_drill1",
+    "name": "Tool_ Drill 1",
+    "path": "post-apo/item-assets/Tool_Drill1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_gardenrake1",
+    "name": "Tool_ Garden Rake 1",
+    "path": "post-apo/item-assets/Tool_GardenRake1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_hammer1",
+    "name": "Tool_ Hammer 1",
+    "path": "post-apo/item-assets/Tool_Hammer1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_handrake1",
+    "name": "Tool_ Hand Rake 1",
+    "path": "post-apo/item-assets/Tool_HandRake1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_hoe1",
+    "name": "Tool_ Hoe 1",
+    "path": "post-apo/item-assets/Tool_Hoe1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_nails1",
+    "name": "Tool_ Nails 1",
+    "path": "post-apo/item-assets/Tool_Nails1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_nutsbox1",
+    "name": "Tool_ Nuts Box 1",
+    "path": "post-apo/item-assets/Tool_NutsBox1.png",
+    "tags": [
+      "CONTAINER",
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "tool_pitchfork1",
+    "name": "Tool_ Pitchfork 1",
+    "path": "post-apo/item-assets/Tool_Pitchfork1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_saw1",
+    "name": "Tool_ Saw 1",
+    "path": "post-apo/item-assets/Tool_Saw1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_screwdriver1",
+    "name": "Tool_ Screwdriver 1",
+    "path": "post-apo/item-assets/Tool_Screwdriver1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_screws1",
+    "name": "Tool_ Screws 1",
+    "path": "post-apo/item-assets/Tool_Screws1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_sledgehammer1",
+    "name": "Tool_ Sledgehammer 1",
+    "path": "post-apo/item-assets/Tool_Sledgehammer1.png",
+    "tags": [
+      "TOOL",
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "tool_solderingiron1",
+    "name": "Tool_ Soldering Iron 1",
+    "path": "post-apo/item-assets/Tool_SolderingIron1.png",
+    "tags": [
+      "MATERIAL",
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 5
+  },
+  {
+    "id": "tool_spade1",
+    "name": "Tool_ Spade 1",
+    "path": "post-apo/item-assets/Tool_Spade1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_spanner1",
+    "name": "Tool_ Spanner 1",
+    "path": "post-apo/item-assets/Tool_Spanner1.png",
+    "tags": [
+      "FOOD",
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_toolbox1",
+    "name": "Tool_ Toolbox 1",
+    "path": "post-apo/item-assets/Tool_Toolbox1.png",
+    "tags": [
+      "CONTAINER",
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "tool_toolbox2",
+    "name": "Tool_ Toolbox 2",
+    "path": "post-apo/item-assets/Tool_Toolbox2.png",
+    "tags": [
+      "CONTAINER",
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "tool_toolbox3",
+    "name": "Tool_ Toolbox 3",
+    "path": "post-apo/item-assets/Tool_Toolbox3.png",
+    "tags": [
+      "CONTAINER",
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "tool_trowel1",
+    "name": "Tool_ Trowel 1",
+    "path": "post-apo/item-assets/Tool_Trowel1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_wrench1",
+    "name": "Tool_ Wrench 1",
+    "path": "post-apo/item-assets/Tool_Wrench1.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_wrench2",
+    "name": "Tool_ Wrench 2",
+    "path": "post-apo/item-assets/Tool_Wrench2.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_wrench3",
+    "name": "Tool_ Wrench 3",
+    "path": "post-apo/item-assets/Tool_Wrench3.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tool_wrench4",
+    "name": "Tool_ Wrench 4",
+    "path": "post-apo/item-assets/Tool_Wrench4.png",
+    "tags": [
+      "TOOL"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 2
+  },
+  {
+    "id": "tooth1",
+    "name": "Tooth 1",
+    "path": "post-apo/item-assets/Tooth1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "toy_bear1",
+    "name": "Toy_ Bear 1",
+    "path": "post-apo/item-assets/Toy_Bear1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "toy_boardgame1",
+    "name": "Toy_ Boardgame 1",
+    "path": "post-apo/item-assets/Toy_Boardgame1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "toy_dollhouse1",
+    "name": "Toy_ Dollhouse 1",
+    "path": "post-apo/item-assets/Toy_Dollhouse1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "toy_plushie1",
+    "name": "Toy_ Plushie 1",
+    "path": "post-apo/item-assets/Toy_Plushie1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "toy_rockinghorse1",
+    "name": "Toy_ Rocking Horse 1",
+    "path": "post-apo/item-assets/Toy_RockingHorse1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "toy_tricycle1",
+    "name": "Toy_ Tricycle 1",
+    "path": "post-apo/item-assets/Toy_Tricycle1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "trafficcone1",
+    "name": "Traffic Cone 1",
+    "path": "post-apo/item-assets/TrafficCone1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "trash1",
+    "name": "Trash 1",
+    "path": "post-apo/item-assets/Trash1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash10",
+    "name": "Trash 10",
+    "path": "post-apo/item-assets/Trash10.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash11",
+    "name": "Trash 11",
+    "path": "post-apo/item-assets/Trash11.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash12",
+    "name": "Trash 12",
+    "path": "post-apo/item-assets/Trash12.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash13",
+    "name": "Trash 13",
+    "path": "post-apo/item-assets/Trash13.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash14",
+    "name": "Trash 14",
+    "path": "post-apo/item-assets/Trash14.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash15",
+    "name": "Trash 15",
+    "path": "post-apo/item-assets/Trash15.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash16",
+    "name": "Trash 16",
+    "path": "post-apo/item-assets/Trash16.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash2",
+    "name": "Trash 2",
+    "path": "post-apo/item-assets/Trash2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash3",
+    "name": "Trash 3",
+    "path": "post-apo/item-assets/Trash3.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash4",
+    "name": "Trash 4",
+    "path": "post-apo/item-assets/Trash4.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash5",
+    "name": "Trash 5",
+    "path": "post-apo/item-assets/Trash5.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash6",
+    "name": "Trash 6",
+    "path": "post-apo/item-assets/Trash6.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash7",
+    "name": "Trash 7",
+    "path": "post-apo/item-assets/Trash7.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash8",
+    "name": "Trash 8",
+    "path": "post-apo/item-assets/Trash8.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trash9",
+    "name": "Trash 9",
+    "path": "post-apo/item-assets/Trash9.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trashbag1",
+    "name": "Trash Bag 1",
+    "path": "post-apo/item-assets/TrashBag1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trashbag2",
+    "name": "Trash Bag 2",
+    "path": "post-apo/item-assets/TrashBag2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trashbag3",
+    "name": "Trash Bag 3",
+    "path": "post-apo/item-assets/TrashBag3.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trashbag4",
+    "name": "Trash Bag 4",
+    "path": "post-apo/item-assets/TrashBag4.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trashbag5",
+    "name": "Trash Bag 5",
+    "path": "post-apo/item-assets/TrashBag5.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trashbin1",
+    "name": "Trash Bin 1",
+    "path": "post-apo/item-assets/TrashBin1.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trashbin2",
+    "name": "Trash Bin 2",
+    "path": "post-apo/item-assets/TrashBin2.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trashbin3",
+    "name": "Trash Bin 3",
+    "path": "post-apo/item-assets/TrashBin3.png",
+    "tags": [
+      "CONTAINER"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trashcan1",
+    "name": "Trash Can 1",
+    "path": "post-apo/item-assets/TrashCan1.png",
+    "tags": [
+      "CONTAINER",
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 3
+  },
+  {
+    "id": "trolly1",
+    "name": "Trolly 1",
+    "path": "post-apo/item-assets/Trolly1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "trolly2",
+    "name": "Trolly 2",
+    "path": "post-apo/item-assets/Trolly2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "urn1",
+    "name": "Urn 1",
+    "path": "post-apo/item-assets/Urn1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "utensil_fork1",
+    "name": "Utensil_ Fork 1",
+    "path": "post-apo/item-assets/Utensil_Fork1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "utensil_knife1",
+    "name": "Utensil_ Knife 1",
+    "path": "post-apo/item-assets/Utensil_Knife1.png",
+    "tags": [
+      "WEAPON_MELEE"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 3
+  },
+  {
+    "id": "utensil_spoon1",
+    "name": "Utensil_ Spoon 1",
+    "path": "post-apo/item-assets/Utensil_Spoon1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vacuum1",
+    "name": "Vacuum 1",
+    "path": "post-apo/item-assets/Vacuum1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vase1",
+    "name": "Vase 1",
+    "path": "post-apo/item-assets/Vase1.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vase2",
+    "name": "Vase 2",
+    "path": "post-apo/item-assets/Vase2.png",
+    "tags": [
+      "DECORATION"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle1",
+    "name": "Vehicle 1",
+    "path": "post-apo/item-assets/Vehicle1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle10",
+    "name": "Vehicle 10",
+    "path": "post-apo/item-assets/Vehicle10.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle11",
+    "name": "Vehicle 11",
+    "path": "post-apo/item-assets/Vehicle11.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle12",
+    "name": "Vehicle 12",
+    "path": "post-apo/item-assets/Vehicle12.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle13",
+    "name": "Vehicle 13",
+    "path": "post-apo/item-assets/Vehicle13.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle14",
+    "name": "Vehicle 14",
+    "path": "post-apo/item-assets/Vehicle14.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle15",
+    "name": "Vehicle 15",
+    "path": "post-apo/item-assets/Vehicle15.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle2",
+    "name": "Vehicle 2",
+    "path": "post-apo/item-assets/Vehicle2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle3",
+    "name": "Vehicle 3",
+    "path": "post-apo/item-assets/Vehicle3.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle4",
+    "name": "Vehicle 4",
+    "path": "post-apo/item-assets/Vehicle4.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle5",
+    "name": "Vehicle 5",
+    "path": "post-apo/item-assets/Vehicle5.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle6",
+    "name": "Vehicle 6",
+    "path": "post-apo/item-assets/Vehicle6.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle7",
+    "name": "Vehicle 7",
+    "path": "post-apo/item-assets/Vehicle7.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle8",
+    "name": "Vehicle 8",
+    "path": "post-apo/item-assets/Vehicle8.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vehicle9",
+    "name": "Vehicle 9",
+    "path": "post-apo/item-assets/Vehicle9.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "vendingmachine1",
+    "name": "Vending Machine 1",
+    "path": "post-apo/item-assets/VendingMachine1.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "vendingmachine2",
+    "name": "Vending Machine 2",
+    "path": "post-apo/item-assets/VendingMachine2.png",
+    "tags": [
+      "ELECTRONICS"
+    ],
+    "rarity": "UNCOMMON",
+    "weight": 4
+  },
+  {
+    "id": "washingmachine1",
+    "name": "Washing Machine 1",
+    "path": "post-apo/item-assets/WashingMachine1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "washingmachine2",
+    "name": "Washing Machine 2",
+    "path": "post-apo/item-assets/WashingMachine2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "watercooler1",
+    "name": "Water Cooler 1",
+    "path": "post-apo/item-assets/WaterCooler1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "waterjug1",
+    "name": "Water Jug 1",
+    "path": "post-apo/item-assets/WaterJug1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "watertank1",
+    "name": "Water Tank 1",
+    "path": "post-apo/item-assets/WaterTank1.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "watertank2",
+    "name": "Water Tank 2",
+    "path": "post-apo/item-assets/WaterTank2.png",
+    "tags": [
+      "MISC"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "wateringcan1",
+    "name": "Watering Can 1",
+    "path": "post-apo/item-assets/WateringCan1.png",
+    "tags": [
+      "FOOD"
+    ],
+    "rarity": "COMMON",
+    "weight": 1
+  },
+  {
+    "id": "wheelchair1",
+    "name": "Wheelchair 1",
+    "path": "post-apo/item-assets/Wheelchair1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "wheelchair2",
+    "name": "Wheelchair 2",
+    "path": "post-apo/item-assets/Wheelchair2.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "whiteboard1",
+    "name": "White Board 1",
+    "path": "post-apo/item-assets/WhiteBoard1.png",
+    "tags": [
+      "DECORATION",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "whiteboard2",
+    "name": "White Board 2",
+    "path": "post-apo/item-assets/WhiteBoard2.png",
+    "tags": [
+      "DECORATION",
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "wood1",
+    "name": "Wood 1",
+    "path": "post-apo/item-assets/Wood1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "wood2",
+    "name": "Wood 2",
+    "path": "post-apo/item-assets/Wood2.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "wood3",
+    "name": "Wood 3",
+    "path": "post-apo/item-assets/Wood3.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "woodpile1",
+    "name": "Wood Pile 1",
+    "path": "post-apo/item-assets/WoodPile1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "woodstove1",
+    "name": "Wood Stove 1",
+    "path": "post-apo/item-assets/WoodStove1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "woodenplank1",
+    "name": "Wooden Plank 1",
+    "path": "post-apo/item-assets/WoodenPlank1.png",
+    "tags": [
+      "MATERIAL"
+    ],
+    "rarity": "COMMON",
+    "weight": 5
+  },
+  {
+    "id": "workbench1",
+    "name": "Workbench 1",
+    "path": "post-apo/item-assets/Workbench1.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  },
+  {
+    "id": "workbench2",
+    "name": "Workbench 2",
+    "path": "post-apo/item-assets/Workbench2.png",
+    "tags": [
+      "FURNITURE"
+    ],
+    "rarity": "COMMON",
+    "weight": 10
+  }
+]

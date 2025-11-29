@@ -98,7 +98,7 @@ import { QuickActionModalComponent } from './quick-action.modal.component';
       margin: 0 auto;
       padding: var(--padding-medium);
       flex: 1; // extra space for visibility
-      padding-bottom: var(--footer-height);
+      padding-bottom: calc(var(--footer-height) + 30px);
     }
 
     footer {

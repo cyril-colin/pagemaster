@@ -1,0 +1,7553 @@
+[
+  {
+    "path": "post-apo/item-assets/Acetone1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/AirConditioner1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/AirConditioner2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/AirPump1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Alarm1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/AmmoClip1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/AmmoClip2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Ammo_Shotgun1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Antler1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Ashtray1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bag1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Banner1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/BarSign1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barrel1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barrel2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barrel3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barrel4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barrel5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barrel6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barrel7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barrel8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barricade1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Barricade2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Basket1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Basket2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Basket3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bathtub1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Battery1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Battery2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Battery3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bayonet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/BearTrap1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bed1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bed2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bike1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bike2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Billow1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Binder1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Binoculars1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/BirdCage1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/BirdFeeder1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Blanket1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Boat1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Boat2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/BoatOar1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Body1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Body2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Body3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/BoneChimes1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book15.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book16.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book17.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book18.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book19.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Book9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Books1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Books2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle15.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle16.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle17.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle18.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle19.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle20.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle21.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle22.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle23.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle24.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle25.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle26.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle27.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle28.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle29.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle30.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle31.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle32.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle33.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle34.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle35.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle36.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle37.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle38.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle39.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle40.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bottle9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bowl1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bowl2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bowl3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Ammo1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Ammo2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Ammo3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Ammo4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Ammo5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Ammo6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Bloody1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Cardboard9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Files1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Garbage1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Goods1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Goods2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Goods3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Goods4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Goods5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Goods6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Grenades1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Metal1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Military1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Military2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Rations1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Rations2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Rations3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Rations4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Rations5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Box_Rations6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Brick1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Broom1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bucket1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bucket2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bucket_Offal1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bullet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bullets1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bunker_Device1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bunker_Device2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bunker_Device3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bunker_Device4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bunker_Scanner1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Bunker_Vent1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/BusStop1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Butane1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CCTV1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cabinet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cabinet2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cabinet3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cable1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cable2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CableSpool1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cage1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Calculator1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Camera1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CampStove1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CampingKit1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can15.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can16.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can17.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can18.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can19.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can20.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can21.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can22.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can23.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can24.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can25.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can_Oil1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can_Oil2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Can_Oil3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Candle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Candlestick1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CanvasRoll1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CanvasRoll2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CanvasRoll3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Carriage1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cash1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CashBox1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CementMixer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chainsaw1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chair9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Chopsticks1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cinderblock1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cinderblock2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cinderblock3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ClayPot1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Clock1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cloth1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Computer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Computer2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Computer3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Computer4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Computer5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Computer6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Computer7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ComputerKeyboard1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ComputerServer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ComputerServer2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ComputerServer3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ComputerTerminal1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ComputerTerminal2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ComputerTerminal3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Container1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cooler1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cooler2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cooler3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CorkBoard1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CorkBoard2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/CorkBoard3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cot1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cradle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate_Weapons1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crate_Weapons2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Crowbar1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cultivator1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Cup9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Dartboard1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Desk1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Detergent1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Detergent2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Detonator1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Device1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Device2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Device3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Device4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Device5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Accessory1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Accessory3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Accessory4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Accessory5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Axe1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bat1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bat2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bottom1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bottom10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bottom2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bottom3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bottom4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bottom6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bottom7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bottom8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Bottom9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Cleaver.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Female_Bottom11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Female_Bottom5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Female_Top10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Female_Top5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Head1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Head2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Head3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Head4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Head5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Katana.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_MG1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_MG2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Machete1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Male_Accessory4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Male_Bottom5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Male_Top10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Male_Top17.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Male_Top5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_PipeSaw.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Pistol1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Pistol2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_SMG1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_SMG2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Screwdriver.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Shield1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Shotgun1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_TireIron.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top15.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top16.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top17.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Doomsday_Top9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Dresser1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Drugs1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Drugs2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ElectricBox1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ElectricBox2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ElectricBox3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ElectricBox4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ElectricBox5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/EmergencyLight1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ExactoKnife1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Accessory1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Accessory2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_AssaultRifle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_AssaultRifle2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Bat1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Bottom1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Bottom3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Bottom6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Bottom7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Bottom8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Female_Bottom2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Female_Bottom4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Female_Bottom5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Female_Head6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Female_Top12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Female_Top14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Female_Top18.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Female_Top9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Hammer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Hatchet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Head1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Head2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Head3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Head4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Head5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Head7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Head8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Head9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Knife1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Male_Bottom2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Male_Bottom4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Male_Bottom5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Male_Head6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Male_Top12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Male_Top14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Male_Top9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Prybar1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_SawAxe1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Shield1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Shotgun1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top15.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top16.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top17.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Expansion_Top8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FacilityComputer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FacilityContainmentCube1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FacilityCrate1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FacilityCrate2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FacilityCrate3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Fan1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FileCabinet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FireBucket1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FireExtinguisher1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FireExtinguisher2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FireExtinguisher3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FireExtinguisher4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FireHose1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FireHydrant1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FirstAid1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FloorRug1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FloorRug2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FloorRug3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Flyer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Flyer2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Flyer3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FoodContainer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FoodTray1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food_Box1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food_Box2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food_Noodles1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food_Noodles2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food_Pizza1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food_Pizza2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food_Pizza3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food_Sandwhich1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Food_Sandwhich2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Fridge1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Fridge2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/FuseBox1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GasCan1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GasCan2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GasCan3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GasCylinder1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GasCylinder2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GasPump1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GasPump2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Generator1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Generator2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Generator3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Generator4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Globe1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GoldBar1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GoreBag1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/GoreBarrel1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Grenade1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Grenade2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Grill1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Grill2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Guitar1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/HandCuffs1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Hatchet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Hatchet2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Hedgehog1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/HighTechMonitor1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Hose1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/HospitalGurney1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/IndustrialBucket1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/IndustrialBucket2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/IndustrialCannister1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Iron1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jug9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Jukebox1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/JumperCables1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk15.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk16.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk17.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk18.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk19.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk20.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk21.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk22.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk23.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk24.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Junk9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Kettle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Keypad1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/LabDevice1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/LabDevice2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/LabDevice3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/LabDevice4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/LabDevice5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/LabVials1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Lab_Microscope1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Ladder1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Ladder2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Lamp1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Lamp2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Landmine1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Lantern1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Lantern2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Laptop1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Laptop2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/LawnMower1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Leaf1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Lighter1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Lock1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Lock2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Lock3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Locker1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Locker2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Machine1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Machine2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Magazine1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Magazine2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Magazine3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Magazine4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Magazine5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Magazine6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Magazine7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Magazine8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Magazines1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Mail1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Mail2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Mail3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Mailbox1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Mannequin1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Mannequin2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Mannequin3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Map1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Map2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Mattress1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Mattress2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Meat1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Meat2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Meat3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Meat4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Antibiotics1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Antibiotics2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Bottle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Bottle2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Lab1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Lab2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Lab3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Needle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Needle2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Needle3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_PillBottle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_PillPack1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Scissors1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Medicine_Tweezers1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MetalBars1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MetalFence1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MetalGrate1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MetalPipe1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MetalPipes1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Microwave1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Microwave2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MilkCrate1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MiniStove1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MirrorBroken1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MirrorBroken2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Missle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Missle2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Monitor1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Monitor2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/MopandBucket1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/NewsPaper1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/NewsPaper2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/NewspaperBox1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/NewspaperBox2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/OilCan1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/OilCan2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Oven1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/OxygenTank1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/PaintBrush1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/PaintBucket1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/PaintCan1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/PaintCan2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pallet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/PalletJack1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pallet_Ammo1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pamphlets1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pan1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pan2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pan3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pan4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pan5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Paper1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Paper2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Paper3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/PatchworkCloth1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Phone1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Phone2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Phone_Old1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pickaxe1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Picture1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Picture2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Picture3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Picture4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Picture5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Picture6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pillow1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pillow2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pillow3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plant9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plate1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plate2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plate3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plate4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Plywood1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/PortableHeater1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/PortableLight1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Poster1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Poster2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Poster3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Pot1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/PropaneTank1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/QuarantineBed1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/RackMountCrate1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Radio1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Radio2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Radio3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Radio4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Radio5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Radio6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/RaiderBed1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/RaiderCollar1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Ration1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/RazorWire1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Rock1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Rock2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sandbag1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ScrapMetal1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ScrapMetal2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sheet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Shelf1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Shelf2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Shelter1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Shovel1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Shovel2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign15.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign16.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign17.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign18.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign19.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign20.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sign9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/SilverBar1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sink1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/SkeletalGoo1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Slab1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/SleepingBag1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/SleepingBag2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Soda1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Soda2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sofa1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sofa2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/SprayCan1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Sprayer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Suitcase1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Suitcase2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Suitcase3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/SwitchBox1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TV1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TV2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TV3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tablet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tap1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Target1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Target2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tin1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tire1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tire2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tire3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TireRim1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tissues1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Toilet1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Toilet2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/ToiletPaper1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Drill1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_GardenRake1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Hammer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_HandRake1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Hoe1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Nails1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_NutsBox1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Pitchfork1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Saw1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Screwdriver1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Screws1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Sledgehammer1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_SolderingIron1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Spade1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Spanner1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Toolbox1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Toolbox2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Toolbox3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Trowel1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Wrench1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Wrench2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Wrench3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tool_Wrench4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Tooth1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Toy_Bear1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Toy_Boardgame1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Toy_Dollhouse1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Toy_Plushie1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Toy_RockingHorse1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Toy_Tricycle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrafficCone1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash15.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash16.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trash9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrashBag1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrashBag2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrashBag3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrashBag4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrashBag5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrashBin1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrashBin2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrashBin3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/TrashCan1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trolly1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Trolly2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Urn1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Utensil_Fork1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Utensil_Knife1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Utensil_Spoon1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vacuum1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vase1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vase2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle10.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle11.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle12.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle13.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle14.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle15.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle4.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle5.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle6.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle7.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle8.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Vehicle9.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/VendingMachine1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/VendingMachine2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WashingMachine1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WashingMachine2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WaterCooler1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WaterJug1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WaterTank1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WaterTank2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WateringCan1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Wheelchair1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Wheelchair2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WhiteBoard1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WhiteBoard2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Wood1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Wood2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Wood3.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WoodPile1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WoodStove1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/WoodenPlank1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Workbench1.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  },
+  {
+    "path": "post-apo/item-assets/Workbench2.png",
+    "type": "item",
+    "origin": "https://pvgames.itch.io/doomsday-icons",
+    "size": {
+      "height": 512,
+      "width": 512
+    }
+  }
+]
