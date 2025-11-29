@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, effect, input, linkedSignal, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, input, linkedSignal, output, signal } from '@angular/core';
 import { Item, ItemRarity, ItemRarityFilters, ItemTag, ItemTagFilters } from '@pagemaster/common/items.types';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { ImageComponent } from 'src/app/core/design-system/image.component';
 import { DSOption, MultiSelectDropdownComponent } from 'src/app/core/design-system/multi-select-dropdown.component';
+import { ItemComponent } from './item.component';
 
 
 export type ItemsFinderState = {
@@ -25,7 +26,7 @@ export type ItemsFinderState = {
 @Component({
   standalone: true,
   selector: 'app-items-finder',
-  imports: [CommonModule, ImageComponent, MultiSelectDropdownComponent, ButtonComponent],
+  imports: [CommonModule, ImageComponent, MultiSelectDropdownComponent, ButtonComponent, ItemComponent],
   template: `
   <div>
     <div class="search-row">
@@ -37,6 +38,22 @@ export type ItemsFinderState = {
         [value]="state().filters.fullText"
       />
     </div>
+    <div class="controls-row">
+      <div class="view-toggle">
+        <ds-button
+          [mode]="viewMode() === 'table' ? 'primary' : 'tertiary'"
+          (click)="setViewMode('table')"
+        >
+          Table
+        </ds-button>
+        <ds-button
+          [mode]="viewMode() === 'grid' ? 'primary' : 'tertiary'"
+          (click)="setViewMode('grid')"
+        >
+          Grid
+        </ds-button>
+      </div>
+    </div>
     <ds-multi-select-dropdown [items]="allRarities()" (selectionChange)="filterByRarity($event)">
       Rarity
     </ds-multi-select-dropdown>
@@ -46,30 +63,42 @@ export type ItemsFinderState = {
     </ds-multi-select-dropdown>
   </div>
 
-  <div class="table-wrapper">
-    <table>
-    <thead>
-      <tr>
-        <th>Icon</th>
-        <th>Name</th>
-        <th>Tags</th>
-        <th>Rarity</th>
-        <th>Weight</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for(item of state().data; track item.id) {
-        <tr (click)="itemClicked.emit(item)">
-          <td><ds-image [src]="item.path" [alt]="item.name" size="medium" /></td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.tags.join(', ') }}</td>
-          <td>{{ item.rarity }}</td>
-          <td>{{ item.weight }}</td>
+  @if (viewMode() === 'table') {
+    <div class="table-wrapper">
+      <table>
+      <thead>
+        <tr>
+          <th>Icon</th>
+          <th>Name</th>
+          <th>Tags</th>
+          <th>Rarity</th>
+          <th>Weight</th>
         </tr>
-      }
-    </tbody>
-    </table>
-  </div>
+      </thead>
+      <tbody>
+        @for(item of state().data; track item.id) {
+          <tr (click)="itemClicked.emit(item)">
+            <td><ds-image [src]="item.path" [alt]="item.name" size="medium" /></td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.tags.join(', ') }}</td>
+            <td>{{ item.rarity }}</td>
+            <td>{{ item.weight }}</td>
+          </tr>
+        }
+      </tbody>
+      </table>
+    </div>
+  }
+
+  @if (viewMode() === 'grid') {
+    <div class="grid-wrapper">
+      <div class="grid">
+        @for(item of state().data; track item.id) {
+          <app-item [item]="item" (itemClicked)="itemClicked.emit($event)"></app-item>
+        }
+      </div>
+    </div>
+  }
 
   <div class="pagination-controls">
     <ds-button
@@ -122,6 +151,29 @@ export type ItemsFinderState = {
       pointer-events: none;
       opacity: 0.6;
     }
+      .controls-row {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 8px;
+      }
+
+      .view-toggle {
+        display: flex;
+        gap: 8px;
+      }
+
+      .grid-wrapper {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow: auto;
+        padding: 8px 0;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(var(--item-size), 1fr));
+        gap: 12px;
+      }
       .search-row {
         display: flex;
         gap: 8px;
@@ -146,6 +198,7 @@ export class ItemsFinderComponent {
   public newState = output<ItemsFinderState>();
   public itemClicked = output<Item>();
   protected _state = linkedSignal(this.state);
+  public viewMode = signal<'table' | 'grid'>('grid');
   protected allRarities = computed(() => {
     return Object.values(ItemRarityFilters).map(rarity => ({
       ...rarity,
@@ -179,6 +232,10 @@ export class ItemsFinderComponent {
     effect(() => {
       this.newState.emit(this._state());
     });
+  }
+
+  public setViewMode(mode: 'table' | 'grid') {
+    this.viewMode.set(mode);
   }
 
   protected filterByRarity(selected: DSOption[]) {
