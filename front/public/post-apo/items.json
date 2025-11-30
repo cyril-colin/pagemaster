@@ -708,72 +708,6 @@
     "weight": 1
   },
   {
-    "id": "box_rations1",
-    "name": "Box Rations 1",
-    "path": "post-apo/item-assets/Box_Rations1.png",
-    "tags": [
-      "CONTAINER",
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "box_rations2",
-    "name": "Box Rations 2",
-    "path": "post-apo/item-assets/Box_Rations2.png",
-    "tags": [
-      "CONTAINER",
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "box_rations3",
-    "name": "Box Rations 3",
-    "path": "post-apo/item-assets/Box_Rations3.png",
-    "tags": [
-      "CONTAINER",
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "box_rations4",
-    "name": "Box Rations 4",
-    "path": "post-apo/item-assets/Box_Rations4.png",
-    "tags": [
-      "CONTAINER",
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "box_rations5",
-    "name": "Box Rations 5",
-    "path": "post-apo/item-assets/Box_Rations5.png",
-    "tags": [
-      "CONTAINER",
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
-    "id": "box_rations6",
-    "name": "Box Rations 6",
-    "path": "post-apo/item-assets/Box_Rations6.png",
-    "tags": [
-      "CONTAINER",
-      "FOOD"
-    ],
-    "rarity": "COMMON",
-    "weight": 1
-  },
-  {
     "id": "brick1",
     "name": "Brick 1",
     "path": "post-apo/item-assets/Brick1.png",
@@ -8280,9 +8214,7 @@
     ],
     "rarity": "NEVER",
     "weight": 1
-  }
-
-  ,
+  },
   {
     "id": "box_bloody1",
     "name": "Box Bloody 1",
