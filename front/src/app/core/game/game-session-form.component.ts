@@ -218,6 +218,7 @@ export class GameSessionFormComponent {
           name: gameInstanceForm.masterName,
           type: ParticipantType.GameMaster,
           id: ParticipantType.GameMaster,
+          description: '',
         },
         players: [],
       };

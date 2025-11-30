@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, HostListener, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
@@ -9,7 +9,6 @@ import {
   EventPlayerBarEdit,
   EventPlayerBarPointAdd,
   EventPlayerBarPointRemove,
-  EventPlayerDescriptionEdit,
   EventPlayerInventoryAdd,
   EventPlayerInventoryDelete,
   EventPlayerInventoryItemAdd,
@@ -44,7 +43,6 @@ import { GameEventRepository } from 'src/app/core/repositories/game-event.reposi
       [permissions]="permissions()"
       (renameEvent)="renameParticipant($event.value, viewedPlayer())"
       (avatarEvent)="updateAvatar($event, viewedPlayer())"
-      (descriptionEvent)="updateDescription($event.value, viewedPlayer())"
       (newBarValueEvent)="updateBarValue($event, viewedPlayer())"
       (newBarEvent)="addBar($event, viewedPlayer())"
       (editBarEvent)="updateBar($event, viewedPlayer())"
@@ -94,12 +92,6 @@ export class PlayerPageComponent {
 
   protected routeParams = toSignal(this.route.paramMap);
 
-  
-
-  // Swipe detection state
-  private touchStartX = 0;
-  private touchEndX = 0;
-  private readonly SWIPE_THRESHOLD = 50; // Minimum distance for a swipe
   protected players = computed(() => {
     return this.currentSession()!.gameSession.players;
   });
@@ -122,57 +114,6 @@ export class PlayerPageComponent {
   protected currentPlayerIndex = computed(() => {
     return this.players().findIndex(p => p.id === this.viewedPlayer().id);
   });
-
-  @HostListener('touchstart', ['$event'])
-  protected onTouchStart(event: TouchEvent): void {
-    this.touchStartX = event.changedTouches[0].screenX;
-  }
-
-  @HostListener('touchend', ['$event'])
-  protected onTouchEnd(event: TouchEvent): void {
-    this.touchEndX = event.changedTouches[0].screenX;
-    this.handleSwipe();
-  }
-
-  protected handleSwipe(): void {
-    const swipeDistance = this.touchEndX - this.touchStartX;
-    
-    if (Math.abs(swipeDistance) < this.SWIPE_THRESHOLD) {
-      return; // Not a significant swipe
-    }
-
-    if (swipeDistance > 0) {
-      // Swipe right - go to previous player
-      this.navigateToPreviousPlayer();
-    } else {
-      // Swipe left - go to next player
-      this.navigateToNextPlayer();
-    }
-  }
-
-  protected navigateToNextPlayer(): void {
-    const players = this.players();
-    const currentIndex = this.currentPlayerIndex();
-    
-    if (players.length === 0) return;
-    
-    const nextIndex = (currentIndex + 1) % players.length;
-    const nextPlayer = players[nextIndex];
-    
-    this.navigateToPlayer(nextPlayer.id);
-  }
-
-  protected navigateToPreviousPlayer(): void {
-    const players = this.players();
-    const currentIndex = this.currentPlayerIndex();
-    
-    if (players.length === 0) return;
-    
-    const previousIndex = (currentIndex - 1 + players.length) % players.length;
-    const previousPlayer = players[previousIndex];
-    
-    this.navigateToPlayer(previousPlayer.id);
-  }
 
   protected navigateToPlayer(playerId: string): void {
     const instanceId = this.currentSession()!.gameSession.id;
@@ -216,18 +157,7 @@ export class PlayerPageComponent {
     ).subscribe();
   }
 
-  protected updateDescription(newDescription: string, player: Player): void {
-    const gameSessionId = this.currentSession()!.gameSession.id;
 
-    const command: Omit<EventPlayerDescriptionEdit, 'id' | 'timestamp'> = {
-      type: EventPlayerTypes.PLAYER_DESCRIPTION_EDIT,
-      gameSessionId,
-      playerId: player.id,
-      newDescription,
-    };
-
-    this.gameEventRepository.postCommand(command).subscribe();
-  }
 
   protected updateBarValue(bar: BarValueUpdateEvent, player: Player): void {
 

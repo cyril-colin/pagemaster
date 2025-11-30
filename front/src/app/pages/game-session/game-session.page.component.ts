@@ -38,6 +38,7 @@ import { QuickActionModalComponent } from './quick-action.modal.component';
         [eventCount]="eventCount()"
       (history)="goToEvents()"
       (me)="goToMyPlayerPage()"
+      (notes)="goToNotes()"
     (session)="goToPlayerList()" />
   </footer>
   `,
@@ -139,6 +140,13 @@ export class GameSessionPageComponent {
   protected goToPlayerList(): void {
     void this.router.navigate([
       PageMasterRoutes().GameInstanceSession.children[2].path,
+    ], { relativeTo: this.route,
+    });
+  }
+
+  protected goToNotes(): void {
+    void this.router.navigate([
+      PageMasterRoutes().GameInstanceSession.children[4].path,
     ], { relativeTo: this.route,
     });
   }

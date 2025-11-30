@@ -39,13 +39,13 @@ export type ParticipantBase = {
   type: ParticipantType,
   id: string,
   name: string,
+  description: string,
 }
 export type Participant = GameMaster | Player;
 
 export type Player = ParticipantBase &{
   type: ParticipantType.Player,
   avatar: string,
-  description: string,
   attributes:{
     bar: AttributeBar[];
     inventory: AttributeInventory[];

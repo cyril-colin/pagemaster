@@ -11,6 +11,7 @@ const defaultGameSession: GameSession = {
     "id": ParticipantType.GameMaster,
     "type": ParticipantType.GameMaster,
     "name": "Dungeon Master",
+    "description": "The all-knowing overseer of the realm, guiding players through epic quests and challenges."
   },
   "players": [
     {

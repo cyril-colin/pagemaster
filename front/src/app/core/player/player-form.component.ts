@@ -7,7 +7,6 @@ import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { CardComponent } from '../design-system/card.component';
 import { AvatarEvent, PictureControlComponent } from './avatar/picture-control.component';
 import { BarsControlComponent, BarValueUpdateEvent } from './bars/bars-control.component';
-import { DescriptionControlComponent } from './descriptions/description-control.component';
 import {
   InventoryAdditionEvent,
   InventoryListComponent,
@@ -25,12 +24,13 @@ import { StatusControlComponent } from './statuses/status-control.component';
     <form>
       <ds-card>
         <div class="identity">
-          <app-picture-control
+          
+          <div class="identity-data">
+            <app-picture-control
             [picture]="existingPlayer().avatar"
             [permissions]="permissions().avatar"
             (newPicture)="avatarEvent.emit($event)"
           />
-          <div class="identity-data">
             <app-name-control
               [name]="existingPlayer().name"
               [permissions]="permissions().name"
@@ -46,11 +46,6 @@ import { StatusControlComponent } from './statuses/status-control.component';
             
           </div>
         </div>
-        <app-description-control
-          [description]="existingPlayer().description"
-          [permissions]="permissions().description"
-          (newDescription)="descriptionEvent.emit($event)"
-        />
 
         <app-bars-control
           [bars]="existingPlayer().attributes.bar"
@@ -91,6 +86,7 @@ import { StatusControlComponent } from './statuses/status-control.component';
     .identity-data {
       display: flex;
       flex-direction: column;
+      align-items: center;
       padding: 0 var(--gap-large);
       gap: var(--gap-medium);
       flex: 1;
@@ -101,7 +97,6 @@ import { StatusControlComponent } from './statuses/status-control.component';
     ReactiveFormsModule,
     NameControlComponent,
     PictureControlComponent,
-    DescriptionControlComponent,
     BarsControlComponent,
     StatusControlComponent,
     InventoryListComponent,
@@ -116,7 +111,6 @@ export class PlayerFormComponent  {
   public fb = inject(FormBuilder);
   public renameEvent = output<{value: string}>();
   public avatarEvent = output<AvatarEvent>();
-  public descriptionEvent = output<{value: string}>();
   public newBarValueEvent = output<BarValueUpdateEvent>();
   public newBarEvent = output<AttributeBar>();
   public editBarEvent = output<AttributeBar>();

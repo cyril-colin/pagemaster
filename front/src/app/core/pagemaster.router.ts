@@ -2,6 +2,7 @@ import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Route, RouterStateSnapshot } from '@angular/router';
 import { AuthGuard } from '../pages/game-session/auth.guard';
 import { GameSessionPageComponent } from '../pages/game-session/game-session.page.component';
+import { NotesPageComponent } from '../pages/game-session/notes.page.component';
 import { PlayerListPageComponent } from '../pages/game-session/player-list.page.component';
 import { PlayerPageComponent } from '../pages/game-session/player.page.component';
 import { GameSessionChooseParticipantComponent } from '../pages/public/game-session-choose-participant.component';
@@ -65,6 +66,7 @@ export function PageMasterRoutes() {
             interpolated: (playerId: string) => `player/:${params[1]}`.replace(`:${params[1]}`, playerId),
             component: PlayerPageComponent,
           },
+          {path: 'notes', component: NotesPageComponent},
         ] as const,
       });
     })(),
