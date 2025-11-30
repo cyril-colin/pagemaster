@@ -59,6 +59,7 @@ export enum ItemTag {
   AMMO = 'AMMO',
   TOOL = 'TOOL',
   CONTAINER = 'CONTAINER',
+  BOOK = 'BOOK',
   FURNITURE = 'FURNITURE',
   FOOD = 'FOOD',
   MEDICAL = 'MEDICAL',
@@ -92,30 +93,35 @@ export const ItemTagFilters: Record<ItemTag, ItemFilter<ItemTag>> = {
     label: 'Miscellaneous',
     sortValue: 0,
   },
+  [ItemTag.BOOK]: {
+    id: ItemTag.BOOK,
+    label: 'Book',
+    sortValue: 0,
+  },
   [ItemTag.WEAPON_RANGED]: {
     id: ItemTag.WEAPON_RANGED,
     label: 'Ranged Weapon',
-    sortValue: 0,
+    sortValue: 100,
   },
   [ItemTag.WEAPON_MELEE]: {
     id: ItemTag.WEAPON_MELEE,
     label: 'Melee Weapon',
-    sortValue: 0,
+    sortValue: 90,
   },
   [ItemTag.CLOTHING]: {
     id: ItemTag.CLOTHING,
     label: 'Clothing',
-    sortValue: 0,
+    sortValue: 85,
   },
   [ItemTag.ARMOR]: {
     id: ItemTag.ARMOR,
     label: 'Armor',
-    sortValue: 0,
+    sortValue: 80,
   },
   [ItemTag.AMMO]: {
     id: ItemTag.AMMO,
     label: 'Ammunition',
-    sortValue: 0,
+    sortValue: 75,
   },
   [ItemTag.TOOL]: {
     id: ItemTag.TOOL,
@@ -125,32 +131,32 @@ export const ItemTagFilters: Record<ItemTag, ItemFilter<ItemTag>> = {
   [ItemTag.CONTAINER]: {
     id: ItemTag.CONTAINER,
     label: 'Container',
-    sortValue: 0,
+    sortValue: 50,
   },
   [ItemTag.FURNITURE]: {
     id: ItemTag.FURNITURE,
     label: 'Furniture',
-    sortValue: 0, 
+    sortValue: 40, 
   },
   [ItemTag.FOOD]: {
     id: ItemTag.FOOD,
     label: 'Food',
-    sortValue: 0,
+    sortValue: 76,
   },
   [ItemTag.MEDICAL]: {
     id: ItemTag.MEDICAL,
     label: 'Medical',
-    sortValue: 0,
+    sortValue: 75,
   },
   [ItemTag.ELECTRONICS]: {
     id: ItemTag.ELECTRONICS,
     label: 'Electronics',
-    sortValue: 0,
+    sortValue: 45,
   },
   [ItemTag.MATERIAL]: {
     id: ItemTag.MATERIAL,
     label: 'Material',
-    sortValue: 0,
+    sortValue: 35,
   },
   [ItemTag.DECORATION]: {
     id: ItemTag.DECORATION,

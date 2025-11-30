@@ -8,7 +8,7 @@ import { ItemWeightComponent } from './item-weight.component';
   template: `
     <div class="item" (click)="itemClicked.emit(item())" [style.border-color]="getBorderColor(item().rarity)">
       <ds-image [src]="item().path" [alt]="item().name" size="medium" />
-      <div>{{ item().name }}</div>
+      <p>{{ item().name }}</p>
       <app-item-weight [weight]="item().weight" />
     </div>
   `,
@@ -28,6 +28,11 @@ import { ItemWeightComponent } from './item-weight.component';
                   border-color var(--item-transition-speed) ease;
       position: relative;
       background: var(--color-background-secondary);
+
+      p {
+        width: 100%;
+        text-align: center;
+      }
     }
 
     .item app-item-weight {
