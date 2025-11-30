@@ -16,7 +16,6 @@ export enum EventPlayerTypes {
   PLAYER_INVENTORY_ADD = 'player.inventory.add',
   PLAYER_INVENTORY_UPDATE = 'player.inventory.update',
   PLAYER_INVENTORY_ITEM_ADD = 'player.inventory.item.add',
-  PLAYER_INVENTORY_ITEM_EDIT = 'player.inventory.item.edit',
   PLAYER_INVENTORY_ITEM_DELETE = 'player.inventory.item.delete',
   PLAYER_BAR_POINT_ADD = 'player.bar.point.add',
   PLAYER_BAR_POINT_REMOVE = 'player.bar.point.remove',
@@ -71,12 +70,6 @@ export type EventPlayerInventoryItemAdd<WITHOUT extends 'id' | '' = 'id'> = Even
   type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD,
   inventoryId: string,
   newItems: Omit<Item, WITHOUT>[],
-}
-
-export type EventPlayerInventoryItemEdit = EventPlayerInventoryBase & {
-  type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT,
-  inventoryId: string,
-  newItems: Item[],
 }
 
 export type EventPlayerInventoryItemDelete = EventPlayerInventoryBase & {

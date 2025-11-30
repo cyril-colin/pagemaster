@@ -14,7 +14,6 @@ import {
   EventPlayerInventoryDelete,
   EventPlayerInventoryItemAdd,
   EventPlayerInventoryItemDelete,
-  EventPlayerInventoryItemEdit,
   EventPlayerInventoryUpdate,
   EventPlayerNameEdit,
   EventPlayerStatusAdd,
@@ -364,21 +363,6 @@ export class PlayerPageComponent {
     ).subscribe();
   }
 
-  protected editItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
-    const gameSessionId = this.currentSession()!.gameSession.id;
-
-    const command: Omit<EventPlayerInventoryItemEdit, 'id' | 'timestamp'> = {
-      type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT,
-      gameSessionId,
-      playerId: player.id,
-      inventoryId: itemEvent.inventory.id,
-      newItems: itemEvent.items,
-    };
-
-    this.gameEventRepository.postCommand(command).pipe(
-      tap(() => void itemEvent.modalRef.close()),
-    ).subscribe();
-  }
 
   protected deleteItemToInventory(itemEvent: InventoryItemEvent, player: Player): void {
     const gameSessionId = this.currentSession()!.gameSession.id;
