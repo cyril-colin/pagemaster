@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal } from '@angular/core';
-import { Item, ItemTag } from '@pagemaster/common/items.types';
+import { Item, ItemRarityFilters, ItemTag } from '@pagemaster/common/items.types';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { ResourcePacksStorage } from 'src/app/core/resource-packs-storage.service';
 import { ImageComponent } from '../../../design-system/image.component';
@@ -146,6 +146,9 @@ export class ItemModalComponent {
 
   protected onNewState(newState: ItemsFinderState) {
     const data = this.allItems().filter(item => {
+      if (item.rarity === 'NEVER') {
+        return false;
+      }
       // Apply filters from newState
       if (newState.filters.rarity.length > 0 && !newState.filters.rarity.includes(item.rarity)) {
         return false;
@@ -160,6 +163,7 @@ export class ItemModalComponent {
           return false;
         }
       }
+      
       return true;
     });
 
@@ -168,7 +172,14 @@ export class ItemModalComponent {
     // Update pagination
     const start = newState.pagination.pageIndex * newState.pagination.pageSize;
     const end = start + newState.pagination.pageSize;
-    newState.data = data.slice(start, end);
+    const sliced = data.slice(start, end);
+    const sorted = sliced.sort((a, b) => {
+      const rarityA = ItemRarityFilters[a.rarity]?.sortValue ?? 0;
+      const rarityB = ItemRarityFilters[b.rarity]?.sortValue ?? 0;
+      return rarityB - rarityA;
+    });
+    newState.data = sorted;
+
     
     this.state.set(newState);
   }

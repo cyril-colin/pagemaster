@@ -1,5 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, effect, input, linkedSignal, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  ElementRef,
+  input,
+  linkedSignal,
+  output,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { Item, ItemRarity, ItemRarityFilters, ItemTag, ItemTagFilters } from '@pagemaster/common/items.types';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { ImageComponent } from 'src/app/core/design-system/image.component';
@@ -64,7 +75,7 @@ export type ItemsFinderState = {
   </div>
 
   @if (viewMode() === 'table') {
-    <div class="table-wrapper">
+    <div class="table-wrapper" #tableWrapper>
       <table>
       <thead>
         <tr>
@@ -91,7 +102,7 @@ export type ItemsFinderState = {
   }
 
   @if (viewMode() === 'grid') {
-    <div class="grid-wrapper">
+    <div class="grid-wrapper" #gridWrapper>
       <div class="grid">
         @for(item of state().data; track item.id) {
           <app-item [item]="item" (itemClicked)="itemClicked.emit($event)"></app-item>
@@ -199,6 +210,8 @@ export class ItemsFinderComponent {
   public itemClicked = output<Item>();
   protected _state = linkedSignal(this.state);
   public viewMode = signal<'table' | 'grid'>('grid');
+  public tableRef = viewChild<ElementRef<HTMLElement>>('tableWrapper');
+  public gridRef = viewChild<ElementRef<HTMLElement>>('gridWrapper');
   protected allRarities = computed(() => {
     return Object.values(ItemRarityFilters).map(rarity => ({
       ...rarity,
@@ -230,7 +243,19 @@ export class ItemsFinderComponent {
 
   constructor() {
     effect(() => {
-      this.newState.emit(this._state());
+      const s = this._state();
+      this.newState.emit(s);
+      const tableElem: HTMLElement | null = this.tableRef()?.nativeElement ?? null;
+      const gridElem: HTMLElement | null = this.gridRef()?.nativeElement ?? null;
+
+      if (tableElem) {
+        tableElem.scrollTop = 0;
+        tableElem.scrollLeft = 0;
+      }
+      if (gridElem) {
+        gridElem.scrollTop = 0;
+        gridElem.scrollLeft = 0;
+      }
     });
   }
 
@@ -242,6 +267,7 @@ export class ItemsFinderComponent {
     this._state.update((s: ItemsFinderState) => {
       s.filters.rarity = selected.filter(opt => opt.selected).map(opt => opt.id as ItemRarity);
       s.lastAction = 'filter';
+      s.pagination.pageIndex = 0;
       return structuredClone(s);
     });
   }
@@ -250,6 +276,7 @@ export class ItemsFinderComponent {
     this._state.update((s: ItemsFinderState) => {
       s.filters.tags = selected.filter(opt => opt.selected).map(opt => opt.id as ItemTag);
       s.lastAction = 'filter';
+      s.pagination.pageIndex = 0;
       return structuredClone(s);
     });
   }

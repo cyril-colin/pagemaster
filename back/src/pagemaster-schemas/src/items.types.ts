@@ -68,6 +68,7 @@ export enum ItemTag {
 }
 
 export enum ItemRarity {
+  NEVER = 'NEVER',
   COMMON = 'COMMON',
   UNCOMMON = 'UNCOMMON',
   RARE = 'RARE',
@@ -79,64 +80,82 @@ export enum ItemRarity {
 export type ItemFilter<T> = {
   id: T,
   label: string,
+  /**
+   * The higher the value, the higher in the list the filter will appear
+   */
+  sortValue: number,
 }
 
 export const ItemTagFilters: Record<ItemTag, ItemFilter<ItemTag>> = {
   [ItemTag.MISC]: {
     id: ItemTag.MISC,
     label: 'Miscellaneous',
+    sortValue: 0,
   },
   [ItemTag.WEAPON_RANGED]: {
     id: ItemTag.WEAPON_RANGED,
     label: 'Ranged Weapon',
+    sortValue: 0,
   },
   [ItemTag.WEAPON_MELEE]: {
     id: ItemTag.WEAPON_MELEE,
     label: 'Melee Weapon',
+    sortValue: 0,
   },
   [ItemTag.CLOTHING]: {
     id: ItemTag.CLOTHING,
     label: 'Clothing',
+    sortValue: 0,
   },
   [ItemTag.ARMOR]: {
     id: ItemTag.ARMOR,
     label: 'Armor',
+    sortValue: 0,
   },
   [ItemTag.AMMO]: {
     id: ItemTag.AMMO,
     label: 'Ammunition',
+    sortValue: 0,
   },
   [ItemTag.TOOL]: {
     id: ItemTag.TOOL,
     label: 'Tool',
+    sortValue: 0,
   },
   [ItemTag.CONTAINER]: {
     id: ItemTag.CONTAINER,
     label: 'Container',
+    sortValue: 0,
   },
   [ItemTag.FURNITURE]: {
     id: ItemTag.FURNITURE,
     label: 'Furniture',
+    sortValue: 0, 
   },
   [ItemTag.FOOD]: {
     id: ItemTag.FOOD,
     label: 'Food',
+    sortValue: 0,
   },
   [ItemTag.MEDICAL]: {
     id: ItemTag.MEDICAL,
     label: 'Medical',
+    sortValue: 0,
   },
   [ItemTag.ELECTRONICS]: {
     id: ItemTag.ELECTRONICS,
     label: 'Electronics',
+    sortValue: 0,
   },
   [ItemTag.MATERIAL]: {
     id: ItemTag.MATERIAL,
     label: 'Material',
+    sortValue: 0,
   },
   [ItemTag.DECORATION]: {
     id: ItemTag.DECORATION,
     label: 'Decoration',
+    sortValue: 0,
   },
 } as const;
 
@@ -144,21 +163,31 @@ export const ItemRarityFilters: Record<ItemRarity, ItemFilter<ItemRarity>> = {
   [ItemRarity.COMMON]: {
     id: ItemRarity.COMMON,
     label: 'Common',
+    sortValue: 30,
   },
   [ItemRarity.UNCOMMON]: {
     id: ItemRarity.UNCOMMON,
     label: 'Uncommon',
+    sortValue: 50,
   },
   [ItemRarity.RARE]: {
     id: ItemRarity.RARE,
     label: 'Rare',
+    sortValue: 70,
   },
   [ItemRarity.EPIC]: {
     id: ItemRarity.EPIC,
     label: 'Epic',
+    sortValue: 80,
   },
   [ItemRarity.LEGENDARY]: {
     id: ItemRarity.LEGENDARY,
     label: 'Legendary',
+    sortValue: 100,
+  },
+  [ItemRarity.NEVER]: {
+    id: ItemRarity.NEVER,
+    label: 'Never',
+    sortValue: 0,
   },
 } as const;
