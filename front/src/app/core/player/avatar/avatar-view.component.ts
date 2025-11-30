@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { ImageComponent, ImageShape } from '../../design-system/image.component';
-import { AvatarPermissions } from './picture-control.component';
 
 @Component({
   selector: 'app-avatar-view',
@@ -42,6 +42,6 @@ import { AvatarPermissions } from './picture-control.component';
 export class AvatarViewComponent {
   public source = input<string>();
   public shape = input<ImageShape>('circle');
-  public permissions = input.required<AvatarPermissions>();
+  public permissions = input.required<GameSessionPermissions['avatar']>();
   public needSrc = output<void>();
 }

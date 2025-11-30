@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal } from '@angular/core';
 import { Item, ItemRarityFilters, ItemTag } from '@pagemaster/common/items.types';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { ResourcePacksStorage } from 'src/app/core/resource-packs-storage.service';
 import { ImageComponent } from '../../../design-system/image.component';
-import { InventoryPermissions } from '../inventory.component';
 import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component';
 
 @Component({
@@ -11,7 +11,7 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
   template: `
   @let item = existingItem();
     @if (!item && permissions().add) {
-      <app-items-finder [state]="state()" (newState)="onNewState($event)" (itemClicked)="addItem($event)"/>
+      <app-items-finder [state]="state()" (newState)="onNewState($event)" (itemClicked)="addItem.emit($event)"/>
     }
     @if (item && permissions().delete) {
       <div class="content">
@@ -109,15 +109,11 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
 })
 export class ItemModalComponent {
   public existingItem = input<Item | null>(null);
-  public permissions = input.required<InventoryPermissions>();
-  public editItem = output<Item>();
+  public permissions = input.required<GameSessionPermissions['inventory']['item']>();
+  public addItem = output<Item>();
   public deleteItem = output<Item | null>();
 
   protected resourcePackService = inject(ResourcePacksStorage);
-
-  protected addItem(item: Item) {
-    this.editItem.emit(item);
-  }
 
   protected allItems = computed(() => {
     return this.resourcePackService.resourcePacks().find(pack => pack.theme === 'Post Apocaliptic')!.items.models;

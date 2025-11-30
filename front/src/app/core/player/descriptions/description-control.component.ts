@@ -1,11 +1,8 @@
 import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, input, output, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { ButtonComponent } from '../../design-system/button.component';
 import { DescriptionViewComponent } from './description-view.component';
-
-export type DescriptionPermissions = {
-  edit: boolean,
-};
 
 export type DescriptionCollapseState = 'expanded' | 'collapsed';
 
@@ -131,7 +128,7 @@ export type DescriptionCollapseState = 'expanded' | 'collapsed';
 })
 export class DescriptionControlComponent {
   public description = input<string>('');
-  public permissions = input.required<DescriptionPermissions>();
+  public permissions = input.required<GameSessionPermissions['description']>();
   public newDescription = output<{value: string}>();
   public initialCollapseState = input<DescriptionCollapseState>('collapsed');
   protected input = viewChild.required('input', { read: ElementRef<HTMLTextAreaElement> });

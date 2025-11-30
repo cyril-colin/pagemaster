@@ -1,10 +1,7 @@
 import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, input, output, signal, viewChild } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { NameViewComponent } from './name-view.component';
-
-export type NamePermissions = {
-  edit: boolean,
-};
 
 @Component({
   selector: 'app-name-control',
@@ -52,7 +49,7 @@ export type NamePermissions = {
 })
 export class NameControlComponent {
   public name = input<string>('');
-  public permissions = input.required<NamePermissions>();
+  public permissions = input.required<GameSessionPermissions['name']>();
   public newName = output<{value: string}>();
   protected input = viewChild.required('input', { read: ElementRef<HTMLInputElement> });
   protected mode = signal<'view' | 'edit'>('view');

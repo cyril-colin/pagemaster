@@ -23,6 +23,9 @@ import {
   EventPlayerTypes,
 } from '@pagemaster/common/events-player.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
+import {
+  getPermissions,
+} from '@pagemaster/common/permissions.types';
 import { tap } from 'rxjs';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
@@ -51,7 +54,6 @@ import { GameEventRepository } from 'src/app/core/repositories/game-event.reposi
       (editStatusEvent)="updateStatus($event, viewedPlayer())"
       (deleteStatusEvent)="deleteStatus($event, viewedPlayer())"
       (addItem)="addItemToInventory($event, viewedPlayer())"
-      (editItem)="editItemToInventory($event, viewedPlayer())"
       (deleteItem)="deleteItemToInventory($event, viewedPlayer())"
       (addInventory)="addInventory($event, viewedPlayer())"
       (updateInventory)="updateInventory($event, viewedPlayer())"
@@ -184,35 +186,7 @@ export class PlayerPageComponent {
     const isManager = this.currentParticipantState.allowedToEditPlayerSnapshot();
     const me = this.currentSession()!.participant;
     const isMyPlayer = me.id === this.viewedPlayer().id;
-    return {
-      avatar: {
-        edit: isManager,
-      },
-      name: {
-        edit: isManager,
-      },
-      description: {
-        edit: isManager || isMyPlayer,
-      },
-      bars: {
-        edit: isManager,
-        add: isManager,
-        delete: isManager,
-      },
-      statuses: {
-        edit: isManager,
-        add: isManager,
-        delete: isManager,
-      },
-      inventory: {
-        item: {
-          add: isManager,
-          edit: isManager,
-          delete: isManager,
-        },
-        addition: isManager,
-      },
-    };
+    return getPermissions(isManager, isMyPlayer);
   });
 
   protected renameParticipant(newName: string, player: Player): void {
@@ -382,7 +356,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       inventoryId: itemEvent.inventory.id,
-      newItem: itemEvent.item,
+      newItems: itemEvent.items,
     } ;
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -398,7 +372,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       inventoryId: itemEvent.inventory.id,
-      newItem: itemEvent.item,
+      newItems: itemEvent.items,
     };
 
     this.gameEventRepository.postCommand(command).pipe(
@@ -414,7 +388,7 @@ export class PlayerPageComponent {
       gameSessionId,
       playerId: player.id,
       inventoryId: itemEvent.inventory.id,
-      deletedItem: itemEvent.item,
+      deletedItem: itemEvent.items[0],
     };
 
     this.gameEventRepository.postCommand(command).pipe(

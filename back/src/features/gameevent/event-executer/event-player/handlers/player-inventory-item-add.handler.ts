@@ -8,7 +8,9 @@ export const playerInventoryItemAddHandler: GameEventHandlerFn<EventPlayerInvent
   const player = assertPlayerExists(gameSession, event.playerId);
   const inventoryIndex = assertAttributeIndex(player, 'inventory', event.inventoryId);
   const inventory = player.attributes.inventory[inventoryIndex];
+
+  const withId = event.newItems.map(item => ({ ...item, id: `item_${Date.now()}_${Math.random().toString(36).substr(2, 9)}` }));
   
-  inventory.current.push({ ...event.newItem, id: `item_${Date.now()}` });
+  inventory.current.push(...withId);
   return gameSession;
 }

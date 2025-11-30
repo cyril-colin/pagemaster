@@ -1,13 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { PictureGalleryComponent } from '../../gallery/picture-gallery.component';
 import { ModalRef, ModalService } from '../../modal';
 import { ResourcePacksStorage } from '../../resource-packs-storage.service';
 import { AvatarViewComponent } from './avatar-view.component';
-
-export type AvatarPermissions = {
-  edit: boolean,
-};
 
 export type AvatarEvent = {
   picture: string,
@@ -34,7 +31,7 @@ export type AvatarEvent = {
 })
 export class PictureControlComponent {
   public picture = input<string>('');
-  public permissions = input.required<AvatarPermissions>();
+  public permissions = input.required<GameSessionPermissions['avatar']>();
   public newPicture = output<AvatarEvent>();
   protected resourcePackStorage = inject(ResourcePacksStorage);
   protected pictures = computed(() => {

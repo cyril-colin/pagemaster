@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { AttributeStatus } from '@pagemaster/common/attributes.types';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { ButtonComponent } from '../../design-system/button.component';
 import { ModalService } from '../../modal';
 import { StatusFormComponent } from './status-form.component';
@@ -10,12 +11,6 @@ export type Status = {
   definition: AttributeStatus,
   instance: { id: string, current: string },
   selected: boolean,
-};
-
-export type StatusesPermissions = {
-  edit: boolean,
-  add: boolean,
-  delete: boolean,
 };
 
 @Component({
@@ -79,7 +74,7 @@ export type StatusesPermissions = {
 })
 export class StatusControlComponent {
   public statuses = input.required<AttributeStatus[]>();
-  public permissions = input.required<StatusesPermissions>();
+  public permissions = input.required<GameSessionPermissions['statuses']>();
   public newStatus = output<AttributeStatus>();
   public editStatus = output<AttributeStatus>();
   public deleteStatus = output<AttributeStatus>();

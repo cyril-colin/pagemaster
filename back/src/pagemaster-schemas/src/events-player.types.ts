@@ -67,16 +67,16 @@ export type EventPlayerInventoryUpdate = EventPlayerInventoryBase & {
   newInventory: AttributeInventory,
 }
 
-export type EventPlayerInventoryItemAdd = EventPlayerInventoryBase & {
+export type EventPlayerInventoryItemAdd<WITHOUT extends 'id' | '' = 'id'> = EventPlayerInventoryBase & {
   type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD,
   inventoryId: string,
-  newItem: Omit<Item, 'id'>,
+  newItems: Omit<Item, WITHOUT>[],
 }
 
 export type EventPlayerInventoryItemEdit = EventPlayerInventoryBase & {
   type: EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT,
   inventoryId: string,
-  newItem: Item,
+  newItems: Item[],
 }
 
 export type EventPlayerInventoryItemDelete = EventPlayerInventoryBase & {

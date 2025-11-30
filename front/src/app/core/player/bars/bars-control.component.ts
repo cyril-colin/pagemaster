@@ -1,16 +1,10 @@
 import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { AttributeBar } from '@pagemaster/common/attributes.types';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { BarComponent } from '../../design-system/bar.component';
 import { ButtonComponent } from '../../design-system/button.component';
 import { ModalService } from '../../modal';
 import { BarFormComponent } from './bar-form.component';
-
-
-export type BarsPermissions = {
-  edit: boolean,
-  add: boolean,
-  delete: boolean,
-};
 
 export type BarValueUpdateEvent = {newBar: AttributeBar, previousValue: AttributeBar};
 
@@ -102,7 +96,7 @@ export type BarValueUpdateEvent = {newBar: AttributeBar, previousValue: Attribut
 })
 export class BarsControlComponent {
   public bars = input.required<AttributeBar[]>();
-  public permissions = input.required<BarsPermissions>();
+  public permissions = input.required<GameSessionPermissions['bars']>();
   public newBarValue = output<BarValueUpdateEvent>();
   public newBar = output<AttributeBar>();
   public editBar = output<AttributeBar>();

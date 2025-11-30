@@ -3,28 +3,20 @@ import { ChangeDetectionStrategy, Component, inject, input, output } from '@angu
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { CardComponent } from '../design-system/card.component';
-import { AvatarEvent, AvatarPermissions, PictureControlComponent } from './avatar/picture-control.component';
-import { BarsControlComponent, BarsPermissions, BarValueUpdateEvent } from './bars/bars-control.component';
-import { DescriptionControlComponent, DescriptionPermissions } from './descriptions/description-control.component';
+import { AvatarEvent, PictureControlComponent } from './avatar/picture-control.component';
+import { BarsControlComponent, BarValueUpdateEvent } from './bars/bars-control.component';
+import { DescriptionControlComponent } from './descriptions/description-control.component';
 import {
   InventoryAdditionEvent,
   InventoryListComponent,
-  InventoryListPermissions,
 } from './inventories/inventory-list.component';
 import { InventoryDeletionEvent, InventoryItemEvent, InventoryUpdateEvent } from './inventories/inventory.component';
-import { NameControlComponent, NamePermissions } from './names/name-control.component';
-import { StatusControlComponent, StatusesPermissions } from './statuses/status-control.component';
+import { NameControlComponent } from './names/name-control.component';
+import { StatusControlComponent } from './statuses/status-control.component';
 
 
-export type PlayerPermissions = {
-  inventory: InventoryListPermissions,
-  avatar: AvatarPermissions,
-  name: NamePermissions,
-  description: DescriptionPermissions,
-  bars: BarsPermissions,
-  statuses: StatusesPermissions,
-}
 
 
 @Component({
@@ -76,7 +68,6 @@ export type PlayerPermissions = {
         [permissions]="permissions().inventory"
         (addItem)="addItem.emit($event)"
         (deleteItem)="deleteItem.emit($event)"
-        (editItem)="editItem.emit($event)"
         (addInventory)="addInventory.emit($event)"
         (updateInventory)="updateInventory.emit($event)"
         (deleteInventory)="deleteInventory.emit($event)"
@@ -120,7 +111,7 @@ export type PlayerPermissions = {
 })
 export class PlayerFormComponent  {
   public existingPlayer = input.required<Player>();
-  public permissions = input.required<PlayerPermissions>();
+  public permissions = input.required<GameSessionPermissions>();
   public newPlayer = output<Player>();
   public fb = inject(FormBuilder);
   public renameEvent = output<{value: string}>();
@@ -134,7 +125,6 @@ export class PlayerFormComponent  {
   public editStatusEvent = output<AttributeStatus>();
   public deleteStatusEvent = output<AttributeStatus>();
   public deleteItem = output<InventoryItemEvent>();
-  public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();
   public addInventory = output<InventoryAdditionEvent>();
   public updateInventory = output<InventoryUpdateEvent>();

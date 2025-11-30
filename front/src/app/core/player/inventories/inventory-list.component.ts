@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal } from '@angular/core';
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { CurrentParticipantState } from '../../current-participant.state';
 import { ModalRef, ModalService } from '../../modal';
 import { InventoryFormComponent } from './inventory-form.component';
@@ -8,7 +9,6 @@ import {
   InventoryComponent,
   InventoryDeletionEvent,
   InventoryItemEvent,
-  InventoryPermissions,
   InventoryUpdateEvent,
 } from './inventory.component';
 
@@ -17,17 +17,13 @@ export type InventoryAdditionEvent = {
   modalRef: ModalRef<InventoryFormComponent>,
 };
 
-export type InventoryListPermissions = {
-  item: InventoryPermissions,
-  addition: boolean,
-};
 
 @Component({
   selector: 'app-inventory-list',
   template: `
     <div class="inventory-list">
       <div class="inventory-list__header">
-        @if(permissions().addition) {
+        @if(permissions().add) {
           <app-inventory-adder-button (addInventory)="addInventory.emit($event)" />
         }
 
@@ -50,10 +46,9 @@ export type InventoryListPermissions = {
           <div class="inventory-panel">
             <app-inventory
               [inventory]="selectedInventory()"
-              [permissions]="permissions().item"
-              (addItem)="addItem.emit({ item: $event.item, inventory: selectedInventory(), modalRef: $event.modalRef })"
-              (deleteItem)="deleteItem.emit({ item: $event.item, inventory: selectedInventory(), modalRef: $event.modalRef })"
-              (editItem)="editItem.emit({ item: $event.item, inventory: selectedInventory(), modalRef: $event.modalRef })"
+              [permissions]="permissions()"
+              (addItem)="addItem.emit({ items: $event.items, inventory: selectedInventory(), modalRef: $event.modalRef })"
+              (deleteItem)="deleteItem.emit({ items: $event.items, inventory: selectedInventory(), modalRef: $event.modalRef })"
               (updateInventory)="updateInventory.emit($event)"
               (deleteInventory)="deleteInventory.emit({ inventory: selectedInventory() })"
             />
@@ -86,7 +81,7 @@ export type InventoryListPermissions = {
 })
 export class InventoryListComponent {
   public inventories = input.required<AttributeInventory[]>();
-  public permissions = input.required<InventoryListPermissions>();
+  public permissions = input.required<GameSessionPermissions['inventory']>();
   public deleteItem = output<InventoryItemEvent>();
   public editItem = output<InventoryItemEvent>();
   public addItem = output<InventoryItemEvent>();

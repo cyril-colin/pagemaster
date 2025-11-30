@@ -9,10 +9,10 @@ export const playerInventoryItemEditHandler: GameEventHandlerFn<EventPlayerInven
   const inventoryIndex = assertAttributeIndex(player, 'inventory', event.inventoryId);
   const inventory = player.attributes.inventory[inventoryIndex];
   
-  const itemIndex = inventory.current.findIndex(i => i.id === event.newItem.id);
+  const itemIndex = inventory.current.findIndex(i => i.id === event.newItems[0].id);
   if (itemIndex === -1) {
     throw new Error('Item not found in inventory for editing');
   }
-  inventory.current[itemIndex] = event.newItem;
+  inventory.current[itemIndex] = event.newItems[0];
   return gameSession;
 }

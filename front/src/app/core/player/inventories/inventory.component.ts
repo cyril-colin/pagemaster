@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
 import { Item } from '@pagemaster/common/items.types';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { BadgeComponent } from '../../design-system/badge.component';
 import { ButtonComponent } from '../../design-system/button.component';
 import { CardComponent } from '../../design-system/card.component';
@@ -10,14 +11,8 @@ import { ItemModalComponent } from './items/item-modal.component';
 import { ItemPlaceholderComponent } from './items/item-placeholder.component';
 import { ItemComponent } from './items/item.component';
 
-export type InventoryPermissions = {
-  add: boolean,
-  edit: boolean,
-  delete: boolean,
-}
-
 export type InventoryItemEvent = {
-  item: Item,
+  items: Item[],
   inventory: AttributeInventory,
   modalRef: ModalRef<ItemModalComponent>,
 };
@@ -122,10 +117,9 @@ export type InventoryUpdateEvent = {
 })
 export class InventoryComponent {
   public inventory = input.required<AttributeInventory>();
-  public permissions = input.required<InventoryPermissions>();
+  public permissions = input.required<GameSessionPermissions['inventory']>();
   public addItem = output<Omit<InventoryItemEvent, 'inventory'>>();
   public deleteItem = output<Omit<InventoryItemEvent, 'inventory'>>();
-  public editItem = output<Omit<InventoryItemEvent, 'inventory'>>();
   public deleteInventory = output<InventoryDeletionEvent>();
   public updateInventory = output<InventoryUpdateEvent>();
 
@@ -183,23 +177,20 @@ export class InventoryComponent {
   protected openItemGallery(item: Item) {
     const ref = this.modalService.open(ItemModalComponent, {
       existingItem: item,
-      permissions: this.permissions(),
-    });
-    ref.componentRef.instance.editItem.subscribe((newItem: Item) => {
-      this.editItem.emit({ item: newItem, modalRef: ref });
+      permissions: this.permissions().item,
     });
 
     ref.componentRef.instance.deleteItem.subscribe(() => {
-      this.deleteItem.emit({ item, modalRef: ref });
+      this.deleteItem.emit({ items: [item], modalRef: ref });
     });
   }
 
   protected openAddItemModal() {
     const ref = this.modalService.open(ItemModalComponent, {
-      permissions: this.permissions(),
+      permissions: this.permissions().item,
     });
-    ref.componentRef.instance.editItem.subscribe((newItem: Item) => {
-      this.addItem.emit({ item: newItem, modalRef: ref });
+    ref.componentRef.instance.addItem.subscribe((newItem: Item) => {
+      this.addItem.emit({ items: [newItem], modalRef: ref });
     });
   }
 
