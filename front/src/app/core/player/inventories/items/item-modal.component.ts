@@ -11,7 +11,15 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
   template: `
   @let item = existingItem();
     @if (!item && permissions().add) {
-      <app-items-finder [state]="state()" (newState)="onNewState($event)" (itemClicked)="addItem.emit($event)"/>
+      <app-items-finder [state]="state()" (newState)="onNewState($event)"/>
+      <div class="actions">
+        <ds-button [mode]="'tertiary'" (click)="cancel.emit()" [icon]="'empty'">Cancel</ds-button>
+        @if (state().selection.length > 0) {
+          <ds-button [mode]="'primary'" (click)="selectItems(state().selection)" [icon]="'plus'">
+            Select items ({{state().selection.length}})
+          </ds-button>
+        }
+      </div>
     }
     @if (item && permissions().delete) {
       <div class="content">
@@ -37,10 +45,8 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
       flex-direction: column;
       gap: var(--gap-medium);
       padding: var(--gap-medium);
-
-      height: 600px;
-
-      width: 500px;
+      height: calc(100% - 130px);
+      width: 100%;
     }
     .item-detail {
       display: flex;
@@ -99,7 +105,8 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
     }
     .actions {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
       width: 100%;
       margin-top: auto;
     }
@@ -110,9 +117,12 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
 export class ItemModalComponent {
   public existingItem = input<Item | null>(null);
   public permissions = input.required<GameSessionPermissions['inventory']['item']>();
-  public addItem = output<Item>();
+  public addItems = output<Item[]>();
+  public selectItems(items: Item[]) {
+    this.addItems.emit(items);
+  }
   public deleteItem = output<Item | null>();
-
+  public cancel = output<void>();
   protected resourcePackService = inject(ResourcePacksStorage);
 
   protected allItems = computed(() => {
@@ -136,11 +146,15 @@ export class ItemModalComponent {
       pageIndex: 0,
       pageSize: 30,
     },
+    selection: [],
     lastAction: 'load',
   });
 
 
   protected onNewState(newState: ItemsFinderState) {
+    if (newState.lastAction === 'selection') {
+      this.state.set(newState);
+    }
     const data = this.allItems().filter(item => {
       if (item.rarity === 'NEVER') {
         return false;
@@ -161,22 +175,20 @@ export class ItemModalComponent {
       }
       
       return true;
-    });
-
-    newState.count = data.length;
-    
-    // Update pagination
-    const start = newState.pagination.pageIndex * newState.pagination.pageSize;
-    const end = start + newState.pagination.pageSize;
-    const sliced = data.slice(start, end);
-    const sorted = sliced.sort((a, b) => {
+    }).sort((a, b) => {
       const rarityA = ItemRarityFilters[a.rarity]?.sortValue ?? 0;
       const rarityB = ItemRarityFilters[b.rarity]?.sortValue ?? 0;
       return rarityB - rarityA;
     });
-    newState.data = sorted;
 
-    
+    newState.count = data.length;
+
+    // Update pagination and produce the page slice
+    const start = newState.pagination.pageIndex * newState.pagination.pageSize;
+    const end = start + newState.pagination.pageSize;
+    newState.data = data.slice(0, end);
+
+
     this.state.set(newState);
   }
 }

@@ -30,7 +30,8 @@ export type ItemsFinderState = {
     pageIndex: number,
     pageSize: number,
   },
-  lastAction: 'filter' | 'paginate' | 'load',
+  selection: Item[],
+  lastAction: 'filter' | 'paginate' | 'load' | 'selection',
 }
 
 
@@ -49,7 +50,21 @@ export type ItemsFinderState = {
         [value]="state().filters.fullText"
       />
     </div>
-    <div class="controls-row">
+    
+    <ds-multi-select-dropdown [items]="allRarities()" (selectionChange)="filterByRarity($event)">
+      Rarity
+    </ds-multi-select-dropdown>
+
+    <ds-multi-select-dropdown [items]="allTags()" (selectionChange)="filterByTags($event)">
+      Tags
+    </ds-multi-select-dropdown>
+  </div>
+
+  <div class="controls-row">
+      <div class="selection-controls">
+        <ds-button (click)="selectAll()" mode="secondary">Select all</ds-button>
+        <ds-button (click)="unselectAll()" mode="tertiary">Unselect all</ds-button>
+      </div>
       <div class="view-toggle">
         <ds-button
           [mode]="viewMode() === 'table' ? 'primary' : 'tertiary'"
@@ -65,17 +80,9 @@ export type ItemsFinderState = {
         </ds-button>
       </div>
     </div>
-    <ds-multi-select-dropdown [items]="allRarities()" (selectionChange)="filterByRarity($event)">
-      Rarity
-    </ds-multi-select-dropdown>
-
-    <ds-multi-select-dropdown [items]="allTags()" (selectionChange)="filterByTags($event)">
-      Tags
-    </ds-multi-select-dropdown>
-  </div>
 
   @if (viewMode() === 'table') {
-    <div class="table-wrapper" #tableWrapper>
+    <div class="table-wrapper" #tableWrapper (scroll)="onScroll('table', $event)">
       <table>
       <thead>
         <tr>
@@ -88,8 +95,11 @@ export type ItemsFinderState = {
       </thead>
       <tbody>
         @for(item of state().data; track item.id) {
-          <tr (click)="itemClicked.emit(item)">
-            <td><ds-image [src]="item.path" [alt]="item.name" size="medium" /></td>
+          <tr (click)="select(item)" [class.selected]="isSelected(item)">
+            <td class="icon-cell">
+              <ds-image [src]="item.path" [alt]="item.name" size="medium" />
+              <span class="selected-check" aria-hidden="true">✓</span>
+            </td>
             <td>{{ item.name }}</td>
             <td>{{ item.tags.join(', ') }}</td>
             <td>{{ item.rarity }}</td>
@@ -102,32 +112,16 @@ export type ItemsFinderState = {
   }
 
   @if (viewMode() === 'grid') {
-    <div class="grid-wrapper" #gridWrapper>
+    <div class="grid-wrapper" #gridWrapper (scroll)="onScroll('grid', $event)">
       <div class="grid">
         @for(item of state().data; track item.id) {
-          <app-item [item]="item" (itemClicked)="itemClicked.emit($event)"></app-item>
+          <app-item class="grid-item" [class.selected]="isSelected(item)" [item]="item" (itemClicked)="select(item)"></app-item>
         }
       </div>
     </div>
   }
-
-  <div class="pagination-controls">
-    <ds-button
-      [mode]="'tertiary'"
-      (click)="pagination().pageIndex === 0 ? null : prevPage()"
-      [class.disabled]="pagination().pageIndex === 0"
-    >
-      Prev
-    </ds-button>
-    <span>Page {{ pagination().pageIndex + 1 }} / {{ totalPages() }}</span>
-    <ds-button
-      [mode]="'tertiary'"
-      (click)="pagination().pageIndex >= totalPages() - 1 ? null : nextPage()"
-      [class.disabled]="pagination().pageIndex >= totalPages() - 1"
-    >
-      Next
-    </ds-button>
-  </div>
+  
+  <!-- Infinite scroll: scroll handlers on wrappers will trigger loading more pages -->
   `,
   styles: [`
     :host {
@@ -164,8 +158,16 @@ export type ItemsFinderState = {
     }
       .controls-row {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        align-items: center;
         margin-bottom: 8px;
+        gap: 12px;
+      }
+
+      .selection-controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
       }
 
       .view-toggle {
@@ -200,6 +202,74 @@ export type ItemsFinderState = {
         color: var(--text-primary);
         font-size: var(--text-size-medium);
       }
+      
+      /* Selected state styles */
+      table tr.selected {
+        background-color: rgba(11,120,255,0.06);
+      }
+      table tr:hover {
+        background-color: rgba(0,0,0,0.02);
+        cursor: pointer;
+      }
+
+      /* selected check inside the image cell */
+      .icon-cell {
+        position: relative;
+      }
+      .selected-check {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        width: 22px;
+        height: 22px;
+        font-weight: 700;
+        font-size: 14px;
+        color: white;
+        background: var(--color-accent, #0b78ff);
+        border-radius: 999px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+        transform: scale(0.95);
+        transition: transform 120ms ease, opacity 120ms ease;
+        opacity: 0;
+        pointer-events: none;
+      }
+      tr.selected .selected-check {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .grid .grid-item {
+        position: relative;
+        transition: box-shadow 120ms ease, transform 120ms ease, border-color 120ms ease;
+      }
+      .grid .grid-item.selected {
+        box-shadow: 0 6px 18px rgba(11,120,255,0.08);
+        transform: translateY(-2px);
+        border-radius: 8px;
+      }
+      /* checkmark overlay for grid items (host-level pseudo element)
+         positioned bottom-right; no selected border so the badge sits over the icon */
+      .grid .grid-item.selected::after {
+        content: '✓';
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        width: 20px;
+        height: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-accent, #0b78ff);
+        color: #fff;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        pointer-events: none;
+      }
   `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -207,11 +277,13 @@ export type ItemsFinderState = {
 export class ItemsFinderComponent {
   public state = input.required<ItemsFinderState>();
   public newState = output<ItemsFinderState>();
-  public itemClicked = output<Item>();
+
   protected _state = linkedSignal(this.state);
   public viewMode = signal<'table' | 'grid'>('grid');
   public tableRef = viewChild<ElementRef<HTMLElement>>('tableWrapper');
   public gridRef = viewChild<ElementRef<HTMLElement>>('gridWrapper');
+  // Prevent duplicate load triggers while a page is being requested
+  protected _infiniteScrollLoading = false;
   protected allRarities = computed(() => {
     return Object.values(ItemRarityFilters).map(rarity => ({
       ...rarity,
@@ -240,23 +312,83 @@ export class ItemsFinderComponent {
   protected _fullTextDebounceDelay = 250; // milliseconds
 
 
+  protected select(item: Item) {
+    this._state.update((s: ItemsFinderState) => {
+      const index = s.selection.findIndex(i => i.id === item.id);
+      if (index >= 0) {
+        s.selection.splice(index, 1);
+      } else {
+        s.selection.push(item);
+      }
+      s.lastAction = 'selection';
+      return structuredClone(s);
+    });
+  }
+
+  // Used by the template to determine whether a given item is selected
+  public isSelected(item: Item): boolean {
+    return this._state().selection.some(i => i.id === item.id);
+  }
+
+  // Select all items currently loaded (visible) in the finder
+  public selectAll(): void {
+    this._state.update((s: ItemsFinderState) => {
+      s.selection = s.data.slice();
+      s.lastAction = 'selection';
+      return structuredClone(s);
+    });
+  }
+
+  // Unselect all items
+  public unselectAll(): void {
+    this._state.update((s: ItemsFinderState) => {
+      s.selection = [];
+      s.lastAction = 'selection';
+      return structuredClone(s);
+    });
+  }
 
   constructor() {
     effect(() => {
       const s = this._state();
       this.newState.emit(s);
-      const tableElem: HTMLElement | null = this.tableRef()?.nativeElement ?? null;
-      const gridElem: HTMLElement | null = this.gridRef()?.nativeElement ?? null;
 
-      if (tableElem) {
-        tableElem.scrollTop = 0;
-        tableElem.scrollLeft = 0;
+      if (s.lastAction !== 'paginate' && s.lastAction !== 'selection') {
+        const tableElem: HTMLElement | null = this.tableRef()?.nativeElement ?? null;
+        const gridElem: HTMLElement | null = this.gridRef()?.nativeElement ?? null;
+
+        if (tableElem) {
+          tableElem.scrollTop = 0;
+          tableElem.scrollLeft = 0;
+        }
+        if (gridElem) {
+          gridElem.scrollTop = 0;
+          gridElem.scrollLeft = 0;
+        }
       }
-      if (gridElem) {
-        gridElem.scrollTop = 0;
-        gridElem.scrollLeft = 0;
-      }
+      
     });
+  }
+
+  // Called from scroll events in template. When the user scrolls near the bottom,
+  // request the next page by updating the pagination.pageIndex. A loading guard
+  // avoids multiple increments while the parent processes the request.
+  public onScroll(which: 'table' | 'grid', event?: Event) {
+    const el = (event?.target as HTMLElement) ?? (which === 'table' ? this.tableRef()?.nativeElement : this.gridRef()?.nativeElement);
+    if (!el) return;
+
+    const threshold = 150; // px from bottom to trigger
+    if (el.scrollTop + el.clientHeight >= el.scrollHeight - threshold) {
+      if (this._infiniteScrollLoading) return;
+      // if already at last page, do nothing
+      if (this.pagination().pageIndex >= this.totalPages() - 1) return;
+
+      this._infiniteScrollLoading = true;
+      // advance page index (nextPage does the structuredClone update and emits)
+      this.nextPage();
+      // release guard shortly after — parent will update state; small debounce to avoid thrash
+      setTimeout(() => (this._infiniteScrollLoading = false), 400);
+    }
   }
 
   public setViewMode(mode: 'table' | 'grid') {

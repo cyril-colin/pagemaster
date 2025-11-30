@@ -34,6 +34,8 @@ export class ModalService {
   ): ModalRef<T> {
     const dialogRef = this.dialog.open<unknown, unknown, ModalWrapperComponent>(ModalWrapperComponent, {
       positionStrategy: this.defaultPositionStrategy,
+      width: '100%',
+      height: '100%',
     });
 
     const wrapperRef = dialogRef.componentRef!;

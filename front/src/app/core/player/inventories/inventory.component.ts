@@ -189,8 +189,12 @@ export class InventoryComponent {
     const ref = this.modalService.open(ItemModalComponent, {
       permissions: this.permissions().item,
     });
-    ref.componentRef.instance.addItem.subscribe((newItem: Item) => {
-      this.addItem.emit({ items: [newItem], modalRef: ref });
+    ref.componentRef.instance.addItems.subscribe((newItems: Item[]) => {
+      this.addItem.emit({ items: newItems, modalRef: ref });
+    });
+
+    ref.componentRef.instance.cancel.subscribe(() => {
+      void ref.close();
     });
   }
 
