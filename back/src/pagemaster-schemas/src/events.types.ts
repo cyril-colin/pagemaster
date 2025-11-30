@@ -1,5 +1,5 @@
-import { EventPlayerTypes } from './events-player.types'
-
+import { EventPlayerTypes } from './events-player.types';
+import { LootBox } from './lootbox.types';
 export type EventBase = {
   id: string,
   timestamp: number,
@@ -25,5 +25,10 @@ export type EventDiceRoll = EventBase & {
    */
   triggeringPlayerId: string | null,
   sides: number,
+}
+
+export type EventLootBox = EventBase & {
+  type: 'loot-box',
+  lootBox: LootBox,
 }
 

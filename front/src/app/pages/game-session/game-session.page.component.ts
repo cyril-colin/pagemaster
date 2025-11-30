@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
-import { EventDiceRoll } from '@pagemaster/common/events.types';
+import { EventDiceRoll, EventLootBox } from '@pagemaster/common/events.types';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { BottomBarComponent } from 'src/app/core/design-system/bottom-bar.component';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { EventDiceRollComponent } from 'src/app/core/events-center/event-views/event-dice-roll.component';
 import { EventMeta, EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
+import { LootBoxModalComponent } from 'src/app/core/loot-box/loot-box.modal.component';
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
@@ -197,6 +198,42 @@ export class GameSessionPageComponent {
 
     modalRef.componentRef.instance.d20.subscribe(() => {
       this.runDice(20);
+      void modalRef.close();
+    });
+
+    modalRef.componentRef.instance.cancel.subscribe(() => {
+      void modalRef.close();
+    });
+
+    modalRef.componentRef.instance.cancel.subscribe(() => {
+      void modalRef.close();
+    });
+
+    modalRef.componentRef.instance.lootBox.subscribe(() => {
+      void modalRef.close();
+      this.runLootBox();
+    });
+  }
+
+  protected runLootBox(): void {
+    const modalRef = this.modalService.open(LootBoxModalComponent);
+    modalRef.componentRef.instance.cancel.subscribe(() => {
+      void modalRef.close();
+    });
+
+    modalRef.componentRef.instance.cancel.subscribe(() => {
+      void modalRef.close();
+    });
+
+    modalRef.componentRef.instance.newLootBox.subscribe((lootBox) => {
+      
+      const event: Omit<EventLootBox, 'id' | 'timestamp'> = {
+        type: 'loot-box',
+        gameSessionId: this.currentGameSession.currentGameSession().id,
+        lootBox: lootBox,
+      };
+    
+      this.gameEventRepository.postCommand(event).subscribe();
       void modalRef.close();
     });
   }

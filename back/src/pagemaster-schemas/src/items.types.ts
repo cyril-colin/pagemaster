@@ -165,35 +165,41 @@ export const ItemTagFilters: Record<ItemTag, ItemFilter<ItemTag>> = {
   },
 } as const;
 
-export const ItemRarityFilters: Record<ItemRarity, ItemFilter<ItemRarity>> = {
+export const ItemRarityFilters: Record<ItemRarity, ItemFilter<ItemRarity> & {rate: number}> = {
   [ItemRarity.COMMON]: {
     id: ItemRarity.COMMON,
     label: 'Common',
     sortValue: 30,
+    rate: 50,
   },
   [ItemRarity.UNCOMMON]: {
     id: ItemRarity.UNCOMMON,
     label: 'Uncommon',
     sortValue: 50,
+    rate: 30,
   },
   [ItemRarity.RARE]: {
     id: ItemRarity.RARE,
     label: 'Rare',
     sortValue: 70,
+    rate: 15,
   },
   [ItemRarity.EPIC]: {
     id: ItemRarity.EPIC,
     label: 'Epic',
     sortValue: 80,
+    rate: 4,
   },
   [ItemRarity.LEGENDARY]: {
     id: ItemRarity.LEGENDARY,
     label: 'Legendary',
     sortValue: 100,
+    rate: 1,
   },
   [ItemRarity.NEVER]: {
     id: ItemRarity.NEVER,
     label: 'Never',
     sortValue: 0,
+    rate: 0,
   },
 } as const;

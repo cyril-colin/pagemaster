@@ -2,6 +2,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerAvatarEdit } from '@pagemaster/common/events-player.types';
+import { ImageComponent } from '../../design-system/image.component';
 import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
@@ -9,12 +10,12 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
   template: `
     @let e = event();
     @let p = player();
-    <img [src]="e.event.newAvatar" />
-    avatar updated for
-    <a [routerLink]="playerUrl()"><img [src]="p?.avatar" /></a>
+    
+    {{p?.name}} changed avatar to
+    <a [routerLink]="playerUrl()"><ds-image [src]="e.event.newAvatar" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],
-  imports: [RouterModule],
+  imports: [RouterModule, ImageComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventAvatarEditComponent extends AbstractEventViewPlayerComponent<EventPlayerAvatarEdit> {}

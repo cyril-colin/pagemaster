@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { EventDiceRoll } from '@pagemaster/common/events.types';
+import { ImageComponent } from '../../design-system/image.component';
 import { PageMasterRoutes } from '../../pagemaster.router';
 import { EventsCenterStateService } from '../events-center.state';
 import { AbstractEventViewComponent } from './abstract-event-view.component';
@@ -11,15 +12,29 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
   template: `
     @let e = event();
     @if (participant()) {
-      <a [routerLink]="playerUrl()"><img [src]="participant()?.avatar" /></a>
+      <a [routerLink]="playerUrl()"><ds-image [src]="participant()?.avatar || ''" /></a>
     }@else {
       <span>GM</span>
     }
     <span>Run dice !</span><br />
     <div>{{displayedResult()}} / {{e.event.sides}}</div>
   `,
-  styleUrls: ['./event-view-common.scss'],
-  imports: [RouterModule],
+  styleUrls : ['./event-view-common.scss'],
+  styles: [`
+    :host .dice-anim {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #e67e22;
+      animation: diceBounce 0.5s infinite;
+    }
+
+    @keyframes diceBounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); color: #f1c40f; }
+      100% { transform: scale(1); }
+    }
+  `],
+  imports: [RouterModule, ImageComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventDiceRollComponent extends AbstractEventViewComponent<EventDiceRoll> {

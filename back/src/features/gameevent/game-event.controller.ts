@@ -8,6 +8,7 @@ import { isEventPlayerType } from '../../pagemaster-schemas/src/events-player.ty
 import { GameSessionMongoClient } from '../gamesession/game-session.mongo-client';
 import { EventDiceRollExecuter } from './event-executer/event-dice-roll.executer';
 import { GameEventExecuter } from './event-executer/event-executer';
+import { EventLootBoxExecuter } from './event-executer/event-loot-box.executer';
 import { EventPlayerExecuter } from './event-executer/event-player/event-player.executer';
 import { GameEventMongoClient } from './game-event.mongo-client';
 
@@ -57,6 +58,9 @@ export class GameEventController {
     }
     if (gameEvent.type === 'dice-roll') {
       return new EventDiceRollExecuter();
+    }
+    if (gameEvent.type === 'loot-box') {
+      return new EventLootBoxExecuter();
     }
     throw new HttpBadRequestError(`Unsupported event type: ${gameEvent.type}`);
   }

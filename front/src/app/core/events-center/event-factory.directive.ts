@@ -12,6 +12,7 @@ import { EventInventoryItemAddComponent } from './event-views/event-inventory-it
 import { EventInventoryItemDeleteComponent } from './event-views/event-inventory-item-delete.component';
 import { EventInventoryItemEditComponent } from './event-views/event-inventory-item-edit.component';
 import { EventInventoryUpdateComponent } from './event-views/event-inventory-update.component';
+import { EventLootBoxComponent } from './event-views/event-loot-box.component';
 import { EventRenameComponent } from './event-views/event-rename.component';
 import { EventStatusAddComponent } from './event-views/event-status-add.component';
 import { EventStatusDeleteComponent } from './event-views/event-status-delete.component';
@@ -39,6 +40,7 @@ export const EVENT_COMPONENTS_MAP = {
   [EventPlayerTypes.PLAYER_BAR_POINT_REMOVE]: PlayerBarPointRemoveEventViewComponent,
   [EventPlayerTypes.PLAYER_BAR_POINT_ADD]: PlayerBarPointAddEventViewComponent,
   'dice-roll': EventDiceRollComponent,
+  'loot-box': EventLootBoxComponent,
 } as const;
 
 
