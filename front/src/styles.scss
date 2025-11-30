@@ -102,11 +102,14 @@
   --delete-button-size: 18px;
   
   /* Inventory Item Components */
-  --item-size: 130px;
-  --item-img-size: 45px;
+  --item-size-medium: 130px;
+  --item-img-size-medium: 45px;
   --item-border-radius: 8px;
   --item-border-width: 2px;
   --item-transition-speed: 0.2s;
+
+  --item-size-small: 60px;
+  --item-img-size-small: 24px;
   
   /* === LAYOUT === */
   --content-max-width: 1200px;

@@ -6,10 +6,17 @@ import { ItemWeightComponent } from './item-weight.component';
 @Component({
   selector: 'app-item',
   template: `
-    <div class="item" (click)="itemClicked.emit(item())" [style.border-color]="getBorderColor(item().rarity)">
+    <div class="item"
+      (click)="itemClicked.emit(item())"
+      [style.border-color]="getBorderColor(item().rarity)"
+      [class.item-medium]="mode() === 'default'"
+      [class.item-small]="mode() === 'compact'"
+    >
       <ds-image [src]="item().path" [alt]="item().name" size="medium" />
-      <p>{{ item().name }}</p>
-      <app-item-weight [weight]="item().weight" />
+      @if (mode() === 'default') {
+        <p>{{ item().name }}</p>
+        <app-item-weight [weight]="item().weight" />
+      }
     </div>
   `,
   styles: [`
@@ -18,9 +25,7 @@ import { ItemWeightComponent } from './item-weight.component';
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 4px;
-      height: var(--item-size);
-      width: var(--item-size);
+      gap: var(--gap-small);
       border: var(--item-border-width) solid var(--color-border);
       border-radius: var(--item-border-radius);
       cursor: pointer;
@@ -33,6 +38,16 @@ import { ItemWeightComponent } from './item-weight.component';
         width: 100%;
         text-align: center;
       }
+    }
+
+    .item-medium {
+      height: var(--item-size-medium);
+      width: var(--item-size-medium);
+    }
+
+    .item-small {
+      height: var(--item-size-small);
+      width: var(--item-size-small);
     }
 
     .item app-item-weight {
@@ -51,6 +66,7 @@ import { ItemWeightComponent } from './item-weight.component';
 })
 export class ItemComponent {
   public item = input.required<Item>();
+  public mode = input<'default' | 'compact'>('default');
   public itemClicked = output<Item>();
 
   public getBorderColor(rarity: ItemRarity): string {

@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerInventoryItemDelete } from '@pagemaster/common/events-player.types';
 import { ImageComponent } from '../../design-system/image.component';
+import { ItemComponent } from '../../player/inventories/items/item.component';
 import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
@@ -10,8 +11,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let e = event();
     @let inv = inventory();
     @let p = player();
-    
-    <ds-image [src]="e.event.deletedItem.path" />
+    <app-item [item]="e.event.deletedItem" [mode]="'compact'" />
     deleted from "{{inv?.name}}" of
     <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
   `,
@@ -19,6 +19,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
   imports: [
     RouterModule,
     ImageComponent,
+    ItemComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

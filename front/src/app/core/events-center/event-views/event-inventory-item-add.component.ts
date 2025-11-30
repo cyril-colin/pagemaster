@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerInventoryItemAdd } from '@pagemaster/common/events-player.types';
 import { ImageComponent } from '../../design-system/image.component';
+import { ItemComponent } from '../../player/inventories/items/item.component';
 import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
@@ -12,7 +13,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let p = player();
     
     @for(item of e.event.newItems; track item.id) {
-      <ds-image [src]="item.path" />
+      <app-item [item]="item" [mode]="'compact'" />
     }
     
     added to "{{inv?.name}}" of
@@ -22,6 +23,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
   imports: [
     RouterModule,
     ImageComponent,
+    ItemComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
