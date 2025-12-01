@@ -1,7 +1,7 @@
 import { Directive, inject, input } from '@angular/core';
 import { EventBase } from '@pagemaster/common/events.types';
-import { CurrentGameSessionState } from '../../current-game-session.state';
-import { EventMeta } from '../events-center.state';
+import { CurrentGameSessionState } from '../../../../../core/current-game-session.state';
+import { EventMeta } from '../../../../../core/events-center/events-center.state';
 
 @Directive()
 export abstract class AbstractEventViewComponent<T extends EventBase> {

@@ -1,20 +1,20 @@
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { EventPlayerNameEdit } from '@pagemaster/common/events-player.types';
-import { ImageComponent } from '../../design-system/image.component';
+import { EventPlayerStatusDelete } from '@pagemaster/common/events-player.types';
+import { ImageComponent } from '../../../../../core/design-system/image.component';
 import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
-  selector: 'app-event-rename',
+  selector: 'app-event-status-delete',
   template: `
     @let e = event();
     @let p = player();
-    <span>Player renamed to "{{e.event.newName}}" </span>
+    <span>Status deleted (ID: {{e.event.statusId}}) for </span>
     <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],
   imports: [RouterModule, ImageComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventRenameComponent extends AbstractEventViewPlayerComponent<EventPlayerNameEdit> {}
+export class EventStatusDeleteComponent extends AbstractEventViewPlayerComponent<EventPlayerStatusDelete> {}

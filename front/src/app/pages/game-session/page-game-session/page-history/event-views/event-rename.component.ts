@@ -1,21 +1,20 @@
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { EventPlayerAvatarEdit } from '@pagemaster/common/events-player.types';
-import { ImageComponent } from '../../design-system/image.component';
+import { EventPlayerNameEdit } from '@pagemaster/common/events-player.types';
+import { ImageComponent } from '../../../../../core/design-system/image.component';
 import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
-  selector: 'app-event-avatar-edit',
+  selector: 'app-event-rename',
   template: `
     @let e = event();
     @let p = player();
-    
-    {{p?.name}} changed avatar to
-    <a [routerLink]="playerUrl()"><ds-image [src]="e.event.newAvatar" /></a>
+    <span>Player renamed to "{{e.event.newName}}" </span>
+    <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],
   imports: [RouterModule, ImageComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventAvatarEditComponent extends AbstractEventViewPlayerComponent<EventPlayerAvatarEdit> {}
+export class EventRenameComponent extends AbstractEventViewPlayerComponent<EventPlayerNameEdit> {}

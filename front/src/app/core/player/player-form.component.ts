@@ -1,17 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
+import { CurrentGameSessionState } from '../current-game-session.state';
+import { CurrentParticipantState } from '../current-participant.state';
 import { CardComponent } from '../design-system/card.component';
-import { AvatarEvent, PictureControlComponent } from './avatar/picture-control.component';
-import { BarsControlComponent, BarValueUpdateEvent } from './bars/bars-control.component';
+import { PictureControlComponent } from './avatar/picture-control.component';
+import { BarsControlComponent } from './bars/bars-control.component';
 import {
-  InventoryAdditionEvent,
   InventoryListComponent,
 } from './inventories/inventory-list.component';
-import { InventoryDeletionEvent, InventoryItemEvent, InventoryUpdateEvent } from './inventories/inventory.component';
 import { NameControlComponent } from './names/name-control.component';
 import { StatusControlComponent } from './statuses/status-control.component';
 
@@ -25,47 +24,38 @@ import { StatusControlComponent } from './statuses/status-control.component';
       <ds-card>
         <div class="identity">
           
-          <div class="identity-data">
+            <div class="identity-data">
             <app-picture-control
-            [picture]="existingPlayer().avatar"
-            [permissions]="permissions().avatar"
-            (newPicture)="avatarEvent.emit($event)"
-          />
+              [player]="existingPlayer()"
+              [permissions]="permissions()"
+              [gameSession]="currentSession()!.gameSession"
+            />
             <app-name-control
-              [name]="existingPlayer().name"
-              [permissions]="permissions().name"
-              (newName)="renameEvent.emit($event)"
+              [player]="existingPlayer()"
+              [permissions]="permissions()"
+              [gameSession]="currentSession()!.gameSession"
             />
             <app-status-control
-              [statuses]="existingPlayer().attributes.status"
-              [permissions]="permissions().statuses"
-              (newStatus)="newStatusEvent.emit($event)"
-              (editStatus)="editStatusEvent.emit($event)"
-              (deleteStatus)="deleteStatusEvent.emit($event)"
+              [player]="existingPlayer()"
+              [permissions]="permissions()"
+              [gameSession]="currentSession()!.gameSession"
             />
             
           </div>
         </div>
 
         <app-bars-control
-          [bars]="existingPlayer().attributes.bar"
-          [permissions]="permissions().bars"
-          (newBarValue)="newBarValueEvent.emit($event)"
-          (newBar)="newBarEvent.emit($event)"
-          (editBar)="editBarEvent.emit($event)"
-          (deleteBar)="deleteBarEvent.emit($event)"
+          [player]="existingPlayer()"
+          [permissions]="permissions()"
+          [gameSession]="currentSession()!.gameSession"
         />
       </ds-card>
 
       
       <app-inventory-list
-        [inventories]="existingPlayer().attributes.inventory"
-        [permissions]="permissions().inventory"
-        (addItem)="addItem.emit($event)"
-        (deleteItem)="deleteItem.emit($event)"
-        (addInventory)="addInventory.emit($event)"
-        (updateInventory)="updateInventory.emit($event)"
-        (deleteInventory)="deleteInventory.emit($event)"
+        [player]="existingPlayer()"
+        [permissions]="permissions()"
+        [gameSession]="currentSession()!.gameSession"
       />
     </form>
   `,
@@ -105,22 +95,18 @@ import { StatusControlComponent } from './statuses/status-control.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerFormComponent  {
+  protected gameSession = inject(CurrentGameSessionState);
+  protected participant = inject(CurrentParticipantState);
+  protected currentSession = computed(() => {
+    const gameSession = this.gameSession.currentGameSessionNullable();
+    const participant = this.participant.currentParticipant();
+    if (gameSession && participant) {
+      return { gameSession, participant };
+    }
+    return null;
+  });
   public existingPlayer = input.required<Player>();
   public permissions = input.required<GameSessionPermissions>();
   public newPlayer = output<Player>();
   public fb = inject(FormBuilder);
-  public renameEvent = output<{value: string}>();
-  public avatarEvent = output<AvatarEvent>();
-  public newBarValueEvent = output<BarValueUpdateEvent>();
-  public newBarEvent = output<AttributeBar>();
-  public editBarEvent = output<AttributeBar>();
-  public deleteBarEvent = output<AttributeBar>();
-  public newStatusEvent = output<AttributeStatus>();
-  public editStatusEvent = output<AttributeStatus>();
-  public deleteStatusEvent = output<AttributeStatus>();
-  public deleteItem = output<InventoryItemEvent>();
-  public addItem = output<InventoryItemEvent>();
-  public addInventory = output<InventoryAdditionEvent>();
-  public updateInventory = output<InventoryUpdateEvent>();
-  public deleteInventory = output<InventoryDeletionEvent>();
 }

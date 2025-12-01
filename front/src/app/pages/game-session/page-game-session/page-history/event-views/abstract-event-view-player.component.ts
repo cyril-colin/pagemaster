@@ -1,7 +1,7 @@
 import { computed, Directive, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventPlayerBase } from '@pagemaster/common/events.types';
-import { PageMasterRoutes } from '../../pagemaster.router';
+import { PageMasterRoutes } from '../../../../../core/pagemaster.router';
 import { AbstractEventViewComponent } from './abstract-event-view.component';
 
 @Directive()

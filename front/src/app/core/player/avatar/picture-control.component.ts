@@ -1,22 +1,19 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
+import { EventPlayerAvatarEdit, EventPlayerTypes } from '@pagemaster/common/events-player.types';
+import { tap } from 'rxjs';
 import { PictureGalleryComponent } from '../../gallery/picture-gallery.component';
-import { ModalRef, ModalService } from '../../modal';
+import { ModalService } from '../../modal';
 import { ResourcePacksStorage } from '../../resource-packs-storage.service';
+import { AbstractPlayerControl } from '../abstract-player-control';
 import { AvatarViewComponent } from './avatar-view.component';
-
-export type AvatarEvent = {
-  picture: string,
-  modalRef: ModalRef<PictureGalleryComponent>,
-}
 
 @Component({
   selector: 'app-picture-control',
   template: `
     <app-avatar-view 
-      [source]="picture()" 
-      [permissions]="permissions()"
+      [source]="player().avatar" 
+      [permissions]="permissions().avatar"
       (needSrc)="modalGallery()"
     />
   `,
@@ -29,10 +26,8 @@ export type AvatarEvent = {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PictureControlComponent {
-  public picture = input<string>('');
-  public permissions = input.required<GameSessionPermissions['avatar']>();
-  public newPicture = output<AvatarEvent>();
+export class PictureControlComponent extends AbstractPlayerControl {
+  
   protected resourcePackStorage = inject(ResourcePacksStorage);
   protected pictures = computed(() => {
     const packs = this.resourcePackStorage.resourcePacks();
@@ -46,7 +41,14 @@ export class PictureControlComponent {
   public modalGallery() {
     const modalRef = this.modalService.open(PictureGalleryComponent, { items: this.pictures() });
     modalRef.componentRef.instance.itemSelected.subscribe((newPicture: { name: string, path: string }) => {
-      this.newPicture.emit({ picture: newPicture.path, modalRef });
+      this.updateAvatar(newPicture.path).pipe(
+        tap(() => void modalRef.close()),
+      ).subscribe();
     });
+  }
+
+  protected updateAvatar(newAvatar: string) {
+    const event = { ...this.prepareEvent(EventPlayerTypes.PLAYER_AVATAR_EDIT), newAvatar } as EventPlayerAvatarEdit;
+    return this.gameEventRepository.postCommand(event);
   }
 }

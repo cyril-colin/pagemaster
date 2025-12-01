@@ -1,29 +1,29 @@
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { EventPlayerBarPointAdd } from '@pagemaster/common/events-player.types';
-import { ImageComponent } from '../../design-system/image.component';
+import { EventPlayerBarPointRemove } from '@pagemaster/common/events-player.types';
+import { ImageComponent } from '../../../../../core/design-system/image.component';
 import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
-  selector: 'app-player-bar-point-add-event-view',
+  selector: 'app-player-bar-point-remove-event-view',
   standalone: true,
   template: `
     @let p = player();
     <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
-    gained
-    <strong>{{ event().event.addedValue }}</strong>
+    lost
+    <strong>{{ event().event.removedValue }}</strong>
     point(s)
     @let b = bar();
     @if(b) {
       in <strong>{{ b?.name }}</strong>
       ({{ b?.current }} / {{ b?.max }})
     }
-
+    
   `,
   styleUrls: ['./event-view-common.scss'],
   styles: [`
     :host {
-      color: var(--color-success);
+      color: var(--color-danger);
     }
   `],
   imports: [
@@ -32,7 +32,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlayerBarPointAddEventViewComponent extends AbstractEventViewPlayerComponent<EventPlayerBarPointAdd> {
+export class PlayerBarPointRemoveEventViewComponent extends AbstractEventViewPlayerComponent<EventPlayerBarPointRemove> {
   protected bar = computed(() => {
     const bars = this.player()?.attributes.bar || [];
     return bars.find(b => b.id === this.event().event.barId);

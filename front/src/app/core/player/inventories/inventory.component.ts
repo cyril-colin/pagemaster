@@ -1,31 +1,23 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
+import {
+  EventPlayerInventoryDelete,
+  EventPlayerInventoryItemAdd,
+  EventPlayerInventoryItemDelete,
+  EventPlayerInventoryUpdate,
+  EventPlayerTypes,
+} from '@pagemaster/common/events-player.types';
 import { Item } from '@pagemaster/common/items.types';
-import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
+import { tap } from 'rxjs';
 import { BadgeComponent } from '../../design-system/badge.component';
 import { ButtonComponent } from '../../design-system/button.component';
 import { CardComponent } from '../../design-system/card.component';
-import { ModalRef, ModalService } from '../../modal';
+import { ModalService } from '../../modal';
+import { AbstractPlayerControl } from '../abstract-player-control';
 import { InventoryFormComponent } from './inventory-form.component';
 import { ItemModalComponent } from './items/item-modal.component';
 import { ItemPlaceholderComponent } from './items/item-placeholder.component';
 import { ItemComponent } from './items/item.component';
-
-export type InventoryItemEvent = {
-  items: Item[],
-  inventory: AttributeInventory,
-  modalRef: ModalRef<ItemModalComponent>,
-};
-
-export type InventoryDeletionEvent = {
-  inventory: AttributeInventory,
-};
-
-export type InventoryUpdateEvent = {
-  inventory: AttributeInventory,
-  modalRef: ModalRef<InventoryFormComponent>,
-};
-
 
 @Component({
   selector: 'app-inventory',
@@ -35,14 +27,14 @@ export type InventoryUpdateEvent = {
         <h3 class="inventory-title">{{ inventory().name }}</h3>
         <div class="header-actions">
           <ds-badge size="medium">{{ capacityDisplay() }}</ds-badge>
-          @if(permissions().edit) {
+          @if(permissions().inventory.edit) {
             <ds-button 
               mode="secondary" 
               icon="edit"
               (click)="onEditInventory()"
             />
           }
-          @if(permissions().delete) {
+          @if(permissions().inventory.item.delete) {
             <ds-button 
               mode="secondary-danger" 
               icon="trash"
@@ -58,7 +50,7 @@ export type InventoryUpdateEvent = {
         @for(placeholder of placeholderCount(); track $index) {
           <app-item-placeholder 
             [mode]="placeholderMode()"
-            [canAdd]="permissions().add"
+            [canAdd]="permissions().inventory.item.add"
             (placeholderClicked)="openAddItemModal()" 
           />
         }
@@ -115,13 +107,8 @@ export type InventoryUpdateEvent = {
   imports: [ItemComponent, CardComponent, ItemPlaceholderComponent, BadgeComponent, ButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InventoryComponent {
+export class InventoryComponent extends AbstractPlayerControl {
   public inventory = input.required<AttributeInventory>();
-  public permissions = input.required<GameSessionPermissions['inventory']>();
-  public addItem = output<Omit<InventoryItemEvent, 'inventory'>>();
-  public deleteItem = output<Omit<InventoryItemEvent, 'inventory'>>();
-  public deleteInventory = output<InventoryDeletionEvent>();
-  public updateInventory = output<InventoryUpdateEvent>();
 
 
   protected modalService = inject(ModalService);
@@ -177,20 +164,25 @@ export class InventoryComponent {
   protected openItemGallery(item: Item) {
     const ref = this.modalService.open(ItemModalComponent, {
       existingItem: item,
-      permissions: this.permissions().item,
+      permissions: this.permissions().inventory.item,
     });
 
     ref.componentRef.instance.deleteItem.subscribe(() => {
-      this.deleteItem.emit({ items: [item], modalRef: ref });
+      this.deleteItemToInventory(item).pipe(
+        tap(() => void ref.close()),
+      ).subscribe();
     });
   }
 
   protected openAddItemModal() {
     const ref = this.modalService.open(ItemModalComponent, {
-      permissions: this.permissions().item,
+      permissions: this.permissions().inventory.item,
     });
     ref.componentRef.instance.addItems.subscribe((newItems: Item[]) => {
-      this.addItem.emit({ items: newItems, modalRef: ref });
+      this.addItemToInventory(newItems[0]).pipe(
+        tap(() => void ref.close()),
+      ).subscribe(
+      );
     });
 
     ref.componentRef.instance.cancel.subscribe(() => {
@@ -204,7 +196,9 @@ export class InventoryComponent {
       permissions: { delete: false },
     });
     modalRef.componentRef.instance.newInventory.subscribe((updatedInventory: AttributeInventory) => {
-      this.updateInventory.emit({inventory: updatedInventory, modalRef});
+      this.updateInventory(updatedInventory).pipe(
+        tap(() => void modalRef.close()),
+      ).subscribe();
     });
   }
 
@@ -216,8 +210,39 @@ export class InventoryComponent {
     );
     
     if (result === 'confirmed') {
-      this.deleteInventory.emit({inventory: this.inventory()});
+      this.deleteInventory().subscribe();
     }
+  }
+
+  protected addItemToInventory(item: Item) {
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD) as Omit<EventPlayerInventoryItemAdd, 'id' | 'timestamp'>;
+    command.newItems = [item];
+    command.inventoryId = this.inventory().id;
+    return this.gameEventRepository.postCommand(command);
+  }
+
+
+  protected deleteItemToInventory(item: Item) {
+    const command =
+      this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE) as Omit<EventPlayerInventoryItemDelete, 'id' | 'timestamp'>;
+    command.deletedItem = item;
+    command.inventoryId = this.inventory().id;
+    return this.gameEventRepository.postCommand(command);
+  }
+
+
+  protected deleteInventory() {
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_DELETE) as Omit<EventPlayerInventoryDelete, 'id' | 'timestamp'>;
+    command.inventoryId = this.inventory().id;
+
+    return this.gameEventRepository.postCommand(command);
+  }
+
+  protected updateInventory(updatedInventory: AttributeInventory) {
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_UPDATE) as Omit<EventPlayerInventoryUpdate, 'id' | 'timestamp'>;
+    command.newInventory = updatedInventory;
+
+    return this.gameEventRepository.postCommand(command);
   }
 }
 

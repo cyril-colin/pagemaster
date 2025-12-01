@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventLootBox } from '@pagemaster/common/events.types';
-import { ItemComponent } from '../../player/inventories/items/item.component';
+import { ItemComponent } from '../../../../../core/player/inventories/items/item.component';
 import { AbstractEventViewComponent } from './abstract-event-view.component';
 
 

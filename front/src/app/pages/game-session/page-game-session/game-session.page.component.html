@@ -1,0 +1,24 @@
+<section class="header">
+  <div class="links">
+    @let e = lastRunningDiceEvent();
+    @if (e) {
+        <app-event-dice-roll [event]="e"></app-event-dice-roll>
+      }
+
+    <ds-button mode="secondary-danger" (click)="logout()" [icon]="'logout'"/>
+  </div>
+</section>
+
+<section class="main-content">
+  <router-outlet />
+</section>
+
+<footer>
+  <ds-bottom-bar
+   (quickAction)="runQuickAction()"
+      [eventCount]="eventCount()"
+    (history)="goToEvents()"
+    (me)="goToMyPlayerPage()"
+    (notes)="goToNotes()"
+  (session)="goToPlayerList()" />
+</footer>

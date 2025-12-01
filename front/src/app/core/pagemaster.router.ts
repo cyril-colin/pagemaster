@@ -1,15 +1,15 @@
 import { inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Route, RouterStateSnapshot } from '@angular/router';
 import { AuthGuard } from '../pages/game-session/auth.guard';
-import { GameSessionPageComponent } from '../pages/game-session/game-session.page.component';
-import { NotesPageComponent } from '../pages/game-session/notes.page.component';
-import { PlayerListPageComponent } from '../pages/game-session/player-list.page.component';
-import { PlayerPageComponent } from '../pages/game-session/player.page.component';
+import { GameSessionPageComponent } from '../pages/game-session/page-game-session/game-session.page.component';
+import { NotesPageComponent } from '../pages/game-session/page-game-session/page-current-notes/notes.page.component';
+import { EventsCenterComponent } from '../pages/game-session/page-game-session/page-history/events-center.component';
+import { PlayerListPageComponent } from '../pages/game-session/page-game-session/page-players/player-list.page.component';
+import { PlayerPageComponent } from '../pages/game-session/page-game-session/page-players/player/player.page.component';
 import { GameSessionChooseParticipantComponent } from '../pages/public/game-session-choose-participant.component';
 import { GameSessionConfigComponent } from '../pages/public/game-session-creation/game-session-config.component';
 import { HomeComponent } from '../pages/public/home.component';
 import { PublicLayoutComponent } from '../pages/public/public-layout.component';
-import { EventsCenterComponent } from './events-center/events-center.component';
 import { EventsCenterStateService } from './events-center/events-center.state';
 
 export function PageMasterRoutes() {
@@ -65,6 +65,11 @@ export function PageMasterRoutes() {
             path: `player/:${params[1]}`,
             interpolated: (playerId: string) => `player/:${params[1]}`.replace(`:${params[1]}`, playerId),
             component: PlayerPageComponent,
+            children: [
+              { path: 'details', component: PlayerPageComponent },
+              { path: 'notes', component: NotesPageComponent },
+              { path: ':inventoryId', component: PlayerPageComponent },
+            ],
           },
           {path: 'notes', component: NotesPageComponent},
         ] as const,

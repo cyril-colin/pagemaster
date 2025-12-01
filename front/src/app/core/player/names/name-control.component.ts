@@ -1,13 +1,23 @@
-import { ChangeDetectionStrategy, Component, effect, ElementRef, inject, input, output, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  ElementRef,
+  inject,
+  linkedSignal,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
+import { EventPlayerNameEdit, EventPlayerTypes } from '@pagemaster/common/events-player.types';
+import { AbstractPlayerControl } from '../abstract-player-control';
 import { NameViewComponent } from './name-view.component';
 
 @Component({
   selector: 'app-name-control',
   template: `
     @if(mode() === 'view') {
-      <div (click)="setMode('edit')" [class.name-view]="permissions().edit" [class.name-readonly]="!permissions().edit">
+      <div (click)="setMode('edit')" [class.name-view]="permissions().name.edit" [class.name-readonly]="!permissions().name.edit">
         <app-name-view [name]="nameForm().controls.name.value"></app-name-view>
       </div>
     } @else {
@@ -47,18 +57,16 @@ import { NameViewComponent } from './name-view.component';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NameControlComponent {
-  public name = input<string>('');
-  public permissions = input.required<GameSessionPermissions['name']>();
-  public newName = output<{value: string}>();
+export class NameControlComponent extends AbstractPlayerControl {
   protected input = viewChild.required('input', { read: ElementRef<HTMLInputElement> });
   protected mode = signal<'view' | 'edit'>('view');
   protected fb = inject(FormBuilder);
-  protected nameForm = signal(this.createForm(this.name()));
+  protected nameForm = linkedSignal(() => this.createForm(this.player().name));
 
   constructor() {
+    super();
     effect(() => {
-      this.nameForm().controls.name.setValue(this.name());
+      this.nameForm().controls.name.setValue(this.player().name);
     });
   }
 
@@ -67,7 +75,7 @@ export class NameControlComponent {
   }
 
   protected setMode(newMode: 'view' | 'edit'): void {
-    if (!this.permissions().edit && newMode === 'edit') {
+    if (!this.permissions().name.edit && newMode === 'edit') {
       return;
     }
     this.mode.set(newMode);
@@ -84,8 +92,14 @@ export class NameControlComponent {
 
   protected submit(): void {
     this.setMode('view');
-    if (this.nameForm().valid && this.nameForm().controls.name.value !== this.name()) {
-      this.newName.emit({ value: this.nameForm().controls.name.value });
+    if (this.nameForm().valid && this.nameForm().controls.name.value !== this.player().name) {
+      this.renameParticipant(this.nameForm().controls.name.value).subscribe();
     }
+  }
+
+  protected renameParticipant(newName: string) {
+    const command = { ...this.prepareEvent(EventPlayerTypes.PLAYER_NAME_EDIT), newName } as EventPlayerNameEdit;
+
+    return this.gameEventRepository.postCommand(command);
   }
 }

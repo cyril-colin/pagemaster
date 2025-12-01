@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { EventsCenterStateService } from '../../../../core/events-center/events-center.state';
 import { EventFactoryDirective } from './event-factory.directive';
-import { EventsCenterStateService } from './events-center.state';
 
 @Component({
   selector: 'app-events-center',

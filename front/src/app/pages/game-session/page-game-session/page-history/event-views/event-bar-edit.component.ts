@@ -1,20 +1,20 @@
 
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { EventPlayerStatusEdit } from '@pagemaster/common/events-player.types';
-import { ImageComponent } from '../../design-system/image.component';
+import { EventPlayerBarEdit } from '@pagemaster/common/events-player.types';
+import { ImageComponent } from '../../../../../core/design-system/image.component';
 import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({
-  selector: 'app-event-status-edit',
+  selector: 'app-event-bar-edit',
   template: `
     @let e = event();
     @let p = player();
-    <span>Status "{{e.event.newStatus.name}}" edited for </span>
+    <span>Bar "{{e.event.newBar.name}}" edited for </span>
     <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],
   imports: [RouterModule, ImageComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventStatusEditComponent extends AbstractEventViewPlayerComponent<EventPlayerStatusEdit> {}
+export class EventBarEditComponent extends AbstractEventViewPlayerComponent<EventPlayerBarEdit> {}

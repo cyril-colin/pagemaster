@@ -6,118 +6,18 @@ import { CurrentGameSessionState } from 'src/app/core/current-game-session.state
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { BottomBarComponent } from 'src/app/core/design-system/bottom-bar.component';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
-import { EventDiceRollComponent } from 'src/app/core/events-center/event-views/event-dice-roll.component';
 import { EventMeta, EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { LootBoxModalComponent } from 'src/app/core/loot-box/loot-box.modal.component';
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
-import { QuickActionModalComponent } from './quick-action.modal.component';
+import { EventDiceRollComponent } from 'src/app/pages/game-session/page-game-session/page-history/event-views/event-dice-roll.component';
+import { QuickActionModalComponent } from '../quick-action.modal.component';
 
 @Component({
   selector: 'app-game-session',
-  template: `
-  <section class="header">
-    <div class="links">
-      @let e = lastRunningDiceEvent();
-      @if (e) {
-          <app-event-dice-roll [event]="e"></app-event-dice-roll>
-        }
-
-      <ds-button mode="secondary-danger" (click)="logout()" [icon]="'logout'"/>
-    </div>
-  </section>
-
-  <section class="main-content">
-    <router-outlet />
-  </section>
-
-  <footer>
-    <ds-bottom-bar
-     (quickAction)="runQuickAction()"
-        [eventCount]="eventCount()"
-      (history)="goToEvents()"
-      (me)="goToMyPlayerPage()"
-      (notes)="goToNotes()"
-    (session)="goToPlayerList()" />
-  </footer>
-  `,
-  styles: [`
-    :host {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      width: 100%;
-      padding-top: var(--header-height);
-    }
-
-    .header {
-      position: fixed;
-      z-index: 100;
-      top: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: var(--header-height);
-      background-color: var(--color-background-secondary);
-      border-bottom: var(--view-border);
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 2px 8px var(--color-shadow-heavy);
-    }
-
-    .links {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: var(--padding-medium);
-      gap: var(--gap-medium);
-      border-bottom: 1px solid var(--color-border-heavy);
-
-      a {
-        display: flex;
-        align-items: center;
-        padding: var(--gap-small) var(--padding-medium);
-        border: var(--view-border);
-        border-radius: var(--view-border-radius);
-        color: var(--text-primary);
-        background-color: var(--color-background-tertiary);
-        font-size: var(--text-size-small);
-        font-weight: var(--text-weight-medium);
-
-        &:hover {
-          background-color: var(--hover-bg);
-          border-color: var(--color-border-light);
-        }
-      }
-    }
-
-    .main-content {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: var(--content-max-width);
-      margin: 0 auto;
-      padding: var(--padding-medium);
-      flex: 1; // extra space for visibility
-      padding-bottom: calc(var(--footer-height) + 30px);
-    }
-
-    footer {
-      position: fixed;
-      z-index: 100;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      height: var(--footer-height);
-      background-color: var(--color-background-secondary);
-      border-top: var(--view-border);
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 -2px 8px var(--color-shadow-heavy);
-    }
-  `],
+  templateUrl: './game-session.page.component.html',
+  styleUrls: ['./game-session.page.component.scss'],
   imports: [
     RouterModule,
     ButtonComponent,

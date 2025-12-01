@@ -1,15 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
-import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
+import { EventPlayerInventoryAdd, EventPlayerTypes } from '@pagemaster/common/events-player.types';
 import { CurrentParticipantState } from '../../current-participant.state';
 import { ModalRef, ModalService } from '../../modal';
+import { AbstractPlayerControl } from '../abstract-player-control';
 import { InventoryFormComponent } from './inventory-form.component';
 import { InventoryAdderButtonComponent } from './inventory-selector.component';
 import {
   InventoryComponent,
-  InventoryDeletionEvent,
-  InventoryItemEvent,
-  InventoryUpdateEvent,
 } from './inventory.component';
 
 export type InventoryAdditionEvent = {
@@ -23,8 +21,8 @@ export type InventoryAdditionEvent = {
   template: `
     <div class="inventory-list">
       <div class="inventory-list__header">
-        @if(permissions().add) {
-          <app-inventory-adder-button (addInventory)="addInventory.emit($event)" />
+        @if(permissions().inventory.add) {
+          <app-inventory-adder-button (addInventory)="addInventory($event)" />
         }
 
         <div class="inventory-tabs">
@@ -46,11 +44,9 @@ export type InventoryAdditionEvent = {
           <div class="inventory-panel">
             <app-inventory
               [inventory]="selectedInventory()"
+              [gameSession]="gameSession()"
+              [player]="player()"
               [permissions]="permissions()"
-              (addItem)="addItem.emit({ items: $event.items, inventory: selectedInventory(), modalRef: $event.modalRef })"
-              (deleteItem)="deleteItem.emit({ items: $event.items, inventory: selectedInventory(), modalRef: $event.modalRef })"
-              (updateInventory)="updateInventory.emit($event)"
-              (deleteInventory)="deleteInventory.emit({ inventory: selectedInventory() })"
             />
           </div>
         }
@@ -79,15 +75,8 @@ export type InventoryAdditionEvent = {
     InventoryAdderButtonComponent,
   ],
 })
-export class InventoryListComponent {
-  public inventories = input.required<AttributeInventory[]>();
-  public permissions = input.required<GameSessionPermissions['inventory']>();
-  public deleteItem = output<InventoryItemEvent>();
-  public editItem = output<InventoryItemEvent>();
-  public addItem = output<InventoryItemEvent>();
-  public addInventory = output<InventoryAdditionEvent>();
-  public updateInventory = output<InventoryUpdateEvent>();
-  public deleteInventory = output<InventoryDeletionEvent>();
+export class InventoryListComponent extends AbstractPlayerControl {
+
 
   private currentParticipant = inject(CurrentParticipantState);
   protected modalService = inject(ModalService);
@@ -95,10 +84,10 @@ export class InventoryListComponent {
   protected allowedInventories = computed(() => {
     // @todo : this is a security issue, should be handled server side.
     if (this.isManager()) {
-      return this.inventories();
+      return this.player().attributes.inventory;
     }
 
-    return this.inventories().filter(inv => !inv.isSecret);
+    return this.player().attributes.inventory.filter(inv => !inv.isSecret);
   });
 
   protected isManager = this.currentParticipant.allowedToEditPlayer();
@@ -116,6 +105,14 @@ export class InventoryListComponent {
 
   protected selectInventory(id: string) {
     this.selectedInventoryId.set(id);
+  }
+
+
+  protected addInventory(event: InventoryAdditionEvent) {
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_ADD) as Omit<EventPlayerInventoryAdd, 'id' | 'timestamp'>;
+    command.newInventory = event.inventory;
+
+    return this.gameEventRepository.postCommand(command);
   }
 
 }

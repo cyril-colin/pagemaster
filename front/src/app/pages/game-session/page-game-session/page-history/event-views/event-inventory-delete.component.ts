@@ -2,7 +2,7 @@
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { EventPlayerInventoryDelete } from '@pagemaster/common/events-player.types';
-import { ImageComponent } from '../../design-system/image.component';
+import { ImageComponent } from '../../../../../core/design-system/image.component';
 import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
 
 @Component({

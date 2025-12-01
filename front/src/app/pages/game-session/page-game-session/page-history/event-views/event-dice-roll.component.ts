@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { EventDiceRoll } from '@pagemaster/common/events.types';
-import { ImageComponent } from '../../design-system/image.component';
-import { PageMasterRoutes } from '../../pagemaster.router';
-import { EventsCenterStateService } from '../events-center.state';
+import { ImageComponent } from '../../../../../core/design-system/image.component';
+import { EventsCenterStateService } from '../../../../../core/events-center/events-center.state';
+import { PageMasterRoutes } from '../../../../../core/pagemaster.router';
 import { AbstractEventViewComponent } from './abstract-event-view.component';
 
 
