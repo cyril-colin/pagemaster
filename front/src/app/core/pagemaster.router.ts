@@ -5,7 +5,10 @@ import { GameSessionPageComponent } from '../pages/game-session/page-game-sessio
 import { NotesPageComponent } from '../pages/game-session/page-game-session/page-current-notes/notes.page.component';
 import { EventsCenterComponent } from '../pages/game-session/page-game-session/page-history/events-center.component';
 import { PlayerListPageComponent } from '../pages/game-session/page-game-session/page-players/player-list.page.component';
-import { PlayerPageComponent } from '../pages/game-session/page-game-session/page-players/player/player.page.component';
+import { PlayerLayoutComponent } from '../pages/game-session/page-game-session/page-players/player/player-layout.component';
+import { TabDetailsComponent } from '../pages/game-session/page-game-session/page-players/player/tab-details/tab-details.component';
+import { TabInventoryComponent } from '../pages/game-session/page-game-session/page-players/player/tab-inventory/tab-inventory.component';
+import { TabNotesComponent } from '../pages/game-session/page-game-session/page-players/player/tab-notes/tab-notes.component';
 import { GameSessionChooseParticipantComponent } from '../pages/public/game-session-choose-participant.component';
 import { GameSessionConfigComponent } from '../pages/public/game-session-creation/game-session-config.component';
 import { HomeComponent } from '../pages/public/home.component';
@@ -64,11 +67,12 @@ export function PageMasterRoutes() {
           {
             path: `player/:${params[1]}`,
             interpolated: (playerId: string) => `player/:${params[1]}`.replace(`:${params[1]}`, playerId),
-            component: PlayerPageComponent,
+            component: PlayerLayoutComponent,
             children: [
-              { path: 'details', component: PlayerPageComponent },
-              { path: 'notes', component: NotesPageComponent },
-              { path: ':inventoryId', component: PlayerPageComponent },
+              { path: '', redirectTo: 'details', pathMatch: 'full' },
+              { path: 'details', component: TabDetailsComponent },
+              { path: 'notes', component: TabNotesComponent },
+              { path: ':inventoryId', component: TabInventoryComponent },
             ],
           },
           {path: 'notes', component: NotesPageComponent},

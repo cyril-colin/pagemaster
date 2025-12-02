@@ -1,28 +1,39 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { getPermissions } from '@pagemaster/common/permissions.types';
-import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
-import { CurrentParticipantState } from 'src/app/core/current-participant.state';
-import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { TabComponent } from 'src/app/core/design-system/tab.component';
+import { TabsComponent } from 'src/app/core/design-system/tabs.component';
 import { PictureControlComponent } from 'src/app/core/player/avatar/picture-control.component';
 import { NameControlComponent } from 'src/app/core/player/names/name-control.component';
-import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
+import { PlayerDataService } from './player-data.service';
 
 @Component({
   selector: 'app-player-layout',
   template: `
     <app-picture-control
-      [player]="viewedPlayer()"
-      [gameSession]="gameSession.currentGameSession()"
-      [permissions]="permissions()"
+      [player]="playerDataService.viewedPlayer()"
+      [gameSession]="playerDataService.currentSession()!.gameSession"
+      [permissions]="playerDataService.permissions()"
     />
     <app-name-control
-      [player]="viewedPlayer()"
-      [gameSession]="gameSession.currentGameSession()"
-      [permissions]="permissions()"
+      [player]="playerDataService.viewedPlayer()"
+      [gameSession]="playerDataService.currentSession()!.gameSession"
+      [permissions]="playerDataService.permissions()"
     />
 
+    <ds-tabs>
+  <ds-tab title="Player">
+    <!-- Players content here -->
+  </ds-tab>
+
+  <ds-tab title="Inventory">
+    <!-- Inventory content here -->
+  </ds-tab>
+
+  <ds-tab title="Notes">
+    <!-- Notes content here -->
+  </ds-tab>
+</ds-tabs>
+    
     <router-outlet />
   `,
   styles: [
@@ -31,48 +42,14 @@ import { GameEventRepository } from 'src/app/core/repositories/game-event.reposi
     RouterModule,
     PictureControlComponent,
     NameControlComponent,
+    TabsComponent,
+    TabComponent,
+  ],
+  providers: [
+    PlayerDataService,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerLayoutComponent {
-  protected currentParticipantState = inject(CurrentParticipantState);
-  protected gameEventRepository = inject(GameEventRepository);
-  protected route = inject(ActivatedRoute);
-  protected routeParams = toSignal(this.route.paramMap);
-
-  protected gameSession = inject(CurrentGameSessionState);
-  protected participant = inject(CurrentParticipantState);
-  protected currentSession = computed(() => {
-    const gameSession = this.gameSession.currentGameSessionNullable();
-    const participant = this.participant.currentParticipant();
-    if (gameSession && participant) {
-      return { gameSession, participant };
-    }
-    return null;
-  });
-
-  protected players = computed(() => {
-    return this.currentSession()!.gameSession.players;
-  });
-
-  protected viewedPlayer = computed(() => {
-    const paramName = PageMasterRoutes().GameInstanceSession.params[1];
-    const playerId = this.routeParams()?.get(paramName);
-    if (!playerId) {
-      throw new Error('Player ID parameter is missing in the route.');
-    }
-    const participant = this.players().find(p => p.id === playerId);
-    if (!participant) {
-      throw new Error(`Player with ID ${playerId} not found in current game instance.`);
-    }
-    return participant;
-  });
-
-
-  protected permissions = computed(() => {
-    const isManager = this.currentParticipantState.allowedToEditPlayerSnapshot();
-    const me = this.currentSession()!.participant;
-    const isMyPlayer = me.id === this.viewedPlayer().id;
-    return getPermissions(isManager, isMyPlayer);
-  });
+  protected playerDataService = inject(PlayerDataService);
 }
