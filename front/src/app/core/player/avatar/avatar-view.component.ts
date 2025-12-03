@@ -10,7 +10,7 @@ import { ImageComponent, ImageShape } from '../../design-system/image.component'
       <ds-image
         [src]="src" 
         [alt]="'Player Picture'"
-        size="large"
+        [size]="'medium'"
         [shape]="shape()"
         [clickable]="permissions().edit"
         (click)="permissions().edit && needSrc.emit()" 

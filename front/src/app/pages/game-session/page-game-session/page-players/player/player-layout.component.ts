@@ -13,18 +13,20 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
 @Component({
   selector: 'app-player-layout',
   template: `
-    <app-picture-control
-      [player]="playerDataService.viewedPlayer()"
-      [gameSession]="playerDataService.currentSession()!.gameSession"
-      [permissions]="playerDataService.permissions()"
-    />
-    <app-name-control
-      [player]="playerDataService.viewedPlayer()"
-      [gameSession]="playerDataService.currentSession()!.gameSession"
-      [permissions]="playerDataService.permissions()"
-    />
+    <div class="fixed-header">
+      <app-picture-control
+        [player]="playerDataService.viewedPlayer()"
+        [gameSession]="playerDataService.currentSession()!.gameSession"
+        [permissions]="playerDataService.permissions()"
+      />
+      <app-name-control
+        [player]="playerDataService.viewedPlayer()"
+        [gameSession]="playerDataService.currentSession()!.gameSession"
+        [permissions]="playerDataService.permissions()"
+      />
 
-    <ds-tabs [tabs]="currentTabs()" [fixedLastTab]="true" (tabClick)="onTabClick($event)"/>
+      <ds-tabs [tabs]="currentTabs()" [fixedLastTab]="true" (tabClick)="onTabClick($event)"/>
+    </div>
 
     <div class="carousel-container">
       <div class="carousel-track" [style.transform]="'translateX(-' + (selectedTabIndex() * 100) + '%)'">
@@ -43,16 +45,47 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
     </div>
   `,
   styles: [`
-    .carousel-container {
-      position: relative;
-      width: 100%;
+    :host {
+      display: block;
+      height: 100vh;
       overflow: hidden;
+      position: relative;
+
+      --fixed-header-height-content: 160px;
+      --fixed-header-height: calc(var(--header-height) + var(--fixed-header-height-content));
+      .fixed-header {
+        position: fixed;
+        height: var(--fixed-header-height-content);
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: var(--color-background-main);
+        max-width: var(--content-max-width);
+        margin: 0 auto;
+        padding: 0 var(--padding-medium);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .carousel-container {
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-top: var(--fixed-header-height-content);
+        padding-bottom: var(--footer-height);
+      }
     }
+
+    
 
     .carousel-track {
       display: flex;
       transition: transform 0.3s ease-in-out;
       will-change: transform;
+      min-height: calc(100vh - 250px - var(--footer-height));
     }
 
     .carousel-slide {
