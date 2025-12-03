@@ -5,9 +5,10 @@ import { AttributeInventory } from '@pagemaster/common/attributes.types';
 import { ButtonComponent } from '../../design-system/button.component';
 
 interface InventoryFormType {
-  name: FormControl<string>,
-  isSecret: FormControl<boolean>,
-  capacityType: FormControl<'state' | 'weight'>,
+  name: FormControl<AttributeInventory['name']>,
+  isSecret: FormControl<AttributeInventory['isSecret']>,
+  mode: FormControl<AttributeInventory['mode']>,
+  capacityType: FormControl<AttributeInventory['capacity']['type']>,
   capacityState: FormControl<'empty' | 'partial' | 'full'>,
   capacityWeight: FormControl<number>,
   capacityMaxWeight: FormControl<number>,
@@ -26,6 +27,19 @@ interface InventoryFormType {
         <input type="checkbox" [formControl]="form.controls.isSecret" />
         Secret Inventory
       </label>
+
+      <label for="mode">Mode</label>
+      <select id="mode" [formControl]="form.controls.mode">
+        <option value="small">Small</option>
+        <option value="medium">Medium</option>
+        <option value="large">Large</option>
+      </select>
+
+      <label for="capacityType">Capacity Type</label>
+      <select id="capacityType" [formControl]="form.controls.capacityType">
+        <option value="state">State (Empty/Partial/Full)</option>
+        <option value="weight">Weight</option>
+      </select>
       
       <label for="capacityType">Capacity Type</label>
       <select id="capacityType" [formControl]="form.controls.capacityType">
@@ -149,6 +163,7 @@ export class InventoryFormComponent {
   protected form = this.fb.group<InventoryFormType>({
     name: this.fb.control('', { nonNullable: true, validators: [Validators.required]}),
     isSecret: this.fb.control(false, { nonNullable: true }),
+    mode: this.fb.control<'small' | 'medium' | 'large'>('medium', { nonNullable: true, validators: [Validators.required]}),
     capacityType: this.fb.control<'state' | 'weight'>('state', { nonNullable: true, validators: [Validators.required]}),
     capacityState: this.fb.control<'empty' | 'partial' | 'full'>('empty', { nonNullable: true }),
     capacityWeight: this.fb.control(0, { nonNullable: true }),
@@ -181,6 +196,7 @@ export class InventoryFormComponent {
       const inventory: AttributeInventory = {
         id: this.inventory()?.id || '',
         type: 'inventory',
+        mode: inventoryForm.mode,
         name: inventoryForm.name,
         isSecret: inventoryForm.isSecret,
         capacity,

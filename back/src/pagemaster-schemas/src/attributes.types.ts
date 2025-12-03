@@ -61,6 +61,7 @@ export type AttributeStatus = AbstractAttribute &  {
 
 export type AttributeInventory = AbstractAttribute &  {
   type: 'inventory',
+  mode: 'small' | 'medium' | 'large',
   name: string,
   capacity: 
     | {type: 'state', value: 'empty' | 'partial' | 'full'}
@@ -73,6 +74,7 @@ export const defaultInventories: Record<string, AttributeInventory> = {
   equipment: {
     id: 'id-equipment',
     type: 'inventory',
+    mode: 'medium',
     name: 'Equipment',
     capacity: { type: 'weight', value: 0, max: 5 },
     isSecret: false,
@@ -81,6 +83,7 @@ export const defaultInventories: Record<string, AttributeInventory> = {
   backpack: {
     id: 'id-backpack',
     type: 'inventory',
+    mode: 'large',
     name: 'Backpack',
     capacity: { type: 'weight', value: 0, max: 10 },
     isSecret: false,
@@ -89,6 +92,7 @@ export const defaultInventories: Record<string, AttributeInventory> = {
   pouch: {
     id: 'id-pouch',
     type: 'inventory',
+    mode: 'small',
     name: 'Pouch',
     capacity: { type: 'weight', value: 0, max: 10 },
     isSecret: false,

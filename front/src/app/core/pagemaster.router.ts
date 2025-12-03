@@ -15,6 +15,11 @@ import { HomeComponent } from '../pages/public/home.component';
 import { PublicLayoutComponent } from '../pages/public/public-layout.component';
 import { EventsCenterStateService } from './events-center/events-center.state';
 
+export const RouteParamsNames = {
+  InstanceId: 'instanceId',
+  PlayerId: 'playerId',
+};
+
 export function PageMasterRoutes() {
   return {
     Home: { path: 'home', component: HomeComponent },
