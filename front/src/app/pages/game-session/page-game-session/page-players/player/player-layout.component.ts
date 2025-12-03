@@ -1,11 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { map } from 'rxjs';
 import { Tab, TabsComponent } from 'src/app/core/design-system/tabs.component';
 import { PictureControlComponent } from 'src/app/core/player/avatar/picture-control.component';
-import { InventoryComponent } from 'src/app/core/player/inventories/inventory.component';
 import { NameControlComponent } from 'src/app/core/player/names/name-control.component';
 import { PlayerDataService } from './player-data.service';
 import { TabDetailsComponent } from './tab-details/tab-details.component';
+import { TabInventoryComponent } from './tab-inventory/tab-inventory.component';
 import { TabNotesComponent } from './tab-notes/tab-notes.component';
 
 @Component({
@@ -31,12 +33,7 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
         </div>
         @for(i of playerDataService.viewedPlayer().attributes.inventory; track i.id) {
           <div class="carousel-slide">
-            <app-inventory
-              [inventory]="i"
-              [gameSession]="playerDataService.currentSession()!.gameSession"
-              [player]="playerDataService.viewedPlayer()"
-              [permissions]="playerDataService.permissions()"
-            />
+            <app-tab-player-inventory [inventory]="i" />
           </div>
         }
         <div class="carousel-slide">
@@ -71,7 +68,7 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
     TabsComponent,
     TabDetailsComponent,
     TabNotesComponent,
-    InventoryComponent,
+    TabInventoryComponent,
   ],
   providers: [
     PlayerDataService,
@@ -80,39 +77,49 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
 })
 export class PlayerLayoutComponent {
   protected playerDataService = inject(PlayerDataService);
-
   protected route = inject(ActivatedRoute);
+  protected router = inject(Router);
 
-  protected selectedTab = signal<string>('details');
-  
+  // Track the selected tab ID from route parameter
+  protected selectedTabId = toSignal(
+    this.route.paramMap.pipe(
+      map(params => params.get('tabId') ?? 'details'),
+    ),
+    { initialValue: this.route.snapshot.paramMap.get('tabId') ?? 'details' },
+  );
+
   protected currentTabs = computed(() => {
+    const selectedId = this.selectedTabId();
+    const playerId = this.route.snapshot.paramMap.get('playerId')!;
     return [
       {
         label: 'Details',
-        route: ['.', 'details'],
-        isActive: this.route.snapshot.url.some(segment => segment.path === 'details'),
+        route: ['..', playerId, 'details'],
+        isActive: selectedId === 'details',
       },
       ...this.playerDataService.viewedPlayer().attributes.inventory.map(inv => ({
         label: inv.name,
-        route: ['.', inv.id],
-        isActive: this.route.snapshot.url.some(segment => segment.path === inv.id),
+        route: ['..', playerId, inv.id],
+        isActive: selectedId === inv.id,
       })),
       {
         label: 'Notes',
-        route: ['.', 'notes'],
-        isActive: this.route.snapshot.url.some(segment => segment.path === 'notes'),
+        route: ['..', playerId, 'notes'],
+        isActive: selectedId === 'notes',
       },
     ];
   });
 
   protected selectedTabIndex = computed(() => {
     const tabs = this.currentTabs();
-    const selectedId = this.selectedTab();
+    const selectedId = this.selectedTabId();
     const index = tabs.findIndex(tab => tab.route[tab.route.length - 1] === selectedId);
     return index >= 0 ? index : 0;
   });
 
   protected onTabClick(tab: Tab) {
-    this.selectedTab.set(tab.route[tab.route.length - 1]);
+    const newTabId = tab.route[tab.route.length - 1];
+    // Navigate to sibling route by replacing the tabId parameter
+    void this.router.navigate(['..', newTabId], { relativeTo: this.route });
   }
 }

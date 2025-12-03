@@ -6,9 +6,6 @@ import { NotesPageComponent } from '../pages/game-session/page-game-session/page
 import { EventsCenterComponent } from '../pages/game-session/page-game-session/page-history/events-center.component';
 import { PlayerListPageComponent } from '../pages/game-session/page-game-session/page-players/player-list.page.component';
 import { PlayerLayoutComponent } from '../pages/game-session/page-game-session/page-players/player/player-layout.component';
-import { TabDetailsComponent } from '../pages/game-session/page-game-session/page-players/player/tab-details/tab-details.component';
-import { TabInventoryComponent } from '../pages/game-session/page-game-session/page-players/player/tab-inventory/tab-inventory.component';
-import { TabNotesComponent } from '../pages/game-session/page-game-session/page-players/player/tab-notes/tab-notes.component';
 import { GameSessionChooseParticipantComponent } from '../pages/public/game-session-choose-participant.component';
 import { GameSessionConfigComponent } from '../pages/public/game-session-creation/game-session-config.component';
 import { HomeComponent } from '../pages/public/home.component';
@@ -70,15 +67,9 @@ export function PageMasterRoutes() {
           { path: 'events', component: EventsCenterComponent },
           { path: 'player', component: PlayerListPageComponent },
           {
-            path: `player/:${params[1]}`,
+            path: `player/:${params[1]}/:tabId`,
             interpolated: (playerId: string) => `player/:${params[1]}`.replace(`:${params[1]}`, playerId),
             component: PlayerLayoutComponent,
-            children: [
-              { path: '', redirectTo: 'details', pathMatch: 'full' },
-              { path: 'details', component: TabDetailsComponent },
-              { path: 'notes', component: TabNotesComponent },
-              { path: ':inventoryId', component: TabInventoryComponent },
-            ],
           },
           {path: 'notes', component: NotesPageComponent},
         ] as const,
