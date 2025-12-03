@@ -160,7 +160,7 @@ export class PlayerListPageComponent {
 
     const gameSessionId = this.currentGameSession.currentGameSession().id;
     const parentRoute = PageMasterRoutes().GameInstanceSession.interpolated(gameSessionId);
-    const segments = [parentRoute, route].join('/').split('/');
+    const segments = [parentRoute, route, 'details'].join('/').split('/');
     await this.router.navigate(segments);
     this.close.emit();
   }

@@ -80,6 +80,9 @@
   --view-height-medium: 24px;
   
   /* === TYPOGRAPHY === */
+  --font-family-base: 'Share Tech Mono', 'Courier New', monospace;
+  --font-family-headings: 'Quantico', sans-serif;
+  
   --text-size-small: 12px;
   --text-size-medium: 14px;
   --text-size-large: 16px;
@@ -87,7 +90,7 @@
   
   --text-weight-normal: 400;
   --text-weight-medium: 500;
-  --text-weight-bold: 600;
+  --text-weight-bold: 700;
   
   /* === SPACING === */
   --gap-small: 6px;
@@ -100,6 +103,14 @@
   /* === COMPONENTS === */
   --icon-button-size: 32px;
   --delete-button-size: 18px;
+  
+  /* Tab Components */
+  --tabs-height: 48px;
+  --tab-padding: 12px 20px;
+  --tab-border-radius: 6px 6px 0 0;
+  --tab-border-width: 2px;
+  --tab-active-border-color: var(--color-primary);
+  --tab-inactive-border-color: transparent;
   
   /* Inventory Item Components */
   --item-size-medium: 130px;
@@ -147,11 +158,37 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-family-base);
   font-size: var(--text-size-medium);
   color: var(--text-primary);
   background-color: var(--color-background-main);
-  line-height: 1.5;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings);
+  font-weight: var(--text-weight-bold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+button, input, select, textarea {
+  font-family: var(--font-family-base);
+  letter-spacing: 0.02em;
 }
 
 

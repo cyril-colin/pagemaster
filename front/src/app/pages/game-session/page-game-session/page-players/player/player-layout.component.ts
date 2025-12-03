@@ -24,14 +24,14 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
       [permissions]="playerDataService.permissions()"
     />
 
-    <ds-tabs [tabs]="currentTabs()" (tabClick)="onTabClick($event)"/>
+    <ds-tabs [tabs]="currentTabs()" [fixedLastTab]="true" (tabClick)="onTabClick($event)"/>
 
     <div class="carousel-container">
       <div class="carousel-track" [style.transform]="'translateX(-' + (selectedTabIndex() * 100) + '%)'">
         <div class="carousel-slide">
           <app-tab-player-details />
         </div>
-        @for(i of playerDataService.viewedPlayer().attributes.inventory; track i.id) {
+        @for(i of bigInventories(); track i.id) {
           <div class="carousel-slide">
             <app-tab-player-inventory [inventory]="i" />
           </div>
@@ -88,6 +88,13 @@ export class PlayerLayoutComponent {
     { initialValue: this.route.snapshot.paramMap.get('tabId') ?? 'details' },
   );
 
+  protected bigInventories = computed(() => {
+    return this.playerDataService.viewedPlayer().attributes.inventory.filter(inv => inv.mode === 'large');
+  });
+
+
+
+
   protected currentTabs = computed(() => {
     const selectedId = this.selectedTabId();
     const playerId = this.route.snapshot.paramMap.get('playerId')!;
@@ -97,7 +104,7 @@ export class PlayerLayoutComponent {
         route: ['..', playerId, 'details'],
         isActive: selectedId === 'details',
       },
-      ...this.playerDataService.viewedPlayer().attributes.inventory.map(inv => ({
+      ...this.bigInventories().map(inv => ({
         label: inv.name,
         route: ['..', playerId, inv.id],
         isActive: selectedId === inv.id,
