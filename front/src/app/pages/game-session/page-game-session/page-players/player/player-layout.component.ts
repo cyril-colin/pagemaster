@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { Tab, TabsComponent } from 'src/app/core/design-system/tabs.component';
 import { PictureControlComponent } from 'src/app/core/player/avatar/picture-control.component';
 import { NameControlComponent } from 'src/app/core/player/names/name-control.component';
+import { StatusControlComponent } from 'src/app/core/player/statuses/status-control.component';
 import { PlayerDataService } from './player-data.service';
 import { TabDetailsComponent } from './tab-details/tab-details.component';
 import { TabInventoryComponent } from './tab-inventory/tab-inventory.component';
@@ -13,7 +14,7 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
 @Component({
   selector: 'app-player-layout',
   template: `
-    <div class="fixed-header">
+    <section class="identity">
       <app-picture-control
         [player]="playerDataService.viewedPlayer()"
         [gameSession]="playerDataService.currentSession()!.gameSession"
@@ -25,8 +26,14 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
         [permissions]="playerDataService.permissions()"
       />
 
+      <app-status-control
+        [player]="playerDataService.viewedPlayer()"
+        [permissions]="playerDataService.permissions()"
+        [gameSession]="playerDataService.currentSession()!.gameSession"
+      />
+
       <ds-tabs [tabs]="currentTabs()" [fixedLastTab]="true" (tabClick)="onTabClick($event)"/>
-    </div>
+    </section>
 
     <div class="carousel-container">
       <div class="carousel-track" [style.transform]="'translateX(-' + (selectedTabIndex() * 100) + '%)'">
@@ -46,52 +53,38 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
   `,
   styles: [`
     :host {
-      display: block;
-      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
       overflow: hidden;
-      position: relative;
 
-      --fixed-header-height-content: 160px;
-      --fixed-header-height: calc(var(--header-height) + var(--fixed-header-height-content));
-      .fixed-header {
-        position: fixed;
-        height: var(--fixed-header-height-content);
-        top: var(--header-height);
-        left: 0;
-        right: 0;
-        z-index: 50;
-        background: var(--color-background-main);
-        max-width: var(--content-max-width);
-        margin: 0 auto;
-        padding: 0 var(--padding-medium);
+      --identity-height: 180px;
+      .identity {
         display: flex;
+        width: 100%;
+        height: var(--identity-height);
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
       }
 
       .carousel-container {
-        height: 100vh;
+        height: 100%;
         overflow-y: auto;
         overflow-x: hidden;
-        padding-top: var(--fixed-header-height-content);
+        margin-top: var(--gap-large);
         padding-bottom: var(--footer-height);
       }
-    }
 
-    
+      .carousel-track {
+        display: flex;
+        transition: transform 0.3s ease-in-out;
+      }
 
-    .carousel-track {
-      display: flex;
-      transition: transform 0.3s ease-in-out;
-      will-change: transform;
-      min-height: calc(100vh - 250px - var(--footer-height));
-    }
-
-    .carousel-slide {
-      flex: 0 0 100%;
-      width: 100%;
-      min-width: 100%;
+      .carousel-slide {
+        flex: 0 0 100%;
+        width: 100%;
+      }
     }
   `],
   imports: [
@@ -102,6 +95,7 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
     TabDetailsComponent,
     TabNotesComponent,
     TabInventoryComponent,
+    StatusControlComponent,
   ],
   providers: [
     PlayerDataService,

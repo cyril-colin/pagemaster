@@ -48,13 +48,15 @@ import { PageMasterRoutes } from '../../core/pagemaster.router';
       flex-direction: column;
       width: 100%;
       min-height: 100vh;
+      height: 100%;
+      overflow: scroll;
     }
 
     .layout {
       display: flex;
       flex-direction: column;
       width: 100%;
-      min-height: 100vh;
+      height: 100%;
     }
 
     .header {

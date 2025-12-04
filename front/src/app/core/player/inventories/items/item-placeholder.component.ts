@@ -1,72 +1,46 @@
-import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
 import { ImageComponent } from '../../../design-system/image.component';
 
 @Component({
   selector: 'app-item-placeholder',
+  host: {
+    '[class.disabled]': '!canAdd()',
+  },
   template: `
-    <div class="item-placeholder" [class.disabled]="!canAdd()" (click)="handleClick()">
-      <div class="placeholder-icon">
-        <ds-image 
-          [icon]="iconName()"
-          size="medium"
-        />
-      </div>
-      <div class="placeholder-text">{{ mode() === 'weight' ? 'Empty' : 'Add' }}</div>
-    </div>
+    <ds-image [icon]="iconName()" [size]="'s'" />
+    <div class="text">{{ mode() === 'weight' ? 'Empty' : 'Add' }}</div>
   `,
   styles: [`
-    .item-placeholder {
+    :host {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: var(--gap-small);
-      height: var(--item-size-medium);
-      width: var(--item-size-medium);
+      height: var(--item-component-m);
+      width: var(--item-component-m);
       border: var(--item-border-width) dashed var(--color-border);
       border-radius: var(--item-border-radius);
       position: relative;
       cursor: pointer;
       transition: opacity var(--item-transition-speed) ease;
-    }
 
-    .item-placeholder:hover {
-      opacity: 0.8;
-    }
+      --disabled-opacity: 0.4;
+      &.disabled {
+        cursor: not-allowed;
+        opacity: var(--disabled-opacity);
+      }
+      &.disabled:hover {
+        opacity: var(--disabled-opacity);
+      }
 
-    .item-placeholder.disabled {
-      cursor: not-allowed;
-      opacity: 0.4;
-    }
-
-    .item-placeholder.disabled:hover {
-      opacity: 0.4;
-    }
-
-    .item-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: var(--color-background-tertiary);
-      border-radius: var(--item-border-radius);
-      opacity: 0.3;
-      z-index: -1;
-    }
-
-    .placeholder-icon {
-      width: var(--item-img-size);
-      height: var(--item-img-size);
-      display: grid;
-      place-items: center;
-      color: var(--text-secondary);
-    }
-
-    .placeholder-text {
-      font-size: var(--text-size-small);
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      .text {
+        font-size: var(--text-size-small);
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -75,16 +49,10 @@ import { ImageComponent } from '../../../design-system/image.component';
 })
 export class ItemPlaceholderComponent {
   public mode = input.required<AttributeInventory['capacity']['type']>();
+  public size = input<'s' | 'm'>('m');
   public canAdd = input<boolean>(false);
-  public placeholderClicked = output<void>();
 
   protected iconName = computed(() => {
     return this.mode() === 'weight' ? 'empty' : 'plus';
   });
-
-  protected handleClick() {
-    if (this.canAdd()) {
-      this.placeholderClicked.emit();
-    }
-  }
 }

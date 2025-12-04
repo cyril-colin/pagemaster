@@ -2,7 +2,14 @@ import { ChangeDetectionStrategy, Component, computed, HostListener, inject, inp
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ICON_STORE, IconName } from './icon.store';
 
-export type ButtonMode = 'primary' | 'secondary' | 'tertiary' | 'primary-danger' | 'secondary-danger';
+export type ButtonMode = 
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'primary-danger'
+  | 'secondary-danger'
+  | 'mini'
+;
 export type ButtonState = 
   | { state: 'default' }
   | { state: 'loading' }
@@ -33,16 +40,13 @@ export type ButtonState =
     </button>
   `,
   styles: [`
-    :host {
-      display: contents;
-    }
-
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 16px;
+      height: var(--button-height);
+      padding: 0 16px;
       border-radius: 6px;
       font-size: var(--text-size-medium);
       font-weight: var(--text-weight-medium);
@@ -50,7 +54,7 @@ export type ButtonState =
       cursor: pointer;
       transition: all 0.2s ease;
       position: relative;
-      min-height: 40px;
+      min-height: 25px;
     }
 
     .button:disabled {
@@ -157,6 +161,34 @@ export type ButtonState =
     .mode-secondary-danger:active:not(:disabled) {
       background: var(--color-background-tertiary);
       filter: brightness(0.9);
+    }
+
+    .mode-mini {
+      background: transparent;
+      color: var(--text-secondary);
+      border-color: transparent;
+      padding: 4px;
+      min-height: 28px;
+      gap: 0;
+    }
+
+    .mode-mini .content {
+      display: none;
+    }
+
+    .mode-mini .icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    .mode-mini:hover:not(:disabled) {
+      color: var(--text-primary);
+      background: var(--color-background-secondary);
+      border-radius: 4px;
+    }
+
+    .mode-mini:active:not(:disabled) {
+      background: var(--color-background-tertiary);
     }
 
     /* States */

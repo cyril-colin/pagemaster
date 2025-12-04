@@ -40,18 +40,11 @@ export type BarValueUpdateEvent = {newBar: AttributeBar, previousValue: Attribut
         @if (permissions().bars.edit || permissions().bars.delete) {
           <div class="bar-actions">
             @if (permissions().bars.edit) {
-              <ds-button [mode]="'secondary'" [icon]="'edit'" (click)="openEditBarModal(bar)" />
-            }
-            @if (permissions().bars.delete) {
-              <ds-button [mode]="'primary-danger'" [icon]="'trash'" (click)="onDeleteBar(bar)" />
+              <ds-button [mode]="'mini'" [icon]="'edit'" (click)="openEditBarModal(bar)" />
             }
           </div>
         }
       </div>
-    }
-
-    @if (permissions().bars.add) {
-      <ds-button [mode]="'secondary'" (click)="openNewBarModal()" [icon]="'plus'">New Bar</ds-button>
     }
   `,
   styles: [

@@ -59,8 +59,8 @@ import { GameSessionRepository } from 'src/app/core/repositories/game-session.re
     :host {
       display: flex;
       flex-direction: column;
-      height: 100%;
       width: 100%;
+      height: 100%;
       background-color: var(--color-background-main);
       overflow: hidden;
       border-right: var(--view-border);
@@ -73,6 +73,7 @@ import { GameSessionRepository } from 'src/app/core/repositories/game-session.re
       padding: var(--padding-small);
       background-color: var(--color-background-secondary);
       border-bottom: var(--view-border);
+      flex-shrink: 0;
 
       ds-button {
         position: absolute;
@@ -88,7 +89,7 @@ import { GameSessionRepository } from 'src/app/core/repositories/game-session.re
     }
 
     nav {
-      flex: 1;
+      flex: 1 1 auto;
       padding: var(--padding-small);
       overflow-y: auto;
       display: flex;

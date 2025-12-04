@@ -11,7 +11,6 @@ import { LootBoxModalComponent } from 'src/app/core/loot-box/loot-box.modal.comp
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
-import { EventDiceRollComponent } from 'src/app/pages/game-session/page-game-session/page-history/event-views/event-dice-roll.component';
 import { QuickActionModalComponent } from '../quick-action.modal.component';
 
 @Component({
@@ -21,7 +20,6 @@ import { QuickActionModalComponent } from '../quick-action.modal.component';
   imports: [
     RouterModule,
     ButtonComponent,
-    EventDiceRollComponent,
     BottomBarComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,

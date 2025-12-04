@@ -97,7 +97,7 @@ export type ItemsFinderState = {
         @for(item of state().data; track item.id) {
           <tr (click)="select(item)" [class.selected]="isSelected(item)">
             <td class="icon-cell">
-              <ds-image [src]="item.path" [alt]="item.name" size="medium" />
+              <ds-image [src]="item.path" [alt]="item.name" [size]="'m'" />
               <span class="selected-check" aria-hidden="true">✓</span>
             </td>
             <td>{{ item.name }}</td>
@@ -115,7 +115,7 @@ export type ItemsFinderState = {
     <div class="grid-wrapper" #gridWrapper (scroll)="onScroll('grid', $event)">
       <div class="grid">
         @for(item of state().data; track item.id) {
-          <app-item class="grid-item" [class.selected]="isSelected(item)" [item]="item" (itemClicked)="select(item)"></app-item>
+          <app-item class="grid-item" [class.selected]="isSelected(item)" [item]="item" (click)="select(item)"></app-item>
         }
       </div>
     </div>
@@ -184,7 +184,7 @@ export type ItemsFinderState = {
 
       .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(var(--item-size), 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(var(--item-component-m), 1fr));
         gap: 12px;
       }
       .search-row {

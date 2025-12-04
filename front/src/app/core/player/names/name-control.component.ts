@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { EventPlayerNameEdit, EventPlayerTypes } from '@pagemaster/common/events-player.types';
+import { ButtonComponent } from '../../design-system/button.component';
 import { AbstractPlayerControl } from '../abstract-player-control';
 import { NameViewComponent } from './name-view.component';
 
@@ -17,9 +18,10 @@ import { NameViewComponent } from './name-view.component';
   selector: 'app-name-control',
   template: `
     @if(mode() === 'view') {
-      <div (click)="setMode('edit')" [class.name-view]="permissions().name.edit" [class.name-readonly]="!permissions().name.edit">
-        <app-name-view [name]="nameForm().controls.name.value"></app-name-view>
-      </div>
+        <app-name-view [name]="nameForm().controls.name.value" />
+        @if (permissions().name.edit) {
+          <ds-button [mode]="'mini'" (click)="setMode('edit')" [icon]="'edit'" />
+        }
     } @else {
       <input 
         #input
@@ -31,9 +33,10 @@ import { NameViewComponent } from './name-view.component';
     }
   `,
   styles: [`
-    .name-view {
-      cursor: pointer;
-      width: 100%;
+    :host {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-small);
     }
 
     .name-readonly {
@@ -54,6 +57,7 @@ import { NameViewComponent } from './name-view.component';
   imports: [
     ReactiveFormsModule,
     NameViewComponent,
+    ButtonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

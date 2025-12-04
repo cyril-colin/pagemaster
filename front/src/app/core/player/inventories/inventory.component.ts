@@ -9,9 +9,7 @@ import {
 } from '@pagemaster/common/events-player.types';
 import { Item } from '@pagemaster/common/items.types';
 import { tap } from 'rxjs';
-import { BadgeComponent } from '../../design-system/badge.component';
 import { ButtonComponent } from '../../design-system/button.component';
-import { CardComponent } from '../../design-system/card.component';
 import { ModalService } from '../../modal';
 import { AbstractPlayerControl } from '../abstract-player-control';
 import { InventoryFormComponent } from './inventory-form.component';
@@ -22,40 +20,26 @@ import { ItemComponent } from './items/item.component';
 @Component({
   selector: 'app-inventory',
   template: `
-    <ds-card>
       <div class="inventory-header">
-        <h3 class="inventory-title">{{ inventory().name }}</h3>
-        <div class="header-actions">
-          <ds-badge size="medium">{{ capacityDisplay() }}</ds-badge>
-          @if(permissions().inventory.edit) {
-            <ds-button 
-              mode="secondary" 
-              icon="edit"
-              (click)="onEditInventory()"
-            />
-          }
-          @if(permissions().inventory.item.delete) {
-            <ds-button 
-              mode="secondary-danger" 
-              icon="trash"
-              (click)="onDeleteInventory()"
-            />
-          }
-        </div>
+        <h3 class="inventory-title">{{ inventory().name }} - {{ capacityDisplay() }}</h3>
+        @if(permissions().inventory.edit) {
+          <div class="header-actions">
+            <ds-button [mode]="'mini'" [icon]="'edit'" (click)="onEditInventory()" />
+          </div>
+        }
       </div>
       <div class="items">
         @for(item of sortedItems(); track item.id) {
-          <app-item [item]="item" (itemClicked)="openItemGallery($event)" />
+          <app-item [item]="item" (click)="openItemGallery(item)" />
         }
         @for(placeholder of placeholderCount(); track $index) {
-          <app-item-placeholder 
+          <app-item-placeholder
             [mode]="placeholderMode()"
             [canAdd]="permissions().inventory.item.add"
-            (placeholderClicked)="openAddItemModal()" 
+            (click)="openAddItemModal()"
           />
         }
       </div>
-    </ds-card>
   `,
   styles: [`
     :host {
@@ -64,11 +48,7 @@ import { ItemComponent } from './items/item.component';
       gap: var(--gap-medium);
       width: 100%;
       padding-top: var(--gap-small);
-    }
-
-    ds-card {
-      width: 100%;
-      display: flex;
+      border-top: 1px solid var(--color-border);
     }
 
     .items {
@@ -90,7 +70,7 @@ import { ItemComponent } from './items/item.component';
 
     .inventory-header {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: space-between;
       gap: var(--gap-medium);
       margin-bottom: var(--gap-medium);
@@ -104,7 +84,7 @@ import { ItemComponent } from './items/item.component';
 
 
   `],
-  imports: [ItemComponent, CardComponent, ItemPlaceholderComponent, BadgeComponent, ButtonComponent],
+  imports: [ItemComponent, ItemPlaceholderComponent, ButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InventoryComponent extends AbstractPlayerControl {
@@ -193,11 +173,20 @@ export class InventoryComponent extends AbstractPlayerControl {
   protected onEditInventory() {
     const modalRef = this.modalService.open(InventoryFormComponent, {
       inventory: this.inventory(),
-      permissions: { delete: false },
+      permissions: { delete: this.permissions().inventory.delete },
     });
     modalRef.componentRef.instance.newInventory.subscribe((updatedInventory: AttributeInventory) => {
       this.updateInventory(updatedInventory).pipe(
         tap(() => void modalRef.close()),
+      ).subscribe();
+    });
+
+    modalRef.componentRef.instance.deleteInventory.subscribe((updatedInventory: AttributeInventory) => {
+      this.updateInventory(updatedInventory).pipe(
+        tap(() => {
+          this.deleteInventory().subscribe();
+          void modalRef.close();
+        }),
       ).subscribe();
     });
   }

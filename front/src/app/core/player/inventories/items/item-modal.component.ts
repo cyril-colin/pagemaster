@@ -24,7 +24,7 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
     @if (item && permissions().delete) {
       <div class="content">
         <div class="item-detail">
-          <ds-image class="item-image" [src]="item.path" [alt]="item.name" size="large" />
+          <ds-image class="item-image" [src]="item.path" [alt]="item.name" [size]="'l'" />
           <div class="item-name">{{ item.name }}</div>
           <div class="item-meta">
             <div class="meta-row item-weight"><span class="label">Weight:</span><span class="value">{{ item.weight }}</span></div>

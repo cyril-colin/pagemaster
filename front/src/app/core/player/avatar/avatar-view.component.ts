@@ -1,47 +1,46 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import { Player } from '@pagemaster/common/pagemaster.types';
 import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
-import { ImageComponent, ImageShape } from '../../design-system/image.component';
+import { ButtonComponent } from '../../design-system/button.component';
+import { ImageComponent } from '../../design-system/image.component';
 
 @Component({
   selector: 'app-avatar-view',
   template: `
-    @let src = source();
-    @if (src) {
-      <ds-image
-        [src]="src" 
-        [alt]="'Player Picture'"
-        [size]="'medium'"
-        [shape]="shape()"
-        [clickable]="permissions().edit"
-        (click)="permissions().edit && needSrc.emit()" 
-      />
-    } @else {
-      @if (permissions().edit) {
-        <span (click)="needSrc.emit()">Set Picture URL</span>
-      }
+    <ds-image
+      [src]="src()" 
+      [alt]="'Player Picture'"
+      [size]="'l'"
+      [clickable]="permissions().edit"
+      (click)="permissions().edit && needSrc.emit()" 
+    />
+
+    @if (permissions().edit) {
+      <ds-button [mode]="'mini'" (click)="needSrc.emit()" [icon]="'edit'" />
     }
   `,
   styles: `
     :host {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       max-width: 100%;
       max-height: 100%;
+
     }
 
-    span {
-      cursor: pointer;
-      color: var(--primary-color, #007bff);
-      text-decoration: underline;
-    }
+    
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ImageComponent],
+  imports: [ImageComponent, ButtonComponent],
 })
 export class AvatarViewComponent {
-  public source = input<string>();
-  public shape = input<ImageShape>('circle');
+  public player = input.required<Player>();
   public permissions = input.required<GameSessionPermissions['avatar']>();
   public needSrc = output<void>();
+
+  protected src = computed(() => {
+    const ifMissing = `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(this.player().name)}`;
+    return this.player().avatar || ifMissing;
+  });
 }

@@ -9,8 +9,11 @@ import { StatusViewComponent } from './status-view.component';
     @for(status of statuses(); track status.id) {
       <app-status-view [status]="status" (click)="statusClicked.emit(status)"></app-status-view>
     }
+    @if (statuses().length === 0) {
+      <span class="empty-message">No status</span>
+    }
     @if (showAddButton()) {
-      <ds-button [mode]="'secondary'" (click)="addStatusClicked.emit()" [icon]="'plus'" />
+      <ds-button [mode]="'mini'" (click)="addStatusClicked.emit()" [icon]="'plus'" />
     }
   `,
   styles: [`
@@ -19,14 +22,7 @@ import { StatusViewComponent } from './status-view.component';
       flex-direction: row;
       gap: var(--gap-medium);
       flex-wrap: wrap;
-    }
-
-    app-status-view {
-      cursor: pointer;
-    }
-
-    app-status-view:hover {
-      opacity: 0.8;
+      align-items: center;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,

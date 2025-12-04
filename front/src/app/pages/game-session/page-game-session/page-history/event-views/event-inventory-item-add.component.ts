@@ -13,7 +13,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let p = player();
     
     @for(item of e.event.newItems; track item.id) {
-      <app-item [item]="item" [mode]="'compact'" />
+      <app-item [item]="item" [size]="'s'" />
     }
     
     added to "{{inv?.name}}" of

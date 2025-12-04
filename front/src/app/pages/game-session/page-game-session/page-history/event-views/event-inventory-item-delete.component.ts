@@ -11,7 +11,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let e = event();
     @let inv = inventory();
     @let p = player();
-    <app-item [item]="e.event.deletedItem" [mode]="'compact'" />
+    <app-item [item]="e.event.deletedItem" [size]="'s'" />
     deleted from "{{inv?.name}}" of
     <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
   `,

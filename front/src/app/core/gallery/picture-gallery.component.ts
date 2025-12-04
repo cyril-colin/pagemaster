@@ -24,12 +24,7 @@ export type PictureItem = { name: string, path: string };
         <div class="gallery">
           @for (item of paginatedItems(); track item.name) {
             <button type="button" class="gallery-item" (click)="selectItem(item)">
-              <ds-image
-                [src]="item.path" 
-                [alt]="item.name"
-                size="small"
-                shape="rectangle"
-              />
+              <ds-image [src]="item.path" [alt]="item.name" [size]="'s'"/>
               <span class="item-name">{{ item.name }}</span>
             </button>
           }

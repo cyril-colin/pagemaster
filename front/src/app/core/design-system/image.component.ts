@@ -3,15 +3,14 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ICON_STORE, IconName } from './icon.store';
 
 export type { IconName };
-export type ImageSize = 'icon' | 'small' | 'medium' | 'large';
-export type ImageShape = 'circle' | 'rectangle';
+export type ImageSize = 'xs' | 's' | 'm' | 'l';
 
 @Component({
   selector: 'ds-image',
   template: `
     @if (icon()) {
       <div 
-        [class]="'ds-icon size-' + size() + ' shape-' + shape()"
+        [class]="'ds-icon size-' + size()"
         [class.clickable]="clickable()"
         [innerHTML]="iconSvg()"
       ></div>
@@ -19,7 +18,7 @@ export type ImageShape = 'circle' | 'rectangle';
       <img 
         [src]="src()" 
         [alt]="alt()"
-        [class]="'ds-image size-' + size() + ' shape-' + shape()"
+        [class]="'ds-image size-' + size()"
         [class.clickable]="clickable()"
         [class.cover]="objectFit() === 'cover'"
         [class.contain]="objectFit() === 'contain'"
@@ -32,6 +31,7 @@ export type ImageShape = 'circle' | 'rectangle';
       object-fit: contain;
       max-width: 100%;
       max-height: 100%;
+      border-radius: var(--item-border-radius, 8px);
     }
 
     .ds-icon {
@@ -56,34 +56,26 @@ export type ImageShape = 'circle' | 'rectangle';
     }
 
     /* Sizes */
-    .size-icon {
-      width: 32px;
-      height: 32px;
+    .size-xs {
+      width: var(--ds-image-component-size-xs);
+      height: var(--ds-image-component-size-xs);
     }
 
-    .size-small {
-      width: 50px;
-      height: 50px;
+    .size-s {
+      width: var(--ds-image-component-size-s);
+      height: var(--ds-image-component-size-s);
     }
 
-    .size-medium {
-      width: var(--item-img-size, 64px);
-      height: var(--item-img-size, 64px);
+    .size-m {
+      width: var(--ds-image-component-size-m);
+      height: var(--ds-image-component-size-m);
     }
 
-    .size-large {
-      width: 100px;
-      height: 100px;
+    .size-l {
+      width: var(--ds-image-component-size-l);
+      height: var(--ds-image-component-size-l);
     }
 
-    /* Shapes */
-    .shape-circle {
-      border-radius: 50%;
-    }
-
-    .shape-rectangle {
-      border-radius: var(--item-border-radius, 8px);
-    }
 
     /* States */
     .clickable {
@@ -103,8 +95,7 @@ export class ImageComponent {
   public src = input<string>('');
   public icon = input<IconName | null>(null);
   public alt = input<string>('');
-  public size = input<ImageSize>('medium');
-  public shape = input<ImageShape>('rectangle');
+  public size = input<ImageSize>('m');
   public clickable = input<boolean>(false);
   public objectFit = input<'cover' | 'contain'>('contain');
 

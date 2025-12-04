@@ -7,33 +7,15 @@ import { BadgeComponent } from '../../design-system/badge.component';
   template: `
     @let s = status();
     <ds-badge 
-      size="medium" 
+      [size]="'small'" 
       [customColor]="'transparent'"
       [customBorderColor]="s.color"
+      [rightIcon]="'edit'"
     >
       <span class="status-name">{{s.name}}</span>
     </ds-badge>
   `,
-  styles: [`
-    :host {
-      display: flex;
-      min-width: 70px;
-      width: fit-content;
-    }
-    
-    ds-badge {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      min-height: var(--view-height-medium);
-    }
-    
-    .status-name {
-      font-size: var(--text-size-small);
-      color: var(--text-primary);
-      font-weight: var(--text-weight-bold);
-    }
-  `],
+  styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BadgeComponent],
 })

@@ -11,7 +11,7 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
     <h3>New EventLootBox View</h3>
     <section class="loot-box-items">
     @for(i of event().event.lootBox.items; track i.item.id) {
-      <app-item [item]="i.item" [mode]="'compact'" />
+      <app-item [item]="i.item" [size]="'s'" />
     }
     </section>
   `,

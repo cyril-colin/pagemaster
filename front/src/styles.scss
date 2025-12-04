@@ -36,6 +36,11 @@
   --color-info: #5a8099;                   /* Steel blue - info */
   --color-info-hover: #6d94ad;             /* Lighter info */
   
+  --item-component-color-uncommon: #357738ff; /* Uncommon item border color */
+  --item-component-color-rare: #2196f3;       /* Rare item border color */
+  --item-component-color-epic: #9c27b0;       /* Epic item border color */
+  --item-component-color-legendary: #ffc107;  /*
+
   /* Text Colors */
   --text-primary: #d4d7d9;                 /* Light gray - main text */
   --text-secondary: #9ba3a8;               /* Mid gray - secondary text */
@@ -50,34 +55,6 @@
   --color-border-heavy: #2f3840;           /* Heavy/dark border */
   --view-border: 1px solid var(--color-border);
   --view-border-radius: 4px;
-  
-  /* Special Effects - Post-apocalyptic atmosphere */
-  --color-glow-radiation: rgba(201, 160, 85, 0.3);   /* Radiation glow */
-  --color-glow-danger: rgba(184, 89, 79, 0.3);       /* Danger glow */
-  --color-shadow-heavy: rgba(0, 0, 0, 0.5);          /* Heavy shadows */
-  --color-overlay: rgba(26, 31, 37, 0.85);           /* Overlay backdrop */
-  
-  /* === FUTURE THEMES (for easy switching) === */
-  /* Uncomment and switch root variables to enable different themes */
-  
-  /* FANTASY THEME - Warm, mystical, earthy
-  --color-primary: #8b6f47;                 Medieval brown/gold
-  --color-secondary: #5a7d5a;               Forest green
-  --color-accent-yellow: #d4a942;           Gold
-  --color-accent-purple: #9b6b9e;           Mystical purple
-  --color-background-main: #1c1410;         Dark parchment
-  */
-  
-  /* CYBERPUNK THEME - Neon, high contrast, electric
-  --color-primary: #ff2a6d;                 Hot pink/magenta
-  --color-secondary: #05d9e8;               Cyan
-  --color-accent-yellow: #f7ff58;           Electric yellow
-  --color-accent-purple: #a537fd;           Neon purple
-  --color-background-main: #0a0e27;         Deep space blue
-  */
-  
-  /* === SIZING === */
-  --view-height-medium: 24px;
   
   /* === TYPOGRAPHY === */
   --font-family-base: 'Share Tech Mono', 'Courier New', monospace;
@@ -99,28 +76,45 @@
   --padding-small: 8px;
   --padding-medium: 12px;
   --padding-large: 24px;
-
-  /* === COMPONENTS === */
-  --icon-button-size: 32px;
-  --delete-button-size: 18px;
   
   /* Tab Components */
-  --tabs-height: 48px;
-  --tab-padding: 12px 20px;
+  
+  --tab-padding: 8px 15px;
   --tab-border-radius: 6px 6px 0 0;
   --tab-border-width: 2px;
   --tab-active-border-color: var(--color-primary);
   --tab-inactive-border-color: transparent;
   
-  /* Inventory Item Components */
+  /* === SIZING === */
+  --ds-image-component-size-xs: 12px;
+  --ds-image-component-size-s: 25px;
+  --ds-image-component-size-m: 50px;
+  --ds-image-component-size-l: 100px;
+
+  --item-component-xs: 40px;
+  --item-component-s: 70px;
+  --item-component-m: 90px;
+  --item-component-l: 130px;
+  
+  --view-height-medium: 24px;
+
+  --img-size-small: 32px;
+
   --item-size-medium: 130px;
   --item-img-size-medium: 45px;
   --item-border-radius: 8px;
   --item-border-width: 2px;
   --item-transition-speed: 0.2s;
-
   --item-size-small: 60px;
   --item-img-size-small: 24px;
+
+  
+  
+  --bar-height: 25px;
+  --tabs-height: 32px;
+  --button-height: 32px;
+
+
   
   /* === LAYOUT === */
   --content-max-width: 1200px;
@@ -148,6 +142,10 @@
   --ds-dropdown-shadow: var(--color-shadow-heavy);
 
   --events-min-height: 60px;
+
+
+    --z-index-header: 100;
+  --z-index-footer: 100;
 }
 
 /* === GLOBAL STYLES === */
@@ -155,6 +153,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
 }
 
 body {

@@ -12,7 +12,7 @@ import { AvatarViewComponent } from './avatar-view.component';
   selector: 'app-picture-control',
   template: `
     <app-avatar-view 
-      [source]="player().avatar" 
+      [player]="player()" 
       [permissions]="permissions().avatar"
       (needSrc)="modalGallery()"
     />

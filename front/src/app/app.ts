@@ -7,7 +7,13 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   template: `
     <router-outlet></router-outlet>
   `,
-  styles: [],
+  styles: [`
+    :host {
+      display: block;
+      height: 100%;
+      overflow: hidden;
+    }
+  `],
   imports: [
     RouterOutlet,
     RouterModule,

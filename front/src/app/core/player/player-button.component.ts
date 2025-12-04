@@ -9,7 +9,7 @@ import { NameViewComponent } from './names/name-view.component';
     @let p = player();
     
     <div class="player-button" (click)="clicked.emit()">
-      <app-avatar-view [source]="p.avatar" [permissions]="{ edit: false }"/>
+      <app-avatar-view [player]="p" [permissions]="{ edit: false }"/>
       <app-name-view [name]="p.name" />
     </div>
   `,
@@ -32,22 +32,7 @@ import { NameViewComponent } from './names/name-view.component';
       border-color: var(--color-primary);
     }
 
-    app-avatar-view {
-      width: 56px;
-      height: 56px;
-      min-width: 56px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid var(--color-border);
-      flex-shrink: 0;
-    }
 
-    app-name-view {
-      font-size: var(--text-size-medium);
-      text-align: left;
-      color: var(--text-primary);
-      flex: 1;
-    }
   `],
   imports: [
     AvatarViewComponent,

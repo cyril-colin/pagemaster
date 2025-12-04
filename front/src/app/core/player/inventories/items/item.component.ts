@@ -1,64 +1,30 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { Item, ItemRarity } from '@pagemaster/common/items.types';
 import { ImageComponent } from '../../../design-system/image.component';
 import { ItemWeightComponent } from './item-weight.component';
 
 @Component({
   selector: 'app-item',
+  host: {
+    '[style.border-color]': 'borderColor()',
+  },
   template: `
-    <div class="item"
-      (click)="itemClicked.emit(item())"
-      [style.border-color]="getBorderColor(item().rarity)"
-      [class.item-medium]="mode() === 'default'"
-      [class.item-small]="mode() === 'compact'"
-    >
-      <ds-image [src]="item().path" [alt]="item().name" size="medium" />
-      @if (mode() === 'default') {
-        <p>{{ item().name }}</p>
-        <app-item-weight [weight]="item().weight" />
-      }
-    </div>
+    <ds-image [src]="item().path" [alt]="item().name" [size]="'m'" />
+    <app-item-weight [weight]="item().weight" />
   `,
   styles: [`
-    .item {
+    :host {
       display: flex;
+      width: var(--item-component-m);
+      height: var(--item-component-m);
       flex-direction: column;
       align-items: center;
       justify-content: center;
       gap: var(--gap-small);
       border: var(--item-border-width) solid var(--color-border);
       border-radius: var(--item-border-radius);
-      cursor: pointer;
-      transition: opacity var(--item-transition-speed) ease, 
-                  border-color var(--item-transition-speed) ease;
-      position: relative;
       background: var(--color-background-secondary);
-
-      p {
-        width: 100%;
-        text-align: center;
-      }
-    }
-
-    .item-medium {
-      height: var(--item-size-medium);
-      width: var(--item-size-medium);
-    }
-
-    .item-small {
-      height: var(--item-size-small);
-      width: var(--item-size-small);
-    }
-
-    .item app-item-weight {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-    }
-
-    .item:hover {
-      opacity: 0.8;
-      border-color: var(--color-primary);
+      position: relative;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -66,21 +32,20 @@ import { ItemWeightComponent } from './item-weight.component';
 })
 export class ItemComponent {
   public item = input.required<Item>();
-  public mode = input<'default' | 'compact'>('default');
-  public itemClicked = output<Item>();
+  public size = input<'m' | 's'>('s');
 
-  public getBorderColor(rarity: ItemRarity): string {
-    switch (rarity) {
+  protected borderColor = computed(() => {
+    switch (this.item().rarity) {
       case ItemRarity.COMMON:
-        return 'var(--color-uncommon, #357738ff)';
+        return 'var(--item-component-color-uncommon)';
       case ItemRarity.RARE:
-        return 'var(--color-rare, #2196f3)';
+        return 'var(--item-component-color-rare)';
       case ItemRarity.EPIC:
-        return 'var(--color-epic, #9c27b0)';
+        return 'var(--item-component-color-epic)';
       case ItemRarity.LEGENDARY:
-        return 'var(--color-legendary, #ffc107)';
+        return 'var(--item-component-color-legendary)';
       default:
         return 'var(--color-border)';
     }
-  }
+  });
 }
