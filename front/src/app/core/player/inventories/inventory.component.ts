@@ -159,7 +159,7 @@ export class InventoryComponent extends AbstractPlayerControl {
       permissions: this.permissions().inventory.item,
     });
     ref.componentRef.instance.addItems.subscribe((newItems: Item[]) => {
-      this.addItemToInventory(newItems[0]).pipe(
+      this.addItemToInventory(newItems).pipe(
         tap(() => void ref.close()),
       ).subscribe(
       );
@@ -203,9 +203,9 @@ export class InventoryComponent extends AbstractPlayerControl {
     }
   }
 
-  protected addItemToInventory(item: Item) {
+  protected addItemToInventory(items: Item[]) {
     const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD) as Omit<EventPlayerInventoryItemAdd, 'id' | 'timestamp'>;
-    command.newItems = [item];
+    command.newItems = items;
     command.inventoryId = this.inventory().id;
     return this.gameEventRepository.postCommand(command);
   }

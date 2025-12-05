@@ -7,8 +7,8 @@ import { EventFactoryDirective } from './event-factory.directive';
   template: `
   <section>
     @for(e of events(); track e.event.id) {
-      <article appEventFactory [event]="e">
-      </article>
+      <ng-container appEventFactory [event]="e">
+      </ng-container>
     }
   </section>
   `,
@@ -22,7 +22,7 @@ import { EventFactoryDirective } from './event-factory.directive';
       section {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         gap: 4px;
         overflow-y: auto;
