@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventPlayerAvatarEdit, EventPlayerTypes } from '@pagemaster/common/events-player.types';
 import { tap } from 'rxjs';
-import { PictureGalleryComponent } from '../../gallery/picture-gallery.component';
+import { PictureGalleryModalComponent } from '../../gallery/picture-gallery-modal.component';
 import { ModalService } from '../../modal';
 import { ResourcePacksStorage } from '../../resource-packs-storage.service';
 import { AbstractPlayerControl } from '../abstract-player-control';
@@ -39,7 +39,7 @@ export class PictureControlComponent extends AbstractPlayerControl {
 
   protected modalService = inject(ModalService);
   public modalGallery() {
-    const modalRef = this.modalService.open(PictureGalleryComponent, { items: this.pictures() });
+    const modalRef = this.modalService.open(PictureGalleryModalComponent, { items: this.pictures() });
     modalRef.componentRef.instance.itemSelected.subscribe((newPicture: { name: string, path: string }) => {
       this.updateAvatar(newPicture.path).pipe(
         tap(() => void modalRef.close()),

@@ -2,6 +2,12 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, output, si
 import { Item, ItemRarityFilters, ItemTag } from '@pagemaster/common/items.types';
 import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
+import {
+  ModalLayoutComponent,
+  ModalLayoutFooterComponent,
+  ModalLayoutHeaderComponent,
+  ModalLayoutSectionComponent,
+} from 'src/app/core/modal/modal-layout';
 import { ResourcePacksStorage } from 'src/app/core/resource-packs-storage.service';
 import { ImageComponent } from '../../../design-system/image.component';
 import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component';
@@ -10,109 +16,76 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
   selector: 'app-item-modal',
   template: `
   @let item = existingItem();
-    @if (!item && permissions().add) {
-      <app-items-finder [state]="state()" (newState)="onNewState($event)"/>
-      <div class="actions">
-        <ds-button [mode]="'tertiary'" (click)="cancel.emit()" [icon]="'empty'">Cancel</ds-button>
-        @if (state().selection.length > 0) {
-          <ds-button [mode]="'primary'" (click)="selectItems(state().selection)" [icon]="'plus'">
-            Select items ({{state().selection.length}})
-          </ds-button>
-        }
-      </div>
-    }
-    @if (item && permissions().delete) {
-      <div class="content">
-        <div class="item-detail">
-          <ds-image class="item-image" [src]="item.path" [alt]="item.name" [size]="'l'" />
-          <div class="item-name">{{ item.name }}</div>
-          <div class="item-meta">
-            <div class="meta-row item-weight"><span class="label">Weight:</span><span class="value">{{ item.weight }}</span></div>
-            <div class="meta-row item-rarity"><span class="label">Rarity:</span><span class="value">{{ item.rarity }}</span></div>
-            <div class="meta-row item-tags"><span class="label">Tags:</span><span class="value">{{ item.tags.join(', ') }}</span></div>
-          </div>
-        </div>
-      </div>
+  <ds-modal-layout>
+    <ds-modal-layout-header [title]="item?.name || 'Add Items'">
+      @if(permissions().delete && item) {
+        <ds-button [mode]="'secondary-danger'" (click)="deleteItem.emit(item)" [icon]="'empty'"></ds-button>
+      }
+    </ds-modal-layout-header>
+    
+    <ds-modal-layout-section>
+      @if(item) {
+        <ds-image class="item-image" [src]="item.path" [alt]="item.name" [size]="'l'" />
+        <section>
+          <article><span>Weight:</span><span class="value">{{ item.weight }}</span></article>
+          <article><span>Rarity:</span><span class="value">{{ item.rarity }}</span></article>
+          <article><span>Tags:</span><span class="value">{{ item.tags.join(', ') }}</span></article>
+        </section>
+      } @else {
+        <app-items-finder [state]="state()" (newState)="onNewState($event)"/>
+      }
+    </ds-modal-layout-section>
+    
 
-      <div class="actions">
-        <ds-button [mode]="'secondary-danger'" (click)="deleteItem.emit(item)" [icon]="'empty'">Remove Item</ds-button>
-      </div>
+    @if(!item) {
+      <ds-modal-layout-footer>
+        <ds-button
+            [mode]="'primary'"
+            [disabled]="state().selection.length === 0"
+            (click)="selectItems(state().selection)"
+            [icon]="'plus'"
+          >
+            Add ({{state().selection.length}} selected)
+          </ds-button>
+      </ds-modal-layout-footer>
     }
+  </ds-modal-layout>
   `,
   styles: [`
     :host {
       display: flex;
       flex-direction: column;
-      gap: var(--gap-medium);
-      padding: var(--gap-medium);
-      height: calc(100% - 130px);
+      height: 100%;
       width: 100%;
-    }
-    .item-detail {
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap-small);
-      align-items: center;
-      text-align: center;
-    }
-    .item-image {
-      display: block;
-      margin: 0 auto;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    .item-name {
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-top: 4px;
-    }
-    .item-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      color: var(--color-text);
-      width: 100%;
-      align-items: center;
-    }
-    .meta-row {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      max-width: 420px;
-    }
-    .meta-row .label {
-      color: var(--color-text-subtle);
-      flex: 0 0 auto;
-    }
-    .meta-row .value {
-      font-weight: 700;
-      color: var(--color-text);
-      flex: 1 1 auto;
-      text-align: left;
-    }
-    .item-tags .value {
-      text-align: center;
-      word-break: break-word;
-    }
-    .content {
-      flex: 1 1 auto;
-      width: 100%;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-    }
-    .actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      margin-top: auto;
+
+      ds-modal-layout-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--gap-large);
+        overflow-y: auto;
+
+        section {
+          display: flex;
+          flex-direction: column;
+          gap: var(--gap-medium);
+        }
+        .value {
+          font-weight: var(--text-weight-bold);
+        }
+      }
     }
     `],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ButtonComponent, ItemsFinderComponent, ImageComponent],
+  imports: [
+    ButtonComponent,
+    ImageComponent,
+    ModalLayoutComponent,
+    ModalLayoutHeaderComponent,
+    ModalLayoutSectionComponent,
+    ItemsFinderComponent,
+    ModalLayoutFooterComponent,
+  ],
 })
 export class ItemModalComponent {
   public existingItem = input<Item | null>(null);
@@ -144,7 +117,7 @@ export class ItemModalComponent {
     },
     pagination: {
       pageIndex: 0,
-      pageSize: 30,
+      pageSize: 12,
     },
     selection: [],
     lastAction: 'load',

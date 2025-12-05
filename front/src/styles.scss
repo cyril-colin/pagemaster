@@ -88,12 +88,12 @@
   /* === SIZING === */
   --ds-image-component-size-xs: 12px;
   --ds-image-component-size-s: 25px;
-  --ds-image-component-size-m: 50px;
+  --ds-image-component-size-m: 40px;
   --ds-image-component-size-l: 100px;
 
   --item-component-xs: 40px;
   --item-component-s: 70px;
-  --item-component-m: 90px;
+  --item-component-m: 80px;
   --item-component-l: 130px;
   
   --view-height-medium: 24px;
@@ -114,14 +114,14 @@
   --tabs-height: 32px;
   --button-height: 32px;
 
-
+  --ds-modal-width: 350px;
+  --ds-modal-height: 620px;
   
   /* === LAYOUT === */
   --content-max-width: 1200px;
   --sidebar-width: 280px;
   --header-height: 67px;
   --footer-height: 80px;
-  --modal-left-panel-width: 320px;
   --card-padding: var(--padding-medium);
   
   /* === INTERACTIVE === */
@@ -193,5 +193,74 @@ button, input, select, textarea {
   font-family: var(--font-family-base);
   letter-spacing: 0.02em;
 }
+
+/* === FORM STYLES === */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: var(--text-size-small);
+  color: var(--text-secondary);
+  font-weight: var(--text-weight-medium);
+  margin-bottom: var(--gap-small);
+  
+  &:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-small);
+  }
+}
+
+input[type="text"],
+input[type="number"],
+input[type="color"],
+select,
+textarea {
+  width: 100%;
+  padding: var(--padding-small);
+  background-color: var(--color-background-tertiary);
+  border: var(--view-border);
+  border-radius: var(--view-border-radius);
+  color: var(--text-primary);
+  font-size: var(--text-size-medium);
+  transition: border-color var(--transition-speed);
+  margin-bottom: var(--gap-small);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-background-secondary);
+  }
+}
+
+input[type="checkbox"] {
+  width: auto;
+  cursor: pointer;
+}
+
+input[type="color"] {
+  height: 40px;
+  cursor: pointer;
+  padding: var(--gap-small);
+}
+
+select {
+  cursor: pointer;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+
 
 

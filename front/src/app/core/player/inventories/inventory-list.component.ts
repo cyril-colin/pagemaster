@@ -4,7 +4,7 @@ import { EventPlayerInventoryAdd, EventPlayerTypes } from '@pagemaster/common/ev
 import { CurrentParticipantState } from '../../current-participant.state';
 import { ModalRef, ModalService } from '../../modal';
 import { AbstractPlayerControl } from '../abstract-player-control';
-import { InventoryFormComponent } from './inventory-form.component';
+import { InventoryFormModalComponent } from './inventory-form-modal.component';
 import { InventoryAdderButtonComponent } from './inventory-selector.component';
 import {
   InventoryComponent,
@@ -12,7 +12,7 @@ import {
 
 export type InventoryAdditionEvent = {
   inventory: AttributeInventory,
-  modalRef: ModalRef<InventoryFormComponent>,
+  modalRef: ModalRef<InventoryFormModalComponent>,
 };
 
 

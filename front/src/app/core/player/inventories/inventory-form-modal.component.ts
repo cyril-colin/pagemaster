@@ -3,6 +3,12 @@ import { ChangeDetectionStrategy, Component, effect, inject, input, output } fro
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
 import { ButtonComponent } from '../../design-system/button.component';
+import {
+  ModalLayoutComponent,
+  ModalLayoutFooterComponent,
+  ModalLayoutHeaderComponent,
+  ModalLayoutSectionComponent,
+} from '../../modal/modal-layout';
 
 interface InventoryFormType {
   name: FormControl<AttributeInventory['name']>,
@@ -15,74 +21,81 @@ interface InventoryFormType {
 }
 
 @Component({
-  selector: 'app-inventory-form',
   template: `
-    <h2>{{ inventory() ? 'Edit' : 'Create a new' }} Inventory</h2>
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <ds-modal-layout>
+      <ds-modal-layout-header [title]="inventory()?.name || 'Create a new Inventory'">
+        @if (inventory() && permissions().delete) {
+            <ds-button [mode]="'primary-danger'" [icon]="'empty'" (click)="delete()" />
+          }
+      </ds-modal-layout-header>
+
+      <ds-modal-layout-section>
+        <form [formGroup]="form" (ngSubmit)="submit()">
       
-      <label for="name">Name</label>
-      <input id="name" [formControl]="form.controls.name" type="text" />
+          <label for="name">Name</label>
+          <input id="name" [formControl]="form.controls.name" type="text" />
 
-      <label>
-        <input type="checkbox" [formControl]="form.controls.isSecret" />
-        Secret Inventory
-      </label>
+          <label>
+            <input type="checkbox" [formControl]="form.controls.isSecret" />
+            Secret Inventory
+          </label>
 
-      <label for="mode">Mode</label>
-      <select id="mode" [formControl]="form.controls.mode">
-        <option value="small">Small</option>
-        <option value="medium">Medium</option>
-        <option value="large">Large</option>
-      </select>
+          <label for="mode">Mode</label>
+          <select id="mode" [formControl]="form.controls.mode">
+            <option value="small">Small</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
 
-      <label for="capacityType">Capacity Type</label>
-      <select id="capacityType" [formControl]="form.controls.capacityType">
-        <option value="state">State (Empty/Partial/Full)</option>
-        <option value="weight">Weight</option>
-      </select>
-      
-      <label for="capacityType">Capacity Type</label>
-      <select id="capacityType" [formControl]="form.controls.capacityType">
-        <option value="state">State (Empty/Partial/Full)</option>
-        <option value="weight">Weight</option>
-      </select>
+          <label for="capacityType">Capacity Type</label>
+          <select id="capacityType" [formControl]="form.controls.capacityType">
+            <option value="state">State (Empty/Partial/Full)</option>
+            <option value="weight">Weight</option>
+          </select>
+          
+          <label for="capacityType">Capacity Type</label>
+          <select id="capacityType" [formControl]="form.controls.capacityType">
+            <option value="state">State (Empty/Partial/Full)</option>
+            <option value="weight">Weight</option>
+          </select>
 
-      @if (form.controls.capacityType.value === 'state') {
-        <label for="capacityState">Capacity State</label>
-        <select id="capacityState" [formControl]="form.controls.capacityState">
-          <option value="empty">Empty</option>
-          <option value="partial">Partial</option>
-          <option value="full">Full</option>
-        </select>
-      }
+          @if (form.controls.capacityType.value === 'state') {
+            <label for="capacityState">Capacity State</label>
+            <select id="capacityState" [formControl]="form.controls.capacityState">
+              <option value="empty">Empty</option>
+              <option value="partial">Partial</option>
+              <option value="full">Full</option>
+            </select>
+          }
 
-      @if (form.controls.capacityType.value === 'weight') {
-        <label for="capacityWeight">Current Weight</label>
-        <input id="capacityWeight" [formControl]="form.controls.capacityWeight" type="number" min="0" />
-        
-        <label for="capacityMaxWeight">Maximum Weight</label>
-        <input id="capacityMaxWeight" [formControl]="form.controls.capacityMaxWeight" type="number" min="1" />
-      }
-      
-      <div class="button-group">
+          @if (form.controls.capacityType.value === 'weight') {
+            <label for="capacityWeight">Current Weight</label>
+            <input id="capacityWeight" [formControl]="form.controls.capacityWeight" type="number" min="0" />
+            
+            <label for="capacityMaxWeight">Maximum Weight</label>
+            <input id="capacityMaxWeight" [formControl]="form.controls.capacityMaxWeight" type="number" min="1" />
+          }
+          
+
+        </form>
+      </ds-modal-layout-section>
+
+      <ds-modal-layout-footer>
         <ds-button 
           [mode]="'primary'" 
           (click)="submit()" 
           [state]="form.invalid ? {state: 'error', message: 'Form is invalid'} : {state: 'default'}">
           {{ inventory() ? 'Update' : 'Create' }} Inventory
         </ds-button>
-        @if (inventory() && permissions().delete) {
-          <ds-button [mode]="'primary-danger'" (click)="delete()">Delete</ds-button>
-        }
-      </div>
-    </form>
+      </ds-modal-layout-footer>
+    </ds-modal-layout>
+
+    
   `,
   styles: [`
     :host {
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap-medium);
       width: 100%;
+      height: 100%;
     }
 
     h2 {
@@ -90,51 +103,6 @@ interface InventoryFormType {
       color: var(--text-primary);
       font-size: var(--text-size-large);
       font-weight: var(--text-weight-bold);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap-medium);
-    }
-
-    label {
-      font-size: var(--text-size-small);
-      color: var(--text-secondary);
-      font-weight: var(--text-weight-medium);
-      margin-bottom: var(--gap-small);
-      display: flex;
-      align-items: center;
-      gap: var(--gap-small);
-    }
-
-    input[type="text"],
-    input[type="number"],
-    select {
-      width: 100%;
-      padding: var(--padding-small);
-      background-color: var(--color-background-tertiary);
-      border: var(--view-border);
-      border-radius: var(--view-border-radius);
-      color: var(--text-primary);
-      font-size: var(--text-size-medium);
-      transition: border-color var(--transition-speed);
-    }
-
-    input[type="text"]:focus,
-    input[type="number"]:focus,
-    select:focus {
-      outline: none;
-      border-color: var(--color-primary);
-    }
-
-    input[type="checkbox"] {
-      width: auto;
-      cursor: pointer;
-    }
-
-    select {
-      cursor: pointer;
     }
 
     .button-group {
@@ -150,10 +118,14 @@ interface InventoryFormType {
     CommonModule,
     ReactiveFormsModule,
     ButtonComponent,
+    ModalLayoutComponent,
+    ModalLayoutHeaderComponent,
+    ModalLayoutSectionComponent,
+    ModalLayoutFooterComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InventoryFormComponent {
+export class InventoryFormModalComponent {
   public inventory = input<AttributeInventory>();
   public permissions = input<{delete: boolean}>({delete: false});
   public newInventory = output<AttributeInventory>();

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject, output } from '@angular/cor
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
 import { ButtonComponent } from '../../design-system/button.component';
 import { ModalService } from '../../modal';
-import { InventoryFormComponent } from './inventory-form.component';
+import { InventoryFormModalComponent } from './inventory-form-modal.component';
 import { InventoryAdditionEvent } from './inventory-list.component';
 
 
@@ -20,7 +20,7 @@ export class InventoryAdderButtonComponent {
   private modalService = inject(ModalService);
 
   protected onAddInventory() {
-    const modalRef = this.modalService.open(InventoryFormComponent, {});
+    const modalRef = this.modalService.open(InventoryFormModalComponent, {});
     modalRef.componentRef.instance.newInventory.subscribe((inventory: AttributeInventory) => {
       this.addInventory.emit({ inventory, modalRef });
     });

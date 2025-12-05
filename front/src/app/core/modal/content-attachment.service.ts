@@ -22,6 +22,7 @@ export class ContentAttachmentService {
     component: Type<T>,
     container: ViewContainerRef,
     inputs: Partial<ComponentInputs<T>>,
+    customInjector?: EnvironmentInjector,
   ): ComponentRef<T> {
 
     const bindings = Object.entries(inputs || {}).map(([key, value]) =>
@@ -29,7 +30,8 @@ export class ContentAttachmentService {
     );
 
     const contentRef = createComponent(component, {
-      environmentInjector: this.injector,
+      environmentInjector: customInjector || this.injector,
+      elementInjector: customInjector,
       bindings,
     });
 

@@ -3,6 +3,12 @@ import { ChangeDetectionStrategy, Component, effect, inject, input, output } fro
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AttributeBar } from '@pagemaster/common/attributes.types';
 import { ButtonComponent } from '../../design-system/button.component';
+import {
+  ModalLayoutComponent,
+  ModalLayoutFooterComponent,
+  ModalLayoutHeaderComponent,
+  ModalLayoutSectionComponent,
+} from '../../modal/modal-layout';
 
 interface BarFormType {
   name: FormControl<string>,
@@ -15,36 +21,43 @@ interface BarFormType {
 @Component({
   selector: 'app-bar-form',
   template: `
-    <h2>{{ bar() ? 'Edit' : 'Create a new' }} Bar</h2>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      
-      <label for="name">Name</label>
-      <input id="name" [formControl]="form.controls.name" type="text" />
+    <ds-modal-layout>
+      <ds-modal-layout-header [title]="bar()?.name || 'Create a new Bar'">
+        @if (bar() && permissions().delete) {
+            <ds-button [mode]="'primary-danger'" [icon]="'empty'" (click)="delete()" />
+          }
+      </ds-modal-layout-header>
 
-      <label for="color">Color</label>
-      <input id="color" [formControl]="form.controls.color" type="color" />
-      
-      <label for="min">Minimum Value</label>
-      <input id="min" [formControl]="form.controls.min" type="number" />
-      
-      <label for="max">Maximum Value</label>
-      <input id="max" [formControl]="form.controls.max" type="number" />
+      <ds-modal-layout-section>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <label for="name">Name</label>
+          <input id="name" [formControl]="form.controls.name" type="text" />
 
-      <label for="current">Current Value</label>
-      <input id="current" [formControl]="form.controls.current" type="number" />
-      
-      <div class="button-group">
+          <label for="color">Color</label>
+          <input id="color" [formControl]="form.controls.color" type="color" />
+          
+          <label for="min">Minimum Value</label>
+          <input id="min" [formControl]="form.controls.min" type="number" />
+          
+          <label for="max">Maximum Value</label>
+          <input id="max" [formControl]="form.controls.max" type="number" />
+
+          <label for="current">Current Value</label>
+          <input id="current" [formControl]="form.controls.current" type="number" />
+        </form>
+      </ds-modal-layout-section>
+        
+      <ds-modal-layout-footer>
         <ds-button 
           [mode]="'primary'" 
           (click)="submit()" 
           [state]="form.invalid ? {state: 'error', message: 'Form is invalid'} : {state: 'default'}">
           {{ bar() ? 'Update' : 'Create' }} Bar
         </ds-button>
-        @if (bar() && permissions().delete) {
-          <ds-button [mode]="'primary-danger'" (click)="delete()">Delete</ds-button>
-        }
-      </div>
-    </form>
+      </ds-modal-layout-footer>
+    </ds-modal-layout>
+
+    
   `,
   styles: [`
     :host {
@@ -52,67 +65,17 @@ interface BarFormType {
       flex-direction: column;
       gap: var(--gap-medium);
       width: 100%;
-    }
-
-    h2 {
-      margin: 0 0 var(--gap-medium) 0;
-      color: var(--text-primary);
-      font-size: var(--text-size-large);
-      font-weight: var(--text-weight-bold);
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap-medium);
-    }
-
-    label {
-      font-size: var(--text-size-small);
-      color: var(--text-secondary);
-      font-weight: var(--text-weight-medium);
-      margin-bottom: var(--gap-small);
-    }
-
-    input[type="text"],
-    input[type="number"],
-    input[type="color"] {
-      width: 100%;
-      padding: var(--padding-small);
-      background-color: var(--color-background-tertiary);
-      border: var(--view-border);
-      border-radius: var(--view-border-radius);
-      color: var(--text-primary);
-      font-size: var(--text-size-medium);
-      transition: border-color var(--transition-speed);
-    }
-
-    input[type="text"]:focus,
-    input[type="number"]:focus,
-    input[type="color"]:focus {
-      outline: none;
-      border-color: var(--color-primary);
-    }
-
-    input[type="color"] {
-      height: 40px;
-      cursor: pointer;
-      padding: var(--gap-small);
-    }
-
-    .button-group {
-      display: flex;
-      gap: var(--gap-medium);
-    }
-
-    .button-group ds-button {
-      flex: 1;
+      height: 100%;
     }
   `],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     ButtonComponent,
+    ModalLayoutComponent,
+    ModalLayoutHeaderComponent,
+    ModalLayoutSectionComponent,
+    ModalLayoutFooterComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

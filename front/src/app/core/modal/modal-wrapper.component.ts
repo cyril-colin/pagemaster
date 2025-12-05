@@ -47,7 +47,11 @@ export class ModalWrapperComponent {
     this.contentAttachment.attachContent(componentRef, this.modalContent());
   }
 
-  createAndAttachContent<T>(component: Type<T>, inputs: Partial<ComponentInputs<T>>): ComponentRef<T> {
-    return this.contentAttachment.createAndAttachContent(component, this.modalContent(), inputs);
+  createAndAttachContent<T>(
+    component: Type<T>,
+    inputs: Partial<ComponentInputs<T>>,
+    customInjector?: import('@angular/core').EnvironmentInjector,
+  ): ComponentRef<T> {
+    return this.contentAttachment.createAndAttachContent(component, this.modalContent(), inputs, customInjector);
   }
 }

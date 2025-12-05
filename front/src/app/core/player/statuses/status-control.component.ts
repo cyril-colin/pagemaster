@@ -4,7 +4,7 @@ import { EventPlayerStatusAdd, EventPlayerStatusDelete, EventPlayerTypes } from 
 import { tap } from 'rxjs';
 import { ModalService } from '../../modal';
 import { AbstractPlayerControl } from '../abstract-player-control';
-import { StatusFormComponent } from './status-form.component';
+import { StatusFormModalComponent } from './status-form-modal.component';
 import { StatusListViewComponent } from './status-list-view.component';
 
 // Type for the full status object with instance and selection state
@@ -56,7 +56,7 @@ export class StatusControlComponent extends AbstractPlayerControl {
   }
 
   protected openNewStatusModal() {
-    const modalRef = this.modalService.open(StatusFormComponent);
+    const modalRef = this.modalService.open(StatusFormModalComponent);
     modalRef.componentRef.instance.newStatus.subscribe((status: AttributeStatus) => {
       this.addStatus(status).pipe(
         tap(() => void modalRef.close()),
@@ -65,7 +65,7 @@ export class StatusControlComponent extends AbstractPlayerControl {
   }
 
   protected openEditStatusModal(status: AttributeStatus) {
-    const modalRef = this.modalService.open(StatusFormComponent, { 
+    const modalRef = this.modalService.open(StatusFormModalComponent, { 
       status,
       permissions: { delete: this.permissions().statuses.delete },
     });

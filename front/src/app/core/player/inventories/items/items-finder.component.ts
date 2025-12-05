@@ -159,6 +159,7 @@ export type ItemsFinderState = {
       .controls-row {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         align-items: center;
         margin-bottom: 8px;
         gap: 12px;
@@ -222,7 +223,7 @@ export type ItemsFinderState = {
         justify-content: center;
         position: absolute;
         top: -6px;
-        right: -6px;
+        left: -6px;
         width: 22px;
         height: 22px;
         font-weight: 700;
@@ -255,7 +256,7 @@ export type ItemsFinderState = {
       .grid .grid-item.selected::after {
         content: '✓';
         position: absolute;
-        bottom: 8px;
+        top: 8px;
         right: 8px;
         width: 20px;
         height: 20px;
@@ -443,18 +444,6 @@ export class ItemsFinderComponent {
     const next = Math.min(this.totalPages() - 1, current + 1);
     this._state.update((s: ItemsFinderState) => {
       s.pagination.pageIndex = next;
-      s.lastAction = 'paginate';
-      return structuredClone(s);
-    });
-  }
-
-  protected changePageSize(value: string | number) {
-    const size = Number(value) || 10;
-    this._state.update((s: ItemsFinderState) => {
-      s.pagination.pageSize = size;
-      // Ensure current page is within new bounds
-      const maxIndex = Math.max(0, Math.ceil(s.data.length / size) - 1);
-      s.pagination.pageIndex = Math.min(s.pagination.pageIndex, maxIndex);
       s.lastAction = 'paginate';
       return structuredClone(s);
     });

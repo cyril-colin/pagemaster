@@ -12,7 +12,7 @@ import { tap } from 'rxjs';
 import { ButtonComponent } from '../../design-system/button.component';
 import { ModalService } from '../../modal';
 import { AbstractPlayerControl } from '../abstract-player-control';
-import { InventoryFormComponent } from './inventory-form.component';
+import { InventoryFormModalComponent } from './inventory-form-modal.component';
 import { ItemModalComponent } from './items/item-modal.component';
 import { ItemPlaceholderComponent } from './items/item-placeholder.component';
 import { ItemComponent } from './items/item.component';
@@ -171,7 +171,7 @@ export class InventoryComponent extends AbstractPlayerControl {
   }
 
   protected onEditInventory() {
-    const modalRef = this.modalService.open(InventoryFormComponent, {
+    const modalRef = this.modalService.open(InventoryFormModalComponent, {
       inventory: this.inventory(),
       permissions: { delete: this.permissions().inventory.delete },
     });

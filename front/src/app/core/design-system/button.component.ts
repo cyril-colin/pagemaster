@@ -21,7 +21,7 @@ export type ButtonState =
   template: `
     <button 
       [class]="'button mode-' + mode() + ' state-' + state().state"
-      [disabled]="state().state === 'loading' || state().state === 'error'"
+      [disabled]="disabled() || state().state === 'loading' || state().state === 'error'"
       (click)="$event.preventDefault();"
       [attr.title]="getErrorMessage()"
     >
@@ -233,12 +233,16 @@ export class ButtonComponent {
   public mode = input<ButtonMode>('primary');
   public icon = input<IconName | null>(null);
   public state = input<ButtonState>({ state: 'default' });
+  public disabled = input<boolean>(false);
   
   public click = output<MouseEvent>();
 
   @HostListener('click', ['$event'])
   protected disableClick(event: MouseEvent): void {
     event.preventDefault();
+    if (this.disabled()) {
+      return;
+    }
   }
 
   protected iconSvg = computed<SafeHtml>(() => {

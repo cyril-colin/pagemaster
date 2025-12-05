@@ -1,8 +1,7 @@
-import { Dialog } from '@angular/cdk/dialog';
+import { Dialog, DialogRef } from '@angular/cdk/dialog';
 import { Overlay } from '@angular/cdk/overlay';
-import { ComponentRef, inject, Injectable, InputSignal, Type } from '@angular/core';
+import { ComponentRef, createEnvironmentInjector, EnvironmentInjector, inject, Injectable, InputSignal, Type } from '@angular/core';
 import { ConfirmationModalComponent, ConfirmationResult } from './confirmation-modal.component';
-import { LeftPanelWrapperComponent } from './left-panel-wrapper.component';
 import { ModalWrapperComponent } from './modal-wrapper.component';
 
 export interface ModalRef<T = unknown> {
@@ -23,6 +22,7 @@ export type ComponentInputs<T> = {
 export class ModalService {
   private dialog = inject(Dialog);
   private overlay = inject(Overlay);
+  private environmentInjector = inject(EnvironmentInjector);
   private defaultPositionStrategy = this.overlay.position()
     .global()
     .centerHorizontally()
@@ -34,42 +34,26 @@ export class ModalService {
   ): ModalRef<T> {
     const dialogRef = this.dialog.open<unknown, unknown, ModalWrapperComponent>(ModalWrapperComponent, {
       positionStrategy: this.defaultPositionStrategy,
-      width: '100%',
-      height: '100%',
+      width: 'var(--ds-modal-width)',
+      height: 'var(--ds-modal-height)',
     });
 
     const wrapperRef = dialogRef.componentRef!;
-    const contentRef = wrapperRef.instance.createAndAttachContent(component, inputs || {});
+    
+    // Create an injector that provides the DialogRef
+    const contentInjector = createEnvironmentInjector(
+      [
+        { provide: DialogRef, useValue: dialogRef },
+      ],
+      this.environmentInjector,
+    );
+    
+    const contentRef = wrapperRef.instance.createAndAttachContent(component, inputs || {}, contentInjector);
 
     return {
       componentRef: contentRef,
       close: () => dialogRef.close(),
     };
-  }
-
-  openLeftPanel<T>(
-    component: Type<T>,
-    inputs?: Partial<ComponentInputs<T>>,
-  ): ModalRef<T> {
-    const dialogRef = this.dialog.open<unknown, unknown, LeftPanelWrapperComponent>(LeftPanelWrapperComponent, {
-      positionStrategy: this.overlay.position().global(),
-    });
-
-    const wrapperRef = dialogRef.componentRef!;
-    const contentRef = wrapperRef.instance.createAndAttachContent(component, inputs || {});
-
-    // Close function with animation
-    const close = async () => {
-      await wrapperRef.instance.closeAnimation();
-      dialogRef.close();
-    };
-
-    // Subscribe to back button events
-    wrapperRef.instance.backButtonPressed.subscribe(() => {
-      void close();
-    });
-
-    return { componentRef: contentRef, close };
   }
 
   async confirmation(message: string, title?: string): Promise<ConfirmationResult> {

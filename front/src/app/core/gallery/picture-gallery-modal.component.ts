@@ -1,14 +1,19 @@
 import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
 import { ButtonComponent } from '../design-system/button.component';
-import { CardComponent } from '../design-system/card.component';
 import { ImageComponent } from '../design-system/image.component';
+import {
+  ModalLayoutComponent,
+  ModalLayoutHeaderComponent,
+  ModalLayoutSectionComponent,
+} from '../modal/modal-layout';
 
 export type PictureItem = { name: string, path: string };
 @Component({
-  selector: 'app-picture-gallery',
   template: `
-    <ds-card>
-      <input 
+  <ds-modal-layout>
+    <ds-modal-layout-header [title]="'Avatar selection'"/>
+    <ds-modal-layout-section>
+       <input 
         type="text" 
         class="search-input"
         placeholder="Search items..."
@@ -65,11 +70,16 @@ export type PictureItem = { name: string, path: string };
           [attr.disabled]="currentPage() === totalPages() ? '' : null"
         />
       </div>
-    </ds-card>
+    </ds-modal-layout-section>
+     
+
+  </ds-modal-layout>
   `,
   styles: [`
     :host {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
       height: 100%;
     }
 
@@ -184,10 +194,15 @@ export type PictureItem = { name: string, path: string };
       opacity: 0.5;
     }
   `],
-  imports: [ImageComponent, ButtonComponent, CardComponent],
+  imports: [ImageComponent,
+    ButtonComponent,
+    ModalLayoutComponent,
+    ModalLayoutHeaderComponent,
+    ModalLayoutSectionComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PictureGalleryComponent {
+export class PictureGalleryModalComponent {
   public items = input.required<PictureItem[]>();
   public itemsPerPage = input<number>(6);
   public itemSelected = output<PictureItem>();
