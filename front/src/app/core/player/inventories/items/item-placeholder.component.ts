@@ -21,7 +21,7 @@ import { ImageComponent } from '../../../design-system/image.component';
       height: var(--item-component-m);
       width: var(--item-component-m);
       border: var(--item-border-width) dashed var(--color-border);
-      border-radius: var(--item-border-radius);
+      border-radius: var(--item-component-border-radius);
       position: relative;
       cursor: pointer;
       transition: opacity var(--item-transition-speed) ease;

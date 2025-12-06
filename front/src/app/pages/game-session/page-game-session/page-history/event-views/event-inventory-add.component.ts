@@ -11,7 +11,7 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let p = player();
     
     <span>Inventory "{{e.event.newInventory.name}}" added to </span>
-    <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
+    <a [routerLink]="playerUrl()"><ds-image [size]="'m'" [src]="p?.avatar || ''" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],
   imports: [

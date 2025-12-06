@@ -11,7 +11,7 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
     <h3>New EventLootBox View</h3>
     <section class="loot-box-items">
     @for(i of event().event.lootBox.items; track i.item.id) {
-      <app-item [item]="i.item" [size]="'s'" />
+      <app-item [item]="i.item" [size]="'xs'" />
     }
     </section>
   `,
@@ -20,6 +20,8 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
     :host {
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       gap: var(--gap-medium);
     }
     .loot-box-items {

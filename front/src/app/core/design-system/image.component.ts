@@ -31,7 +31,7 @@ export type ImageSize = 'xs' | 's' | 'm' | 'l';
       object-fit: contain;
       max-width: 100%;
       max-height: 100%;
-      border-radius: var(--item-border-radius, 8px);
+      border-radius: var(--item-component-border-radius, 8px);
     }
 
     .ds-icon {

@@ -13,11 +13,11 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
     @let p = player();
     
     @for(item of e.event.newItems; track item.id) {
-      <app-item [item]="item" [size]="'s'" />
+      <app-item [item]="item" [size]="'xs'" />
     }
     
     added to "{{inv?.name}}" of
-    <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
+    <a [routerLink]="playerUrl()"><ds-image [size]="'m'" [src]="p?.avatar || ''" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],
   imports: [
