@@ -1,6 +1,6 @@
 {
   "name": "pagemaster-back",
-  "version": "1.0.0-dev.27",
+  "version": "1.0.0-dev.28",
   "description": "The backend for the Pagemaster application",
   "main": "index.js",
   "scripts": {
