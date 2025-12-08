@@ -5,21 +5,22 @@ import { GameSession, ParticipantType } from '../../pagemaster-schemas/src/pagem
 import { GameSessionMongoClient } from './game-session.mongo-client';
 
 const defaultGameSession: GameSession = {
-  "id": "medieval-fantasy-v1-Cyril-1758352912606",
+  "id": "post-apocalypse-v1-Cyril-1758352912606",
+  "title": "Wasteland Survivors",
   "version": 1,
   master: {
     "id": ParticipantType.GameMaster,
     "type": ParticipantType.GameMaster,
-    "name": "Dungeon Master",
-    "description": "The all-knowing overseer of the realm, guiding players through epic quests and challenges."
+    "name": "Overseer",
+    "description": "The all-seeing coordinator of the wasteland, guiding survivors through the harsh realities of the post-apocalyptic world."
   },
   "players": [
     {
       "type": ParticipantType.Player,
-        "id": "Gorbak-1759075666828",
-        "name": "Gorbak",
-        "description": "# Gorbak the Fierce\n\nA **mighty orc warrior** from the northern tribes.\n\n## Background\nGorbak was raised in the harsh *Frostpeak Mountains*, where only the strongest survive. He earned his title through countless battles.\n\n## Abilities\n- Master of **dual-wielding axes**\n- Unmatched strength in close combat\n- Natural resistance to cold\n\n> \"Fear is for the weak. I am Gorbak!\"",
-        "avatar": "/fantasy/avatars/orcs-farmer.png",
+        "id": "Razor-1759075666828",
+        "name": "Razor",
+        "description": "A brutal scavenger from the irradiated Dead Zones, wielding dual machetes with deadly precision. Years of surviving radiation storms have made him naturally resistant to the wasteland's harsh environment.\n\n- 🔪 Dual machetes\n- 💪 Melee combat\n- ☢️ Radiation resistant\n- 🏜️ Dead Zone survivor",
+        "avatar": "/post-apo/avatars/desert_nomad.png",
         "attributes": {
           "bar": [defaultBar.health, defaultBar.stamina],
           "status": [],
@@ -28,10 +29,10 @@ const defaultGameSession: GameSession = {
       },
     {
       "type": ParticipantType.Player,
-        "id": "Elrond-1758931870753",
-        "name": "Elrond",
-        "description": "# Elrond the Wise\n\nA **wise elf lord** with vast knowledge of ancient lore.\n\n## Characteristics\n- Age: Over 3,000 years\n- Role: *Scholar and Keeper of Histories*\n- Specialty: **Arcane Magic** and Diplomacy\n\n## Notable Achievements\n1. Advisor to three elven kingdoms\n2. Master of the `Ancient Runes`\n3. Guardian of the Sacred Grove\n\n> \"Knowledge is the true power that transcends time.\"",
-        "avatar": "/fantasy/avatars/elfe-archer.png",
+        "id": "Doc-1758931870753",
+        "name": "Doc",
+        "description": "A 67-year-old pre-war scientist who survived the Fall with invaluable knowledge of old-world technology. His expertise in repairing ancient tech has brought power back to three wasteland settlements.\n\n- 🧪 Tech repair\n- 📚 Old-world knowledge\n- 💬 Negotiation\n- ⚡ Power restoration",
+        "avatar": "/post-apo/avatars/mutant_scout.png",
         "attributes": {
           "bar": [defaultBar.health, defaultBar.mana],
           "status": [],
@@ -40,10 +41,10 @@ const defaultGameSession: GameSession = {
       },
     {
       "type": ParticipantType.Player,
-        "id": "Gimli-1758931889802",
-        "name": "Gimli",
-        "description": "# Gimli Ironbeard\n\nA **doughty dwarf warrior** wielding a legendary battle axe.\n\n## Heritage\nSon of Glóin, from the famous line of *Durin's Folk*. Born in the **Lonely Mountain**.\n\n## Combat Style\n- Primary Weapon: Two-handed battle axe\n- Defense: Heavy plate armor\n- Specialty: Breaking enemy formations\n\n### Equipment\n- `Ironbeard's Axe` (Family heirloom)\n- Mithril chainmail vest\n\n> \"You'll have to toss me... Don't tell the elf!\"",
-        "avatar": "/fantasy/avatars/dwarf-knight.png",
+        "id": "Tank-1758931889802",
+        "name": "Tank",
+        "description": "Former military sergeant who survived the nuclear fallout in a bunker complex, now clad in reinforced riot armor. Specializes in breaking through fortifications with his modified pre-war sledgehammer.\n\n- 🔨 Heavy weapons\n- 💥 Breach specialist\n- 🛡️ Riot armor\n- 🪖 Military tactics",
+        "avatar": "/post-apo/avatars/raider_leader.png",
         "attributes": {
           "bar": [defaultBar.health, defaultBar.stamina],
           "status": [],
@@ -52,10 +53,10 @@ const defaultGameSession: GameSession = {
       },
     {
       "type": ParticipantType.Player,
-        "id": "Arwen-1758931932742",
-        "name": "Arwen",
-        "description": "# Arwen Evenstar\n\nA **graceful elf princess** blessed with extraordinary healing powers.\n\n## Royal Lineage\nDaughter of Lord Elrond, bearer of the *Evenstar*. Her beauty and wisdom are legendary throughout the realms.\n\n## Magical Abilities\n- **Divine Healing**: Can restore life force\n- *Light Magic*: Banishes darkness and evil\n- Nature's Blessing: Commands plants and animals\n\n## Sacred Items\n1. The Evenstar pendant\n2. Staff of Moonlight\n3. Elven healing herbs\n\n> \"Even the smallest person can change the course of history.\"",
-        "avatar": "/fantasy/avatars/elf-girl.png",
+        "id": "Phoenix-1758931932742",
+        "name": "Phoenix",
+        "description": "A skilled field medic trained in both pre-war medicine and wasteland herbal remedies. Her ability to treat radiation sickness and stabilize critical injuries has saved countless lives across the settlements.\n\n- 💉 Advanced first aid\n- 🌿 Herbal medicine\n- ☢️ Radiation treatment\n- ⚕️ Critical care",
+        "avatar": "/post-apo/avatars/rebel_engineer.png",
         "attributes": {
           "bar": [defaultBar.health, defaultBar.mana],
           "status": [],
