@@ -13,8 +13,8 @@ export class GameEventRepository {
     return this.http.post<EventBase>(`${this.baseUrl}/game-events/command`, command);
   }
 
-  getAll(): Observable<EventBase[]> {
-    return this.http.get<EventBase[]>(`${this.baseUrl}/game-events`);
+  getAll(gameSessionId: string): Observable<EventBase[]> {
+    return this.http.get<EventBase[]>(`${this.baseUrl}/game-events/${gameSessionId}`);
   }
 
 }

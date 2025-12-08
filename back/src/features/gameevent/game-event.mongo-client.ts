@@ -68,6 +68,13 @@ export class GameEventMongoClient extends BaseMongoClient {
         );
     }
 
+    public async getEventsByGameSessionId(gameSessionId: string): Promise<WithId<EventDocument>[]> {
+        return this.find<EventDocument>(
+            GameEventMongoClient.COLLECTION_NAME,
+            { gameSessionId }
+        );
+    }
+
     public async updateEvent(id: string, update: Partial<EventBase>): Promise<EventBase> {
         await this.updateOne<EventDocument>(
             GameEventMongoClient.COLLECTION_NAME,

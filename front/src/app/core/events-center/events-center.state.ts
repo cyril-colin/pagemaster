@@ -1,6 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { EventBase } from '@pagemaster/common/events.types';
 import { tap } from 'rxjs';
+import { CurrentGameSessionState } from '../current-game-session.state';
 import { GameEventRepository } from '../repositories/game-event.repository';
 
 
@@ -15,6 +16,7 @@ export type EventMeta<T extends EventBase = EventBase> = {
 export class EventsCenterStateService {
   private eventsSignal = signal<EventMeta[]>([]);
   private gameEventRepository = inject(GameEventRepository);
+  private currentGameSessionState = inject(CurrentGameSessionState);
 
   public readonly events = this.eventsSignal.asReadonly();
 
@@ -22,7 +24,8 @@ export class EventsCenterStateService {
    * Used in route guards to preload events before activating the route.
    */
   public init() {
-    return this.gameEventRepository.getAll().pipe(
+    const gameSessionId = this.currentGameSessionState.currentGameSession().id;
+    return this.gameEventRepository.getAll(gameSessionId).pipe(
       tap((events) => {
         this.eventsSignal.set(events.sort((a, b) => b.timestamp - a.timestamp).map(e => ({ isNew: false, event: e })));
       }),

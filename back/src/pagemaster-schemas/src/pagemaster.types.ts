@@ -16,6 +16,10 @@ export type GameSession = {
    * the latest version before making its own updates.
    */
   version: number,
+  /**
+   * The title of the game session (e.g., "The Quest for the Dragon's Hoard").
+   */
+  title?: string,
   master: GameMaster,
   players: Player[],
 };

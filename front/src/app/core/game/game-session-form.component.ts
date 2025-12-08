@@ -5,6 +5,7 @@ import { GameSession, ParticipantType } from '@pagemaster/common/pagemaster.type
 import { CardComponent } from '../design-system/card.component';
 
 interface GameFormType {
+  title: FormControl<string>,
   masterName: FormControl<string>,
 }
 
@@ -19,6 +20,24 @@ interface GameFormType {
             Create your Game Master profile for the new session
           </p>
           
+          <div class="input-wrapper">
+            <label for="title" class="input-label">
+              Game Session Title
+              <span class="required-marker">*</span>
+            </label>
+            <div class="input-container">
+              <input 
+                id="title" 
+                [formControl]="form.controls.title" 
+                type="text"
+                placeholder="e.g., The Quest for the Dragon's Hoard"
+                class="input-field"
+                [class.error]="form.controls.title.invalid && form.controls.title.touched"
+              />
+            </div>
+            <span class="input-hint">Give your adventure a memorable name</span>
+          </div>
+
           <div class="input-wrapper">
             <label for="masterName" class="input-label">
               Game Master Name
@@ -204,8 +223,16 @@ export class GameSessionFormComponent {
   public newGameSession = output<GameSession>();
   private fb = inject(FormBuilder);
   
+  private getDefaultTitle(): string {
+    const today = new Date();
+    const day = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    return `Game of ${day}-${month}`;
+  }
+  
   protected form = this.fb.group<GameFormType>({
-    masterName: this.fb.control('', { nonNullable: true, validators: [Validators.required]}),
+    title: this.fb.control(this.getDefaultTitle(), { nonNullable: true, validators: [Validators.required]}),
+    masterName: this.fb.control('God', { nonNullable: true, validators: [Validators.required]}),
   });
 
   protected submit() {
@@ -214,6 +241,7 @@ export class GameSessionFormComponent {
       const gameSession: GameSession = {
         id: `session-${gameInstanceForm.masterName}-${Date.now()}`,
         version: 0,
+        title: gameInstanceForm.title,
         master: {
           name: gameInstanceForm.masterName,
           type: ParticipantType.GameMaster,

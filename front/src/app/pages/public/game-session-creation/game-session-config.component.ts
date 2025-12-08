@@ -34,10 +34,12 @@ import { GameSessionRepository } from '../../../core/repositories/game-session.r
               <div class="info-section">
                 <h3>Game Details</h3>
                 <div class="info-grid">
-                  <div class="info-item">
-                    <span class="info-label">Game System:</span>
-                    <span class="info-value">{{ instance.id }}</span>
-                  </div>
+                  @if (instance.title) {
+                    <div class="info-item">
+                      <span class="info-label">Title:</span>
+                      <span class="info-value">{{ instance.title }}</span>
+                    </div>
+                  }
                   <div class="info-item">
                     <span class="info-label">Game Master:</span>
                     <span class="info-value">{{ instance.master.name }}</span>

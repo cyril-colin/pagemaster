@@ -19,9 +19,9 @@ export class GameEventController {
     private socketServerService: SocketServerService,
   ) {}
 
-  @Get('/game-events')
-  public async getAllGameEvents(): Promise<EventBase[]> {
-    const gameEventDocuments = await this.gameEventMongoClient.getAllEvents();
+  @Get('/game-events/:gameSessionId')
+  public async getAllGameEvents(body: unknown, params: { gameSessionId: string }): Promise<EventBase[]> {
+    const gameEventDocuments = await this.gameEventMongoClient.getEventsByGameSessionId(params.gameSessionId);
     return gameEventDocuments.map(doc => {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { _id, ...gameEvent } = doc;
