@@ -1,5 +1,5 @@
 <section class="header">
-  <div></div>
+  <h2>{{ currentGameSession.currentGameSession().title || currentGameSession.currentGameSession().id }}</h2>
   <ds-dropdown-container>
     @let cp = currentParticipantState.currentParticipant();
     <ds-dropdown-trigger>
