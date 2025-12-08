@@ -2,14 +2,21 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { EventDiceRoll, EventLootBox } from '@pagemaster/common/events.types';
+import { ParticipantType, Player } from '@pagemaster/common/pagemaster.types';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { BottomBarComponent } from 'src/app/core/design-system/bottom-bar.component';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
+import {
+  DropdownContainerComponent,
+  DropdownContentComponent,
+  DropdownTriggerComponent,
+} from 'src/app/core/design-system/dropdown-container.component';
 import { EventMeta, EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { LootBoxModalComponent } from 'src/app/core/loot-box/loot-box.modal.component';
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
+import { AvatarViewComponent } from 'src/app/core/player/avatar/avatar-view.component';
 import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
 import { QuickActionModalComponent } from '../quick-action.modal.component';
 
@@ -21,6 +28,10 @@ import { QuickActionModalComponent } from '../quick-action.modal.component';
     RouterModule,
     ButtonComponent,
     BottomBarComponent,
+    DropdownContainerComponent,
+    DropdownTriggerComponent,
+    DropdownContentComponent,
+    AvatarViewComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -34,6 +45,14 @@ export class GameSessionPageComponent {
   protected eventsCenterState = inject(EventsCenterStateService);
   protected eventCount = computed(() => this.eventsCenterState.events().filter(e => e.isNew).length);
 
+  protected isGameMaster = computed(() => {
+    const participant = this.currentParticipantState.currentParticipant();
+    return participant?.type === ParticipantType.GameMaster;
+  });
+
+  protected player = computed(() => {
+    return this.currentParticipantState.currentParticipant() as Player;
+  });
 
   protected goToPlayerList(): void {
     void this.router.navigate([
@@ -54,6 +73,14 @@ export class GameSessionPageComponent {
     if (response === 'confirmed') {
       this.currentParticipantState.logout();
     }
+  }
+
+  protected showAbout(): void {
+    const version = '0.0.0'; // Version from package.json
+    void this.modalService.confirmation(
+      `PageMaster version ${version}\n\nA real-time collaborative tool for improvised tabletop role-playing games.`,
+      'About PageMaster',
+    );
   }
 
   protected goToMyPlayerPage(): void {

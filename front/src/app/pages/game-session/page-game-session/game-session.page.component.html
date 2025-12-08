@@ -1,6 +1,19 @@
 <section class="header">
   <div></div>
-  <ds-button  [mode]="'secondary-danger'" (click)="logout()" [icon]="'logout'"/>
+  <ds-dropdown-container>
+    @let cp = currentParticipantState.currentParticipant();
+    <ds-dropdown-trigger>
+      @if (cp?.type === 'player') {
+        <app-avatar-view [player]="player()" [permissions]="{edit: false}" [size]="'m'"/>
+      } @else {
+        <div class="gm-badge">GM</div>
+      }
+    </ds-dropdown-trigger>
+    <ds-dropdown-content>
+      <ds-button [mode]="'tertiary'" [icon]="'logout'" (click)="logout()" >Logout</ds-button>
+      <ds-button [mode]="'tertiary'" [icon]="'menu'" (click)="showAbout()" >About</ds-button>
+    </ds-dropdown-content>
+  </ds-dropdown-container>
 </section>
 
 <section class="main-content">

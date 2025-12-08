@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input, output } from '@an
 import { Player } from '@pagemaster/common/pagemaster.types';
 import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { ButtonComponent } from '../../design-system/button.component';
-import { ImageComponent } from '../../design-system/image.component';
+import { ImageComponent, ImageSize } from '../../design-system/image.component';
 
 @Component({
   selector: 'app-avatar-view',
@@ -10,7 +10,7 @@ import { ImageComponent } from '../../design-system/image.component';
     <ds-image
       [src]="src()" 
       [alt]="'Player Picture'"
-      [size]="'l'"
+      [size]="size()"
       [clickable]="permissions().edit"
       (click)="permissions().edit && needSrc.emit()" 
     />
@@ -38,6 +38,7 @@ export class AvatarViewComponent {
   public player = input.required<Player>();
   public permissions = input.required<GameSessionPermissions['avatar']>();
   public needSrc = output<void>();
+  public size = input<ImageSize>('l');
 
   protected src = computed(() => {
     const ifMissing = `https://api.dicebear.com/9.x/initials/svg?seed=${encodeURIComponent(this.player().name)}`;
