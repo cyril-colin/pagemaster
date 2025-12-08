@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Participant, ParticipantType, Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
@@ -131,7 +131,6 @@ import { GameSessionRepository } from 'src/app/core/repositories/game-session.re
   imports: [ButtonComponent, PlayerButtonComponent],
 })
 export class PlayerListPageComponent {
-  public close = output<void>();
 
   private router = inject(Router);
   private modalService = inject(ModalService);
@@ -163,7 +162,6 @@ export class PlayerListPageComponent {
     const parentRoute = PageMasterRoutes().GameInstanceSession.interpolated(gameSessionId);
     const segments = [parentRoute, route, 'details'].join('/').split('/');
     await this.router.navigate(segments);
-    this.close.emit();
   }
 
   protected addPlayer(): void {

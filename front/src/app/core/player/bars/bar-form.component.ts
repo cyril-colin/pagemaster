@@ -1,14 +1,24 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, effect, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, input } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AttributeBar } from '@pagemaster/common/attributes.types';
-import { ButtonComponent } from '../../design-system/button.component';
 import {
-  ModalLayoutComponent,
-  ModalLayoutFooterComponent,
-  ModalLayoutHeaderComponent,
-  ModalLayoutSectionComponent,
+    EventPlayerBarAdd,
+    EventPlayerBarDelete,
+    EventPlayerBarEdit,
+    EventPlayerTypes,
+} from '@pagemaster/common/events-player.types';
+import { tap } from 'rxjs';
+import { ButtonComponent } from '../../design-system/button.component';
+import { ModalService } from '../../modal';
+import {
+    ModalLayoutComponent,
+    ModalLayoutFooterComponent,
+    ModalLayoutHeaderComponent,
+    ModalLayoutSectionComponent,
 } from '../../modal/modal-layout';
+import { AbstractPlayerControl } from '../abstract-player-control';
 
 interface BarFormType {
   name: FormControl<string>,
@@ -23,7 +33,7 @@ interface BarFormType {
   template: `
     <ds-modal-layout>
       <ds-modal-layout-header [title]="bar()?.name || 'Create a new Bar'">
-        @if (bar() && permissions().delete) {
+        @if (bar() && permissions().bars.delete) {
             <ds-button [mode]="'primary-danger'" [icon]="'empty'" (click)="delete()" />
           }
       </ds-modal-layout-header>
@@ -79,11 +89,10 @@ interface BarFormType {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BarFormComponent {
+export class BarFormComponent extends AbstractPlayerControl {
   public bar = input<AttributeBar>();
-  public permissions = input<{delete: boolean}>({delete: false});
-  public newBar = output<AttributeBar>();
-  public deleteBar = output<AttributeBar>();
+  protected dialogRef = inject(DialogRef);
+  protected modalService = inject(ModalService);
   private fb = inject(FormBuilder);
   
   protected form = this.fb.group<BarFormType>({
@@ -95,6 +104,7 @@ export class BarFormComponent {
   });
 
   constructor() {
+    super();
     effect(() => {
       const existingBar = this.bar();
       if (existingBar) {
@@ -130,14 +140,42 @@ export class BarFormComponent {
         current: barForm.current,
       };
 
-      this.newBar.emit(bar);
+      this.saveBar(bar).pipe(
+        tap(() => this.dialogRef.close()),
+      ).subscribe();
     }
   }
 
-  protected delete() {
-    const existingBar = this.bar();
-    if (existingBar) {
-      this.deleteBar.emit(existingBar);
+  protected async delete() {
+    const barName = this.bar()?.name;
+    const result = await this.modalService.confirmation(
+      `Are you sure you want to delete the bar "${barName}"? This action cannot be undone.`,
+      `Confirm deletion of "${barName}"`,
+    );
+      
+    if (result === 'confirmed') {
+      const command = this.prepareEvent(EventPlayerTypes.PLAYER_BAR_DELETE) as Omit<EventPlayerBarDelete, 'id' | 'timestamp'>;
+      command.barId = this.bar()?.id || '';
+      this.gameEventRepository.postCommand(command).pipe(
+        tap(() => this.dialogRef.close()),
+      ).subscribe();
     }
+  }
+
+  protected saveBar(newBar: AttributeBar) {
+    const isUpdate = !!this.bar();
+
+    if (isUpdate) {
+      return this.updateBar(newBar);
+    }
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_BAR_ADD) as Omit<EventPlayerBarAdd, 'id' | 'timestamp'>;
+    command.newBar = newBar;
+    return this.gameEventRepository.postCommand(command);
+  }
+
+  protected updateBar(updatedBar: AttributeBar) {
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_BAR_EDIT) as Omit<EventPlayerBarEdit, 'id' | 'timestamp'>;
+    command.newBar = updatedBar;
+    return this.gameEventRepository.postCommand(command);
   }
 }

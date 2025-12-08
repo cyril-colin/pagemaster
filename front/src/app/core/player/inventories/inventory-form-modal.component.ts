@@ -1,14 +1,24 @@
+import { DialogRef } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, effect, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, input } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AttributeInventory } from '@pagemaster/common/attributes.types';
+import {
+  EventPlayerInventoryAdd,
+  EventPlayerInventoryDelete,
+  EventPlayerInventoryUpdate,
+  EventPlayerTypes,
+} from '@pagemaster/common/events-player.types';
+import { tap } from 'rxjs';
 import { ButtonComponent } from '../../design-system/button.component';
+import { ModalService } from '../../modal';
 import {
   ModalLayoutComponent,
   ModalLayoutFooterComponent,
   ModalLayoutHeaderComponent,
   ModalLayoutSectionComponent,
 } from '../../modal/modal-layout';
+import { AbstractPlayerControl } from '../abstract-player-control';
 
 interface InventoryFormType {
   name: FormControl<AttributeInventory['name']>,
@@ -24,7 +34,7 @@ interface InventoryFormType {
   template: `
     <ds-modal-layout>
       <ds-modal-layout-header [title]="inventory()?.name || 'Create a new Inventory'">
-        @if (inventory() && permissions().delete) {
+        @if (inventory() && permissions().inventory.delete) {
             <ds-button [mode]="'primary-danger'" [icon]="'empty'" (click)="delete()" />
           }
       </ds-modal-layout-header>
@@ -125,11 +135,10 @@ interface InventoryFormType {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InventoryFormModalComponent {
+export class InventoryFormModalComponent extends AbstractPlayerControl {
   public inventory = input<AttributeInventory>();
-  public permissions = input<{delete: boolean}>({delete: false});
-  public newInventory = output<AttributeInventory>();
-  public deleteInventory = output<AttributeInventory>();
+  protected dialogRef = inject(DialogRef);
+  protected modalService = inject(ModalService);
   private fb = inject(FormBuilder);
   
   protected form = this.fb.group<InventoryFormType>({
@@ -143,6 +152,7 @@ export class InventoryFormModalComponent {
   });
 
   constructor() {
+    super();
     effect(() => {
       const existingInventory = this.inventory();
       if (existingInventory) {
@@ -175,14 +185,42 @@ export class InventoryFormModalComponent {
         current: this.inventory()?.current || [],
       };
 
-      this.newInventory.emit(inventory);
+      this.newInventory(inventory).pipe(
+        tap(()  => this.dialogRef.close(),
+        )).subscribe();
     }
   }
 
-  protected delete() {
-    const existingInventory = this.inventory();
-    if (existingInventory) {
-      this.deleteInventory.emit(existingInventory);
+  protected async delete() {
+    const inventoryName = this.inventory()?.name;
+    const result = await this.modalService.confirmation(
+      `Are you sure you want to delete the inventory "${inventoryName}"? This action cannot be undone.`,
+      `Confirm deletion of "${inventoryName}"`,
+    );
+      
+    if (result === 'confirmed') {
+      const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_DELETE) as Omit<EventPlayerInventoryDelete, 'id' | 'timestamp'>;
+      command.inventoryId = this.inventory()?.id || '';
+      this.gameEventRepository.postCommand(command).pipe(
+        tap(() => this.dialogRef.close()),
+      ).subscribe();
     }
+  }
+
+  protected newInventory(newInventory: AttributeInventory) {
+    const isUpdate = !!this.inventory();
+
+    if (isUpdate) {
+      return this.updateInventory(newInventory);
+    }
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_ADD) as Omit<EventPlayerInventoryAdd, 'id' | 'timestamp'>;
+    command.newInventory = newInventory;
+    return this.gameEventRepository.postCommand(command);
+  }
+
+  protected updateInventory(updatedInventory: AttributeInventory) {
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_UPDATE) as Omit<EventPlayerInventoryUpdate, 'id' | 'timestamp'>;
+    command.newInventory = updatedInventory;
+    return this.gameEventRepository.postCommand(command);
   }
 }

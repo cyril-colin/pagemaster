@@ -65,10 +65,10 @@ export function PageMasterRoutes() {
         children: [
           { path: '', redirectTo: 'events', pathMatch: 'full' as const },
           { path: 'events', component: EventsCenterComponent },
-          { path: 'player', component: PlayerListPageComponent },
+          { path: 'players', component: PlayerListPageComponent },
           {
-            path: `player/:${params[1]}/:tabId`,
-            interpolated: (playerId: string) => `player/:${params[1]}`.replace(`:${params[1]}`, playerId),
+            path: `players/:${params[1]}/:tabId`,
+            interpolated: (playerId: string) => `players/:${params[1]}`.replace(`:${params[1]}`, playerId),
             component: PlayerLayoutComponent,
           },
           {path: 'notes', component: NotesPageComponent},

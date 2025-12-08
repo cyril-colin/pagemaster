@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AttributeBar } from '@pagemaster/common/attributes.types';
 import {
-  EventPlayerBarAdd,
-  EventPlayerBarDelete,
-  EventPlayerBarEdit,
-  EventPlayerBarPointAdd,
-  EventPlayerBarPointRemove,
-  EventPlayerTypes,
+    EventPlayerBarAdd,
+    EventPlayerBarDelete,
+    EventPlayerBarEdit,
+    EventPlayerBarPointAdd,
+    EventPlayerBarPointRemove,
+    EventPlayerTypes,
 } from '@pagemaster/common/events-player.types';
 import { BarComponent } from '../../design-system/bar.component';
 import { ButtonComponent } from '../../design-system/button.component';
@@ -103,25 +103,19 @@ export class BarsControlComponent extends AbstractPlayerControl {
 
 
   protected openNewBarModal() {
-    const modalRef = this.modalService.open(BarFormComponent);
-    modalRef.componentRef.instance.newBar.subscribe((bar: AttributeBar) => {
-      this.addBar(bar);
-      void modalRef.close();
+    this.modalService.open(BarFormComponent, {
+      gameSession: this.gameSession(),
+      player: this.player(),
+      permissions: this.permissions(),
     });
   }
 
   protected openEditBarModal(bar: AttributeBar) {
-    const modalRef = this.modalService.open(BarFormComponent, { 
+    this.modalService.open(BarFormComponent, {
       bar,
-      permissions: { delete: this.permissions().bars.delete },
-    });
-    modalRef.componentRef.instance.newBar.subscribe((updatedBar: AttributeBar) => {
-      this.updateBar(updatedBar);
-      void modalRef.close();
-    });
-    modalRef.componentRef.instance.deleteBar.subscribe((deletedBar: AttributeBar) => {
-      this.deleteBar(deletedBar);
-      void modalRef.close();
+      gameSession: this.gameSession(),
+      player: this.player(),
+      permissions: this.permissions(),
     });
   }
 

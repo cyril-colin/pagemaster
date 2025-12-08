@@ -1,11 +1,23 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
+import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
+import { ButtonComponent } from 'src/app/core/design-system/button.component';
+import {
+  DropdownContainerComponent,
+  DropdownContentComponent,
+  DropdownTriggerComponent,
+} from 'src/app/core/design-system/dropdown-container.component';
 import { Tab, TabsComponent } from 'src/app/core/design-system/tabs.component';
+import { ModalService } from 'src/app/core/modal';
+import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { PictureControlComponent } from 'src/app/core/player/avatar/picture-control.component';
+import { BarFormComponent } from 'src/app/core/player/bars/bar-form.component';
+import { InventoryFormModalComponent } from 'src/app/core/player/inventories/inventory-form-modal.component';
 import { NameControlComponent } from 'src/app/core/player/names/name-control.component';
 import { StatusControlComponent } from 'src/app/core/player/statuses/status-control.component';
+import { GameSessionRepository } from 'src/app/core/repositories/game-session.repository';
 import { PlayerDataService } from './player-data.service';
 import { TabDetailsComponent } from './tab-details/tab-details.component';
 import { TabInventoryComponent } from './tab-inventory/tab-inventory.component';
@@ -14,27 +26,40 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
 @Component({
   selector: 'app-player-layout',
   template: `
-    <section class="identity">
-      <app-picture-control
-        [player]="playerDataService.viewedPlayer()"
-        [gameSession]="playerDataService.currentSession()!.gameSession"
-        [permissions]="playerDataService.permissions()"
-      />
-      <app-name-control
-        [player]="playerDataService.viewedPlayer()"
-        [gameSession]="playerDataService.currentSession()!.gameSession"
-        [permissions]="playerDataService.permissions()"
-      />
+    
+    <section class="head">
+      <ds-button [mode]="'mini'" [icon]="'arrow-left'" (click)="goBack()" />
+      <section class="identity">
+        <app-picture-control
+          [player]="playerDataService.viewedPlayer()"
+          [gameSession]="playerDataService.currentSession()!.gameSession"
+          [permissions]="playerDataService.permissions()"
+        />
+        <app-name-control
+          [player]="playerDataService.viewedPlayer()"
+          [gameSession]="playerDataService.currentSession()!.gameSession"
+          [permissions]="playerDataService.permissions()"
+        />
 
-      <app-status-control
-        [player]="playerDataService.viewedPlayer()"
-        [permissions]="playerDataService.permissions()"
-        [gameSession]="playerDataService.currentSession()!.gameSession"
-      />
-
-      <ds-tabs [tabs]="currentTabs()" [fixedLastTab]="true" (tabClick)="onTabClick($event)"/>
+        <app-status-control
+          [player]="playerDataService.viewedPlayer()"
+          [permissions]="playerDataService.permissions()"
+          [gameSession]="playerDataService.currentSession()!.gameSession"
+        />
+      </section>
+      <ds-dropdown-container>
+        <ds-dropdown-trigger>
+          <ds-button [mode]="'mini'" [icon]="'settings'" />
+        </ds-dropdown-trigger>
+        <ds-dropdown-content>
+          <ds-button [mode]="'tertiary'" [icon]="'plus'" (click)="openAddBarModal()" >Add bar</ds-button>
+          <ds-button [mode]="'tertiary'" [icon]="'plus'" (click)="openAddInventoryModal()" >Add inventory</ds-button>
+          <ds-button [mode]="'tertiary'" [icon]="'trash'" (click)="deletePlayer()" >Delete player</ds-button>
+        </ds-dropdown-content>
+      </ds-dropdown-container>
     </section>
-
+    
+    <ds-tabs [tabs]="currentTabs()" [fixedLastTab]="true" (tabClick)="onTabClick($event)"/>
     <div class="carousel-container">
       <div class="carousel-track" [style.transform]="'translateX(-' + (selectedTabIndex() * 100) + '%)'">
         <div class="carousel-slide">
@@ -57,6 +82,12 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
       flex-direction: column;
       height: 100%;
       overflow: hidden;
+
+      .head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
 
       --identity-height: 180px;
       .identity {
@@ -96,6 +127,10 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
     TabNotesComponent,
     TabInventoryComponent,
     StatusControlComponent,
+    ButtonComponent,
+    DropdownContainerComponent,
+    DropdownTriggerComponent,
+    DropdownContentComponent,
   ],
   providers: [
     PlayerDataService,
@@ -106,6 +141,9 @@ export class PlayerLayoutComponent {
   protected playerDataService = inject(PlayerDataService);
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
+  protected modalService = inject(ModalService);
+  private currentGameSession = inject(CurrentGameSessionState);
+  private gameSessionRepository = inject(GameSessionRepository);
 
   // Track the selected tab ID from route parameter
   protected selectedTabId = toSignal(
@@ -118,6 +156,13 @@ export class PlayerLayoutComponent {
   protected bigInventories = computed(() => {
     return this.playerDataService.viewedPlayer().attributes.inventory.filter(inv => inv.mode === 'large');
   });
+
+  protected goBack() {
+    void this.router.navigate([
+      '',
+      ...PageMasterRoutes().GameInstanceSession.interpolated(this.playerDataService.currentSession()!.gameSession.id).split('/'),
+      PageMasterRoutes().GameInstanceSession.children[2].path]);
+  }
 
 
 
@@ -155,5 +200,37 @@ export class PlayerLayoutComponent {
     const newTabId = tab.route[tab.route.length - 1];
     // Navigate to sibling route by replacing the tabId parameter
     void this.router.navigate(['..', newTabId], { relativeTo: this.route });
+  }
+
+  protected openAddInventoryModal() {
+    this.modalService.open(InventoryFormModalComponent, {
+      gameSession: this.playerDataService.currentSession()!.gameSession,
+      player: this.playerDataService.viewedPlayer(),
+      permissions: this.playerDataService.permissions(),
+    });
+  }
+
+  protected openAddBarModal() {
+    this.modalService.open(BarFormComponent, {
+      gameSession: this.playerDataService.currentSession()!.gameSession,
+      player: this.playerDataService.viewedPlayer(),
+      permissions: this.playerDataService.permissions(),
+    });
+  }
+
+  protected async deletePlayer(): Promise<void> {
+    const player = this.playerDataService.viewedPlayer();
+    const title = `Delete Player "${player.name}"`;
+    const description = 'This action cannot be undone.';
+    const confirmation = await this.modalService.confirmation(description, title);
+    
+    if (confirmation === 'confirmed') {
+      const gameSession = this.currentGameSession.currentGameSession();
+      if (gameSession) {
+        this.gameSessionRepository.deleteParticipant(gameSession.id, player.id).pipe(
+          tap(() => void this.goBack()),
+        ).subscribe();
+      }
+    }
   }
 }

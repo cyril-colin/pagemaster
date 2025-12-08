@@ -171,37 +171,14 @@ export class InventoryComponent extends AbstractPlayerControl {
   }
 
   protected onEditInventory() {
-    const modalRef = this.modalService.open(InventoryFormModalComponent, {
+    this.modalService.open(InventoryFormModalComponent, {
       inventory: this.inventory(),
-      permissions: { delete: this.permissions().inventory.delete },
-    });
-    modalRef.componentRef.instance.newInventory.subscribe((updatedInventory: AttributeInventory) => {
-      this.updateInventory(updatedInventory).pipe(
-        tap(() => void modalRef.close()),
-      ).subscribe();
-    });
-
-    modalRef.componentRef.instance.deleteInventory.subscribe((updatedInventory: AttributeInventory) => {
-      this.updateInventory(updatedInventory).pipe(
-        tap(() => {
-          this.deleteInventory().subscribe();
-          void modalRef.close();
-        }),
-      ).subscribe();
+      gameSession: this.gameSession(),
+      player: this.player(),
+      permissions: this.permissions(),
     });
   }
-
-  protected async onDeleteInventory() {
-    const inventoryName = this.inventory().name;
-    const result = await this.modalService.confirmation(
-      `Are you sure you want to delete the inventory "${inventoryName}"? This action cannot be undone.`,
-      `Confirm deletion of "${inventoryName}"`,
-    );
-    
-    if (result === 'confirmed') {
-      this.deleteInventory().subscribe();
-    }
-  }
+  
 
   protected addItemToInventory(items: Item[]) {
     const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD) as Omit<EventPlayerInventoryItemAdd, 'id' | 'timestamp'>;
