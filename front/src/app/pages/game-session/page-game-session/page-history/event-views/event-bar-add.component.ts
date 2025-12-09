@@ -10,7 +10,13 @@ import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.c
   template: `
     @let e = event();
     @let p = player();
-    <span>Bar "{{e.event.newBar.name}}" added to </span>
+    <span>
+      @if (e.event.newBars.length === 1) {
+        Bar "{{e.event.newBars[0].name}}" added to
+      } @else {
+        {{e.event.newBars.length}} bars added to
+      }
+    </span>
     <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
   `,
   styleUrls: ['./event-view-common.scss'],

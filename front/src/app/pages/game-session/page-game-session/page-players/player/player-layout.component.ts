@@ -1,7 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { map, tap } from 'rxjs';
+import { AttributeBar } from '@pagemaster/common/attributes.types';
+import { EventPlayerBarAdd, EventPlayerBarDelete, EventPlayerTypes } from '@pagemaster/common/events-player.types';
+import { forkJoin, map, tap } from 'rxjs';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import {
@@ -13,10 +15,11 @@ import { Tab, TabsComponent } from 'src/app/core/design-system/tabs.component';
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { PictureControlComponent } from 'src/app/core/player/avatar/picture-control.component';
-import { BarFormComponent } from 'src/app/core/player/bars/bar-form.component';
+import { BarSelectorModalComponent } from 'src/app/core/player/bars/bar-selector-modal.component';
 import { InventoryFormModalComponent } from 'src/app/core/player/inventories/inventory-form-modal.component';
 import { NameControlComponent } from 'src/app/core/player/names/name-control.component';
 import { StatusControlComponent } from 'src/app/core/player/statuses/status-control.component';
+import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
 import { GameSessionRepository } from 'src/app/core/repositories/game-session.repository';
 import { PlayerDataService } from './player-data.service';
 import { TabDetailsComponent } from './tab-details/tab-details.component';
@@ -144,6 +147,7 @@ export class PlayerLayoutComponent {
   protected modalService = inject(ModalService);
   private currentGameSession = inject(CurrentGameSessionState);
   private gameSessionRepository = inject(GameSessionRepository);
+  private gameEventRepository = inject(GameEventRepository);
 
   // Track the selected tab ID from route parameter
   protected selectedTabId = toSignal(
@@ -211,11 +215,63 @@ export class PlayerLayoutComponent {
   }
 
   protected openAddBarModal() {
-    this.modalService.open(BarFormComponent, {
-      gameSession: this.playerDataService.currentSession()!.gameSession,
-      player: this.playerDataService.viewedPlayer(),
-      permissions: this.playerDataService.permissions(),
+    const gameSession = this.playerDataService.currentSession()!.gameSession;
+    const player = this.playerDataService.viewedPlayer();
+    const quickBars = (gameSession.quickValues?.bars || []) as AttributeBar[];
+    const alreadyAddedIds = player.attributes.bar.map(b => b.id);
+
+    const modalRef = this.modalService.open(BarSelectorModalComponent, {
+      availableBars: quickBars,
+      alreadyAddedBarIds: alreadyAddedIds,
     });
+
+    modalRef.componentRef.instance.barsSelected.subscribe((newBars: AttributeBar[]) => {
+      // Replace all bars: remove old ones, add new ones
+      const barsToRemove = alreadyAddedIds.filter(id => !newBars.find(b => b.id === id));
+      const barsToAdd = newBars.filter(b => !alreadyAddedIds.includes(b.id));
+      
+      const requests = [];
+      
+      // Add bulk delete request if there are bars to remove
+      if (barsToRemove.length > 0) {
+        requests.push(this.deleteBars(barsToRemove, player.id, gameSession.id));
+      }
+      
+      // Add bulk add request if there are bars to add
+      if (barsToAdd.length > 0) {
+        requests.push(this.addBars(barsToAdd, player.id, gameSession.id));
+      }
+      
+      if (requests.length > 0) {
+        forkJoin(requests).pipe(
+          tap(() => void modalRef.close()),
+        ).subscribe();
+      } else {
+        void modalRef.close();
+      }
+    });
+  }
+
+  private addBars(bars: AttributeBar[], playerId: string, gameSessionId: string) {
+    const command: Omit<EventPlayerBarAdd, 'id' | 'timestamp'> = {
+      type: EventPlayerTypes.PLAYER_BAR_ADD,
+      gameSessionId,
+      playerId,
+      newBars: bars,
+    };
+
+    return this.gameEventRepository.postCommand(command);
+  }
+
+  private deleteBars(barIds: string[], playerId: string, gameSessionId: string) {
+    const command: Omit<EventPlayerBarDelete, 'id' | 'timestamp'> = {
+      type: EventPlayerTypes.PLAYER_BAR_DELETE,
+      gameSessionId,
+      playerId,
+      barIds: barIds,
+    };
+
+    return this.gameEventRepository.postCommand(command);
   }
 
   protected async deletePlayer(): Promise<void> {

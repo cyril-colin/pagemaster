@@ -45,6 +45,12 @@ const defaultGameSession: GameSession = {
         type: "status",
         color: "#0050ffff",
       }
+    ],
+    "bars": [
+      defaultBar.health,
+      defaultBar.stamina,
+      defaultBar.mana,
+      defaultBar.ammo,
     ]
   },
   master: {
@@ -61,7 +67,10 @@ const defaultGameSession: GameSession = {
         "description": "A brutal scavenger from the irradiated Dead Zones, wielding dual machetes with deadly precision. Years of surviving radiation storms have made him naturally resistant to the wasteland's harsh environment.\n\n- 🔪 Dual machetes\n- 💪 Melee combat\n- ☢️ Radiation resistant\n- 🏜️ Dead Zone survivor",
         "avatar": "/post-apo/avatars/desert_nomad.png",
         "attributes": {
-          "bar": [defaultBar.health, defaultBar.stamina],
+          "bar": [
+            defaultBar.health,
+            defaultBar.stamina,
+          ],
           "status": [],
           "inventory": Object.values(defaultInventories),
         },
@@ -73,7 +82,10 @@ const defaultGameSession: GameSession = {
         "description": "A 67-year-old pre-war scientist who survived the Fall with invaluable knowledge of old-world technology. His expertise in repairing ancient tech has brought power back to three wasteland settlements.\n\n- 🧪 Tech repair\n- 📚 Old-world knowledge\n- 💬 Negotiation\n- ⚡ Power restoration",
         "avatar": "/post-apo/avatars/mutant_scout.png",
         "attributes": {
-          "bar": [defaultBar.health, defaultBar.mana],
+          "bar": [
+            defaultBar.health,
+            defaultBar.mana,
+          ],
           "status": [],
           "inventory": Object.values(defaultInventories),
         },
@@ -85,7 +97,10 @@ const defaultGameSession: GameSession = {
         "description": "Former military sergeant who survived the nuclear fallout in a bunker complex, now clad in reinforced riot armor. Specializes in breaking through fortifications with his modified pre-war sledgehammer.\n\n- 🔨 Heavy weapons\n- 💥 Breach specialist\n- 🛡️ Riot armor\n- 🪖 Military tactics",
         "avatar": "/post-apo/avatars/raider_leader.png",
         "attributes": {
-          "bar": [defaultBar.health, defaultBar.stamina],
+          "bar": [
+            defaultBar.health,
+            defaultBar.stamina,
+          ],
           "status": [],
           "inventory": Object.values(defaultInventories),
         },
@@ -97,7 +112,10 @@ const defaultGameSession: GameSession = {
         "description": "A skilled field medic trained in both pre-war medicine and wasteland herbal remedies. Her ability to treat radiation sickness and stabilize critical injuries has saved countless lives across the settlements.\n\n- 💉 Advanced first aid\n- 🌿 Herbal medicine\n- ☢️ Radiation treatment\n- ⚕️ Critical care",
         "avatar": "/post-apo/avatars/rebel_engineer.png",
         "attributes": {
-          "bar": [defaultBar.health, defaultBar.mana],
+          "bar": [
+            defaultBar.health,
+            defaultBar.mana,
+          ],
           "status": [],
           "inventory": Object.values(defaultInventories),
         },

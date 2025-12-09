@@ -165,11 +165,14 @@ export class PlayerListPageComponent {
   }
 
   protected addPlayer(): void {
-    const modalRef = this.modalService.open(NewPlayerModalComponent);
+    const gameSession = this.currentGameSession.currentGameSession();
+    
+    const modalRef = this.modalService.open(NewPlayerModalComponent, {
+      gameSession,
+    });
     
     modalRef.componentRef.instance.result.subscribe((player) => {
       if (player) {
-        const gameSession = this.currentGameSession.currentGameSession();
         if (gameSession) {
           this.gameInstanceRepository.addParticipant(gameSession.id, player).pipe(
             tap(() => void modalRef.close()),

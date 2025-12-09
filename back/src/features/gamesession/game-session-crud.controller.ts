@@ -3,7 +3,7 @@ import { LoggerService } from '../../core/logger.service';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
 import { HttpForbiddenError } from '../../core/router/http-errors';
 import { SocketServerService } from '../../core/socket.service';
-import { AttributeStatus } from '../../pagemaster-schemas/src/attributes.types';
+import { AttributeBar, AttributeStatus } from '../../pagemaster-schemas/src/attributes.types';
 import { GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameSessionMongoClient } from './game-session.mongo-client';
 import { GameSessionService } from './game-session.service';
@@ -279,6 +279,92 @@ export class GameSessionController {
         title: 'Quick value status deleted',
         description: `${currentParticipant.name} removed status from quick values: ${deletedStatus.name}`,
         metadata: { statusId: deletedStatus.id, statusName: deletedStatus.name }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
+  @Put('/game-sessions/:gameSessionId/quick-values/bars')
+  public async addQuickValueBar(
+    bar: AttributeBar,
+    params: {gameSessionId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
+
+    // Initialize quickValues.bars if it doesn't exist
+    gameSession.quickValues = gameSession.quickValues || { statuses: [], bars: [] };
+    gameSession.quickValues.bars = gameSession.quickValues.bars || [];
+
+    // Check if bar with same ID already exists
+    const existingIndex = gameSession.quickValues.bars.findIndex(b => b.id === bar.id);
+    if (existingIndex !== -1) {
+      // Update existing bar
+      gameSession.quickValues.bars[existingIndex] = bar;
+    } else {
+      // Add new bar
+      gameSession.quickValues.bars.push(bar);
+    }
+
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
+
+    const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'game-session-updated',
+        title: 'Quick value bar added',
+        description: `${currentParticipant.name} added bar to quick values: ${bar.name}`,
+        metadata: { barId: bar.id, barName: bar.name }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
+  @Delete('/game-sessions/:gameSessionId/quick-values/bars/:barId')
+  public async deleteQuickValueBar(
+    body: unknown,
+    params: {gameSessionId: string, barId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
+
+    // Initialize quickValues.bars if it doesn't exist
+    gameSession.quickValues = gameSession.quickValues || { statuses: [], bars: [] };
+    gameSession.quickValues.bars = gameSession.quickValues.bars || [];
+
+    const barIndex = gameSession.quickValues.bars.findIndex(b => b.id === params.barId);
+    if (barIndex === -1) {
+      throw new HttpForbiddenError(`Bar with ID ${params.barId} not found in quick values`);
+    }
+
+    const deletedBar = gameSession.quickValues.bars[barIndex];
+    gameSession.quickValues.bars.splice(barIndex, 1);
+
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
+
+    const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'game-session-updated',
+        title: 'Quick value bar deleted',
+        description: `${currentParticipant.name} removed bar from quick values: ${deletedBar.name}`,
+        metadata: { barId: deletedBar.id, barName: deletedBar.name }
       }
     });
     

@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, output } from '@angular/core';
-import { defaultBar, defaultInventories } from '@pagemaster/common/attributes.types';
-import { ParticipantType, Player } from '@pagemaster/common/pagemaster.types';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { AttributeBar, defaultInventories } from '@pagemaster/common/attributes.types';
+import { GameSession, ParticipantType, Player } from '@pagemaster/common/pagemaster.types';
 import { ButtonComponent } from '../design-system/button.component';
 import {
   ModalLayoutComponent,
@@ -46,6 +46,7 @@ import { PlayerFormComponent, PlayerFormValue } from './player-form.component';
   ],
 })
 export class NewPlayerModalComponent {
+  public gameSession = input.required<GameSession>();
   public result = output<Player | null>();
   
   protected playerData: PlayerFormValue | null = null;
@@ -67,14 +68,20 @@ export class NewPlayerModalComponent {
   
   protected save(): void {
     if (this.isValid() && this.playerData) {
+      const playerId = `player-${this.playerData.name}-${Date.now()}`;
+      const quickBars = (this.gameSession().quickValues?.bars || []) as AttributeBar[];
+      
+      // Use bars directly from quickValues (same IDs, like statuses)
+      const playerBars: AttributeBar[] = [...quickBars];
+      
       const newPlayer: Player = {
         type: ParticipantType.Player,
-        id: `player-${this.playerData.name}-${Date.now()}`,
+        id: playerId,
         name: this.playerData.name,
         description: '',
         avatar: '',
         attributes: {
-          bar: Object.values(defaultBar),
+          bar: playerBars,
           status: [],
           inventory: Object.values(defaultInventories),
         },

@@ -6,6 +6,6 @@ export const playerBarAddHandler: GameEventHandlerFn<EventPlayerBarAdd> = (event
   assertGameMaster(gameSession, currentParticipantId);
   const player = assertPlayerExists(gameSession, event.playerId);
 
-  player.attributes.bar.push({ ...event.newBar, id: `bar_${Date.now()}` });
+  player.attributes.bar.push(...event.newBars);
   return gameSession;
 }

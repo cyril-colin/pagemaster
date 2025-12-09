@@ -250,6 +250,7 @@ export class GameSessionFormComponent {
         },
         quickValues: {
           statuses: [],
+          bars: [],
         },
         players: [],
       };

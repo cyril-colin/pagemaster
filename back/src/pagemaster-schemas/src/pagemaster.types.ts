@@ -23,6 +23,7 @@ export type GameSession = {
   master: GameMaster,
   quickValues: {
     statuses: AttributeStatus[];
+    bars: AttributeBar[];
   }
   players: Player[],
 };

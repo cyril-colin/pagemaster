@@ -80,7 +80,7 @@ export type EventPlayerInventoryItemDelete = EventPlayerInventoryBase & {
 
 export type EventPlayerBarAdd = EventPlayerBase & {
   type: EventPlayerTypes.PLAYER_BAR_ADD,
-  newBar: Omit<AttributeBar, 'id'>,
+  newBars: AttributeBar[],
 }
 
 export type EventPlayerBarEdit = EventPlayerBase & {
@@ -90,7 +90,7 @@ export type EventPlayerBarEdit = EventPlayerBase & {
 
 export type EventPlayerBarDelete = EventPlayerBase & {
   type: EventPlayerTypes.PLAYER_BAR_DELETE,
-  barId: string,
+  barIds: string[],
 }
 
 export type EventPlayerBarNotifyAdd = EventPlayerBase & {

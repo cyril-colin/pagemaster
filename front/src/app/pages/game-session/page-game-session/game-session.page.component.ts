@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
-import { AttributeStatus } from '@pagemaster/common/attributes.types';
+import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.types';
 import { EventDiceRoll, EventLootBox } from '@pagemaster/common/events.types';
 import { ParticipantType, Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
@@ -19,6 +19,7 @@ import { LootBoxModalComponent } from 'src/app/core/loot-box/loot-box.modal.comp
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { AvatarViewComponent } from 'src/app/core/player/avatar/avatar-view.component';
+import { QuickBarCreationModalComponent } from 'src/app/core/player/bars/quick-bar-creation-modal.component';
 import { QuickStatusCreationModalComponent } from 'src/app/core/player/statuses/quick-status-creation-modal.component';
 import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
 import { GameSessionRepository } from 'src/app/core/repositories/game-session.repository';
@@ -183,6 +184,19 @@ export class GameSessionPageComponent {
       const gameSession = this.currentGameSession.currentGameSession();
       if (gameSession) {
         this.gameSessionRepository.addQuickValueStatus(gameSession.id, status).pipe(
+          tap(() => void modalRef.close()),
+        ).subscribe();
+      }
+    });
+  }
+
+  protected openCreateQuickBarModal(): void {
+    const modalRef = this.modalService.open(QuickBarCreationModalComponent);
+    
+    modalRef.componentRef.instance.quickBarCreated.subscribe((bar: AttributeBar) => {
+      const gameSession = this.currentGameSession.currentGameSession();
+      if (gameSession) {
+        this.gameSessionRepository.addQuickValueBar(gameSession.id, bar).pipe(
           tap(() => void modalRef.close()),
         ).subscribe();
       }

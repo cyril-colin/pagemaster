@@ -8,11 +8,13 @@ import {
     EventPlayerBarPointRemove,
     EventPlayerTypes,
 } from '@pagemaster/common/events-player.types';
+import { forkJoin, tap } from 'rxjs';
 import { BarComponent } from '../../design-system/bar.component';
 import { ButtonComponent } from '../../design-system/button.component';
 import { ModalService } from '../../modal';
 import { AbstractPlayerControl } from '../abstract-player-control';
 import { BarFormComponent } from './bar-form.component';
+import { BarSelectorModalComponent } from './bar-selector-modal.component';
 
 export type BarValueUpdateEvent = {newBar: AttributeBar, previousValue: AttributeBar};
 
@@ -22,6 +24,7 @@ export type BarValueUpdateEvent = {newBar: AttributeBar, previousValue: Attribut
     @if (player().attributes.bar.length === 0 && permissions().bars.add) {
       <div class="bars-view">
         <span class="empty-message">No bars configured.</span>
+        <ds-button [mode]="'primary'" (click)="openNewBarModal()">Add Bars</ds-button>
       </div>
     }
 
@@ -62,7 +65,10 @@ export type BarValueUpdateEvent = {newBar: AttributeBar, previousValue: Attribut
       border-radius: var(--view-border-radius);
       min-height: 60px;
       display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: var(--gap-medium);
     }
 
     .empty-message {
@@ -103,10 +109,38 @@ export class BarsControlComponent extends AbstractPlayerControl {
 
 
   protected openNewBarModal() {
-    this.modalService.open(BarFormComponent, {
-      gameSession: this.gameSession(),
-      player: this.player(),
-      permissions: this.permissions(),
+    const quickBars = this.gameSession().quickValues?.bars || [];
+    const alreadyAddedIds = this.player().attributes.bar.map(b => b.id);
+
+    const modalRef = this.modalService.open(BarSelectorModalComponent, {
+      availableBars: quickBars,
+      alreadyAddedBarIds: alreadyAddedIds,
+    });
+
+    modalRef.componentRef.instance.barsSelected.subscribe((newBars: AttributeBar[]) => {
+      // Replace all bars: remove old ones, add new ones
+      const barsToRemove = alreadyAddedIds.filter(id => !newBars.find(b => b.id === id));
+      const barsToAdd = newBars.filter(b => !alreadyAddedIds.includes(b.id));
+      
+      const requests = [];
+      
+      // Add bulk delete request if there are bars to remove
+      if (barsToRemove.length > 0) {
+        requests.push(this.deleteBars(barsToRemove));
+      }
+      
+      // Add bulk add request if there are bars to add
+      if (barsToAdd.length > 0) {
+        requests.push(this.addBars(barsToAdd));
+      }
+      
+      if (requests.length > 0) {
+        forkJoin(requests).pipe(
+          tap(() => void modalRef.close()),
+        ).subscribe();
+      } else {
+        void modalRef.close();
+      }
     });
   }
 
@@ -118,12 +152,6 @@ export class BarsControlComponent extends AbstractPlayerControl {
       permissions: this.permissions(),
     });
   }
-
-  protected onDeleteBar(bar: AttributeBar) {
-    this.deleteBar(bar);
-  }
-
-
 
 
   protected updateBarValue(bar: AttributeBar, values: {previous: number, newValue: number}): void {
@@ -156,21 +184,23 @@ export class BarsControlComponent extends AbstractPlayerControl {
 
     this.gameEventRepository.postCommand(command).subscribe();
   }
-  protected addBar(bar: AttributeBar): void {
+  protected addBars(bars: AttributeBar[]) {
     const command = this.prepareEvent(EventPlayerTypes.PLAYER_BAR_ADD) as Omit<EventPlayerBarAdd, 'id' | 'timestamp'>;
-    command.newBar = bar;
-    this.gameEventRepository.postCommand(command).subscribe();
+    command.newBars = bars;
+
+    return this.gameEventRepository.postCommand(command);
+  }
+
+  protected deleteBars(barIds: string[]) {
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_BAR_DELETE) as Omit<EventPlayerBarDelete, 'id' | 'timestamp'>;
+    command.barIds = barIds;
+
+    return this.gameEventRepository.postCommand(command);
   }
 
   protected updateBar(bar: AttributeBar): void {
     const command = this.prepareEvent(EventPlayerTypes.PLAYER_BAR_EDIT) as Omit<EventPlayerBarEdit, 'id' | 'timestamp'>;
     command.newBar = bar;
-    this.gameEventRepository.postCommand(command).subscribe();
-  }
-
-  protected deleteBar(bar: AttributeBar): void {
-    const command = this.prepareEvent(EventPlayerTypes.PLAYER_BAR_DELETE) as Omit<EventPlayerBarDelete, 'id' | 'timestamp'>;
-    command.barId = bar.id;
     this.gameEventRepository.postCommand(command).subscribe();
   }
   

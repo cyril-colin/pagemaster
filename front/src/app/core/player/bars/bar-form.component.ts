@@ -155,7 +155,7 @@ export class BarFormComponent extends AbstractPlayerControl {
       
     if (result === 'confirmed') {
       const command = this.prepareEvent(EventPlayerTypes.PLAYER_BAR_DELETE) as Omit<EventPlayerBarDelete, 'id' | 'timestamp'>;
-      command.barId = this.bar()?.id || '';
+      command.barIds = [this.bar()?.id || ''];
       this.gameEventRepository.postCommand(command).pipe(
         tap(() => this.dialogRef.close()),
       ).subscribe();
@@ -169,7 +169,7 @@ export class BarFormComponent extends AbstractPlayerControl {
       return this.updateBar(newBar);
     }
     const command = this.prepareEvent(EventPlayerTypes.PLAYER_BAR_ADD) as Omit<EventPlayerBarAdd, 'id' | 'timestamp'>;
-    command.newBar = newBar;
+    command.newBars = [newBar];
     return this.gameEventRepository.postCommand(command);
   }
 

@@ -6,6 +6,6 @@ export const playerBarDeleteHandler: GameEventHandlerFn<EventPlayerBarDelete> = 
   assertGameMaster(gameSession, currentParticipantId);
   const player = assertPlayerExists(gameSession, event.playerId);
 
-  player.attributes.bar = player.attributes.bar.filter(b => b.id !== event.barId);
+  player.attributes.bar = player.attributes.bar.filter(b => !event.barIds.includes(b.id));
   return gameSession;
 }
