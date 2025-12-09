@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AttributeBar } from '@pagemaster/common/attributes.types';
 import {
-    EventPlayerBarAdd,
-    EventPlayerBarDelete,
-    EventPlayerBarEdit,
-    EventPlayerBarPointAdd,
-    EventPlayerBarPointRemove,
-    EventPlayerTypes,
+  EventPlayerBarAdd,
+  EventPlayerBarDelete,
+  EventPlayerBarEdit,
+  EventPlayerBarPointAdd,
+  EventPlayerBarPointRemove,
+  EventPlayerTypes,
 } from '@pagemaster/common/events-player.types';
 import { forkJoin, tap } from 'rxjs';
 import { BarComponent } from '../../design-system/bar.component';
@@ -34,19 +34,13 @@ export type BarValueUpdateEvent = {newBar: AttributeBar, previousValue: Attribut
           <ds-bar 
             [value]="bar.current" 
             [color]="bar.color" 
+            [title]="bar.name"
             [editable]="permissions().bars.edit"
             [min]="bar.min"
             [max]="bar.max"
             (newValue)="updateBarValue(bar, $event)"
           />
         </div>
-        @if (permissions().bars.edit || permissions().bars.delete) {
-          <div class="bar-actions">
-            @if (permissions().bars.edit) {
-              <ds-button [mode]="'mini'" [icon]="'edit'" (click)="openEditBarModal(bar)" />
-            }
-          </div>
-        }
       </div>
     }
   `,

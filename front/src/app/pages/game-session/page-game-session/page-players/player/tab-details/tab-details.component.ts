@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { BarsControlComponent } from 'src/app/core/player/bars/bars-control.component';
+import { InventoryMediumComponent } from 'src/app/core/player/inventories/inventory-medium.component';
+import { InventorySmallComponent } from 'src/app/core/player/inventories/inventory-small.component';
 import { PlayerDataService } from '../player-data.service';
-import { TabInventoryComponent } from '../tab-inventory/tab-inventory.component';
 
 @Component({
   selector: 'app-tab-player-details',
@@ -15,11 +16,21 @@ import { TabInventoryComponent } from '../tab-inventory/tab-inventory.component'
     />
 
     @for(i of mediumInventories(); track i.id) {
-      <app-tab-player-inventory [inventory]="i" />
+      <app-inventory-medium 
+        [inventory]="i"
+        [player]="playerDataService.viewedPlayer()"
+        [gameSession]="playerDataService.currentSession()!.gameSession"
+        [permissions]="playerDataService.permissions()"
+      />
     }
 
     @for(i of smallInventories(); track i.id) {
-      <app-tab-player-inventory [inventory]="i" />
+      <app-inventory-small 
+        [inventory]="i"
+        [player]="playerDataService.viewedPlayer()"
+        [gameSession]="playerDataService.currentSession()!.gameSession"
+        [permissions]="playerDataService.permissions()"
+      />
     }
   `,
   styles: [`
@@ -31,7 +42,7 @@ import { TabInventoryComponent } from '../tab-inventory/tab-inventory.component'
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BarsControlComponent, TabInventoryComponent],
+  imports: [BarsControlComponent, InventoryMediumComponent, InventorySmallComponent],
 })
 export class TabDetailsComponent {
   protected playerDataService = inject(PlayerDataService);

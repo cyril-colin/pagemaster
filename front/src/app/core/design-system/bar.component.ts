@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
   imports: [FormsModule],
   template: `
     <div class="bar-container" [class.editable]="editable()">
+      @if (title()) {
+        <div class="bar-title">{{ title() }}</div>
+      }
       <div class="bar-visual">
         <div class="bar-fill" [style.width.%]="percentage()" [style.background-color]="color()"></div>
         <span class="bar-text">{{ value() }} / {{ max() }}</span>
@@ -38,6 +41,20 @@ import { FormsModule } from '@angular/forms';
       display: flex;
       width: 100%;
       height: var(--bar-height);
+      margin-top: 12px;
+    }
+
+    .bar-title {
+      position: absolute;
+      top: -8px;
+      left: 8px;
+      background-color: var(--color-background-main);
+      padding: 0 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      z-index: 5;
+      line-height: 1;
     }
 
     .bar-visual {
@@ -166,6 +183,7 @@ export class BarComponent {
   // Inputs - use model for two-way binding support
   public value = model.required<number>();
   public color = input.required<string>();
+  public title = input<string>();
   public editable = input<boolean>(false);
   public min = input<number>(0);
   public max = input<number>(100);
