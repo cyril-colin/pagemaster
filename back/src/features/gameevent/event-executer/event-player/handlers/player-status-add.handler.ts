@@ -6,6 +6,7 @@ export const playerStatusAddHandler: GameEventHandlerFn<EventPlayerStatusAdd> = 
   assertGameMaster(gameSession, currentParticipantId);
   const player = assertPlayerExists(gameSession, event.playerId);
 
-  player.attributes.status.push({ ...event.newStatus, id: `status_${Date.now()}` });
+  // Add multiple statuses at once
+  player.attributes.status.push(...event.newStatuses);
   return gameSession;
 }

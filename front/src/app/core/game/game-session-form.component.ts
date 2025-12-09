@@ -248,6 +248,9 @@ export class GameSessionFormComponent {
           id: ParticipantType.GameMaster,
           description: '',
         },
+        quickValues: {
+          statuses: [],
+        },
         players: [],
       };
 

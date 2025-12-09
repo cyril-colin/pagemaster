@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { AttributeStatus } from '@pagemaster/common/attributes.types';
 import { ButtonComponent } from '../../design-system/button.component';
 import { StatusViewComponent } from './status-view.component';
@@ -7,13 +7,13 @@ import { StatusViewComponent } from './status-view.component';
   selector: 'app-status-list-view',
   template: `
     @for(status of statuses(); track status.id) {
-      <app-status-view [status]="status" (click)="statusClicked.emit(status)"></app-status-view>
+      <app-status-view [status]="status"></app-status-view>
     }
     @if (statuses().length === 0) {
       <span class="empty-message">No status</span>
     }
     @if (showAddButton()) {
-      <ds-button [mode]="'mini'" (click)="addStatusClicked.emit()" [icon]="'plus'" />
+      <ds-button [mode]="'mini'" [icon]="'plus'" />
     }
   `,
   styles: [`
@@ -23,6 +23,7 @@ import { StatusViewComponent } from './status-view.component';
       gap: var(--gap-medium);
       flex-wrap: wrap;
       align-items: center;
+      cursor: pointer;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,6 +32,4 @@ import { StatusViewComponent } from './status-view.component';
 export class StatusListViewComponent {
   public statuses = input.required<AttributeStatus[]>();
   public showAddButton = input<boolean>(false);
-  public statusClicked = output<AttributeStatus>();
-  public addStatusClicked = output<void>();
 }

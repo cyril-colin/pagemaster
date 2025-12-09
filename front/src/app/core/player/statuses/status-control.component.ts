@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AttributeStatus } from '@pagemaster/common/attributes.types';
 import { EventPlayerStatusAdd, EventPlayerStatusDelete, EventPlayerTypes } from '@pagemaster/common/events-player.types';
-import { tap } from 'rxjs';
+import { forkJoin, tap } from 'rxjs';
 import { ModalService } from '../../modal';
 import { AbstractPlayerControl } from '../abstract-player-control';
-import { StatusFormModalComponent } from './status-form-modal.component';
 import { StatusListViewComponent } from './status-list-view.component';
+import { StatusSelectorModalComponent } from './status-selector-modal.component';
 
 // Type for the full status object with instance and selection state
 export type Status = {
@@ -21,8 +21,8 @@ export type Status = {
     <app-status-list-view 
       [statuses]="selection" 
       [showAddButton]="permissions().statuses.add"
-      (statusClicked)="onStatusClick($event)"
-      (addStatusClicked)="openNewStatusModal()">
+      (click)="openNewStatusModal()"
+    >
     </app-status-list-view>
   `,
   styles: [
@@ -49,59 +49,52 @@ export class StatusControlComponent extends AbstractPlayerControl {
     return this.player().attributes.status;
   }
 
-  protected onStatusClick(status: AttributeStatus) {
-    if (this.permissions().statuses.edit) {
-      this.openEditStatusModal(status);
-    }
-  }
-
   protected openNewStatusModal() {
-    const modalRef = this.modalService.open(StatusFormModalComponent);
-    modalRef.componentRef.instance.newStatus.subscribe((status: AttributeStatus) => {
-      this.addStatus(status).pipe(
-        tap(() => void modalRef.close()),
-      ).subscribe();
+    const quickStatuses = this.gameSession().quickValues?.statuses || [];
+    const alreadyAddedIds = this.player().attributes.status.map(s => s.id);
+
+    const modalRef = this.modalService.open(StatusSelectorModalComponent, {
+      availableStatuses: quickStatuses,
+      alreadyAddedStatusIds: alreadyAddedIds,
+    });
+
+    modalRef.componentRef.instance.statusesSelected.subscribe((newStatuses: AttributeStatus[]) => {
+      // Replace all statuses: remove old ones, add new ones
+      const statusesToRemove = alreadyAddedIds.filter(id => !newStatuses.find(s => s.id === id));
+      const statusesToAdd = newStatuses.filter(s => !alreadyAddedIds.includes(s.id));
+      
+      const requests = [];
+      
+      // Add bulk delete request if there are statuses to remove
+      if (statusesToRemove.length > 0) {
+        requests.push(this.deleteStatuses(statusesToRemove));
+      }
+      
+      // Add bulk add request if there are statuses to add
+      if (statusesToAdd.length > 0) {
+        requests.push(this.addStatuses(statusesToAdd));
+      }
+      
+      if (requests.length > 0) {
+        forkJoin(requests).pipe(
+          tap(() => void modalRef.close()),
+        ).subscribe();
+      } else {
+        void modalRef.close();
+      }
     });
   }
 
-  protected openEditStatusModal(status: AttributeStatus) {
-    const modalRef = this.modalService.open(StatusFormModalComponent, { 
-      status,
-      permissions: { delete: this.permissions().statuses.delete },
-    });
-    modalRef.componentRef.instance.newStatus.subscribe((updatedStatus: AttributeStatus) => {
-      this.updateStatus(updatedStatus).pipe(
-        tap(() => void modalRef.close()),
-      ).subscribe();
-    });
-    modalRef.componentRef.instance.deleteStatus.subscribe((deletedStatus: AttributeStatus) => {
-      this.deleteStatus(deletedStatus).pipe(
-        tap(() => void modalRef.close()),
-      ).subscribe();
-    });
-  }
-
-
-
-  protected addStatus(status: AttributeStatus) {
-
+  protected addStatuses(statuses: AttributeStatus[]) {
     const command = this.prepareEvent(EventPlayerTypes.PLAYER_STATUS_ADD) as Omit<EventPlayerStatusAdd, 'id' | 'timestamp'>;
-    command.newStatus = status;
+    command.newStatuses = statuses;
 
     return this.gameEventRepository.postCommand(command);
   }
 
-  protected updateStatus(status: AttributeStatus) {
-    const command = this.prepareEvent(EventPlayerTypes.PLAYER_STATUS_EDIT) as Omit<EventPlayerStatusAdd, 'id' | 'timestamp'>;
-    command.newStatus = status;
-
-    return this.gameEventRepository.postCommand(command);
-  }
-
-  protected deleteStatus(status: AttributeStatus) {
-
+  protected deleteStatuses(statusIds: string[]) {
     const command = this.prepareEvent(EventPlayerTypes.PLAYER_STATUS_DELETE) as Omit<EventPlayerStatusDelete, 'id' | 'timestamp'>;
-    command.statusId = status.id;
+    command.statusIds = statusIds;
 
     return this.gameEventRepository.postCommand(command);
   }

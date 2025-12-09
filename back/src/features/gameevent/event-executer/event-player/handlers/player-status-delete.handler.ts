@@ -6,6 +6,7 @@ export const playerStatusDeleteHandler: GameEventHandlerFn<EventPlayerStatusDele
   assertGameMaster(gameSession, currentParticipantId);
   const player = assertPlayerExists(gameSession, event.playerId);
 
-  player.attributes.status = player.attributes.status.filter(s => s.id !== event.statusId);
+  // Remove multiple statuses at once
+  player.attributes.status = player.attributes.status.filter(s => !event.statusIds.includes(s.id));
   return gameSession;
 }

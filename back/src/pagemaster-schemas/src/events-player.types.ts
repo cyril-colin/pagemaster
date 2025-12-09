@@ -107,7 +107,7 @@ export type EventPlayerBarPointRemove = EventPlayerBase & {
 
 export type EventPlayerStatusAdd = EventPlayerBase & {
   type: EventPlayerTypes.PLAYER_STATUS_ADD,
-  newStatus: Omit<AttributeStatus, 'id'>,
+  newStatuses: AttributeStatus[],
 }
 
 export type EventPlayerStatusEdit = EventPlayerBase & {
@@ -117,5 +117,5 @@ export type EventPlayerStatusEdit = EventPlayerBase & {
 
 export type EventPlayerStatusDelete = EventPlayerBase & {
   type: EventPlayerTypes.PLAYER_STATUS_DELETE,
-  statusId: string,
+  statusIds: string[],
 }

@@ -8,6 +8,45 @@ const defaultGameSession: GameSession = {
   "id": "post-apocalypse-v1-Cyril-1758352912606",
   "title": "Wasteland Survivors",
   "version": 1,
+  "quickValues": {
+    "statuses": [
+      {
+        id: "status-radiation-sickness",
+        name: "☢️ Radiation",
+        description: "",
+        type: "status",
+        color: "#a13401ff",
+      },
+      {
+        id: "status-infection",
+        name: "🦠 Infection",
+        description: "",
+        type: "status",
+        color: "#678f3dff",
+      },
+      {
+        id: "status-bleeding",
+        name: "🩸 Bleeding",
+        description: "",
+        type: "status",
+        color: "#b30303ff",
+      },
+      {
+        id: "status-fracture",
+        name: "🦴 Fracture",
+        description: "",
+        type: "status",
+        color: "#ffc800ff",
+      },
+      {
+        id: "status-fatigue",
+        name: "😴 Fatigue",
+        description: "",
+        type: "status",
+        color: "#0050ffff",
+      }
+    ]
+  },
   master: {
     "id": ParticipantType.GameMaster,
     "type": ParticipantType.GameMaster,

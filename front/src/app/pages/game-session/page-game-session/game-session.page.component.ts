@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
+import { AttributeStatus } from '@pagemaster/common/attributes.types';
 import { EventDiceRoll, EventLootBox } from '@pagemaster/common/events.types';
 import { ParticipantType, Player } from '@pagemaster/common/pagemaster.types';
+import { tap } from 'rxjs';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { BottomBarComponent } from 'src/app/core/design-system/bottom-bar.component';
@@ -17,7 +19,9 @@ import { LootBoxModalComponent } from 'src/app/core/loot-box/loot-box.modal.comp
 import { ModalService } from 'src/app/core/modal';
 import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { AvatarViewComponent } from 'src/app/core/player/avatar/avatar-view.component';
+import { QuickStatusCreationModalComponent } from 'src/app/core/player/statuses/quick-status-creation-modal.component';
 import { GameEventRepository } from 'src/app/core/repositories/game-event.repository';
+import { GameSessionRepository } from 'src/app/core/repositories/game-session.repository';
 import { QuickActionModalComponent } from '../quick-action.modal.component';
 
 @Component({
@@ -42,6 +46,7 @@ export class GameSessionPageComponent {
   protected currentParticipantState = inject(CurrentParticipantState);
   protected modalService = inject(ModalService);
   protected gameEventRepository = inject(GameEventRepository);
+  protected gameSessionRepository = inject(GameSessionRepository);
   protected eventsCenterState = inject(EventsCenterStateService);
   protected eventCount = computed(() => this.eventsCenterState.events().filter(e => e.isNew).length);
 
@@ -168,6 +173,19 @@ export class GameSessionPageComponent {
     
       this.gameEventRepository.postCommand(event).subscribe();
       void modalRef.close();
+    });
+  }
+
+  protected openCreateQuickStatusModal(): void {
+    const modalRef = this.modalService.open(QuickStatusCreationModalComponent);
+    
+    modalRef.componentRef.instance.quickStatusCreated.subscribe((status: AttributeStatus) => {
+      const gameSession = this.currentGameSession.currentGameSession();
+      if (gameSession) {
+        this.gameSessionRepository.addQuickValueStatus(gameSession.id, status).pipe(
+          tap(() => void modalRef.close()),
+        ).subscribe();
+      }
     });
   }
 }

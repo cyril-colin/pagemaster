@@ -10,7 +10,6 @@ import { BadgeComponent } from '../../design-system/badge.component';
       [size]="'small'" 
       [customColor]="'transparent'"
       [customBorderColor]="s.color"
-      [rightIcon]="'edit'"
     >
       <span class="status-name">{{s.name}}</span>
     </ds-badge>

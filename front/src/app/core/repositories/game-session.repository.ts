@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { AttributeStatus } from '@pagemaster/common/attributes.types';
 import { GameSession, Participant } from '@pagemaster/common/pagemaster.types';
 import { Observable } from 'rxjs';
 
@@ -35,6 +36,14 @@ export class GameSessionRepository {
 
   updateParticipant(gameSessionId: string, participant: Participant): Observable<Participant> {
     return this.http.put<Participant>(`${this.baseUrl}/game-sessions/${gameSessionId}/participants/${participant.id}`, participant);
+  }
+
+  addQuickValueStatus(gameSessionId: string, status: AttributeStatus): Observable<GameSession> {
+    return this.http.put<GameSession>(`${this.baseUrl}/game-sessions/${gameSessionId}/quick-values/statuses`, status);
+  }
+
+  deleteQuickValueStatus(gameSessionId: string, statusId: string): Observable<GameSession> {
+    return this.http.delete<GameSession>(`${this.baseUrl}/game-sessions/${gameSessionId}/quick-values/statuses/${statusId}`);
   }
 
 }

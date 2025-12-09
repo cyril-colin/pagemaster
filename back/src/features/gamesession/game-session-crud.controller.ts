@@ -3,6 +3,7 @@ import { LoggerService } from '../../core/logger.service';
 import { Delete, Get, Post, Put } from '../../core/router/controller.decorators';
 import { HttpForbiddenError } from '../../core/router/http-errors';
 import { SocketServerService } from '../../core/socket.service';
+import { AttributeStatus } from '../../pagemaster-schemas/src/attributes.types';
 import { GameSession, Player } from '../../pagemaster-schemas/src/pagemaster.types';
 import { GameSessionMongoClient } from './game-session.mongo-client';
 import { GameSessionService } from './game-session.service';
@@ -196,5 +197,91 @@ export class GameSessionController {
   @Delete('/game-sessions/:id')
   public async deleteGameSession(body: unknown, params: {id: string}): Promise<boolean> {
     return await this.mongoClient.deleteGameSession(params.id);
+  }
+
+  @Put('/game-sessions/:gameSessionId/quick-values/statuses')
+  public async addQuickValueStatus(
+    status: AttributeStatus,
+    params: {gameSessionId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
+
+    // Initialize quickValues.statuses if it doesn't exist
+    gameSession.quickValues = gameSession.quickValues || { statuses: [] };
+    gameSession.quickValues.statuses = gameSession.quickValues.statuses || [];
+
+    // Check if status with same ID already exists
+    const existingIndex = gameSession.quickValues.statuses.findIndex(s => s.id === status.id);
+    if (existingIndex !== -1) {
+      // Update existing status
+      gameSession.quickValues.statuses[existingIndex] = status;
+    } else {
+      // Add new status
+      gameSession.quickValues.statuses.push(status);
+    }
+
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
+
+    const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'game-session-updated',
+        title: 'Quick value status added',
+        description: `${currentParticipant.name} added status to quick values: ${status.name}`,
+        metadata: { statusId: status.id, statusName: status.name }
+      }
+    });
+    
+    return gameInstanceCleaned;
+  }
+
+  @Delete('/game-sessions/:gameSessionId/quick-values/statuses/:statusId')
+  public async deleteQuickValueStatus(
+    body: unknown,
+    params: {gameSessionId: string, statusId: string},
+    query: unknown,
+    req: Request,
+  ): Promise<GameSession> {
+    const { gameSession, currentParticipant } = await this.gameInstanceService.validateContext(params.gameSessionId, req);
+
+    // Initialize quickValues.statuses if it doesn't exist
+    gameSession.quickValues = gameSession.quickValues || { statuses: [] };
+    gameSession.quickValues.statuses = gameSession.quickValues.statuses || [];
+
+    const statusIndex = gameSession.quickValues.statuses.findIndex(s => s.id === params.statusId);
+    if (statusIndex === -1) {
+      throw new HttpForbiddenError(`Status with ID ${params.statusId} not found in quick values`);
+    }
+
+    const deletedStatus = gameSession.quickValues.statuses[statusIndex];
+    gameSession.quickValues.statuses.splice(statusIndex, 1);
+
+    const gameInstanceCleaned = await this.gameInstanceService.commitGameSession(gameSession);
+
+    const updatedParticipant = this.gameInstanceService.getParticipant(currentParticipant.id, gameInstanceCleaned);
+    if (!updatedParticipant) {
+      throw new HttpForbiddenError('Forbidden: You are no longer a participant of this game instance');
+    }
+    
+    this.gameInstanceService.notifyGameSessionUpdate({
+      gameSession: gameInstanceCleaned,
+      by: updatedParticipant,
+      event: {
+        type: 'game-session-updated',
+        title: 'Quick value status deleted',
+        description: `${currentParticipant.name} removed status from quick values: ${deletedStatus.name}`,
+        metadata: { statusId: deletedStatus.id, statusName: deletedStatus.name }
+      }
+    });
+    
+    return gameInstanceCleaned;
   }
 }

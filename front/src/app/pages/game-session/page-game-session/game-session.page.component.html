@@ -10,6 +10,9 @@
       }
     </ds-dropdown-trigger>
     <ds-dropdown-content>
+      @if (isGameMaster()) {
+        <ds-button [mode]="'tertiary'" [icon]="'plus'" (click)="openCreateQuickStatusModal()" >Create quick status</ds-button>
+      }
       <ds-button [mode]="'tertiary'" [icon]="'logout'" (click)="logout()" >Logout</ds-button>
       <ds-button [mode]="'tertiary'" [icon]="'menu'" (click)="showAbout()" >About</ds-button>
     </ds-dropdown-content>
