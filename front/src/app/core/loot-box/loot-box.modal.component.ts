@@ -63,6 +63,6 @@ export class LootBoxModalComponent {
 
     // Emit the generated loot box using proper types
     console.warn('Generated medicine loot box:', selected);
-    this.newLootBox.emit({ items: selected.map(i => ({ item: i, player: null })) } as LootBox);
+    this.newLootBox.emit({ items: selected.map(i => ({ item: i, claimedByPlayerId: null })) } as LootBox);
   }
 }

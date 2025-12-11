@@ -14,7 +14,9 @@ import { playerInventoryAddHandler } from './handlers/player-inventory-add.handl
 import { playerInventoryDeleteHandler } from './handlers/player-inventory-delete.handler';
 import { playerInventoryItemAddHandler } from './handlers/player-inventory-item-add.handler';
 import { playerInventoryItemDeleteHandler } from './handlers/player-inventory-item-delete.handler';
+import { playerInventoryItemEditHandler } from './handlers/player-inventory-item-edit.handler';
 import { playerInventoryUpdateHandler } from './handlers/player-inventory-update.handler';
+import { playerLootBoxItemClaimedHandler } from './handlers/player-loot-box-item-claimed.handler';
 import { playerNameEditHandler } from './handlers/player-name-edit.handler';
 import { playerStatusAddHandler } from './handlers/player-status-add.handler';
 import { playerStatusDeleteHandler } from './handlers/player-status-delete.handler';
@@ -36,9 +38,11 @@ export const EventPlayerMapper = {
   [EventPlayerTypes.PLAYER_INVENTORY_ADD]: playerInventoryAddHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_UPDATE]: playerInventoryUpdateHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_ADD]: playerInventoryItemAddHandler,
+  [EventPlayerTypes.PLAYER_INVENTORY_ITEM_EDIT]: playerInventoryItemEditHandler,
   [EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE]: playerInventoryItemDeleteHandler,
   [EventPlayerTypes.PLAYER_BAR_POINT_ADD]: playerBarPointAddHandler,
   [EventPlayerTypes.PLAYER_BAR_POINT_REMOVE]: playerBarPointRemoveHandler,
+  [EventPlayerTypes.PLAYER_LOOT_BOX_ITEM_CLAIMED]: playerLootBoxItemClaimedHandler,
 };
 
 

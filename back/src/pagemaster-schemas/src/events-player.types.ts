@@ -16,9 +16,11 @@ export enum EventPlayerTypes {
   PLAYER_INVENTORY_ADD = 'player.inventory.add',
   PLAYER_INVENTORY_UPDATE = 'player.inventory.update',
   PLAYER_INVENTORY_ITEM_ADD = 'player.inventory.item.add',
+  PLAYER_INVENTORY_ITEM_EDIT = 'player.inventory.item.edit',
   PLAYER_INVENTORY_ITEM_DELETE = 'player.inventory.item.delete',
   PLAYER_BAR_POINT_ADD = 'player.bar.point.add',
   PLAYER_BAR_POINT_REMOVE = 'player.bar.point.remove',
+  PLAYER_LOOT_BOX_ITEM_CLAIMED = 'player.loot-box.item.claimed',
 }
 
 export type EventPlayerBarPointAdd = EventPlayerBase & {
@@ -118,4 +120,10 @@ export type EventPlayerStatusEdit = EventPlayerBase & {
 export type EventPlayerStatusDelete = EventPlayerBase & {
   type: EventPlayerTypes.PLAYER_STATUS_DELETE,
   statusIds: string[],
+}
+
+export type EventPlayerLootBoxItemClaimed = EventPlayerBase & {
+  type: EventPlayerTypes.PLAYER_LOOT_BOX_ITEM_CLAIMED,
+  lootBoxEventId: string,
+  itemId: string,
 }

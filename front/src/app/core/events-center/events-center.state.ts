@@ -33,7 +33,19 @@ export class EventsCenterStateService {
   }
 
   public addEvent(event: EventBase): void {
-    this.eventsSignal.update((events) => [{ isNew: true, event }, ...events]);
+    this.eventsSignal.update((events) => {
+      // Check if event already exists (for updates like loot box claims)
+      const existingIndex = events.findIndex(e => e.event.id === event.id);
+      if (existingIndex !== -1) {
+        // Update existing event
+        const updated = [...events];
+        updated[existingIndex].isNew = false;
+        updated[existingIndex] = { ...updated[existingIndex], event };
+        return updated;
+      }
+      // Add new event
+      return [{ isNew: true, event }, ...events];
+    });
   }
 
   public setSeen(eventIds: string[]): void {
