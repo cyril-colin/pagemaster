@@ -1,7 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input, output, signal } from '@angular/core';
 import { Item, ItemRarityFilters, ItemTag } from '@pagemaster/common/items.types';
+import { Player } from '@pagemaster/common/pagemaster.types';
 import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
+import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
+import { ModalService } from 'src/app/core/modal';
 import {
   ModalLayoutComponent,
   ModalLayoutFooterComponent,
@@ -11,6 +14,11 @@ import {
 import { ResourcePacksStorage } from 'src/app/core/resource-packs-storage.service';
 import { ImageComponent } from '../../../design-system/image.component';
 import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component';
+
+export interface GiveItemEvent {
+  item: Item,
+  recipientPlayerId: string,
+}
 
 @Component({
   selector: 'app-item-modal',
@@ -46,6 +54,16 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
             [icon]="'plus'"
           >
             Add ({{state().selection.length}} selected)
+          </ds-button>
+      </ds-modal-layout-footer>
+    } @else if(item) {
+      <ds-modal-layout-footer>
+        <ds-button
+            [mode]="'secondary'"
+            (click)="openGiveItemModal()"
+            [icon]="'arrow-right'"
+          >
+            Give Item
           </ds-button>
       </ds-modal-layout-footer>
     }
@@ -89,14 +107,32 @@ import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component
 })
 export class ItemModalComponent {
   public existingItem = input<Item | null>(null);
+  public currentOwnerId = input.required<string>();
   public permissions = input.required<GameSessionPermissions['inventory']['item']>();
   public addItems = output<Item[]>();
   public selectItems(items: Item[]) {
     this.addItems.emit(items);
   }
   public deleteItem = output<Item | null>();
+  public giveItem = output<GiveItemEvent>();
   public cancel = output<void>();
   protected resourcePackService = inject(ResourcePacksStorage);
+  protected modalService = inject(ModalService);
+  protected currentParticipantState = inject(CurrentParticipantState);
+
+  protected showGiveButton = computed(() => {
+    const item = this.existingItem();
+    if (!item) return false;
+    
+    const currentParticipant = this.currentParticipantState.currentParticipant();
+    if (!currentParticipant) return false;
+    
+    // Show if GM or if it's the player's own item
+    const isGM = currentParticipant.type === 'gameMaster';
+    const isOwner = currentParticipant.id === this.currentOwnerId();
+    
+    return isGM || isOwner;
+  });
 
   protected allItems = computed(() => {
     return this.resourcePackService.resourcePacks().find(pack => pack.theme === 'Post Apocaliptic')!.items.models;
@@ -163,5 +199,35 @@ export class ItemModalComponent {
 
 
     this.state.set(newState);
+  }
+
+  protected async openGiveItemModal(): Promise<void> {
+    const item = this.existingItem();
+    if (!item) return;
+
+    const { GiveItemModalComponent } = await import('./give-item-modal.component');
+    
+    const giveModalRef = this.modalService.open(GiveItemModalComponent, {
+      currentOwnerId: this.currentOwnerId(),
+    });
+
+    giveModalRef.componentRef.instance.recipientSelected.subscribe((recipient: Player) => {
+      void (async () => {
+        await giveModalRef.close();
+        
+        const confirmed = await this.modalService.confirmation(
+          `Are you sure you want to give "${item.name}" to ${recipient.name}?`,
+          'Confirm Give Item',
+        );
+
+        if (confirmed === 'confirmed') {
+          this.giveItem.emit({ item, recipientPlayerId: recipient.id });
+        }
+      })();
+    });
+
+    giveModalRef.componentRef.instance.cancel.subscribe(() => {
+      void giveModalRef.close();
+    });
   }
 }

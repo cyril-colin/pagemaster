@@ -4,6 +4,7 @@ import {
   EventPlayerInventoryDelete,
   EventPlayerInventoryItemAdd,
   EventPlayerInventoryItemDelete,
+  EventPlayerInventoryItemGive,
   EventPlayerInventoryUpdate,
   EventPlayerTypes,
 } from '@pagemaster/common/events-player.types';
@@ -144,6 +145,7 @@ export class InventoryComponent extends AbstractPlayerControl {
   protected openItemGallery(item: Item) {
     const ref = this.modalService.open(ItemModalComponent, {
       existingItem: item,
+      currentOwnerId: this.player().id,
       permissions: this.permissions().inventory.item,
     });
 
@@ -152,10 +154,17 @@ export class InventoryComponent extends AbstractPlayerControl {
         tap(() => void ref.close()),
       ).subscribe();
     });
+
+    ref.componentRef.instance.giveItem.subscribe(({ item: givenItem, recipientPlayerId }) => {
+      this.giveItemToPlayer(givenItem, recipientPlayerId).pipe(
+        tap(() => void ref.close()),
+      ).subscribe();
+    });
   }
 
   protected openAddItemModal() {
     const ref = this.modalService.open(ItemModalComponent, {
+      currentOwnerId: this.player().id,
       permissions: this.permissions().inventory.item,
     });
     ref.componentRef.instance.addItems.subscribe((newItems: Item[]) => {
@@ -193,6 +202,22 @@ export class InventoryComponent extends AbstractPlayerControl {
       this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_ITEM_DELETE) as Omit<EventPlayerInventoryItemDelete, 'id' | 'timestamp'>;
     command.deletedItem = item;
     command.inventoryId = this.inventory().id;
+    return this.gameEventRepository.postCommand(command);
+  }
+
+  protected giveItemToPlayer(item: Item, recipientPlayerId: string) {
+    // Find the first inventory of the recipient player
+    const recipientPlayer = this.gameSession().players.find(p => p.id === recipientPlayerId);
+    if (!recipientPlayer || recipientPlayer.attributes.inventory.length === 0) {
+      throw new Error('Recipient player not found or has no inventory');
+    }
+    
+    const command = this.prepareEvent(EventPlayerTypes.PLAYER_INVENTORY_ITEM_GIVE) as Omit<EventPlayerInventoryItemGive, 'id' | 'timestamp'>;
+    command.fromInventoryId = this.inventory().id;
+    command.toPlayerId = recipientPlayerId;
+    command.toInventoryId = recipientPlayer.attributes.inventory[0].id;
+    command.givenItem = item;
+    
     return this.gameEventRepository.postCommand(command);
   }
 
