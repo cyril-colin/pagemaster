@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { Router } from '@angular/router';
 import { Participant, ParticipantType, Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
+import { SmartRoutes } from 'src/app/app.routes';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import { NewPlayerModalComponent } from 'src/app/core/game/new-player-modal.component';
 import { ModalService } from 'src/app/core/modal';
-import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { PlayerButtonComponent } from 'src/app/core/player/player-button.component';
 import { GameSessionRepository } from 'src/app/core/repositories/game-session.repository';
 
@@ -156,12 +156,13 @@ export class PlayerListPageComponent {
 
 
   protected async goToParticipantPage(participant: Participant): Promise<void> {
-    const route = PageMasterRoutes().GameInstanceSession.children[3].interpolated(participant.id);
-
     const gameSessionId = this.currentGameSession.currentGameSession().id;
-    const parentRoute = PageMasterRoutes().GameInstanceSession.interpolated(gameSessionId);
-    const segments = [parentRoute, route, 'details'].join('/').split('/');
-    await this.router.navigate(segments);
+
+    await this.router.navigate([
+      '',
+      ...SmartRoutes.gameInstanceSession.path(gameSessionId),
+      ...SmartRoutes.gameInstanceSession.children.playerLayout.path(participant.id, 'details'),
+    ]);
   }
 
   protected addPlayer(): void {

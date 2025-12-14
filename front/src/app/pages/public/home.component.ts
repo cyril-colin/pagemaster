@@ -2,13 +2,13 @@ import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, signa
 import { RouterModule } from '@angular/router';
 import { GameSession, ParticipantType } from '@pagemaster/common/pagemaster.types';
 import { catchError, tap } from 'rxjs/operators';
+import { SmartRoutes } from 'src/app/app.routes';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { MainTitleService } from 'src/app/core/main-bar/main-title.service';
 import { ButtonComponent } from '../../core/design-system/button.component';
 import { CardComponent } from '../../core/design-system/card.component';
 import { DividerComponent } from '../../core/design-system/divider.component';
-import { PageMasterRoutes } from '../../core/pagemaster.router';
 import { GameSessionRepository } from '../../core/repositories/game-session.repository';
 
 @Component({
@@ -37,7 +37,7 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
           </div>
           <ds-button 
             [mode]="'primary'" 
-            [routerLink]="'/' + routes.GameInstanceSession.interpolated(session.gameSession.id)">
+            [routerLink]="routes.publicLayout.children.lobby.path(session.gameSession.id)">
             Continue Session
           </ds-button>
         </ds-card>
@@ -53,7 +53,7 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
             </div>
             <ds-button 
               [mode]="'primary'" 
-              [routerLink]="'/' + routes.GameInstanceConfig.path">
+              [routerLink]="routes.publicLayout.children.config.path()">
               Create Session
             </ds-button>
           </ds-card>
@@ -79,15 +79,15 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
             @for (instance of instanceList(); track instance.id) {
               <ds-card class="instance-card">
                 <div class="instance-info">
-                  <h3 class="instance-name">{{ instance.id }}</h3>
+                  <h3 class="instance-name">{{ instance.title }}</h3>
                   <p class="instance-details">
                     <span class="label">Game Master:</span> {{ instance.master.name }}
                   </p>
                   <p class="instance-id">ID: {{ instance.id }}</p>
                 </div>
                 <ds-button 
-                  [mode]="'secondary'" 
-                  [routerLink]="'/' + routes.GameInstanceSession.interpolated(instance.id)">
+                  [mode]="'secondary'"
+                  [routerLink]="'/' + routes.publicLayout.children.lobby.path(instance.id).join('/')">
                   Continue Game
                 </ds-button>
               </ds-card>
@@ -360,7 +360,7 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
-  protected routes = PageMasterRoutes();
+  protected routes = SmartRoutes;
   protected gameInstanceService = inject(GameSessionRepository);
   protected instanceList = signal<GameSession[]>([]);
   protected gameSession = inject(CurrentGameSessionState).currentGameSession();

@@ -1,14 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameMaster, GameSession, Player } from '@pagemaster/common/pagemaster.types';
-import { switchMap, tap } from 'rxjs';
+import { tap } from 'rxjs';
+import { SmartRoutes } from 'src/app/app.routes';
 import { CurrentGameSessionState } from '../../core/current-game-session.state';
 import { CurrentParticipantState } from '../../core/current-participant.state';
 import { ButtonComponent } from '../../core/design-system/button.component';
 import { CardComponent } from '../../core/design-system/card.component';
 import { DownloadService } from '../../core/download.service';
-import { PageMasterRoutes } from '../../core/pagemaster.router';
 import { GameSessionRepository } from '../../core/repositories/game-session.repository';
 
 @Component({
@@ -17,7 +17,7 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
   template: `
     <div class="container">
       <h1>Choose Your Player</h1>
-      @let instance = selectedGameSession();
+      @let instance = selectedGameSession.value();
       @if (instance) {
         <p class="subtitle">{{ instance.id }} - Master: {{ instance.master.name }}</p>
 
@@ -148,28 +148,28 @@ import { GameSessionRepository } from '../../core/repositories/game-session.repo
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GameSessionChooseParticipantComponent {
+export class LobbyComponent {
+  public instanceId = input.required<string>();
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
   protected gameSessionService = inject(GameSessionRepository);
   protected currentParticipantService = inject(CurrentParticipantState);
   protected currentGameSessionService = inject(CurrentGameSessionState);
   protected downloadService = inject(DownloadService);
-  protected selectedGameSession = toSignal(this.route.paramMap.pipe(
-    switchMap(params => {
-      const instanceId = params.get(PageMasterRoutes().GameInstanceSession.params[0]);
-      if (!instanceId) {
-        throw new Error('No instanceId in route parameters');
-      }
-      return this.gameSessionService.getGameSessionById(instanceId);
-    }),
-  ));
+
+  protected selectedGameSession = rxResource({
+    params: () => this.instanceId(),
+    stream: ({params: instanceId}) => this.gameSessionService.getGameSessionById(instanceId),
+  });
 
   protected selectParticipant(gameSession: GameSession, participant: Player | GameMaster) {
     this.currentGameSessionService.setCurrentGameSession(gameSession).pipe(
       tap((newInstance) => {
         this.currentParticipantService.setParticipant(participant.id);
-        void this.router.navigate(['/', ...PageMasterRoutes().GameInstanceSession.interpolated(newInstance.id).split('/')]);
+        void this.router.navigate([
+          '',
+          ...SmartRoutes.gameInstanceSession.path(newInstance.id),
+        ]);
       }),
     ).subscribe();
   }

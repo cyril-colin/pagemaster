@@ -1,7 +1,7 @@
 import { computed, Directive, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EventPlayerBase } from '@pagemaster/common/events.types';
-import { PageMasterRoutes } from '../../../../../core/pagemaster.router';
+import { SmartRoutes } from 'src/app/app.routes';
 import { AbstractEventViewComponent } from './abstract-event-view.component';
 
 @Directive()
@@ -16,8 +16,10 @@ export abstract class AbstractEventViewPlayerComponent<T extends EventPlayerBase
     const urlTree = this.router.createUrlTree(
       [
         '..',
-        PageMasterRoutes().GameInstanceSession.children[3].interpolated(this.player()?.id || ''),
-        'details',
+        ...SmartRoutes.gameInstanceSession.children.playerLayout.path(
+          this.player()?.id || '',
+          'details',
+        ),
       ],
       { relativeTo: this.route },
     );

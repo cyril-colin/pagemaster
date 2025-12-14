@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { EventDiceRoll } from '@pagemaster/common/events.types';
+import { SmartRoutes } from 'src/app/app.routes';
 import { ImageComponent } from '../../../../../core/design-system/image.component';
 import { EventsCenterStateService } from '../../../../../core/events-center/events-center.state';
-import { PageMasterRoutes } from '../../../../../core/pagemaster.router';
 import { AbstractEventViewComponent } from './abstract-event-view.component';
 
 
@@ -83,8 +83,9 @@ export class EventDiceRollComponent extends AbstractEventViewComponent<EventDice
   protected playerUrl() {
     const urlTree = this.router.createUrlTree(
       [
-        PageMasterRoutes().GameInstanceSession.interpolated(this.gameSession.currentGameSession().id),
-        PageMasterRoutes().GameInstanceSession.children[3].interpolated(this.participant()?.id || ''),
+        '',
+        ...SmartRoutes.gameInstanceSession.path(this.gameSession.currentGameSession().id),
+        ...SmartRoutes.gameInstanceSession.children.playerLayout.path(this.participant()?.id || ''),
       ],
     );
 

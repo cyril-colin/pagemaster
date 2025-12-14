@@ -2,9 +2,9 @@ import { computed, inject, Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameSession, ParticipantType } from '@pagemaster/common/pagemaster.types';
 import { PageMasterSocketEvents } from '@pagemaster/common/socket-events.types';
+import { SmartRoutes } from '../app.routes';
 import { CurrentGameSessionState } from './current-game-session.state';
 import { CURRENT_PARTICIPANT_CACHE_KEY, CURRENT_PARTICIPANT_TTL, LocalStorageService } from './local-storage.service';
-import { PageMasterRoutes } from './pagemaster.router';
 import { SocketService } from './socket.service';
 
 
@@ -58,7 +58,7 @@ export class CurrentParticipantState {
   clearParticipant(): void {
     this.currentParticipantSignal.set(null);
     this.localStorageService.removeItem(CURRENT_PARTICIPANT_CACHE_KEY);
-    void this.router.navigate(['', ...PageMasterRoutes().Home.path.split('/')]);
+    void this.router.navigate(['', ...SmartRoutes.appHome.path()]);
   }
 
 

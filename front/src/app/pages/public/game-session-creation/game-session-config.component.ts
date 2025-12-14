@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/cor
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { GameSession } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
+import { SmartRoutes } from 'src/app/app.routes';
 import { ButtonComponent } from '../../../core/design-system/button.component';
 import { CardComponent } from '../../../core/design-system/card.component';
 import { DividerComponent } from '../../../core/design-system/divider.component';
 import { GameSessionFormComponent } from '../../../core/game/game-session-form.component';
-import { PageMasterRoutes } from '../../../core/pagemaster.router';
 import { GameSessionRepository } from '../../../core/repositories/game-session.repository';
 
 @Component({
@@ -279,7 +279,7 @@ export class GameSessionConfigComponent {
   protected onNewGame(gameSession: GameSession) {
     this.gameInstanceService.postGameSession(gameSession).pipe(
       tap(createdInstance => {
-        this.gameInstanceLink.set(`/${PageMasterRoutes().GameInstanceSession.interpolated(createdInstance.id)}`);
+        this.gameInstanceLink.set(`/${SmartRoutes.gameInstanceSession.path(createdInstance.id).join('/')}`);
         this.newGameSession.set(createdInstance);
       }),
     ).subscribe();

@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ParticipantType } from '@pagemaster/common/pagemaster.types';
+import { SmartRoutes } from 'src/app/app.routes';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { ButtonComponent } from '../../core/design-system/button.component';
-import { PageMasterRoutes } from '../../core/pagemaster.router';
 
 @Component({
   selector: 'app-public-layout',
@@ -15,7 +15,7 @@ import { PageMasterRoutes } from '../../core/pagemaster.router';
           <ds-button 
             mode="secondary" 
             icon="arrow-left"
-            [routerLink]="'/' + routes.Home.path">
+            [routerLink]="'/' + routes.appHome.path().join('/')">
             Home
           </ds-button>
           
@@ -148,7 +148,7 @@ import { PageMasterRoutes } from '../../core/pagemaster.router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PublicLayoutComponent {
-  protected routes = PageMasterRoutes();
+  protected routes = SmartRoutes;
   
   protected gameSession = inject(CurrentGameSessionState).currentGameSession();
   protected participant = inject(CurrentParticipantState).currentParticipant();

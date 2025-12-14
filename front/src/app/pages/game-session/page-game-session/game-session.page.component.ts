@@ -5,6 +5,7 @@ import { AttributeBar, AttributeStatus } from '@pagemaster/common/attributes.typ
 import { EventDiceRoll, EventLootBox } from '@pagemaster/common/events.types';
 import { ParticipantType, Player } from '@pagemaster/common/pagemaster.types';
 import { tap } from 'rxjs';
+import { SmartRoutes } from 'src/app/app.routes';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { CurrentParticipantState } from 'src/app/core/current-participant.state';
 import { BottomBarComponent } from 'src/app/core/design-system/bottom-bar.component';
@@ -17,7 +18,6 @@ import {
 import { EventMeta, EventsCenterStateService } from 'src/app/core/events-center/events-center.state';
 import { LootBoxModalComponent } from 'src/app/core/loot-box/loot-box.modal.component';
 import { ModalService } from 'src/app/core/modal';
-import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { AvatarViewComponent } from 'src/app/core/player/avatar/avatar-view.component';
 import { QuickBarCreationModalComponent } from 'src/app/core/player/bars/quick-bar-creation-modal.component';
 import { QuickStatusCreationModalComponent } from 'src/app/core/player/statuses/quick-status-creation-modal.component';
@@ -61,17 +61,11 @@ export class GameSessionPageComponent {
   });
 
   protected goToPlayerList(): void {
-    void this.router.navigate([
-      PageMasterRoutes().GameInstanceSession.children[2].path,
-    ], { relativeTo: this.route,
-    });
+    void this.router.navigate(SmartRoutes.gameInstanceSession.children.players.path(), { relativeTo: this.route });
   }
 
   protected goToNotes(): void {
-    void this.router.navigate([
-      PageMasterRoutes().GameInstanceSession.children[4].path,
-    ], { relativeTo: this.route,
-    });
+    void this.router.navigate(SmartRoutes.gameInstanceSession.children.notes.path(), { relativeTo: this.route });
   }
 
   protected async logout(): Promise<void> {
@@ -93,10 +87,10 @@ export class GameSessionPageComponent {
     const currentParticipant = this.currentParticipantState.currentParticipant()!;
     if (currentParticipant.type !== 'player') return;
 
-    void this.router.navigate([
-      PageMasterRoutes().GameInstanceSession.children[3].interpolated(currentParticipant.id),
-    ], { relativeTo: this.route,
-    });
+    void this.router.navigate(
+      SmartRoutes.gameInstanceSession.children.playerLayout.path(currentParticipant.id, 'details'),
+      { relativeTo: this.route },
+    );
   }
 
   protected lastRunningDiceEvent = computed(() => {
@@ -123,9 +117,8 @@ export class GameSessionPageComponent {
   }
   protected goToEvents(): void {
     void this.router.navigate([
-      PageMasterRoutes().GameInstanceSession.children[1].path,
-    ], { relativeTo: this.route,
-    });
+      ...SmartRoutes.gameInstanceSession.children.events.path(),
+    ], { relativeTo: this.route });
   }
 
   protected runQuickAction(): void {

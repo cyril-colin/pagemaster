@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AttributeBar } from '@pagemaster/common/attributes.types';
 import { EventPlayerBarAdd, EventPlayerBarDelete, EventPlayerTypes } from '@pagemaster/common/events-player.types';
-import { forkJoin, map, tap } from 'rxjs';
+import { forkJoin, tap } from 'rxjs';
+import { SmartRoutes } from 'src/app/app.routes';
 import { CurrentGameSessionState } from 'src/app/core/current-game-session.state';
 import { ButtonComponent } from 'src/app/core/design-system/button.component';
 import {
@@ -13,7 +13,6 @@ import {
 } from 'src/app/core/design-system/dropdown-container.component';
 import { Tab, TabsComponent } from 'src/app/core/design-system/tabs.component';
 import { ModalService } from 'src/app/core/modal';
-import { PageMasterRoutes } from 'src/app/core/pagemaster.router';
 import { PictureControlComponent } from 'src/app/core/player/avatar/picture-control.component';
 import { BarSelectorModalComponent } from 'src/app/core/player/bars/bar-selector-modal.component';
 import { InventoryFormModalComponent } from 'src/app/core/player/inventories/inventory-form-modal.component';
@@ -34,19 +33,19 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
       <ds-button [mode]="'mini'" [icon]="'arrow-left'" (click)="goBack()" />
       <section class="identity">
         <app-picture-control
-          [player]="playerDataService.viewedPlayer()"
+          [player]="playerDataService.viewedPlayer(this.playerId())()"
           [gameSession]="playerDataService.currentSession()!.gameSession"
-          [permissions]="playerDataService.permissions()"
+          [permissions]="playerDataService.permissions(this.playerId())()"
         />
         <app-name-control
-          [player]="playerDataService.viewedPlayer()"
+          [player]="playerDataService.viewedPlayer(this.playerId())()"
           [gameSession]="playerDataService.currentSession()!.gameSession"
-          [permissions]="playerDataService.permissions()"
+          [permissions]="playerDataService.permissions(this.playerId())()"
         />
 
         <app-status-control
-          [player]="playerDataService.viewedPlayer()"
-          [permissions]="playerDataService.permissions()"
+          [player]="playerDataService.viewedPlayer(this.playerId())()"
+          [permissions]="playerDataService.permissions(this.playerId())()"
           [gameSession]="playerDataService.currentSession()!.gameSession"
         />
       </section>
@@ -66,15 +65,27 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
     <div class="carousel-container">
       <div class="carousel-track" [style.transform]="'translateX(-' + (selectedTabIndex() * 100) + '%)'">
         <div class="carousel-slide">
-          <app-tab-player-details />
+          <app-tab-player-details
+            [player]="player()"
+            [permissions]="permissions()"
+            [sessions]="sessions()"
+          />
         </div>
         @for(i of bigInventories(); track i.id) {
           <div class="carousel-slide">
-            <app-tab-player-inventory [inventory]="i" />
+            <app-tab-player-inventory
+              [inventory]="i"
+              [player]="player()"
+              [session]="sessions()"
+              [permissions]="permissions()"
+            />
           </div>
         }
         <div class="carousel-slide">
-          <app-tab-player-notes />
+          <app-tab-player-notes
+            [player]="player()"
+            [permissions]="permissions()"
+          />
         </div>
       </div>
     </div>
@@ -141,6 +152,9 @@ import { TabNotesComponent } from './tab-notes/tab-notes.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PlayerLayoutComponent {
+  readonly playerId = input.required<string>();
+  readonly tabId = input.required<string>();
+  
   protected playerDataService = inject(PlayerDataService);
   protected route = inject(ActivatedRoute);
   protected router = inject(Router);
@@ -149,31 +163,36 @@ export class PlayerLayoutComponent {
   private gameSessionRepository = inject(GameSessionRepository);
   private gameEventRepository = inject(GameEventRepository);
 
-  // Track the selected tab ID from route parameter
-  protected selectedTabId = toSignal(
-    this.route.paramMap.pipe(
-      map(params => params.get('tabId') ?? 'details'),
-    ),
-    { initialValue: this.route.snapshot.paramMap.get('tabId') ?? 'details' },
-  );
+  protected player = computed(() => {
+    return this.playerDataService.viewedPlayer(this.playerId())();
+  });
+
+  protected permissions = computed(() => {
+    return this.playerDataService.permissions(this.playerId())();
+  });
+
+  protected sessions = computed(() => {
+    return this.playerDataService.currentSession()!.gameSession;
+  });
 
   protected bigInventories = computed(() => {
-    return this.playerDataService.viewedPlayer().attributes.inventory.filter(inv => inv.mode === 'large');
+    return this.playerDataService.viewedPlayer(this.playerId())().attributes.inventory.filter(inv => inv.mode === 'large');
   });
 
   protected goBack() {
     void this.router.navigate([
       '',
-      ...PageMasterRoutes().GameInstanceSession.interpolated(this.playerDataService.currentSession()!.gameSession.id).split('/'),
-      PageMasterRoutes().GameInstanceSession.children[2].path]);
+      ...SmartRoutes.gameInstanceSession.path(this.playerDataService.currentSession()!.gameSession.id),
+      ...SmartRoutes.gameInstanceSession.children.players.path(),
+    ]);
   }
 
 
 
 
   protected currentTabs = computed(() => {
-    const selectedId = this.selectedTabId();
-    const playerId = this.route.snapshot.paramMap.get('playerId')!;
+    const selectedId = this.tabId();
+    const playerId = this.playerId();
     return [
       {
         label: 'Details',
@@ -195,7 +214,7 @@ export class PlayerLayoutComponent {
 
   protected selectedTabIndex = computed(() => {
     const tabs = this.currentTabs();
-    const selectedId = this.selectedTabId();
+    const selectedId = this.tabId();
     const index = tabs.findIndex(tab => tab.route[tab.route.length - 1] === selectedId);
     return index >= 0 ? index : 0;
   });
@@ -209,15 +228,15 @@ export class PlayerLayoutComponent {
   protected openAddInventoryModal() {
     this.modalService.open(InventoryFormModalComponent, {
       gameSession: this.playerDataService.currentSession()!.gameSession,
-      player: this.playerDataService.viewedPlayer(),
-      permissions: this.playerDataService.permissions(),
+      player: this.playerDataService.viewedPlayer(this.playerId())(),
+      permissions: this.playerDataService.permissions(this.playerId())(),
     });
   }
 
   protected openAddBarModal() {
     const gameSession = this.playerDataService.currentSession()!.gameSession;
-    const player = this.playerDataService.viewedPlayer();
-    const quickBars = (gameSession.quickValues?.bars || []) as AttributeBar[];
+    const player = this.playerDataService.viewedPlayer(this.playerId())();
+    const quickBars = (gameSession.quickValues?.bars || []);
     const alreadyAddedIds = player.attributes.bar.map(b => b.id);
 
     const modalRef = this.modalService.open(BarSelectorModalComponent, {
@@ -275,7 +294,7 @@ export class PlayerLayoutComponent {
   }
 
   protected async deletePlayer(): Promise<void> {
-    const player = this.playerDataService.viewedPlayer();
+    const player = this.playerDataService.viewedPlayer(this.playerId())();
     const title = `Delete Player "${player.name}"`;
     const description = 'This action cannot be undone.';
     const confirmation = await this.modalService.confirmation(description, title);

@@ -1,13 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { Player } from '@pagemaster/common/pagemaster.types';
+import { GameSessionPermissions } from '@pagemaster/common/permissions.types';
 import { DescriptionControlComponent } from 'src/app/core/player/descriptions/description-control.component';
-import { PlayerDataService } from '../player-data.service';
 
 @Component({
   selector: 'app-tab-player-notes',
   template: `
     <app-description-control
-      [description]="playerDataService.viewedPlayer().description"
-      [permissions]="playerDataService.permissions().description"
+      [description]="player().description"
+      [permissions]="permissions().description"
     />
   `,
   styles: [
@@ -16,6 +17,7 @@ import { PlayerDataService } from '../player-data.service';
   imports: [DescriptionControlComponent],
 })
 export class TabNotesComponent {
-  protected playerDataService = inject(PlayerDataService);
+  public player = input.required<Player>();
+  public permissions = input.required<GameSessionPermissions>();
 
 }
