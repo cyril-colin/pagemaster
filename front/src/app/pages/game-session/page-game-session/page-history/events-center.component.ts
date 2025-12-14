@@ -5,7 +5,7 @@ import { EventFactoryDirective } from './event-factory.directive';
 @Component({
   selector: 'app-events-center',
   template: `
-  <section>
+  <section class="events-list">
     @for(e of events(); track e.event.id) {
       <ng-container appEventFactory [event]="e">
       </ng-container>
@@ -15,24 +15,19 @@ import { EventFactoryDirective } from './event-factory.directive';
   styles: [`
     :host {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
       width: 100%;
       height: 100%;
-      section {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 4px;
-        overflow-y: auto;
-        padding-right: 8px;
-        width: 100%;
-        height: 100%;
-        article {
-
-        }
-      }
+      overflow: hidden;
+    }
+    
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-medium);
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background: var(--color-background-main);
     }
     `],
   imports: [

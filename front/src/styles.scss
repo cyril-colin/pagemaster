@@ -139,6 +139,35 @@
   --ds-dropdown-z: 10000;
   --ds-dropdown-shadow: var(--color-shadow-heavy);
 
+  /* === EVENT SYSTEM === */
+  --event-gap: var(--gap-medium);
+  --event-padding: var(--padding-medium);
+  --event-background: var(--color-background-secondary);
+  --event-background-hover: var(--color-surface-elevated);
+  --event-border: 1px solid var(--color-border);
+  
+  /* Event icon */
+  --event-icon-size: 16px;
+  --event-icon-border-radius: 6px;
+  --event-icon-background: var(--color-background-tertiary);
+  --event-icon-color: var(--text-secondary);
+  
+  /* Event icon status colors */
+  --event-icon-success-bg: rgba(107, 143, 95, 0.15);
+  --event-icon-success-color: var(--color-success);
+  --event-icon-danger-bg: rgba(184, 89, 79, 0.15);
+  --event-icon-danger-color: var(--color-danger);
+  --event-icon-info-bg: rgba(90, 128, 153, 0.15);
+  --event-icon-info-color: var(--color-info);
+  --event-icon-warning-bg: rgba(201, 160, 85, 0.15);
+  --event-icon-warning-color: var(--color-warning);
+  
+  /* Event text */
+  --event-text-size: var(--text-size-medium);
+  --event-text-color: var(--text-primary);
+  --event-timestamp-size: var(--text-size-small);
+  --event-timestamp-color: var(--text-tertiary);
+
 
   --z-index-header: 100;
   --z-index-footer: 100;

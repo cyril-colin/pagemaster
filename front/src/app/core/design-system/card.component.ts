@@ -15,6 +15,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       border-radius: var(--ds-card-border-radius);
       padding: var(--ds-card-padding);
       background: var(--ds-card-background);
+      width: 100%;
     }
   `],
   changeDetection: ChangeDetectionStrategy.OnPush,

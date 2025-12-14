@@ -3,32 +3,44 @@ import { RouterModule } from '@angular/router';
 import { EventPlayerBarPointRemove } from '@pagemaster/common/events-player.types';
 import { ImageComponent } from '../../../../../core/design-system/image.component';
 import { AbstractEventViewPlayerComponent } from './abstract-event-view-player.component';
+import {
+  EventLayoutAvatarComponent,
+  EventLayoutComponent,
+  EventLayoutContentComponent,
+  EventLayoutIconComponent,
+  EventLayoutTimestampComponent,
+} from './event-layout.component';
 
 @Component({
   selector: 'app-player-bar-point-remove-event-view',
   standalone: true,
   template: `
+    @let e = event();
     @let p = player();
-    <a [routerLink]="playerUrl()"><ds-image [src]="p?.avatar || ''" /></a>
-    lost
-    <strong>{{ event().event.removedValue }}</strong>
-    point(s)
     @let b = bar();
-    @if(b) {
-      in <strong>{{ b?.name }}</strong>
-      ({{ b?.current }} / {{ b?.max }})
-    }
-    
+    <event-layout [status]="'danger'">
+      <event-layout-icon [icon]="'heart'" [status]="'danger'" />
+      <event-layout-timestamp [timestamp]="e.event.timestamp" />
+      <event-layout-content>
+        <span>Lost <strong>{{ e.event.removedValue }}</strong> point(s)</span>
+        @if(b) {
+          <span>in <strong>{{ b.name }}</strong> ({{ b.current }} / {{ b.max }})</span>
+        }
+      </event-layout-content>
+      <event-layout-avatar>
+        <a [routerLink]="playerUrl()"><ds-image [size]="'m'" [src]="p?.avatar || ''" /></a>
+      </event-layout-avatar>
+    </event-layout>
   `,
   styleUrls: ['./event-view-common.scss'],
-  styles: [`
-    :host {
-      color: var(--color-danger);
-    }
-  `],
   imports: [
     RouterModule,
     ImageComponent,
+    EventLayoutComponent,
+    EventLayoutIconComponent,
+    EventLayoutContentComponent,
+    EventLayoutTimestampComponent,
+    EventLayoutAvatarComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

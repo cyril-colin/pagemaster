@@ -1,21 +1,5 @@
+/* Common event view styles - minimal, using host selector */
 :host {
-  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: var(--gap-small);
-  animation: fadeInUp 300ms ease-out;
-  border-bottom: var(--view-border);
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  width: 100%;
 }

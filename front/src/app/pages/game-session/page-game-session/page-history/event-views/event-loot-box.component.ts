@@ -5,34 +5,42 @@ import { LootBoxClaimModalComponent } from '../../../../../core/loot-box/loot-bo
 import { ModalService } from '../../../../../core/modal';
 import { ItemComponent } from '../../../../../core/player/inventories/items/item.component';
 import { AbstractEventViewComponent } from './abstract-event-view.component';
+import {
+  EventLayoutComponent,
+  EventLayoutContentComponent,
+  EventLayoutIconComponent,
+  EventLayoutTimestampComponent,
+} from './event-layout.component';
 
 
 @Component({
   selector: 'app-event-loot-box',
   template: `
-    <button class="loot-box-button" (click)="openLootBoxModal()">
-      <h3>🎁 Loot Box</h3>
-      <section class="loot-box-items">
-        @for(i of event().event.lootBox.items; track i.item.id) {
-          <div class="item-container" [class.claimed]="i.claimedByPlayerId !== null">
-            <app-item [item]="i.item" [size]="'xs'" />
-            @if(i.claimedByPlayerId) {
-              <div class="claimed-indicator">✓</div>
+    <event-layout [status]="'success'">
+      <event-layout-icon icon="gift" [status]="'success'"></event-layout-icon>
+      <event-layout-timestamp [timestamp]="event().event.timestamp"></event-layout-timestamp>
+      <event-layout-content>
+        <button class="loot-box-button" (click)="openLootBoxModal()">
+          <section class="loot-box-items">
+            @for(i of event().event.lootBox.items; track i.item.id) {
+              <div class="item-container" [class.claimed]="i.claimedByPlayerId !== null">
+                <app-item [item]="i.item" [size]="'xs'" />
+                @if(i.claimedByPlayerId) {
+                  <div class="claimed-indicator">✓</div>
+                }
+              </div>
             }
-          </div>
-        }
-      </section>
-      <p class="click-hint">Click to open</p>
-    </button>
+          </section>
+          <p class="click-hint">Tap to claim items</p>
+        </button>
+      </event-layout-content>
+    </event-layout>
   `,
   styleUrls: ['./event-view-common.scss'],
   styles: [`
     :host {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: var(--gap-medium);
+      width: 100%;
     }
 
     .loot-box-button {
@@ -42,24 +50,20 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
       flex-direction: column;
       align-items: center;
       gap: var(--gap-medium);
-      padding: var(--padding-large);
-      border: 2px solid var(--color-border);
-      border-radius: var(--border-radius);
-      background: var(--color-background);
-      transition: all 0.2s ease;
+      transition: opacity var(--transition-speed);
       width: 100%;
+      box-sizing: border-box;
     }
 
     .loot-box-button:hover {
-      border-color: var(--color-primary);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      opacity: 0.8;
     }
 
     .loot-box-button h3 {
       margin: 0;
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: var(--text-size-xlarge);
+      font-weight: var(--text-weight-bold);
+      color: var(--text-primary);
     }
 
     .loot-box-items {
@@ -74,7 +78,7 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
     }
 
     .item-container.claimed {
-      opacity: 0.5;
+      opacity: 0.4;
     }
 
     .claimed-indicator {
@@ -84,23 +88,29 @@ import { AbstractEventViewComponent } from './abstract-event-view.component';
       width: 20px;
       height: 20px;
       background: var(--color-success);
-      color: white;
+      color: var(--text-on-primary);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 12px;
-      font-weight: bold;
+      font-weight: var(--text-weight-bold);
     }
 
     .click-hint {
       margin: 0;
       font-size: var(--text-size-small);
-      color: var(--color-text-secondary);
+      color: var(--text-tertiary);
       font-style: italic;
     }
   `],
-  imports: [RouterModule, ItemComponent],
+  imports: [RouterModule,
+    ItemComponent,
+    EventLayoutComponent,
+    EventLayoutIconComponent,
+    EventLayoutContentComponent,
+    EventLayoutTimestampComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventLootBoxComponent extends AbstractEventViewComponent<EventLootBox> {

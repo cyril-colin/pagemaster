@@ -5,36 +5,62 @@ import { SmartRoutes } from 'src/app/app.routes';
 import { ImageComponent } from '../../../../../core/design-system/image.component';
 import { EventsCenterStateService } from '../../../../../core/events-center/events-center.state';
 import { AbstractEventViewComponent } from './abstract-event-view.component';
+import {
+  EventLayoutAvatarComponent,
+  EventLayoutComponent,
+  EventLayoutContentComponent,
+  EventLayoutIconComponent,
+  EventLayoutTimestampComponent,
+} from './event-layout.component';
 
 
 @Component({
   selector: 'app-event-dice-roll',
   template: `
     @let e = event();
-    @if (participant()) {
-      <a [routerLink]="playerUrl()"><ds-image [src]="participant()?.avatar || ''" /></a>
-    }@else {
-      <span>GM</span>
-    }
-    <span>Run dice !</span><br />
-    <div>{{displayedResult()}} / {{e.event.sides}}</div>
+    @let p = participant();
+    <event-layout [status]="'danger'">
+      <event-layout-icon [icon]="'dice-6'" [status]="'danger'" />
+      <event-layout-timestamp [timestamp]="e.event.timestamp" />
+      <event-layout-content>
+        <span>
+          @if (p) {
+            <strong>{{p.name}}</strong>
+          } @else {
+            <strong>GM</strong>
+          }
+          rolled dice:
+        </span>
+        <strong [class.dice-anim]="e.isNew">{{displayedResult()}}</strong>
+        <span>/ {{e.event.sides}}</span>
+      </event-layout-content>
+      @if (p) {
+        <event-layout-avatar>
+          <a [routerLink]="playerUrl()"><ds-image [size]="'m'" [src]="p.avatar || ''" /></a>
+        </event-layout-avatar>
+      }
+    </event-layout>
   `,
   styleUrls : ['./event-view-common.scss'],
   styles: [`
-    :host .dice-anim {
-      font-size: 1.5em;
-      font-weight: bold;
-      color: #e67e22;
-      animation: diceBounce 0.5s infinite;
+    .dice-anim {
+      color: var(--color-warning);
+      animation: dicePulse 0.4s ease-in-out infinite;
     }
 
-    @keyframes diceBounce {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); color: #f1c40f; }
-      100% { transform: scale(1); }
+    @keyframes dicePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
     }
   `],
-  imports: [RouterModule, ImageComponent],
+  imports: [RouterModule,
+    ImageComponent,
+    EventLayoutComponent,
+    EventLayoutIconComponent,
+    EventLayoutContentComponent,
+    EventLayoutAvatarComponent,
+    EventLayoutTimestampComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventDiceRollComponent extends AbstractEventViewComponent<EventDiceRoll> {
