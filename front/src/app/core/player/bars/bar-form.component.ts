@@ -4,19 +4,19 @@ import { ChangeDetectionStrategy, Component, effect, inject, input } from '@angu
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AttributeBar } from '@pagemaster/common/attributes.types';
 import {
-    EventPlayerBarAdd,
-    EventPlayerBarDelete,
-    EventPlayerBarEdit,
-    EventPlayerTypes,
+  EventPlayerBarAdd,
+  EventPlayerBarDelete,
+  EventPlayerBarEdit,
+  EventPlayerTypes,
 } from '@pagemaster/common/events-player.types';
 import { tap } from 'rxjs';
 import { ButtonComponent } from '../../design-system/button.component';
 import { ModalService } from '../../modal';
 import {
-    ModalLayoutComponent,
-    ModalLayoutFooterComponent,
-    ModalLayoutHeaderComponent,
-    ModalLayoutSectionComponent,
+  ModalLayoutComponent,
+  ModalLayoutFooterComponent,
+  ModalLayoutHeaderComponent,
+  ModalLayoutSectionComponent,
 } from '../../modal/modal-layout';
 import { AbstractPlayerControl } from '../abstract-player-control';
 

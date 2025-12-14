@@ -50,7 +50,7 @@ import { FormsModule } from '@angular/forms';
       left: 8px;
       background-color: var(--color-background-main);
       padding: 0 6px;
-      font-size: 0.75rem;
+      font-size: var(--text-size-large);
       font-weight: 600;
       color: var(--text-primary);
       z-index: 5;
