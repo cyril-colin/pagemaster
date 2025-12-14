@@ -12,7 +12,7 @@ import {
   ModalLayoutSectionComponent,
 } from 'src/app/core/modal/modal-layout';
 import { ResourcePacksStorage } from 'src/app/core/resource-packs-storage.service';
-import { ImageComponent } from '../../../design-system/image.component';
+import { ItemDescriptionComponent } from './item-description.component';
 import { ItemsFinderComponent, ItemsFinderState } from './items-finder.component';
 
 export interface GiveItemEvent {
@@ -33,12 +33,7 @@ export interface GiveItemEvent {
     
     <ds-modal-layout-section>
       @if(item) {
-        <ds-image class="item-image" [src]="item.path" [alt]="item.name" [size]="'l'" />
-        <section>
-          <article><span>Weight:</span><span class="value">{{ item.weight }}</span></article>
-          <article><span>Rarity:</span><span class="value">{{ item.rarity }}</span></article>
-          <article><span>Tags:</span><span class="value">{{ item.tags.join(', ') }}</span></article>
-        </section>
+        <app-item-description [item]="item" [size]="'l'" />
       } @else {
         <app-items-finder [state]="state()" (newState)="onNewState($event)"/>
       }
@@ -82,22 +77,13 @@ export interface GiveItemEvent {
         align-items: center;
         gap: var(--gap-large);
         overflow-y: auto;
-
-        section {
-          display: flex;
-          flex-direction: column;
-          gap: var(--gap-medium);
-        }
-        .value {
-          font-weight: var(--text-weight-bold);
-        }
       }
     }
     `],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     ButtonComponent,
-    ImageComponent,
+    ItemDescriptionComponent,
     ModalLayoutComponent,
     ModalLayoutHeaderComponent,
     ModalLayoutSectionComponent,

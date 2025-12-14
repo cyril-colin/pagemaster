@@ -43,6 +43,33 @@ import {
       width: 100%;
     }
 
+    @keyframes shake {
+      0%, 100% { transform: translateX(0) rotate(0deg); }
+      10% { transform: translateX(-2px) rotate(-2deg); }
+      20% { transform: translateX(2px) rotate(2deg); }
+      30% { transform: translateX(-2px) rotate(-1deg); }
+      40% { transform: translateX(2px) rotate(1deg); }
+      50% { transform: translateX(-1px) rotate(-2deg); }
+      60% { transform: translateX(1px) rotate(2deg); }
+      70% { transform: translateX(-2px) rotate(-1deg); }
+      80% { transform: translateX(2px) rotate(1deg); }
+      90% { transform: translateX(-1px) rotate(-2deg); }
+    }
+
+    @keyframes reveal {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotateY(90deg);
+      }
+      50% {
+        transform: scale(1.1) rotateY(0deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotateY(0deg);
+      }
+    }
+
     .loot-box-button {
       all: unset;
       cursor: pointer;
@@ -57,6 +84,10 @@ import {
 
     .loot-box-button:hover {
       opacity: 0.8;
+    }
+
+    .loot-box-button:hover .loot-box-items {
+      animation: shake 0.5s ease-in-out;
     }
 
     .loot-box-button h3 {
@@ -75,7 +106,17 @@ import {
 
     .item-container {
       position: relative;
+      animation: reveal 0.6s ease-out backwards;
     }
+
+    .item-container:nth-child(1) { animation-delay: 0.1s; }
+    .item-container:nth-child(2) { animation-delay: 0.2s; }
+    .item-container:nth-child(3) { animation-delay: 0.3s; }
+    .item-container:nth-child(4) { animation-delay: 0.4s; }
+    .item-container:nth-child(5) { animation-delay: 0.5s; }
+    .item-container:nth-child(6) { animation-delay: 0.6s; }
+    .item-container:nth-child(7) { animation-delay: 0.7s; }
+    .item-container:nth-child(8) { animation-delay: 0.8s; }
 
     .item-container.claimed {
       opacity: 0.4;

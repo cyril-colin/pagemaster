@@ -3,7 +3,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ICON_STORE, IconName } from './icon.store';
 
 export type { IconName };
-export type ImageSize = 'xs' | 's' | 'm' | 'l';
+export type ImageSize = 'xs' | 's' | 'm' | 'l' | 'xl';
 
 @Component({
   selector: 'ds-image',
@@ -76,6 +76,11 @@ export type ImageSize = 'xs' | 's' | 'm' | 'l';
       height: var(--ds-image-component-size-l);
     }
 
+
+    .size-xl {
+      width: var(--ds-image-component-size-xl, 140px);
+      height: var(--ds-image-component-size-xl, 140px);
+    }
 
     /* States */
     .clickable {
